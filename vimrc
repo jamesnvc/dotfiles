@@ -1,3 +1,21 @@
+" Modeline and Notes {
+" vim: set foldmarker={,} foldlevel=0 foldmethod=marker spell:
+"
+"   James Cash's vimrc
+"
+" }
+
+
+" ***** Setup pathogen for loading bundles ***** {
+runtime! autoload/pathogen.vim
+if exists('g:loaded_pathogen')
+  call pathogen#runtime_append_all_bundles()
+  call pathogen#helptags()
+end
+" }
+
+
+" ***** Basic settings ***** {
 set nocompatible
 
 let mapleader = ","
@@ -5,34 +23,85 @@ let mapleader = ","
 if has('gui_running')
   colorscheme inkpot
 else
-  colorscheme darkblue
+  colorscheme vividchalk
 endif
 
-" ***** Setup pathogen for loading bundles ***** 
-runtime! autoload/pathogen.vim
-if exists('g:loaded_pathogen')
-  call pathogen#runtime_append_all_bundles()
-  call pathogen#helptags()
-end
+filetype on
+filetype plugin on
+filetype indent on
+
+syntax on
+" }
 
 
-" ***** Keybindings ***** 
+" ***** Set stuff ***** {
+set hidden  " When opening a new file hide the current instead of closing it
+" if exists('+autochdir')
+"   set autochdir
+" endif
+set ruler
+set cursorline
+set foldenable
+set backspace=indent,eol,start
+set ofu=syntaxcomplete#Complete
+set completeopt=longest,menuone
+set spell  " Enable spell checking
+set foldmethod=marker
+set tabstop=2
+set smarttab
+set shiftwidth=2
+set autoindent
+set expandtab
+set ignorecase
+set smartcase
+set showmatch
+set hlsearch
+set incsearch
+set scrolloff=2
+set wildmode=longest,list
+if has('gui_running')
+  set guioptions-=T
+endif
+set history=1000
+set undolevels=1000
+set pastetoggle=<F2>
+set list
+set visualbell
+set listchars=tab:>.,trail:.,extends:#,nbsp:.
+if has('autocmd')
+  autocmd filetype html,xml set listchars-=tab:>.
+endif
+" Backup stuff
+set backup
+set backupdir=$HOME/.vimbackup//
+set directory=$HOME/.vimswap//
+set viewdir=$HOME/.vimviews//
+" Creating backup dirs if the don't exist
+silent execute ' !mkdir -p $HOME/.vimbackup'
+silent execute ' !mkdir -p $HOME/.vimswap'
+silent execute ' !mkdir -p $HOME/.vimviews'
+" }
+
+
+" ***** Keybindings ***** {
+" Normal/operator-pending/visual-mode bindings {
+" Make navigating windows easier
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+" }
+" Normal mode bindings {
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 nnoremap ; :
 nmap <silent> <leader>/ :let @/=""<CR>
 nnoremap j gj
 nnoremap k gk
-vmap Q gq
+" Reflow paragraph
 nmap Q gqap
 " Using this instead of autochdir
 nmap <leader>cd :cd %:p:h<CR>
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
-" Reopen the current file as sudo
-cmap w!! w !sudo tee % > /dev/null
 " NERDTree bindings
 nmap <leader>n :NERDTreeClose<CR>:NERDTreeToggle<CR>
 nmap <Leader>m :NERDTreeClose<CR>:NERDTreeFind<CR>
@@ -54,46 +123,25 @@ nmap <leader>7 :tabn 7<CR>
 nmap <leader>8 :tabn 8<CR>
 nmap <leader>9 :tabn 9<CR>
 nmap <leader>10 :tabn 10<CR>
+" }
+" Command-mode bindings {
+" Reopen the current file as sudo
+cmap w!! w !sudo tee % > /dev/null
+" Fix shift-key goofs
+cmap W w
+cmap WQ wq
+cmap Q q
+" }
+" Visual-mode bindings {
+vmap Q gq
+" }
+" Insert mode bindings {
 inoremap ;; <Esc>
+" }
+" }
 
-filetype on
-filetype plugin on
-filetype indent on
 
-" ***** Set stuff ***** 
-set hidden  " When opening a new file hide the current instead of closing it
-" if exists('+autochdir')
-"   set autochdir
-" endif
-set backspace=indent,eol,start
-set ofu=syntaxcomplete#Complete
-set completeopt=longest,menuone
-set spell  " Enable spell checking
-set foldmethod=marker
-set tabstop=2
-set smarttab
-set shiftwidth=2
-set autoindent
-set expandtab
-set ignorecase
-set smartcase
-set showmatch
-set hlsearch
-set incsearch
-set scrolloff=2
-set wildmode=longest,list
-set guioptions-=T
-set history=1000
-set undolevels=1000
-set pastetoggle=<F2>
-set list
-set visualbell
-set listchars=tab:>.,trail:.,extends:#,nbsp:.
-if has('autocmd')
-  autocmd filetype html,xml set listchars-=tab:>.
-endif
-
-" ***** Miscellaneous options *****
+" ***** Miscellaneous options ***** {
 " NERDTree stuff
 let NERDTreeBookmarksFile=expand("$HOME/.vim/NERDTreeBookmarks")
 let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.o$', '\.git', '\.so' ]
@@ -107,3 +155,4 @@ let NERDTreeMouseMode=1
 if has('autocmd')
   autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
 endif
+" }
