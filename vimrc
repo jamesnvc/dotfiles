@@ -17,14 +17,10 @@ end
 
 " ***** Basic settings ***** {
 set nocompatible
-
+set encoding=utf-8
 let mapleader = ","
 
-if has('gui_running')
-  colorscheme inkpot
-else
-  colorscheme vividchalk
-endif
+colorscheme ir_black
 
 filetype on
 filetype plugin on
@@ -36,16 +32,13 @@ syntax on
 
 " ***** Set stuff ***** {
 set hidden  " When opening a new file hide the current instead of closing it
-" if exists('+autochdir')
-"   set autochdir
-" endif
 set ruler
 set cursorline
+set magic
 set foldenable
 set backspace=indent,eol,start
 set ofu=syntaxcomplete#Complete
 set completeopt=longest,menuone
-set spell  " Enable spell checking
 set foldmethod=marker
 set tabstop=2
 set smarttab
@@ -71,7 +64,7 @@ set listchars=tab:>.,trail:.,extends:#,nbsp:.
 if has('autocmd')
   autocmd filetype html,xml set listchars-=tab:>.
 endif
-" Backup stuff
+" Backup stuff {
 set backup
 set backupdir=$HOME/.vimbackup//
 set directory=$HOME/.vimswap//
@@ -80,6 +73,7 @@ set viewdir=$HOME/.vimviews//
 silent execute ' !mkdir -p $HOME/.vimbackup'
 silent execute ' !mkdir -p $HOME/.vimswap'
 silent execute ' !mkdir -p $HOME/.vimviews'
+"  }
 " }
 
 
@@ -90,7 +84,9 @@ map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
-" }
+" Toggle spellchecking
+map <leader>ss :setlocal spell!<CR>
+"  }
 " Normal mode bindings {
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
@@ -123,7 +119,7 @@ nmap <leader>7 :tabn 7<CR>
 nmap <leader>8 :tabn 8<CR>
 nmap <leader>9 :tabn 9<CR>
 nmap <leader>10 :tabn 10<CR>
-" }
+"  }
 " Command-mode bindings {
 " Reopen the current file as sudo
 cmap w!! w !sudo tee % > /dev/null
@@ -131,18 +127,20 @@ cmap w!! w !sudo tee % > /dev/null
 cmap W w
 cmap WQ wq
 cmap Q q
-" }
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+"  }
 " Visual-mode bindings {
 vmap Q gq
-" }
+"  }
 " Insert mode bindings {
 inoremap ;; <Esc>
-" }
+"  }
 " }
 
 
-" ***** Miscellaneous options ***** {
-" NERDTree stuff
+" ***** Plugin options ***** {
+" NERDTree stuff {
 let NERDTreeBookmarksFile=expand("$HOME/.vim/NERDTreeBookmarks")
 let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.o$', '\.git', '\.so' ]
 let NERDTreeShowBookmarks=1
@@ -151,8 +149,10 @@ let NERDTreeShowHidden=1
 let NERDTreeQuitOnOpen=1
 let NERDTreeHighlightCursorLine=1
 let NERDTreeMouseMode=1
-" OmniComplete stuff
+"  }
+" OmniComplete stuff {
 if has('autocmd')
   autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
 endif
+"  }
 " }
