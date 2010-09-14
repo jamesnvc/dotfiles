@@ -1,6 +1,6 @@
 Host *
   VisualHostKey yes
-    
+
 Host github
   User git
   Port 22
