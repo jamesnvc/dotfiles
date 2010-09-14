@@ -1,6 +1,7 @@
 # -*- sh -*-
 alias -g ...='../..'
 alias -g ....='../../..'
+alias gvim='open -a MacVim'
 alias py=python
 alias cds='select x in `dirs`; do ;eval cd $x ; unset x ; break ; done'
 alias man="man -P most"
@@ -53,7 +54,9 @@ alias sr="screen -R"
 alias sx="screen -x"
 
 # git
-alias gst="git status"
+alias gst="git status -sb"
+alias gd="git diff"
+alias gwd="git diff --word-diff"
 alias gb="git branch"
 alias gp="git pull"
 
@@ -238,7 +241,7 @@ alias -g TL='| tail -20'
 alias -g T='| tail'
 alias -g US='| sort -u'
 alias -g VM=/var/log/messages
-alias -g X0G='| xargs -0 egrep'
-alias -g X0='| xargs -0'
+alias -g X0G='-print0 | xargs -0 egrep'
+alias -g X0='-print0 | xargs -0'
 alias -g XG='| xargs egrep'
 alias -g X='| xargs'
