@@ -1,0 +1,24 @@
+# -*- shell-script -*-
+setopt appendhistory autocd extendedglob nohup autopushd
+setopt pushdminus pushdsilent pushdtohome pushdignoredups # push directories visited automatically onto stack
+setopt globdots # find dotfiles easier
+setopt automenu
+setopt dvorak   # with spelling correction, assume dvorak kb
+setopt completeinword          # not just at the end
+setopt alwaystoend             # when complete from middle, move cursor
+setopt correct                 # spelling correction
+# setopt histverify              # when using ! cmds, confirm first
+setopt interactivecomments     # escape commands so i can use them later
+setopt printexitvalue   
+
+# mmm... hashtables...
+setopt HASH_CMDS
+setopt HASH_DIRS
+# I think sorting numerical filenames by their value and not necessarily
+# by their lexical order makes more sense anyhow -- well, it does to me
+setopt NUMERIC_GLOB_SORT
+setopt appendhistory beep nomatch
+setopt SHARE_HISTORY # share history between open shells
+setopt INC_APPEND_HISTORY     # append history as command are entered
+setopt HIST_NO_STORE          # don't save 'history' cmd in history
+

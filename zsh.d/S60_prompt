@@ -1,0 +1,52 @@
+#!/bin/zsh
+setopt prompt_subst
+
+# For the git prompt
+function _rprompt_dir {
+  local col_b col_s
+  git_p=${$(get_git_prompt_info '%b')}
+  col_p="%{$fg[yellow]%}"
+ 
+  local short
+  short="${PWD/$HOME/~}"
+
+  if test -z "$git_p" ; then
+    echo -n ""
+    return
+  fi
+ 
+  local lead rest
+  lead=$git_p
+  rest=${${short#$lead}#/}
+ 
+  echo -n "$lead"
+}
+
+setprompt () {
+  ###
+  # Need this so the prompt will work.
+  setopt prompt_subst
+  
+  ###
+  # See if we can use colors.
+  autoload colors zsh/terminfo
+  if [[ "$terminfo[colors]" -ge 8 ]]; then
+	  colors
+  fi
+  
+  for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE; do
+	  eval PR_$color='%{$terminfo[bold]$fg[${(L)color}]%}'
+	  eval PR_LIGHT_$color='%{$fg[${(L)color}]%}'
+	  (( count = $count + 1 ))
+  done
+  PR_NO_COLOUR="%{$terminfo[sgr0]%}"
+
+  ###
+  # Finally, the prompt.
+  PROMPT='%~ $PR_RED → $PR_NO_COLOUR '
+  RPROMPT='$PR_GREEN $(_rprompt_dir) $PR_WHITE($PR_CYAN%t %D{%a,%b%d} $PR_NO_COLOUR)'
+  PS2='$PR_RED → $PR_BLUE %_ $PR_RED → $PR_NO_COLOUR '
+    
+}
+
+setprompt

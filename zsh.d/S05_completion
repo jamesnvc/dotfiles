@@ -1,0 +1,72 @@
+# -*- mode: sh -*-
+zstyle ':completion:*' completer _expand _complete _correct _approximate
+zstyle ':completion:*' expand prefix suffix
+zstyle ':completion:*' file-sort access
+zstyle ':completion:*' list-suffixes true
+zstyle ':completion:*' matcher-list '' '+m:{a-z}={A-Z}' 'r:|[._-]=** r:|=**' 'l:|=* r:|=*'
+zstyle ':completion:*' preserve-prefix '//[^/]##/'
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path ~/.zsh/cache
+zstyle ':completion:*:*:kill:*' menu yes select
+zstyle ':completion:*:kill:*'   force-list always
+zstyle ':completion:::::' completer _complete _approximate
+zstyle ':completion:*:approximate:*' max-errors 2
+zstyle :compinstall filename '/home/james/.zshrc'
+zstyle ':completion:*' completer _complete _prefix
+zstyle ':completion::prefix-1:*' completer _complete
+zstyle ':completion:incremental:*' completer _complete _correct
+zstyle ':completion:predict:*' completer _complete # Completion caching
+zstyle ':completion::complete:*' use-cache 1
+zstyle ':completion::complete:*' cache-path ~/.zsh/cache/$HOST # Expand partial paths
+zstyle ':completion:*' expand 'yes'
+zstyle ':completion:*' squeeze-slashes 'yes' # Include non-hidden directories in globbed file completions
+zstyle ':completion:*:complete:-command-::commands' ignored-patterns '*\~' # Separate matches into groups
+zstyle ':completion:*:matches' group 'yes' # Describe each match group.
+zstyle ':completion:*:descriptions' format "%B---- %d%b" # Messages/warnings format
+zstyle ':completion:*:messages' format '%B%U---- %d%u%b'
+zstyle ':completion:*:warnings' format '%B%U---- no match for: %d%u%b' # Describe options in full
+zstyle ':completion:*:options' description 'yes'
+zstyle ':completion:*:options' auto-description '%d'
+zstyle ':completion:*:descriptions' format "%B—- %d%b" # Messages/warnings format
+zstyle ':completion:*:messages' format '%B%U—- %d%u%b'
+zstyle ':completion:*:warnings' format '%B%U—- no match for: %d%u%b' # Describe options in full
+zstyle ':completion:*:options' description 'yes'
+zstyle ':completion:*:options' auto-description '%d'
+#-------Completions----------------------
+# add colours to completion
+# stolen from Christian Schneider <strcat@gmx.net>
+# http://strcat.de/wiki/_media/wiki:dotfiles:dot.screenrc.txt?id=dotfiles&cache=cache
+
+# general colouring in (yellow for status, red for warnings)
+zstyle ':completion:*' format $'%{\e[0;33m%}completing %B%d%b%{\e[0m%}'
+zstyle ':completion:*:messages' format '%d'
+zstyle ':completion:*:warnings' format $'%{\e[4;1;31m%}No matches for:%{\e[0m%} %d'
+zstyle ":completion:*:descriptions" format $'%{\e[0;33m%}%d:%{\e[0m%}'
+zstyle ":completion:*:corrections" format $'%{\e[0;31m%}%d (errors: %e)%}'
+zstyle ":completion:*" select-prompt '%SScrolling active: current selection at %P lines: %m'
+
+# colouring specific things
+zstyle ":completion:*:*:*:*:hosts" list-colors '=*=30;41'
+zstyle ":completion:*:*:*:*:users" list-colors '=*=34;47'
+zstyle ":completion:*:processes" command ps --forest -A -o pid,cmd
+zstyle ":completion:*:processes" list-colors '=(#b)( #[0-9]#)[&[/0-9a-zA-Z]#(*)=34=37;1=30;1'
+
+# nicer kill completion
+zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
+zstyle ':completion:*:kill:*' insert-ids single
+zstyle ':completion:*:*:kill:*' menu yes select
+zstyle ':completion:*:kill:*' force-list always
+
+# ignoring things
+# don't complete backup files as executables
+zstyle ":completion:*:complete:-command-::commands" ignored-aptterns '*\~'
+zstyle ':completion:::::' completer _complete _approximate
+zstyle ':completion:*:approximate:*' max-errors 1
+
+# only ask before displaying completions if it would scroll
+LISTMAX=0
+
+zmodload -i zsh/complist
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+
+compinit

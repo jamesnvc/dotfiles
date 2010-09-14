@@ -1,0 +1,79 @@
+# -*- shell-script -*-
+
+# ------------------------------------------------------------------------------
+# Change some Screen defaults
+# ------------------------------------------------------------------------------
+
+# suppress screen's startup message
+startup_message off
+
+# an alternative hardstatus to display a bar at the bottom listing the
+# windownames and highlighting the current windowname in blue.
+hardstatus alwayslastline "%{.wk}%-w%{.kW}%n %t%{-}%+w %=%{..k} %H %{..k} %m/%d %C%a " 
+
+# '%{gk}[ %{G}%H %{g}][%= %{wk}%?%-Lw%?%{=b kR}(%{W}%n*%f %t%?(%u)%?%{=b kR})%{= kw}%?%+Lw%?%?%= %{g}][%{Y}%l%{g}]%{=b C}[ %m/%d %c ]%{W}'
+
+# use C-q instead of C-a as this makes more sense for emacs and/or StumpWM
+ escape ^qq
+
+# execute .bash_profile on startup
+# shell -$SHELL
+
+# no flow control, e.g. ^S and ^Q
+defflow off
+
+# don't tell me when bells happen in other windows
+vbell off
+bell_msg ""
+
+# don't pause for each screen message
+msgminwait 0
+
+# bigger scroll size
+defscrollback 32768
+
+# make search case-insensitive
+ignorecase on
+
+
+# ------------------------------------------------------------------------------
+# Set some Copy Mode key bindings
+# ------------------------------------------------------------------------------
+
+# emacs keybindings for navigation in copy mode
+markkeys ^B=Y:^F=V:h=^B:l=^F:0=^A:$=^E
+
+# C-g and other keys quit copy mode. Esc does nothing.
+# Only C-g, Esc, and C-space break out of i-search. So, use Esc because
+# it doesn't break out of copy mode and keeps the cursor position.
+markkeys \033=\015=^G=^D=h=j=k=l=H=M=L=G=g=y=c=v=a=x=b=e=B=E=w
+markkeys @=\033
+
+# special hack for C-e, since it should go *past* the last char.
+# (-m means this is for copy mode only.)
+bindkey -m ^e stuff "\$^f"
+
+# page up and page down
+bindkey -m -k kP stuff Y
+bindkey -m -k kN stuff V
+
+# C-space sets mark. 
+markkeys ' '=^@
+
+# ------------------------------------------------------------------------------
+# Startup Screens
+# ------------------------------------------------------------------------------
+
+# screen -t Htop htop
+# screen -t Factor 1 zsh
+# screen -t Emacs.d 2 zsh
+# screen -t School 3 zsh
+# screen -t Misc 4 zsh
+# screen -t iotop 5 iotop
+# screen -t Misc2 6 zsh
+# screen -t Music 7 zsh
+# screen -t Other 8 zsh
+# select 3
+
+fit
+

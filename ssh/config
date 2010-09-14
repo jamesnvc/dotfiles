@@ -1,0 +1,35 @@
+Host *
+  VisualHostKey yes
+    
+Host github
+  User git
+  Port 22
+  Hostname github.com
+  IdentityFile ~/.ssh-keys/github
+  TCPKeepAlive yes
+  IdentitiesOnly yes
+
+Host wolever.net
+  User james
+  Port 22
+  Hostname wolever.net
+  IdentityFile ~/.ssh-keys/id_wolever_np
+  TCPKeepAlive yes
+
+Host rafd.xen.prgmr.com
+  User git
+  Hostname rafd.xen.prgmr.com
+  IdentityFile ~/.ssh-keys/career_fair
+  TCPKeepAlive yes
+
+Host ecf
+  User cashjame
+  Hostname p170.ecf.toronto.edu
+  IdentityFile ~/.ssh-keys/ecf
+  TCPKeepAlive yes
+
+Host remote.ecf.utoronto.ca
+  User cashjame
+  Hostname remote.ecf.utoronto.ca
+  IdentityFile ~/.ssh-keys/ecf
+  TCPKeepAlive yes

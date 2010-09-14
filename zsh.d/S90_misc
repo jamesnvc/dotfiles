@@ -1,0 +1,16 @@
+# -*- shell-script -*-
+# change directories to a factor module
+FACTOR=$HOME/src/factor/factor
+function cdfactor { 
+    code=$(printf "USING: io io.pathnames vocabs vocabs.loader ; "
+           printf "\"%s\" <vocab> vocab-source-path (normalize-path) print" $1)
+    echo $code > $HOME/.cdfactor
+    fn=$($FACTOR $HOME/.cdfactor)
+    dn=$(dirname $fn)
+    echo $dn
+    if [ -z "$dn" ]; then
+        echo "Warning: directory '$1' not found" 1>&2
+    else
+        cd $dn
+    fi
+}

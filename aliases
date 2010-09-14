@@ -1,0 +1,244 @@
+# -*- sh -*-
+alias -g ...='../..'
+alias -g ....='../../..'
+alias py=python
+alias cds='select x in `dirs`; do ;eval cd $x ; unset x ; break ; done'
+alias man="man -P most"
+alias df='df -h'
+alias du='du -h'
+alias dus='du -s'
+alias psg='ps -e | grep'
+alias ec=emacsclient
+alias dmt='dmesg | tail'
+alias curl='noglob curl'
+alias wget='noglob wget'
+alias ql='qlmanage -p 2>/dev/null'
+
+# Rails
+alias ss="script/server"
+alias sc="script/console"
+alias sg="script/generate"
+
+# JRuby
+alias jrake="jruby -S rake"
+
+# ls with some arguments
+alias ls="ls -@FG"              # defaults
+alias ll="ls -lh"               # list long
+alias la="ls -a"                # list all
+alias lz="ls -tr"               # list by date
+alias lsa="ls -ld .*"           # list only dotfiles
+alias lsd="ls -d -- *(/)"       # list only dirs
+alias lsdirs="ls -d -- *(-/DN)"	# list only dirs and links
+alias lsx="ls -- *(*)"          # list only executables
+alias lsnew="ls -rtl"           # list by new
+alias lsold="ls -tl"            # list by old
+alias lssmall="ls -Sl"          # list by small
+alias lsbig="ls -Slr"           # list by big
+alias l="ls"
+
+# find with some arguments
+alias findnew="find -mtime -2"
+alias findx="find -perm -u=x ! -type d"
+
+alias omnomnom="rm -Rf"
+alias cleanup="rm -i (*\~|\#*\#)(DN)"
+
+# cpan
+alias c="sudo -H cpan"
+
+# screen
+alias s="screen"
+alias sr="screen -R"
+alias sx="screen -x"
+
+# git
+alias gst="git status"
+alias gb="git branch"
+alias gp="git pull"
+
+
+# chmod
+# aliases must begin with a letter
+alias r+="chmod +r"
+alias w+="chmod +w"
+alias x+="chmod +x"
+alias r-="chmod -r"
+alias w-="chmod -w"
+alias x-="chmod -x"
+
+# makin'
+alias C="./configure"
+alias CH="./configure --help | less"
+alias CM="./configure && make"
+alias SMI="sudo make install"
+
+alias SX="startx"
+alias SXF="startxfce4"
+
+# wget
+alias wgetr="wget -r -np -nd"
+alias wgetm="wget -m -k"
+
+alias machange="sudo ifconfig eth0 hw ether"
+
+alias aliases="$EDITOR ~/.aliases"
+alias zshrc="$EDITOR ~/.zshrc"
+alias screenrc="$EDITOR ~/.screenrc"
+alias readit="$EDITOR README"
+
+alias h="history"
+alias hist="$EDITOR ~/.zsh_history"
+
+alias vi="vim"
+alias df="df -h"
+
+# zmv
+alias mmv="noglob zmv -W"	# so zmv gets wildchars
+alias ccp="noglob zmv -WC"
+alias lln="noglob zmv -WL"
+
+# glob correction
+alias ri="noglob ri"		# some chars are also used here
+alias wget="noglob wget"    # escaping urls
+alias links="noglob links"
+alias w3m="noglob w3m"
+
+# no typo correction
+alias mv="nocorrect mv"
+alias cp="nocorrect cp"
+alias man="nocorrect man"
+alias mkdir="nocorrect mkdir"
+alias mcd="nocorrect mcd"
+alias rm="nocorrect rm"
+
+# vanilla programs
+alias vanilla-zsh="zsh -f"
+alias vanilla-emacs="emacs -q"
+alias vanilla-screen="screen -c /dev/null"
+alias vanilla-vim="vim -u NONE"
+
+# global aliases
+alias -g NN=">/dev/null"
+alias -g 1N="1>/dev/null"
+alias -g 2N="2>/dev/null"
+alias -g HH="| head"
+alias -g HHH="| head -n $(( +LINES ? LINES - 4 : 20 ))"
+
+# cds
+alias -g ..=".."
+alias -g ...="../.."
+alias -g ....="../../.."
+alias -g .....="../../../.."
+alias -g ......="../../../../.."
+alias -g .......="../../../../../../.."
+# 7 directories should be enough for anyone - bill g
+# thanks sean.
+
+# suffix aliases.
+alias -s flac=mplayer	# audio
+alias -s mp3=mplayer
+alias -s ogg=mplayer
+alias -s wav=mplayer
+alias -s avi=mplayer	# video
+alias -s mpeg=mplayer
+alias -s mpg=mplayer
+alias -s mp4=mplayer
+alias -s mkv=mplayer
+alias -s wmv=mplayer
+alias -s bmp=feh	# images
+alias -s gif=feh
+alias -s jpg=feh
+alias -s jpeg=feh
+alias -s png=feh
+alias -s pdf=xpdf
+
+# AND HENCEFORTH THERE WERE FUNCTIONS
+
+function mcd() {    # mind-control device
+    test -z "$1" && echo "mcd: no path given" && return
+    test -d "$1" && print "mcd: directory $1 already exists"
+    mkdir -p -- "$1"
+    cd -- "$1"
+}
+
+# I like to unzip unzip unzip
+
+extract () {
+	if [ -f $1 ]; then
+		case $1 in
+		*.tar.bz2)	tar -jxvf $1                      ;;
+		*.tar.gz)	tar -zxvf $1                      ;;
+		*.bz2)  	bzip2 -d $1                       ;;
+		*.gz)   	gunzip -d $1                      ;;
+		*.tar)  	tar -xvf $1                       ;;
+		*.tgz)		tar -zxvf $1                      ;;
+		*.zip)		unzip $1                          ;;
+		*.jar)		unzip $1                          ;;
+		*.Z)		uncompress $1                     ;;
+		*.rar)		unrar x $1                        ;;
+		*)		echo "'$1' Error. Please go away" ;;
+		esac
+		else
+		echo "'$1' is not a valid file"
+	fi
+}
+
+lsarchive () {
+	if [ -f $1 ]; then
+		case $1 in
+		*.tar.bz2)	tar -jtf $1                       ;;
+		*.tar.gz)	tar -ztf $1                       ;;
+		*.tar)		tar -tf $1                        ;;
+		*.tgz)		tar -ztf $1                       ;;
+		*.zip)		unzip -l $1                       ;;
+		*.rar)		rar vb $1                         ;;
+                *.jar)          unzip -l $1                       ;;
+		*)	        echo "'$1' Error. Please go away" ;;
+		esac
+		else
+		echo "'$1' is not a valid archive"
+	fi
+}
+# a bit of completion for those functions
+compctl -g '*.tar.Z *.tar.gz *.tgz *.zip *.ZIP *.tar.bz2 *.rar *.jar' + -g '*' show-archive extract
+
+wiki() { dig +short txt $1.wp.dg.cx }
+
+rot13 () { tr "[a-m][n-z][A-M][N-Z]" "[n-z][a-m][N-Z][A-M]" }
+
+alias -g CA="2>&1 | cat -A"
+alias -g C='| pbcopy'
+alias -g D="DISPLAY=:0.0"
+alias -g NULL=/dev/null
+alias -g ED="export DISPLAY=:0.0"
+alias -g EG='|& egrep'
+alias -g EH='|& head'
+alias -g EL='|& less'
+alias -g ELS='|& less -S'
+alias -g ETL='|& tail -20'
+alias -g ET='|& tail'
+alias -g F=' | fmt -'
+alias -g G='| egrep'
+alias -g H='| head'
+alias -g HL='|& head -20'
+alias -g Sk="*~(*.bz2|*.gz|*.tgz|*.zip|*.z)"
+alias -g LL="2>&1 | less"
+alias -g L="| less"
+alias -g LS='| less -S'
+alias -g MM='| most'
+alias -g M='| more'
+alias -g NE="2> /dev/null"
+alias -g NS='| sort -n'
+alias -g NUL="> /dev/null 2>&1"
+alias -g PIPE='|'
+alias -g RNS='| sort -nr'
+alias -g S='| sort'
+alias -g TL='| tail -20'
+alias -g T='| tail'
+alias -g US='| sort -u'
+alias -g VM=/var/log/messages
+alias -g X0G='| xargs -0 egrep'
+alias -g X0='| xargs -0'
+alias -g XG='| xargs egrep'
+alias -g X='| xargs'
