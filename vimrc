@@ -1,5 +1,5 @@
 " Modeline and Notes {
-" vim: set foldmarker={,} foldlevel=0 foldmethod=marker spell:
+" vim: set foldmarker={,} foldlevel=0 foldmethod=marker :
 "
 "   James Cash's vimrc
 "
@@ -139,6 +139,17 @@ inoremap ;; <Esc>
 " }
 
 
+" ***** Miscellaneous autocmds ***** {
+if has('autocmd')
+  " Delete trailing whitespace on save
+  autocmd BufWritePre * :%s/\s\+$//e
+  " Warning: This enables fancy OmniCompletions for ruby, but makes loading
+  " ruby files painfully slow...
+  " autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
+endif
+" }
+
+
 " ***** Plugin options ***** {
 " NERDTree stuff {
 let NERDTreeBookmarksFile=expand("$HOME/.vim/NERDTreeBookmarks")
@@ -149,10 +160,5 @@ let NERDTreeShowHidden=1
 let NERDTreeQuitOnOpen=1
 let NERDTreeHighlightCursorLine=1
 let NERDTreeMouseMode=1
-"  }
-" OmniComplete stuff {
-if has('autocmd')
-  autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
-endif
 "  }
 " }
