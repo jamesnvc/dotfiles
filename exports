@@ -24,7 +24,7 @@ export RIPDIR RUBYLIB PATH
 # Load lightning config
 source ~/.lightning/functions.sh
 
-export EDITOR=emacsclient
+export EDITOR='mvim -f'
 
 LS_COLORS='';
 LS_COLORS=$LS_COLORS:'no=00'           # normal text
