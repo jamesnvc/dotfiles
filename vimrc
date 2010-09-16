@@ -186,6 +186,6 @@ let NERDTreeMouseMode=1
 " ***** Mode-specific settings ***** {
 " Python {
 let python_highlight_all = 1
-au FileType python syn keyword pythonDecorator True None False self
+au FileType python syn keyword pythonDecorator True None False self is not
 "  }
 " }
