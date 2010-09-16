@@ -22,6 +22,10 @@ let mapleader = ","
 
 colorscheme ir_black
 
+if has('gui_running')
+  set columns=85 lines=100
+endif
+
 filetype on
 filetype plugin on
 filetype indent on
@@ -31,36 +35,40 @@ syntax on
 
 
 " ***** Set stuff ***** {
-set hidden  " When opening a new file hide the current instead of closing it
-set ruler
-set cursorline
-set magic
-set foldenable
-set backspace=indent,eol,start
-set ofu=syntaxcomplete#Complete
-set completeopt=longest,menuone
-set foldmethod=marker
-set tabstop=2
-set smarttab
-set shiftwidth=2
 set autoindent
+set backspace=indent,eol,start
+set completeopt=longest,menuone,preview
+set cursorline
 set expandtab
-set ignorecase
-set smartcase
-set showmatch
+set foldenable
+set foldmethod=marker
+set formatoptions+=n  " gq recognizes numbered lists
+set hidden  " When opening a new file hide the current instead of closing it
+set history=1000
 set hlsearch
+set ignorecase
 set incsearch
+set laststatus=2
+set list
+set listchars=tab:>.,trail:.,extends:#,nbsp:.
+set magic
+set ofu=syntaxcomplete#Complete
+set pastetoggle=<F2>
+set ruler
 set scrolloff=2
-set wildmode=longest,list
+set shiftwidth=2
+set showmatch
+set smartcase
+set smarttab
+set statusline=%F%m%r%h%w\ %{fugitive#statusline()}
+set tabstop=2
+set undolevels=1000
+set visualbell
+set wildmenu
+set wildmode=list:longest,full
 if has('gui_running')
   set guioptions-=T
 endif
-set history=1000
-set undolevels=1000
-set pastetoggle=<F2>
-set list
-set visualbell
-set listchars=tab:>.,trail:.,extends:#,nbsp:.
 if has('autocmd')
   autocmd filetype html,xml set listchars-=tab:>.
 endif
@@ -77,6 +85,15 @@ silent execute ' !mkdir -p $HOME/.vimviews'
 " }
 
 
+" ***** Define commands ***** {
+if has('gui_macvim')
+  command! -nargs=0 Full set fullscreen
+  command! -nargs=0 Unfull set nofullscreen
+endif
+command! -nargs=0 Restore set lines=100 columns=85
+" }
+
+
 " ***** Keybindings ***** {
 " Normal/operator-pending/visual-mode bindings {
 " Make navigating windows easier
@@ -86,14 +103,16 @@ map <C-k> <C-w>k
 map <C-l> <C-w>l
 " Toggle spellchecking
 map <leader>ss :setlocal spell!<CR>
+map <leader>o :BufExplorer<CR>
 "  }
 " Normal mode bindings {
-nmap <silent> <leader>ev :e $MYVIMRC<CR>
-nmap <silent> <leader>sv :so $MYVIMRC<CR>
 nnoremap ; :
-nmap <silent> <leader>/ :let @/=""<CR>
 nnoremap j gj
 nnoremap k gk
+nmap <silent> <leader>ev :e $MYVIMRC<CR>
+nmap <silent> <leader>sv :so $MYVIMRC<CR>
+nmap <silent> <leader>/ :let @/=""<CR>
+nmap <leader>w :w<CR>
 " Reflow paragraph
 nmap Q gqap
 " Using this instead of autochdir
@@ -160,5 +179,13 @@ let NERDTreeShowHidden=1
 let NERDTreeQuitOnOpen=1
 let NERDTreeHighlightCursorLine=1
 let NERDTreeMouseMode=1
+"  }
+" }
+
+
+" ***** Mode-specific settings ***** {
+" Python {
+let python_highlight_all = 1
+au FileType python syn keyword pythonDecorator True None False self
 "  }
 " }
