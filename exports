@@ -4,6 +4,7 @@ export PATH="$HOME/Library/Application Support/MultiMarkdown/bin":$PATH
 export PATH=$PATH:"$HOME/Languages/jruby-1.5.0/bin"
 export PATH="$HOME/.gem/ruby/1.8/bin":$PATH
 export PATH="$HOME/.cabal/bin":$PATH
+export CDPATH=$HOME
 export PYTHONPATH=$HOME/lib/python
 export FULLNAME="James Cash"
 export EMAIL="james.nvc@gmail.com"
