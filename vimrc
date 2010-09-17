@@ -142,10 +142,6 @@ nmap <leader>10 :tabn 10<CR>
 " Command-mode bindings {
 " Reopen the current file as sudo
 cmap w!! w !sudo tee % > /dev/null
-" Fix shift-key goofs
-cmap W w
-cmap WQ wq
-cmap Q q
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
 "  }
@@ -187,5 +183,14 @@ let NERDTreeMouseMode=1
 " Python {
 let python_highlight_all = 1
 au FileType python syn keyword pythonDecorator True None False self is not
+"  }
+" Ruby {
+autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
+"  }
+" Clojure {
+let vimclojure#HighlightBuildins = 1
+let vimclojure#ParenRainbow = 0
+let vimclojure#WantNailgun = 0  " Don't start the repl
+let vimclojure#NailgunClient = "/usr/local/bin/ng"
 "  }
 " }
