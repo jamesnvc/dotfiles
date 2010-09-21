@@ -43,6 +43,7 @@ set expandtab
 set foldenable
 set foldmethod=marker
 set formatoptions+=n  " gq recognizes numbered lists
+set gdefault  " Make substitute global by default
 set hidden  " When opening a new file hide the current instead of closing it
 set history=1000
 set hlsearch
@@ -50,10 +51,11 @@ set ignorecase
 set incsearch
 set laststatus=2
 set list
-set listchars=tab:>.,trail:.,extends:#,nbsp:.
+set listchars=tab:▸\ ,trail:.,extends:#,nbsp:.
 set magic
 set ofu=syntaxcomplete#Complete
 set pastetoggle=<F2>
+set relativenumber
 set ruler
 set scrolloff=2
 set shiftwidth=2
@@ -71,16 +73,19 @@ if has('gui_running')
 endif
 if has('autocmd')
   autocmd filetype html,xml set listchars-=tab:>.
+  autocmd FocusLost * :wa
 endif
 " Backup stuff {
 set backup
 set backupdir=$HOME/.vimbackup//
 set directory=$HOME/.vimswap//
 set viewdir=$HOME/.vimviews//
+set undodir=$HOME/.vimundo//
 " Creating backup dirs if the don't exist
 silent execute ' !mkdir -p $HOME/.vimbackup'
 silent execute ' !mkdir -p $HOME/.vimswap'
 silent execute ' !mkdir -p $HOME/.vimviews'
+silent execute ' !mkdir -p $HOME/.vimundo'
 "  }
 " }
 
@@ -91,6 +96,7 @@ if has('gui_macvim')
   command! -nargs=0 Unfull set nofullscreen
 endif
 command! -nargs=0 Restore set lines=100 columns=85
+command! -nargs=0 GitX !open -a GitX %:p:h
 " }
 
 
@@ -109,10 +115,14 @@ map <leader>o :BufExplorer<CR>
 nnoremap ; :
 nnoremap j gj
 nnoremap k gk
+nnoremap / /\v
+vnoremap / /\v
+nnoremap <leader>_ yypVr=
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 nmap <silent> <leader>/ :let @/=""<CR>
 nmap <leader>w :w<CR>
+nmap <leader>G :GitX
 " Reflow paragraph
 nmap Q gqap
 " Using this instead of autochdir
@@ -148,6 +158,8 @@ cnoremap <C-e> <End>
 " Visual-mode bindings {
 vmap Q gq
 "  }
+" Operator-pending mode bindings {
+"  }
 " Insert mode bindings {
 inoremap ;; <Esc>
 "  }
@@ -175,6 +187,9 @@ let NERDTreeShowHidden=1
 let NERDTreeQuitOnOpen=1
 let NERDTreeHighlightCursorLine=1
 let NERDTreeMouseMode=1
+"  }
+"  Yankring {
+let g:yankring_dot_repeat_yank = 1
 "  }
 " }
 
