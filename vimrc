@@ -162,6 +162,8 @@ vmap Q gq
 "  }
 " Insert mode bindings {
 inoremap ;; <Esc>
+inoremap <Left> <Esc><<i
+inoremap <Right> <Esc>>>i
 "  }
 " }
 
