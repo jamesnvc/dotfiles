@@ -64,6 +64,7 @@ set smartcase
 set smarttab
 set statusline=%n\ %y\ %F%m%r%h%w%=%{fugitive#statusline()}\ (%l,%c)\ %P
 set tabstop=2
+set undofile
 set undolevels=1000
 set visualbell
 set wildmenu
