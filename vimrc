@@ -62,7 +62,7 @@ set shiftwidth=2
 set showmatch
 set smartcase
 set smarttab
-set statusline=%F%m%r%h%w\ %{fugitive#statusline()}
+set statusline=%n\ %y\ %F%m%r%h%w%=%{fugitive#statusline()}\ (%l,%c)\ %P
 set tabstop=2
 set undolevels=1000
 set visualbell
