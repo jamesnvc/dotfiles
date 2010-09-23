@@ -200,7 +200,7 @@ let g:yankring_dot_repeat_yank = 1
 " ***** Mode-specific settings ***** {
 " Python {
 let python_highlight_all = 1
-au FileType python syn keyword pythonDecorator True None False self is not
+autocmd FileType python syn keyword pythonDecorator True None False self is not
 "  }
 " Ruby {
 autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
