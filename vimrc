@@ -117,7 +117,6 @@ nnoremap ; :
 nnoremap j gj
 nnoremap k gk
 nnoremap / /\v
-vnoremap / /\v
 nnoremap <leader>_ yypVr=
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
@@ -155,9 +154,11 @@ nmap <leader>10 :tabn 10<CR>
 cmap w!! w !sudo tee % > /dev/null
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
+cnoremap s/ s/\v
 "  }
 " Visual-mode bindings {
 vmap Q gq
+vnoremap / /\v
 "  }
 " Operator-pending mode bindings {
 "  }
