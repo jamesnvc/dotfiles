@@ -117,7 +117,6 @@ nnoremap ; :
 nnoremap j gj
 nnoremap k gk
 nnoremap / /\v
-nnoremap <leader>_ yypVr=
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 nmap <silent> <leader>/ :let @/=""<CR>
@@ -211,5 +210,9 @@ let vimclojure#HighlightBuildins = 1
 let vimclojure#ParenRainbow = 0
 let vimclojure#WantNailgun = 0  " Don't start the repl
 let vimclojure#NailgunClient = "/usr/local/bin/ng"
+"  }
+" Markdown {
+" Underline the current line with "=" signs
+autocmd FileType mkd map <buffer> <leader>_ yypVr=
 "  }
 " }
