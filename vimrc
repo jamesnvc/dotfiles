@@ -73,8 +73,8 @@ if has('gui_running')
   set guioptions-=T
 endif
 if has('autocmd')
-  autocmd filetype html,xml set listchars-=tab:>.
-  autocmd FocusLost * :wa
+  "autocmd filetype html,xml set listchars-=tab:▸\ ,
+  "autocmd FocusLost * :wa
 endif
 " Backup stuff {
 set backup
