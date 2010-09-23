@@ -123,7 +123,7 @@ nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 nmap <silent> <leader>/ :let @/=""<CR>
 nmap <leader>w :w<CR>
-nmap <leader>G :GitX
+nmap <leader>G :GitX<CR>
 " Reflow paragraph
 nmap Q gqap
 " Using this instead of autochdir
