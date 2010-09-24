@@ -18,7 +18,7 @@ end
 " ***** Basic settings ***** {
 set nocompatible
 set encoding=utf-8
-let mapleader = ","
+let mapleader = " "
 
 colorscheme ir_black
 
