@@ -210,6 +210,7 @@ wiki() { dig +short txt $1.wp.dg.cx }
 
 rot13 () { tr "[a-m][n-z][A-M][N-Z]" "[n-z][a-m][N-Z][A-M]" }
 
+alias -g A="| ack"
 alias -g CA="2>&1 | cat -A"
 alias -g C='| pbcopy'
 alias -g D="DISPLAY=:0.0"
