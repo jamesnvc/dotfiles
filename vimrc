@@ -131,6 +131,11 @@ nmap <leader>w :w<CR>
 nmap <leader>G :GitX<CR><CR>
 " Show syntax group
 nmap <C-S-P> :call <SID>SynStack()<CR>
+" Bubble single lines (using "unimpared" plugin)
+nmap <C-Up> [e
+nmap <C-Down> ]e
+" Visually select the text last edited/pasted
+nmap gV `[v`]
 " Reflow paragraph
 nmap Q gqap
 " Using this instead of autochdir
@@ -166,12 +171,15 @@ cnoremap s/ s/\v
 "  }
 " Visual-mode bindings {
 vmap Q gq
+" Bubble multiple lines up/down using unimpared plugin.
+vmap <C-Up> [egv
+vmap <C-Down> ]egv
 vnoremap / /\v
 "  }
 " Operator-pending mode bindings {
 "  }
 " Insert mode bindings {
-inoremap ;; <Esc>
+inoremap qq <Esc>
 inoremap <Left> <Esc><<i
 inoremap <Right> <Esc>>>i
 "  }
