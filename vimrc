@@ -98,6 +98,13 @@ if has('gui_macvim')
 endif
 command! -nargs=0 Restore set lines=100 columns=85
 command! -nargs=0 GitX !open -a GitX %:p:h
+" Show syntax highlighting groups for word under cursor
+function! <SID>SynStack()
+  if !exists("*synstack")
+    return
+  endif
+  echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
+endfunc
 " }
 
 
@@ -122,6 +129,8 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 nmap <silent> <leader>/ :let @/=""<CR>
 nmap <leader>w :w<CR>
 nmap <leader>G :GitX<CR><CR>
+" Show syntax group
+nmap <C-S-P> :call <SID>SynStack()<CR>
 " Reflow paragraph
 nmap Q gqap
 " Using this instead of autochdir
