@@ -226,5 +226,7 @@ autocmd FileType mkd map <buffer> <leader>_ yypVr=
 autocmd FileType mkd map <buffer> <leader>H1 I# $ #<CR><CR><Esc>
 autocmd FileType mkd map <buffer> <leader>H2 I## $ ##<CR><CR><Esc>
 autocmd FileType mkd map <buffer> <leader>H3 I### $ ###<CR><CR><Esc>
+autocmd FileType mkd
+      \ map <buffer> <leader>[ bysw]%a[]<Esc>mao<Tab>[]: <D-v><Esc>_li
 "  }
 " }
