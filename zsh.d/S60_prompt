@@ -11,9 +11,9 @@ zstyle ':vcs_info:*' enable git svn
 
 precmd () {
     if [[ -z $(git ls-files --other --exclude-standard 2> /dev/null) ]] {
-        zstyle ':vcs_info:*' formats ' [%F{green}%b%u%F{blue}]'
+        zstyle ':vcs_info:*' formats '%F{green}%b%u'
     } else {
-        zstyle ':vcs_info:*' formats ' [%F{green}%b%u%F{red}●%F{blue}]'
+        zstyle ':vcs_info:*' formats '%F{green}%b%u%F{red}●'
     }
 
     vcs_info
@@ -42,8 +42,8 @@ setprompt () {
 
   ###
   # Finally, the prompt.
-  PROMPT='%~ $PR_RED → $PR_NO_COLOUR '
-  RPROMPT='$PR_BLUE${vcs_info_msg_0_}$PR_BLUE %(?/%F{blue}/%F{red})$PR_WHITE($PR_CYAN%t %D{%a,%b%d} $PR_NO_COLOUR)'
+  PROMPT='%~ ${vcs_info_msg_0_}$PR_BLUE %(?/%F{blue}/%F{red})$PR_RED → $PR_NO_COLOUR '
+  RPROMPT='$PR_WHITE($PR_CYAN%t %D{%a,%b%d} $PR_NO_COLOUR)'
   PS2='$PR_RED → $PR_BLUE %_ $PR_RED → $PR_NO_COLOUR '
 
 }
