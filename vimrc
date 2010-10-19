@@ -22,10 +22,6 @@ let mapleader = " "
 
 colorscheme ir_black
 
-if has('gui_running')
-  set columns=85 lines=100
-endif
-
 filetype on
 filetype plugin on
 filetype indent on
