@@ -20,8 +20,7 @@ set nocompatible
 set encoding=utf-8
 let mapleader = " "
 
-let g:liquidcarbon_high_contrast=1
-colorscheme liquidcarbon
+colorscheme ir_black
 
 filetype on
 filetype plugin on
