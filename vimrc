@@ -71,6 +71,9 @@ set wildmenu
 set wildmode=list:longest,full
 if has('gui_running')
   set guioptions-=T
+  set guioptions-=m
+  set guioptions-=rL
+  set guicursor=a:blinkon0
 endif
 if has('autocmd')
   "autocmd filetype html,xml set listchars-=tab:▸\ ,
@@ -124,6 +127,7 @@ nnoremap ; :
 nnoremap j gj
 nnoremap k gk
 nnoremap / /\v
+nnoremap Y y$
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 nmap <silent> <leader>/ :let @/=""<CR>
