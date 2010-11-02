@@ -20,11 +20,8 @@ set nocompatible
 set encoding=utf-8
 let mapleader = " "
 
-colorscheme ir_black
-
-if has('gui_running')
-  set columns=85 lines=100
-endif
+let g:liquidcarbon_high_contrast=1
+colorscheme liquidcarbon
 
 filetype on
 filetype plugin on
@@ -231,6 +228,7 @@ let vimclojure#HighlightBuildins = 1
 let vimclojure#ParenRainbow = 0
 let vimclojure#WantNailgun = 0  " Don't start the repl
 let vimclojure#NailgunClient = "/usr/local/bin/ng"
+autocmd FileType clojure set foldmarker=(,)
 "  }
 " Markdown {
 " Underline the current line with "=" signs
