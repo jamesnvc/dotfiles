@@ -30,7 +30,7 @@ alias la="ls -a"                # list all
 alias lz="ls -tr"               # list by date
 alias lsa="ls -ld .*"           # list only dotfiles
 alias lsd="ls -d -- *(/)"       # list only dirs
-alias lsdirs="ls -d -- *(-/DN)"	# list only dirs and links
+alias lsdirs="ls -d -- *(-/DN)"  # list only dirs and links
 alias lsx="ls -- *(*)"          # list only executables
 alias lsnew="ls -rtl"           # list by new
 alias lsold="ls -tl"            # list by old
@@ -97,12 +97,12 @@ alias vi="vim"
 alias df="df -h"
 
 # zmv
-alias mmv="noglob zmv -W"	# so zmv gets wildchars
+alias mmv="noglob zmv -W"  # so zmv gets wildchars
 alias ccp="noglob zmv -WC"
 alias lln="noglob zmv -WL"
 
 # glob correction
-alias ri="noglob ri"		# some chars are also used here
+alias ri="noglob ri"    # some chars are also used here
 alias wget="noglob wget"    # escaping urls
 alias links="noglob links"
 alias w3m="noglob w3m"
@@ -139,17 +139,17 @@ alias -g .......="../../../../../../.."
 # thanks sean.
 
 # suffix aliases.
-alias -s flac=mplayer	# audio
+alias -s flac=mplayer  # audio
 alias -s mp3=mplayer
 alias -s ogg=mplayer
 alias -s wav=mplayer
-alias -s avi=mplayer	# video
+alias -s avi=mplayer  # video
 alias -s mpeg=mplayer
 alias -s mpg=mplayer
 alias -s mp4=mplayer
 alias -s mkv=mplayer
 alias -s wmv=mplayer
-alias -s bmp=feh	# images
+alias -s bmp=feh  # images
 alias -s gif=feh
 alias -s jpg=feh
 alias -s jpeg=feh
@@ -168,40 +168,40 @@ function mcd() {    # mind-control device
 # I like to unzip unzip unzip
 
 extract () {
-	if [ -f $1 ]; then
-		case $1 in
-		*.tar.bz2)	tar -jxvf $1                      ;;
-		*.tar.gz)	tar -zxvf $1                      ;;
-		*.bz2)  	bzip2 -d $1                       ;;
-		*.gz)   	gunzip -d $1                      ;;
-		*.tar)  	tar -xvf $1                       ;;
-		*.tgz)		tar -zxvf $1                      ;;
-		*.zip)		unzip $1                          ;;
-		*.jar)		unzip $1                          ;;
-		*.Z)		uncompress $1                     ;;
-		*.rar)		unrar x $1                        ;;
-		*)		echo "'$1' Error. Please go away" ;;
-		esac
-		else
-		echo "'$1' is not a valid file"
-	fi
+  if [ -f $1 ]; then
+    case $1 in
+    *.tar.bz2)  tar -jxvf $1                      ;;
+    *.tar.gz)  tar -zxvf $1                      ;;
+    *.bz2)    bzip2 -d $1                       ;;
+    *.gz)     gunzip -d $1                      ;;
+    *.tar)    tar -xvf $1                       ;;
+    *.tgz)    tar -zxvf $1                      ;;
+    *.zip)    unzip $1                          ;;
+    *.jar)    unzip $1                          ;;
+    *.Z)    uncompress $1                     ;;
+    *.rar)    unrar x $1                        ;;
+    *)    echo "'$1' Error. Please go away" ;;
+    esac
+    else
+    echo "'$1' is not a valid file"
+  fi
 }
 
 lsarchive () {
-	if [ -f $1 ]; then
-		case $1 in
-		*.tar.bz2)	tar -jtf $1                       ;;
-		*.tar.gz)	tar -ztf $1                       ;;
-		*.tar)		tar -tf $1                        ;;
-		*.tgz)		tar -ztf $1                       ;;
-		*.zip)		unzip -l $1                       ;;
-		*.rar)		rar vb $1                         ;;
-                *.jar)          unzip -l $1                       ;;
-		*)	        echo "'$1' Error. Please go away" ;;
-		esac
-		else
-		echo "'$1' is not a valid archive"
-	fi
+  if [ -f $1 ]; then
+    case $1 in
+    *.tar.bz2) tar -jtf $1                       ;;
+    *.tar.gz)  tar -ztf $1                       ;;
+    *.tar)     tar -tf $1                        ;;
+    *.tgz)     tar -ztf $1                       ;;
+    *.zip)     unzip -l $1                       ;;
+    *.rar)     rar vb $1                         ;;
+    *.jar)     unzip -l $1                       ;;
+    *)         echo "'$1' Error. Please go away" ;;
+    esac
+    else
+    echo "'$1' is not a valid archive"
+  fi
 }
 # a bit of completion for those functions
 compctl -g '*.tar.Z *.tar.gz *.tgz *.zip *.ZIP *.tar.bz2 *.rar *.jar' + -g '*' show-archive extract
@@ -235,6 +235,7 @@ alias -g M='| more'
 alias -g NE="2> /dev/null"
 alias -g NS='| sort -n'
 alias -g NUL="> /dev/null 2>&1"
+alias -g P='| parallel --max-procs=3 --group'
 alias -g PIPE='|'
 alias -g RNS='| sort -nr'
 alias -g S='| sort'
