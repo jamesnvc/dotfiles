@@ -3,6 +3,7 @@ alias -g ...='../..'
 alias -g ....='../../..'
 alias gvim='open -a MacVim'
 alias py=python
+alias ipy=ipython
 alias cds='select x in `dirs`; do ;eval cd $x ; unset x ; break ; done'
 alias man="man -P most"
 alias df='df -h'
