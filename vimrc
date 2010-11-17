@@ -96,7 +96,7 @@ if has('gui_macvim')
   command! -nargs=0 Unfull set nofullscreen
 endif
 command! -nargs=0 Restore set lines=100 columns=85
-command! -nargs=0 GitX !open -a GitX %:p:h
+command! -nargs=0 GitX !open -a GitX %:p:h<CR>
 " Show syntax highlighting groups for word under cursor
 function! <SID>SynStack()
   if !exists("*synstack")
@@ -128,7 +128,7 @@ nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 nmap <silent> <leader>/ :let @/=""<CR>
 nmap <leader>w :w<CR>
-nmap <leader>G :GitX<CR><CR>
+nmap <leader>G :GitX<CR>
 " Show syntax group
 nmap <C-S-P> :call <SID>SynStack()<CR>
 " Bubble single lines (using "unimpared" plugin)
