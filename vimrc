@@ -137,7 +137,7 @@ nmap <C-Down> ]e
 " Visually select the text last edited/pasted
 nmap gV `[v`]
 " Reflow paragraph
-nmap Q gqap
+nmap Q gqgq
 " Using this instead of autochdir
 nmap <leader>cd :cd %:p:h<CR>
 " NERDTree bindings
