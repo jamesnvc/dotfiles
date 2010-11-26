@@ -33,6 +33,9 @@ syntax on
 " ***** Set stuff ***** {
 set autoindent
 set backspace=indent,eol,start
+set cole=2 " Enable 'Conceal' mode
+let g:tex_conceal="adgm"
+hi Conceal guibg=black guifg=white
 set completeopt=longest,menuone,preview
 set cursorline
 set expandtab
