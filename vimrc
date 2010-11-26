@@ -120,6 +120,7 @@ map <C-l> <C-w>l
 " Toggle spellchecking
 map <leader>ss :setlocal spell!<CR>
 map <leader>o :BufExplorer<CR>
+map <leader>C :call HexHighlight()<CR>
 "  }
 " Normal mode bindings {
 nnoremap ; :
