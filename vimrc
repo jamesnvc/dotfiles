@@ -134,7 +134,7 @@ nmap <silent> <leader>/ :let @/=""<CR>
 nmap <leader>w :w<CR>
 nmap <leader>G :GitX<CR>
 " Show syntax group
-nmap <C-S-P> :call <SID>SynStack()<CR>
+nmap <leader>P :call <SID>SynStack()<CR>
 " Bubble single lines (using "unimpared" plugin)
 nmap <C-Up> [e
 nmap <C-Down> ]e
@@ -221,25 +221,34 @@ let g:yankring_dot_repeat_yank = 1
 " ***** Mode-specific settings ***** {
 " Python {
 let python_highlight_all = 1
+augroup pythonSettings
 autocmd FileType python syn keyword pythonDecorator True None False self is not in
+autocmd Filetype python set foldmethod=indent
+augroup END
 "  }
 " Ruby {
+augroup rubySettings
 autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
+augroup END
 "  }
 " Clojure {
 let vimclojure#HighlightBuildins = 1
 let vimclojure#ParenRainbow = 0
 let vimclojure#WantNailgun = 0  " Don't start the repl
 let vimclojure#NailgunClient = "/usr/local/bin/ng"
+augroup clojureSettings
 autocmd FileType clojure set foldmarker=(,)
+augroup END
 "  }
 " Markdown {
 " Underline the current line with "=" signs
+augroup markdownSettings
 autocmd FileType mkd map <buffer> <leader>_ yypVr=
 autocmd FileType mkd map <buffer> <leader>H1 I# $ #<CR><CR><Esc>
 autocmd FileType mkd map <buffer> <leader>H2 I## $ ##<CR><CR><Esc>
 autocmd FileType mkd map <buffer> <leader>H3 I### $ ###<CR><CR><Esc>
 autocmd FileType mkd
       \ map <buffer> <leader>[ bysw]%a[]<Esc>mao<Tab>[]: <D-v><Esc>_li
+augroup END
 "  }
 " }
