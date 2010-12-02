@@ -1,21 +1,21 @@
-" Modeline and Notes {
-" vim: set foldmarker={,} foldlevel=0 foldmethod=marker :
+" Modeline and Notes {{
+" vim: set foldmarker={{,}} foldlevel=0 foldmethod=marker :
 "
 "   James Cash's vimrc
 "
-" }
+" }}
 
 
-" ***** Setup pathogen for loading bundles ***** {
+" ***** Setup pathogen for loading bundles ***** {{
 runtime! autoload/pathogen.vim
 if exists('g:loaded_pathogen')
   call pathogen#runtime_append_all_bundles()
   call pathogen#helptags()
 end
-" }
+" }}
 
 
-" ***** Basic settings ***** {
+" ***** Basic settings ***** {{
 set nocompatible
 set encoding=utf-8
 let mapleader = " "
@@ -27,10 +27,10 @@ filetype plugin on
 filetype indent on
 
 syntax on
-" }
+" }}
 
 
-" ***** Set stuff ***** {
+" ***** Set stuff ***** {{
 set autoindent
 set backspace=indent,eol,start
 set cole=2 " Enable 'Conceal' mode
@@ -78,7 +78,7 @@ if has('autocmd')
   "autocmd filetype html,xml set listchars-=tab:▸\ ,
   "autocmd FocusLost * :wa
 endif
-" Backup stuff {
+" Backup stuff {{
 set backup
 set backupdir=$HOME/.vimbackup//
 set directory=$HOME/.vimswap//
@@ -89,11 +89,11 @@ silent execute ' !mkdir -p $HOME/.vimbackup'
 silent execute ' !mkdir -p $HOME/.vimswap'
 silent execute ' !mkdir -p $HOME/.vimviews'
 silent execute ' !mkdir -p $HOME/.vimundo'
-"  }
-" }
+"  }}
+" }}
 
 
-" ***** Define commands ***** {
+" ***** Define commands ***** {{
 if has('gui_macvim')
   command! -nargs=0 Full set fullscreen
   command! -nargs=0 Unfull set nofullscreen
@@ -107,11 +107,19 @@ function! <SID>SynStack()
   endif
   echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunc
-" }
+" Delete trailing whitespace
+function! CleanupWhitespace()
+  let l:tmp = @s
+  normal ms
+  keepjumps :%s/\s\+$//e
+  normal `s
+  let @s = l:tmp
+endfunction
+" }}
 
 
-" ***** Keybindings ***** {
-" Normal/operator-pending/visual-mode bindings {
+" ***** Keybindings ***** {{
+" Normal/operator-pending/visual-mode bindings {{
 " Make navigating windows easier
 map <C-h> <C-w>h
 map <C-j> <C-w>j
@@ -121,8 +129,8 @@ map <C-l> <C-w>l
 map <leader>ss :setlocal spell!<CR>
 map <leader>o :BufExplorer<CR>
 map <leader>C :call HexHighlight()<CR>
-"  }
-" Normal mode bindings {
+"  }}
+" Normal mode bindings {{
 nnoremap ; :
 nnoremap j gj
 nnoremap k gk
@@ -165,44 +173,70 @@ nmap <leader>7 :tabn 7<CR>
 nmap <leader>8 :tabn 8<CR>
 nmap <leader>9 :tabn 9<CR>
 nmap <leader>10 :tabn 10<CR>
-"  }
-" Command-mode bindings {
+"  }}
+" Command-mode bindings {{
 " Reopen the current file as sudo
 cmap w!! w !sudo tee % > /dev/null
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
 cnoremap s/ s/\v
-"  }
-" Visual-mode bindings {
+"  }}
+" Visual-mode bindings {{
 vmap Q gq
 " Bubble multiple lines up/down using unimpared plugin.
 vmap <C-Up> [egv
 vmap <C-Down> ]egv
 vnoremap / /\v
-"  }
-" Operator-pending mode bindings {
-"  }
-" Insert mode bindings {
+"  }}
+" Operator-pending mode bindings {{
+" Next ()
+onoremap <silent> inb :<C-U>normal! f(vib<cr>
+onoremap <silent> anb :<C-U>normal! f(vab<cr>
+onoremap <silent> in( :<C-U>normal! f(vi(<cr>
+onoremap <silent> an( :<C-U>normal! f(va(<cr>
+" Next {}
+onoremap <silent> inB :<C-U>normal! f{viB<cr>
+onoremap <silent> anB :<C-U>normal! f{vaB<cr>
+onoremap <silent> in{ :<C-U>normal! f{vi{<cr>
+onoremap <silent> an{ :<C-U>normal! f{va{<cr>
+" Next []
+onoremap <silent> ind :<C-U>normal! f[vi[<cr>
+onoremap <silent> and :<C-U>normal! f[va[<cr>
+onoremap <silent> in[ :<C-U>normal! f[vi[<cr>
+onoremap <silent> an[ :<C-U>normal! f[va[<cr>
+" Next <>
+onoremap <silent> in< :<C-U>normal! f<vi<<cr>
+onoremap <silent> an< :<C-U>normal! f<va<<cr>
+" Next ''
+onoremap <silent> in' :<C-U>normal! f'vi'<cr>
+onoremap <silent> an' :<C-U>normal! f'va'<cr>
+" Next ""
+onoremap <silent> in" :<C-U>normal! f"vi"<cr>
+onoremap <silent> an" :<C-U>normal! f"va"<cr>
+"  }}
+" Insert mode bindings {{
 inoremap qq <Esc>
 inoremap <Left> <Esc><<i
 inoremap <Right> <Esc>>>i
-"  }
-" }
+"  }}
+" }}
 
 
-" ***** Miscellaneous autocmds ***** {
+" ***** Miscellaneous autocmds ***** {{
 if has('autocmd')
-  " Delete trailing whitespace on save
-  autocmd BufWritePre * :%s/\s\+$//e
+  augroup cleanUp
+    " Delete trailing whitespace on save
+    autocmd BufWritePre * :call CleanupWhitespace()
+  augroup END
   " Warning: This enables fancy OmniCompletions for ruby, but makes loading
   " ruby files painfully slow...
   " autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
 endif
-" }
+" }}
 
 
-" ***** Plugin options ***** {
-" NERDTree stuff {
+" ***** Plugin options ***** {{
+" NERDTree stuff {{
 let NERDTreeBookmarksFile=expand("$HOME/.vim/NERDTreeBookmarks")
 let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.o$', '\.git', '\.so' ]
 let NERDTreeShowBookmarks=1
@@ -211,27 +245,27 @@ let NERDTreeShowHidden=1
 let NERDTreeQuitOnOpen=1
 let NERDTreeHighlightCursorLine=1
 let NERDTreeMouseMode=1
-"  }
-"  Yankring {
+"  }}
+"  Yankring {{
 let g:yankring_dot_repeat_yank = 1
-"  }
-" }
+"  }}
+" }}
 
 
-" ***** Mode-specific settings ***** {
-" Python {
+" ***** Mode-specific settings ***** {{
+" Python {{
 let python_highlight_all = 1
 augroup pythonSettings
 autocmd FileType python syn keyword pythonDecorator True None False self is not in
 autocmd Filetype python set foldmethod=indent
 augroup END
-"  }
-" Ruby {
+"  }}
+" Ruby {{
 augroup rubySettings
 autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
 augroup END
-"  }
-" Clojure {
+"  }}
+" Clojure {{
 let vimclojure#HighlightBuildins = 1
 let vimclojure#ParenRainbow = 0
 let vimclojure#WantNailgun = 0  " Don't start the repl
@@ -239,8 +273,8 @@ let vimclojure#NailgunClient = "/usr/local/bin/ng"
 augroup clojureSettings
 autocmd FileType clojure set foldmarker=(,)
 augroup END
-"  }
-" Markdown {
+"  }}
+" Markdown {{
 " Underline the current line with "=" signs
 augroup markdownSettings
 autocmd FileType mkd map <buffer> <leader>_ yypVr=
@@ -250,5 +284,5 @@ autocmd FileType mkd map <buffer> <leader>H3 I### $ ###<CR><CR><Esc>
 autocmd FileType mkd
       \ map <buffer> <leader>[ bysw]%a[]<Esc>mao<Tab>[]: <D-v><Esc>_li
 augroup END
-"  }
-" }
+"  }}
+" }}
