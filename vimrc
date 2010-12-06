@@ -100,6 +100,8 @@ else
   silent execute ' !mkdir "\%HOME\%\.vimundo"'
 endif
 "  }}
+
+let g:tex_flavor='latex'
 " }}
 
 
