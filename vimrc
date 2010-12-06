@@ -78,6 +78,9 @@ if has('autocmd')
   "autocmd filetype html,xml set listchars-=tab:▸\ ,
   "autocmd FocusLost * :wa
 endif
+if has('win32')
+  set shellslash
+endif
 " Backup stuff {{
 set backup
 set backupdir=$HOME/.vimbackup//
@@ -85,10 +88,17 @@ set directory=$HOME/.vimswap//
 set viewdir=$HOME/.vimviews//
 set undodir=$HOME/.vimundo//
 " Creating backup dirs if the don't exist
-silent execute ' !mkdir -p $HOME/.vimbackup'
-silent execute ' !mkdir -p $HOME/.vimswap'
-silent execute ' !mkdir -p $HOME/.vimviews'
-silent execute ' !mkdir -p $HOME/.vimundo'
+if !has('win32')
+  silent execute ' !mkdir -p $HOME/.vimbackup'
+  silent execute ' !mkdir -p $HOME/.vimswap'
+  silent execute ' !mkdir -p $HOME/.vimviews'
+  silent execute ' !mkdir -p $HOME/.vimundo'
+else
+  silent execute ' !mkdir "\%HOME\%\.vimbackup"'
+  silent execute ' !mkdir "\%HOME\%\.vimswap"'
+  silent execute ' !mkdir "\%HOME\%\.vimviews"'
+  silent execute ' !mkdir "\%HOME\%\.vimundo"'
+endif
 "  }}
 " }}
 
