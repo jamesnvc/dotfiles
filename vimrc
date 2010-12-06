@@ -298,3 +298,8 @@ autocmd FileType mkd
 augroup END
 "  }}
 " }}
+
+
+" Fixing some colours {{
+hi bufExplorerMapping guifg=white
+" }}
