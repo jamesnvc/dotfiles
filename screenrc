@@ -9,12 +9,9 @@ startup_message off
 
 # an alternative hardstatus to display a bar at the bottom listing the
 # windownames and highlighting the current windowname in blue.
-hardstatus alwayslastline "%{.wk}%-w%{.kW}%n %t%{-}%+w %=%{..k} %H %{..k} %m/%d %C%a " 
+hardstatus alwayslastline "%{.wk}%-w%{.kW}%n %t%{-}%+w %=%{..k} %H %{..k} %m/%d %C%a "
 
 # '%{gk}[ %{G}%H %{g}][%= %{wk}%?%-Lw%?%{=b kR}(%{W}%n*%f %t%?(%u)%?%{=b kR})%{= kw}%?%+Lw%?%?%= %{g}][%{Y}%l%{g}]%{=b C}[ %m/%d %c ]%{W}'
-
-# use C-q instead of C-a as this makes more sense for emacs and/or StumpWM
- escape ^qq
 
 # execute .bash_profile on startup
 # shell -$SHELL
@@ -57,7 +54,7 @@ bindkey -m ^e stuff "\$^f"
 bindkey -m -k kP stuff Y
 bindkey -m -k kN stuff V
 
-# C-space sets mark. 
+# C-space sets mark.
 markkeys ' '=^@
 
 # ------------------------------------------------------------------------------
