@@ -1,0 +1,69 @@
+# A basic .muttrc for use with Gmail
+# vim: set foldmethod=marker foldmarker={{,}} :
+
+source ~/.mutt/user_settings
+
+# Basic Settings {{
+set editor = "mvim -f"
+unset help
+set move = no
+# }}
+
+# Remote server settings {{
+set folder = "imaps://imap.gmail.com:993"
+set spoolfile = "+INBOX"
+set imap_check_subscribed
+set hostname = gmail.com
+set mail_check = 120
+set timeout = 300
+set imap_keepalive = 300
+set postponed = "+[GMail]/Drafts"
+set record = "+[GMail]/Sent Mail"
+# }}
+
+# Local server settings {{
+set header_cache=~/.mutt/cache/headers
+set message_cachedir=~/.mutt/cache/bodies
+set certificate_file=~/.mutt/certificates
+set query_command="goobook query '%s'"
+# }}
+
+# View settings {{
+set include
+set sort = 'threads'
+set sort_aux = 'last-date-received'
+set auto_tag = yes
+ignore "Authentication-Results:"
+ignore "DomainKey-Signature:"
+ignore "DKIM-Signature:"
+hdr_order Date From To Cc
+alternative_order text/plain text/html *
+auto_view text/html
+# }}
+
+# Keybindings {{
+bind editor <Tab> complete-query
+bind editor ^T complete
+bind editor <space> noop
+# Gmail-style keyboard shortcuts
+macro index,pager y "<enter-command>unset trash\n <delete-message>" "Gmail archive message"
+macro index,pager d "<enter-command>set trash=\"imaps://imap.googlemail.com/[GMail]/Bin\"\n <delete-message>" "Gmail delete message"
+macro index,pager gi "<change-folder>=INBOX<enter>" "Go to inbox"
+macro index,pager ga "<change-folder>=[Gmail]/All Mail<enter>" "Go to all mail"
+macro index,pager gs "<change-folder>=[Gmail]/Starred<enter>" "Go to starred messages"
+macro index,pager gd "<change-folder>=[Gmail]/Drafts<enter>" "Go to drafts"
+# }}
+
+# Colour settings {{
+color quoted magenta black
+color quoted1 blue black
+color quoted2 red black
+color quoted3 yellow black
+color quoted4 cyan black
+color quoted5 blue black
+color quoted6 magenta black
+color quoted7 red black
+color quoted8 yellow black
+color quoted9 cyan black
+color signature blue default
+# }}
