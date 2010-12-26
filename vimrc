@@ -180,22 +180,12 @@ nmap <leader>n :NERDTreeClose<CR>:NERDTreeToggle<CR>
 nmap <Leader>m :NERDTreeClose<CR>:NERDTreeFind<CR>
 nmap <leader>N :NERDTreeClose<CR>
 " Keybindings for tabs
-nmap <Leader>t <Esc>:tabedit .<CR>
+nmap <leader>t <Esc>:tabedit .<CR>
 nmap <leader>T <Esc>:tabnew<CR>
 nmap gt <C-w>gf
 nmap gT <C-w>gF
 nmap <leader><Left> :tabprevious<CR>
 nmap <leader><Right> :tabnext<CR>
-nmap <leader>1 :tabn 1<CR>
-nmap <leader>2 :tabn 2<CR>
-nmap <leader>3 :tabn 3<CR>
-nmap <leader>4 :tabn 4<CR>
-nmap <leader>5 :tabn 5<CR>
-nmap <leader>6 :tabn 6<CR>
-nmap <leader>7 :tabn 7<CR>
-nmap <leader>8 :tabn 8<CR>
-nmap <leader>9 :tabn 9<CR>
-nmap <leader>10 :tabn 10<CR>
 "  }}
 " Command-mode bindings {{
 " Reopen the current file as sudo
