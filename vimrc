@@ -291,9 +291,9 @@ augroup END
 " Underline the current line with "=" signs
 augroup markdownSettings
 autocmd FileType mkd map <buffer> <leader>_ yypVr=
-autocmd FileType mkd map <buffer> <leader>H1 I# $ #<CR><CR><Esc>
-autocmd FileType mkd map <buffer> <leader>H2 I## $ ##<CR><CR><Esc>
-autocmd FileType mkd map <buffer> <leader>H3 I### $ ###<CR><CR><Esc>
+autocmd FileType mkd map <buffer> <leader>1 I# $ #<CR><CR><Esc>
+autocmd FileType mkd map <buffer> <leader>2 I## $ ##<CR><CR><Esc>
+autocmd FileType mkd map <buffer> <leader>3 I### $ ###<CR><CR><Esc>
 autocmd FileType mkd
       \ map <buffer> <leader>[ bysw]%a[]<Esc>mao<Tab>[]: <D-v><Esc>_li
 augroup END
