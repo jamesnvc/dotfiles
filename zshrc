@@ -13,7 +13,7 @@ bindkey -e
 # eval "`dircolors -b`"
 
 if [ TERM="xterm" ]; then
-    export TERM='xterm-color'
+  export TERM='xterm-color'
 fi
 
 # what progs can use the hostname completion
@@ -22,11 +22,11 @@ compctl -k hostnames ping telnet ftp nslookup ssh traceroute mtr scp ncftp
 ZFC_WELCOME_STRING="ZSH Foundation Configuration."
 ## Functions
 zfc_welcome_msg () {
-	echo "\r\e[0;37m${ZFC_WELCOME_STRING}\e[0m - `hostname`\e[0K"
+  echo "\r\e[0;37m${ZFC_WELCOME_STRING}\e[0m - `hostname`\e[0K"
 }
 ## Get Going
 if [ $SHLVL -eq 1 ]; then
-	zfc_welcome_msg
+  zfc_welcome_msg
 fi
 
 
