@@ -127,6 +127,15 @@ function! CleanupWhitespace()
   normal `s
   let @s = l:tmp
 endfunction
+" Redirect a command to the clipboard
+function! RedirToClipboardFunction(cmd, ...)
+  let cmd = a:cmd . " " . join(a:000, " ")
+  redir @*>
+  exe cmd
+  redir END
+endfunction
+command! -complete=command -nargs=+ RedirToClipboard
+      \ silent! call RedirToClipboardFunction(<f-args>)
 " }}
 
 
