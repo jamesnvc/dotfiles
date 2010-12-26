@@ -154,7 +154,7 @@ map <leader>C :call HexHighlight()<CR>
 map <leader>v "+gP
 "  }}
 " Normal mode bindings {{
-nnoremap ; :
+nnoremap <leader><leader> :
 nnoremap j gj
 nnoremap k gk
 nnoremap / /\v
