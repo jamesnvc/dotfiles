@@ -33,9 +33,7 @@ syntax on
 " ***** Set stuff ***** {{
 set autoindent
 set backspace=indent,eol,start
-set cole=2 " Enable 'Conceal' mode
-let g:tex_conceal="adgm"
-hi Conceal guibg=black guifg=white
+set conceallevel=2 " Enable 'Conceal' mode
 set completeopt=longest,menuone,preview
 set cursorline
 set expandtab
@@ -74,10 +72,6 @@ if has('gui_running')
   set guioptions-=rL
   set guicursor=a:blinkon0
 endif
-if has('autocmd')
-  "autocmd filetype html,xml set listchars-=tab:▸\ ,
-  "autocmd FocusLost * :wa
-endif
 if has('win32')
   set shellslash
 endif
@@ -88,28 +82,24 @@ set directory=$HOME/.vimswap//
 set viewdir=$HOME/.vimviews//
 set undodir=$HOME/.vimundo//
 " Creating backup dirs if the don't exist
-if !has('win32')
-  silent execute ' !mkdir -p $HOME/.vimbackup'
-  silent execute ' !mkdir -p $HOME/.vimswap'
-  silent execute ' !mkdir -p $HOME/.vimviews'
-  silent execute ' !mkdir -p $HOME/.vimundo'
-else
+if has('win32')
   silent execute ' !mkdir "\%HOME\%\.vimbackup"'
   silent execute ' !mkdir "\%HOME\%\.vimswap"'
   silent execute ' !mkdir "\%HOME\%\.vimviews"'
   silent execute ' !mkdir "\%HOME\%\.vimundo"'
+else
+  silent execute ' !mkdir -p $HOME/.vimbackup'
+  silent execute ' !mkdir -p $HOME/.vimswap'
+  silent execute ' !mkdir -p $HOME/.vimviews'
+  silent execute ' !mkdir -p $HOME/.vimundo'
 endif
 "  }}
-
+let g:tex_conceal="adgm"
 let g:tex_flavor='latex'
 " }}
 
 
 " ***** Define commands ***** {{
-if has('gui_macvim')
-  command! -nargs=0 Full set fullscreen
-  command! -nargs=0 Unfull set nofullscreen
-endif
 command! -nargs=0 Restore set lines=100 columns=85
 command! -nargs=0 GitX !open -a GitX %:p:h<CR>
 " Show syntax highlighting groups for word under cursor
@@ -123,7 +113,7 @@ endfunc
 function! CleanupWhitespace()
   let l:tmp = @s
   normal ms
-  keepjumps :%s/\s\+$//e
+  keepjumps :%s/\v\s+$//e
   normal `s
   let @s = l:tmp
 endfunction
@@ -158,7 +148,7 @@ nnoremap <leader><leader> :
 nnoremap j gj
 nnoremap k gk
 nnoremap / /\v
-nnoremap Y y$
+nmap Y y$
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 nmap <silent> <leader>/ :let @/=""<CR>
@@ -166,9 +156,6 @@ nmap <leader>w :w<CR>
 nmap <leader>G :GitX<CR>
 " Show syntax group
 nmap <leader>P :call <SID>SynStack()<CR>
-" Bubble single lines (using "unimpared" plugin)
-nmap <C-Up> [e
-nmap <C-Down> ]e
 " Visually select the text last edited/pasted
 nmap gV `[v`]
 " Reflow paragraph
@@ -241,9 +228,6 @@ if has('autocmd')
     " Delete trailing whitespace on save
     autocmd BufWritePre * :call CleanupWhitespace()
   augroup END
-  " Warning: This enables fancy OmniCompletions for ruby, but makes loading
-  " ruby files painfully slow...
-  " autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
 endif
 " }}
 
@@ -288,12 +272,13 @@ autocmd FileType clojure set foldmarker=(,)
 augroup END
 "  }}
 " Markdown {{
-" Underline the current line with "=" signs
 augroup markdownSettings
+" Underline the current line with "=" signs
 autocmd FileType mkd map <buffer> <leader>_ yypVr=
 autocmd FileType mkd map <buffer> <leader>1 I# $ #<CR><CR><Esc>
 autocmd FileType mkd map <buffer> <leader>2 I## $ ##<CR><CR><Esc>
 autocmd FileType mkd map <buffer> <leader>3 I### $ ###<CR><CR><Esc>
+" Wrap the next word as a markdown link
 autocmd FileType mkd
       \ map <buffer> <leader>[ bysw]%a[]<Esc>mao<Tab>[]: <D-v><Esc>_li
 augroup END
@@ -301,6 +286,7 @@ augroup END
 " }}
 
 
-" Fixing some colours {{
+" Setting some colours {{
 hi bufExplorerMapping guifg=white
+hi Conceal guibg=black guifg=white
 " }}
