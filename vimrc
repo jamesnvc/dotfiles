@@ -50,6 +50,7 @@ set laststatus=2
 set list
 set listchars=tab:▸\ ,trail:¬,extends:→,nbsp:.
 set magic
+set nrformats+=alpha
 set ofu=syntaxcomplete#Complete
 set pastetoggle=<F2>
 set relativenumber
