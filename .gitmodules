@@ -43,3 +43,6 @@
 [submodule "vim/bundle/vimOrganizer"]
 	path = vim/bundle/vimOrganizer
 	url = https://github.com/hsitz/VimOrganizer.git
+[submodule "vim/bundle/tabular"]
+	path = vim/bundle/tabular
+	url = https://github.com/godlygeek/tabular.git
