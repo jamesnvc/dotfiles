@@ -36,6 +36,7 @@ set backspace=indent,eol,start
 set conceallevel=2 " Enable 'Conceal' mode
 set completeopt=longest,menuone,preview
 set cursorline
+set cryptmethod=blowfish
 set expandtab
 set foldenable
 set foldmethod=marker
