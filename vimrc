@@ -144,13 +144,13 @@ map <leader>o :BufExplorer<CR>
 map <leader>C :call HexHighlight()<CR>
 " Paste from clipboard
 map <leader>v "+gP
+map Y y$
 "  }}
 " Normal mode bindings {{
 nnoremap <leader><leader> :
 nnoremap j gj
 nnoremap k gk
 nnoremap / /\v
-nmap Y y$
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 nmap <silent> <leader>/ :let @/=""<CR>
