@@ -299,6 +299,10 @@ onoremap <silent> an" :<C-U>normal! f"va"<cr>
 inoremap qq <Esc>
 inoremap <Left> <Esc><<i
 inoremap <Right> <Esc>>>i
+" Make end of sentences set an undo point to facilitate typing long stretches
+inoremap . .<C-g>u
+inoremap ! !<C-g>u
+inoremap ? ?<C-g>u
 "  }}
 " }}
 
