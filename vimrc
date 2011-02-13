@@ -246,9 +246,6 @@ nmap <leader>cd :cd %:p:h<CR>
 nmap <leader>n :NERDTreeClose<CR>:NERDTreeToggle<CR>
 nmap <Leader>m :NERDTreeClose<CR>:NERDTreeFind<CR>
 nmap <leader>N :NERDTreeClose<CR>
-" Keybindings for tabs
-nmap <leader>t <Esc>:tabedit .<CR>
-nmap <leader>T <Esc>:tabnew<CR>
 nmap gt <C-w>gf
 nmap gT <C-w>gF
 nmap <leader><Left> :tabprevious<CR>
@@ -326,9 +323,6 @@ let NERDTreeShowHidden=1
 let NERDTreeQuitOnOpen=1
 let NERDTreeHighlightCursorLine=1
 let NERDTreeMouseMode=1
-"  }}
-"  Yankring {{
-let g:yankring_dot_repeat_yank = 1
 "  }}
 " }}
 
