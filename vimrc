@@ -138,7 +138,7 @@ function! JSLintFile()
         \ expand("%") . "\""
   cexpr system(l:lint_cmd . l:lint_args)
 endfunction
-
+command! -nargs=0 JSLint call JSLintFile()
 " Ruby Commands {{
 " Ruby matching strings for matchit
 function! GetRubyMatchWords()
@@ -205,7 +205,6 @@ command! -bar -narg=* RRListDefs call g:ListRubyFunctions()
 command! -bar -narg=0 RRSpecF call g:RunRspec('file')
 command! -bar -narg=0 RRSpecL call g:RunRspec('line')
 command! -bar -narg=0 RRSpecAll call g:RunRspec('all')
-command! -nargs=0 Jslint call JSLintFile()
 " }}
 " }}
 
