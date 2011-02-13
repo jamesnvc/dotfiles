@@ -130,6 +130,83 @@ function! RedirToClipboardFunction(cmd, ...)
 endfunction
 command! -complete=command -nargs=+ RedirToClipboard
       \ silent! call RedirToClipboardFunction(<f-args>)
+" Run jslint on the current file
+function! JSLintFile()
+  let l:lint_cmd = system("which jsl | tr -d '\n'")
+  let l:lint_args = " -conf \"" . expand("~") . "/.jsl.conf\""
+        \ . " -nologo -nofilelisting -nosummary -process \"" .
+        \ expand("%") . "\""
+  cexpr system(l:lint_cmd . l:lint_args)
+endfunction
+
+" Ruby Commands {{
+" Ruby matching strings for matchit
+function! GetRubyMatchWords()
+  return '\<if>:\<end\>,\<def\>:\<end\>'
+endfunction
+
+" Lists functions/methods in current file
+function! g:ListRubyFunctions()
+  let s:file_name = expand("%")
+
+  exe 'vimgrep =def = ' . s:file_name
+
+  vertical copen
+  vertical resize 50
+
+  setlocal modifiable
+  silent exe '%s=' . s:file_name . '==g'
+  silent exe '%s=def ==g'
+  silent exe '%s=|.*|==g'
+  setlocal nomodified
+  setlocal nomodifiable
+  setlocal nonumber
+  setlocal readonly
+endfunction
+
+" Searches for function/method definition under the cursor
+function! g:GotoRubyFunc()
+  let find_command = 'find . -type f | grep .rb  | xargs grep -n def\ '.expand('<cword>')
+  echo(find_command)
+  set errorformat=%f:%l:%m
+  lgetexpr system(find_command)
+  rightb lopen
+endfunction
+
+" Executes spec (rspec 1.3) command in different modes
+" and display results in :Error buffer
+" available modes:
+" - file - all specs in current file
+" - line - current context or current example (cursor within context {} or it   {} block
+" - all - runs whole test case
+function! g:RunRspec(mode)
+  "current line
+  if a:mode == 'line'
+    let line_num = line(".")
+    let res =  system('spec -l '.line_num.' '.expand('%'))
+  elseif a:mode == 'file'
+    let res = system('spec '.expand('%'))
+  elseif a:mode == 'all'
+    let res = system('RAILS_ENV=test rake spec')
+  endif
+  vnew
+  let e_file = tempname()
+  silent execute 'e '.e_file
+  put = res
+  silent w | bd
+  set errorformat=%f:%l:
+  silent execute 'cgetfile '.e_file
+  copen
+endfunction
+
+command! -bar -narg=* RRRGotoDef call g:GotoRubyFunc()
+command! -bar -narg=* RRListDefs call g:ListRubyFunctions()
+
+command! -bar -narg=0 RRSpecF call g:RunRspec('file')
+command! -bar -narg=0 RRSpecL call g:RunRspec('line')
+command! -bar -narg=0 RRSpecAll call g:RunRspec('all')
+command! -nargs=0 Jslint call JSLintFile()
+" }}
 " }}
 
 
