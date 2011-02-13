@@ -352,13 +352,13 @@ augroup END
 " Markdown {{
 augroup markdownSettings
 " Underline the current line with "=" signs
-autocmd FileType mkd map <buffer> <leader>_ yypVr=
-autocmd FileType mkd map <buffer> <leader>1 I# $ #<CR><CR><Esc>
-autocmd FileType mkd map <buffer> <leader>2 I## $ ##<CR><CR><Esc>
-autocmd FileType mkd map <buffer> <leader>3 I### $ ###<CR><CR><Esc>
+autocmd FileType markdown map <buffer> <leader>_ yypVr=
+autocmd FileType markdown map <buffer> <leader>1 I# $ #<CR><CR><Esc>
+autocmd FileType markdown map <buffer> <leader>2 I## $ ##<CR><CR><Esc>
+autocmd FileType markdown map <buffer> <leader>3 I### $ ###<CR><CR><Esc>
 " Wrap the next word as a markdown link
-autocmd FileType mkd
-      \ map <buffer> <leader>[ bysw]%a[]<Esc>mao<Tab>[]: <D-v><Esc>_li
+autocmd FileType markdown
+      \ map <buffer> <leader>[ ysw]ya]f]a[]<Esc>lma}] kp>>A: <C-R>+<Esc>`a
 augroup END
 "  }}
 " }}
