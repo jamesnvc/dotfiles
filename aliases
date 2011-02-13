@@ -1,4 +1,5 @@
 # -*- sh -*-
+# vim: syntax=sh :
 alias -g ...='../..'
 alias -g ....='../../..'
 alias gvim='open -a MacVim'
@@ -211,6 +212,11 @@ compctl -g '*.tar.Z *.tar.gz *.tgz *.zip *.ZIP *.tar.bz2 *.rar *.jar' + -g '*' s
 wiki() { dig +short txt $1.wp.dg.cx }
 
 rot13 () { tr "[a-m][n-z][A-M][N-Z]" "[n-z][a-m][N-Z][A-M]" }
+
+# Easy adding of vim bundles
+add-bundle() {
+  git submodule add $1 vim/bundle/$(echo ${1%.git} | awk -F'/' '{print $NF}')
+}
 
 alias -g A="| ack"
 alias -g CA="2>&1 | cat -A"
