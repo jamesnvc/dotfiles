@@ -42,6 +42,7 @@ set foldenable
 set foldmethod=marker
 set formatoptions+=n  " gq recognizes numbered lists
 set gdefault  " Make substitute global by default
+set grepprg=ack\ -a\ -H\ --nocolor\ --nogroup
 set hidden  " When opening a new file hide the current instead of closing it
 set history=1000
 set hlsearch
