@@ -1,6 +1,6 @@
 # -*- sh -*-
 # Note:  Moving most PATH exports to /etc/paths.d
-export PATH=$HOME/bin:$PATH:/opt/local/bin:/Developer/usr/bin
+export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH:/Developer/usr/bin
 export PYTHONPATH=$HOME/lib/python
 export FULLNAME="James Cash"
 export EMAIL="james.nvc@gmail.com"
