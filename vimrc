@@ -373,14 +373,14 @@ let NERDTreeMouseMode=1
 " Python {{
 let python_highlight_all = 1
 augroup pythonSettings
-autocmd FileType python syn keyword pythonDecorator True None False self is not in
-autocmd Filetype python set foldmethod=indent
+  autocmd FileType python syn keyword pythonDecorator True None False self is not in
+  autocmd Filetype python set foldmethod=indent
 augroup END
 "  }}
 " Ruby {{
 augroup rubySettings
-autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
-autocmd FileType ruby,eruby let b:match_words = 'GetRubyMatchWords()'
+  autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
+  autocmd FileType ruby,eruby let b:match_words = 'GetRubyMatchWords()'
 augroup END
 "  }}
 " Clojure {{
@@ -389,19 +389,19 @@ let vimclojure#ParenRainbow = 0
 let vimclojure#WantNailgun = 0  " Don't start the repl
 let vimclojure#NailgunClient = "/usr/local/bin/ng"
 augroup clojureSettings
-autocmd FileType clojure set foldmarker=(,)
+  autocmd FileType clojure set foldmarker=(,)
 augroup END
 "  }}
 " Markdown {{
 augroup markdownSettings
-" Underline the current line with "=" signs
-autocmd FileType markdown map <buffer> <leader>_ yypVr=
-autocmd FileType markdown map <buffer> <leader>1 I# $ #<CR><CR><Esc>
-autocmd FileType markdown map <buffer> <leader>2 I## $ ##<CR><CR><Esc>
-autocmd FileType markdown map <buffer> <leader>3 I### $ ###<CR><CR><Esc>
-" Wrap the next word as a markdown link
-autocmd FileType markdown
-      \ map <buffer> <leader>[ ysw]ya]f]a[]<Esc>lma}] kp>>A: <C-R>+<Esc>`a
+  " Underline the current line with "=" signs
+  autocmd FileType markdown map <buffer> <leader>_ yypVr=
+  autocmd FileType markdown map <buffer> <leader>1 I# $ #<CR><CR><Esc>
+  autocmd FileType markdown map <buffer> <leader>2 I## $ ##<CR><CR><Esc>
+  autocmd FileType markdown map <buffer> <leader>3 I### $ ###<CR><CR><Esc>
+  " Wrap the next word as a markdown link
+  autocmd FileType markdown
+        \ map <buffer> <leader>[ ysw]ya]f]a[]<Esc>lma}] kp>>A: <C-R>+<Esc>`a
 augroup END
 "  }}
 " }}
