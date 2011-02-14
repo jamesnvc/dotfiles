@@ -213,12 +213,9 @@ function! OpenURL(url)
     exe "!start cmd /cstart /b ".a:url.""
   elseif has("mac")
     exe "silent !open \"" . a:url . "\""
-  elseif $DISPLAY !~ '^\w'
-    exe "silent !sensible-browser \"".a:url."\""
   else
-    exe "silent !sensible-browser -T \"".a:url."\""
+    exe "silent !links \"".a:url."\""
   endif
-  redraw!
 endfunction
 command! -nargs=1 OpenURL :call OpenURL(<q-args>)
 " open URL under cursor in browser
