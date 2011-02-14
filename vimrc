@@ -326,10 +326,31 @@ inoremap ? ?<C-g>u
 
 " ***** Miscellaneous autocmds ***** {{
 if has('autocmd')
-  augroup cleanUp
+  augroup cleanUp  "{{
+    autocmd!
     " Delete trailing whitespace on save
     autocmd BufWritePre * :call CleanupWhitespace()
-  augroup END
+  augroup END  " }}
+  augroup misc  " {{
+    autocmd!
+    autocmd FocusLost * wall
+    " auto-chmod files with a shebang {{
+    autocmd BufNewFile  * let b:chmod_exe=1
+    autocmd BufWritePre * if exists("b:chmod_exe") |
+          \ unlet b:chmod_exe |
+          \ if getline(1) =~ '^#!' | let b:chmod_new="+x" | endif |
+          \ endif
+    autocmd BufWritePost,FileWritePost * if exists("b:chmod_new")|
+          \ silent! execute "!chmod ".b:chmod_new." <afile>"|
+          \ unlet b:chmod_new|
+          \ endif
+    "}}
+    autocmd BufReadCmd *.jar,*.xpi call zip#Browse(expand("<amatch>"))
+  augroup END  " }}
+  augroup filetypes  " {{
+    autocmd!
+    autocmd BufRead,BufNewFile *.json setfiletype javascript
+  augroup END  "}}
 endif
 " }}
 
@@ -389,4 +410,11 @@ augroup END
 " Setting some colours {{
 hi bufExplorerMapping guifg=white
 hi Conceal guibg=black guifg=white
+" }}
+
+
+" Fin. {{
+if filereadable(expand("~/.vimrc.local"))
+  source ~/.vimrc.local
+endif
 " }}
