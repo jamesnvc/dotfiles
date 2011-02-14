@@ -359,6 +359,7 @@ augroup END
 " Ruby {{
 augroup rubySettings
 autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
+autocmd FileType ruby,eruby let b:match_words = 'GetRubyMatchWords()'
 augroup END
 "  }}
 " Clojure {{
