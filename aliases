@@ -254,3 +254,5 @@ alias -g X0G='-print0 | xargs -0 egrep'
 alias -g X0='-print0 | xargs -0'
 alias -g XG='| xargs egrep'
 alias -g X='| xargs'
+
+export LOADED_ALIASES=1

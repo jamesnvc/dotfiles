@@ -1,8 +1,11 @@
 # -*- sh -*-
+# vim: syntax=sh :
 # Note:  Moving most PATH exports to /etc/paths.d
 export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH:/Developer/usr/bin
 export PATH=/usr/local/ActivePerl-5.12/site/bin:$PATH
 export PATH=/usr/local/ActivePerl-5.12/bin:$PATH
+# RVM stuf
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 export PYTHONPATH=$HOME/lib/python
 export FULLNAME="James Cash"
 export EMAIL="james.nvc@gmail.com"
@@ -95,3 +98,5 @@ LS_COLORS=$LS_COLORS:'*extconf.rb=4;1;33'	# "
 LS_COLORS=$LS_COLORS:'*Makefile.PL=4;1;33'	# "
 LS_COLORS=$LS_COLORS:'*Build.PL=4;1;33'	# "
 export LS_COLORS
+
+export LOADED_EXPORTS=1
