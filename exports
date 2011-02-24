@@ -28,6 +28,10 @@ export RIPDIR RUBYLIB PATH
 # Load lightning config
 source ~/.lightning/functions.sh
 
+export SOYWIKI_VIM=mvim
+export VNEWS_VIM=mvim
+export VMAIL_VIM=mvim
+
 export EDITOR='mvim -f'
 
 LS_COLORS='';
