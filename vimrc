@@ -218,11 +218,6 @@ function! OpenURL(url)
   endif
 endfunction
 command! -nargs=1 OpenURL :call OpenURL(<q-args>)
-" open URL under cursor in browser
-nnoremap gb :OpenURL <cfile><CR>
-nnoremap gA :OpenURL http://www.answers.com/<cword><CR>
-nnoremap gG :OpenURL http://www.google.com/search?q=<cword><CR>
-nnoremap gW :OpenURL http://en.wikipedia.org/wiki/Special:Search?search=<cword><CR>
 " }}
 " }}
 
@@ -268,6 +263,14 @@ nmap gt <C-w>gf
 nmap gT <C-w>gF
 nmap <leader><Left> :tabprevious<CR>
 nmap <leader><Right> :tabnext<CR>
+" Tabular
+nnoremap <Leader>b= :Tabularize /=<CR>
+nnoremap <Leader>b: :Tabularize /:\zs<CR>
+" open URL under cursor in browser
+nnoremap gb :OpenURL <cfile><CR>
+nnoremap gA :OpenURL http://www.answers.com/<cword><CR>
+nnoremap gG :OpenURL http://www.google.com/search?q=<cword><CR>
+nnoremap gW :OpenURL http://en.wikipedia.org/wiki/Special:Search?search=<cword><CR>
 "  }}
 " Command-mode bindings {{
 " Reopen the current file as sudo
@@ -282,6 +285,9 @@ vmap Q gq
 vmap <C-Up> [egv
 vmap <C-Down> ]egv
 vnoremap / /\v
+" Tabular
+vnoremap <Leader>b= :Tabularize /=<CR>
+vnoremap <Leader>b: :Tabularize /:\zs<CR>
 "  }}
 " Operator-pending mode bindings {{
 " Next ()
