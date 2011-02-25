@@ -236,6 +236,8 @@ map <leader>C :call HexHighlight()<CR>
 " Paste from clipboard
 map <leader>v "+gP
 map Y y$
+" Undo tree
+map <leader>U :GundoToggle<CR>
 "  }}
 " Normal mode bindings {{
 nnoremap <leader><leader> :
