@@ -62,6 +62,8 @@ alias gd="git diff"
 alias gwd="git diff --word-diff"
 alias gb="git branch"
 alias gp="git pull"
+alias ga="git add"
+alias gcm="git commit -m"
 
 
 # chmod
