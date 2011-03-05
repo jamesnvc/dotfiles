@@ -433,7 +433,7 @@ augroup markdownSettings
   autocmd FileType markdown map <buffer> <leader>3 I### $ ###<CR><CR><Esc>
   " Wrap the next word as a markdown link
   autocmd FileType markdown
-        \ map <buffer> <leader>[ ysw]ya]f]a[]<Esc>lma}] kp>>A: <C-R>+<Esc>`a
+        \ map <buffer> <leader>[ ysiw]ya]f]a[]<Esc>maG] jp>>A: <C-R>+<Esc>`a
   autocmd BufEnter *.md set spell
 augroup END
 "  }}
