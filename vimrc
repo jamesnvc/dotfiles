@@ -142,6 +142,17 @@ function! JSLintFile()
   cexpr system(l:lint_cmd . l:lint_args)
 endfunction
 command! -nargs=0 JSLint call JSLintFile()
+" Turn tabs into spaces from the cursor to indent.
+function! TabsToSpaces()
+  let l:tmp  = @/
+  let l:tmp2 = @"
+  " Using exe so we can insert the newline character
+  exe "normal i\<CR>"
+  exe "keepjumps :s/[\t]/" . repeat(" ", &tabstop) . "/"
+  normal 0Dk$pjddk_
+  let @/ = l:tmp
+  let @" = l:tmp2
+endfunction
 " Ruby Commands {{
 " Ruby matching strings for matchit
 function! GetRubyMatchWords()
@@ -259,6 +270,8 @@ nmap gV `[v`]
 nmap Q gqgq
 " Using this instead of autochdir
 nmap <leader>cd :cd %:p:h<CR>
+" Switch tabs to spaces for alignment purposes
+nmap <leader>T :call TabsToSpaces()<CR>
 " NERDTree bindings
 nmap <leader>n :NERDTreeClose<CR>:NERDTreeToggle<CR>
 nmap <Leader>m :NERDTreeClose<CR>:NERDTreeFind<CR>
