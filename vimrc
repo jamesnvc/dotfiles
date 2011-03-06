@@ -118,11 +118,12 @@ function! <SID>SynStack()
 endfunc
 " Delete trailing whitespace
 function! CleanupWhitespace()
-  let l:tmp = @s
-  normal ms
+  let _s = @/
+  let l  = line(".")
+  let c  = col(".")
   keepjumps :%s/\v\s+$//e
-  normal `s
-  let @s = l:tmp
+  let @/ = _s
+  call cursor(l, c)
 endfunction
 " Redirect a command to the clipboard
 function! RedirToClipboardFunction(cmd, ...)
@@ -135,11 +136,11 @@ command! -complete=command -nargs=+ RedirToClipboard
       \ silent! call RedirToClipboardFunction(<f-args>)
 " Run jslint on the current file
 function! JSLintFile()
-  let l:lint_cmd = system("which jsl | tr -d '\n'")
-  let l:lint_args = " -conf \"" . expand("~") . "/.jsl.conf\""
+  let lint_cmd = system("which jsl | tr -d '\n'")
+  let lint_args = " -conf \"" . expand("~") . "/.jsl.conf\""
         \ . " -nologo -nofilelisting -nosummary -process \"" .
         \ expand("%") . "\""
-  cexpr system(l:lint_cmd . l:lint_args)
+  cexpr system(lint_cmd . lint_args)
 endfunction
 command! -nargs=0 JSLint call JSLintFile()
 " Turn tabs into spaces from the cursor to indent.
@@ -261,7 +262,7 @@ nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 nmap <silent> <leader>/ :let @/=""<CR>
 nmap <leader>w :w<CR>
-nmap <leader>G :GitX<CR>
+nmap <leader>G :Gstatus<CR>
 " Show syntax group
 nmap <leader>P :call <SID>SynStack()<CR>
 " Visually select the text last edited/pasted
