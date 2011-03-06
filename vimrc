@@ -252,6 +252,7 @@ map <leader>v "+gP
 map Y y$
 " Undo tree
 map <leader>U :GundoToggle<CR>
+map <leader>J <Plug>IMAP_JumpForward
 "  }}
 " Normal mode bindings {{
 nnoremap <leader><leader> :
