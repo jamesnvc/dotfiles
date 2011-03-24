@@ -9,6 +9,16 @@ zstyle ':vcs_info:*' check-for-changes true
 zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{11}%r'
 zstyle ':vcs_info:*' enable git svn
 
+function battery_charge {
+  echo $(battery.py) 2> /dev/null
+}
+
+function prompt_char {
+    git branch >/dev/null 2>/dev/null && echo '±' && return
+    hg root >/dev/null 2>/dev/null && echo '☿' && return
+    echo '○'
+}
+
 precmd () {
     if [[ -z $(git ls-files --other --exclude-standard 2> /dev/null) ]] {
         zstyle ':vcs_info:*' formats '%F{green}%b%u'
@@ -21,7 +31,7 @@ precmd () {
 
 setopt prompt_subst
 
-setprompt () {
+function setprompt {
   ###
   # Need this so the prompt will work.
   setopt prompt_subst
@@ -42,8 +52,8 @@ setprompt () {
 
   ###
   # Finally, the prompt.
-  PROMPT='%~ ${vcs_info_msg_0_}$PR_BLUE %(?/%F{blue}/%F{red})$PR_RED → $PR_NO_COLOUR '
-  RPROMPT='$PR_WHITE($PR_CYAN%t %D{%a,%b%d} $PR_NO_COLOUR)'
+  PROMPT='$(prompt_char) %~ ${vcs_info_msg_0_}$PR_BLUE %(?/%F{blue}/%F{red})$PR_RED → $PR_NO_COLOUR '
+  RPROMPT='$(battery_charge)'
   PS2='$PR_RED → $PR_BLUE %_ $PR_RED → $PR_NO_COLOUR '
 
 }
