@@ -48,6 +48,7 @@ set history=1000
 set hlsearch
 set ignorecase
 set incsearch
+set matchtime=3
 set laststatus=2
 set list
 set listchars=tab:▸\ ,trail:¬,extends:→,nbsp:.
@@ -252,6 +253,7 @@ map <leader>v "+gP
 map Y y$
 " Undo tree
 map <leader>U :GundoToggle<CR>
+" Change LaTeX suite bindings from <C-j>
 map <leader>J <Plug>IMAP_JumpForward
 "  }}
 " Normal mode bindings {{
