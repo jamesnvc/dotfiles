@@ -1,9 +1,5 @@
-" Modeline and Notes {{
-" vim: set foldmarker={{,}} foldlevel=0 foldmethod=marker :
-"
-"   James Cash's vimrc
-"
-" }}
+" Author: James Cash <james.cash@occasionallycogent.com>
+" Source: https://github.com/jamesnvc/dotfiles
 
 
 " ***** Setup pathogen for loading bundles ***** {{
@@ -20,7 +16,8 @@ set nocompatible
 set encoding=utf-8
 let mapleader = " "
 
-colorscheme ir_black
+set background=dark
+colorscheme solarized
 
 filetype on
 filetype plugin on
@@ -375,6 +372,7 @@ if has('autocmd')
     autocmd!
     autocmd BufRead,BufNewFile *.json setfiletype javascript
     autocmd BufRead,BufNewFile *.ru setfiletype ruby
+    autocmd BufRead,BufNewFile *.mu setfiletype mustache
   augroup END  "}}
   augroup completion  " {{
     autocmd!
@@ -454,4 +452,5 @@ hi Conceal guibg=black guifg=white
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
+" vim: set foldmarker={{,}} foldlevel=0 foldmethod=marker :
 " }}
