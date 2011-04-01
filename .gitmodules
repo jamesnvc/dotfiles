@@ -76,3 +76,6 @@
 [submodule "vim/bundle/mustache.vim"]
 	path = vim/bundle/mustache.vim
 	url = https://github.com/juvenn/mustache.vim.git
+[submodule "vim/bundle/vim-colors-solarized"]
+	path = vim/bundle/vim-colors-solarized
+	url = git://github.com/altercation/vim-colors-solarized.git
