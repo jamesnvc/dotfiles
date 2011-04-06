@@ -2,9 +2,10 @@
 # vim: set foldmethod=marker foldmarker={{,}} :
 
 source ~/.mutt/user_settings
+source ~/.mutt/mutt-colors-solarized/mutt-colors-solarized-dark-16.muttrc
 
 # Basic Settings {{
-set editor = "mvim -f"
+set editor = "vim"
 unset help
 set move = no
 # }}

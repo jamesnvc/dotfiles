@@ -1,0 +1,7 @@
+# vim: set syntax=muttrc :
+set imap_user = "james.nvc@gmail.com"
+set imap_pass = "D(ZEF&UYxlxreqol"
+set smtp_url = "smtp://james.nvc@smtp.gmail.com:587/"
+set smtp_pass = "D(ZEF&UYxlxreqol"
+set from = "james.nvc@gmail.com"
+set realname = "James Cash"

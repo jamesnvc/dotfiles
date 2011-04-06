@@ -1,0 +1,54 @@
+Delivered-To: james.nvc@gmail.com
+Received: by 10.204.64.140 with SMTP id e12cs12096bki;
+        Sat, 2 Apr 2011 10:02:35 -0700 (PDT)
+Return-Path: <vivcywong@gmail.com>
+Received-SPF: pass (google.com: domain of vivcywong@gmail.com designates 10.151.7.19 as permitted sender) client-ip=10.151.7.19;
+Authentication-Results: mr.google.com; spf=pass (google.com: domain of vivcywong@gmail.com designates 10.151.7.19 as permitted sender) smtp.mail=vivcywong@gmail.com; dkim=pass header.i=vivcywong@gmail.com
+Received: from mr.google.com ([10.151.7.19])
+        by 10.151.7.19 with SMTP id k19mr5101158ybi.372.1301763753959 (num_hops = 1);
+        Sat, 02 Apr 2011 10:02:33 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=gamma;
+        h=domainkey-signature:mime-version:date:message-id:subject:from:to
+         :content-type;
+        bh=ql1Op4/oOEN4qEXKgjpo7rMvG/UqloevIuQ7a5CrdLo=;
+        b=aFqHKM3QAYO0ETvFgbLC8M19AlLyYm8z74G1HDS6AxpZ9w1xhRztLHTGtMulGcE3/K
+         3JB47s7v+C6R3IwPNwgBRbG6sPhGLvfwxvkOvI8I0xRdFdn01zR1JhtZRZ9adokyJwOP
+         uJZxG6AGh4GgIbG/NyzC2kg0CZfkXfGZ0irw8=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=gmail.com; s=gamma;
+        h=mime-version:date:message-id:subject:from:to:content-type;
+        b=ld3/lt2X8mleUNshBwEhCqbVQLm6WqoIUezfIlpx8tn3EeqQl6YdZXyIl4d6Y/2dQF
+         kUdrv45ySYunln1uENMgGiJ9uH3e8hAQgsTvpFz30wGIE92UxiqGPvLG/4pxoH3JjKs/
+         g+CppvgopeOgjIBkXbpInMba7WWngrvA8SRL8=
+MIME-Version: 1.0
+Received: by 10.151.7.19 with SMTP id k19mr5101158ybi.372.1301763753950; Sat,
+ 02 Apr 2011 10:02:33 -0700 (PDT)
+Received: by 10.101.101.15 with HTTP; Sat, 2 Apr 2011 10:02:33 -0700 (PDT)
+Date: Sat, 2 Apr 2011 13:02:33 -0400
+Message-ID: <BANLkTimvFSTbkr7F3Z_6KuHOQhwkpCK23Q@mail.gmail.com>
+Subject: Ride overnight stay
+From: Vivien Wong <vivcywong@gmail.com>
+To: James N V Cash <james.nvc@gmail.com>
+Content-Type: multipart/alternative; boundary=000e0cd4868a22bd5b049ff27ef5
+
+--000e0cd4868a22bd5b049ff27ef5
+Content-Type: text/plain; charset=ISO-8859-1
+
+For the overnight stay, there are tents that we can stay in (it's 2 people
+per tent and apparently they're the 4-person ones). Otherwise, you can opt
+to stay in a hotel/ McMaster university dorm, which you have to pay out of
+your own pocket.
+
+The orientation actually covered a lot of info... you should try to go to
+one if you plan on doing the ride.
+
+-vivien
+
+--000e0cd4868a22bd5b049ff27ef5
+Content-Type: text/html; charset=ISO-8859-1
+
+For the overnight stay, there are tents that we can stay in (it&#39;s 2 people per tent and apparently they&#39;re the 4-person ones). Otherwise, you can opt to stay in a hotel/ McMaster university dorm, which you have to pay out of your own pocket.<br>
+<br>The orientation actually covered a lot of info... you should try to go to one if you plan on doing the ride.<br><br>-vivien<br><br>
+
+--000e0cd4868a22bd5b049ff27ef5--

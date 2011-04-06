@@ -1,0 +1,71 @@
+Delivered-To: james.nvc@gmail.com
+Received: by 10.204.103.11 with SMTP id i11cs174368bko;
+        Mon, 6 Dec 2010 21:44:18 -0800 (PST)
+Return-Path: <joshuahy.wang@gmail.com>
+Received-SPF: pass (google.com: domain of joshuahy.wang@gmail.com designates 10.223.100.9 as permitted sender) client-ip=10.223.100.9;
+Authentication-Results: mr.google.com; spf=pass (google.com: domain of joshuahy.wang@gmail.com designates 10.223.100.9 as permitted sender) smtp.mail=joshuahy.wang@gmail.com; dkim=pass header.i=joshuahy.wang@gmail.com
+Received: from mr.google.com ([10.223.100.9])
+        by 10.223.100.9 with SMTP id w9mr918136fan.12.1291700656902 (num_hops = 1);
+        Mon, 06 Dec 2010 21:44:16 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=gamma;
+        h=domainkey-signature:mime-version:received:received:in-reply-to
+         :references:date:message-id:subject:from:to:content-type;
+        bh=gYWhpJWQ/2BVpQSVa6ikN3G2U1rLBYuubA6YxMKMKec=;
+        b=T09xGBelpJfYEWDzxMuOvNt62ANI2mPlwtvl+SCuY87eK9rlr09Asr/oznsajem9A3
+         Nc6f0C1n+csB36vaKD+jx/tFVq/8SXEoYzk5oXMgt8HU0XmYhOeI3bRLj0dBYXz1cru5
+         SPhUdguos9tY5+9OKiXDEqHjsJdKlvJ2YiTVA=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=gmail.com; s=gamma;
+        h=mime-version:in-reply-to:references:date:message-id:subject:from:to
+         :content-type;
+        b=mQcsYUok3HteoD5jaIX3Pqmm2pLy2pxx7LWi+km4cYEVsRlrq3Xrz6b5Q2L84Kv2q+
+         77JEc0h3fKcEvL8ep6WshM1d8hcK1yH504cGI+lCkXx3toE+FQzqKy2oGXw2UsPp4xkq
+         LHkIQr+1/xXY1gfYGYtjqsqs0hAjQMwDW8KIQ=
+MIME-Version: 1.0
+Received: by 10.223.100.9 with SMTP id w9mr918136fan.12.1291700656898; Mon, 06
+ Dec 2010 21:44:16 -0800 (PST)
+Received: by 10.204.80.6 with HTTP; Mon, 6 Dec 2010 21:44:16 -0800 (PST)
+In-Reply-To: <C775E0552D894A0EB887AF2267FC35F1@gmail.com>
+References: <AANLkTinfLDgbat5hda+W71aNqienrD4Jn2z9FUrh_pk4@mail.gmail.com>
+	<C775E0552D894A0EB887AF2267FC35F1@gmail.com>
+Date: Tue, 7 Dec 2010 00:44:16 -0500
+Message-ID: <AANLkTimi5vdrTNUKu2AMGUx-X1sYUB3eo0SozVJouJjT@mail.gmail.com>
+Subject: Re: Thanks!
+From: Josh Wang <joshuahy.wang@gmail.com>
+To: James Cash <james.nvc@gmail.com>
+Content-Type: multipart/alternative; boundary=20cf30433e96cf83680496cb7ec4
+
+--20cf30433e96cf83680496cb7ec4
+Content-Type: text/plain; charset=ISO-8859-1
+
+I'll do my very best! I'm hoping to run a Boston Qualifier, but it's hard to
+say since I haven't run at that speed yet for a half. I'll keep training and
+putting in the work and see what happens =)
+
+I look forward to getting an e-mail for the Ride! That sounds like super
+fun!
+
+I'll definitely try showing up for a run sometime before ID starts - keep me
+updated. But, as of ~1/2 hour ago, my debt has been repaid (burpees).
+
+Hope to see you soon!
+
+Josh
+
+--20cf30433e96cf83680496cb7ec4
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+I&#39;ll do my very best! I&#39;m hoping to run a Boston Qualifier, but it&=
+#39;s hard to say since I haven&#39;t run at that speed yet for a half. I&#=
+39;ll keep training and putting in the work and see what happens =3D)<div>
+<br></div><div>I look forward to getting an e-mail for the Ride! That sound=
+s like super fun!</div><div><br></div><div>I&#39;ll definitely try showing =
+up for a run sometime before ID starts - keep me updated. But, as of ~1/2 h=
+our ago, my debt has been repaid (burpees).</div>
+<div><br></div><div>Hope to see you soon!</div><div><br></div><div>Josh<br>=
+<br>
+</div>
+
+--20cf30433e96cf83680496cb7ec4--

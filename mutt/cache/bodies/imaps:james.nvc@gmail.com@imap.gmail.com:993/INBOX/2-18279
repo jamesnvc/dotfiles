@@ -1,0 +1,141 @@
+Delivered-To: james.nvc@gmail.com
+Received: by 10.204.64.140 with SMTP id e12cs68171bki;
+        Wed, 23 Mar 2011 19:42:47 -0700 (PDT)
+Received: by 10.142.62.6 with SMTP id k6mr4085519wfa.100.1300934566248;
+        Wed, 23 Mar 2011 19:42:46 -0700 (PDT)
+Return-Path: <apache@torontomarathon.com>
+Received: from vps.torontomarathon.com (vps.torontomarathon.com [64.34.233.21])
+        by mx.google.com with ESMTP id u30si8593690wfh.133.2011.03.23.19.42.44;
+        Wed, 23 Mar 2011 19:42:45 -0700 (PDT)
+Received-SPF: pass (google.com: domain of apache@torontomarathon.com designates 64.34.233.21 as permitted sender) client-ip=64.34.233.21;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of apache@torontomarathon.com designates 64.34.233.21 as permitted sender) smtp.mail=apache@torontomarathon.com
+Received: by vps.torontomarathon.com (Postfix, from userid 48)
+	id 81C88E0C6CB; Wed, 23 Mar 2011 22:42:35 -0400 (EDT)
+MIME-Version: 1.0
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+Content-Type: text/html
+X-Mailer: MIME::Lite 3.027 (F2.74; T1.28; A2.06; B3.07; Q3.07)
+Date: Wed, 23 Mar 2011 22:42:35 -0400
+To: James Cash <james.nvc@gmail.com>
+From: Toronto Marathon Registration <registration@torontomarathon.com>
+Subject: Registration Confirmation
+Message-Id: <20110324024235.81C88E0C6CB@vps.torontomarathon.com>
+
+	<style>
+	td, p, div, li, ul, ol { font-family:arial,helvetica,verdana;color: #05143F; font-size:12px;}
+	body{background-color:#FFFFFF;font-family:arial,helvetica,verdana;color:#000000;font-size: 12px;}
+	td.bodytext{font-family:arial,helvetica,verdana; font-size:12px; color:#000000;}
+  div.bodyText{font-family:arial,helvetica,verdana; font-size:12px; color:#000000;}
+	
+	div.header{font-family:arial,helvetica,verdana; font-size:24px; color:#05143F; letter-spacing:-1px;}
+	
+	a.marathon:link,a.marathon:visited,a.marathon {color:#FA450A;}
+	a.marathon:hover	{color:#FAD00A;}
+	</style>
+
+<body>
+<img src="http://www.torontomarathon.com/email/email_grafx/logo_white.gif">
+<bR>
+<div class="header">GoodLife Fitness Toronto Marathon - Race Registration Details</div>
+<BR><BR>
+
+Dear James,
+<br><br>
+
+<strong>Thank you for registering for the GoodLife Fitness Toronto Marathon on Sunday May 15, 2011.<br />
+Please print and save this email as it contains your registration confirmation.</strong>
+<br /><br />
+Your Registration Details are as follows:<br />
+
+<table width="100%" border="0" cellspacing=0 cellpadding=3>
+<tr>
+  <td align="right" width="25%" class="bodytext"><b>Event:</b></td>
+  <td class="bodytext"><b>Marathon</b></td>
+</tr>
+<tr>
+  <td align="right" valign="top" class="bodytext"><b>Name:</b></td>
+  <td class="bodytext">James Cash<br>
+219 Wright avenue<BR />
+Toronto, ON Canada</td>
+</tr>
+<tr>
+  <td align="right" class="bodytext"><b>Registration Date:</b></td>
+  <td class="bodytext">2011-03-23 22:41:33</td>
+</tr>
+<tr>
+  <td align="right" class="bodytext"><b>Confirmation Number:</b></td>
+  <td class="bodytext">BU437</td>
+</tr>
+<tr>
+  <td align="right" class="bodytext"><b>Brunello Carbo Dinner Tickets:</b></td>
+  <td class="bodytext">0</td>
+</tr>
+<tr>
+  <td align="right" class="bodytext"><b>Shuttle Bus Tickets (Will be printed on Bib):</b></td>
+  <td class="bodytext">No</td>
+</tr>
+<tr>
+  <td align="right" class="bodytext"><b>Total Paid:</b></td>
+  <td class="bodytext">$94</td>
+</tr>
+
+<tr>
+  <td align="right" class="bodytext"><b>Card Holder:</b></td>
+  <td class="bodytext">James Cash</td>
+</tr>
+<tr>
+  <td align="right" class="bodytext"><b>Card Number:</b></td>
+  <td class="bodytext">4510xxxxxxxx3669</td>
+</tr>
+<tr>
+  <td align="right" class="bodytext"><b>Order Number:</b></td>
+  <td class="bodytext">4221</td>
+</tr>
+<tr>
+  <td align="right" class="bodytext"><b>Transaction ID:</b></td>
+  <td class="bodytext">10034474</td>
+</tr>
+<tr>
+  <td align="right" class="bodytext"><b>Bank Authorization Code:</b></td>
+  <td class="bodytext">072080</td>
+</tr>
+
+</table>
+<br /><br />
+You will receive a Karbon technical shirt with your race kit.<br /><br />
+<!---->
+<b>Registration fees are non-refundable and non-transferable.  Please print and save confirmation details.</b><br />
+<br />
+If you are registered in the incorrect event, or decide to switch into a different event, you can do this via our self-serve portal - click <a class="marathon" href="http://www.torontomarathon.com/go/change">here</a>. For other requests, please contact the GoodLife Fitness Toronto Marathon office at <a class="marathon" href="mailto:registration@torontomarathon.com">registration@torontomarathon.com</a> no later than October 2nd with a detailed request.  Changes after October 2nd can be made in person at the GoodLife Fitness Toronto Marathon Expo.<br />
+<br />
+<b>All participants are required to pick up their race kit at the GoodLife Fitness Toronto Marathon Expo:</b><br /><br />
+<table width="75%" border=0 cellspacing=0 cellpadding=0>
+<tr>
+  <td class="bodytext">Pickup Location:</td>
+  <td class="bodytext"><b>Heritage Court, Exhibition Place, 100 Princes' Blvd.</b></td>
+</tr>
+<tr>
+  <td class="bodytext">Pickup Times:</td>
+  <td class="bodytext"><b>Friday May 13, 10 a.m. – 7 p.m.<br /> 
+       Saturday May 14, 9 a.m. – 5 p.m.</b>
+  </td>
+</tr>
+</table>
+<br /><br />
+<div class="bodytext">
+Kits will not be mailed.  Anyone may pick up your kit at the expo.  They may be asked for identification and your confirmation number.<br />
+The Brunello Carbo Dinner takes place on Saturday May 14 at the Toronto Hilton (145 Richmond St. West).  Additional tickets can be purchased for $30 by <a class="marathon" href="https://torontomarathon.com/registration/change.cgi">clicking here</a>.<br /></div>
+<br /><br />
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td class="bodyText">
+Please consider raising funds for one of our Official Charities: Princess Margaret, Toronto General and Toronto Western Hospitals make up the three partners of the University Health Network (UHN). Their participation in the Toronto Marathon marks the first time as a group that all three UHN member hospitals have combined efforts in a single event. For information or to begin fundraising now, please visit http://www.torontomarathon.com and follow the charity and pledge program link.
+<div align="center">
+<a class="marathon" href="http://www.torontomarathon.com/charity-pmh.shtml"><img src="http://www.torontomarathon.com/email/email_grafx/logo_pmhf.gif" border="0"></a>
+<a class="marathon" href="http://www.torontomarathon.com/charity-oth.shtml"><img src="http://www.torontomarathon.com/email/email_grafx/logo_tgwf.gif" border="0"></a>
+</div>
+</td>
+</tr>
+</table>
+</body>

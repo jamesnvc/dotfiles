@@ -1,0 +1,103 @@
+Delivered-To: james.nvc@gmail.com
+Received: by 10.90.54.4 with SMTP id c4cs57332aga;
+        Tue, 29 Jun 2010 22:08:34 -0700 (PDT)
+Received: by 10.142.4.42 with SMTP id 42mr9560989wfd.53.1277874513290;
+        Tue, 29 Jun 2010 22:08:33 -0700 (PDT)
+Return-Path: <behanz@gmail.com>
+Received: from mail-pw0-f52.google.com (mail-pw0-f52.google.com [209.85.160.52])
+        by mx.google.com with ESMTP id r27si9182614rvq.111.2010.06.29.22.08.32;
+        Tue, 29 Jun 2010 22:08:32 -0700 (PDT)
+Received-SPF: pass (google.com: domain of behanz@gmail.com designates 209.85.160.52 as permitted sender) client-ip=209.85.160.52;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of behanz@gmail.com designates 209.85.160.52 as permitted sender) smtp.mail=behanz@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+Received: by mail-pw0-f52.google.com with SMTP id 10so186775pwj.11
+        for <james.nvc@gmail.com>; Tue, 29 Jun 2010 22:08:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=gamma;
+        h=domainkey-signature:received:received:message-id
+         :disposition-notification-to:date:from:user-agent:mime-version:to:cc
+         :subject:references:in-reply-to:content-type
+         :content-transfer-encoding;
+        bh=mJ7a/LQIS40BxyeYPIhmlV2p3utBnZ+lSnO7vORvz1k=;
+        b=uQ6IoNa8k5R+41dWZlw4NFruk0Ozs/1RBhaLyY5lnJgOx+ZmNx3kdYZSLHo1gEUZi6
+         MzjcFCc3y/LAOk7yDAf9SKNnFZunNUa2uqn6WgV89uhff2+L2mRxrvBfJQDodu75h9Rj
+         olYkGqUPWZ4bDaiQWZqBHBDj2xtkTAMpWQ1AQ=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=gmail.com; s=gamma;
+        h=message-id:disposition-notification-to:date:from:user-agent
+         :mime-version:to:cc:subject:references:in-reply-to:content-type
+         :content-transfer-encoding;
+        b=b0isIOU8o0yRy+HudmoXLu+Uaef5cLyXJzOHu4Rr3PLfl6XpIoYmcHoGGQbGRhjopN
+         O5SOAqvJSjpi+oDpwIcCcD+XyfBaAgVIIqxgsZV+S8rXcY4YlqRL930O0QDcggL3slLn
+         e5EpsWyFIZ1T7BSmQpMbBlPO89Lb/AXE50SEs=
+Received: by 10.142.248.9 with SMTP id v9mr9544969wfh.6.1277874511716;
+        Tue, 29 Jun 2010 22:08:31 -0700 (PDT)
+Return-Path: <behanz@gmail.com>
+Received: from [192.168.65.11] (adsl-76-247-44-187.dsl.pltn13.sbcglobal.net [76.247.44.187])
+        by mx.google.com with ESMTPS id x34sm9102312wfi.16.2010.06.29.22.08.30
+        (version=TLSv1/SSLv3 cipher=RC4-MD5);
+        Tue, 29 Jun 2010 22:08:30 -0700 (PDT)
+Message-ID: <4C2AD14D.5040703@gmail.com>
+Disposition-Notification-To: Zdenek Behan <behanz@gmail.com>
+Date: Tue, 29 Jun 2010 22:08:29 -0700
+From: Zdenek Behan <behanz@gmail.com>
+User-Agent: Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.2.2pre) Gecko/20100321 Thunderbird/3.1b1
+MIME-Version: 1.0
+To: james.nvc@gmail.com
+CC: MELISSA FERNANDEZ <melissaf69@yahoo.com>
+Subject: Re: Accomodation available in Sunnyvale
+References: <4C298E0F.7050003@matfyz.cz> <d053c08e-4e0c-4bb8-a945-0c97b51c2144@x27g2000yqb.googlegroups.com>
+In-Reply-To: <d053c08e-4e0c-4bb8-a945-0c97b51c2144@x27g2000yqb.googlegroups.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+
+ Hi James,
+
+This might be feasible or not, depending on a lot of things. Namely, my
+hosts want to rent the room pretty much asap. So if someone shows up
+that will be intending to come significantly earlier than you, they
+might prefer him to you, which is understandable. Adding Melissa to CC
+so that you can communicate the possible details together.
+
+Zdenek
+
+On 06/29/2010 10:31 AM, jamesnvc wrote:
+> Hi Zdenek,
+>
+> I'd be very interested in that room, although I won't be arriving
+> until July 28th (and staying until November 9th).  Do you know if
+> those dates would be feasible?
+>
+> Thanks,
+>
+> James
+>
+> On Jun 29, 2:09 am, Zdenek Behan <beh...@gmail.com> wrote:
+>>  Hi,
+>>
+>> I'm posting on behalf of my current hosts, who have another spare room
+>> in the house. Please reply to me if you're interested, and I'll forward
+>> it, or if you want to reply to them directly, mention that you saw this
+>> in here, posted by me.
+>> -----------------------------
+>> Cozy furnished room for rent for minimum 3 months or longer. $800.00/mo,
+>> plus $350 security deposit. Includes all utilities (also has wireless
+>> internet & satellite tv included but must bring own tv).... You will
+>> share a large bath with a young computer professional. A cat and two old
+>> dogs reside here as well, so you must like animals. The home is in a
+>> very nice Sunnyvale family neighborhood which is quiet, clean, and safe.
+>> Looking for a clean decent person, no parties.
+>> Email: melissa...@yahoo.com
+>> Phone: 408 203 1787
+>> -----------------------------
+>> I should just add that the house is close to El Camino Real, between
+>> Bernardo and Mary, short walk to the G-shuttle stop. Biking to Google is
+>> also feasible and fun, Steven's Creek Trail is about 3 blocks away on El
+>> Camino. City bus to Google is also a possibility, takes two busses (4$)
+>> and between 1 hour and 1,5 hour, if you plan to work on weekends.
+>> Pretty much all shops are close by, and if you want to travel without a
+>> car, there's the city bus on El Camino, that goes all the way from Palo
+>> Alto to San Jose, Caltrain Sunnyvale would be about an hour and half walk.
+>> Hosts are very nice people, pets are lovely (if you like pets).
+>>
+>> Zdenek
+

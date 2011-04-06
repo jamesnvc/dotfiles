@@ -1,0 +1,104 @@
+Delivered-To: james.nvc@gmail.com
+Received: by 10.213.3.67 with SMTP id 3cs54505ebm;
+        Wed, 30 Jun 2010 07:11:12 -0700 (PDT)
+Received: by 10.213.25.138 with SMTP id z10mr3055157ebb.52.1277907072497;
+        Wed, 30 Jun 2010 07:11:12 -0700 (PDT)
+DomainKey-Status: good (test mode)
+Received-SPF: softfail (google.com: best guess record for domain of transitioning rafal.dittwald@gmail.com does not designate 209.85.214.179 as permitted sender) client-ip=209.85.214.179;
+Received: by 10.241.103.1 with POP3 id 1mf201828ewy.174;
+        Wed, 30 Jun 2010 07:11:11 -0700 (PDT)
+X-Gmail-Fetch-Info: james.cash@occasionallycogent.com 3 pop.gmail.com 995 james.cash@occasionallycogent.com
+Delivered-To: james.cash@occasionallycogent.com
+Received: by 10.229.87.76 with SMTP id v12cs21891qcl;
+        Wed, 30 Jun 2010 07:02:13 -0700 (PDT)
+Received: by 10.231.33.76 with SMTP id g12mr7787730ibd.194.1277906532216;
+        Wed, 30 Jun 2010 07:02:12 -0700 (PDT)
+Return-Path: <rafal.dittwald@gmail.com>
+Received: from mail-iw0-f179.google.com (mail-iw0-f179.google.com [209.85.214.179])
+        by mx.google.com with ESMTP id c11si16002082ibb.19.2010.06.30.07.02.10;
+        Wed, 30 Jun 2010 07:02:11 -0700 (PDT)
+Received-SPF: pass (google.com: domain of rafal.dittwald@gmail.com designates 209.85.214.179 as permitted sender) client-ip=209.85.214.179;
+Authentication-Results: mx.google.com; spf=pass (google.com: domain of rafal.dittwald@gmail.com designates 209.85.214.179 as permitted sender) smtp.mail=rafal.dittwald@gmail.com; dkim=pass (test mode) header.i=@gmail.com
+Received: by iwn5 with SMTP id 5so872066iwn.10
+        for <james.cash@occasionallycogent.com>; Wed, 30 Jun 2010 07:02:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=gamma;
+        h=domainkey-signature:received:mime-version:received:reply-to
+         :in-reply-to:references:from:date:message-id:subject:to:content-type;
+        bh=p6/E+YvXkDTmYuCbYvhyfSvmfs8C630S4LHskt9Lzbc=;
+        b=T58uZvcVMx4N3jQSfvb1QCT3e9DUrsvNCXuJW3ad2JtTAAg0AijlJdbVxuRPkPLI5p
+         mJp06DLyo4ukvKQdAY26WEMCfTyJlfXfTJoLbVUfk3mAcMIKRxePCrkbIXmF6oDGqLaL
+         hcNa5mP0IvFckwCRk3q3qN3xpM5QAC9fl3X78=
+DomainKey-Signature: a=rsa-sha1; c=nofws;
+        d=gmail.com; s=gamma;
+        h=mime-version:reply-to:in-reply-to:references:from:date:message-id
+         :subject:to:content-type;
+        b=Dz8mlVaOxNgRKtSrvQSavlVo9KYVm5LTEC3APctp1HrSbyJCwpPG1rj2eqTUldAi/J
+         E249CNlavPHMbH5FbJJtbAsyomxRsJlQ+Lx29nBpZxfZVbyvmxzyusWORQG8nk9f8HnN
+         wx0ravN0Cg1U0VV5bLPMJEuR8+40tbBrIG93c=
+Received: by 10.231.155.18 with SMTP id q18mr8965104ibw.44.1277906530244; Wed, 
+	30 Jun 2010 07:02:10 -0700 (PDT)
+MIME-Version: 1.0
+Received: by 10.231.39.131 with HTTP; Wed, 30 Jun 2010 07:01:50 -0700 (PDT)
+Reply-To: rafal.dittwald@gmail.com
+In-Reply-To: <AANLkTinw2jU5qEOR5J3oecaVyWnAvQiObxj-BJy23MJ_@mail.gmail.com>
+References: <AANLkTinw2jU5qEOR5J3oecaVyWnAvQiObxj-BJy23MJ_@mail.gmail.com>
+From: Rafal <rafal.dittwald@gmail.com>
+Date: Wed, 30 Jun 2010 10:01:50 -0400
+Message-ID: <AANLkTim3cQf0argBKdbP0hugokZ2OvIrYN_c0MejEkAd@mail.gmail.com>
+Subject: Re: PEY job?
+To: James N V Cash <james.cash@occasionallycogent.com>
+Content-Type: multipart/alternative; boundary=001636d34255ca9a3a048a3fcc3b
+
+--001636d34255ca9a3a048a3fcc3b
+Content-Type: text/plain; charset=ISO-8859-1
+
+Perhaaaaps. What's the project? What's the tech?
+
+-Raf
+
+On Wed, Jun 30, 2010 at 8:56 AM, James N V Cash <
+james.cash@occasionallycogent.com> wrote:
+
+> Hey Raf,
+>
+> I was just exchanging some emails with the fellow who was my boss at IBM
+> last summer, and apparently he's leaving IBM to pursue his own opportunity,
+> and asks if I have "any geek friends who want to spend some time writing
+> more code than they thought they ever would" to send them his way.
+>  Interested?
+>
+> J
+>
+
+--001636d34255ca9a3a048a3fcc3b
+Content-Type: text/html; charset=ISO-8859-1
+Content-Transfer-Encoding: quoted-printable
+
+Perhaaaaps. What&#39;s the project? What&#39;s the tech?<div><br></div><div=
+>-Raf<br><br><div class=3D"gmail_quote">On Wed, Jun 30, 2010 at 8:56 AM, Ja=
+mes N V Cash <span dir=3D"ltr">&lt;<a href=3D"mailto:james.cash@occasionall=
+ycogent.com">james.cash@occasionallycogent.com</a>&gt;</span> wrote:<br>
+
+<blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;border-left:1p=
+x #ccc solid;padding-left:1ex;">Hey Raf,<div><br></div><div>I was just exch=
+anging some emails with the fellow who was my boss at IBM last summer, and =
+apparently he&#39;s leaving IBM to pursue his own opportunity, and asks if =
+I have &quot;<span style=3D"font-family:arial, sans-serif;font-size:13px;bo=
+rder-collapse:collapse;color:rgb(68, 68, 68)">any geek friends who want to =
+spend some time writing more code than they thought they ever would&quot; t=
+o send them his way. =A0Interested?</span></div>
+
+
+
+<div><span style=3D"font-family:arial, sans-serif;font-size:13px;border-col=
+lapse:collapse;color:rgb(68, 68, 68)"><br></span></div><font color=3D"#8888=
+88"><div><span style=3D"font-family:arial, sans-serif;font-size:13px;border=
+-collapse:collapse;color:rgb(68, 68, 68)">J</span></div>
+
+
+
+
+</font></blockquote></div><br></div>
+
+--001636d34255ca9a3a048a3fcc3b--
