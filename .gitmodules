@@ -91,3 +91,6 @@
 [submodule "vim/bundle/lusty"]
 	path = vim/bundle/lusty
 	url = https://github.com/sjbach/lusty.git
+[submodule "mutt/mutt-colors-solarized"]
+	path = mutt/mutt-colors-solarized
+	url = https://github.com/altercation/mutt-colors-solarized.git
