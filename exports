@@ -39,6 +39,8 @@ export VMAIL_HTML_PART_READER='elinks -dump'
 
 export EDITOR='mvim -f'
 
+export TERM=xterm-256color
+
 LS_COLORS='';
 LS_COLORS=$LS_COLORS:'no=00'           # normal text
 LS_COLORS=$LS_COLORS:'fi=00'	       # regular file
