@@ -63,6 +63,7 @@ set smarttab
 set tabstop=2
 set undofile
 set undolevels=1000
+set virtualedit+=block
 set visualbell
 set wildmenu
 set wildmode=list:longest,full
@@ -509,7 +510,6 @@ if has('autocmd')
   augroup END  " }}
   augroup misc  " {{
     autocmd!
-    autocmd FocusLost * wall
     autocmd FileType sass SyntasticDisable
     " auto-chmod files with a shebang {{
     autocmd BufNewFile  * let b:chmod_exe=1
@@ -529,6 +529,7 @@ if has('autocmd')
     autocmd BufRead,BufNewFile *.json setfiletype javascript
     autocmd BufRead,BufNewFile *.ru setfiletype ruby
     autocmd BufRead,BufNewFile *.mu setfiletype mustache
+    autocmd BufReadCmd *.epub call zip#Browse(expand("<amatch>"))
   augroup END  "}}
   augroup completion  " {{
     autocmd!
