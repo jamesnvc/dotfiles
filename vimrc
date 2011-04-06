@@ -270,23 +270,23 @@ exe 'colorscheme '.g:colors_name
 command! -nargs=0 Restore set lines=100 columns=85
 command! -nargs=0 GitX !open -a GitX %:p:h<CR>
 " Show syntax highlighting groups for word under cursor
-function! <SID>SynStack()
+function! <SID>SynStack() " {{
   if !exists("*synstack")
     return
   endif
   echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
-endfunc
+endfunc "}}
 " Delete trailing whitespace
-function! CleanupWhitespace()
+function! CleanupWhitespace() " {{
   let _s = @/
   let l  = line(".")
   let c  = col(".")
   keepjumps :%s/\v\s+$//e
   let @/ = _s
   call cursor(l, c)
-endfunction
+endfunction "}}
 " Redirect a command to the clipboard
-function! RedirToClipboardFunction(cmd, ...)
+function! RedirToClipboardFunction(cmd, ...) " {{
   let cmd = a:cmd . " " . join(a:000, " ")
   redir @*>
   exe cmd
@@ -294,8 +294,9 @@ function! RedirToClipboardFunction(cmd, ...)
 endfunction
 command! -complete=command -nargs=+ RedirToClipboard
       \ silent! call RedirToClipboardFunction(<f-args>)
+" }}
 " Run jslint on the current file
-function! JSLintFile()
+function! JSLintFile() " {{
   let lint_cmd = system("which jsl | tr -d '\n'")
   let lint_args = " -conf \"" . expand("~") . "/.jsl.conf\""
         \ . " -nologo -nofilelisting -nosummary -process \"" .
@@ -303,8 +304,9 @@ function! JSLintFile()
   cexpr system(lint_cmd . lint_args)
 endfunction
 command! -nargs=0 JSLint call JSLintFile()
+" }}
 " Turn tabs into spaces from the cursor to indent.
-function! TabsToSpaces()
+function! TabsToSpaces() " {{
   let l:tmp  = @/
   let l:tmp2 = @"
   " Using exe so we can insert the newline character
@@ -313,7 +315,7 @@ function! TabsToSpaces()
   normal 0Dk$pjddk_
   let @/ = l:tmp
   let @" = l:tmp2
-endfunction
+endfunction " }}
 " Ruby Commands {{
 " Ruby matching strings for matchit
 function! GetRubyMatchWords()
