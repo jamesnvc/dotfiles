@@ -499,8 +499,8 @@ onoremap <silent> an" :<C-U>normal! f"va"<cr>
 "  }}
 " Insert mode bindings {{
 inoremap qq <Esc>
-inoremap <Left> <Esc><<i
-inoremap <Right> <Esc>>>i
+inoremap <Left> <Esc>mz<<`zhi
+inoremap <Right> <Esc>:exe "normal mz>>`z".(&shiftwidth+1)."l"<CR>i
 " Make end of sentences set an undo point to facilitate typing long stretches
 inoremap . .<C-g>u
 inoremap ! !<C-g>u
