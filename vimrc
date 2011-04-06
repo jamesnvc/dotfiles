@@ -415,6 +415,7 @@ map <leader>U :GundoToggle<CR>
 " Change LaTeX suite bindings from <C-j>
 map <leader>J <Plug>IMAP_JumpForward
 map <D-t> :CommandT<CR>
+map <leader>x :bd
 "  }}
 " Normal mode bindings {{
 nnoremap <leader><leader> :
