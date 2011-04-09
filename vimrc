@@ -269,6 +269,7 @@ exe 'colorscheme '.g:colors_name
 " ***** Define commands ***** {{
 command! -nargs=0 Restore set lines=100 columns=85
 command! -nargs=0 GitX !open -a GitX %:p:h<CR>
+command! -nargs=0 XmlIdent '[,']!xsltproc ~/.vim/misc/indent.xsl %
 " Show syntax highlighting groups for word under cursor
 function! <SID>SynStack() " {{
   if !exists("*synstack")
