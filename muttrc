@@ -53,18 +53,5 @@ macro index,pager gi "<change-folder>=INBOX<enter>" "Go to inbox"
 macro index,pager ga "<change-folder>=[Gmail]/All Mail<enter>" "Go to all mail"
 macro index,pager gs "<change-folder>=[Gmail]/Starred<enter>" "Go to starred messages"
 macro index,pager gd "<change-folder>=[Gmail]/Drafts<enter>" "Go to drafts"
-# }}
-
-# Colour settings {{
-color quoted magenta black
-color quoted1 blue black
-color quoted2 red black
-color quoted3 yellow black
-color quoted4 cyan black
-color quoted5 blue black
-color quoted6 magenta black
-color quoted7 red black
-color quoted8 yellow black
-color quoted9 cyan black
-color signature blue default
+macro index,pager \cb "|urlview\n" "Open url with urlview"
 # }}
