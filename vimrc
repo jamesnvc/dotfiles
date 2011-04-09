@@ -298,11 +298,14 @@ command! -complete=command -nargs=+ RedirToClipboard
 " }}
 " Run jslint on the current file
 function! JSLintFile() " {{
-  let lint_cmd = system("which jsl | tr -d '\n'")
-  let lint_args = " -conf \"" . expand("~") . "/.jsl.conf\""
+  if !executable("jsl")
+    echo "jsl not installed"
+    return
+  end
+  let lint_cmd = "jsl -conf \"" . expand("~") . "/.jsl.conf\""
         \ . " -nologo -nofilelisting -nosummary -process \"" .
         \ expand("%") . "\""
-  cexpr system(lint_cmd . lint_args)
+  cexpr system(lint_cmd)
 endfunction
 command! -nargs=0 JSLint call JSLintFile()
 " }}
@@ -319,12 +322,11 @@ function! TabsToSpaces() " {{
 endfunction " }}
 " Ruby Commands {{
 " Ruby matching strings for matchit
-function! GetRubyMatchWords()
+function! GetRubyMatchWords()  " {{
   return '\<if>:\<end\>,\<def\>:\<end\>'
-endfunction
-
+endfunction  " }}
 " Lists functions/methods in current file
-function! g:ListRubyFunctions()
+function! g:ListRubyFunctions()  " {{
   let s:file_name = expand("%")
 
   exe 'vimgrep =def = ' . s:file_name
@@ -340,24 +342,22 @@ function! g:ListRubyFunctions()
   setlocal nomodifiable
   setlocal nonumber
   setlocal readonly
-endfunction
-
+endfunction  " }}
 " Searches for function/method definition under the cursor
-function! g:GotoRubyFunc()
+function! g:GotoRubyFunc()  " {{
   let find_command = 'find . -type f | grep .rb  | xargs grep -n def\ '.expand('<cword>')
   echo(find_command)
   set errorformat=%f:%l:%m
   lgetexpr system(find_command)
   rightb lopen
-endfunction
-
+endfunction  " }}
 " Executes spec (rspec 1.3) command in different modes
 " and display results in :Error buffer
 " available modes:
 " - file - all specs in current file
 " - line - current context or current example (cursor within context {} or it   {} block
 " - all - runs whole test case
-function! g:RunRspec(mode)
+function! g:RunRspec(mode)  " {{
   "current line
   if a:mode == 'line'
     let line_num = line(".")
@@ -375,7 +375,7 @@ function! g:RunRspec(mode)
   set errorformat=%f:%l:
   silent execute 'cgetfile '.e_file
   copen
-endfunction
+endfunction  " }}
 
 command! -bar -narg=* RRRGotoDef call g:GotoRubyFunc()
 command! -bar -narg=* RRListDefs call g:ListRubyFunctions()
@@ -418,7 +418,7 @@ map <leader>U :GundoToggle<CR>
 " Change LaTeX suite bindings from <C-j>
 map <leader>J <Plug>IMAP_JumpForward
 map <D-t> :CommandT<CR>
-map <leader>x :bd
+map <leader>x :bd<CR>
 "  }}
 " Normal mode bindings {{
 nnoremap <leader><leader> :
