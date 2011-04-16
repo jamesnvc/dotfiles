@@ -269,7 +269,7 @@ command! -nargs=0 Restore set lines=100 columns=85
 command! -nargs=0 GitX !open -a GitX %:p:h<CR>
 command! -nargs=0 XmlIdent '[,']!xsltproc ~/.vim/misc/indent.xsl %
 " Insert markdown reference-style link
-function! AddMarkdownReferenceLink()
+function! AddMarkdownReferenceLink() " {{
   call inputsave()
   let refLink = input("Reference label: ")
   call inputrestore()
@@ -282,7 +282,7 @@ function! AddMarkdownReferenceLink()
   exe "normal >>I[".refLink."]: "
   call cursor(l, c)
 endfunction
-command! -nargs=0 AddMdLink call AddMarkdownReferenceLink()
+" }}
 " Show syntax highlighting groups for word under cursor
 function! <SID>SynStack() " {{
   if !exists("*synstack")
@@ -618,8 +618,8 @@ augroup markdownSettings
   autocmd FileType markdown map <buffer> <leader>2 I## $ ##<CR><CR><Esc>
   autocmd FileType markdown map <buffer> <leader>3 I### $ ###<CR><CR><Esc>
   " Wrap the next word as a markdown link
-  autocmd FileType markdown nmap <buffer> <leader>[ ysiw]:AddMdLink<CR>
-  autocmd FileType markdown vmap <buffer> <leader>[ S]:AddMdLink<CR>
+  autocmd FileType markdown nmap <buffer> <leader>[ ysiw]:call AddMarkdownReferenceLink()<CR>
+  autocmd FileType markdown vmap <buffer> <leader>[ S]:call AddMarkdownReferenceLink()<CR>
   autocmd FileType markdown imap <buffer> <C-l> <Esc>b<leader>[a
   autocmd BufEnter *.md set spell
 augroup END
