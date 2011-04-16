@@ -88,15 +88,15 @@ set viewdir=$HOME/.vimviews//
 set undodir=$HOME/.vimundo//
 " Creating backup dirs if the don't exist
 if has('win32')
-  let mkdirArgStr = '"\%HOME\%\.'
+  let s:mkdirArgStr = '"\%HOME\%\.'
 else
-  let mkdirArgStr = '-p "$HOME/.'
+  let s:mkdirArgStr = '-p "$HOME/.'
 endif
 if !isdirectory(expand("~/.vimbackup"))
-  silent execute ' !mkdir '.mkdirArgStr.'vimbackup"'
-  silent execute ' !mkdir '.mkdirArgStr.'vimswap"'
-  silent execute ' !mkdir '.mkdirArgStr.'vimviews"'
-  silent execute ' !mkdir '.mkdirArgStr.'vimundo"'
+  silent execute ' !mkdir '.s:mkdirArgStr.'vimbackup"'
+  silent execute ' !mkdir '.s:mkdirArgStr.'vimswap"'
+  silent execute ' !mkdir '.s:mkdirArgStr.'vimviews"'
+  silent execute ' !mkdir '.s:mkdirArgStr.'vimundo"'
 endif
 "  }}
 let g:tex_conceal="adgm"
