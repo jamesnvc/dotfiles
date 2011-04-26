@@ -498,6 +498,11 @@ vnoremap / /\v
 " Tabular
 vnoremap <Leader>b= :Tabularize /=<CR>
 vnoremap <Leader>b: :Tabularize /:\zs<CR>
+" Fix linewise visual selection of various text objects
+nnoremap Vit vitVkoj
+nnoremap Vat vatV
+nnoremap Vab vabV
+nnoremap VaB vaBV
 "  }}
 " Operator-pending mode bindings {{
 " Next ()
