@@ -276,9 +276,11 @@ function! AddMarkdownReferenceLink() " {{
   exe "normal f]a[".refLink."]"
   let l = line(".")
   let c = col(".")
+  " Could just use ]<Space> from unimpared, but let's try to avoid
+  " dependencies (bindings need Surround.vim, anyway)
   normal Go
-  " TODO: Make this cross-platform?
-  .!pbpaste
+  " Using "+ instead of pbpaste
+  normal "+p
   exe "normal >>I[".refLink."]: "
   call cursor(l, c)
 endfunction
