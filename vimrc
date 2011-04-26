@@ -108,13 +108,13 @@ let g:indent_guides_guide_size=1
 " Statusline updater {{{
 " Inspired by StatusLineHighlight by Ingo Karkat
 function! s:StatusLine(new_stl, type, current)
-let current = (a:current ? "" : "NC")
-let type = a:type
-let new_stl = a:new_stl
+  let current = (a:current ? "" : "NC")
+  let type = a:type
+  let new_stl = a:new_stl
 
-" Prepare current buffer specific text
-" Syntax: <CUR> ... </CUR>
-let new_stl = substitute(new_stl, '<CUR>\(.\{-,}\)</CUR>', (a:current ? '\1' : ''), 'g')
+  " Prepare current buffer specific text
+  " Syntax: <CUR> ... </CUR>
+  let new_stl = substitute(new_stl, '<CUR>\(.\{-,}\)</CUR>', (a:current ? '\1' : ''), 'g')
 
   " Prepare statusline colors
   " Syntax: #[ ... ]
@@ -158,21 +158,21 @@ endfunction
 " }}}
 " Color dict parser {{{
 function! s:StatusLineColors(colors)
-for type in keys(a:colors)
-  for name in keys(a:colors[type])
-    let colors = {'c': a:colors[type][name][0], 'nc': a:colors[type][name][1]}
-    let type = (type == 'NONE' ? '' : type)
-    let name = (name == 'NONE' ? '' : name)
+  for type in keys(a:colors)
+    for name in keys(a:colors[type])
+      let colors = {'c': a:colors[type][name][0], 'nc': a:colors[type][name][1]}
+      let type = (type == 'NONE' ? '' : type)
+      let name = (name == 'NONE' ? '' : name)
 
-    if exists("colors['c'][4]")
-      exec 'hi StatusLine'.type.name.' ctermbg='.colors['c'][0].' ctermfg='.colors['c'][1].' cterm='.colors['c'][2].' guibg='.colors['c'][3].' guifg='.colors['c'][4].' gui='.colors['c'][2]
-    endif
+      if exists("colors['c'][4]")
+        exec 'hi StatusLine'.type.name.' ctermbg='.colors['c'][0].' ctermfg='.colors['c'][1].' cterm='.colors['c'][2].' guibg='.colors['c'][3].' guifg='.colors['c'][4].' gui='.colors['c'][2]
+      endif
 
-    if exists("colors['nc'][4]")
-      exec 'hi StatusLine'.type.name.'NC ctermbg='.colors['nc'][0].' ctermfg='.colors['nc'][1].' cterm='.colors['nc'][2].' guibg='.colors['nc'][3].' guifg='.colors['nc'][4].' gui='.colors['nc'][2]
-    endif
+      if exists("colors['nc'][4]")
+        exec 'hi StatusLine'.type.name.'NC ctermbg='.colors['nc'][0].' ctermfg='.colors['nc'][1].' cterm='.colors['nc'][2].' guibg='.colors['nc'][3].' guifg='.colors['nc'][4].' gui='.colors['nc'][2]
+      endif
+    endfor
   endfor
-endfor
 endfunction
 " }}}
 " }}}
