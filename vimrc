@@ -282,6 +282,20 @@ function! AddMarkdownReferenceLink() " {{
   exe "normal >>I[".refLink."]: "
   call cursor(l, c)
 endfunction
+function! AddMarkdownReferenceLinkSel(type)
+  let sel_save = &selection
+  let &selection = "inclusive"
+
+  if a:type == 'line'
+    silent exe "normal '[V']S]"
+  elseif a:type == 'block'
+    silent exe "normal `[\<C-V>`]S]"
+  else
+    silent exe "normal `[v`]S]"
+  endif
+  let &selection = sel_save
+  call AddMarkdownReferenceLink()
+endfunction
 " }}
 " Show syntax highlighting groups for word under cursor
 function! <SID>SynStack() " {{
@@ -618,7 +632,8 @@ augroup markdownSettings
   autocmd FileType markdown map <buffer> <leader>2 I## $ ##<CR><CR><Esc>
   autocmd FileType markdown map <buffer> <leader>3 I### $ ###<CR><CR><Esc>
   " Wrap the next word as a markdown link
-  autocmd FileType markdown nmap <buffer> <leader>[ ysiw]:call AddMarkdownReferenceLink()<CR>
+  autocmd FileType markdown nmap <buffer> <leader>[ :set opfunc=AddMarkdownReferenceLinkSel<CR>g@
+  autocmd FileType markdown nmap <buffer> <leader>[[ <leader>[iw
   autocmd FileType markdown vmap <buffer> <leader>[ S]:call AddMarkdownReferenceLink()<CR>
   autocmd FileType markdown imap <buffer> <C-l> <Esc>b<leader>[a
   autocmd BufEnter *.md set spell
