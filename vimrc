@@ -41,6 +41,9 @@ set expandtab
 set foldenable
 set foldmethod=marker
 set formatoptions+=n  " gq recognizes numbered lists
+if executable("par")
+  set formatprg=par\ -w80er
+endif
 set gdefault  " Make substitute global by default
 set grepprg=ack\ -a\ -H\ --nocolor\ --nogroup
 set hidden  " When opening a new file hide the current instead of closing it
