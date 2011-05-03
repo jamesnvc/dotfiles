@@ -5,6 +5,8 @@ export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH:/Developer/usr/bin
 export PATH=/usr/local/ActivePerl-5.12/site/bin:$PATH
 export PATH=/usr/local/ActivePerl-5.12/bin:$PATH
 export PATH=/usr/local/lib/node:$PATH
+# Perlbrew
+source /Users/james/perl5/perlbrew/etc/bashrc
 # Node stuff
 export NODE_PATH=/usr/local/lib/node
 # RVM stuf
