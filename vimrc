@@ -20,14 +20,13 @@ if !has('gui_running')
   set t_Co=256
   let g:solarized_termcolors=16
 end
+syntax enable
 set background=dark
 colorscheme solarized
 
 filetype on
 filetype plugin on
 filetype indent on
-
-syntax on
 " }}
 
 
