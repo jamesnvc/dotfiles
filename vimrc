@@ -18,6 +18,7 @@ let mapleader = " "
 
 if !has('gui_running')
   set t_Co=256
+  let g:solarized_termcolors=16
 end
 set background=dark
 colorscheme solarized
@@ -57,7 +58,7 @@ set list
 set listchars=tab:▸\ ,trail:¬,extends:→,nbsp:.
 set magic
 set nrformats+=alpha
-set ofu=syntaxcomplete#Complete
+set omnifunc=syntaxcomplete#Complete
 set pastetoggle=<F2>
 set relativenumber
 set ruler
@@ -537,6 +538,7 @@ onoremap <silent> an" :<C-U>normal! f"va"<cr>
 "  }}
 " Insert mode bindings {{
 inoremap qq <Esc>
+imap <C-Space> <C-X><C-O>
 inoremap <Left> <Esc>mz<<`zhi
 inoremap <Right> <Esc>:exe "normal mz>>`z".(&shiftwidth+1)."l"<CR>i
 " Make end of sentences set an undo point to facilitate typing long stretches
