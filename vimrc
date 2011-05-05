@@ -637,6 +637,7 @@ augroup END
 " Markdown {{
 augroup markdownSettings
   autocmd!
+  autocmd FileType markdown set foldmethod=syntax
   " Underline the current line with "=" signs
   autocmd FileType markdown map <buffer> <leader>_ yypVr=
   autocmd FileType markdown map <buffer> <leader>1 I# $ #<CR><CR><Esc>
