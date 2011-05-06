@@ -97,3 +97,6 @@
 [submodule "vim/bundle/cocoa.vim"]
 	path = vim/bundle/cocoa.vim
 	url = https://github.com/msanders/cocoa.vim.git
+[submodule "vim/bundle/pyflakes-vim"]
+	path = vim/bundle/pyflakes-vim
+	url = https://github.com/kevinw/pyflakes-vim.git
