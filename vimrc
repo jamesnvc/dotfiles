@@ -637,7 +637,7 @@ augroup END
 " Markdown {{
 augroup markdownSettings
   autocmd!
-  autocmd FileType markdown set foldmethod=syntax
+  autocmd FileType markdown setl foldmethod=syntax
   " Underline the current line with "=" signs
   autocmd FileType markdown map <buffer> <leader>_ yypVr=
   autocmd FileType markdown map <buffer> <leader>1 I# $ #<CR><CR><Esc>
@@ -648,7 +648,7 @@ augroup markdownSettings
   autocmd FileType markdown nmap <buffer> <leader>[[ <leader>[iw
   autocmd FileType markdown vmap <buffer> <leader>[ S]:call AddMarkdownReferenceLink()<CR>
   autocmd FileType markdown imap <buffer> <C-l> <Esc>b<leader>[a
-  autocmd BufEnter *.md set spell
+  autocmd BufEnter *.md setl spell
 augroup END
 "  }}
 " }}
