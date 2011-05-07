@@ -1,14 +1,14 @@
 [user]
-	email = james.nvc@gmail.com
-	name = James N. V. Cash
+  email = james.nvc@gmail.com
+  name = James N. V. Cash
 [github]
-	user = jamesnvc
-	token = d2c0dd78e36ef56407e79e56ca60df12
+  user = jamesnvc
+  token = d2c0dd78e36ef56407e79e56ca60df12
 [alias]
-        lol = log --graph --decorate --pretty=oneline --abbrev-commit
-        lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+  lol = log --graph --decorate --pretty=oneline --abbrev-commit
+  lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
 [color]
-        branch = auto
-        diff = auto
-        interactive = auto
-        status = auto
+  branch = auto
+  diff = auto
+  interactive = auto
+  status = auto
