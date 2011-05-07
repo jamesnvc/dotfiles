@@ -603,7 +603,9 @@ let NERDTreeMouseMode=1
 " Syntastic {{
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
-let g:syntastic_disabled_filetypes = ['coffee']
+" Don't use syntastic for coffeescript (screws up) or python (pyflakes
+" instead)
+let g:syntastic_disabled_filetypes = ['coffee', 'python']
 " }}
 " }}
 
