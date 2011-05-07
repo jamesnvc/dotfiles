@@ -78,7 +78,7 @@ if has('gui_running')
   set guioptions-=m
   set guioptions-=rL
   set guicursor=a:blinkon0
-  set guifont=Anonymous\ Pro
+  set guifont=Inconsolata
 endif
 if has('win32')
   set shellslash
