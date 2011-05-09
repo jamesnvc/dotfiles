@@ -452,6 +452,7 @@ map <leader>U :GundoToggle<CR>
 map <leader>J <Plug>IMAP_JumpForward
 map <D-t> :CommandT<CR>
 map <leader>x :bd!<CR>
+map <leader>s :FufBuffer<CR>
 "  }}
 " Normal mode bindings {{
 nnoremap <leader><leader> :
