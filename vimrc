@@ -607,6 +607,7 @@ let g:syntastic_auto_loc_list=2
 " instead)
 let g:syntastic_disabled_filetypes = ['coffee', 'python']
 " }}
+let g:pep8_map = '<leader>8'
 " }}
 
 

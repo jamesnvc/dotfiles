@@ -1,12 +1,19 @@
 match ErrorMsg '\%>80v.\+'
 
-python << EOF
+" Add the virtualenv's site-packages to vim path
+py << EOF
 import os
 import sys
 import vim
-for p in sys.path:
-  if os.path.isdir(p):
-    vim.command(r"set path+=%s" % (p.replace(" ", r"\ ")))
+if os.environ['VIRTUAL_ENV']:
+  project_base_dir = os.environ['VIRTUAL_ENV']
+  sys.path.insert(0, project_base_dir)
+  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+  execfile(activate_this, dict(__file__=activate_this))
+else:
+  for p in sys.path:
+    if os.path.isdir(p):
+      vim.command(r"set path+=%s" % (p.replace(" ", r"\ ")))
 EOF
 
 python << EOL
