@@ -40,6 +40,7 @@ set cryptmethod=blowfish
 set expandtab
 set foldenable
 set foldmethod=marker
+set foldlevel=99
 set formatoptions+=n  " gq recognizes numbered lists
 if executable("par")
   set formatprg=par\ -w80er
