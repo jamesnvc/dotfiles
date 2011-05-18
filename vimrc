@@ -64,6 +64,7 @@ set relativenumber
 set ruler
 set scrolloff=2
 set shiftwidth=2
+set softtabstop=2
 set showmatch
 set smartcase
 set smarttab
