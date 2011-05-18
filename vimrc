@@ -620,7 +620,7 @@ let python_highlight_all = 1
 augroup pythonSettings
   autocmd!
   autocmd FileType python syn keyword pythonDecorator True None False self is not in
-  autocmd Filetype python set foldmethod=indent
+  autocmd Filetype python setl foldmethod=indent ts=4 sts=4 sw=4
 augroup END
 "  }}
 " Ruby {{
