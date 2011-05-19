@@ -39,7 +39,7 @@ export VMAIL_VIM=mvim
 export VMAIL_BROWSER=open
 export VMAIL_HTML_PART_READER='elinks -dump'
 
-export EDITOR='mvim -f'
+export EDITOR='vim'
 
 export TERM=xterm-256color
 
