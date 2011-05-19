@@ -560,7 +560,6 @@ if has('autocmd')
   augroup END  " }}
   augroup misc  " {{
     autocmd!
-    autocmd FileType sass SyntasticDisable
     " auto-chmod files with a shebang {{
     autocmd BufNewFile  * let b:chmod_exe=1
     autocmd BufWritePre * if exists("b:chmod_exe") |
@@ -608,7 +607,7 @@ let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
 " Don't use syntastic for coffeescript (screws up) or python (pyflakes
 " instead)
-let g:syntastic_disabled_filetypes = ['coffee', 'python']
+let g:syntastic_disabled_filetypes = ['coffee', 'python', 'sass']
 " }}
 let g:pep8_map = '<leader>8'
 " }}
