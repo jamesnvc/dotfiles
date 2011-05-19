@@ -620,13 +620,13 @@ let python_highlight_all = 1
 augroup pythonSettings
   autocmd!
   autocmd FileType python syn keyword pythonDecorator True None False self is not in
-  autocmd Filetype python setl foldmethod=indent ts=4 sts=4 sw=4
+  autocmd Filetype python setl foldmethod=indent ts=4 sts=4 sw=4 cc=80
 augroup END
 "  }}
 " Ruby {{
 augroup rubySettings
   autocmd!
-  autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete
+  autocmd FileType ruby,eruby setl omnifunc=rubycomplete#Complete cc=80
   autocmd FileType ruby,eruby let b:match_words = 'GetRubyMatchWords()'
 augroup END
 "  }}

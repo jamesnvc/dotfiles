@@ -1,5 +1,3 @@
-match ErrorMsg '\%>80v.\+'
-
 " Add the virtualenv's site-packages to vim path
 py << EOF
 import os
