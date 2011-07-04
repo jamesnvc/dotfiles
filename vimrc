@@ -272,7 +272,7 @@ exe 'colorscheme '.g:colors_name
 " ***** Define commands ***** {{
 command! -nargs=0 Restore set lines=100 columns=85
 command! -nargs=0 GitX !open -a GitX %:p:h<CR>
-command! -nargs=0 XmlIdent '[,']!xsltproc ~/.vim/misc/indent.xsl %
+command! -nargs=0 XmlIndent '[,']!xsltproc ~/.vim/misc/indent.xsl %
 " Insert markdown reference-style link
 function! AddMarkdownReferenceLink() " {{
   call inputsave()
@@ -660,8 +660,8 @@ augroup END
 
 
 " Setting some colours {{
-hi bufExplorerMapping guifg=white
-hi Conceal guibg=black guifg=white
+highlight bufexplorermapping guifg=white
+highlight conceal guibg=black guifg=white
 " }}
 
 
