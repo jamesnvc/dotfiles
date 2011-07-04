@@ -587,6 +587,14 @@ if has('autocmd')
     autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
     autocmd FileType css set omnifunc=csscomplete#CompleteCSS
   augroup END  "}}
+  augroup fugitive  " {{
+    autocmd!
+    autocmd User fugitive
+      \ if fugitive#buffer().type() =~# '^\%(tree\|blob\)$' |
+      \   nnoremap <buffer> .. :edit %:h<CR> |
+      \ endif
+    autocmd BufReadPost fugitive://* set bufhidden=delete
+  augroup END  "}}
 endif
 " }}
 
