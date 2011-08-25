@@ -464,6 +464,7 @@ nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 nmap <silent> <leader>/ :let @/=""<CR>
 nmap <leader>W :w<CR>
+nmap <leader>z zMa<Esc>
 nmap <leader>G :Gstatus<CR>
 " Show syntax group
 nmap <leader>P :call <SID>SynStack()<CR>
