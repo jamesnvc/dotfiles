@@ -542,7 +542,7 @@ onoremap <silent> an" :<C-U>normal! f"va"<cr>
 " Insert mode bindings {{
 inoremap qq <Esc>
 imap <C-Space> <C-X><C-O>
-inoremap <Left> <Esc>mz<<`zhi
+inoremap <Left> <Esc>:exe "normal mz<<`z".(&shiftwidth-1)."h"<CR>i
 inoremap <Right> <Esc>:exe "normal mz>>`z".(&shiftwidth+1)."l"<CR>i
 " Make end of sentences set an undo point to facilitate typing long stretches
 inoremap . .<C-g>u
