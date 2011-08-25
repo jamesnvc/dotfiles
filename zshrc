@@ -19,6 +19,10 @@ bindkey '^L' push-line
 
 source ~/.aliases
 source ~/.exports
+# PATH fixes for rvm
+if [ `which ruby` = '/usr/bin/ruby' ]; then
+  export PATH=~/.rvm/bin:$PATH
+fi
 
 autoload -U compinit zrecompile zmv
 
