@@ -464,7 +464,7 @@ nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 nmap <silent> <leader>/ :let @/=""<CR>
 nmap <leader>W :w<CR>
-nmap <leader>z zMa<Esc>
+nmap <leader>z zMzv
 nmap <leader>G :Gstatus<CR>
 nmap <leader>g :grep <C-R>=expand("<cword>")<CR><CR>
 " Show syntax group
