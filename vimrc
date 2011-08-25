@@ -466,6 +466,7 @@ nmap <silent> <leader>/ :let @/=""<CR>
 nmap <leader>W :w<CR>
 nmap <leader>z zMa<Esc>
 nmap <leader>G :Gstatus<CR>
+nmap <leader>g :grep <C-R>=expand("<cword>")<CR><CR>
 " Show syntax group
 nmap <leader>P :call <SID>SynStack()<CR>
 " Visually select the text last edited/pasted
@@ -548,6 +549,7 @@ inoremap <Right> <Esc>:exe "normal mz>>`z".(&shiftwidth+1)."l"<CR>i
 inoremap . .<C-g>u
 inoremap ! !<C-g>u
 inoremap ? ?<C-g>u
+inoremap : :<C-g>u
 "  }}
 " }}
 
