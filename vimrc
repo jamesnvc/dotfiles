@@ -283,10 +283,10 @@ function! AddMarkdownReferenceLink() " {{
   let c = col(".")
   " Could just use ]<Space> from unimpared, but let's try to avoid
   " dependencies (bindings need Surround.vim, anyway)
-  normal Go
+  normal! Go
   " Using "+ instead of pbpaste
-  normal "+p
-  exe "normal >>I[".refLink."]: "
+  normal! "+p
+  exe "normal! >>I[".refLink."]: "
   call cursor(l, c)
 endfunction
 function! AddMarkdownReferenceLinkSel(type)
@@ -348,9 +348,9 @@ function! TabsToSpaces() " {{
   let l:tmp  = @/
   let l:tmp2 = @"
   " Using exe so we can insert the newline character
-  exe "normal i\<CR>"
+  exe "normal! i\<CR>"
   exe "keepjumps :s/[\t]/" . repeat(" ", &tabstop) . "/"
-  normal 0Dk$pjddk_
+  normal! 0Dk$pjddk_
   let @/ = l:tmp
   let @" = l:tmp2
 endfunction " }}
