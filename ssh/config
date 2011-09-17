@@ -28,6 +28,12 @@ Host ecf
   IdentityFile ~/.ssh-keys/ecf
   TCPKeepAlive yes
 
+Host ug
+  User cashjame
+  Hostname ug150.eecg.utoronto.ca
+  IdentityFile ~/.ssh-keys/ug
+  TCPKeepAlive yes
+
 Host remote.ecf.utoronto.ca
   User cashjame
   Hostname remote.ecf.utoronto.ca
