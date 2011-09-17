@@ -33,11 +33,16 @@ export RIPDIR RUBYLIB PATH
 # Load lightning config
 source ~/.lightning/functions.sh
 
+export ARCHFLAGS="-arch i386 -arch x86_64"
+
 export SOYWIKI_VIM=mvim
 export VNEWS_VIM=mvim
 export VMAIL_VIM=mvim
 export VMAIL_BROWSER=open
 export VMAIL_HTML_PART_READER='elinks -dump'
+
+# Make OS X shell use UTF8
+export __CF_USER_TEXT_ENCODING=0x1F5:0x8000100:0x8000100
 
 export EDITOR='vim'
 
