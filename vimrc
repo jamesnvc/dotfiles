@@ -354,6 +354,14 @@ function! TabsToSpaces() " {{
   let @/ = l:tmp
   let @" = l:tmp2
 endfunction " }}
+" Make a scratch buffer
+function! Scratch() " {{
+  split +e nofile
+  set buftype=nofile bufhidden=hide
+  setlocal noswapfile
+endf
+command! Scratch call Scratch()
+" }}
 " Ruby Commands {{
 " Ruby matching strings for matchit
 function! GetRubyMatchWords()  " {{
@@ -460,6 +468,7 @@ nnoremap <leader><leader> :
 nnoremap j gj
 nnoremap k gk
 nnoremap / /\v
+nnoremap <silent> <leader>* :exe 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
 nmap <silent> <leader>/ :let @/=""<CR>
@@ -485,7 +494,8 @@ nmap <leader><Left> :tabprevious<CR>
 nmap <leader><Right> :tabnext<CR>
 " Tabular
 nnoremap <Leader>b= :Tabularize /=<CR>
-nnoremap <Leader>b: :Tabularize /:\zs<CR>
+nnoremap <Leader>b: :Tabularize /^[^:]*:\zs/r0c0l0<CR>
+nnoremap <Leader>b, :Tabularize /^[^,]*,\zs/r0c0l0<CR>
 " open URL under cursor in browser
 nnoremap gb :OpenURL <cfile><CR>
 nnoremap gA :OpenURL http://www.answers.com/<cword><CR>
@@ -543,8 +553,8 @@ onoremap <silent> an" :<C-U>normal! f"va"<cr>
 " Insert mode bindings {{
 inoremap qq <Esc>
 imap <C-Space> <C-X><C-O>
-inoremap <Left> <Esc>:exe "normal mz<<`z".(&shiftwidth-1)."h"<CR>i
-inoremap <Right> <Esc>:exe "normal mz>>`z".(&shiftwidth+1)."l"<CR>i
+inoremap <Left> <C-d>
+inoremap <Right> <C-t>
 " Make end of sentences set an undo point to facilitate typing long stretches
 inoremap . .<C-g>u
 inoremap ! !<C-g>u
@@ -581,6 +591,7 @@ if has('autocmd')
     autocmd BufRead,BufNewFile *.json setfiletype javascript
     autocmd BufRead,BufNewFile *.ru setfiletype ruby
     autocmd BufRead,BufNewFile *.mu setfiletype mustache
+    autocmd BufRead,BufNewFile *.m setfiletype objc
     autocmd BufReadCmd *.epub call zip#Browse(expand("<amatch>"))
   augroup END  "}}
   augroup completion  " {{
