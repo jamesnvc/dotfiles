@@ -5,3 +5,4 @@ Icon*
 tags
 id_rsa*
 mutt/cache/*
+*.pyc
