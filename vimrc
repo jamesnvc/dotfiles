@@ -57,6 +57,7 @@ set laststatus=2
 set list
 set listchars=tab:▸\ ,trail:¬,extends:→,nbsp:.
 set magic
+set makeprg=rake
 set nrformats+=alpha
 set omnifunc=syntaxcomplete#Complete
 set pastetoggle=<F2>
@@ -596,10 +597,13 @@ if has('autocmd')
   augroup END  "}}
   augroup completion  " {{
     autocmd!
-    autocmd FileType python set omnifunc=pythoncomplete#Complete
-    autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-    autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
-    autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+    autocmd FileType python setl omnifunc=pythoncomplete#Complete
+    autocmd FileType javascript setl omnifunc=javascriptcomplete#CompleteJS
+    autocmd FileType html setl omnifunc=htmlcomplete#CompleteTags
+    autocmd FileType css setl omnifunc=csscomplete#CompleteCSS
+    autocmd FileType vimwiki setl completefunc=googlescribe#Complete
+    autocmd FileType markdown setl completefunc=googlescribe#Complete
+    autocmd FileType gitcommit setl completefunc=googlescribe#Complete
   augroup END  "}}
   augroup fugitive  " {{
     autocmd!
