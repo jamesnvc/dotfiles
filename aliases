@@ -5,6 +5,7 @@ alias -g ....='../../..'
 alias gvim='open -a MacVim'
 alias rvim="gvim —remote-silent"
 alias py=python
+alias be='bundle exec'
 alias ipy=ipython
 alias cds='select x in `dirs`; do ;eval cd $x ; unset x ; break ; done'
 alias man="man -P most"
