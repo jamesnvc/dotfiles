@@ -65,6 +65,7 @@ alias gb="git branch"
 alias gp="git pull"
 alias ga="git add"
 alias gcm="git commit -m"
+alias gc="git commit --verbose"
 
 
 # chmod
