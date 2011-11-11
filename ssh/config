@@ -9,6 +9,13 @@ Host github
   TCPKeepAlive yes
   IdentitiesOnly yes
 
+Host bitbucket
+  User git
+  HostName bitbucket.org
+  IdentityFile ~/.ssh-keys/bitbucket
+  TCPKeepAlive yes
+  IdentitiesOnly yes
+
 Host wolever.net
   User james
   Port 22
