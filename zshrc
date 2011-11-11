@@ -44,3 +44,4 @@ setopt extended_glob
 for zshrc_snipplet in ~/.zsh.d/S[0-9][0-9]*[^~] ; do
         source $zshrc_snipplet
 done
+source ~/.zsh.d/syntax-highlighting-filetypes/zsh-syntax-highlighting-filetypes.zsh
