@@ -6,10 +6,14 @@
 
 # suppress screen's startup message
 startup_message off
+# Allow altscreen for vim usage in screen
+altscreen on
 
 # an alternative hardstatus to display a bar at the bottom listing the
 # windownames and highlighting the current windowname in blue.
-hardstatus alwayslastline "%{.wk}%-w%{.kW}%n %t%{-}%+w %=%{..k} %H %{..k} %m/%d %C%a "
+hardstatus alwayslastline
+hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f %t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %Y-%m-%d %{W}%c %{g}]'
+#hardstatus alwayslastline "%{.wk}%-w%{.kW}%n %t%{-}%+w %=%{..k} %H %{..k} %m/%d %C%a "
 
 # '%{gk}[ %{G}%H %{g}][%= %{wk}%?%-Lw%?%{=b kR}(%{W}%n*%f %t%?(%u)%?%{=b kR})%{= kw}%?%+Lw%?%?%= %{g}][%{Y}%l%{g}]%{=b C}[ %m/%d %c ]%{W}'
 
