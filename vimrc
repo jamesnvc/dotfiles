@@ -22,6 +22,7 @@ if !has('gui_running')
 end
 syntax enable
 set background=dark
+let g:solarized_visibility = "low"
 colorscheme solarized
 
 filetype on
