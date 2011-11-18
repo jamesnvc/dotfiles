@@ -471,7 +471,7 @@ map <leader>ss :setlocal spell!<CR>
 map <leader>o :BufExplorer<CR>
 map <leader>C :call HexHighlight()<CR>
 " Paste from clipboard
-map <leader>v "+gP
+map <leader>p "+gP
 map Y y$
 " Undo tree
 map <leader>U :GundoToggle<CR>
