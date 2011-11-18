@@ -609,11 +609,9 @@ if has('autocmd')
   augroup END  " }}
   augroup filetypes  " {{
     autocmd!
-    autocmd BufRead,BufNewFile *.json setfiletype javascript
-    autocmd BufRead,BufNewFile *.ru setfiletype ruby
-    autocmd BufRead,BufNewFile *.mu setfiletype mustache
-    autocmd BufRead,BufNewFile *.m setfiletype objc
     autocmd BufReadCmd *.epub call zip#Browse(expand("<amatch>"))
+    autocmd BufEnter *.md setl makeprg=rake
+    autocmd BufWritePost *.py call Pyflakes()
   augroup END  "}}
   augroup completion  " {{
     autocmd!
@@ -624,6 +622,7 @@ if has('autocmd')
     autocmd FileType vimwiki setl completefunc=googlescribe#Complete
     autocmd FileType markdown setl completefunc=googlescribe#Complete
     autocmd FileType gitcommit setl completefunc=googlescribe#Complete
+    autocmd FileType ruby setl omnifunc=rubycomplete#Complete
   augroup END  "}}
   augroup fugitive  " {{
     autocmd!
@@ -658,55 +657,6 @@ let g:syntastic_auto_loc_list=2
 let g:syntastic_disabled_filetypes = ['coffee', 'python', 'sass']
 " }}
 let g:pep8_map = '<leader>8'
-" }}
-
-
-" ***** Mode-specific settings ***** {{
-" Python {{
-let python_highlight_all = 1
-augroup pythonSettings
-  autocmd!
-  autocmd FileType python syn keyword pythonDecorator True None False self is not in
-  autocmd Filetype python setl foldmethod=indent ts=4 sts=4 sw=4 cc=80
-  autocmd BufWritePost *.py call Pyflakes()
-augroup END
-"  }}
-" Ruby {{
-augroup rubySettings
-  autocmd!
-  autocmd FileType ruby,eruby setl omnifunc=rubycomplete#Complete cc=80
-  autocmd FileType ruby,eruby let b:match_words = '\<if>:\<end\>,\<def\>:\<end\>,\<do\>:\<end\>'
-augroup END
-"  }}
-" Clojure {{
-let vimclojure#HighlightBuildins = 1
-let vimclojure#ParenRainbow = 0
-let vimclojure#WantNailgun = 0  " Don't start the repl
-let vimclojure#NailgunClient = "/usr/local/bin/ng"
-augroup clojureSettings
-  autocmd!
-  autocmd FileType clojure set foldmarker=(,)
-augroup END
-"  }}
-" Markdown {{
-augroup markdownSettings
-  autocmd!
-  autocmd FileType markdown setl foldmethod=syntax
-  autocmd FileType markdown setl spell
-  autocmd FileType markdown setl textwidth=80
-  autocmd BufEnter *.md setl makeprg=rake
-  " Underline the current line with "=" signs
-  autocmd FileType markdown map <buffer> <leader>_ yypVr=
-  autocmd FileType markdown map <buffer> <leader>1 I# $ #<CR><CR><Esc>
-  autocmd FileType markdown map <buffer> <leader>2 I## $ ##<CR><CR><Esc>
-  autocmd FileType markdown map <buffer> <leader>3 I### $ ###<CR><CR><Esc>
-  " Wrap the next word as a markdown link
-  autocmd FileType markdown nmap <buffer> <leader>[ :set opfunc=AddMarkdownReferenceLinkSel<CR>g@
-  autocmd FileType markdown nmap <buffer> <leader>[[ <leader>[iw
-  autocmd FileType markdown vmap <buffer> <leader>[ S]:call AddMarkdownReferenceLink()<CR>
-  autocmd FileType markdown imap <buffer> <C-l> <Esc>b<leader>[a
-augroup END
-"  }}
 " }}
 
 

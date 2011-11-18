@@ -1,3 +1,11 @@
+let python_highlight_all = 1
+
+syn keyword pythonDecorator True None False self is not in
+setl foldmethod=indent ts=4 sts=4 sw=4
+if exists('+colorcolumn')
+  setl cc=80
+endif
+
 " Add the virtualenv's site-packages to vim path
 py << EOF
 import os
