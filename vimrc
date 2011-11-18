@@ -37,14 +37,12 @@ set conceallevel=2 " Enable 'Conceal' mode
 set completeopt=longest,menuone,preview
 set cursorline
 set cryptmethod=blowfish
+set diffopt+=iwhite " Ignore trailing whitespace in diffs
 set expandtab
 set foldenable
 set foldmethod=marker
 set foldlevelstart=99
 set formatoptions+=n  " gq recognizes numbered lists
-if executable("par")
-  set formatprg=par\ -w80er
-endif
 set gdefault  " Make substitute global by default
 set grepprg=ack\ -a\ -H\ --nocolor\ --nogroup
 set hidden  " When opening a new file hide the current instead of closing it
@@ -274,6 +272,23 @@ exe 'colorscheme '.g:colors_name
 command! -nargs=0 Restore set lines=100 columns=85
 command! -nargs=0 GitX !open -a GitX %:p:h<CR>
 command! -nargs=0 XmlIndent '[,']!xsltproc ~/.vim/misc/indent.xsl %
+" For turning fitocracy logs into tumblr posts
+function! Tumblrize()  " {{
+  normal! :%s/ reps.*$//g
+  normal! :%s/x /x/g
+endfunction
+"  }}
+" 'minimal' mode
+function! MinimalMode() " {{
+  highlight NonText ctermfg=white   " Match the tildes to your background
+  set laststatus=0                  " No statusbar
+  set nonumber                      " No line numbering
+  set showtabline=0                 " don't show the tab bar
+  set foldcolumn=4                  " Add a left margin
+  highlight! link FoldColumn Normal " Make it the background colour
+  set wrapmargin=8                  " Add a right margin, sort of
+endfunction
+" }}
 " Insert markdown reference-style link
 function! AddMarkdownReferenceLink() " {{
   call inputsave()
@@ -366,7 +381,7 @@ command! Scratch call Scratch()
 " Ruby Commands {{
 " Ruby matching strings for matchit
 function! GetRubyMatchWords()  " {{
-  return '\<if>:\<end\>,\<def\>:\<end\>'
+  return '\<if>:\<end\>,\<def\>:\<end\>,\<do\>:\<end\>'
 endfunction  " }}
 " Lists functions/methods in current file
 function! g:ListRubyFunctions()  " {{
@@ -461,8 +476,12 @@ map <leader>U :GundoToggle<CR>
 " Change LaTeX suite bindings from <C-j>
 map <leader>J <Plug>IMAP_JumpForward
 map <D-t> :CommandT<CR>
+map <C-t> :CommandT<CR>
 map <leader>x :bd!<CR>
 map <leader>B :FufBuffer<CR>
+" Need to disable easymotion bindings before doing this:
+let g:EasyMotion_mapping_F = '_f'
+map <leader>F :FufFileWithCurrentBufferDir<CR>
 "  }}
 " Normal mode bindings {{
 nnoremap <leader><leader> :
@@ -482,7 +501,7 @@ nmap <leader>P :call <SID>SynStack()<CR>
 " Visually select the text last edited/pasted
 nmap gV `[v`]
 " Reflow paragraph
-nmap Q gqgq
+nmap Q gqip
 " Using this instead of autochdir
 nmap <leader>cd :cd %:p:h<CR>
 " NERDTree bindings
@@ -499,7 +518,6 @@ nnoremap <Leader>b: :Tabularize /^[^:]*:\zs/r0c0l0<CR>
 nnoremap <Leader>b, :Tabularize /^[^,]*,\zs/r0c0l0<CR>
 " open URL under cursor in browser
 nnoremap gb :OpenURL <cfile><CR>
-nnoremap gA :OpenURL http://www.answers.com/<cword><CR>
 nnoremap gG :OpenURL http://www.google.com/search?q=<cword><CR>
 nnoremap gW :OpenURL http://en.wikipedia.org/wiki/Special:Search?search=<cword><CR>
 "  }}
@@ -552,7 +570,6 @@ onoremap <silent> in" :<C-U>normal! f"vi"<cr>
 onoremap <silent> an" :<C-U>normal! f"va"<cr>
 "  }}
 " Insert mode bindings {{
-inoremap qq <Esc>
 imap <C-Space> <C-X><C-O>
 inoremap <Left> <C-d>
 inoremap <Right> <C-t>
@@ -586,6 +603,9 @@ if has('autocmd')
           \ endif
     "}}
     autocmd BufReadCmd *.jar,*.xpi call zip#Browse(expand("<amatch>"))
+    " Onyl show line numbers in current window
+    autocmd WinEnter * setl relativenumber
+    autocmd WinLeave * setl norelativenumber
   augroup END  " }}
   augroup filetypes  " {{
     autocmd!
@@ -627,6 +647,8 @@ let NERDTreeShowHidden=1
 let NERDTreeQuitOnOpen=1
 let NERDTreeHighlightCursorLine=1
 let NERDTreeMouseMode=1
+let NERDTreeMinimalUI=1
+let NERDTreeDirArrows=1
 "  }}
 " Syntastic {{
 let g:syntastic_enable_signs=1
@@ -646,13 +668,14 @@ augroup pythonSettings
   autocmd!
   autocmd FileType python syn keyword pythonDecorator True None False self is not in
   autocmd Filetype python setl foldmethod=indent ts=4 sts=4 sw=4 cc=80
+  autocmd BufWritePost *.py call Pyflakes()
 augroup END
 "  }}
 " Ruby {{
 augroup rubySettings
   autocmd!
   autocmd FileType ruby,eruby setl omnifunc=rubycomplete#Complete cc=80
-  autocmd FileType ruby,eruby let b:match_words = 'GetRubyMatchWords()'
+  autocmd FileType ruby,eruby let b:match_words = '\<if>:\<end\>,\<def\>:\<end\>,\<do\>:\<end\>'
 augroup END
 "  }}
 " Clojure {{
@@ -669,6 +692,9 @@ augroup END
 augroup markdownSettings
   autocmd!
   autocmd FileType markdown setl foldmethod=syntax
+  autocmd FileType markdown setl spell
+  autocmd FileType markdown setl textwidth=80
+  autocmd BufEnter *.md setl makeprg=rake
   " Underline the current line with "=" signs
   autocmd FileType markdown map <buffer> <leader>_ yypVr=
   autocmd FileType markdown map <buffer> <leader>1 I# $ #<CR><CR><Esc>
@@ -679,7 +705,6 @@ augroup markdownSettings
   autocmd FileType markdown nmap <buffer> <leader>[[ <leader>[iw
   autocmd FileType markdown vmap <buffer> <leader>[ S]:call AddMarkdownReferenceLink()<CR>
   autocmd FileType markdown imap <buffer> <C-l> <Esc>b<leader>[a
-  autocmd BufEnter *.md setl spell
 augroup END
 "  }}
 " }}
