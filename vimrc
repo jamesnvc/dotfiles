@@ -188,6 +188,7 @@ let g:default_stl .= "#[Branch] %(%{substitute(fugitive#statusline(), 'GIT(\\([a
 let g:default_stl .= "#[ModFlag]%{&readonly ? '☓ ' : ''}" " RO flag
 let g:default_stl .= "#[FileName]%t " " File name
 let g:default_stl .= "<CUR>#[Error]%(%{substitute(SyntasticStatuslineFlag(), '\\[Syntax: line:\\(\\d\\+\\) \\((\\(\\d\\+\\))\\)\\?\\]', '[>][>][>] SYNTAX ␤ \\1 \\2 [>][>][>]', 'i')} %)</CUR>" " Syntastic error flag
+let g:default_stl .= "%{&ft == 'ruby' ? rvm#statusline() : ''}"
 let g:default_stl .= "#[ModFlag]%(%M %)" " Modified flag
 let g:default_stl .= "#[BufFlag]%(%H%W %)" " HLP,PRV flags
 let g:default_stl .= "#[FileNameS][>>]" " Separator
@@ -658,6 +659,7 @@ let g:syntastic_auto_loc_list=2
 let g:syntastic_disabled_filetypes = ['coffee', 'python', 'sass']
 " }}
 let g:pep8_map = '<leader>8'
+let g:rails_statusline = 0
 " }}
 
 
