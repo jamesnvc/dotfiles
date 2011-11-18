@@ -159,3 +159,9 @@
 [submodule "zsh.d/syntax-highlighting-filetypes"]
 	path = zsh.d/syntax-highlighting-filetypes
 	url = https://github.com/trapd00r/zsh-syntax-highlighting-filetypes.git
+[submodule "vim/bundle/vim-javascript"]
+	path = vim/bundle/vim-javascript
+	url = https://github.com/pangloss/vim-javascript.git
+[submodule "vim/bundle/vim-pyflakes"]
+	path = vim/bundle/vim-pyflakes
+	url = https://github.com/nvie/vim-pyflakes.git
