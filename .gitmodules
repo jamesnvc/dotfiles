@@ -168,3 +168,6 @@
 [submodule "vim/bundle/vim-afterimage"]
 	path = vim/bundle/vim-afterimage
 	url = https://github.com/tpope/vim-afterimage.git
+[submodule "vim/bundle/vim-rvm"]
+	path = vim/bundle/vim-rvm
+	url = https://github.com/tpope/vim-rvm.git
