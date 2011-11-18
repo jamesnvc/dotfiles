@@ -165,3 +165,6 @@
 [submodule "vim/bundle/vim-pyflakes"]
 	path = vim/bundle/vim-pyflakes
 	url = https://github.com/nvie/vim-pyflakes.git
+[submodule "vim/bundle/vim-afterimage"]
+	path = vim/bundle/vim-afterimage
+	url = https://github.com/tpope/vim-afterimage.git
