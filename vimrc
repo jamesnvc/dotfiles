@@ -478,7 +478,6 @@ map <leader>U :GundoToggle<CR>
 " Change LaTeX suite bindings from <C-j>
 map <leader>J <Plug>IMAP_JumpForward
 map <D-t> :CommandT<CR>
-map <C-t> :CommandT<CR>
 map <leader>x :bd!<CR>
 map <leader>B :FufBuffer<CR>
 " Need to disable easymotion bindings before doing this:
