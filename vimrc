@@ -89,7 +89,7 @@ set backupdir=$HOME/.vimbackup//
 set directory=$HOME/.vimswap//
 set viewdir=$HOME/.vimviews//
 set undodir=$HOME/.vimundo//
-" Creating backup dirs if the don't exist
+" Creating backup dirs if they don't exist
 if has('win32')
   let s:mkdirArgStr = '"\%HOME\%\.'
 else
