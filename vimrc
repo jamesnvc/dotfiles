@@ -75,13 +75,11 @@ set virtualedit+=block
 set visualbell
 set wildmenu
 set wildmode=list:longest,full
-if has('gui_running')
-  set guioptions-=T
-  set guioptions-=m
-  set guioptions-=rL
-  set guicursor=a:blinkon0
-  set guifont=Inconsolata
-endif
+set wildignore+=.hg,.git,.svn " Ignore version control files...
+set wildignore+=*.aux,*.out,*.toc " ...LaTeX chaff
+set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifst " ...compiled binary files
+set wildignore+=*.DS_Store " ...OS X weird thing
+set wildignore+=*.pyc " ...python bytecode
 if has('win32')
   set shellslash
 endif
