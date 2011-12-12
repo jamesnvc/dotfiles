@@ -523,6 +523,8 @@ nnoremap gW :OpenURL http://en.wikipedia.org/wiki/Special:Search?search=<cword><
 " Command-mode bindings {{
 " Reopen the current file as sudo
 cmap w!! w !sudo tee % > /dev/null
+" Expand to the directory of the current file
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
 cnoremap s/ s/\v
