@@ -196,7 +196,7 @@ let g:default_stl .= "<CUR>%(%{cfi#format('%s', '')} %)</CUR>" " Function name
 let g:default_stl .= "%= " " Right align
 let g:default_stl .= "<CUR>#[FileFormat]%{&fileformat} </CUR>" " File format
 let g:default_stl .= "<CUR>#[FileEncoding]%{(&fenc == '' ? &enc : &fenc)} </CUR>" " File encoding
-let g:default_stl .= "<CUR>#[Separator][<] π #[FileType]%{strlen(&ft) ? &ft : 'n/a'} </CUR>" " File type
+let g:default_stl .= "<CUR>#[Separator][<] Π #[FileType]%{strlen(&ft) ? &ft : 'n/a'} </CUR>" " File type
 let g:default_stl .= "#[LinePercentS][<<]#[LinePercent] %p%% " " Line/column/virtual column, Line percentage
 let g:default_stl .= "#[LineNumberS][<<]#[LineNumber] ␤ %l#[LineColumn]:%c%V " " Line/column/virtual column, Line percentage
 let g:default_stl .= "%{exists('g:synid') && g:synid ? '[<] '.synIDattr(synID(line('.'), col('.'), 1), 'name').' ' : ''}" " Current syntax group
@@ -272,17 +272,12 @@ exe 'colorscheme '.g:colors_name
 command! -nargs=0 Restore set lines=100 columns=85
 command! -nargs=0 GitX !open -a GitX %:p:h<CR>
 command! -nargs=0 XmlIndent '[,']!xsltproc ~/.vim/misc/indent.xsl %
-" For turning fitocracy logs into tumblr posts
-function! Tumblrize()  " {{
-  normal! :%s/ reps.*$//g
-  normal! :%s/x /x/g
-endfunction
-"  }}
 " 'minimal' mode
 function! MinimalMode() " {{
   highlight NonText ctermfg=white   " Match the tildes to your background
   set laststatus=0                  " No statusbar
   set nonumber                      " No line numbering
+  set norelativenumber
   set showtabline=0                 " don't show the tab bar
   set foldcolumn=4                  " Add a left margin
   highlight! link FoldColumn Normal " Make it the background colour
@@ -468,14 +463,12 @@ map <C-l> <C-w>l
 map <leader>ss :setlocal spell!<CR>
 map <leader>o :BufExplorer<CR>
 map <leader>C :call HexHighlight()<CR>
-" Paste from clipboard
-map <leader>p "+gP
 map Y y$
 " Undo tree
 map <leader>U :GundoToggle<CR>
 " Change LaTeX suite bindings from <C-j>
 map <leader>J <Plug>IMAP_JumpForward
-map <D-t> :CommandT<CR>
+map <leader>t :CommandT<CR>
 map <leader>x :bd!<CR>
 map <leader>B :FufBuffer<CR>
 " Need to disable easymotion bindings before doing this:
