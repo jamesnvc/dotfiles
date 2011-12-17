@@ -71,6 +71,7 @@ set smarttab
 set tabstop=2
 set undofile
 set undolevels=1000
+set viminfo
 set virtualedit+=block
 set visualbell
 set wildmenu
