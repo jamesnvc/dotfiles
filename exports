@@ -3,6 +3,7 @@
 # Current projects
 thesis_home=/Users/james/Documents/School/engSci/year4/Thesis/serverside
 tutorsos_home=/Users/james/Programming/projects/TutorSOS/tian-tutors
+ha_home=/Users/james/Programming/projects/HackerAcademy
 # Note:  Moving most PATH exports to /etc/paths.d
 export PATH=$HOME/bin:/usr/local/bin:/usr/local/sbin:$PATH:/Developer/usr/bin
 export PATH=/usr/local/ActivePerl-5.12/site/bin:$PATH
