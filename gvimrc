@@ -7,7 +7,7 @@ set guioptions-=T
 set guioptions-=m
 set guioptions-=rL
 set guicursor=a:blinkon0
-set guifont=Pragmata:h10
+set guifont=PragmataPro:h10
 if filereadable(expand("~/.gvimrc.local"))
   source ~/.gvimrc.local
 endif
