@@ -130,9 +130,6 @@
 	path = vim/bundle/gitv
 	url = https://github.com/gregsexton/gitv.git
 	ignore = untracked
-[submodule "vim/bundle/pep8"]
-	path = vim/bundle/pep8
-	url = https://github.com/vim-scripts/pep8.git
 [submodule "vim/bundle/vim-arpeggio"]
 	path = vim/bundle/vim-arpeggio
 	url = https://github.com/kana/vim-arpeggio
@@ -155,12 +152,15 @@
 [submodule "vim/bundle/vim-javascript"]
 	path = vim/bundle/vim-javascript
 	url = https://github.com/pangloss/vim-javascript.git
-[submodule "vim/bundle/vim-pyflakes"]
-	path = vim/bundle/vim-pyflakes
-	url = https://github.com/nvie/vim-pyflakes.git
 [submodule "vim/bundle/vim-afterimage"]
 	path = vim/bundle/vim-afterimage
 	url = https://github.com/tpope/vim-afterimage.git
 [submodule "vim/bundle/vim-rvm"]
 	path = vim/bundle/vim-rvm
 	url = https://github.com/tpope/vim-rvm.git
+[submodule "vim/bundle/vim-pyflakes"]
+	path = vim/bundle/vim-pyflakes
+	url = git@github.com:jamesnvc/vim-pyflakes.git
+[submodule "vim/bundle/pep8"]
+	path = vim/bundle/pep8
+	url = git@github.com:jamesnvc/pep8.git
