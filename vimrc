@@ -483,7 +483,7 @@ nnoremap k gk
 nnoremap / /\v
 nnoremap <silent> <leader>* :exe 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
-nmap <silent> <leader>sv :so $MYVIMRC<CR>
+nmap <silent> <leader>sv :so $MYVIMRC<CR>:so $MYGVIMRC<CR>
 nmap <silent> <leader>/ :let @/=""<CR>
 nmap <leader>W :w<CR>
 nmap <leader>z zMzv
