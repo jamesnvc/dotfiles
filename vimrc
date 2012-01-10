@@ -494,6 +494,7 @@ let g:syntastic_disabled_filetypes = ['coffee', 'python', 'sass']
 " }}
 let g:pep8_map = '<leader>8'
 let g:rails_statusline = 0
+let g:Powerline_symbols = 'unicode'
 " }}
 
 
