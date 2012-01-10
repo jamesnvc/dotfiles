@@ -260,6 +260,34 @@ function! OpenURL(url)
 endfunction
 command! -nargs=1 OpenURL :call OpenURL(<q-args>)
 " }}
+" Refactoring {{
+function! ExtractVariable() " {{
+  let name = input("Variable name: ")
+  if name == ''
+    return
+  endif
+  normal! gv
+  exec "normal! c" . name
+  exec "normal! O" . name . " = "
+  normal! $p
+endfunction
+"   }}
+function! InlineVariable() " {{
+  let l:tmp_a = @a
+  let l:tmp_b = @b
+  normal! "ayiW
+  " Delete variable and equal sign
+  normal! 2daW
+  normal! "bd$
+  normal! dd
+  normal! k$
+  exec '/\<' . @a . '\>'
+  exec ':s/\<' . @a . '\>/' . @b
+  let @a = l:tmp_a
+  let @b = l:tmp_b
+endfunction
+"   }}
+"  }}
 " }}
 
 
@@ -323,6 +351,7 @@ nnoremap <Leader>b, :Tabularize /^[^,]*,\zs/r0c0l0<CR>
 nnoremap gb :OpenURL <cfile><CR>
 nnoremap gG :OpenURL http://www.google.com/search?q=<cword><CR>
 nnoremap gW :OpenURL http://en.wikipedia.org/wiki/Special:Search?search=<cword><CR>
+nnoremap <leader>ri :call InlineVariable()<CR>
 "  }}
 " Command-mode bindings {{
 " Reopen the current file as sudo
@@ -342,6 +371,7 @@ vnoremap / /\v
 " Tabular
 vnoremap <Leader>b= :Tabularize /=<CR>
 vnoremap <Leader>b: :Tabularize /:\zs<CR>
+vnoremap <leader>rv :call ExtractVariable()<CR>
 " Fix linewise visual selection of various text objects
 nnoremap Vit vitVkoj
 nnoremap Vat vatV
