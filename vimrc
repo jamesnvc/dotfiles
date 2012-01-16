@@ -34,10 +34,14 @@ filetype indent on
 " ***** Set stuff ***** {{
 set autoindent
 set backspace=indent,eol,start
-set conceallevel=2 " Enable 'Conceal' mode
+if exists("&conceallevel")
+  set conceallevel=2 " Enable 'Conceal' mode
+endif
 set completeopt=longest,menuone,preview
 set cursorline
-set cryptmethod=blowfish
+if exists("&cryptmethod")
+  set cryptmethod=blowfish
+endif
 set diffopt+=iwhite " Ignore trailing whitespace in diffs
 set expandtab
 set foldenable
@@ -60,7 +64,9 @@ set makeprg=rake
 set nrformats+=alpha
 set omnifunc=syntaxcomplete#Complete
 set pastetoggle=<F2>
-set relativenumber
+if exists("&relativenumber")
+  set relativenumber
+endif
 set ruler
 set scrolloff=2
 set shiftwidth=2
@@ -69,7 +75,9 @@ set showmatch
 set smartcase
 set smarttab
 set tabstop=2
-set undofile
+if exists("&undofile")
+  set undofile
+endif
 set undolevels=1000
 set viminfo
 set virtualedit+=block
@@ -89,7 +97,9 @@ set backup
 set backupdir=$HOME/.vimbackup//
 set directory=$HOME/.vimswap//
 set viewdir=$HOME/.vimviews//
-set undodir=$HOME/.vimundo//
+if exists("&undodir")
+  set undodir=$HOME/.vimundo//
+endif
 " Creating backup dirs if they don't exist
 if has('win32')
   let s:mkdirArgStr = '"\%HOME\%\.'
