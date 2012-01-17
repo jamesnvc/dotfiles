@@ -3,11 +3,8 @@
 
 
 " ***** Setup pathogen for loading bundles ***** {{
-runtime! autoload/pathogen.vim
-if exists('g:loaded_pathogen')
-  call pathogen#runtime_append_all_bundles()
-  call pathogen#helptags()
-end
+runtime bundle/vim-pathogen/autoload/pathogen.vim
+call pathogen#infect()
 " }}
 
 
