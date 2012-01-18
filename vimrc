@@ -446,8 +446,13 @@ if has('autocmd')
     "}}
     autocmd BufReadCmd *.jar,*.xpi call zip#Browse(expand("<amatch>"))
     " Onyl show line numbers in current window
-    autocmd WinEnter * setl relativenumber
-    autocmd WinLeave * setl norelativenumber
+    if exists("&relativenumber")
+      autocmd WinEnter * setl relativenumber
+      autocmd WinLeave * setl norelativenumber
+    else
+      autocmd WinEnter * setl number
+      autocmd WinLeave * setl nonumber
+    endif
   augroup END  " }}
   augroup filetypes  " {{
     autocmd!
