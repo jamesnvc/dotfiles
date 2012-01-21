@@ -328,7 +328,11 @@ nnoremap k gk
 nnoremap / /\v
 nnoremap <silent> <leader>* :exe 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
-nmap <silent> <leader>sv :so $MYVIMRC<CR>:so $MYGVIMRC<CR>
+if has("gui_running")
+  nmap <silent> <leader>sv :so $MYVIMRC<CR>:so $MYGVIMRC<CR>
+else
+  nmap <silent> <leader>sv :so $MYVIMRC<CR>
+endif
 nmap <silent> <leader>/ :let @/=""<CR>
 nmap <leader>W :w<CR>
 nmap <leader>z zMzv
@@ -512,6 +516,9 @@ let g:Powerline_symbols = 'unicode'
 " Setting some colours {{
 highlight bufexplorermapping guifg=white
 highlight conceal guibg=black guifg=white
+if !has("gui_running")
+  hi SpellBad ctermfg=Red
+endif
 " }}
 
 
