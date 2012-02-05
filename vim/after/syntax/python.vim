@@ -24,9 +24,13 @@ syntax match pyNiceKeyword "\<\%(math\.\)\?pi\>" conceal cchar=π
 
 syntax keyword pyNiceStatement lambda conceal cchar=λ
 
-syn match pyNiceVariable '\<alpha\%(\a\)\@!' conceal cchar=α
-syn match pyNiceVariable '\<epsilon\%(\a\)\@!' conceal cchar=ε
-syn match pyNiceVariable '\<theta\%(\a\)\@!' conceal cchar=θ
+syn match pyNiceVariable '\a\@<!alpha\%(\a\)\@!' conceal cchar=α containedin=pythonFunction
+syn match pyNiceVariable '\a\@<!Delta\%(\a\)\@!' conceal cchar=Δ containedin=pythonFunction
+syn match pyNiceVariable '\a\@<!delta\%(\a\)\@!' conceal cchar=δ containedin=pythonFunction
+syn match pyNiceVariable '\a\@<!epsilon\%(\a\)\@!' conceal cchar=ε containedin=pythonFunction
+syn match pyNiceVariable '\a\@<!theta\%(\a\)\@!' conceal cchar=θ containedin=pythonFunction
+syn match pyNiceVariable '\a\@<!eta\%(\a\)\@!' conceal cchar=η containedin=pythonFunction
+syn match pyNiceVariable '\a\@<!nabla\%(\a\)\@!' conceal cchar=∇ containedin=pythonFunction
 
 hi link pyNiceOperator Operator
 hi link pyNiceStatement Statement
