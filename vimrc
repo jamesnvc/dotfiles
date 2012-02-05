@@ -295,6 +295,33 @@ function! InlineVariable() " {{
 endfunction
 "   }}
 "  }}
+" Tab setting functions {{
+" From Wolever
+" HardTabs([width=8]): Sets up the current buffers so that:
+" - '\t' is 'widith' wide
+" - '<tab>' inserts a '\t'
+" - '>>' shifts one tab
+function! HardTabs(...) " {{
+    let width = (a:0 > 0? a:1 : 8)
+    let &l:tabstop=width
+    let &l:softtabstop=width
+    let &l:shiftwidth=width
+    let &l:expandtab=0
+  endfunction " }}
+
+" SoftTabs([softWidth=4, [hardWidth=8]]): Sets up the current buffers so that:
+" - '\t' is 'hardWidth' wide
+" - '<tab>' inserts 'softWidth' spaces
+" - '>>' shifts with 'softWidth' spaces
+fun! SoftTabs(...) " {{
+    let softWidth = (a:0 > 0? a:1 : 4)
+    let hardWidth = (a:0 > 1? a:2 : 8)
+    let &l:tabstop=hardWidth
+    let &l:softtabstop=softWidth
+    let &l:shiftwidth=softWidth
+    let &l:expandtab=1
+endfun " }}
+"  }}
 " }}
 
 
@@ -317,9 +344,9 @@ map <leader>J <Plug>IMAP_JumpForward
 map <leader>t :CommandT<CR>
 map <leader>x :bd!<CR>
 map <leader>B :FufBuffer<CR>
-" Need to disable easymotion bindings before doing this:
-let g:EasyMotion_mapping_F = '_f'
 map <leader>F :FufFileWithCurrentBufferDir<CR>
+" Execute current file (assuming it's a script)
+map <leader>R :!./%<CR>
 "  }}
 " Normal mode bindings {{
 nnoremap <leader><leader> :
