@@ -4,7 +4,8 @@
 
 " ***** Setup pathogen for loading bundles ***** {{
 runtime bundle/vim-pathogen/autoload/pathogen.vim
-call pathogen#infect()
+call pathogen#infect('~/.vim/bundle')
+Helptags
 " }}
 
 
