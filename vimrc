@@ -5,7 +5,6 @@
 " ***** Setup pathogen for loading bundles ***** {{
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 call pathogen#infect('~/.vim/bundle')
-Helptags
 " }}
 
 
@@ -534,6 +533,11 @@ let g:syntastic_auto_loc_list=2
 " Don't use syntastic for coffeescript (screws up) or python (pyflakes
 " instead)
 let g:syntastic_disabled_filetypes = ['coffee', 'python', 'sass']
+" }}
+" UltiSnips  {{
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 " }}
 let g:pep8_map = '<leader>8'
 let g:rails_statusline = 0
