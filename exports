@@ -19,7 +19,6 @@ export NODE_PATH=/usr/local/lib/node_modules
 if [ `uname` = 'Darwin' ]; then
   export CFLAGS="-isysroot /Developer/SDKs/MacOSX10.7.sdk"
 fi
-export PYTHONPATH=$HOME/lib/python:$PYTHONPATH
 export FULLNAME="James Cash"
 export EMAIL="james.nvc@gmail.com"
 if [ -z $JAVA_HOME ]; then
