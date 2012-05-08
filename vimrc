@@ -388,8 +388,8 @@ nmap <Leader>m :NERDTreeClose<CR>:NERDTreeFind<CR>
 nmap <leader>N :NERDTreeClose<CR>
 nmap gt <C-w>gf
 nmap gT <C-w>gF
-nmap <leader><Left> :tabprevious<CR>
-nmap <leader><Right> :tabnext<CR>
+nmap <Left> :tabprevious<CR>
+nmap <Right> :tabnext<CR>
 " Tabular
 nnoremap <Leader>b= :Tabularize /=<CR>
 nnoremap <Leader>b: :Tabularize /^[^:]*:\zs/r0c0l0<CR>
