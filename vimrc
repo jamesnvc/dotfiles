@@ -337,25 +337,25 @@ endfun " }}
 " ***** Keybindings ***** {{
 " Normal/operator-pending/visual-mode bindings {{
 " Make navigating windows easier
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
 " Toggle spellchecking
-map <leader>ss :setlocal spell!<CR>
-map <leader>o :BufExplorer<CR>
-map <leader>C :call HexHighlight()<CR>
-map Y y$
+noremap <leader>ss :setlocal spell!<CR>
+noremap <leader>o :BufExplorer<CR>
+noremap <leader>C :call HexHighlight()<CR>
+noremap Y y$
 " Undo tree
-map <leader>U :GundoToggle<CR>
+noremap <leader>U :GundoToggle<CR>
 " Change LaTeX suite bindings from <C-j>
-map <leader>J <Plug>IMAP_JumpForward
-map <leader>t :CommandT<CR>
-map <leader>x :bd!<CR>
-map <leader>B :FufBuffer<CR>
-map <leader>F :FufFileWithCurrentBufferDir<CR>
+noremap <leader>J <Plug>IMAP_JumpForward
+noremap <leader>t :CommandT<CR>
+noremap <leader>x :bd!<CR>
+noremap <leader>B :FufBuffer<CR>
+noremap <leader>F :FufFileWithCurrentBufferDir<CR>
 " Execute current file (assuming it's a script)
-map <leader>R :!./%<CR>
+noremap <leader>R :!./%<CR>
 "  }}
 " Normal mode bindings {{
 nnoremap <leader><leader> :
@@ -363,33 +363,33 @@ nnoremap j gj
 nnoremap k gk
 nnoremap / /\v
 nnoremap <silent> <leader>* :exe 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
-nmap <silent> <leader>ev :e $MYVIMRC<CR>
+nnoremap <silent> <leader>ev :e $MYVIMRC<CR>
 if has("gui_running")
-  nmap <silent> <leader>sv :so $MYVIMRC<CR>:so $MYGVIMRC<CR>
+  nnoremap <silent> <leader>sv :so $MYVIMRC<CR>:so $MYGVIMRC<CR>
 else
-  nmap <silent> <leader>sv :so $MYVIMRC<CR>
+  nnoremap <silent> <leader>sv :so $MYVIMRC<CR>
 endif
-nmap <silent> <leader>/ :let @/=""<CR>
-nmap <leader>W :w<CR>
-nmap <leader>z zMzv
-nmap <leader>G :Gstatus<CR>
-nmap <leader>g :grep <C-R>=expand("<cword>")<CR><CR>
+nnoremap <silent> <leader>/ :let @/=""<CR>
+nnoremap <leader>W :w<CR>
+nnoremap <leader>z zMzv
+nnoremap <leader>G :Gstatus<CR>
+nnoremap <leader>g :grep <C-R>=expand("<cword>")<CR><CR>
 " Show syntax group
-nmap <leader>P :call <SID>SynStack()<CR>
+nnoremap <leader>P :call <SID>SynStack()<CR>
 " Visually select the text last edited/pasted
-nmap gV `[v`]
+nnoremap gV `[v`]
 " Reflow paragraph
-nmap Q gqip
+nnoremap Q gqip
 " Using this instead of autochdir
-nmap <leader>cd :cd %:p:h<CR>
+nnoremap <leader>cd :cd %:p:h<CR>
 " NERDTree bindings
-nmap <leader>n :NERDTreeClose<CR>:NERDTreeToggle<CR>
-nmap <Leader>m :NERDTreeClose<CR>:NERDTreeFind<CR>
-nmap <leader>N :NERDTreeClose<CR>
-nmap gt <C-w>gf
-nmap gT <C-w>gF
-nmap <Left> :tabprevious<CR>
-nmap <Right> :tabnext<CR>
+nnoremap <leader>n :NERDTreeClose<CR>:NERDTreeToggle<CR>
+nnoremap <Leader>m :NERDTreeClose<CR>:NERDTreeFind<CR>
+nnoremap <leader>N :NERDTreeClose<CR>
+nnoremap gt <C-w>gf
+nnoremap gT <C-w>gF
+nnoremap <Left> :tabprevious<CR>
+nnoremap <Right> :tabnext<CR>
 " Tabular
 nnoremap <Leader>b= :Tabularize /=<CR>
 nnoremap <Leader>b: :Tabularize /^[^:]*:\zs/r0c0l0<CR>
@@ -402,18 +402,19 @@ nnoremap <leader>ri :call InlineVariable()<CR>
 "  }}
 " Command-mode bindings {{
 " Reopen the current file as sudo
-cmap w!! w !sudo tee % > /dev/null
+cnoremap w!! w !sudo tee % > /dev/null
 " Expand to the directory of the current file
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
 cnoremap s/ s/\v
+cnoremap e%% echo expand("%:p")<cr>
 "  }}
 " Visual-mode bindings {{
-vmap Q gq
+vnoremap Q gq
 " Bubble multiple lines up/down using unimpared plugin.
-vmap <C-Up> [egv
-vmap <C-Down> ]egv
+vnoremap <C-Up> [egv
+vnoremap <C-Down> ]egv
 vnoremap / /\v
 " Tabular
 vnoremap <Leader>b= :Tabularize /=<CR>
@@ -452,7 +453,7 @@ onoremap <silent> in" :<C-U>normal! f"vi"<cr>
 onoremap <silent> an" :<C-U>normal! f"va"<cr>
 "  }}
 " Insert mode bindings {{
-imap <C-Space> <C-X><C-O>
+inoremap <C-Space> <C-X><C-O>
 inoremap <Left> <C-d>
 inoremap <Right> <C-t>
 " Make end of sentences set an undo point to facilitate typing long stretches
