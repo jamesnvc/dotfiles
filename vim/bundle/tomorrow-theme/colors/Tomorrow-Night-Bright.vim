@@ -325,8 +325,9 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	call <SID>X("javaScriptMember", s:orange, "", "")
 
 	" Diff Highlighting
-	call <SID>X("diffAdded", s:green, "", "")
-	call <SID>X("diffRemoved", s:red, "", "")
+	call <SID>X("DiffAdd", s:green, s:line, "")
+	call <SID>X("DiffDelete", s:red, s:line, "")
+	call <SID>X("DiffChange", s:purple, s:line, "")
 
 	" Delete Functions
 	delf <SID>X
