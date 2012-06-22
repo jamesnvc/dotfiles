@@ -20,7 +20,8 @@ end
 syntax enable
 set background=dark
 let g:solarized_visibility = "low"
-colorscheme solarized
+"colorscheme solarized
+colorscheme Tomorrow-Night-Bright
 
 " Use a bar-shaped cursor for insert mode, even through tmux.
 if exists('$TMUX')
