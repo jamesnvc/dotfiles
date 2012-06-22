@@ -9,6 +9,13 @@
   lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
   slog = log --decorate --stat --graph --pretty=format:'%C(yellow)%h%Creset (%ar - %Cred%an%Creset), %s%n'
 	vim = !vim .git/index
+  s = status --short
+  d = diff
+  dc = diff --cached
+  dw = diff --word-diff
+  cm = commit -m
+  co = checkout
+  a = add
 [color]
   branch = auto
   diff = auto
