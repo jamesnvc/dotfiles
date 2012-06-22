@@ -9,6 +9,7 @@ export PATH=/usr/local/ActivePerl-5.12/site/bin:$PATH
 export PATH=/usr/local/ActivePerl-5.12/bin:$PATH
 export PATH=/usr/local/lib/node:$PATH
 export PATH=/Library/TeX/Distributions/TeXLive-2011.texdist/Contents/Programs/texbin:$PATH
+export PATH=$HOME/Dropbox/dotfiles/git-util:$PATH
 # Perlbrew
 source /Users/james/perl5/perlbrew/etc/bashrc
 # Node stuff
