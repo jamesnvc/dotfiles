@@ -23,3 +23,4 @@
   status = auto
 [core]
 	excludesfile = ~/.cvsignore
+	autocrlf = input
