@@ -1,1 +1,1 @@
-set foldmarker=[[,]] foldlevel=0 foldmethod=marker
+setlocal foldmarker=[[,]] foldlevel=0 foldmethod=marker

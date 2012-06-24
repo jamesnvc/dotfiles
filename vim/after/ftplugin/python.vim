@@ -1,8 +1,8 @@
 let python_highlight_all = 1
 
-setl ts=4 sts=4 sw=4
+setlocal tabstop=4 softtabstop=4 shiftwidth=4
 if exists('+colorcolumn')
-  setl cc=80
+  setlocal colorcolumn=80
 endif
 
 " Add the virtualenv's site-packages to vim path
