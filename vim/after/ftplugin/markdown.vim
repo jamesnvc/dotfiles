@@ -3,7 +3,7 @@ setl spell
 setl textwidth=80
 
 " Insert markdown reference-style link
-function! AddMarkdownReferenceLink() " {{
+function! s:AddMarkdownReferenceLink() " {{
   call inputsave()
   let refLink = input("Reference label: ")
   call inputrestore()
@@ -18,7 +18,7 @@ function! AddMarkdownReferenceLink() " {{
   call cursor(l, c)
 endfunction
 
-function! AddMarkdownReferenceLinkSel(type)
+function! s:AddMarkdownReferenceLinkSel(type)
   let sel_save = &selection
   let &selection = "inclusive"
 
@@ -30,7 +30,7 @@ function! AddMarkdownReferenceLinkSel(type)
     silent exe "normal `[v`]S]"
   endif
   let &selection = sel_save
-  call AddMarkdownReferenceLink()
+  call <SID>AddMarkdownReferenceLink()
 endfunction
 " }}
 
@@ -40,7 +40,7 @@ map <buffer> <leader>1 I# $ #<CR><CR><Esc>
 map <buffer> <leader>2 I## $ ##<CR><CR><Esc>
 map <buffer> <leader>3 I### $ ###<CR><CR><Esc>
 " Wrap the next word as a markdown link
-nmap <buffer> <leader>[ :set opfunc=AddMarkdownReferenceLinkSel<CR>g@
+nmap <buffer> <leader>[ :set opfunc=<SID>AddMarkdownReferenceLinkSel<CR>g@
 nmap <buffer> <leader>[[ <leader>[iw
-vmap <buffer> <leader>[ S]:call AddMarkdownReferenceLink()<CR>
+vmap <buffer> <leader>[ S]:call <SID>AddMarkdownReferenceLink()<CR>
 imap <buffer> <C-l> <Esc>b<leader>[a
