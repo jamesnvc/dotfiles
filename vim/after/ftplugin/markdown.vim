@@ -35,12 +35,12 @@ endfunction
 " }}
 
 " Underline the current line with "=" signs
-map <buffer> <leader>_ yypVr=
-map <buffer> <leader>1 I# $ #<CR><CR><Esc>
-map <buffer> <leader>2 I## $ ##<CR><CR><Esc>
-map <buffer> <leader>3 I### $ ###<CR><CR><Esc>
+nnoremap <buffer> <leader>_ yypVr=
+nnoremap <buffer> <leader>1 I# $ #<CR><CR><Esc>
+nnoremap <buffer> <leader>2 I## $ ##<CR><CR><Esc>
+nnoremap <buffer> <leader>3 I### $ ###<CR><CR><Esc>
 " Wrap the next word as a markdown link
-nmap <buffer> <leader>[ :set opfunc=<SID>AddMarkdownReferenceLinkSel<CR>g@
-nmap <buffer> <leader>[[ <leader>[iw
-vmap <buffer> <leader>[ S]:call <SID>AddMarkdownReferenceLink()<CR>
-imap <buffer> <C-l> <Esc>b<leader>[a
+nnoremap <buffer> <leader>[ :set opfunc=<SID>AddMarkdownReferenceLinkSel<CR>g@
+nnoremap <buffer> <leader>[[ <leader>[iw
+vnoremap <buffer> <leader>[ S]:call <SID>AddMarkdownReferenceLink()<CR>
+inoremap <buffer> <C-l> <Esc>b<leader>[a
