@@ -86,7 +86,6 @@ if exists("&undofile")
   set undofile
 endif
 set undolevels=1000
-set viminfo
 set virtualedit+=block
 set visualbell
 set wildmenu
