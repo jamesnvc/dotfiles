@@ -182,3 +182,6 @@
 [submodule "git-util"]
 	path = git-util
 	url = git@github.com:jamesnvc/git-util.git
+[submodule "vim/bundle/potion"]
+	path = vim/bundle/potion
+	url = git@github.com:jamesnvc/potion.git
