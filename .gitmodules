@@ -185,3 +185,9 @@
 [submodule "vim/bundle/potion"]
 	path = vim/bundle/potion
 	url = git@github.com:jamesnvc/potion.git
+[submodule "vim/bundle/badwolf"]
+	path = vim/bundle/badwolf
+	url = git://github.com/sjl/badwolf.git
+[submodule "vim/bundle/threesome.vim"]
+	path = vim/bundle/threesome.vim
+	url = https://github.com/sjl/threesome.vim.git
