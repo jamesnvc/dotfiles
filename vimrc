@@ -11,7 +11,8 @@ call pathogen#infect('~/.vim/bundle')
 " ***** Basic settings ***** {{
 set nocompatible
 set encoding=utf-8
-let mapleader = " "
+let mapleader = ' '
+let maplocalleader = '\'
 
 if !has('gui_running')
   set t_Co=256
