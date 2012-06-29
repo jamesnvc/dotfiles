@@ -357,6 +357,7 @@ noremap <leader>B :FufBuffer<CR>
 noremap <leader>F :FufFileWithCurrentBufferDir<CR>
 " Execute current file (assuming it's a script)
 noremap <leader>R :!./%<CR>
+noremap <F12> :TagbarToggle<CR>
 "  }}
 " Normal mode bindings {{
 nnoremap <leader><leader> :
@@ -549,6 +550,10 @@ let g:syntastic_disabled_filetypes = ['coffee', 'python', 'sass']
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+" }}
+" Tagbar {{
+let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
+let g:tagbar_usearrows = 1
 " }}
 let g:pep8_map = '<leader>8'
 let g:rails_statusline = 0
