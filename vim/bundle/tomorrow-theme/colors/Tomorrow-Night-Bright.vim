@@ -251,6 +251,8 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 	call <SID>X("MatchParen", "", s:selection, "")
 	call <SID>X("Folded", s:comment, s:background, "")
 	call <SID>X("FoldColumn", "", s:background, "")
+	call <SID>X("SpellBad", s:red, s:background, "underline")
+	call <SID>X("SpellCap", s:yellow, s:background, "underline")
 	if version >= 700
 		call <SID>X("CursorLine", "", s:line, "none")
 		call <SID>X("CursorColumn", "", s:line, "none")
@@ -263,7 +265,7 @@ if has("gui_running") || &t_Co == 88 || &t_Co == 256
 
 	" Standard Highlighting
 	call <SID>X("Comment", s:comment, "", "")
-	call <SID>X("Todo", s:comment, s:background, "underline")
+	call <SID>X("Todo", s:comment, "", "underline")
 	call <SID>X("Title", s:comment, "", "")
 	call <SID>X("Identifier", s:red, "", "none")
 	call <SID>X("Statement", s:aqua, "", "")
