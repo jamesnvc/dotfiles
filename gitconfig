@@ -1,6 +1,7 @@
 [user]
   email = james.nvc@gmail.com
   name = James N. V. Cash
+	signingkey = AD2003ED
 [github]
   user = jamesnvc
   token = d2c0dd78e36ef56407e79e56ca60df12
@@ -16,6 +17,8 @@
   cm = commit -m
   co = checkout
   a = add
+  br = branch
+  po = push origin
 [color]
   branch = auto
   diff = auto
