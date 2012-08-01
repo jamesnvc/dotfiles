@@ -1,0 +1,4 @@
+# vim: filetype=muttrc
+
+push <edit-from>'James N.V. Cash <james.cash@occasionallycogent.com>'<enter>
+macro compose v "<enter-command>source ~/.mutt/switch_to_penyopal<enter>" "Toggle from address"
