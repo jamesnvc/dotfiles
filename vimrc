@@ -342,6 +342,7 @@ endfun " }}
 
 " ***** Keybindings ***** {{
 " Normal/operator-pending/visual-mode bindings {{
+noremap * :let @/="\\<<C-r><C-w>\\>"<CR>
 " Make navigating windows easier
 noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
