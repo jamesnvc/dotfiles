@@ -377,6 +377,12 @@ if has("gui_running")
 else
   nnoremap <silent> <leader>sv :so $MYVIMRC<CR>
 endif
+" Highlight text under cursor {{
+nnoremap <silent> <leader>hh :execute 'match InterestingWord1 /\<<C-r><C-w>\>/'<CR>
+nnoremap <silent> <leader>h1 :execute 'match InterestingWord1 /\<<C-r><C-w>\>/'<CR>
+nnoremap <silent> <leader>h2 :execute '2match InterestingWord2 /\<<C-r><C-w>\>/'<CR>
+nnoremap <silent> <leader>h3 :execute '3match InterestingWord3 /\<<C-r><C-w>\>/'<CR>
+" }}
 nnoremap <silent> <leader>/ :let @/=""<CR>
 nnoremap <leader>W :w<CR>
 nnoremap <leader>z zMzv
@@ -568,6 +574,9 @@ let g:Powerline_symbols = 'unicode'
 
 
 " Setting some colours {{
+highlight InterestingWord1 ctermbg=110
+highlight InterestingWord2 ctermbg=148
+highlight InterestingWord3 ctermbg=172
 highlight bufexplorermapping guifg=white
 highlight conceal guibg=black guifg=white
 if !has("gui_running")
