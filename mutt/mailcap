@@ -1,2 +1,3 @@
-text/html; w3m -I %{charset} -T text/html; copiousoutput;
-
+text/html; open '%s';
+text/html; lynx -stdin -dump -force_html ; copiousoutput
+image/jpeg; open '%s';
