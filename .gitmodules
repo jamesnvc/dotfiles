@@ -191,3 +191,6 @@
 [submodule "vim/bundle/threesome.vim"]
 	path = vim/bundle/threesome.vim
 	url = https://github.com/sjl/threesome.vim.git
+[submodule "vim/bundle/tslime.vim"]
+	path = vim/bundle/tslime.vim
+	url = git://github.com/sjl/tslime.vim.git
