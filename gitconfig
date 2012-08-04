@@ -1,15 +1,17 @@
 [user]
   email = james.nvc@gmail.com
   name = James N. V. Cash
-	signingkey = AD2003ED
+  signingkey = AD2003ED
 [github]
   user = jamesnvc
   token = d2c0dd78e36ef56407e79e56ca60df12
+[push]
+  default = current
 [alias]
   lol = log --graph --decorate --pretty=oneline --abbrev-commit
   lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
   slog = log --decorate --stat --graph --pretty=format:'%C(yellow)%h%Creset (%ar - %Cred%an%Creset), %s%n'
-	vim = !vim .git/index
+  vim = !vim .git/index
   s = status --short
   d = diff
   dc = diff --cached
@@ -25,10 +27,10 @@
   interactive = auto
   status = auto
 [core]
-	excludesfile = ~/.cvsignore
-	autocrlf = input
+  excludesfile = ~/.cvsignore
+  autocrlf = input
 [merge]
-	tool = threesome
+  tool = threesome
 [mergetool "threesome"]
-	cmd = "vim -f $BASE $LOCAL $REMOTE $MERGED -c 'ThreesomeInit'"
-	trustExitCode = true
+  cmd = "vim -f $BASE $LOCAL $REMOTE $MERGED -c 'ThreesomeInit'"
+  trustExitCode = true
