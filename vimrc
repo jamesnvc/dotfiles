@@ -12,7 +12,7 @@ call pathogen#infect('~/.vim/bundle')
 set nocompatible
 set encoding=utf-8
 let mapleader = ' '
-let maplocalleader = '\'
+let maplocalleader = "\\"
 
 if !has('gui_running')
   set t_Co=256
@@ -82,6 +82,8 @@ set softtabstop=2
 set showmatch
 set smartcase
 set smarttab
+set splitbelow
+set splitright
 set tabstop=2
 if exists("&undofile")
   set undofile
@@ -343,6 +345,10 @@ endfun " }}
 " ***** Keybindings ***** {{
 " Normal/operator-pending/visual-mode bindings {{
 noremap * :let @/="\\<<C-r><C-w>\\>"<CR>
+noremap j gj
+noremap k gk
+noremap gj j
+noremap gk k
 " Make navigating windows easier
 noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
@@ -367,8 +373,6 @@ noremap <F12> :TagbarToggle<CR>
 "  }}
 " Normal mode bindings {{
 nnoremap <leader><leader> :
-nnoremap j gj
-nnoremap k gk
 nnoremap / /\v
 nnoremap <silent> <leader>* :exe 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 nnoremap <silent> <leader>ev :e $MYVIMRC<CR>
@@ -470,6 +474,8 @@ onoremap <silent> an" :<C-U>normal! f"va"<cr>
 inoremap <C-Space> <C-X><C-O>
 inoremap <Left> <C-d>
 inoremap <Right> <C-t>
+inoremap <C-a> <Esc>I
+inoremap <C-e> <Esc>A
 " Make end of sentences set an undo point to facilitate typing long stretches
 inoremap . .<C-g>u
 inoremap ! !<C-g>u
@@ -508,6 +514,7 @@ if has('autocmd')
       autocmd WinEnter * setl number
       autocmd WinLeave * setl nonumber
     endif
+    autocmd VimResized * :wincmd =
   augroup END  " }}
   augroup filetypes  " {{
     autocmd!
