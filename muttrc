@@ -1,8 +1,8 @@
 # A basic .muttrc for use with Gmail
 # vim: set foldmethod=marker foldmarker={{,}} :
 
-source ~/.mutt/themes/mutt-colors-solarized/mutt-colors-solarized-dark-256.muttrc
-#source ~/.mutt/themes/mutt-colors-tomorrow-night.muttrc
+#source ~/.mutt/themes/mutt-colors-solarized/mutt-colors-solarized-dark-256.muttrc
+source ~/.mutt/themes/tomorrow-night
 #source ~/.mutt/themes/calmar.dark
 
 # Basic Settings {{
@@ -46,6 +46,13 @@ hdr_order Date From To Cc
 alternative_order text/plain text/html *
 auto_view text/html
 set status_on_top
+#set pager_index_lines = 8
+#set pager_context = 5
+#set pager_stop
+set menu_scroll
+set smart_wrap
+set tilde
+unset markers
 # }}
 
 # Composing {{
@@ -81,12 +88,23 @@ set pgp_good_sign="^gpg: Good signature from"
 bind editor <Tab> complete-query
 bind editor ^T complete
 bind editor <space> noop
-#macro compose v "<edit-from>identity_<tab>" "Select from"
 macro compose v "<enter-command>source ~/.mutt/switch_to_penyopal<enter>" "Toggle from address"
-# Gmail-style keyboard shortcuts
+# Notmuch shortcuts {{
+ macro index <F8> \
+       "<enter-command>unset wait_key<enter><shell-escape>notmuch-mutt --prompt search<enter><change-folder-readonly>`echo ${XDG_CACHE_HOME:-$HOME/.cache}/notmuch/mutt/results`<enter>" \
+       "notmuch: search mail"
+ macro index <F9> \
+       "<enter-command>unset wait_key<enter><pipe-message>notmuch-mutt thread<enter><change-folder-readonly>`echo ${XDG_CACHE_HOME:-$HOME/.cache}/notmuch/mutt/results`<enter><enter-command>set wait_key<enter>" \
+       "notmuch: reconstruct thread"
+ macro index <F6> \
+       "<enter-command>unset wait_key<enter><pipe-message>notmuch-mutt tag -- -inbox<enter>" \
+       "notmuch: remove message from inbox"
+# }}
+# Gmail-style keyboard shortcuts {{
 macro index,pager gi "<change-folder>=INBOX<enter>" "Go to inbox"
 macro index,pager ga "<change-folder>=[Gmail].All Mail<enter>" "Go to all mail"
 macro index,pager gs "<change-folder>=[Gmail].Starred<enter>" "Go to starred messages"
 macro index,pager gd "<change-folder>=[Gmail].Drafts<enter>" "Go to drafts"
 macro index,pager \cb "|urlview\n" "Open url with 'open'"
+# }}
 # }}
