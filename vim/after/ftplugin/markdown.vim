@@ -1,4 +1,34 @@
-setlocal foldmethod=syntax
+function! Foldexpr_markdown(lnum)
+  let l1 = getline(a:lnum)
+
+  if l1=~ '^\s*$'
+    return '='
+  endif
+
+  let l2 = getline(a:lnum + 1)
+  if l2 =~ '^==\+\s*'
+    " Next line underlined (level 1)
+    return '>1'
+  elseif l2 =~ '^--\+\s*'
+    " Next line is underlined (level 2)
+    return '>2'
+  elseif l1 =~ '^#'
+    " Current line starts with octothorpes
+    return '>' . matchend(l1, '^#\+')
+  elseif a:lnum == 1
+    " fold any preamble
+    return '>1'
+  else
+    return '='
+  endif
+endfunction
+
+setlocal foldexpr=Foldexpr_markdown(v:lnum)
+setlocal foldmethod=expr
+setlocal foldenable
+setlocal foldlevel=0
+setlocal foldcolumn=0
+
 setlocal spell
 setlocal textwidth=80
 
