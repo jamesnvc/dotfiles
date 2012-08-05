@@ -12,7 +12,7 @@ call pathogen#infect('~/.vim/bundle')
 set nocompatible
 set encoding=utf-8
 let mapleader = ' '
-let maplocalleader = "\\"
+let maplocalleader = '\'
 
 if !has('gui_running')
   set t_Co=256
@@ -98,6 +98,7 @@ set wildignore+=*.aux,*.out,*.toc " ...LaTeX chaff
 set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifst " ...compiled binary files
 set wildignore+=*.DS_Store " ...OS X weird thing
 set wildignore+=*.pyc " ...python bytecode
+set wildignore+=classes,lib " .. clojure/leiningen
 if has('win32')
   set shellslash
 endif
@@ -541,6 +542,15 @@ if has('autocmd')
       \ endif
     autocmd BufReadPost fugitive://* set bufhidden=delete
   augroup END  "}}
+  augroup slimv " {{
+    autocmd!
+
+    autocmd BufWinEnter            SLIMV.REPL setlocal nolist
+    autocmd BufNewFile,BufReadPost SLIMV.REPL setlocal nowrap foldlevel=99
+    autocmd BufNewFile,BufReadPost SLIMV.REPL nnoremap <buffer> A GA
+    autocmd BufNewFile,BufReadPost SLIMV.REPL nnoremap <buffer> <localleader>R :emenu REPL.<Tab>
+
+  augroup END "}}
 endif
 " }}
 
@@ -573,6 +583,15 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 " Tagbar {{
 let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
 let g:tagbar_usearrows = 1
+" }}
+" Slimv {{
+let g:slimv_leader = '\'
+let g:slimv_keybindings = 2
+let g:slimv_repl_name = 'SLIMV.REPL'
+let g:slimv_repl_split = 4
+let g:slimv_repl_wrap = 0
+let g:slimv_swank_clojure = '!dtach -n /tmp/dtach-swank.sock -r winch lein swank'
+let g:paredit_mode = 0
 " }}
 let g:pep8_map = '<leader>8'
 let g:rails_statusline = 0
