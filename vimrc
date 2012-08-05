@@ -364,7 +364,6 @@ noremap Y y$
 noremap <leader>U :GundoToggle<CR>
 " Change LaTeX suite bindings from <C-j>
 noremap <leader>J <Plug>IMAP_JumpForward
-noremap <leader>t :CommandT<CR>
 noremap <leader>x :bd!<CR>
 noremap <leader>B :FufBuffer<CR>
 noremap <leader>F :FufFileWithCurrentBufferDir<CR>
@@ -556,6 +555,11 @@ endif
 
 
 " ***** Plugin options ***** {{
+" Ctrl-p {{
+let g:ctrlp_map = '<leader>t'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_working_path_mode = 2
+" }}
 " NERDTree stuff {{
 let NERDTreeBookmarksFile=expand("$HOME/.vim/NERDTreeBookmarks")
 let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.o$', '\.git', '\.so' ]
