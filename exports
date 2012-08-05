@@ -14,8 +14,8 @@ export PATH=$HOME/Dropbox/dotfiles/git-util:$PATH
 source /Users/james/perl5/perlbrew/etc/bashrc
 # Node stuff
 export NODE_PATH=/usr/local/lib/node_modules
-# RVM stuf
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+[[ -s "$HOME/.pythonbrew/etc/bashrc" ]] && source "$HOME/.pythonbrew/etc/bashrc"
 export IOS_SDK="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk"
 # Needed to make building stuff under Lion work
 #if [ `uname` = 'Darwin' ]; then
