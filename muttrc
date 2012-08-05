@@ -1,67 +1,104 @@
 # A basic .muttrc for use with Gmail
 # vim: set foldmethod=marker foldmarker={{,}} :
 
-#source ~/.mutt/themes/mutt-colors-solarized/mutt-colors-solarized-dark-256.muttrc
-source ~/.mutt/themes/tomorrow-night
-#source ~/.mutt/themes/calmar.dark
-
-# Basic Settings {{
-set realname = "James N. V. Cash"
-set from = "james.cash@occasionallycogent.com"
-set editor = "vim +7"
-unset help
-unset move
+# Paths {{
+set alias_file = ~/.mutt/aliases
+set header_cache = ~/.mutt/cache/headers
+set message_cachedir = ~/.mutt/cache/bodies
+set certificate_file = ~/.mutt/certificates
+set mailcap_path = ~/.mutt/mailcap
+set tmpdir = ~/.mutt/temp
+set signature = ~/.mutt/sig
+set mailcap_path = ~/.mutt/mailcap
 # }}
 
-# Reading mail settings {{
+# Basic settings {{
+source ~/.vim/bundle/badwolf/contrib/badwolf.muttrc
+
+set editor = "vim -c 'normal! }' -c 'redraw'"
+set query_command = "contacts -Sf '%eTOKEN%n' '%s' | sed -e 's/TOKEN/\t/g'"
+set wait_key = no
+set timeout = 3
+set mail_check = 0
+unset move
+set delete
+unset mark_old
+set beep_new
+set pipe_decode
+set thorough_search
+# }}
+
+# Status bar {{
+set status_chars = " *%A"
+set status_format = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?───"
+# }}
+
+# Mailbox settings {{
 set mbox_type = Maildir
 set folder = "~/Maildir"
 set mask = "!^\\.[^.]"
 set mbox = "+[Gmail]/All Mail"
 set spoolfile = "+INBOX"
-set postponed = "+[GMail].Drafts"
-set record = "+[GMail].Sent Mail"
+set postponed = "+[Gmail].Drafts"
+set record = "+[Gmail].Sent Mail"
 mailboxes +INBOX
 # }}
 
 # Sending mail settings {{
 set sendmail = /usr/local/bin/msmtp
+set sendmail_wait = 0
 # }}
 
-# Local server settings {{
-set header_cache=~/.mutt/cache/headers
-set message_cachedir=~/.mutt/cache/bodies
-set certificate_file=~/.mutt/certificates
-set query_command="goobook query '%s'"
-# }}
-
-# View settings {{
-set include
+# Index View settings {{
+set date_format = "%d/%m"
+set index_format = "[%Z]  %d   %-20.20F  %s"
 set sort = threads
-set sort_aux = last-date-received
+set sort_aux = reverse-last-date-received
 set sort_re
-set auto_tag = yes
-set mailcap_path = ~/.mutt/mailcap
-hdr_order Date From To Cc
-alternative_order text/plain text/html *
-auto_view text/html
+set reply_regexp ="(([Rr][Ee]?(\[[0-9]\])?: *)?(\[[^]]+\] *)?)*"
+set uncollapse_jump
 set status_on_top
-#set pager_index_lines = 8
-#set pager_context = 5
-#set pager_stop
+# }}
+
+# Pager view options {{
+set pager_index_lines = 10
+set pager_context = 3
+set pager_stop
 set menu_scroll
 set smart_wrap
 set tilde
 unset markers
+set auto_tag = yes
+hdr_order Date From To Cc
+alternative_order text/plain text/enriched text/html *
+auto_view text/html
 # }}
 
 # Composing {{
+set realname = "James N. V. Cash"
+set envelope_from
+set sig_dashes
+set edit_headers
+set fast_reply
+set askcc
+set include
 set fcc_attach
-set edit_headers = yes
 unset mime_forward
 set forward_format = "Fwd: %s"
-set include
+set forward_decode
 set forward_quote
+set attribution = "On %d, %n wrote:"
+set reply_to
+set reverse_name
+
+set from = "james.cash@occasionallycogent.com"
+alternates james\.nvc@gmail\.com james@penyopal\.com james\.cash@(.*\.)?utoronto\.ca cashjame@ecf\.utoronto\.ca
+# }}
+
+# Headers {{
+ignore *
+unignore from: to: cc: date: subject:
+hdr_order from: to: date: subject:
 # }}
 
 # PGP {{
@@ -85,10 +122,27 @@ set pgp_good_sign="^gpg: Good signature from"
 # }}
 
 # Keybindings {{
+macro compose v "<enter-command>source ~/.mutt/switch_to_penyopal<enter>" "Toggle from address"
+# Editor {{
 bind editor <Tab> complete-query
 bind editor ^T complete
 bind editor <space> noop
-macro compose v "<enter-command>source ~/.mutt/switch_to_penyopal<enter>" "Toggle from address"
+# }}
+# Index & pager {{
+bind index,pager R group-reply
+bind index,pager k previous-entry
+bind index,pager j next-entry
+bind index gg first-entry
+bind index  G last-entry
+macro index,pager \Cu "|urlview<enter>" "Open url with urlview"
+macro index,pager s "<pipe-message>cat > ~/tmp/" "Save message as"
+# Index-only {{
+bind index <tab> sync-mailbox
+bind index p recall-message
+bind index <space> collapse-thread
+macro index \Cr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark all messages as read"
+macro index <esc>f ":set date_format = \"%d/%m\"<enter>" "short date format"
+macro index <esc>F ":set date_format = \"%d/%m at %I:%M %P\"<enter>" "short date format"
 # Notmuch shortcuts {{
  macro index <F8> \
        "<enter-command>unset wait_key<enter><shell-escape>notmuch-mutt --prompt search<enter><change-folder-readonly>`echo ${XDG_CACHE_HOME:-$HOME/.cache}/notmuch/mutt/results`<enter>" \
@@ -100,11 +154,15 @@ macro compose v "<enter-command>source ~/.mutt/switch_to_penyopal<enter>" "Toggl
        "<enter-command>unset wait_key<enter><pipe-message>notmuch-mutt tag -- -inbox<enter>" \
        "notmuch: remove message from inbox"
 # }}
+# }}
+# Sync mail
+macro index O "<shell-escape>mailrun.sh<enter>" "Force a mailrun"
+macro index o "<shell-escape>mailrun.sh inboxonly<enter>" "Force a mailrun"
+# }}
 # Gmail-style keyboard shortcuts {{
 macro index,pager gi "<change-folder>=INBOX<enter>" "Go to inbox"
 macro index,pager ga "<change-folder>=[Gmail].All Mail<enter>" "Go to all mail"
 macro index,pager gs "<change-folder>=[Gmail].Starred<enter>" "Go to starred messages"
 macro index,pager gd "<change-folder>=[Gmail].Drafts<enter>" "Go to drafts"
-macro index,pager \cb "|urlview\n" "Open url with 'open'"
 # }}
 # }}
