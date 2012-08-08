@@ -98,7 +98,7 @@ set wildignore+=*.aux,*.out,*.toc " ...LaTeX chaff
 set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifst " ...compiled binary files
 set wildignore+=*.DS_Store " ...OS X weird thing
 set wildignore+=*.pyc " ...python bytecode
-set wildignore+=classes,lib " .. clojure/leiningen
+set wildignore+=classes " .. clojure/leiningen
 if has('win32')
   set shellslash
 endif
