@@ -1,3 +1,4 @@
 text/html; open '%s';
 text/html; lynx -stdin -dump -force_html ; copiousoutput
 image/jpeg; open '%s';
+image/png; open '%s';

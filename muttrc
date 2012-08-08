@@ -45,7 +45,7 @@ mailboxes +INBOX
 # }}
 
 # Sending mail settings {{
-set sendmail = /usr/local/bin/msmtp
+set sendmail = "/usr/local/bin/msmtp -a gmail"
 set sendmail_wait = 0
 # }}
 
@@ -53,7 +53,7 @@ set sendmail_wait = 0
 set date_format = "%d/%m"
 set index_format = "[%Z]  %d   %-20.20F  %s"
 set sort = threads
-set sort_aux = reverse-last-date-received
+set sort_aux = last-date-received
 set sort_re
 set reply_regexp ="(([Rr][Ee]?(\[[0-9]\])?: *)?(\[[^]]+\] *)?)*"
 set uncollapse_jump
@@ -122,7 +122,6 @@ set pgp_good_sign="^gpg: Good signature from"
 # }}
 
 # Keybindings {{
-macro compose v "<enter-command>source ~/.mutt/switch_to_penyopal<enter>" "Toggle from address"
 # Editor {{
 bind editor <Tab> complete-query
 bind editor ^T complete
@@ -136,13 +135,14 @@ bind index gg first-entry
 bind index  G last-entry
 macro index,pager \Cu "|urlview<enter>" "Open url with urlview"
 macro index,pager s "<pipe-message>cat > ~/tmp/" "Save message as"
-# Index-only {{
 bind index <tab> sync-mailbox
 bind index p recall-message
 bind index <space> collapse-thread
 macro index \Cr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark all messages as read"
 macro index <esc>f ":set date_format = \"%d/%m\"<enter>" "short date format"
 macro index <esc>F ":set date_format = \"%d/%m at %I:%M %P\"<enter>" "short date format"
+macro index a "<limit>all<enter>" "show all messages (undo limit)"
+macro index,pager V "|vim -c 'setlocal ft=mail' -c 'setlocal buftype=nofile' -<enter>" "open in vim"
 # Notmuch shortcuts {{
  macro index <F8> \
        "<enter-command>unset wait_key<enter><shell-escape>notmuch-mutt --prompt search<enter><change-folder-readonly>`echo ${XDG_CACHE_HOME:-$HOME/.cache}/notmuch/mutt/results`<enter>" \
@@ -153,12 +153,20 @@ macro index <esc>F ":set date_format = \"%d/%m at %I:%M %P\"<enter>" "short date
  macro index <F6> \
        "<enter-command>unset wait_key<enter><pipe-message>notmuch-mutt tag -- -inbox<enter>" \
        "notmuch: remove message from inbox"
-# }}
+macro index / \
+      "<enter-command>unset wait_key<enter><shell-escape>read -p 'notmuch query: ' x; echo \$x >~/.cache/mutt_terms<enter><limit>~i \"\`notmuch search --output=messages \$(cat ~/.cache/mutt_terms) | head -n 600 | tr '+' '.' | perl -le '@a=<>;chomp@a;s/\^id:// for@a;$,=\"|\";print@a'\`\"<enter>" \
+      "show only messages matching a notmuch pattern"
+
 # }}
 # Sync mail
 macro index O "<shell-escape>mailrun.sh<enter>" "Force a mailrun"
 macro index o "<shell-escape>mailrun.sh inboxonly<enter>" "Force a mailrun"
 # }}
+# Compose {{
+macro compose v "<enter-command>source ~/.mutt/switch_to_penyopal<enter>" "Toggle from address"
+bind compose p postpone-message
+# }}
+bind attach <return> view-mailcap
 # Gmail-style keyboard shortcuts {{
 macro index,pager gi "<change-folder>=INBOX<enter>" "Go to inbox"
 macro index,pager ga "<change-folder>=[Gmail].All Mail<enter>" "Go to all mail"
