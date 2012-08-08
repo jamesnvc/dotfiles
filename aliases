@@ -13,7 +13,12 @@ alias man="man -P most"
 alias df='df -h'
 alias du='du -h'
 alias dus='du -s'
-alias psg='ps -e | grep'
+#alias psg='ps -e | grep'
+alias collapse="sed -e 's/  */ /g'"
+alias cuts="cut -d' '"
+function psg() {
+  ps auxww | grep --color=always $* | grep -v grep | collapse | cuts -f 2,11-
+}
 alias ec=emacsclient
 alias dmt='dmesg | tail'
 alias curl='noglob curl'
@@ -231,6 +236,19 @@ rot13 () { tr "[a-m][n-z][A-M][N-Z]" "[n-z][a-m][N-Z][A-M]" }
 # Easy adding of vim bundles
 add-bundle() {
   git submodule add $1 vim/bundle/$(echo ${1%.git} | awk -F'/' '{print $NF}')
+}
+
+function gn() {
+  MINS=$1; shift
+
+  if [[ "x$MINS" == "x1" ]]; then
+    echo "one"
+    UNITS="minute"
+  else
+    echo "two"
+    UNITS="minutes"
+  fi
+  echo growlnotify -sm "'$*'" | at now + $MINS $UNITS
 }
 
 alias -g A="| ack"
