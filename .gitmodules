@@ -196,3 +196,6 @@
 [submodule "vim/bundle/Muon"]
 	path = vim/bundle/Muon
 	url = git://github.com/gregsexton/Muon.git
+[submodule "vim/bundle/vim-hybrid"]
+	path = vim/bundle/vim-hybrid
+	url = git://github.com/w0ng/vim-hybrid.git
