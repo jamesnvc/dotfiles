@@ -1,4 +1,19 @@
-text/html; open '%s';
 text/html; lynx -stdin -dump -force_html ; copiousoutput
-image/jpeg; open '%s';
-image/png; open '%s';
+
+# Use TextEdit to open word docs
+application/msword; ~/.mutt/view_attachment.sh %s "-" '/Applications/TextEdit.app'
+
+# Images
+image/jpeg; ~/.mutt/view_attachment.sh %s jpg
+image/pjpeg; ~/.mutt/view_attachment.sh %s jpg
+image/png; ~/.mutt/view_attachment.sh %s png
+image/gif; ~/.mutt/view_attachment.sh %s gif
+
+# PDF
+application/pdf; ~/.mutt/view_attachment.sh %s pdf
+
+# HTML
+text/html; ~/.mutt/view_attachment.sh %s html
+
+# Unidentified.
+application/octet-stream; ~/.mutt/view_attachment.sh %s "-"
