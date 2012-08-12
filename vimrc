@@ -372,6 +372,7 @@ noremap <leader>R :!./%<CR>
 noremap <F12> :TagbarToggle<CR>
 "  }}
 " Normal mode bindings {{
+nnoremap <tab> %
 nnoremap <leader><leader> :
 nnoremap / /\v
 nnoremap <silent> <leader>* :exe 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
@@ -401,7 +402,7 @@ nnoremap Q gqip
 " Using this instead of autochdir
 nnoremap <leader>cd :cd %:p:h<CR>
 " NERDTree bindings
-nnoremap <leader>n :NERDTreeClose<CR>:NERDTreeToggle<CR>
+nnoremap <leader>n :NERDTreeToggle<CR>
 nnoremap <Leader>m :NERDTreeClose<CR>:NERDTreeFind<CR>
 nnoremap <leader>N :NERDTreeClose<CR>
 nnoremap gt <C-w>gf
@@ -429,6 +430,7 @@ cnoremap s/ s/\v
 cnoremap e%% echo expand("%:p")<cr>
 "  }}
 " Visual-mode bindings {{
+vnoremap <tab> %
 vnoremap Q gq
 " Bubble multiple lines up/down using unimpared plugin.
 vnoremap <C-Up> [egv
@@ -555,6 +557,9 @@ endif
 
 
 " ***** Plugin options ***** {{
+" Python-mode {{
+let g:pymode_virtualenv = 1
+" }}
 " Ctrl-p {{
 let g:ctrlp_map = '<leader>t'
 let g:ctrlp_cmd = 'CtrlP'
