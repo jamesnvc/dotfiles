@@ -17,3 +17,5 @@ text/html; ~/.mutt/view_attachment.sh %s html
 
 # Unidentified.
 application/octet-stream; ~/.mutt/view_attachment.sh %s "-"
+
+text/calendar; open %s
