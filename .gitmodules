@@ -202,3 +202,6 @@
 [submodule "vim/bundle/python-mode"]
 	path = vim/bundle/python-mode
 	url = git://github.com/klen/python-mode.git
+[submodule "vim/bundle/vim-less"]
+	path = vim/bundle/vim-less
+	url = git://github.com/groenewege/vim-less.git
