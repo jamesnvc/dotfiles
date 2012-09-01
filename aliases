@@ -241,14 +241,14 @@ add-bundle() {
 function gn() {
   MINS=$1; shift
 
-  if [[ "x$MINS" == "x1" ]]; then
-    echo "one"
-    UNITS="minute"
-  else
-    echo "two"
-    UNITS="minutes"
-  fi
-  echo growlnotify -sm "'$*'" | at now + $MINS $UNITS
+    if [[ "x$MINS" == "x1" ]]; then
+      echo "one"
+      UNITS="minute"
+    else
+      echo "two"
+      UNITS="minutes"
+    fi
+    echo growlnotify -sm "'$*'" | at now + $MINS $UNITS
 }
 
 alias -g A="| ack"
