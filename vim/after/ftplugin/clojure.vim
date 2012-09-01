@@ -10,3 +10,5 @@ nnoremap <buffer> <localleader>ef :<C-u>call SlimvEvalExp()<CR>
 nnoremap <buffer> <localleader>ee :<C-u>call SlimvEvalDefun()<CR>
 nmap <buffer> \i \di
 
+setlocal wildignore+=lib,.m2
+"let g:lisp_rainbow = 1
