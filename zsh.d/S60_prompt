@@ -1,5 +1,4 @@
 #!/bin/zsh
-setopt prompt_subst
 
 autoload -Uz vcs_info
 
@@ -28,8 +27,6 @@ precmd () {
 
     vcs_info
 }
-
-setopt prompt_subst
 
 function setprompt {
   ###
