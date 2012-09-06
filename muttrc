@@ -16,7 +16,7 @@ set mailcap_path = ~/.mutt/mailcap
 source ~/.vim/bundle/badwolf/contrib/badwolf.muttrc
 
 set editor = "vim -c 'normal! G{' -c 'redraw'"
-set query_command = "~/.mutt/search_contacts.py"
+set query_command = "~/.mutt/search_contacts.py '%s'"
 set wait_key = no
 set timeout = 3
 set mail_check = 0
