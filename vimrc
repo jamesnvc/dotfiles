@@ -579,7 +579,31 @@ let g:pymode_virtualenv = 1
 " Ctrl-p {{
 let g:ctrlp_map = '<leader>t'
 let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 2
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_dont_split = 'NERD_tree_2'
+let g:ctrp_extensions = ['tag']
+let g:ctrlp_prompt_mappings = {
+      \ 'PrtSelectMove("j")': ['<C-j>', '<down>', '<s-tab>'],
+      \ 'PrtSelectMove("k")': ['<C-k>', '<up>', '<tab>'],
+      \ 'PrtHistory(-1)': ['<C-n>'],
+      \ 'PrtHistory(1)': ['<C-p>'],
+      \ 'ToggleFocus()': ['<C-tab>'],
+      \ }
+let ctrlp_filter_greps = "".
+      \ "ack -iv '\\.(" .
+      \ "jar|class|swp|swo|log|so|o|pyc|jpe?g|png|gif|mo|po" .
+      \ ")$' | " .
+      \ "ack -v '^(\\./)?(" .
+      \ "lib|classes|libs|deploy/vendor|.git|.hg|.svn|.*migrations|docs/build" .
+      \ ")/'"
+let my_ctrlp_user_cmd = "" .
+      \ "find %s '(' -type f -o -type l ')' -maxdepth 15 " .
+      \ "-not -path '*/\\.*/*' | "  .
+      \ ctrlp_filter_greps
+let my_ctrlp_git_cmd = "" .
+      \ "cd %s && git ls-files --exclude-standard -co | " .
+      \ ctrlp_filter_greps
+let g:ctrlp_user_command = ['.git/', my_ctrlp_git_cmd, my_ctrlp_user_cmd]
 " }}
 " NERDTree stuff {{
 let NERDTreeBookmarksFile=expand("$HOME/.vim/NERDTreeBookmarks")
@@ -642,3 +666,4 @@ if filereadable(expand("~/.vimrc.local"))
 endif
 " vim: set foldmarker={{,}} foldlevel=0 foldmethod=marker :
 " }}
+
