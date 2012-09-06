@@ -407,8 +407,17 @@ nnoremap <silent> <leader>h3 :execute '3match InterestingWord3 /\<<C-r><C-w>\>/'
 nnoremap <silent> <leader>/ :let @/=""<CR>
 nnoremap <leader>W :w<CR>
 nnoremap <leader>z zMzv
-nnoremap <leader>G :Gstatus<CR>
-nnoremap <leader>g :grep <C-R>=expand("<cword>")<CR><CR>
+" Fugitive bindings {{
+nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gd :Gdiff<CR>
+nnoremap <leader>gw :Gwrite<CR>
+nnoremap <leader>gb :Gblame<CR>
+nnoremap <leader>gco :Gcheckout<CR>
+nnoremap <leader>gci :Gcommit<CR>
+nnoremap <leader>gm :Gmove<CR>
+nnoremap <leader>gr :Gremove<CR>
+" }}
+nnoremap <leader>gg :grep <C-R>=expand("<cword>")<CR><CR>
 " Show syntax group
 nnoremap <leader>P :call <SID>SynStack()<CR>
 " Visually select the text last edited/pasted
@@ -558,6 +567,7 @@ if has('autocmd')
       \   nnoremap <buffer> .. :edit %:h<CR> |
       \ endif
     autocmd BufReadPost fugitive://* set bufhidden=delete
+    autocmd BufNewFile,BufRead .git/index setlocal nolist
   augroup END  "}}
   augroup slimv " {{
     autocmd!
