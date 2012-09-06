@@ -82,7 +82,6 @@ set softtabstop=2
 set showmatch
 set smartcase
 set smarttab
-set splitbelow
 set splitright
 set tabstop=2
 if exists("&undofile")
@@ -443,6 +442,7 @@ nnoremap gb :OpenURL <cfile><CR>
 nnoremap gG :OpenURL http://www.google.com/search?q=<cword><CR>
 nnoremap gW :OpenURL http://en.wikipedia.org/wiki/Special:Search?search=<cword><CR>
 nnoremap <leader>ri :call InlineVariable()<CR>
+nnoremap <leader>T :CtrlPTag<CR>
 "  }}
 " Command-mode bindings {{
 " Reopen the current file as sudo
@@ -663,7 +663,7 @@ highlight InterestingWord1 ctermbg=110
 highlight InterestingWord2 ctermbg=148
 highlight InterestingWord3 ctermbg=172
 highlight bufexplorermapping guifg=white
-highlight conceal guibg=black guifg=white
+highlight Conceal guibg=black guifg=white
 if !has("gui_running")
   hi SpellBad ctermfg=Red
 endif
@@ -676,4 +676,3 @@ if filereadable(expand("~/.vimrc.local"))
 endif
 " vim: set foldmarker={{,}} foldlevel=0 foldmethod=marker :
 " }}
-
