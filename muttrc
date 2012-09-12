@@ -139,6 +139,7 @@ bind index <tab> sync-mailbox
 bind index p recall-message
 bind index <space> collapse-thread
 macro index \Cr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark all messages as read"
+macro index \CR "T~U<enter><tag-prefix><clear-flag>N<set-flag>D<untag-pattern>.<enter>" "mark all messages as read and archive"
 macro index <esc>f ":set date_format = \"%d/%m\"<enter>" "short date format"
 macro index <esc>F ":set date_format = \"%d/%m at %I:%M %P\"<enter>" "short date format"
 macro index a "<limit>all<enter>" "show all messages (undo limit)"
