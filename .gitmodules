@@ -205,3 +205,6 @@
 [submodule "vim/bundle/vim-less"]
 	path = vim/bundle/vim-less
 	url = git://github.com/groenewege/vim-less.git
+[submodule "vim/bundle/switch.vim"]
+	path = vim/bundle/switch.vim
+	url = git://github.com/AndrewRadev/switch.vim.git
