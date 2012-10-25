@@ -1,6 +1,14 @@
 Host *
   VisualHostKey yes
 
+Host penyopal.com
+  User rafd_penyopal
+  Port 22
+  Hostname ssh.phx.nearlyfreespeech.net
+  IdentityFile ~/.ssh-keys/nfshost
+  TCPKeepAlive yes
+  IdentitiesOnly yes
+
 Host github
   User git
   Port 22
@@ -9,7 +17,7 @@ Host github
   TCPKeepAlive yes
   IdentitiesOnly yes
 
-Host bitbucket
+Host bitbucket.org
   User git
   HostName bitbucket.org
   IdentityFile ~/.ssh-keys/bitbucket
