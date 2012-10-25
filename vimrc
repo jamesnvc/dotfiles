@@ -50,6 +50,7 @@ set cursorline
 if exists("&cryptmethod")
   set cryptmethod=blowfish
 endif
+set cpo+=J  " Use two spaces for sentance delimiters
 set diffopt+=iwhite " Ignore trailing whitespace in diffs
 set expandtab
 set foldenable
@@ -97,7 +98,6 @@ set wildignore+=*.aux,*.out,*.toc " ...LaTeX chaff
 set wildignore+=*.o,*.obj,*.exe,*.dll,*.manifst " ...compiled binary files
 set wildignore+=*.DS_Store " ...OS X weird thing
 set wildignore+=*.pyc " ...python bytecode
-set wildignore+=classes " .. clojure/leiningen
 if has('win32')
   set shellslash
 endif
@@ -443,6 +443,10 @@ nnoremap gG :OpenURL http://www.google.com/search?q=<cword><CR>
 nnoremap gW :OpenURL http://en.wikipedia.org/wiki/Special:Search?search=<cword><CR>
 nnoremap <leader>ri :call InlineVariable()<CR>
 nnoremap <leader>T :CtrlPTag<CR>
+" Map <leader>n to move to nth split
+for n in range(1, 9)
+  exe "nnoremap <silent> <leader>" . n . " :" . n . "wincmd w<CR>"
+endfor
 "  }}
 " Command-mode bindings {{
 " Reopen the current file as sudo
@@ -662,6 +666,7 @@ let g:jedi#rename_command = "<leader>R"
 let g:pep8_map = '<C-8>'
 let g:rails_statusline = 0
 let g:Powerline_symbols = 'unicode'
+let g:indent_guides_auto_colors = 0
 " }}
 
 
@@ -671,6 +676,8 @@ highlight InterestingWord2 ctermbg=148
 highlight InterestingWord3 ctermbg=172
 highlight bufexplorermapping guifg=white
 highlight Conceal guibg=black guifg=white
+highlight IndentGuidesOdd  guibg=red   ctermbg=DarkGray
+highlight IndentGuidesEven guibg=green ctermbg=Gray
 if !has("gui_running")
   hi SpellBad ctermfg=Red
 endif
@@ -683,4 +690,3 @@ if filereadable(expand("~/.vimrc.local"))
 endif
 " vim: set foldmarker={{,}} foldlevel=0 foldmethod=marker :
 " }}
-
