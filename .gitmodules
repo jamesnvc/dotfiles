@@ -208,3 +208,6 @@
 [submodule "vim/bundle/switch.vim"]
 	path = vim/bundle/switch.vim
 	url = git://github.com/AndrewRadev/switch.vim.git
+[submodule "vim/bundle/jedi-vim"]
+	path = vim/bundle/jedi-vim
+	url = git://github.com/davidhalter/jedi-vim.git
