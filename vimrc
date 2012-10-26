@@ -657,8 +657,6 @@ let g:slimv_swank_clojure = '!dtach -n /tmp/dtach-swank.sock -r winch lein swank
 let g:paredit_mode = 0
 " }}
 " Jedi {{
-" Don't autoload until python version/jedi is working
-let g:jedi#auto_initialization = 0
 let g:jedi#goto_command = "<leader>G"
 let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#rename_command = "<leader>R"
@@ -690,4 +688,3 @@ if filereadable(expand("~/.vimrc.local"))
 endif
 " vim: set foldmarker={{,}} foldlevel=0 foldmethod=marker :
 " }}
-
