@@ -665,7 +665,7 @@ let g:jedi#rename_command = "<leader>R"
 " }}
 let g:pep8_map = '<C-8>'
 let g:rails_statusline = 0
-let g:Powerline_symbols = 'unicode'
+let g:Powerline_symbols = 'fancy'
 let g:indent_guides_auto_colors = 0
 " }}
 
@@ -690,3 +690,4 @@ if filereadable(expand("~/.vimrc.local"))
 endif
 " vim: set foldmarker={{,}} foldlevel=0 foldmethod=marker :
 " }}
+
