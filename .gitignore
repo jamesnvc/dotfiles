@@ -7,3 +7,5 @@ tags
 id_rsa*
 mutt/cache/*
 *.pyc
+.ropeproject/
+mutt/temp
