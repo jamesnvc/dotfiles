@@ -540,7 +540,7 @@ if has('autocmd')
     " Onyl show line numbers in current window
     if exists("&relativenumber")
       autocmd WinEnter * setl relativenumber
-      autocmd WinLeave * setl norelativenumber
+      autocmd WinLeave * setl number
     else
       autocmd WinEnter * setl number
       autocmd WinLeave * setl nonumber
