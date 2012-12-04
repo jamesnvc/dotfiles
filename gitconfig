@@ -21,6 +21,7 @@
   a = add
   br = branch
   po = push origin
+  search = log --all --full-history --topo-order -S
 [color]
   branch = auto
   diff = auto
