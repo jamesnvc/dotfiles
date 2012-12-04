@@ -214,3 +214,6 @@
 [submodule "vim/bundle/vim-penyocomic"]
 	path = vim/bundle/vim-penyocomic
 	url = git@github.com:jamesnvc/vim-penyocomic.git
+[submodule "vim/bundle/vim-foreplay"]
+	path = vim/bundle/vim-foreplay
+	url = git://github.com/tpope/vim-foreplay.git
