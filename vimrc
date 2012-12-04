@@ -133,6 +133,39 @@ let g:indent_guides_guide_size=1
 command! -nargs=0 Restore set lines=100 columns=85
 command! -nargs=0 GitX !open -a GitX %:p:h<CR>
 command! -nargs=0 XmlIndent '[,']!xsltproc ~/.vim/misc/indent.xsl %
+" Pulse line {{{
+function! s:Pulse() " {{{
+  let current_window = winnr()
+  windo set nocursorline
+  execute current_window . 'wincmd w'
+  setlocal cursorline
+
+  redir => old_hi
+    silent execute 'hi CursorLine'
+  redir END
+  let old_hi = split(old_hi, '\n')[0]
+  let old_hi = substitute(old_hi, 'xxx', '', '')
+
+  let steps = 9
+  let width = 1
+  let start = width
+  let end = steps * width
+  let color = 233
+  for i in range(start, end, width)
+    execute "hi CursorLine ctermbg=" . (color + i)
+    redraw
+    sleep 6m
+  endfor
+  for i in range(end, start, -1 * width)
+    execute "hi CursorLine ctermbg=" . (color + i)
+    redraw
+    sleep 6m
+  endfor
+
+  execute 'hi ' . old_hi
+endfunction " }}}
+command! -nargs=0 Pulse call s:Pulse()
+" }}}
 function! SearchToClipboard() " {{
   let @* = @/
 endfunction
@@ -447,6 +480,9 @@ nnoremap <leader>T :CtrlPTag<CR>
 for n in range(1, 9)
   exe "nnoremap <silent> <leader>" . n . " :" . n . "wincmd w<CR>"
 endfor
+" Focus the current line (overwrites C-z, use :sus te suspend), wipes f
+" register
+nnoremap <C-z> mfzMzvzz`f:Pulse<CR>
 "  }}
 " Command-mode bindings {{
 " Reopen the current file as sudo
@@ -551,7 +587,6 @@ if has('autocmd')
     autocmd!
     autocmd BufReadCmd *.epub call zip#Browse(expand("<amatch>"))
     autocmd BufEnter *.md setl makeprg=rake
-    autocmd BufWritePost *.py call Pyflakes()
   augroup END  "}}
   augroup completion  " {{
     autocmd!
@@ -589,6 +624,10 @@ endif
 " ***** Plugin options ***** {{
 " Python-mode {{
 let g:pymode_virtualenv = 1
+let g:pymode_lint = 0
+let g:pymode_lint_write = 0
+let g:pymode_rope = 0
+let g:pymode_lint_checker = 'pep8'
 " }}
 " Ctrl-p {{
 let g:ctrlp_map = '<leader>t'
@@ -657,6 +696,7 @@ let g:slimv_swank_clojure = '!dtach -n /tmp/dtach-swank.sock -r winch lein swank
 let g:paredit_mode = 0
 " }}
 " Jedi {{
+let g:jedi#auto_initialization = 0
 let g:jedi#goto_command = "<leader>G"
 let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#rename_command = "<leader>R"
