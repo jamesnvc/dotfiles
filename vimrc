@@ -50,7 +50,6 @@ set cursorline
 if exists("&cryptmethod")
   set cryptmethod=blowfish
 endif
-set cpo+=J  " Use two spaces for sentance delimiters
 set diffopt+=iwhite " Ignore trailing whitespace in diffs
 set expandtab
 set foldenable
@@ -728,3 +727,4 @@ if filereadable(expand("~/.vimrc.local"))
 endif
 " vim: set foldmarker={{,}} foldlevel=0 foldmethod=marker :
 " }}
+
