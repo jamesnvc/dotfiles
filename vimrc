@@ -57,7 +57,7 @@ set foldmethod=marker
 set foldlevelstart=99
 set formatoptions+=n  " gq recognizes numbered lists
 set gdefault  " Make substitute global by default
-set grepprg=ack\ -a\ -H\ --nocolor\ --nogroup
+set grepprg=ag\ --nogroup\ --nocolor\ --column
 set hidden  " When opening a new file hide the current instead of closing it
 set history=1000
 set hlsearch
@@ -727,4 +727,3 @@ if filereadable(expand("~/.vimrc.local"))
 endif
 " vim: set foldmarker={{,}} foldlevel=0 foldmethod=marker :
 " }}
-
