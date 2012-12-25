@@ -30,6 +30,7 @@
 [core]
   excludesfile = ~/.cvsignore
   autocrlf = input
+	pager = less -r
 [merge]
   tool = threesome
 [mergetool "threesome"]
