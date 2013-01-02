@@ -220,3 +220,6 @@
 [submodule "vim/bundle/vim-twig"]
 	path = vim/bundle/vim-twig
 	url = git://github.com/beyondwords/vim-twig.git
+[submodule "vim/bundle/vim-markdown-folding"]
+	path = vim/bundle/vim-markdown-folding
+	url = git://github.com/nelstrom/vim-markdown-folding.git
