@@ -642,10 +642,10 @@ let g:ctrlp_prompt_mappings = {
       \ 'ToggleFocus()': ['<C-tab>'],
       \ }
 let ctrlp_filter_greps = "".
-      \ "ack -iv '\\.(" .
+      \ "ag -iv '\\.(" .
       \ "jar|class|swp|swo|log|so|o|pyc|jpe?g|png|gif|mo|po" .
       \ ")$' | " .
-      \ "ack -v '^(\\./)?(" .
+      \ "ag -v '^(\\./)?(" .
       \ "lib|classes|libs|deploy/vendor|.git|.hg|.svn|.*migrations|docs/build" .
       \ ")/'"
 let my_ctrlp_user_cmd = "" .
