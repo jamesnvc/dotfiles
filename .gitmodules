@@ -220,3 +220,6 @@
 [submodule "vim/bundle/vim-markdown-folding"]
 	path = vim/bundle/vim-markdown-folding
 	url = git://github.com/nelstrom/vim-markdown-folding.git
+[submodule "vim/bundle/vim-clojure-static"]
+	path = vim/bundle/vim-clojure-static
+	url = git://github.com/guns/vim-clojure-static.git
