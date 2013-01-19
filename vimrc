@@ -607,15 +607,6 @@ if has('autocmd')
     autocmd BufReadPost fugitive://* set bufhidden=delete
     autocmd BufNewFile,BufRead .git/index setlocal nolist
   augroup END  "}}
-  augroup slimv " {{
-    autocmd!
-
-    autocmd BufWinEnter            SLIMV.REPL setlocal nolist
-    autocmd BufNewFile,BufReadPost SLIMV.REPL setlocal nowrap foldlevel=99
-    autocmd BufNewFile,BufReadPost SLIMV.REPL nnoremap <buffer> A GA
-    autocmd BufNewFile,BufReadPost SLIMV.REPL nnoremap <buffer> <localleader>R :emenu REPL.<Tab>
-
-  augroup END "}}
 endif
 " }}
 
@@ -684,15 +675,6 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 " Tagbar {{
 let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
 let g:tagbar_usearrows = 1
-" }}
-" Slimv {{
-let g:slimv_leader = '\'
-let g:slimv_keybindings = 2
-let g:slimv_repl_name = 'SLIMV.REPL'
-let g:slimv_repl_split = 4
-let g:slimv_repl_wrap = 0
-let g:slimv_swank_clojure = '!dtach -n /tmp/dtach-swank.sock -r winch lein swank'
-let g:paredit_mode = 0
 " }}
 " Jedi {{
 let g:jedi#auto_initialization = 0
