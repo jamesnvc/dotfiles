@@ -136,9 +136,6 @@
 [submodule "vim/bundle/Better-CSS-Syntax-for-Vim"]
 	path = vim/bundle/Better-CSS-Syntax-for-Vim
 	url = https://github.com/vim-scripts/Better-CSS-Syntax-for-Vim.git
-[submodule "vim/bundle/vim-google-scribe"]
-	path = vim/bundle/vim-google-scribe
-	url = https://github.com/dubenstein/vim-google-scribe.git
 [submodule "vim/bundle/vim-textobj-rubyblock"]
 	path = vim/bundle/vim-textobj-rubyblock
 	url = https://github.com/nelstrom/vim-textobj-rubyblock.git
