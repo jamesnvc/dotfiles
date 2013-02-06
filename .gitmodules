@@ -157,9 +157,6 @@
 [submodule "vim/bundle/pep8"]
 	path = vim/bundle/pep8
 	url = git@github.com:jamesnvc/pep8.git
-[submodule "vim/bundle/vim-powerline"]
-	path = vim/bundle/vim-powerline
-	url = git@github.com:jamesnvc/vim-powerline.git
 [submodule "vim/bundle/vim-pathogen"]
 	path = vim/bundle/vim-pathogen
 	url = https://github.com/tpope/vim-pathogen
