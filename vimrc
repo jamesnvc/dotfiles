@@ -24,6 +24,9 @@ let g:solarized_visibility = "low"
 "colorscheme solarized
 colorscheme Tomorrow-Night-Bright
 
+" Load powerline statusbar
+python from powerline.bindings.vim import source_plugin; source_plugin()
+
 " Use a bar-shaped cursor for insert mode, even through tmux.
 if exists('$TMUX')
   let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
@@ -684,7 +687,6 @@ let g:jedi#rename_command = "<leader>R"
 " }}
 let g:pep8_map = '<C-8>'
 let g:rails_statusline = 0
-let g:Powerline_symbols = 'fancy'
 let g:indent_guides_auto_colors = 0
 " }}
 
