@@ -14,15 +14,12 @@ set encoding=utf-8
 let mapleader = ' '
 let maplocalleader = '\'
 
-if !has('gui_running')
-  set t_Co=256
-  let g:solarized_termcolors=16
-end
-syntax enable
-set background=dark
-let g:solarized_visibility = "low"
-"colorscheme solarized
-colorscheme Tomorrow-Night-Bright
+if !exists('g:initially_set_colours')
+  syntax enable
+  set background=dark
+  colorscheme Tomorrow-Night-Bright
+  let g:initially_set_colours = 1
+endif
 
 " Load powerline statusbar
 python from powerline.bindings.vim import source_plugin; source_plugin()
