@@ -685,6 +685,7 @@ let g:jedi#rename_command = "<leader>R"
 let g:pep8_map = '<C-8>'
 let g:rails_statusline = 0
 let g:indent_guides_auto_colors = 0
+let g:gitgutter_enabled = 0
 " }}
 
 
