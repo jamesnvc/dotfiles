@@ -223,3 +223,6 @@
 [submodule "vim/bundle/vim-characterize"]
 	path = vim/bundle/vim-characterize
 	url = git://github.com/tpope/vim-characterize.git
+[submodule "vim/bundle/vim-gitgutter"]
+	path = vim/bundle/vim-gitgutter
+	url = git://github.com/airblade/vim-gitgutter.git
