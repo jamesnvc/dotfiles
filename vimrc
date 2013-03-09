@@ -50,6 +50,7 @@ set cursorline
 if exists("&cryptmethod")
   set cryptmethod=blowfish
 endif
+set cpo+=J  " make sentences have two spaces after the period
 set diffopt+=iwhite " Ignore trailing whitespace in diffs
 set expandtab
 set foldenable
