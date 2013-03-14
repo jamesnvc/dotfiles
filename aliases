@@ -251,6 +251,8 @@ function gn() {
     echo growlnotify -sm "'$*'" | at now + $MINS $UNITS
 }
 
+function 4cd(){ wget -e robots=off -E -nd -N -np -r -k -H -Dimages.4chan.org,thumbs.4chan.org "$1";}
+
 alias -g A="| ack"
 alias -g CA="2>&1 | cat -A"
 alias -g C='| pbcopy'
