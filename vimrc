@@ -495,6 +495,7 @@ cnoremap s/ s/\v
 cnoremap e%% echo expand("%:p")<cr>
 "  }}
 " Visual-mode bindings {{
+vnoremap <leader><leader> :
 vnoremap <tab> %
 vnoremap Q gq
 " Bubble multiple lines up/down using unimpared plugin.
