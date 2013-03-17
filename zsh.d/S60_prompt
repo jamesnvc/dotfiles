@@ -46,16 +46,21 @@ function setprompt {
     colors
   fi
 
-  for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE; do
-    eval PR_$color='%{$terminfo[bold]$fg[${(L)color}]%}'
-    eval PR_LIGHT_$color='%{$fg[${(L)color}]%}'
+  for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE BLACK; do
+    eval PR_$color='%{$fg[${(L)color}]%}'
+    eval PR_LIGHT_$color='%{$terminfo[bold]$fg[${(L)color}]%}'
     (( count = $count + 1 ))
   done
   PR_NO_COLOUR="%{$terminfo[sgr0]%}"
 
+  for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE; do
+    eval PR_BG_$color='%{$bg[${(L)color}]%}'
+  done
+  PR_BG_NO_COLOUR="%{$terminfo[sgr0]%}"
+
   ###
   # Finally, the prompt.
-  PROMPT='$(prompt_char) %~ ${vcs_info_msg_0_}$PR_BLUE %(?/%F{blue}/%F{red})$PR_RED → $PR_NO_COLOUR '
+  PROMPT='$PR_BG_WHITE $PR_RED $(prompt_char) $PR_BLACK %~ ${vcs_info_msg_0_}$PR_MAGENTA %(?/%F{yellow}/%F{red}) $PR_BG_NO_COLOUR$PR_WHITE⮀$PR_NO_COLOUR '
   RPROMPT='$(count_todos)$(battery_charge)'
   PS2='$PR_RED → $PR_BLUE %_ $PR_RED → $PR_NO_COLOUR '
 
