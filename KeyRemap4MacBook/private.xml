@@ -61,6 +61,18 @@
         ModifierFlag::OPTION_L | ModifierFlag::SHIFT_L | ModifierFlag::CONTROL_L
       </autogen>
       </item>
+      <item>
+        <name>Remap Right Control to Hyper</name>
+        <appendix>OS X doesn't have a Hyper. This maps Right Control to Control + Shift + Option + Command.</appendix>
+        <identifier>space_cadet.right_control_to_hyper</identifier>
+        <autogen>
+          --KeyToKey--
+          KeyCode::F18,
+
+          KeyCode::COMMAND_R,
+          ModifierFlag::OPTION_R | ModifierFlag::SHIFT_R | ModifierFlag::CONTROL_R
+        </autogen>
+      </item>
       <vkchangeinputsourcedef>
         <name>KeyCode::VK_CHANGE_INPUTSOURCE_MY_HEX_INPUT</name>
         <inputsourceid_equal>com.apple.keylayout.UnicodeHexInput</inputsourceid_equal>
