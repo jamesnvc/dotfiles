@@ -24,6 +24,7 @@ alias dmt='dmesg | tail'
 alias curl='noglob curl'
 alias wget='noglob wget'
 alias ql='qlmanage -p 2>/dev/null'
+alias dims='sips -g pixelWidth -g pixelHeight'
 
 # Rails
 alias ss="script/server"
