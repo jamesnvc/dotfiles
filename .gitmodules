@@ -1,3 +1,7 @@
+[submodule "powerline"]
+	path = powerline
+	url = git://github.com/Lokaltog/powerline.git
+	ignore = untracked
 [submodule "vim/bundle/nerdcommenter"]
 	path = vim/bundle/nerdcommenter
 	url = git://github.com/scrooloose/nerdcommenter.git
@@ -178,6 +182,7 @@
 [submodule "vim/bundle/badwolf"]
 	path = vim/bundle/badwolf
 	url = git://github.com/sjl/badwolf.git
+	ignore = untracked
 [submodule "vim/bundle/threesome.vim"]
 	path = vim/bundle/threesome.vim
 	url = https://github.com/sjl/threesome.vim.git
@@ -205,6 +210,7 @@
 [submodule "vim/bundle/jedi-vim"]
 	path = vim/bundle/jedi-vim
 	url = git://github.com/davidhalter/jedi-vim.git
+	ignore = untracked
 [submodule "vim/bundle/vim-penyocomic"]
 	path = vim/bundle/vim-penyocomic
 	url = git@github.com:jamesnvc/vim-penyocomic.git
@@ -229,9 +235,12 @@
 [submodule "vim/bundle/vim-obsession"]
 	path = vim/bundle/vim-obsession
 	url = git://github.com/tpope/vim-obsession.git
+	ignore = untracked
 [submodule "vim/bundle/vim-jsbeautify"]
 	path = vim/bundle/vim-jsbeautify
 	url = git://github.com/maksimr/vim-jsbeautify.git
+	ignore = untracked
 [submodule "vim/bundle/vim-tbone"]
 	path = vim/bundle/vim-tbone
 	url = git://github.com/tpope/vim-tbone.git
+	ignore = untracked
