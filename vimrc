@@ -67,7 +67,7 @@ set incsearch
 set matchtime=3
 set laststatus=2
 set list
-set listchars=tab:▸\ ,trail:¬,extends:→,nbsp:.
+set listchars=tab:▸\ ,trail:¬,extends:→,precedes:←,nbsp:.
 set magic
 set makeprg=rake
 set nrformats+=alpha
@@ -80,6 +80,7 @@ set ruler
 set scrolloff=2
 set shiftwidth=2
 set softtabstop=2
+set showbreak=↪
 set showmatch
 set smartcase
 set smarttab
@@ -110,17 +111,11 @@ if exists("&undodir")
   set undodir=$HOME/.vimundo//
 endif
 " Creating backup dirs if they don't exist
-if has('win32')
-  let s:mkdirArgStr = '"\%HOME\%\.'
-else
-  let s:mkdirArgStr = '-p "$HOME/.'
-endif
-if !isdirectory(expand("~/.vimbackup"))
-  silent execute ' !mkdir '.s:mkdirArgStr.'vimbackup"'
-  silent execute ' !mkdir '.s:mkdirArgStr.'vimswap"'
-  silent execute ' !mkdir '.s:mkdirArgStr.'vimviews"'
-  silent execute ' !mkdir '.s:mkdirArgStr.'vimundo"'
-endif
+for dir in [&backupdir, &directory, &undodir, &directory]
+  if !isdirectory(expand(dir))
+    call mkdir(expand(dir), "p")
+  endif
+endfor
 "  }}
 let g:tex_conceal="adgm"
 let g:tex_flavor='latex'
