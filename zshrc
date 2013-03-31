@@ -13,6 +13,8 @@ fi
 # what progs can use the hostname completion
 compctl -k hostnames ping telnet ftp nslookup ssh traceroute mtr scp ncftp
 
+compctl -g '~/.teamocil/*(:t:r)' teamocil
+
 [[ $EMACS = t ]] && unsetopt zle # For zsh to work well within Emacs
 
 bindkey '^L' push-line
