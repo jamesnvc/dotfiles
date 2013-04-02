@@ -14,13 +14,13 @@
 				"name": "branch",
 				"exclude_modes": ["nc"],
 				"priority": 60,
-				"before": "⑂ ",
+				"before": "⭠ ",
 				"divider_highlight_group": "branch:divider"
 			},
 			{
 				"name": "readonly_indicator",
 				"draw_divider": false,
-				"after": "✗ "
+				"after": "⭤ "
 			},
 			{
 				"name": "file_directory",
@@ -65,7 +65,8 @@
 				"name": "file_type",
 				"exclude_modes": ["nc"],
 				"priority": 50,
-				"divider_highlight_group": "background:divider"
+				"divider_highlight_group": "background:divider",
+        "before": "⭢⭣ "
 			},
 			{
 				"name": "line_percent",
