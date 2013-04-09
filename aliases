@@ -25,7 +25,10 @@ alias curl='noglob curl'
 alias wget='noglob wget'
 alias ql='qlmanage -p 2>/dev/null'
 alias dims='sips -g pixelWidth -g pixelHeight'
-
+function vltube() {
+   open -a VLC ${1:s/https/http}
+}
+alias vltube='noglob vltube'
 # Rails
 alias ss="script/server"
 alias sc="script/console"
