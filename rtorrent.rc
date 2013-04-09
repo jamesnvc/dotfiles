@@ -1,0 +1,21 @@
+scgi_local = 127.0.0.1:5000
+encoding_list = UTF-8
+
+encryption = allow_incoming,try_outgoing,enable_retry
+
+dht = auto
+dht_port = 6881
+peer_exchange = yes
+
+
+directory = ~/Downloads/Torrents/incomplete
+schedule = watch_directory_1,10,10,"load_start=/Users/james/Downloads/*.torrent,d.set_custom1=/Users/james/Downloads/Torrents/complete"
+
+system.method.insert = checkdirs1,simple,"not=\"$equal={d.get_custom1=,d.get_base_path=}\""
+system.method.insert = movecheck1,simple,"and={checkdirs1=,d.get_complete=,d.get_custom1=}"
+system.method.insert = movedir1,simple,"d.set_directory=$d.get_custom1=;execute=mv,-u,$d.get_base_path=,$d.get_custom1=;d.set_custom1=;d.stop=;d.start="
+system.method.set_key = event.download.hash_done,move_hashed1,"branch={$movecheck1=,movedir1=}"
+
+schedule = filter_active,30,30,"view_filter = active,\"or={d.get_up_rate=,d.get_down_rate=}\""
+
+session = ~/Downloads/Torrents/session/
