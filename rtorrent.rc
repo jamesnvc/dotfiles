@@ -6,7 +6,7 @@ encryption = allow_incoming,try_outgoing,enable_retry
 dht = auto
 dht_port = 6881
 peer_exchange = yes
-
+check_hash = yes
 
 directory = ~/Downloads/Torrents/incomplete
 schedule = watch_directory_1,10,10,"load_start=/Users/james/Downloads/*.torrent,d.set_custom1=/Users/james/Downloads/Torrents/complete"
