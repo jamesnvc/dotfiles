@@ -160,11 +160,11 @@ alias -s mpg='open -a VLC'
 alias -s mp4='open -a VLC'
 alias -s mkv='open -a VLC'
 alias -s wmv='open -a VLC'
-alias -s bmp=open
-alias -s gif=open
-alias -s jpg=open
-alias -s jpeg=open
-alias -s png=open
+alias -s bmp='open -a Xee'
+alias -s gif='open -a Xee'
+alias -s jpg='open -a Xee'
+alias -s jpeg='open -a Xee'
+alias -s png='open -a Xee'
 alias -s pdf=open
 
 # AND HENCEFORTH THERE WERE FUNCTIONS
