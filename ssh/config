@@ -65,3 +65,7 @@ Host ec2
   HostName 50.16.226.15
   User ubuntu
   IdentityFile ~/.ssh-keys/james-ec2.pem
+
+Host heracles
+  User git
+  IdentityFile ~/.ssh-keys/heracles-git
