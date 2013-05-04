@@ -34,9 +34,9 @@
   excludesfile = ~/.cvsignore
   autocrlf = input
   pager = less -r
-  mergeoptions = --no-ff
 [merge]
   tool = threesome
+	ff = no
 [mergetool "threesome"]
   cmd = "vim -f $BASE $LOCAL $REMOTE $MERGED -c 'ThreesomeInit'"
   trustExitCode = true
