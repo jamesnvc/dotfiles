@@ -64,8 +64,22 @@ Host official.heroku.com
 Host ec2
   HostName 50.16.226.15
   User ubuntu
+  IdentitiesOnly yes
   IdentityFile ~/.ssh-keys/james-ec2.pem
 
 Host heracles
   User git
+  IdentitiesOnly yes
   IdentityFile ~/.ssh-keys/heracles-git
+
+Host rotman
+  User james
+  HostName 198.199.86.211
+  IdentitiesOnly yes
+  IdentityFile ~/.ssh-keys/rotman
+
+Host rotmangit
+  User git
+  HostName 198.199.86.211
+  IdentitiesOnly yes
+  IdentityFile ~/.ssh-keys/rotman-git
