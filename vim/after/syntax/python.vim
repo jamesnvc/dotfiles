@@ -27,6 +27,7 @@ syntax keyword pyNiceStatement lambda conceal cchar=λ
 syn match pyNiceVariable '\a\@<!Delta\%(\a\)\@!' conceal cchar=Δ containedin=pythonFunction
 syn match pyNiceVariable '\a\@<!Lambda\%(\a\)\@!' conceal cchar=Λ containedin=pythonFunction
 syn match pyNiceVariable '\a\@<!alpha\%(\a\)\@!' conceal cchar=α containedin=pythonFunction
+syn match pyNiceVariable '\a\@<!beta\%(\a\)\@!' conceal cchar=β containedin=pythonFunction
 syn match pyNiceVariable '\a\@<!delta\%(\a\)\@!' conceal cchar=δ containedin=pythonFunction
 syn match pyNiceVariable '\a\@<!epsilon\%(\a\)\@!' conceal cchar=ε containedin=pythonFunction
 syn match pyNiceVariable '\a\@<!eta\%(\a\)\@!' conceal cchar=η containedin=pythonFunction
