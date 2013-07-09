@@ -622,7 +622,7 @@ let g:ctrlp_map = '<leader>t'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_dont_split = 'NERD_tree_2'
-let g:ctrp_extensions = ['tag']
+let g:ctrlp_extensions = ['tag']
 let g:ctrlp_prompt_mappings = {
       \ 'PrtSelectMove("j")': ['<C-j>', '<down>', '<s-tab>'],
       \ 'PrtSelectMove("k")': ['<C-k>', '<up>', '<tab>'],
@@ -631,10 +631,10 @@ let g:ctrlp_prompt_mappings = {
       \ 'ToggleFocus()': ['<C-tab>'],
       \ }
 let ctrlp_filter_greps = "".
-      \ "ag -iv '\\.(" .
+      \ "ack -iv '\\.(" .
       \ "jar|class|swp|swo|log|so|o|pyc|jpe?g|png|gif|mo|po" .
       \ ")$' | " .
-      \ "ag -v '^(\\./)?(" .
+      \ "ack -v '^(\\./)?(" .
       \ "lib|classes|libs|deploy/vendor|.git|.hg|.svn|.*migrations|docs/build" .
       \ ")/'"
 let my_ctrlp_user_cmd = "" .
