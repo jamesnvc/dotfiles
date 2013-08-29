@@ -247,3 +247,6 @@
 [submodule "vim/bundle/vim-elixir"]
 	path = vim/bundle/vim-elixir
 	url = https://github.com/elixir-lang/vim-elixir.git
+[submodule "vim/bundle/vim-argumentative"]
+	path = vim/bundle/vim-argumentative
+	url = https://github.com/PeterRincker/vim-argumentative.git
