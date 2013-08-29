@@ -684,6 +684,7 @@ let g:rails_statusline = 0
 let g:indent_guides_auto_colors = 0
 let g:gitgutter_enabled = 0
 let g:paredit_mode = 0
+let g:FactorNewVocabRoot = expand("~/Programming/misc/by-language/factor/")
 " }}
 
 
