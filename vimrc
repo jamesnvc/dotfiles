@@ -416,7 +416,6 @@ noremap <leader>R :!./%<CR>
 noremap <F12> :TagbarToggle<CR>
 "  }}
 " Normal mode bindings {{
-nnoremap <tab> %
 nnoremap <leader><leader> :
 nnoremap / /\v
 nnoremap <silent> <leader>* :exe 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
