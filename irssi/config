@@ -40,10 +40,7 @@ chatnets = {
   };
 };
 
-channels = (
-  { name = "#irssi"; chatnet = "ircnet"; autojoin = "No"; },
-  { name = "##fcj"; chatnet = "freenode"; autojoin = "no"; }
-);
+channels = ( { name = "#irssi"; chatnet = "ircnet"; autojoin = "No"; } );
 
 aliases = {
   J = "join";
@@ -154,7 +151,6 @@ statusbar = {
         window = { };
         window_empty = { };
         lag = { priority = "-1"; };
-        act = { priority = "10"; };
         more = { priority = "-1"; alignment = "right"; };
         barend = { priority = "100"; alignment = "right"; };
       };
@@ -204,6 +200,13 @@ statusbar = {
         topicbarend = { priority = "100"; alignment = "right"; };
       };
     };
+    awl_0 = {
+      items = {
+        barstart = { priority = "100"; };
+        awl_0 = { };
+        barend = { priority = "100"; alignment = "right"; };
+      };
+    };
   };
 };
 settings = {
@@ -214,4 +217,19 @@ settings = {
   };
   "fe-text" = { actlist_sort = "refnum"; };
   "fe-common/core" = { theme = "fear2"; };
+  "perl/core/scripts" = {
+    awl_block = "-14";
+    awl_display_key = "$Q%K|$N%n $H$C$S";
+    awl_display_key_active = "$Q%K|$N%n $H%U$C%n$S";
+    awl_display_nokey = "[$N]$H$C$S";
+  };
 };
+windows = {
+  1 = { immortal = "yes"; name = "(status)"; level = "ALL"; };
+  2 = { name = "hilight"; sticky = "yes"; };
+};
+mainwindows = {
+  1 = { first_line = "8"; lines = "55"; };
+  2 = { first_line = "1"; lines = "7"; };
+};
+hilights = ( { text = "jamesnvc"; nick = "no"; word = "yes"; } );
