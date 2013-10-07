@@ -67,3 +67,14 @@ function setprompt {
 }
 
 setprompt
+
+# Make rprompt also show vi mode
+function zle-line-init zle-keymap-select {
+  VIM_NORMAL="%{$fg_bold[yellow]%} [% NORMAL ]% %{$reset_color%}"
+  VIM_INSERT="%{$fg_bold[cyan]%} [% INSERT ]% %{$reset_color%}"
+  RPROMPT="${${KEYMAP/vicmd/$VIM_NORMAL}/(main|viins)/$VIM_INSERT} $(count_todos)$(battery_charge)"
+  zle reset-prompt
+}
+
+zle -N zle-line-init
+zle -N zle-keymap-select
