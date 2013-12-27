@@ -83,3 +83,51 @@ Host rotmangit
   HostName 198.199.86.211
   IdentitiesOnly yes
   IdentityFile ~/.ssh-keys/rotman-git
+
+Host n36
+  User james
+  HostName 192.241.166.86
+  IdentitiesOnly yes
+  IdentityFile ~/.ssh-keys/n36
+
+Host palantir
+  User james
+  HostName 162.243.135.98
+  IdentitiesOnly yes
+  IdentityFile ~/.ssh-keys/palantir
+
+Host youthcentral
+  User james
+  HostName 162.243.90.167
+  IdentitiesOnly yes
+  IdentityFile ~/.ssh-keys/youthcentral
+
+Host youthcentralgit
+  User git
+  HostName 162.243.90.167
+  IdentitiesOnly yes
+  IdentityFile ~/.ssh-keys/youthcentral-git
+
+Host ryerson
+  User james
+  Hostname 162.243.51.66
+  IdentitiesOnly yes
+  IdentityFile ~/.ssh-keys/ryerson
+
+Host ryersongit
+  User git
+  Hostname 162.243.51.66
+  IdentitiesOnly yes
+  IdentityFile ~/.ssh-keys/ryerson-git
+
+Host ryerson-frontend
+  User james
+  Hostname 162.243.255.62
+  IdentitiesOnly yes
+  IdentityFile ~/.ssh-keys/ryerson-frontend
+
+Host ryerson-frontendgit
+  User git
+  Hostname 162.243.255.62
+  IdentitiesOnly yes
+  IdentityFile ~/.ssh-keys/ryerson-frontend-git
