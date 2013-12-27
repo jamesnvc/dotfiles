@@ -51,3 +51,6 @@ source ~/.zsh.d/syntax-highlighting-filetypes/zsh-syntax-highlighting-filetypes.
 if [ -f `brew --prefix`/etc/autojump ]; then
   source `brew --prefix`/etc/autojump
 fi
+
+# OPAM configuration
+. /Users/james/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true

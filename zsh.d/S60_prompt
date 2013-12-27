@@ -61,7 +61,7 @@ function setprompt {
   ###
   # Finally, the prompt.
   PROMPT='%K{238} $PR_RED $(prompt_char) $PR_WHITE %~ ${vcs_info_msg_0_}$PR_MAGENTA %(?/%F{yellow}/%F{red}) %k%F{238}⮀$PR_NO_COLOUR '
-  RPROMPT='$(count_todos)$(battery_charge)'
+  RPROMPT="%{$fg_bold[cyan]%} [% INSERT ]% %{$reset_color%}"
   PS2='$PR_RED → $PR_BLUE %_ $PR_RED → $PR_NO_COLOUR '
 
 }
@@ -72,7 +72,7 @@ setprompt
 function zle-line-init zle-keymap-select {
   VIM_NORMAL="%{$fg_bold[yellow]%} [% NORMAL ]% %{$reset_color%}"
   VIM_INSERT="%{$fg_bold[cyan]%} [% INSERT ]% %{$reset_color%}"
-  RPROMPT="${${KEYMAP/vicmd/$VIM_NORMAL}/(main|viins)/$VIM_INSERT} $(count_todos)$(battery_charge)"
+  RPROMPT="${${KEYMAP/vicmd/$VIM_NORMAL}/(main|viins)/$VIM_INSERT}"
   zle reset-prompt
 }
 
