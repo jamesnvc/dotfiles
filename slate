@@ -1,0 +1,15 @@
+config defaultToCurrentScreen true
+config secondsBetweenRepeat 0.1
+config keyboardLayout dvorak
+
+config windowHintsShowIcons true
+config windowHintsIgnoreHiddenWindows false
+config windowHintsSpread true
+
+config checkDefaultsOnLoad ture
+
+alias monitor-acer 0
+alias monitor-laptop 1
+
+bind g:ctrl,alt,cmd,shift grid padding:5 ${monitor-laptop}:2,2 ${monitor-acer}:3,3
+bind space:ctrl,alt,cmd,shift  hint AOEUIDHTNS
