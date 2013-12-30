@@ -250,3 +250,9 @@
 [submodule "vim/bundle/vim-argumentative"]
 	path = vim/bundle/vim-argumentative
 	url = https://github.com/PeterRincker/vim-argumentative.git
+[submodule "vim/bundle/vim-sexp"]
+	path = vim/bundle/vim-sexp
+	url = https://github.com/guns/vim-sexp.git
+[submodule "vim/bundle/vim-sexp-mappings-for-regular-people"]
+	path = vim/bundle/vim-sexp-mappings-for-regular-people
+	url = https://github.com/tpope/vim-sexp-mappings-for-regular-people.git
