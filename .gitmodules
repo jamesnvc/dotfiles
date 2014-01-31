@@ -214,9 +214,6 @@
 [submodule "vim/bundle/vim-penyocomic"]
 	path = vim/bundle/vim-penyocomic
 	url = git@github.com:jamesnvc/vim-penyocomic.git
-[submodule "vim/bundle/vim-foreplay"]
-	path = vim/bundle/vim-foreplay
-	url = git://github.com/tpope/vim-foreplay.git
 [submodule "vim/bundle/vim-twig"]
 	path = vim/bundle/vim-twig
 	url = git://github.com/beyondwords/vim-twig.git
@@ -256,3 +253,6 @@
 [submodule "vim/bundle/vim-sexp-mappings-for-regular-people"]
 	path = vim/bundle/vim-sexp-mappings-for-regular-people
 	url = https://github.com/tpope/vim-sexp-mappings-for-regular-people.git
+[submodule "vim/bundle/vim-fireplace"]
+	path = vim/bundle/vim-fireplace
+	url = https://github.com/tpope/vim-fireplace
