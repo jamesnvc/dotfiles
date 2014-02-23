@@ -131,3 +131,17 @@ Host ryerson-frontendgit
   Hostname 162.243.255.62
   IdentitiesOnly yes
   IdentityFile ~/.ssh-keys/ryerson-frontend-git
+
+Host git.wpengine.com
+  User git
+  HostName git.wpengine.com
+  IdentityFile ~/.ssh-keys/next36wpe
+  TCPKeepAlive yes
+  IdentitiesOnly yes
+
+Host next36-discourse
+  User james
+  Hostname 162.243.68.198
+  IdentityFile ~/.ssh-keys/next36-discourse
+  TCPKeepAlive yes
+  IdentitiesOnly yes
