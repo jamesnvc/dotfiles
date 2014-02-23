@@ -67,6 +67,7 @@ set ignorecase
 set incsearch
 set matchtime=3
 set laststatus=2
+set lazyredraw " redraw only when required (speed up macros)
 set list
 set listchars=tab:▸\ ,trail:¬,extends:→,precedes:←,nbsp:.
 set magic
@@ -402,7 +403,6 @@ noremap <C-l> <C-w>l
 " Toggle spellchecking
 noremap <leader>ss :setlocal spell!<CR>
 noremap <leader>o :BufExplorer<CR>
-noremap <leader>C :call HexHighlight()<CR>
 noremap Y y$
 " Undo tree
 noremap <leader>U :GundoToggle<CR>
@@ -466,11 +466,9 @@ nnoremap <Leader>b= :Tabularize /=<CR>
 nnoremap <Leader>b: :Tabularize /^[^:]*:\zs/r0c0l0<CR>
 nnoremap <Leader>b, :Tabularize /^[^,]*,\zs/r0c0l0<CR>
 " open URL under cursor in browser
-nnoremap gb :OpenURL <cfile><CR>
-nnoremap gG :OpenURL http://www.google.com/search?q=<cword><CR>
-nnoremap gW :OpenURL http://en.wikipedia.org/wiki/Special:Search?search=<cword><CR>
 nnoremap <leader>ri :call InlineVariable()<CR>
 nnoremap <leader>T :CtrlPTag<CR>
+nnoremap <leader>CC :CtrlPClearCache<CR>
 " Map <leader>n to move to nth split
 for n in range(1, 9)
   exe "nnoremap <silent> <leader>" . n . " :" . n . "wincmd w<CR>"
@@ -634,7 +632,7 @@ let ctrlp_filter_greps = "".
       \ "jar|class|swp|swo|log|so|o|pyc|jpe?g|png|gif|mo|po" .
       \ ")$' | " .
       \ "ack -v '^(\\./)?(" .
-      \ "lib|classes|libs|deploy/vendor|.git|.hg|.svn|.*migrations|docs/build" .
+      \ "classes|libs|deploy/vendor|.git|.hg|.svn|.*migrations|docs/build" .
       \ ")/'"
 let my_ctrlp_user_cmd = "" .
       \ "find %s '(' -type f -o -type l ')' -maxdepth 15 " .

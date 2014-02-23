@@ -11,3 +11,5 @@ set guifont=PragmataPro:h10
 if filereadable(expand("~/.gvimrc.local"))
   source ~/.gvimrc.local
 endif
+
+noremap <leader>C :call HexHighlight()<CR>
