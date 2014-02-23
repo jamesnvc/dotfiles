@@ -256,3 +256,6 @@
 [submodule "vim/bundle/vim-fireplace"]
 	path = vim/bundle/vim-fireplace
 	url = https://github.com/tpope/vim-fireplace
+[submodule "vim/bundle/vim-projectile"]
+	path = vim/bundle/vim-projectile
+	url = git://github.com/tpope/vim-projectile.git
