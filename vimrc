@@ -683,6 +683,22 @@ let g:indent_guides_auto_colors = 0
 let g:gitgutter_enabled = 0
 let g:paredit_mode = 0
 let g:FactorNewVocabRoot = expand("~/Programming/misc/by-language/factor/")
+let g:projectiles = {
+      \   "project.clj": {
+      \     "src/*.clj": {
+      \       "command": "src",
+      \       "template": ["(ns %d)"],
+      \       "alternate": "test/%s_test.clj",
+      \     },
+      \     "test/*_test.clj": {
+      \       "command": "test",
+      \       "template": ["(ns %d",
+      \                    "  (:require [clojure.test :refer :all]",
+      \                    "            %d)"],
+      \       "alternate": "src/%s.clj",
+      \     }
+      \   }
+      \ }
 " }}
 
 
