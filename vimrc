@@ -683,6 +683,11 @@ let g:indent_guides_auto_colors = 0
 let g:gitgutter_enabled = 0
 let g:paredit_mode = 0
 let g:FactorNewVocabRoot = expand("~/Programming/misc/by-language/factor/")
+let g:clojure_fuzzy_indent_patterns = ['^with', '^def', '^let', '^clone-for']
+" For clojurescript files, add the Om DOM functions to indent patterns
+autocmd BufRead,BufNewFile *.cljs
+      \ let g:clojure_fuzzy_indent_patterns += ['div', 'a', 'h1', 'button',
+      \   'h3', 'input', 'label', 'li', 'ul', 'span']
 let g:projectiles = {
       \   "project.clj": {
       \     "src/*.clj": {
@@ -692,9 +697,9 @@ let g:projectiles = {
       \     },
       \     "test/*_test.clj": {
       \       "command": "test",
-      \       "template": ["(ns %d",
+      \       "template": ["(ns %d-test",
       \                    "  (:require [clojure.test :refer :all]",
-      \                    "            %d)"],
+      \                    "            %d))"],
       \       "alternate": "src/%s.clj",
       \     }
       \   }
