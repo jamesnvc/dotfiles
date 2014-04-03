@@ -683,7 +683,7 @@ let g:indent_guides_auto_colors = 0
 let g:gitgutter_enabled = 0
 let g:paredit_mode = 0
 let g:FactorNewVocabRoot = expand("~/Programming/misc/by-language/factor/")
-let g:clojure_fuzzy_indent_patterns = ['^with', '^def', '^let', '^clone-for']
+let g:clojure_fuzzy_indent_patterns = ['^with', '^def', '^let', '^clone-for', '^complex', '^match']
 " For clojurescript files, add the Om DOM functions to indent patterns
 autocmd BufRead,BufNewFile *.cljs
       \ let g:clojure_fuzzy_indent_patterns += ['div', 'a', 'h1', 'button',

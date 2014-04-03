@@ -10,6 +10,7 @@ export PATH=/usr/local/ActivePerl-5.12/bin:$PATH
 export PATH=/usr/local/lib/node:$PATH
 export PATH=/Library/TeX/Distributions/TeXLive-2011.texdist/Contents/Programs/texbin:$PATH
 export PATH=$HOME/Dropbox/dotfiles/git-util:$PATH
+export PATH=/usr/local/apache-maven/current/bin/:$PATH
 # Java
 export JAVA_HOME=$(/usr/libexec/java_home -v 1.7)
 # Plan9
