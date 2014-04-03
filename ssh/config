@@ -96,18 +96,6 @@ Host palantir
   IdentitiesOnly yes
   IdentityFile ~/.ssh-keys/palantir
 
-Host youthcentral
-  User james
-  HostName 162.243.90.167
-  IdentitiesOnly yes
-  IdentityFile ~/.ssh-keys/youthcentral
-
-Host youthcentralgit
-  User git
-  HostName 162.243.90.167
-  IdentitiesOnly yes
-  IdentityFile ~/.ssh-keys/youthcentral-git
-
 Host ryerson
   User james
   Hostname 162.243.51.66
@@ -143,5 +131,12 @@ Host next36-discourse
   User james
   Hostname 162.243.68.198
   IdentityFile ~/.ssh-keys/next36-discourse
+  TCPKeepAlive yes
+  IdentitiesOnly yes
+
+Host n36-digest
+  User james
+  Hostname 162.243.90.167
+  IdentityFile ~/.ssh-keys/n36-digest
   TCPKeepAlive yes
   IdentitiesOnly yes
