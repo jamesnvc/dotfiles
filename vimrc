@@ -127,8 +127,6 @@ let g:indent_guides_guide_size=1
 
 
 " ***** Define commands ***** {{
-command! -nargs=0 Restore set lines=100 columns=85
-command! -nargs=0 GitX !open -a GitX %:p:h<CR>
 command! -nargs=0 XmlIndent '[,']!xsltproc ~/.vim/misc/indent.xsl %
 " Pulse line {{{
 function! s:Pulse() " {{{
@@ -167,18 +165,6 @@ function! SearchToClipboard() " {{
   let @* = @/
 endfunction
 command! -nargs=0 StoC call SearchToClipboard()
-" }}
-" 'minimal' mode
-function! MinimalMode() " {{
-  highlight NonText ctermfg=white   " Match the tildes to your background
-  set laststatus=0                  " No statusbar
-  set nonumber                      " No line numbering
-  set norelativenumber
-  set showtabline=0                 " don't show the tab bar
-  set foldcolumn=4                  " Add a left margin
-  highlight! link FoldColumn Normal " Make it the background colour
-  set wrapmargin=8                  " Add a right margin, sort of
-endfunction
 " }}
 " Show syntax highlighting groups for word under cursor
 function! <SID>SynStack() " {{
