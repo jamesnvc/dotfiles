@@ -439,10 +439,6 @@ nnoremap gV `[v`]
 nnoremap Q gqip
 " Using this instead of autochdir
 nnoremap <leader>cd :cd %:p:h<CR>
-" NERDTree bindings
-nnoremap <leader>n :NERDTreeToggle<CR>
-nnoremap <Leader>m :NERDTreeClose<CR>:NERDTreeFind<CR>
-nnoremap <leader>N :NERDTreeClose<CR>
 nnoremap gt <C-w>gf
 nnoremap gT <C-w>gF
 nnoremap <Left> :tabprevious<CR>
@@ -604,7 +600,6 @@ let g:pymode_lint_checker = 'pep8'
 let g:ctrlp_map = '<leader>t'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 0
-let g:ctrlp_dont_split = 'NERD_tree_2'
 let g:ctrlp_extensions = ['tag']
 let g:ctrlp_prompt_mappings = {
       \ 'PrtSelectMove("j")': ['<C-j>', '<down>', '<s-tab>'],
@@ -629,18 +624,6 @@ let my_ctrlp_git_cmd = "" .
       \ ctrlp_filter_greps
 let g:ctrlp_user_command = ['.git/', my_ctrlp_git_cmd, my_ctrlp_user_cmd]
 " }}
-" NERDTree stuff {{
-let NERDTreeBookmarksFile=expand("$HOME/.vim/NERDTreeBookmarks")
-let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.o$', '\.git', '\.so' ]
-let NERDTreeShowBookmarks=1
-let NERDTreeShowFiles=1
-let NERDTreeShowHidden=1
-let NERDTreeQuitOnOpen=1
-let NERDTreeHighlightCursorLine=1
-let NERDTreeMouseMode=1
-let NERDTreeMinimalUI=1
-let NERDTreeDirArrows=1
-"  }}
 " Syntastic {{
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
@@ -669,11 +652,12 @@ let g:indent_guides_auto_colors = 0
 let g:gitgutter_enabled = 0
 let g:paredit_mode = 0
 let g:FactorNewVocabRoot = expand("~/Programming/misc/by-language/factor/")
-let g:clojure_fuzzy_indent_patterns = ['^with', '^def', '^let', '^clone-for', '^complex', '^match', '^POST', '^GET']
+let g:clojure_fuzzy_indent_patterns = ['^with', '^def', '^let', '^clone-for',
+      \ '^complex', '^match', '^POST', '^GET', '^DELETE', '^context']
 " For clojurescript files, add the Om DOM functions to indent patterns
 autocmd BufRead,BufNewFile *.cljs
-      \ let g:clojure_fuzzy_indent_patterns += ['div', 'a', 'h1', 'button',
-      \   'h3', 'input', 'label', 'li', 'ul', 'span', 'svg', 'g']
+      \ let g:clojure_fuzzy_indent_patterns += ['^div', '^a', '^h1', '^button',
+      \   '^h3', '^input', '^label', '^li', '^ul', '^span', '^svg', '^g', '^form']
 let g:projectiles = {
       \   "project.clj": {
       \     "src/*.clj": {
