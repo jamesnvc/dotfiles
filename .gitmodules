@@ -271,3 +271,6 @@
 [submodule "vim/bundle/vim-clojure-highlight"]
 	path = vim/bundle/vim-clojure-highlight
 	url = https://github.com/guns/vim-clojure-highlight.git
+[submodule "vim/bundle/vim-vinegar"]
+	path = vim/bundle/vim-vinegar
+	url = https://github.com/tpope/vim-vinegar.git
