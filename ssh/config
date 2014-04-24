@@ -129,8 +129,8 @@ Host git.wpengine.com
 
 Host next36-discourse
   User james
-  Hostname 162.243.68.198
-  IdentityFile ~/.ssh-keys/next36-discourse
+  Hostname 107.170.63.78
+  IdentityFile ~/.ssh-keys/n36
   TCPKeepAlive yes
   IdentitiesOnly yes
 
