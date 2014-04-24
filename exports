@@ -10,28 +10,25 @@ export PATH=/usr/local/ActivePerl-5.12/bin:$PATH
 export PATH=/usr/local/lib/node:$PATH
 export PATH=/Library/TeX/Distributions/TeXLive-2011.texdist/Contents/Programs/texbin:$PATH
 export PATH=$HOME/Dropbox/dotfiles/git-util:$PATH
-export PATH=/usr/local/apache-maven/current/bin/:$PATH
+export PATH=/usr/local/apache-maven/current/bin:$PATH
 # Java
 export JAVA_HOME=$(/usr/libexec/java_home -v 1.7)
-# Plan9
-export PLAN9=/usr/local/plan9
-export PATH=$PATH:$PLAN9/bin
+if [ -z $JAVA_HOME ]; then
+  export JAVA_HOME="/System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK/Home"
+fi
 # Perlbrew
 source /Users/james/perl5/perlbrew/etc/bashrc
 # Node stuff
 export NODE_PATH=/usr/local/lib/node_modules
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 [[ -s "$HOME/.pythonbrew/etc/bashrc" ]] && source "$HOME/.pythonbrew/etc/bashrc"
-export IOS_SDK="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS5.1.sdk"
+export IOS_SDK="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk"
 # Needed to make building stuff under Lion work
 #if [ `uname` = 'Darwin' ]; then
   #export CFLAGS="-isysroot /Developer/SDKs/MacOSX10.7.sdk"
 #fi
 export FULLNAME="James Cash"
 export EMAIL="james.nvc@gmail.com"
-if [ -z $JAVA_HOME ]; then
-  export JAVA_HOME="/System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK/Home"
-fi
 export ECE353_SVN=svn+ssh://remote.ecf.utoronto.ca/n/svn/ece353s_20/svn
 export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
 # -- start rip config -- #
