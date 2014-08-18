@@ -273,3 +273,9 @@
 [submodule "vim/bundle/vim-racket"]
 	path = vim/bundle/vim-racket
 	url = https://github.com/wlangstroth/vim-racket.git
+[submodule "vim/bundle/unite.vim"]
+	path = vim/bundle/unite.vim
+	url = https://github.com/Shougo/unite.vim.git
+[submodule "vim/bundle/neomru.vim"]
+	path = vim/bundle/neomru.vim
+	url = https://github.com/Shougo/neomru.vim
