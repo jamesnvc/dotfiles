@@ -8,8 +8,9 @@ config windowHintsSpread true
 
 config checkDefaultsOnLoad ture
 
-alias monitor-acer 0
-alias monitor-laptop 1
+alias monitor-acer 1
+alias monitor-acer2 0
+alias monitor-laptop 2
 
-bind g:ctrl,alt,cmd,shift grid padding:5 ${monitor-laptop}:2,2 ${monitor-acer}:3,3
+bind g:ctrl,alt,cmd,shift grid padding:5 ${monitor-laptop}:2,2 ${monitor-acer}:4,3 ${monitor-acer2}:4,3
 bind space:ctrl,alt,cmd,shift  hint AOEUIDHTNS
