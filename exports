@@ -7,12 +7,13 @@ ha_home=/Users/james/Programming/projects/HackerAcademy
 export PATH=$HOME/bin:$HOME/node_modules/.bin:/usr/local/bin:/usr/local/sbin:$PATH:/Developer/usr/bin
 export PATH=/usr/local/ActivePerl-5.12/site/bin:$PATH
 export PATH=/usr/local/ActivePerl-5.12/bin:$PATH
+export PATH=$HOME/.cabal/bin:$PATH
 export PATH=/usr/local/lib/node:$PATH
 export PATH=/Library/TeX/Distributions/TeXLive-2011.texdist/Contents/Programs/texbin:$PATH
 export PATH=$HOME/Dropbox/dotfiles/git-util:$PATH
 export PATH=/usr/local/apache-maven/current/bin:$PATH
 # Java
-export JAVA_HOME=$(/usr/libexec/java_home -v 1.7)
+export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 if [ -z $JAVA_HOME ]; then
   export JAVA_HOME="/System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK/Home"
 fi
@@ -21,7 +22,14 @@ source /Users/james/perl5/perlbrew/etc/bashrc
 # Node stuff
 export NODE_PATH=/usr/local/lib/node_modules
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+
+# Python stuff
+## Old, using pythonbrew
 [[ -s "$HOME/.pythonbrew/etc/bashrc" ]] && source "$HOME/.pythonbrew/etc/bashrc"
+## New, using pyenv
+# if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+# if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
+
 export IOS_SDK="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk"
 # Needed to make building stuff under Lion work
 #if [ `uname` = 'Darwin' ]; then

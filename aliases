@@ -33,6 +33,9 @@ alias vltube='noglob vltube'
 alias ss="script/server"
 alias sc="script/console"
 alias sg="script/generate"
+function manps () {
+  man -t $1 | open -f -a Preview
+}
 
 # JRuby
 alias jrake="jruby -S rake"

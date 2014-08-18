@@ -140,3 +140,17 @@ Host n36-digest
   IdentityFile ~/.ssh-keys/n36-digest
   TCPKeepAlive yes
   IdentitiesOnly yes
+
+Host flexdb
+  User james
+  Hostname 107.170.30.8
+  IdentityFile ~/.ssh-keys/flexdb
+  TCPKeepAlive yes
+  IdentitiesOnly yes
+
+Host discourse
+  User root
+  Hostname 107.170.185.119
+  IdentityFile ~/.ssh-keys/palantir
+  TCPKeepAlive yes
+  IdentitiesOnly yes

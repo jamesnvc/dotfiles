@@ -642,7 +642,7 @@ let g:tagbar_usearrows = 1
 " }}
 " Jedi {{
 let g:jedi#auto_initialization = 0
-let g:jedi#goto_command = "<leader>G"
+let g:jedi#goto_assignments_command = "<leader>G"
 let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#rename_command = "<leader>R"
 " }}
@@ -653,12 +653,13 @@ let g:gitgutter_enabled = 0
 let g:paredit_mode = 0
 let g:FactorNewVocabRoot = expand("~/Programming/misc/by-language/factor/")
 let g:clojure_fuzzy_indent_patterns = ['^with', '^def', '^let', '^clone-for',
-      \ '^complex', '^match', '^POST', '^GET', '^DELETE', '^context']
+      \ '^complex', '^match', '^POST', '^GET', '^DELETE', '^PUT', '^context',
+      \ '^OPTIONS']
 " For clojurescript files, add the Om DOM functions to indent patterns
-autocmd BufRead,BufNewFile *.cljs
+autocmd BufRead,BufNewFile *.cljs,*.edn
       \ let g:clojure_fuzzy_indent_patterns += ['^div', '^a', '^h1', '^button',
       \   '^h3', '^input', '^label', '^li', '^ul', '^span', '^svg', '^g', '^form',
-      \   '^table', '^this-as', '^td', '^tr']
+      \   '^table', '^this-as', '^td', '^tr', '^thead', '^tbody', '^h4', '^h2']
 let g:projectiles = {
       \   "project.clj": {
       \     "src/*.clj": {
@@ -675,6 +676,11 @@ let g:projectiles = {
       \     }
       \   }
       \ }
+if executable('ocamlmerlin') && has('python')
+  let s:ocamlmerlin = substitute(system('opam config var share'), '\n$', '', '''') . "/ocamlmerlin"
+  execute "set rtp+=".s:ocamlmerlin."/vim"
+  let g:syntastic_ocaml_checkers = ['merlin']
+endif
 " }}
 
 
