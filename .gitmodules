@@ -279,3 +279,6 @@
 [submodule "vim/bundle/neomru.vim"]
 	path = vim/bundle/neomru.vim
 	url = https://github.com/Shougo/neomru.vim
+[submodule "vim/bundle/fsharp-vim"]
+	path = vim/bundle/fsharp-vim
+	url = https://github.com/timrobinson/fsharp-vim.git
