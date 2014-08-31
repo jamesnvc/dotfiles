@@ -282,3 +282,6 @@
 [submodule "vim/bundle/fsharp-vim"]
 	path = vim/bundle/fsharp-vim
 	url = https://github.com/timrobinson/fsharp-vim.git
+[submodule "tmux/plugins/tpm"]
+	path = tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm
