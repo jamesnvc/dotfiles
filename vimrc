@@ -655,6 +655,7 @@ let g:FactorNewVocabRoot = expand("~/Programming/misc/by-language/factor/")
 let g:clojure_fuzzy_indent_patterns = ['^with', '^def', '^let', '^clone-for',
       \ '^complex', '^match', '^POST', '^GET', '^DELETE', '^PUT', '^context',
       \ '^OPTIONS']
+let g:clojure_special_indent_words = 'deftype,defrecord,reify,proxy,extend-type,extend-protocol,letfn,defcomponent'
 " For clojurescript files, add the Om DOM functions to indent patterns
 autocmd BufRead,BufNewFile *.cljs,*.edn
       \ let g:clojure_fuzzy_indent_patterns += ['^div', '^a', '^h1', '^button',
