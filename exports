@@ -22,6 +22,8 @@ source /Users/james/perl5/perlbrew/etc/bashrc
 # Node stuff
 export NODE_PATH=/usr/local/lib/node_modules
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+# Make leiningen start faster
+export LEIN_FAST_TRAMPOLINE=y
 
 # Python stuff
 ## Old, using pythonbrew
