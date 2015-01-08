@@ -285,3 +285,9 @@
 [submodule "tmux/plugins/tpm"]
 	path = tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
+[submodule "vim/bundle/vim-hdevtools"]
+	path = vim/bundle/vim-hdevtools
+	url = https://github.com/bitc/vim-hdevtools.git
+[submodule "vim/bundle/haskellmode-vim"]
+	path = vim/bundle/haskellmode-vim
+	url = https://github.com/lukerandall/haskellmode-vim.git
