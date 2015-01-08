@@ -37,6 +37,7 @@ function manps () {
   man -t $1 | open -f -a Preview
 }
 
+alias cljsbuild="lein trampoline cljsbuild $@"
 # JRuby
 alias jrake="jruby -S rake"
 
@@ -200,15 +201,15 @@ function mcd() {    # mind-control device
 extract () {
   if [ -f $1 ]; then
     case $1 in
-    *.tar.bz2)  tar -jxvf $1                      ;;
-    *.tar.gz)  tar -zxvf $1                      ;;
+    *.tar.bz2)  tar -jxvf $1                    ;;
+    *.tar.gz)  tar -zxvf $1                     ;;
     *.bz2)    bzip2 -d $1                       ;;
     *.gz)     gunzip -d $1                      ;;
     *.tar)    tar -xvf $1                       ;;
     *.tgz)    tar -zxvf $1                      ;;
     *.zip)    unzip $1                          ;;
     *.jar)    unzip $1                          ;;
-    *.Z)    uncompress $1                     ;;
+    *.Z)      uncompress $1                     ;;
     *.rar)    unrar x $1                        ;;
     *)    echo "'$1' Error. Please go away" ;;
     esac
@@ -225,7 +226,7 @@ lsarchive () {
     *.tar)     tar -tf $1                        ;;
     *.tgz)     tar -ztf $1                       ;;
     *.zip)     unzip -l $1                       ;;
-    *.rar)     rar vb $1                         ;;
+    *.rar)     unrar vb $1                       ;;
     *.jar)     unzip -l $1                       ;;
     *)         echo "'$1' Error. Please go away" ;;
     esac
