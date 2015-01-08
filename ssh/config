@@ -128,9 +128,9 @@ Host git.wpengine.com
   IdentitiesOnly yes
 
 Host next36-discourse
-  User james
-  Hostname 107.170.63.78
-  IdentityFile ~/.ssh-keys/n36
+  User root
+  Hostname 104.131.90.18
+  IdentityFile ~/.ssh-keys/palantir
   TCPKeepAlive yes
   IdentitiesOnly yes
 
@@ -148,9 +148,23 @@ Host flexdb
   TCPKeepAlive yes
   IdentitiesOnly yes
 
-Host discourse
-  User root
-  Hostname 107.170.185.119
-  IdentityFile ~/.ssh-keys/palantir
+Host ein
+  User james
+  Hostname ein.leanpixel.com
+  IdentityFile ~/.ssh-keys/ein
+  TCPKeepAlive yes
+  IdentitiesOnly yes
+
+Host cyberleague
+  User james
+  Hostname 104.236.7.105
+  IdentityFile ~/.ssh-keys/cyberleague
+  TCPKeepAlive yes
+  IdentitiesOnly yes
+
+Host vox2
+  User james
+  Hostname 104.131.11.16
+  IdentityFile ~/.ssh-keys/vox2
   TCPKeepAlive yes
   IdentitiesOnly yes
