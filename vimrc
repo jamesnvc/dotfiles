@@ -697,6 +697,7 @@ highlight IndentGuidesEven guibg=green ctermbg=Gray
 if !has("gui_running")
   hi SpellBad ctermfg=Red
 endif
+highlight Comment cterm=Italic
 " }}
 
 
