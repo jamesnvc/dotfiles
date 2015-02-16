@@ -26,6 +26,7 @@
   unassume = update-index --no-assume-unchanged
   assumed  = "!git ls-files -v | grep ^h | cut -c 3-"
   dd = "! git status --short | awk '$1 == \"D\" { print $2}' | xargs git rm --cached"
+  blast = for-each-ref --sort=-committerdate refs/heads/ --format="%(committerdate:relative)%09%(refname:short)"
 [color]
   branch = auto
   diff = auto
