@@ -145,6 +145,7 @@ macro index <esc>F ":set date_format = \"%d/%m at %I:%M %P\"<enter>" "short date
 macro index a "<limit>all<enter>" "show all messages (undo limit)"
 macro index,pager V "|vim -c 'setlocal ft=mail' -c 'setlocal buftype=nofile' -<enter>" "open in vim"
 # Notmuch shortcuts {{
+  macro index S "<enter-command>unset wait_key<enter><shell-escape>mutt-notmuch-py ~/Maildir/temporary/search<enter><change-folder-readonly>+temporary/search<enter>" "search mail (using notmuch)"
  macro index <F8> \
        "<enter-command>unset wait_key<enter><shell-escape>notmuch-mutt --prompt search<enter><change-folder-readonly>`echo ${XDG_CACHE_HOME:-$HOME/.cache}/notmuch/mutt/results`<enter>" \
        "notmuch: search mail"
