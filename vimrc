@@ -651,6 +651,7 @@ let g:rails_statusline = 0
 let g:indent_guides_auto_colors = 0
 let g:gitgutter_enabled = 0
 let g:paredit_mode = 0
+let g:haddock_browser= 'open'
 let g:FactorNewVocabRoot = expand("~/Programming/misc/by-language/factor/")
 let g:clojure_fuzzy_indent_patterns = ['^with', '^def', '^let', '^clone-for',
       \ '^complex', '^match', '^POST', '^GET', '^DELETE', '^PUT', '^context',
