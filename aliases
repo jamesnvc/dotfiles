@@ -246,6 +246,11 @@ add-bundle() {
   git submodule add $1 vim/bundle/$(echo ${1%.git} | awk -F'/' '{print $NF}')
 }
 
+# Recursively checksum a directory
+rcheck() {
+  find ${1:-'.'} -type f -exec md5 -q {} + | sort | md5 -q
+}
+
 function gn() {
   MINS=$1; shift
 
