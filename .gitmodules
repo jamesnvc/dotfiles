@@ -110,10 +110,6 @@
 	path = vim/bundle/current-func-info.vim
 	url = https://github.com/tyru/current-func-info.vim.git
 	ignore = untracked
-[submodule "vim/bundle/lusty"]
-	path = vim/bundle/lusty
-	url = https://github.com/sjbach/lusty.git
-	ignore = untracked
 [submodule "mutt/mutt-colors-solarized"]
 	path = mutt/mutt-colors-solarized
 	url = https://github.com/altercation/mutt-colors-solarized.git
