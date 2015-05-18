@@ -290,3 +290,9 @@
 [submodule "vim/bundle/vim-leiningen"]
 	path = vim/bundle/vim-leiningen
 	url = git@github.com:tpope/vim-leiningen.git
+[submodule "vim/bundle/neomake"]
+	path = vim/bundle/neomake
+	url = git@github.com:benekastah/neomake.git
+[submodule "vim/bundle/compliment"]
+	path = vim/bundle/compliment
+	url = git@github.com:alexander-yakushev/compliment.git
