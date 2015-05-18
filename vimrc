@@ -7,6 +7,12 @@ runtime bundle/vim-pathogen/autoload/pathogen.vim
 call pathogen#infect('~/.vim/bundle')
 " }}
 
+" ***** Neovim stuf ***** {{
+if has('nvim')
+  runtime! python_setup.vim
+  let g:python_host_prog = '/Users/james/.pythonbrew/pythons/Python-2.7.2/bin/python'
+endif
+" }}
 
 " ***** Basic settings ***** {{
 set nocompatible
@@ -25,7 +31,9 @@ endif
 python from powerline.bindings.vim import source_plugin; source_plugin()
 
 " Use a bar-shaped cursor for insert mode, even through tmux.
-if exists('$TMUX')
+if has('nvim')
+  let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+elseif exists('$TMUX')
   let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
   let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
 else
@@ -383,6 +391,8 @@ noremap gj j
 noremap gk k
 " Make navigating windows easier
 noremap <C-h> <C-w>h
+" for neovim
+noremap <BS> <C-w>h
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
@@ -684,6 +694,11 @@ if executable('ocamlmerlin') && has('python')
   execute "set rtp+=".s:ocamlmerlin."/vim"
   let g:syntastic_ocaml_checkers = ['merlin']
 endif
+let g:neomake_clojure_leintest_maker = {
+      \ 'exe': 'lein',
+      \ 'args': ['test'],
+      \ 'errorformat': ''
+      \ }
 " }}
 
 
