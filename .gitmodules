@@ -302,3 +302,6 @@
 [submodule "vim/bundle/vim-swift"]
 	path = vim/bundle/vim-swift
 	url = https://github.com/kballard/vim-swift.git
+[submodule "vim/bundle/papercolor-theme"]
+	path = vim/bundle/papercolor-theme
+	url = https://github.com/NLKNguyen/papercolor-theme.git
