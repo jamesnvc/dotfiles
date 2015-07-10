@@ -62,7 +62,7 @@ export VMAIL_HTML_PART_READER='elinks -dump'
 # Make OS X shell use UTF8
 export __CF_USER_TEXT_ENCODING=0x1F5:0x8000100:0x8000100
 
-export EDITOR='vim'
+export EDITOR='nvim'
 
 export TERM=xterm-256color-italic
 
