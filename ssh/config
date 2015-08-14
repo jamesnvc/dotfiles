@@ -168,3 +168,10 @@ Host vox2
   IdentityFile ~/.ssh-keys/vox2
   TCPKeepAlive yes
   IdentitiesOnly yes
+
+Host chat
+  User james
+  Hostname 104.236.213.222
+  IdentityFile ~/.ssh-keys/chat
+  TCPKeepAlive yes
+  IdentitiesOnly yes
