@@ -305,3 +305,9 @@
 [submodule "vim/bundle/papercolor-theme"]
 	path = vim/bundle/papercolor-theme
 	url = https://github.com/NLKNguyen/papercolor-theme.git
+[submodule "vim/bundle/node-host"]
+	path = vim/bundle/node-host
+	url = git@github.com:neovim/node-host.git
+[submodule "vim/bundle/deoplete.nvim"]
+	path = vim/bundle/deoplete.nvim
+	url = git@github.com:Shougo/deoplete.nvim.git
