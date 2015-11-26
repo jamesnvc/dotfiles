@@ -308,3 +308,6 @@
 [submodule "vim/bundle/deoplete.nvim"]
 	path = vim/bundle/deoplete.nvim
 	url = git@github.com:Shougo/deoplete.nvim.git
+[submodule "vim/bundle/neoyank.vim"]
+	path = vim/bundle/neoyank.vim
+	url = git@github.com:Shougo/neoyank.vim.git
