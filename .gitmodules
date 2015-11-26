@@ -296,9 +296,6 @@
 [submodule "vim/bundle/compliment"]
 	path = vim/bundle/compliment
 	url = git@github.com:alexander-yakushev/compliment.git
-[submodule "vim/bundle/YouCompleteMe"]
-	path = vim/bundle/YouCompleteMe
-	url = git@github.com:Valloric/YouCompleteMe.git
 [submodule "vim/bundle/vim-swift"]
 	path = vim/bundle/vim-swift
 	url = https://github.com/kballard/vim-swift.git
