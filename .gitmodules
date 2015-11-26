@@ -132,6 +132,7 @@
 [submodule "vim/bundle/Better-CSS-Syntax-for-Vim"]
 	path = vim/bundle/Better-CSS-Syntax-for-Vim
 	url = https://github.com/vim-scripts/Better-CSS-Syntax-for-Vim.git
+	ignore = untracked
 [submodule "vim/bundle/vim-textobj-rubyblock"]
 	path = vim/bundle/vim-textobj-rubyblock
 	url = https://github.com/nelstrom/vim-textobj-rubyblock.git
@@ -159,9 +160,6 @@
 [submodule "vim/bundle/ultisnips"]
 	path = vim/bundle/ultisnips
 	url = https://github.com/SirVer/ultisnips.git
-[submodule "vim/bundle/vimwiki"]
-	path = vim/bundle/vimwiki
-	url = https://github.com/vim-scripts/vimwiki.git
 [submodule "vim/bundle/vim-indent-object"]
 	path = vim/bundle/vim-indent-object
 	url = https://github.com/michaeljsmith/vim-indent-object.git
