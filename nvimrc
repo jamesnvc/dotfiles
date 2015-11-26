@@ -73,7 +73,7 @@ nnoremap <silent> <leader>ev :e $MYVIMRC<CR>
 nnoremap <silent> <leader>sv :so $MYVIMRC<CR>
 " save a lot
 nnoremap <leader>W :w<CR>
-" Fugitive bindings 
+" Fugitive bindings
 nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gd :Gdiff<CR>
 nnoremap <leader>gw :Gwrite<CR>
@@ -126,6 +126,9 @@ augroup END  " }}
 
 " Plugins
 call plug#begin('~/.nvim/plugged')
+" My stuff
+Plug 'jamesnvc/vim-tomorrow-theme'
+" Misc
 Plug 'guns/vim-sexp'
 Plug 'NLKNguyen/papercolor-theme'
 " Tpope
