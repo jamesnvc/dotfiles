@@ -18,6 +18,8 @@ export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 if [ -z $JAVA_HOME ]; then
   export JAVA_HOME="/System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK/Home"
 fi
+# Homebrew
+export HOMEBREW_GITHUB_API_TOKEN="21273a7f2e3886fce211486cde638c310f3ed922"
 # Perlbrew
 source /Users/james/perl5/perlbrew/etc/bashrc
 # Node stuff
@@ -28,9 +30,10 @@ export LEIN_FAST_TRAMPOLINE=y
 
 # Python stuff
 ## Old, using pythonbrew
-[[ -s "$HOME/.pythonbrew/etc/bashrc" ]] && source "$HOME/.pythonbrew/etc/bashrc"
+#[[ -s "$HOME/.pythonbrew/etc/bashrc" ]] && source "$HOME/.pythonbrew/etc/bashrc"
 ## New, using pyenv
-# if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+export PYENV_ROOT=/usr/local/var/pyenv
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 # if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
 export IOS_SDK="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk"
