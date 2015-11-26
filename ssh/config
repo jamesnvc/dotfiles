@@ -129,7 +129,14 @@ Host git.wpengine.com
 
 Host next36-discourse
   User root
-  Hostname 104.131.90.18
+  Hostname 159.203.31.237
+  IdentityFile ~/.ssh-keys/palantir
+  TCPKeepAlive yes
+  IdentitiesOnly yes
+
+Host next36-discourse-archive
+  User root
+  Hostname 45.55.145.138
   IdentityFile ~/.ssh-keys/palantir
   TCPKeepAlive yes
   IdentitiesOnly yes
@@ -173,5 +180,12 @@ Host chat
   User james
   Hostname 104.236.213.222
   IdentityFile ~/.ssh-keys/chat
+  TCPKeepAlive yes
+  IdentitiesOnly yes
+
+Host mech-discourse
+  User james
+  Hostname 45.79.185.125
+  IdentityFile ~/.ssh-keys/womenmech
   TCPKeepAlive yes
   IdentitiesOnly yes
