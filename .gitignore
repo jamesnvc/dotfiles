@@ -10,3 +10,4 @@ mutt/cache/*
 .ropeproject/
 mutt/temp
 tmux/resurrect/
+.DS_Store
