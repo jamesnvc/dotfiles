@@ -9,3 +9,4 @@ mutt/cache/*
 *.pyc
 .ropeproject/
 mutt/temp
+tmux/resurrect/
