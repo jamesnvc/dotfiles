@@ -461,10 +461,10 @@ nnoremap <leader>ri :call InlineVariable()<CR>
 nnoremap <leader>T :CtrlPTag<CR>
 nnoremap <leader>CC :CtrlPClearCache<CR>
 " Unite
-nnoremap <silent><leader>t :<C-u>Unite -no-split -buffer-name=files -start-insert -no-resize file_rec/neovim2:.<cr>
-nnoremap <silent><leader>o :<C-u>Unite -no-split -buffer-name=buffers -quick-match buffer<cr>
-nnoremap <silent><leader>y :<C-u>Unite -no-split -buffer-name=yank history/yank<cr>
-nnoremap <silent><leader>l :<C-u>Unite line -prompt-direction="top" -auto-resize -auto-highlight -start-insert<CR>
+nnoremap <silent><leader>t :<C-u>Unite -buffer-name=files file_rec/neovim2:.<cr>
+nnoremap <silent><leader>o :<C-u>Unite -buffer-name=buffers -quick-match buffer<cr>
+nnoremap <silent><leader>y :<C-u>Unite -buffer-name=yank history/yank<cr>
+nnoremap <silent><leader>l :<C-u>Unite -buffer-name=line -auto-highlight line<cr>
 " Map <leader>n to move to nth split
 for n in range(1, 9)
   exe "nnoremap <silent> <leader>" . n . " :" . n . "wincmd w<CR>"
@@ -641,6 +641,11 @@ let g:ctrlp_user_command = ['.git/', my_ctrlp_git_cmd, my_ctrlp_user_cmd]
 " Unite {{
 let g:unite_source_history_yank = 1
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
+call unite#custom#profile('default', 'context', {
+      \ 'start_insert': 1,
+      \ 'split': 0,
+      \ 'resize': 0
+      \ })
 " TODO: make filtering better
 "let g:unite_source_rec_async_command = ['~/bin/git_or_find']
 autocmd FileType unite call s:unite_my_settings()
