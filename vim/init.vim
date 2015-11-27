@@ -15,7 +15,7 @@ endif
 " }}
 
 " ***** Basic settings ***** {{
-set encoding=utf-8
+"set encoding=utf-8
 let mapleader = ' '
 let maplocalleader = '\'
 
@@ -397,7 +397,7 @@ noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 " Toggle spellchecking
 noremap <leader>ss :setlocal spell!<CR>
-noremap <leader>o :BufExplorer<CR>
+"noremap <leader>o :BufExplorer<CR>
 noremap Y y$
 " Undo tree
 noremap <leader>U :GundoToggle<CR>
@@ -460,6 +460,11 @@ nnoremap <Leader>b, :Tabularize /^[^,]*,\zs/r0c0l0<CR>
 nnoremap <leader>ri :call InlineVariable()<CR>
 nnoremap <leader>T :CtrlPTag<CR>
 nnoremap <leader>CC :CtrlPClearCache<CR>
+" Unite
+nnoremap <silent><leader>t :<C-u>Unite -no-split -buffer-name=files -start-insert -no-resize file_rec/neovim2:.<cr>
+nnoremap <silent><leader>o :<C-u>Unite -no-split -buffer-name=buffers -quick-match buffer<cr>
+nnoremap <silent><leader>y :<C-u>Unite -no-split -buffer-name=yank history/yank<cr>
+nnoremap <silent><leader>l :<C-u>Unite line -prompt-direction="top" -auto-resize -auto-highlight -start-insert<CR>
 " Map <leader>n to move to nth split
 for n in range(1, 9)
   exe "nnoremap <silent> <leader>" . n . " :" . n . "wincmd w<CR>"
@@ -606,7 +611,7 @@ let g:pymode_rope = 0
 let g:pymode_lint_checker = 'pep8'
 " }}
 " Ctrl-p {{
-let g:ctrlp_map = '<leader>t'
+"let g:ctrlp_map = '<leader>t'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_extensions = ['tag']
@@ -633,6 +638,17 @@ let my_ctrlp_git_cmd = "" .
       \ ctrlp_filter_greps
 let g:ctrlp_user_command = ['.git/', my_ctrlp_git_cmd, my_ctrlp_user_cmd]
 " }}
+" Unite {{
+let g:unite_source_history_yank = 1
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+" TODO: make filtering better
+"let g:unite_source_rec_async_command = ['~/bin/git_or_find']
+autocmd FileType unite call s:unite_my_settings()
+function! s:unite_my_settings()
+  imap <silent><buffer><expr> <C-s> unite#do_action('split')
+  imap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
+endfunction
+" }}
 " Syntastic {{
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
@@ -655,6 +671,7 @@ let g:jedi#goto_assignments_command = "<leader>G"
 let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#rename_command = "<leader>R"
 " }}
+let g:deoplete#enable_at_startup = 1
 let g:pep8_map = '<C-8>'
 let g:rails_statusline = 0
 let g:indent_guides_auto_colors = 0
@@ -712,7 +729,7 @@ highlight IndentGuidesEven guibg=green ctermbg=Gray
 if !has("gui_running")
   hi SpellBad ctermfg=Red
 endif
-highlight Comment cterm=Italic
+"highlight Comment cterm=Italic
 " }}
 
 
