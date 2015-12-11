@@ -677,6 +677,8 @@ let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#rename_command = "<leader>R"
 " }}
 let g:deoplete#enable_at_startup = 1
+let g:racer_cmd = expand("~/.multirust/toolchains/stable/cargo/bin/racer")
+let $RUST_SRC_PATH = expand("~/src/rustc-1.5.0/src")
 let g:pep8_map = '<C-8>'
 let g:rails_statusline = 0
 let g:indent_guides_auto_colors = 0

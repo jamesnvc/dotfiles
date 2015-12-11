@@ -309,3 +309,7 @@
 [submodule "vim/bundle/neoyank.vim"]
 	path = vim/bundle/neoyank.vim
 	url = git@github.com:Shougo/neoyank.vim.git
+[submodule "vim/bundle/vim-racer"]
+	path = vim/bundle/vim-racer
+	url = git@github.com:racer-rust/vim-racer.git
+	ignore = untracked
