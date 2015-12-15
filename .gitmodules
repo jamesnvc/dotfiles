@@ -313,3 +313,6 @@
 	path = vim/bundle/vim-racer
 	url = git@github.com:racer-rust/vim-racer.git
 	ignore = untracked
+[submodule "vim/bundle/echodoc.vim"]
+	path = vim/bundle/echodoc.vim
+	url = git@github.com:Shougo/echodoc.vim.git
