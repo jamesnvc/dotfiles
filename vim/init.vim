@@ -5,6 +5,7 @@
 " ***** Setup pathogen for loading bundles ***** {{
 runtime bundle/vim-pathogen/autoload/pathogen.vim
 call pathogen#infect('~/.config/nvim/bundle')
+call pathogen#helptags()
 " }}
 
 " ***** Neovim stuf ***** {{
@@ -22,7 +23,9 @@ let maplocalleader = '\'
 if !exists('g:initially_set_colours')
   syntax enable
   set background=dark
-  colorscheme Tomorrow-Night-Bright
+  "colorscheme Tomorrow-Night-Bright
+  let g:gruvbox_italic=1
+  colorscheme gruvbox
   let g:initially_set_colours = 1
 endif
 
@@ -90,6 +93,7 @@ set scrolloff=2
 set shiftwidth=2
 set softtabstop=2
 set showbreak=↪
+set noshowmode
 set showmatch
 set smartcase
 set smarttab
@@ -676,9 +680,34 @@ let g:jedi#goto_assignments_command = "<leader>G"
 let g:jedi#use_tabs_not_buffers = 0
 let g:jedi#rename_command = "<leader>R"
 " }}
+" deoplete {{
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_smart_case = 1
+let g:deoplete#omni_patterns = {}
+let g:deoplete#omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)\w*'
+" TODO: make this not match inside string or comment
+let g:deoplete#omni_patterns.clojure = '[^[:digit:]() \t]\+'
+let g:deoplete#omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
+let g:deoplete#omni_patterns.css   = '^\s\+\w\+\|\w\+[):;]\?\s\+\w*\|[@!]'
+let g:deoplete#omni_patterns.go = '[^.[:digit:] *\t]\.\w*'
+let g:deoplete#omni_patterns.html = '<[^>]*'
+let g:deoplete#omni_patterns.javascript = '[^. \t]\.\%(\h\w*\)\?'
+let g:deoplete#omni_patterns.md   = '<[^>]*'
+let g:deoplete#omni_patterns.python = '[^. *\t]\.\h\w*\'
+let g:deoplete#omni_patterns.python3 = '[^. *\t]\.\h\w*\'
+let g:deoplete#omni_patterns.ruby = ['[^. *\t]\.\w*', '\h\w*::']
+let g:deoplete#omni_patterns.sass   = '^\s\+\w\+\|\w\+[):;]\?\s\+\w*\|[@!]'
+let g:deoplete#omni_patterns.scss   = '^\s\+\w\+\|\w\+[):;]\?\s\+\w*\|[@!]'
+let g:deoplete#omni_patterns.xml  = '<[^>]*'
+autocmd CmdwinEnter * let b:deoplete_sources = ['buffer']
+let g:deoplete#sources = {}
+let g:deoplete#sources._ = ['buffer', 'look']
+let g:deoplete#sources.clojure = ['buffer', 'omni', 'look']
+let g:deoplete#sources.rust = ['buffer', 'racer']
+" }}
 let g:racer_cmd = expand("~/.multirust/toolchains/stable/cargo/bin/racer")
 let $RUST_SRC_PATH = expand("~/src/rustc-1.5.0/src")
+let g:echodoc_enable_at_startup = 1
 let g:pep8_map = '<C-8>'
 let g:rails_statusline = 0
 let g:indent_guides_auto_colors = 0
