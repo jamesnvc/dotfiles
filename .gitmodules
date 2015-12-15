@@ -316,3 +316,9 @@
 [submodule "vim/bundle/echodoc.vim"]
 	path = vim/bundle/echodoc.vim
 	url = git@github.com:Shougo/echodoc.vim.git
+[submodule "vim/bundle/gruvbox"]
+	path = vim/bundle/gruvbox
+	url = git@github.com:morhetz/gruvbox.git
+[submodule "vim/bundle/neco-look"]
+	path = vim/bundle/neco-look
+	url = git@github.com:ujihisa/neco-look.git
