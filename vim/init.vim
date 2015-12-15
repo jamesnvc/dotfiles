@@ -674,12 +674,6 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
 let g:tagbar_usearrows = 1
 " }}
-" Jedi {{
-let g:jedi#auto_initialization = 0
-let g:jedi#goto_assignments_command = "<leader>G"
-let g:jedi#use_tabs_not_buffers = 0
-let g:jedi#rename_command = "<leader>R"
-" }}
 " deoplete {{
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
@@ -693,8 +687,9 @@ let g:deoplete#omni_patterns.go = '[^.[:digit:] *\t]\.\w*'
 let g:deoplete#omni_patterns.html = '<[^>]*'
 let g:deoplete#omni_patterns.javascript = '[^. \t]\.\%(\h\w*\)\?'
 let g:deoplete#omni_patterns.md   = '<[^>]*'
-let g:deoplete#omni_patterns.python = '[^. *\t]\.\h\w*\'
-let g:deoplete#omni_patterns.python3 = '[^. *\t]\.\h\w*\'
+" TODO: fix python complete
+"let g:deoplete#omni_patterns.python = '[^. *\t]\.\h\w*\'
+"let g:deoplete#omni_patterns.python3 = '[^. *\t]\.\h\w*\'
 let g:deoplete#omni_patterns.ruby = ['[^. *\t]\.\w*', '\h\w*::']
 let g:deoplete#omni_patterns.sass   = '^\s\+\w\+\|\w\+[):;]\?\s\+\w*\|[@!]'
 let g:deoplete#omni_patterns.scss   = '^\s\+\w\+\|\w\+[):;]\?\s\+\w*\|[@!]'
