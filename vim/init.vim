@@ -680,7 +680,7 @@ let g:deoplete#enable_smart_case = 1
 let g:deoplete#omni_patterns = {}
 let g:deoplete#omni_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)\w*'
 " TODO: make this not match inside string or comment
-let g:deoplete#omni_patterns.clojure = '[^[:digit:]() \t]\+'
+let g:deoplete#omni_patterns.clojure = '([^[:digit:]() \t]\+'
 let g:deoplete#omni_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
 let g:deoplete#omni_patterns.css   = '^\s\+\w\+\|\w\+[):;]\?\s\+\w*\|[@!]'
 let g:deoplete#omni_patterns.go = '[^.[:digit:] *\t]\.\w*'
