@@ -2,10 +2,107 @@
 " Source: https://github.com/jamesnvc/dotfiles
 
 
-" ***** Setup pathogen for loading bundles ***** {{
-runtime bundle/vim-pathogen/autoload/pathogen.vim
-call pathogen#infect('~/.config/nvim/bundle')
-call pathogen#helptags()
+" ***** Setup plug.vim for loading bundles ***** {{
+call plug#begin('~/.config/nvim/plugged')
+" Colorschemes
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'gregsexton/Muon'
+Plug 'sjl/badwolf'
+Plug 'w0ng/vim-hybrid'
+Plug 'tpope/vim-vividchalk'
+Plug 'morhetz/gruvbox'
+
+" Clojure
+Plug 'guns/vim-sexp' | Plug 'tpope/vim-sexp-mappings-for-regular-people'
+Plug 'guns/vim-clojure-highlight'
+Plug 'guns/vim-clojure-static'
+Plug 'typedclojure/vim-typedclojure'
+Plug 'tpope/vim-fireplace'
+
+" Completion
+Plug 'ujihisa/neco-look'
+Plug 'racer-rust/vim-racer'
+Plug 'Shougo/deoplete.nvim'
+Plug 'Shougo/echodoc.vim'
+
+" Unite
+Plug 'Shougo/neomru.vim'
+Plug 'Shougo/neoyank.vim'
+Plug 'Shougo/unite.vim'
+
+" Tpope misc
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-afterimage'
+Plug 'tpope/vim-characterize'
+Plug 'tpope/vim-cucumber'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-endwise'
+Plug 'tpope/vim-eunuch'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-haml'
+Plug 'tpope/vim-leiningen'
+Plug 'tpope/vim-markdown'
+Plug 'tpope/vim-obsession'
+Plug 'tpope/vim-projectile'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-speeddating'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-tbone'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-vinegar'
+
+" Steve Losh misc
+Plug 'sjl/gundo.vim'
+Plug 'sjl/threesome.vim'
+Plug 'sjl/tslime.vim'
+
+" My stuff & forks
+Plug 'jamesnvc/git-util'
+Plug 'jamesnvc/pep8'
+Plug 'jamesnvc/potion'
+Plug 'jamesnvc/vim-penyocomic'
+Plug 'jamesnvc/vim-pyflakes'
+
+" misc
+Plug 'Rip-Rip/clang_complete'
+Plug 'airblade/vim-gitgutter'
+Plug 'alexander-yakushev/compliment'
+Plug 'altercation/vim-colors-solarized'
+Plug 'benekastah/neomake'
+Plug 'beyondwords/vim-twig'
+Plug 'bitc/vim-hdevtools'
+Plug 'elixir-lang/vim-elixir'
+Plug 'godlygeek/tabular'
+Plug 'gregsexton/gitv'
+Plug 'groenewege/vim-less'
+Plug 'juvenn/mustache.vim'
+Plug 'kballard/vim-swift'
+Plug 'kchmck/vim-coffee-script'
+Plug 'klen/python-mode'
+Plug 'lukerandall/haskellmode-vim'
+Plug 'majutsushi/tagbar'
+Plug 'maksimr/vim-jsbeautify'
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'msanders/cocoa.vim'
+Plug 'nathanaelkane/vim-indent-guides'
+Plug 'nelstrom/vim-markdown-folding'
+Plug 'neovim/node-host'
+Plug 'othree/html5.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/syntastic'
+Plug 'timrobinson/fsharp-vim'
+Plug 'tpope/vim-pathogen'
+Plug 'trapd00r/zsh-syntax-highlighting-filetypes'
+Plug 'tyru/current-func-info.vim'
+Plug 'vim-scripts/Better-CSS-Syntax-for-Vim'
+Plug 'wlangstroth/vim-racket'
+
+" non-git
+Plug '/usr/local/Cellar/go/1.0.2/misc/vim'
+Plug '/usr/local/Cellar/scala/2.8.1/libexec/misc/scala-tool-support/vim'
+
+call plug#end()
 " }}
 
 " ***** Neovim stuf ***** {{
@@ -47,7 +144,6 @@ filetype on
 filetype plugin on
 filetype indent on
 " }}
-
 
 " ***** Set stuff ***** {{
 set autoindent
@@ -707,7 +803,6 @@ let g:pep8_map = '<C-8>'
 let g:rails_statusline = 0
 let g:indent_guides_auto_colors = 0
 let g:gitgutter_enabled = 0
-let g:paredit_mode = 0
 let g:haddock_browser= 'open'
 let g:FactorNewVocabRoot = expand("~/Programming/misc/by-language/factor/")
 let g:clojure_fuzzy_indent_patterns = ['^with', '^def', '^let', '^clone-for',
