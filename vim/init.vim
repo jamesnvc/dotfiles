@@ -120,7 +120,6 @@ let maplocalleader = '\'
 if !exists('g:initially_set_colours')
   syntax enable
   set background=dark
-  "colorscheme Tomorrow-Night-Bright
   let g:gruvbox_italic=1
   colorscheme gruvbox
   let g:initially_set_colours = 1
