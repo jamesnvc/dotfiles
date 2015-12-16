@@ -14,10 +14,10 @@ Plug 'morhetz/gruvbox'
 
 " Clojure
 Plug 'guns/vim-sexp' | Plug 'tpope/vim-sexp-mappings-for-regular-people'
-Plug 'guns/vim-clojure-highlight'
-Plug 'guns/vim-clojure-static'
-Plug 'typedclojure/vim-typedclojure'
 Plug 'tpope/vim-fireplace'
+Plug 'typedclojure/vim-typedclojure'
+Plug 'guns/vim-clojure-static'
+Plug 'guns/vim-clojure-highlight'
 
 " Completion
 Plug 'ujihisa/neco-look'
@@ -93,7 +93,6 @@ Plug 'timrobinson/fsharp-vim'
 Plug 'tpope/vim-pathogen'
 Plug 'trapd00r/zsh-syntax-highlighting-filetypes'
 Plug 'tyru/current-func-info.vim'
-Plug 'vim-scripts/Better-CSS-Syntax-for-Vim'
 Plug 'wlangstroth/vim-racket'
 Plug 'rust-lang/rust.vim'
 
