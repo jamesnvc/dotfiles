@@ -58,7 +58,7 @@ Plug 'sjl/tslime.vim'
 
 " My stuff & forks
 Plug 'jamesnvc/git-util'
-Plug 'jamesnvc/pep8'
+Plug 'jamesnvc/pep8', { 'for': 'python' }
 Plug 'jamesnvc/potion'
 Plug 'jamesnvc/vim-penyocomic'
 Plug 'jamesnvc/vim-pyflakes'
@@ -97,6 +97,7 @@ Plug 'trapd00r/zsh-syntax-highlighting-filetypes'
 Plug 'tyru/current-func-info.vim'
 Plug 'vim-scripts/Better-CSS-Syntax-for-Vim'
 Plug 'wlangstroth/vim-racket'
+Plug 'rust-lang/rust.vim'
 
 " non-git
 Plug '/usr/local/Cellar/go/1.0.2/misc/vim'
@@ -105,12 +106,14 @@ Plug '/usr/local/Cellar/scala/2.8.1/libexec/misc/scala-tool-support/vim'
 call plug#end()
 " }}
 
+
 " ***** Neovim stuf ***** {{
 if has('nvim')
   let g:python_host_prog = '/Users/james/.pythonbrew/pythons/Python-2.7.2/bin/python'
   let g:python3_host_prog = '/usr/local/var/pyenv/shims/python'
 endif
 " }}
+
 
 " ***** Basic settings ***** {{
 "set encoding=utf-8
@@ -144,6 +147,7 @@ filetype on
 filetype plugin on
 filetype indent on
 " }}
+
 
 " ***** Set stuff ***** {{
 set autoindent
