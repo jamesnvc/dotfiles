@@ -58,10 +58,8 @@ Plug 'sjl/tslime.vim'
 
 " My stuff & forks
 Plug 'jamesnvc/git-util'
-Plug 'jamesnvc/pep8', { 'for': 'python' }
 Plug 'jamesnvc/potion'
 Plug 'jamesnvc/vim-penyocomic'
-Plug 'jamesnvc/vim-pyflakes'
 
 " misc
 Plug 'Rip-Rip/clang_complete'
@@ -707,41 +705,6 @@ endif
 
 
 " ***** Plugin options ***** {{
-" Python-mode {{
-let g:pymode_virtualenv = 1
-let g:pymode_lint = 0
-let g:pymode_lint_write = 0
-let g:pymode_rope = 0
-let g:pymode_lint_checker = 'pep8'
-" }}
-" Ctrl-p {{
-"let g:ctrlp_map = '<leader>t'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 0
-let g:ctrlp_extensions = ['tag']
-let g:ctrlp_prompt_mappings = {
-      \ 'PrtSelectMove("j")': ['<C-j>', '<down>', '<s-tab>'],
-      \ 'PrtSelectMove("k")': ['<C-k>', '<up>', '<tab>'],
-      \ 'PrtHistory(-1)': ['<C-n>'],
-      \ 'PrtHistory(1)': ['<C-p>'],
-      \ 'ToggleFocus()': ['<C-tab>'],
-      \ }
-let ctrlp_filter_greps = "".
-      \ "ack -iv '\\.(" .
-      \ "jar|class|swp|swo|log|so|o|pyc|jpe?g|png|gif|mo|po" .
-      \ ")$' | " .
-      \ "ack -v '^(\\./)?(" .
-      \ "classes|libs|deploy/vendor|.git|.hg|.svn|.*migrations|docs/build" .
-      \ ")/'"
-let my_ctrlp_user_cmd = "" .
-      \ "find %s '(' -type f -o -type l ')' -maxdepth 15 " .
-      \ "-not -path '*/\\.*/*' | "  .
-      \ ctrlp_filter_greps
-let my_ctrlp_git_cmd = "" .
-      \ "cd %s && git ls-files --exclude-standard -co | " .
-      \ ctrlp_filter_greps
-let g:ctrlp_user_command = ['.git/', my_ctrlp_git_cmd, my_ctrlp_user_cmd]
-" }}
 " Unite {{
 let g:unite_source_history_yank = 1
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
@@ -803,8 +766,6 @@ let g:deoplete#sources.rust = ['buffer', 'racer']
 let g:racer_cmd = expand("~/.multirust/toolchains/stable/cargo/bin/racer")
 let $RUST_SRC_PATH = expand("~/src/rustc-1.5.0/src")
 let g:echodoc_enable_at_startup = 1
-let g:pep8_map = '<C-8>'
-let g:rails_statusline = 0
 let g:indent_guides_auto_colors = 0
 let g:gitgutter_enabled = 0
 let g:haddock_browser= 'open'
@@ -853,7 +814,6 @@ highlight InterestingWord1 ctermbg=110
 highlight InterestingWord2 ctermbg=148
 highlight InterestingWord3 ctermbg=172
 highlight bufexplorermapping guifg=white
-highlight Conceal guibg=black guifg=white
 highlight IndentGuidesOdd  guibg=red   ctermbg=DarkGray
 highlight IndentGuidesEven guibg=green ctermbg=Gray
 if !has("gui_running")
