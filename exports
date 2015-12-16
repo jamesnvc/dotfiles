@@ -13,6 +13,7 @@ export PATH=/Library/TeX/Distributions/TeXLive-2011.texdist/Contents/Programs/te
 export PATH=$HOME/Dropbox/dotfiles/git-util:$PATH
 export PATH=/usr/local/apache-maven/current/bin:$PATH
 export PATH=/Applications/Racket\ v6.1.1/bin:$PATH
+export PATH=$HOME/.multirust/toolchains/stable/cargo/bin:$PATH
 # Java
 export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 if [ -z $JAVA_HOME ]; then
