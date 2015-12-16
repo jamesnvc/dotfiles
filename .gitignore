@@ -1,5 +1,6 @@
 .hg/
 vim/NERDTreeBookmarks
+vim/plugged
 vim/.netrwhist
 .dropbox
 Icon*
