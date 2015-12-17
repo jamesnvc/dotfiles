@@ -13,7 +13,7 @@ set mailcap_path = ~/.mutt/mailcap
 # }}
 
 # Basic settings {{
-source ~/.vim/bundle/badwolf/contrib/badwolf.muttrc
+source ~/.config/nvim/plugged/badwolf/contrib/badwolf.muttrc
 
 set editor = "nvim -c 'normal! G{' -c 'redraw'"
 set query_command = "~/.mutt/search_contacts.py '%s'"
