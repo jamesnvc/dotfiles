@@ -19,9 +19,17 @@ Plug 'typedclojure/vim-typedclojure'
 Plug 'guns/vim-clojure-static'
 Plug 'guns/vim-clojure-highlight'
 
+" Haskell
+Plug 'bitc/vim-hdevtools'
+Plug 'lukerandall/haskellmode-vim'
+Plug 'eagletmt/neco-ghc'
+
+" Rust
+Plug 'racer-rust/vim-racer'
+Plug 'rust-lang/rust.vim'
+
 " Completion
 Plug 'ujihisa/neco-look'
-Plug 'racer-rust/vim-racer'
 Plug 'Shougo/deoplete.nvim'
 Plug 'Shougo/echodoc.vim'
 
@@ -57,7 +65,6 @@ Plug 'sjl/threesome.vim'
 Plug 'sjl/tslime.vim'
 
 " My stuff & forks
-Plug 'jamesnvc/git-util'
 Plug 'jamesnvc/potion'
 Plug 'jamesnvc/vim-penyocomic'
 
@@ -68,7 +75,6 @@ Plug 'alexander-yakushev/compliment'
 Plug 'altercation/vim-colors-solarized'
 Plug 'benekastah/neomake'
 Plug 'beyondwords/vim-twig'
-Plug 'bitc/vim-hdevtools'
 Plug 'elixir-lang/vim-elixir'
 Plug 'godlygeek/tabular'
 Plug 'gregsexton/gitv'
@@ -77,7 +83,6 @@ Plug 'juvenn/mustache.vim'
 Plug 'kballard/vim-swift'
 Plug 'kchmck/vim-coffee-script'
 Plug 'klen/python-mode'
-Plug 'lukerandall/haskellmode-vim'
 Plug 'majutsushi/tagbar'
 Plug 'maksimr/vim-jsbeautify'
 Plug 'michaeljsmith/vim-indent-object'
@@ -90,11 +95,8 @@ Plug 'pangloss/vim-javascript'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic'
 Plug 'timrobinson/fsharp-vim'
-Plug 'tpope/vim-pathogen'
-Plug 'trapd00r/zsh-syntax-highlighting-filetypes'
 Plug 'tyru/current-func-info.vim'
 Plug 'wlangstroth/vim-racket'
-Plug 'rust-lang/rust.vim'
 
 " non-git
 Plug '/usr/local/Cellar/go/1.0.2/misc/vim'
