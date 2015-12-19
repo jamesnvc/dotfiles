@@ -22,7 +22,6 @@ Plug 'guns/vim-clojure-highlight'
 " Haskell
 Plug 'bitc/vim-hdevtools'
 Plug 'lukerandall/haskellmode-vim'
-Plug 'eagletmt/neco-ghc'
 
 " Rust
 Plug 'racer-rust/vim-racer'
