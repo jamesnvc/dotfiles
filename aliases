@@ -20,6 +20,10 @@ alias dus='du -s'
 #alias psg='ps -e | grep'
 alias collapse="sed -e 's/  */ /g'"
 alias cuts="cut -d' '"
+function ssh-newkey() {
+  ssh-keygen -t rsa -f $HOME/.ssh-keys/$1
+}
+
 function psg() {
   ps auxww | grep --color=always $* | grep -v grep | collapse | cuts -f 2,11-
 }
