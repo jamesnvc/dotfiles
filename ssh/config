@@ -189,3 +189,10 @@ Host mech-discourse
   IdentityFile ~/.ssh-keys/womenmech
   TCPKeepAlive yes
   IdentitiesOnly yes
+
+Host penyo-cms
+  User james
+  Hostname 159.203.41.3
+  IdentityFile ~/.ssh-keys/penyocms
+  TCPKeepAlive yes
+  IdentitiesOnly yes
