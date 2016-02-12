@@ -1,86 +1,70 @@
 # -*- sh -*-
 # vim: syntax=sh :
 # Current projects
-thesis_home=/Users/james/Documents/School/engSci/year4/Thesis/serverside
-tutorsos_home=/Users/james/Programming/projects/TutorSOS/tian-tutors
-ha_home=/Users/james/Programming/projects/HackerAcademy
-export PATH=$HOME/bin:$HOME/node_modules/.bin:/usr/local/bin:/usr/local/sbin:$PATH:/Developer/usr/bin
-export PATH=/usr/local/ActivePerl-5.12/site/bin:$PATH
-export PATH=/usr/local/ActivePerl-5.12/bin:$PATH
-export PATH=$HOME/.cabal/bin:$PATH
-export PATH=/usr/local/lib/node:$PATH
-export PATH=/Library/TeX/Distributions/TeXLive-2011.texdist/Contents/Programs/texbin:$PATH
-export PATH=$HOME/Dropbox/dotfiles/git-util:$PATH
-export PATH=/usr/local/apache-maven/current/bin:$PATH
-export PATH=/Applications/Racket\ v6.1.1/bin:$PATH
-export PATH=$HOME/.multirust/toolchains/stable/cargo/bin:$PATH
-# Java
-export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
-if [ -z $JAVA_HOME ]; then
-  export JAVA_HOME="/System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK/Home"
+if [ $(uname) = 'Darwin' ]; then
+  export PATH=$HOME/bin:$HOME/node_modules/.bin:/usr/local/bin:/usr/local/sbin:$PATH:/Developer/usr/bin
+  export PATH=/usr/local/ActivePerl-5.12/site/bin:$PATH
+  export PATH=/usr/local/ActivePerl-5.12/bin:$PATH
+  export PATH=$HOME/.cabal/bin:$PATH
+  export PATH=/usr/local/lib/node:$PATH
+  export PATH=/Library/TeX/Distributions/TeXLive-2011.texdist/Contents/Programs/texbin:$PATH
+  export PATH=$HOME/Dropbox/dotfiles/git-util:$PATH
+  export PATH=/usr/local/apache-maven/current/bin:$PATH
+  export PATH=/Applications/Racket\ v6.1.1/bin:$PATH
+  export PATH=$HOME/.multirust/toolchains/stable/cargo/bin:$PATH
+  # Java
+  export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+  if [ -z $JAVA_HOME ]; then
+    export JAVA_HOME="/System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK/Home"
+  fi
+  # Homebrew
+  export HOMEBREW_GITHUB_API_TOKEN="21273a7f2e3886fce211486cde638c310f3ed922"
+  # Perlbrew
+  source /Users/james/perl5/perlbrew/etc/bashrc
+  # Node stuff
+  export NODE_PATH=/usr/local/lib/node_modules
+  [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+  # Python stuff
+  ## Old, using pythonbrew
+  #[[ -s "$HOME/.pythonbrew/etc/bashrc" ]] && source "$HOME/.pythonbrew/etc/bashrc"
+  ## New, using pyenv
+  export PYENV_ROOT=/usr/local/var/pyenv
+  if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+  # if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
+  
+  export IOS_SDK="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk"
 fi
-# Homebrew
-export HOMEBREW_GITHUB_API_TOKEN="21273a7f2e3886fce211486cde638c310f3ed922"
-# Perlbrew
-source /Users/james/perl5/perlbrew/etc/bashrc
-# Node stuff
-export NODE_PATH=/usr/local/lib/node_modules
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 # Make leiningen start faster
 export LEIN_FAST_TRAMPOLINE=y
 
-# Python stuff
-## Old, using pythonbrew
-#[[ -s "$HOME/.pythonbrew/etc/bashrc" ]] && source "$HOME/.pythonbrew/etc/bashrc"
-## New, using pyenv
-export PYENV_ROOT=/usr/local/var/pyenv
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
-# if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
-
-export IOS_SDK="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk"
 # Needed to make building stuff under Lion work
 #if [ `uname` = 'Darwin' ]; then
   #export CFLAGS="-isysroot /Developer/SDKs/MacOSX10.7.sdk"
 #fi
 export FULLNAME="James Cash"
 export EMAIL="james.nvc@gmail.com"
-export ECE353_SVN=svn+ssh://remote.ecf.utoronto.ca/n/svn/ece353s_20/svn
 export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
-# -- start rip config -- #
-RIPDIR=/Users/james/.rip
-RUBYLIB="$RUBYLIB:$RIPDIR/active/lib"
-PATH="$PATH:$RIPDIR/active/bin"
-export RIPDIR RUBYLIB PATH
-# -- end rip config -- #
-# Load lightning config
-source ~/.lightning/functions.sh
 
 export ARCHFLAGS="-arch i386 -arch x86_64"
-
-export SOYWIKI_VIM=mvim
-export VNEWS_VIM=mvim
-export VMAIL_VIM=mvim
-export VMAIL_BROWSER=open
-export VMAIL_HTML_PART_READER='elinks -dump'
 
 # Make OS X shell use UTF8
 export __CF_USER_TEXT_ENCODING=0x1F5:0x8000100:0x8000100
 
 export EDITOR='nvim'
 
-export TERM=xterm-256color-italic
+#export TERM=xterm-256color-italic
 
 LS_COLORS='';
 LS_COLORS=$LS_COLORS:'no=00'           # normal text
-LS_COLORS=$LS_COLORS:'fi=00'	       # regular file
-ls_COLORS=$LS_COLORS:'di=01;34'	       # directory
-LS_COLORS=$LS_COLORS:'ex=01;32'	       # executable file
-LS_COLORS=$LS_COLORS:'ln=01;36'	       # symlink
-LS_COLORS=$LS_COLORS:'or=40;31'	       # orphaned link
-LS_COLORS=$LS_COLORS:'pi=40;33'	       # named pipe
-LS_COLORS=$LS_COLORS:'so=01;35'	       # socket
-LS_COLORS=$LS_COLORS:'bd=33;01'	       # block device
-LS_COLORS=$LS_COLORS:'cd=33;01'	       # character device
+LS_COLORS=$LS_COLORS:'fi=00'         # regular file
+ls_COLORS=$LS_COLORS:'di=01;34'         # directory
+LS_COLORS=$LS_COLORS:'ex=01;32'         # executable file
+LS_COLORS=$LS_COLORS:'ln=01;36'         # symlink
+LS_COLORS=$LS_COLORS:'or=40;31'         # orphaned link
+LS_COLORS=$LS_COLORS:'pi=40;33'         # named pipe
+LS_COLORS=$LS_COLORS:'so=01;35'         # socket
+LS_COLORS=$LS_COLORS:'bd=33;01'         # block device
+LS_COLORS=$LS_COLORS:'cd=33;01'         # character device
 LS_COLORS=$LS_COLORS:'*.tar=1;31'      # archives = red
 LS_COLORS=$LS_COLORS:'*.tgz=1;31'      # "
 LS_COLORS=$LS_COLORS:'*.gz=1;31'       # "
@@ -91,7 +75,7 @@ LS_COLORS=$LS_COLORS:'*.lzh=1;31'      # "
 LS_COLORS=$LS_COLORS:'*.arj=1;31'      # "
 LS_COLORS=$LS_COLORS:'*.bz2=1;31'      # "
 LS_COLORS=$LS_COLORS:'*.7z=1;31'       # "
-LS_COLORS=$LS_COLORS:'*.Z=1;31'	       # "
+LS_COLORS=$LS_COLORS:'*.Z=1;31'         # "
 LS_COLORS=$LS_COLORS:'*.rar=1;31'      # "
 LS_COLORS=$LS_COLORS:'*.swp=1;30'      # boring files = grey
 LS_COLORS=$LS_COLORS:'*.bak=1;30'      # "
@@ -126,17 +110,17 @@ LS_COLORS=$LS_COLORS:'*.avi=1;35'      # " ( video)
 LS_COLORS=$LS_COLORS:'*.mkv=1;35'      # "
 LS_COLORS=$LS_COLORS:'*.mp4=1;35'      # "
 LS_COLORS=$LS_COLORS:'*.mov=1;35'      # "
-LS_COLORS=$LS_COLORS:'*.torrent=4;1;33'	# anything else?
-LS_COLORS=$LS_COLORS:'*.pls=4;1;35'	# "
-LS_COLORS=$LS_COLORS:'*Makefile=4;1;33'	# "
-LS_COLORS=$LS_COLORS:'*Rakefile=4;1;33'	# "
-LS_COLORS=$LS_COLORS:'*PKGBUILD=4;1;33'	# "
-LS_COLORS=$LS_COLORS:'*SConstruct=4;1;33'	# "
-LS_COLORS=$LS_COLORS:'*Install.hs=4;1;33'	# "
-LS_COLORS=$LS_COLORS:'*Install.lhs=4;1;33'	# "
-LS_COLORS=$LS_COLORS:'*extconf.rb=4;1;33'	# "
-LS_COLORS=$LS_COLORS:'*Makefile.PL=4;1;33'	# "
-LS_COLORS=$LS_COLORS:'*Build.PL=4;1;33'	# "
+LS_COLORS=$LS_COLORS:'*.torrent=4;1;33'  # anything else?
+LS_COLORS=$LS_COLORS:'*.pls=4;1;35'  # "
+LS_COLORS=$LS_COLORS:'*Makefile=4;1;33'  # "
+LS_COLORS=$LS_COLORS:'*Rakefile=4;1;33'  # "
+LS_COLORS=$LS_COLORS:'*PKGBUILD=4;1;33'  # "
+LS_COLORS=$LS_COLORS:'*SConstruct=4;1;33'  # "
+LS_COLORS=$LS_COLORS:'*Install.hs=4;1;33'  # "
+LS_COLORS=$LS_COLORS:'*Install.lhs=4;1;33'  # "
+LS_COLORS=$LS_COLORS:'*extconf.rb=4;1;33'  # "
+LS_COLORS=$LS_COLORS:'*Makefile.PL=4;1;33'  # "
+LS_COLORS=$LS_COLORS:'*Build.PL=4;1;33'  # "
 export LS_COLORS
 
 export LOADED_EXPORTS=1

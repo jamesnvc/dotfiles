@@ -46,7 +46,7 @@ alias cljsbuild="lein trampoline cljsbuild $@"
 alias jrake="jruby -S rake"
 
 # ls with some arguments
-alias ls="ls -@FG"              # defaults
+alias ls="ls -FG --color=auto"              # defaults
 alias ll="ls -lh"               # list long
 alias la="ls -a"                # list all
 alias lz="ls -tr"               # list by date
