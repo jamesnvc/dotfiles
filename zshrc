@@ -20,10 +20,6 @@ bindkey '^L' push-line
 
 source ~/.aliases
 source ~/.exports
-# PATH fixes for rvm
-#if [ `which ruby` = '/usr/bin/ruby' ]; then
-#  export PATH=~/.rvm/bin:$PATH
-#fi
 
 autoload -U compinit zrecompile zmv
 
@@ -33,6 +29,7 @@ mkdir -p $zsh_cache
 if [ $UID -eq 0 ]; then
   compinit
 else
+  # TODO: why doesn't carthage autocomplete work when starting a shell, but if I manually run compinit it does?
   compinit -d $zsh_cache/zcomp-$HOST
 
   for f in ~/.zshrc $zsh_cache/zcomp-$HOST; do
@@ -45,7 +42,7 @@ setopt extended_glob
 for zshrc_snipplet in ~/.zsh.d/S[0-9][0-9]*[^~] ; do
   source $zshrc_snipplet
 done
-#source ~/.zsh.d/syntax-highlighting-filetypes/zsh-syntax-highlighting-filetypes.zsh
+source ~/.zsh.d/syntax-highlighting-filetypes/zsh-syntax-highlighting-filetypes.zsh
 # autojump
 if [ $(uname) = 'Darwin' ]; then
   if [ -f `brew --prefix`/etc/autojump ]; then

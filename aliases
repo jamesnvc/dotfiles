@@ -50,7 +50,11 @@ alias cljsbuild="lein trampoline cljsbuild $@"
 alias jrake="jruby -S rake"
 
 # ls with some arguments
-alias ls="ls -FG --color=auto"              # defaults
+if [ $(uname) = 'Darwin' ]; then
+  alias ls="ls -@FG"
+else
+  alias ls="ls -FG --color=auto"              # defaults
+fi
 alias ll="ls -lh"               # list long
 alias la="ls -a"                # list all
 alias lz="ls -tr"               # list by date
