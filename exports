@@ -1,8 +1,8 @@
 # -*- sh -*-
 # vim: syntax=sh :
-# Current projects
+export PATH=$HOME/bin:$PATH
 if [ $(uname) = 'Darwin' ]; then
-  export PATH=$HOME/bin:$HOME/node_modules/.bin:/usr/local/bin:/usr/local/sbin:$PATH:/Developer/usr/bin
+  export PATH=$HOME/node_modules/.bin:/usr/local/bin:/usr/local/sbin:$PATH:/Developer/usr/bin
   export PATH=/usr/local/ActivePerl-5.12/site/bin:$PATH
   export PATH=/usr/local/ActivePerl-5.12/bin:$PATH
   export PATH=$HOME/.cabal/bin:$PATH
@@ -31,7 +31,7 @@ if [ $(uname) = 'Darwin' ]; then
   export PYENV_ROOT=/usr/local/var/pyenv
   if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
   # if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
-  
+
   export IOS_SDK="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk"
 fi
 # Make leiningen start faster
@@ -52,7 +52,7 @@ export __CF_USER_TEXT_ENCODING=0x1F5:0x8000100:0x8000100
 
 export EDITOR='nvim'
 
-#export TERM=xterm-256color-italic
+export TERM=xterm-256color
 
 LS_COLORS='';
 LS_COLORS=$LS_COLORS:'no=00'           # normal text

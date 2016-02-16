@@ -99,18 +99,17 @@ Plug 'timrobinson/fsharp-vim'
 Plug 'tyru/current-func-info.vim'
 Plug 'wlangstroth/vim-racket'
 
-" non-git
-Plug '/usr/local/Cellar/go/1.0.2/misc/vim'
-Plug '/usr/local/Cellar/scala/2.8.1/libexec/misc/scala-tool-support/vim'
-
 call plug#end()
 " }}
 
 
 " ***** Neovim stuf ***** {{
 if has('nvim')
-  let g:python_host_prog = '/Users/james/.pythonbrew/pythons/Python-2.7.2/bin/python'
-  let g:python3_host_prog = '/usr/local/var/pyenv/shims/python'
+  let g:python_host_prog = '/usr/bin/python2'
+  let g:python3_host_prog = '/usr/bin/python3'
+  " TODO: make conditional
+  "let g:python_host_prog = '/Users/james/.pythonbrew/pythons/Python-2.7.2/bin/python'
+  "let g:python3_host_prog = '/usr/local/var/pyenv/shims/python'
 endif
 " }}
 
@@ -119,6 +118,7 @@ endif
 "set encoding=utf-8
 let mapleader = ' '
 let maplocalleader = '\'
+
 
 if !exists('g:initially_set_colours')
   syntax enable
@@ -766,7 +766,7 @@ let g:airline_powerline_fonts = 1
 let g:airline_theme = 'badwolf'
 " }}
 let g:racer_cmd = expand("~/.multirust/toolchains/stable/cargo/bin/racer")
-let $RUST_SRC_PATH = expand("~/src/rustc-1.5.0/src")
+let $RUST_SRC_PATH = expand("~/src/rustc-1.6.0/src")
 let g:echodoc_enable_at_startup = 1
 let g:indent_guides_auto_colors = 0
 let g:gitgutter_enabled = 0
