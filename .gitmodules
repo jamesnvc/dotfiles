@@ -3,7 +3,7 @@
 	url = git://github.com/Lokaltog/powerline.git
 	ignore = untracked
 [submodule "mutt/mutt-colors-solarized"]
-	path = mutt/mutt-colors-solarized
+	path = mutt/themes/mutt-colors-solarized
 	url = https://github.com/altercation/mutt-colors-solarized.git
 	ignore = untracked
 [submodule "zsh.d/syntax-highlighting-filetypes"]
