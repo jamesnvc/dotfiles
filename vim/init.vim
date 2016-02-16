@@ -12,6 +12,9 @@ Plug 'w0ng/vim-hybrid'
 Plug 'tpope/vim-vividchalk'
 Plug 'morhetz/gruvbox'
 
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
 " Clojure
 Plug 'guns/vim-sexp' | Plug 'tpope/vim-sexp-mappings-for-regular-people'
 Plug 'tpope/vim-fireplace'
@@ -124,9 +127,6 @@ if !exists('g:initially_set_colours')
   colorscheme gruvbox
   let g:initially_set_colours = 1
 endif
-
-" Load powerline statusbar
-python from powerline.bindings.vim import source_plugin; source_plugin()
 
 " Use a bar-shaped cursor for insert mode, even through tmux.
 if has('nvim')
@@ -760,6 +760,10 @@ let g:deoplete#sources = {}
 let g:deoplete#sources._ = ['buffer', 'look']
 let g:deoplete#sources.clojure = ['buffer', 'omni', 'look']
 let g:deoplete#sources.rust = ['buffer', 'racer']
+" }}
+" airline {{
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'badwolf'
 " }}
 let g:racer_cmd = expand("~/.multirust/toolchains/stable/cargo/bin/racer")
 let $RUST_SRC_PATH = expand("~/src/rustc-1.5.0/src")
