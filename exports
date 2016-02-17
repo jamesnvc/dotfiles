@@ -12,6 +12,10 @@ if [ $(uname) = 'Darwin' ]; then
   export PATH=/usr/local/apache-maven/current/bin:$PATH
   export PATH=/Applications/Racket\ v6.1.1/bin:$PATH
   export PATH=$HOME/.multirust/toolchains/stable/cargo/bin:$PATH
+  # PATH fixes for rvm
+  if [ `which ruby` = '/usr/bin/ruby' ]; then
+    export PATH=~/.rvm/bin:$PATH
+  fi
   # Java
   export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
   if [ -z $JAVA_HOME ]; then
@@ -52,7 +56,11 @@ export __CF_USER_TEXT_ENCODING=0x1F5:0x8000100:0x8000100
 
 export EDITOR='nvim'
 
-export TERM=xterm-256color
+if [ $(uname) = 'Darwin' ]; then
+  export TERM=xterm-256color-italic
+else
+  export TERM=xterm-256color
+fi
 
 LS_COLORS='';
 LS_COLORS=$LS_COLORS:'no=00'           # normal text

@@ -20,6 +20,10 @@ alias dus='du -s'
 #alias psg='ps -e | grep'
 alias collapse="sed -e 's/  */ /g'"
 alias cuts="cut -d' '"
+function ssh-newkey() {
+  ssh-keygen -t rsa -f $HOME/.ssh-keys/$1
+}
+
 function psg() {
   ps auxww | grep --color=always $* | grep -v grep | collapse | cuts -f 2,11-
 }
@@ -46,7 +50,11 @@ alias cljsbuild="lein trampoline cljsbuild $@"
 alias jrake="jruby -S rake"
 
 # ls with some arguments
-alias ls="ls -FG --color=auto"              # defaults
+if [ $(uname) = 'Darwin' ]; then
+  alias ls="ls -@FG"
+else
+  alias ls="ls -FG --color=auto"              # defaults
+fi
 alias ll="ls -lh"               # list long
 alias la="ls -a"                # list all
 alias lz="ls -tr"               # list by date
