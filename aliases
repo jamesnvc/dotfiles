@@ -263,24 +263,13 @@ rcheck() {
   find ${1:-'.'} -type f -exec md5 -q {} + | sort | md5 -q
 }
 
-function gn() {
-  MINS=$1; shift
-
-    if [[ "x$MINS" == "x1" ]]; then
-      echo "one"
-      UNITS="minute"
-    else
-      echo "two"
-      UNITS="minutes"
-    fi
-    echo growlnotify -sm "'$*'" | at now + $MINS $UNITS
-}
-
-function 4cd(){ wget -e robots=off -E -nd -N -np -r -k -H -Dimages.4chan.org,thumbs.4chan.org "$1";}
-
 alias -g A="| ack"
 alias -g CA="2>&1 | cat -A"
-alias -g C='| pbcopy'
+if [ "$(uname)" = 'Darwin' ]; then
+  alias -g C='| pbcopy'
+else
+  alias -g C='| xsel -ib'
+fi
 alias -g D="DISPLAY=:0.0"
 alias -g NULL=/dev/null
 alias -g ED="export DISPLAY=:0.0"
