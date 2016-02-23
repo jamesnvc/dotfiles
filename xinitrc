@@ -1,3 +1,5 @@
+#!/usr/bin/zsh
+
 if [ -s ~/.Xmodmap ]; then
   xmodmap ~/.Xmodmap
 fi
