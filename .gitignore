@@ -12,3 +12,5 @@ mutt/cache/*
 mutt/temp
 tmux/resurrect/
 .DS_Store
+tmux/plugins/
+vim/.init.vim-rplugin~
