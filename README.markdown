@@ -1,9 +1,12 @@
 Dotfiles
 ========
 
-This is a collection of my various configuration files.  I primarily use them on OS X, but they should work with only a few modifications on Linux as well.
+This is a collection of my various configuration files.
+
+There are a few submodules here: Do `git submodule init` and `git submodule
+update`
 
 Vim Configuration
 ======
 
-To use the vim stuff here, do a `git submodule init`, `git submodule update`, then symlink vimrc to ~/.vimrc and vim to ~/.vim.
+To use the vim config (assuming you're using neovim), symlink `vim` to `~/.config/nvim`.
