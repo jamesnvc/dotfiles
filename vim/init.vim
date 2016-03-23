@@ -12,6 +12,9 @@ Plug 'w0ng/vim-hybrid'
 Plug 'tpope/vim-vividchalk'
 Plug 'morhetz/gruvbox'
 
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
 " Clojure
 Plug 'guns/vim-sexp' | Plug 'tpope/vim-sexp-mappings-for-regular-people'
 Plug 'tpope/vim-fireplace'
@@ -96,18 +99,17 @@ Plug 'timrobinson/fsharp-vim'
 Plug 'tyru/current-func-info.vim'
 Plug 'wlangstroth/vim-racket'
 
-" non-git
-Plug '/usr/local/Cellar/go/1.0.2/misc/vim'
-Plug '/usr/local/Cellar/scala/2.8.1/libexec/misc/scala-tool-support/vim'
-
 call plug#end()
 " }}
 
 
 " ***** Neovim stuf ***** {{
 if has('nvim')
-  let g:python_host_prog = '/Users/james/.pythonbrew/pythons/Python-2.7.2/bin/python'
-  let g:python3_host_prog = '/usr/local/var/pyenv/shims/python'
+  let g:python_host_prog = '/usr/bin/python2'
+  let g:python3_host_prog = '/usr/bin/python3'
+  " TODO: make conditional
+  "let g:python_host_prog = '/Users/james/.pythonbrew/pythons/Python-2.7.2/bin/python'
+  "let g:python3_host_prog = '/usr/local/var/pyenv/shims/python'
 endif
 " }}
 
@@ -117,6 +119,7 @@ endif
 let mapleader = ' '
 let maplocalleader = '\'
 
+
 if !exists('g:initially_set_colours')
   syntax enable
   set background=dark
@@ -124,9 +127,6 @@ if !exists('g:initially_set_colours')
   colorscheme gruvbox
   let g:initially_set_colours = 1
 endif
-
-" Load powerline statusbar
-python from powerline.bindings.vim import source_plugin; source_plugin()
 
 " Use a bar-shaped cursor for insert mode, even through tmux.
 if has('nvim')
@@ -761,8 +761,12 @@ let g:deoplete#sources._ = ['buffer', 'look']
 let g:deoplete#sources.clojure = ['buffer', 'omni', 'look']
 let g:deoplete#sources.rust = ['buffer', 'racer']
 " }}
+" airline {{
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'badwolf'
+" }}
 let g:racer_cmd = expand("~/.multirust/toolchains/stable/cargo/bin/racer")
-let $RUST_SRC_PATH = expand("~/src/rustc-1.5.0/src")
+let $RUST_SRC_PATH = expand("~/src/rustc-1.6.0/src")
 let g:echodoc_enable_at_startup = 1
 let g:indent_guides_auto_colors = 0
 let g:gitgutter_enabled = 0

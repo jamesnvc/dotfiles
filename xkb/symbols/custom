@@ -1,0 +1,11 @@
+partial modifier_keys
+xkb_symbols "caps_mod4" {
+  replace key <LCTL> {
+    [ VoidSymbol, VoidSymbol ]
+  };
+  modifier_map Mod4 { <LCTL> };
+  replace key <RCTL> {
+    [ VoidSymbol, VoidSymbol ]
+  };
+  modifier_map Mod4 { <RCTL> };
+};
