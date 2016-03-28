@@ -561,7 +561,7 @@ nnoremap <leader>ri :call InlineVariable()<CR>
 nnoremap <leader>T :CtrlPTag<CR>
 nnoremap <leader>CC :CtrlPClearCache<CR>
 " Unite
-nnoremap <silent><leader>t :<C-u>Unite -buffer-name=files file_rec/neovim2:.<cr>
+nnoremap <silent><leader>t :<C-u>Unite -buffer-name=files file_rec/neovim:.<cr>
 nnoremap <silent><leader>o :<C-u>Unite -buffer-name=buffers -quick-match buffer<cr>
 nnoremap <silent><leader>y :<C-u>Unite -buffer-name=yank history/yank<cr>
 nnoremap <silent><leader>l :<C-u>Unite -buffer-name=line -auto-highlight line<cr>
