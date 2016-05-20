@@ -561,7 +561,9 @@ nnoremap <leader>ri :call InlineVariable()<CR>
 nnoremap <leader>T :CtrlPTag<CR>
 nnoremap <leader>CC :CtrlPClearCache<CR>
 " Unite
-nnoremap <silent><leader>t :<C-u>Unite -buffer-name=files file_rec/neovim:.<cr>
+" TODO: I think this is a neovim bug?
+"nnoremap <silent><leader>t :<C-u>Unite -buffer-name=files file_rec/neovim:.<cr>
+nnoremap <silent><leader>t :<C-u>Unite -buffer-name=files file_rec:.<cr>
 nnoremap <silent><leader>o :<C-u>Unite -buffer-name=buffers -quick-match buffer<cr>
 nnoremap <silent><leader>y :<C-u>Unite -buffer-name=yank history/yank<cr>
 nnoremap <silent><leader>l :<C-u>Unite -buffer-name=line -auto-highlight line<cr>
@@ -705,6 +707,8 @@ endif
 " ***** Plugin options ***** {{
 " Unite {{
 let g:unite_source_history_yank = 1
+let g:unite_source_rec_async_command = ['ag', '--follow', '--nocolor',
+      \ '--nogroup',  '--hidden', '-g', '']
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#custom#profile('default', 'context', {
       \ 'start_insert': 1,
@@ -712,7 +716,6 @@ call unite#custom#profile('default', 'context', {
       \ 'resize': 0
       \ })
 " TODO: make filtering better
-"let g:unite_source_rec_async_command = ['~/bin/git_or_find']
 autocmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings()
   imap <silent><buffer><expr> <C-s> unite#do_action('split')
