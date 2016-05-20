@@ -775,7 +775,7 @@ let $RUST_SRC_PATH = expand("~/src/rustc-1.6.0/src")
 " }}
 let g:echodoc_enable_at_startup = 1
 let g:indent_guides_auto_colors = 0
-let g:gitgutter_enabled = 0
+let g:gitgutter_enabled = 1
 let g:haddock_browser= 'open'
 let g:clojure_fuzzy_indent_patterns = ['^with', '^def', '^let', '^clone-for',
       \ '^complex', '^match', '^POST', '^GET', '^DELETE', '^PUT', '^context',
