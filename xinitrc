@@ -13,4 +13,6 @@ wine "C:\Program Files (x86)\1Password 4\Agile1pAgent.exe" &
 
 xcape -e 'Shift_L=parenleft;Shift_R=parenright;Control_L=Escape'
 
+eval $(gpg-agent --daemon)
+
 # vim: ft=zsh
