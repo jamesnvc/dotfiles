@@ -96,6 +96,9 @@ bindsym $mod+0 workspace number 10
 # rename workspace
 bindsym $mod+r exec i3-input -F 'rename workspace to "%s"' -P 'New name: '
 
+# jump to workspace by name
+bindsym $mod+g exec i3-input -F 'workspace "%s"' -P 'workspace: '
+
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
 bindsym $mod+Shift+2 move container to workspace 2
