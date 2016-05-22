@@ -1,5 +1,7 @@
 #!/usr/bin/zsh
 
+# to connect, put this in /etc/X11/Xsession.d/99_setup
+
 if [ -s ~/.Xmodmap ]; then
   xmodmap ~/.Xmodmap
 fi
