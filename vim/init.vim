@@ -64,7 +64,6 @@ Plug 'tpope/vim-vinegar'
 " Steve Losh misc
 Plug 'sjl/gundo.vim'
 Plug 'sjl/threesome.vim'
-Plug 'sjl/tslime.vim'
 
 " My stuff & forks
 Plug 'jamesnvc/potion'
