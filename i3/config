@@ -41,6 +41,7 @@ bindsym $mod+h focus left
 bindsym $mod+t focus down
 bindsym $mod+n focus up
 bindsym $mod+s focus right
+bindsym $mod+Tab focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
