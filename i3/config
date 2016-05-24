@@ -119,6 +119,7 @@ bindsym $mod+Shift+7 move container to workspace number 7
 bindsym $mod+Shift+8 move container to workspace number 8
 bindsym $mod+Shift+9 move container to workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 10
+bindsym $mod+Shift+m exec i3-input -F'move container to workspace "%s"' -P 'workspace: '
 
 # reload the configuration file
 bindsym $mod+Shift+j reload
@@ -165,5 +166,6 @@ bar {
 for_window [class="Wine"] floating enable, border none
 for_window [class="1Password.exe"] floating enable, border none
 
-bindsym $mod+m exec i3-input -F 'mark %s' -P 'Mark name: '
-bindsym $mod+Shift+m exec i3-input -F '[con_mark=%s] focus' -P 'Go to mark: '
+# Disabling this for now; not using it & want to take the shortcut
+#bindsym $mod+m exec i3-input -F 'mark %s' -P 'Mark name: '
+#bindsym $mod+Shift+m exec i3-input -F '[con_mark=%s] focus' -P 'Go to mark: '
