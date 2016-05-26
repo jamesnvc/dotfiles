@@ -163,8 +163,8 @@ bar {
         position top
 }
 
-for_window [class="Wine"] floating enable, border none
-for_window [class="1Password.exe"] floating enable, border none
+for_window [class="Wine"] floating enable
+for_window [class="1Password.exe"] floating enable
 
 # Disabling this for now; not using it & want to take the shortcut
 #bindsym $mod+m exec i3-input -F 'mark %s' -P 'Mark name: '
