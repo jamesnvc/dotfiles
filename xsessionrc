@@ -19,6 +19,6 @@ eval $(gpg-agent --daemon)
 
 dropbox start
 
-/home/james/software/bin/btsync
+$HOME/software/bin/btsync
 
 # vim: ft=zsh
