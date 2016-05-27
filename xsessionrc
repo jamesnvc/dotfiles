@@ -17,4 +17,6 @@ xcape -e 'Shift_L=parenleft;Shift_R=parenright;Control_L=Escape'
 
 eval $(gpg-agent --daemon)
 
+dropbox start
+
 # vim: ft=zsh
