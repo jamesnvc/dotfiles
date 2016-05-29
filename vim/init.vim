@@ -768,9 +768,10 @@ let g:airline_powerline_fonts = 1
 let g:airline_theme = 'badwolf'
 " }}
 " rust stuff {{
-let g:racer_cmd = expand("~/.multirust/toolchains/stable/cargo/bin/racer")
-let g:rustfmt_commond=expand("~/.multirust/toolchains/stable/cargo/bin/rustfmt")
+let g:racer_cmd = expand("~/.cargo/bin/racer")
+let g:rustfmt_commond=expand("~/.cargo/bin/rustfmt")
 let $RUST_SRC_PATH = expand("~/src/rustc-1.6.0/src")
+let $CARGO_HOME = expand("~/.cargo")
 " }}
 let g:echodoc_enable_at_startup = 1
 let g:indent_guides_auto_colors = 0
