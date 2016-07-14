@@ -171,5 +171,5 @@ for_window [class="1Password.exe"] floating enable
 #bindsym $mod+Shift+m exec i3-input -F '[con_mark=%s] focus' -P 'Go to mark: '
 
 # Screenshots
- bindsym --release Print exec scrot -c -d 3 screenshot-$(date +%Y-%m-%d_%T_%Z%:z_%s).png -e 'mv $f ~/Pictures/'
+ bindsym --release Print exec scrot -c screenshot-$(date +%Y-%m-%d_%T_%Z%:z_%s).png -e 'mv $f ~/Pictures/'
  bindsym --release Shift+Print exec scrot -s screenshot-$(date +%Y-%m-%d_%T_%Z%:z_%s).png -e 'mv $f ~/Pictures/'
