@@ -173,3 +173,4 @@ for_window [class="1Password.exe"] floating enable
 # Screenshots
  bindsym --release Print exec scrot -c screenshot-$(date +%Y-%m-%d_%T_%Z%:z_%s).png -e 'mv $f ~/Pictures/'
  bindsym --release Shift+Print exec scrot -s screenshot-$(date +%Y-%m-%d_%T_%Z%:z_%s).png -e 'mv $f ~/Pictures/'
+ bindsym --release Control+Shift+Print exec scrot -d 3 -s screenshot-$(date +%Y-%m-%d_%T_%Z%:z_%s).png -e 'mv $f ~/Pictures/'
