@@ -104,8 +104,8 @@ call plug#end()
 
 " ***** Neovim stuf ***** {{
 if has('nvim')
-  let g:python_host_prog = '/usr/bin/python2'
-  let g:python3_host_prog = '/usr/bin/python3'
+  let g:python_host_prog = expand('/usr/bin/python2')
+  let g:python3_host_prog = expand('~/.pyenv/shims/python3')
   set termguicolors
   " TODO: make conditional
   "let g:python_host_prog = '/Users/james/.pythonbrew/pythons/Python-2.7.2/bin/python'
