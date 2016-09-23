@@ -165,7 +165,7 @@ set foldmethod=marker
 set foldlevelstart=99
 set formatoptions+=n  " gq recognizes numbered lists
 set gdefault  " Make substitute global by default
-set grepprg=ag\ --nogroup\ --nocolor\ --column
+set grepprg=rg\ --vimgrep
 set hidden  " When opening a new file hide the current instead of closing it
 set history=1000
 set hlsearch
@@ -707,8 +707,7 @@ endif
 " ***** Plugin options ***** {{
 " Unite {{
 let g:unite_source_history_yank = 1
-let g:unite_source_rec_async_command = ['ag', '--follow', '--nocolor',
-      \ '--nogroup',  '--hidden', '-g', '']
+let g:unite_source_rec_async_command = ['rg', '--color never', '--follow', '--files', '']
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#custom#profile('default', 'context', {
       \ 'start_insert': 1,
