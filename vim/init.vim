@@ -700,6 +700,9 @@ if has('autocmd')
     autocmd BufReadPost fugitive://* set bufhidden=delete
     autocmd BufNewFile,BufRead .git/index setlocal nolist
   augroup END  "}}
+  augroup terminalstuff " {{
+    autocmd BufEnter term://* setlocal nonumber norelativenumber
+  augroup END "}}
 endif
 " }}
 
