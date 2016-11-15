@@ -35,10 +35,11 @@ Plug 'ujihisa/neco-look'
 Plug 'Shougo/deoplete.nvim'
 Plug 'Shougo/echodoc.vim'
 
-" Unite
+" Denite
 Plug 'Shougo/neomru.vim'
 Plug 'Shougo/neoyank.vim'
-Plug 'Shougo/unite.vim'
+Plug 'Shougo/denite.nvim'
+Plug 'Shougo/vimproc.vim', {'do': 'make'}
 
 " Tpope misc
 Plug 'tpope/vim-abolish'
@@ -97,12 +98,16 @@ Plug 'scrooloose/syntastic'
 Plug 'timrobinson/fsharp-vim'
 Plug 'tyru/current-func-info.vim'
 Plug 'wlangstroth/vim-racket'
+Plug 'Konfekt/FastFold'
+Plug 'tikhomirov/vim-glsl'
 
 call plug#end()
+
+call plug#helptags()
 " }}
 
 
-" ***** Neovim stuf ***** {{
+" ***** Neovim stuff ***** {{
 if has('nvim')
   let g:python_host_prog = expand('/usr/bin/python2')
   let g:python3_host_prog = expand('~/.pyenv/shims/python3')
@@ -558,15 +563,11 @@ nnoremap <Leader>b: :Tabularize /^[^:]*:\zs/r0c0l0<CR>
 nnoremap <Leader>b, :Tabularize /^[^,]*,\zs/r0c0l0<CR>
 " open URL under cursor in browser
 nnoremap <leader>ri :call InlineVariable()<CR>
-nnoremap <leader>T :CtrlPTag<CR>
-nnoremap <leader>CC :CtrlPClearCache<CR>
-" Unite
-" TODO: I think this is a neovim bug?
-"nnoremap <silent><leader>t :<C-u>Unite -buffer-name=files file_rec/neovim:.<cr>
-nnoremap <silent><leader>t :<C-u>Unite -buffer-name=files file_rec:.<cr>
-nnoremap <silent><leader>o :<C-u>Unite -buffer-name=buffers -quick-match buffer<cr>
-nnoremap <silent><leader>y :<C-u>Unite -buffer-name=yank history/yank<cr>
-nnoremap <silent><leader>l :<C-u>Unite -buffer-name=line -auto-highlight line<cr>
+" Denite
+nnoremap <leader>t :<C-u>Denite -buffer-name=files
+      \ `finddir('.git', ';') != '' ? 'file_rec/git' : 'file_rec'`<CR>
+nnoremap <leader>o :<C-u>Denite -buffer-name=buffers buffer<CR>
+nnoremap <leader>l :<C-u>Denite -buffer-name=lines line<CR>
 " Map <leader>n to move to nth split
 for n in range(1, 9)
   exe "nnoremap <silent> <leader>" . n . " :" . n . "wincmd w<CR>"
@@ -708,21 +709,18 @@ endif
 
 
 " ***** Plugin options ***** {{
-" Unite {{
-let g:unite_source_history_yank = 1
-let g:unite_source_rec_async_command = ['rg', '--color never', '--follow', '--files', '']
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-call unite#custom#profile('default', 'context', {
-      \ 'start_insert': 1,
-      \ 'split': 0,
-      \ 'resize': 0
-      \ })
-" TODO: make filtering better
-autocmd FileType unite call s:unite_my_settings()
-function! s:unite_my_settings()
-  imap <silent><buffer><expr> <C-s> unite#do_action('split')
-  imap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
-endfunction
+" Denite {{
+" Change mappings.
+call denite#custom#map('insert', '<C-n>', 'move_to_next_line')
+call denite#custom#map('insert', '<C-p>', 'move_to_prev_line')
+call denite#custom#map('insert', '<C-s>', 'do_action:split')
+call denite#custom#map('insert', '<C-v>', 'do_action:vsplit')
+call denite#custom#map('insert', '<C-l>', 'redraw')
+call denite#custom#map('normal', '<C-l>', 'redraw')
+" Define alias
+call denite#custom#alias('source', 'file_rec/git', 'file_rec')
+call denite#custom#var('file_rec/git', 'command',
+      \ ['git', 'ls-files', '-co', '--exclude-standard'])
 " }}
 " Syntastic {{
 let g:syntastic_enable_signs=1
@@ -776,6 +774,7 @@ let g:rustfmt_commond=expand("~/.cargo/bin/rustfmt")
 let $RUST_SRC_PATH = expand("~/src/rustc-1.6.0/src")
 let $CARGO_HOME = expand("~/.cargo")
 " }}
+let g:clang_library_path = '/usr/lib/llvm-3.8/lib/libclang.so.1'
 let g:echodoc_enable_at_startup = 1
 let g:indent_guides_auto_colors = 0
 let g:gitgutter_enabled = 1
