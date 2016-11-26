@@ -105,8 +105,8 @@ call plug#end()
 
 " ***** Neovim stuf ***** {{
 if has('nvim')
-  let g:python_host_prog = '/usr/bin/python2'
-  let g:python3_host_prog = '/usr/bin/python3'
+  let g:python_host_prog = '/usr/local/var/pyenv/shims/python2'
+  let g:python3_host_prog = '/usr/local/var/pyenv/shims/python3'
   " TODO: make conditional
   "let g:python_host_prog = '/Users/james/.pythonbrew/pythons/Python-2.7.2/bin/python'
   "let g:python3_host_prog = '/usr/local/var/pyenv/shims/python'
@@ -166,6 +166,7 @@ set foldlevelstart=99
 set formatoptions+=n  " gq recognizes numbered lists
 set gdefault  " Make substitute global by default
 set grepprg=ag\ --nogroup\ --nocolor\ --column
+set grepformat=%f:%l:%c:%m
 set hidden  " When opening a new file hide the current instead of closing it
 set history=1000
 set hlsearch
@@ -183,6 +184,7 @@ set omnifunc=syntaxcomplete#Complete
 set pastetoggle=<F2>
 if exists("&relativenumber")
   set relativenumber
+  set number
 endif
 set ruler
 set scrolloff=2
@@ -769,7 +771,7 @@ let g:racer_cmd = expand("~/.multirust/toolchains/stable/cargo/bin/racer")
 let $RUST_SRC_PATH = expand("~/src/rustc-1.6.0/src")
 let g:echodoc_enable_at_startup = 1
 let g:indent_guides_auto_colors = 0
-let g:gitgutter_enabled = 0
+let g:gitgutter_enabled = 1
 let g:haddock_browser= 'open'
 let g:clojure_fuzzy_indent_patterns = ['^with', '^def', '^let', '^clone-for',
       \ '^complex', '^match', '^POST', '^GET', '^DELETE', '^PUT', '^context',
