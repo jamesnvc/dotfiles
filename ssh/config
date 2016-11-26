@@ -1,5 +1,6 @@
 Host *
   VisualHostKey yes
+  UseRoaming no
 
 Host penyopal.com
   User rafd_penyopal
@@ -13,7 +14,7 @@ Host github
   User git
   Port 22
   Hostname github.com
-  IdentityFile ~/.ssh-keys/github
+  IdentityFile ~/.ssh-keys/github_new
   TCPKeepAlive yes
   IdentitiesOnly yes
 
@@ -171,7 +172,7 @@ Host cyberleague
 
 Host vox2
   User james
-  Hostname 104.131.11.16
+  Hostname 159.203.39.189
   IdentityFile ~/.ssh-keys/vox2
   TCPKeepAlive yes
   IdentitiesOnly yes
@@ -194,5 +195,26 @@ Host penyo-cms
   User james
   Hostname 159.203.41.3
   IdentityFile ~/.ssh-keys/penyocms
+  TCPKeepAlive yes
+  IdentitiesOnly yes
+
+Host mailmerge
+  User james
+  IdentityFile ~/.ssh-keys/mailmerge
+  Hostname 159.203.39.181
+  TCPKeepAlive yes
+  IdentitiesOnly yes
+
+Host braid-onyx
+  User james
+  IdentityFile ~/.ssh-keys/braid-onyx
+  Hostname 159.203.33.218
+  TCPKeepAlive yes
+  IdentitiesOnly yes
+
+Host rookie
+  User james
+  IdentityFile ~/.ssh-keys/rookie
+  Hostname 138.197.141.23
   TCPKeepAlive yes
   IdentitiesOnly yes
