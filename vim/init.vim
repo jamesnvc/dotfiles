@@ -35,10 +35,11 @@ Plug 'ujihisa/neco-look'
 Plug 'Shougo/deoplete.nvim'
 Plug 'Shougo/echodoc.vim'
 
-" Unite
+" Denite
 Plug 'Shougo/neomru.vim'
 Plug 'Shougo/neoyank.vim'
-Plug 'Shougo/unite.vim'
+Plug 'Shougo/denite.nvim'
+Plug 'Shougo/vimproc.vim', {'do': 'make'}
 
 " Tpope misc
 Plug 'tpope/vim-abolish'
@@ -64,7 +65,6 @@ Plug 'tpope/vim-vinegar'
 " Steve Losh misc
 Plug 'sjl/gundo.vim'
 Plug 'sjl/threesome.vim'
-Plug 'sjl/tslime.vim'
 
 " My stuff & forks
 Plug 'jamesnvc/potion'
@@ -98,14 +98,18 @@ Plug 'scrooloose/syntastic'
 Plug 'timrobinson/fsharp-vim'
 Plug 'tyru/current-func-info.vim'
 Plug 'wlangstroth/vim-racket'
+Plug 'Konfekt/FastFold'
+Plug 'tikhomirov/vim-glsl'
 
 call plug#end()
+
+call plug#helptags()
 " }}
 
 
-" ***** Neovim stuf ***** {{
+" ***** Neovim stuff ***** {{
 if has('nvim')
-  let g:python_host_prog = '/usr/local/var/pyenv/shims/python2'
+  let g:python_host_prog = '/usr/local/var/pyenv/shims/python2.7'
   let g:python3_host_prog = '/usr/local/var/pyenv/shims/python3'
   " TODO: make conditional
   "let g:python_host_prog = '/Users/james/.pythonbrew/pythons/Python-2.7.2/bin/python'
@@ -165,8 +169,7 @@ set foldmethod=marker
 set foldlevelstart=99
 set formatoptions+=n  " gq recognizes numbered lists
 set gdefault  " Make substitute global by default
-set grepprg=ag\ --nogroup\ --nocolor\ --column
-set grepformat=%f:%l:%c:%m
+set grepprg=rg\ --vimgrep
 set hidden  " When opening a new file hide the current instead of closing it
 set history=1000
 set hlsearch
@@ -560,13 +563,11 @@ nnoremap <Leader>b: :Tabularize /^[^:]*:\zs/r0c0l0<CR>
 nnoremap <Leader>b, :Tabularize /^[^,]*,\zs/r0c0l0<CR>
 " open URL under cursor in browser
 nnoremap <leader>ri :call InlineVariable()<CR>
-nnoremap <leader>T :CtrlPTag<CR>
-nnoremap <leader>CC :CtrlPClearCache<CR>
-" Unite
-nnoremap <silent><leader>t :<C-u>Unite -buffer-name=files file_rec/neovim:.<cr>
-nnoremap <silent><leader>o :<C-u>Unite -buffer-name=buffers -quick-match buffer<cr>
-nnoremap <silent><leader>y :<C-u>Unite -buffer-name=yank history/yank<cr>
-nnoremap <silent><leader>l :<C-u>Unite -buffer-name=line -auto-highlight line<cr>
+" Denite
+nnoremap <leader>t :<C-u>Denite -buffer-name=files
+      \ `finddir('.git', ';') != '' ? 'file_rec/git' : 'file_rec'`<CR>
+nnoremap <leader>o :<C-u>Denite -buffer-name=buffers buffer<CR>
+nnoremap <leader>l :<C-u>Denite -buffer-name=lines line<CR>
 " Map <leader>n to move to nth split
 for n in range(1, 9)
   exe "nnoremap <silent> <leader>" . n . " :" . n . "wincmd w<CR>"
@@ -700,26 +701,26 @@ if has('autocmd')
     autocmd BufReadPost fugitive://* set bufhidden=delete
     autocmd BufNewFile,BufRead .git/index setlocal nolist
   augroup END  "}}
+  augroup terminalstuff " {{
+    autocmd BufEnter term://* setlocal nonumber norelativenumber
+  augroup END "}}
 endif
 " }}
 
 
 " ***** Plugin options ***** {{
-" Unite {{
-let g:unite_source_history_yank = 1
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-call unite#custom#profile('default', 'context', {
-      \ 'start_insert': 1,
-      \ 'split': 0,
-      \ 'resize': 0
-      \ })
-" TODO: make filtering better
-"let g:unite_source_rec_async_command = ['~/bin/git_or_find']
-autocmd FileType unite call s:unite_my_settings()
-function! s:unite_my_settings()
-  imap <silent><buffer><expr> <C-s> unite#do_action('split')
-  imap <silent><buffer><expr> <C-v> unite#do_action('vsplit')
-endfunction
+" Denite {{
+" Change mappings.
+call denite#custom#map('insert', '<C-n>', 'move_to_next_line')
+call denite#custom#map('insert', '<C-p>', 'move_to_prev_line')
+call denite#custom#map('insert', '<C-s>', 'do_action:split')
+call denite#custom#map('insert', '<C-v>', 'do_action:vsplit')
+call denite#custom#map('insert', '<C-l>', 'redraw')
+call denite#custom#map('normal', '<C-l>', 'redraw')
+" Define alias
+call denite#custom#alias('source', 'file_rec/git', 'file_rec')
+call denite#custom#var('file_rec/git', 'command',
+      \ ['git', 'ls-files', '-co', '--exclude-standard'])
 " }}
 " Syntastic {{
 let g:syntastic_enable_signs=1
@@ -767,8 +768,13 @@ let g:deoplete#sources.rust = ['buffer', 'racer']
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'badwolf'
 " }}
-let g:racer_cmd = expand("~/.multirust/toolchains/stable/cargo/bin/racer")
+" rust stuff {{
+let g:racer_cmd = expand("~/.cargo/bin/racer")
+let g:rustfmt_commond=expand("~/.cargo/bin/rustfmt")
 let $RUST_SRC_PATH = expand("~/src/rustc-1.6.0/src")
+let $CARGO_HOME = expand("~/.cargo")
+" }}
+let g:clang_library_path = '/usr/lib/llvm-3.8/lib/libclang.so.1'
 let g:echodoc_enable_at_startup = 1
 let g:indent_guides_auto_colors = 0
 let g:gitgutter_enabled = 1

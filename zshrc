@@ -52,3 +52,6 @@ fi
 
 # OPAM configuration
 #. /Users/james/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
