@@ -37,6 +37,8 @@ if [ $(uname) = 'Darwin' ]; then
   # if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
   export IOS_SDK="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk"
+
+  source $HOME/.cargo/env
 fi
 # Make leiningen start faster
 export LEIN_FAST_TRAMPOLINE=y
