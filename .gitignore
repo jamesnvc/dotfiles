@@ -14,3 +14,4 @@ tmux/resurrect/
 .DS_Store
 tmux/plugins/
 vim/.init.vim-rplugin~
+i3/saved-layout.json

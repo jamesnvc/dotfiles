@@ -1,5 +1,7 @@
 #!/usr/bin/zsh
 
+# to connect, put this in /etc/X11/Xsession.d/99_setup
+
 if [ -s ~/.Xmodmap ]; then
   xmodmap ~/.Xmodmap
 fi
@@ -12,5 +14,11 @@ xkbcomp -I"$XKBDIR" "$XKBMAPFILE" "${DISPLAY%%.*}"
 wine "C:\Program Files (x86)\1Password 4\Agile1pAgent.exe" &
 
 xcape -e 'Shift_L=parenleft;Shift_R=parenright;Control_L=Escape'
+
+eval $(gpg-agent --daemon)
+
+dropbox start
+
+$HOME/software/bin/btsync
 
 # vim: ft=zsh
