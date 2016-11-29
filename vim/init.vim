@@ -766,7 +766,7 @@ let g:deoplete#sources.rust = ['buffer', 'racer']
 " }}
 " airline {{
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'badwolf'
+let g:airline_theme = 'gruvbox'
 " }}
 " rust stuff {{
 let g:racer_cmd = expand("~/.cargo/bin/racer")
