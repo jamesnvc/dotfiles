@@ -128,7 +128,8 @@ let maplocalleader = '\'
 if !exists('g:initially_set_colours')
   syntax enable
   set background=dark
-  let g:gruvbox_italic=1
+  let g:gruvbox_italic = 1
+  let g:gruvbox_contrast_dark = 'hard'
   colorscheme gruvbox
   let g:initially_set_colours = 1
 endif
