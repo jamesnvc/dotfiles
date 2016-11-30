@@ -127,7 +127,8 @@ let maplocalleader = '\'
 if !exists('g:initially_set_colours')
   syntax enable
   set background=dark
-  let g:gruvbox_italic=1
+  let g:gruvbox_italic = 1
+  let g:gruvbox_contrast_dark = 'hard'
   colorscheme gruvbox
   let g:initially_set_colours = 1
 endif
@@ -766,7 +767,7 @@ let g:deoplete#sources.rust = ['buffer', 'racer']
 " }}
 " airline {{
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'badwolf'
+let g:airline_theme = 'gruvbox'
 " }}
 " rust stuff {{
 let g:racer_cmd = expand("~/.cargo/bin/racer")
