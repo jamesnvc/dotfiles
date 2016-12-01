@@ -218,3 +218,10 @@ Host rookie
   Hostname 138.197.141.23
   TCPKeepAlive yes
   IdentitiesOnly yes
+
+Host munch
+  User james
+  IdentityFile ~/.ssh-keys/munch
+  Hostname 45.63.78.0
+  TCPKeepAlive yes
+  IdentitiesOnly yes
