@@ -34,8 +34,8 @@ class Application(tk.Frame):
         exercise = self.exercise.get()
         count = self.count.get()
         grooving.increment_count(exercise, count)
+        grooving.todays_exercises()
         self.master.destroy()
-        subprocess.Popen(["pkill", "-RTMIN+12", "i3blocks"])
 
 
 def main():
