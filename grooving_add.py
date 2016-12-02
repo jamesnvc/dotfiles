@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/home/james/.pyenv/shims/python3
 
 import tkinter as tk
 import grooving
