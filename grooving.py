@@ -41,20 +41,6 @@ def increment_count(exercise, count):
     conn.close()
 
 
-def current_count(exercise):
-    today = datetime.date.today()
-    conn = get_connection()
-    c = conn.cursor()
-    c.execute("SELECT count FROM exercises WHERE date = ? AND exercise = ?",
-              (today, exercise))
-    count = c.fetchone()
-    conn.close()
-    if count is None:
-        return 0
-    else:
-        return count
-
-
 def todays_exercises():
     today = datetime.date.today()
     conn = get_connection()

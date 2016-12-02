@@ -2,7 +2,6 @@
 
 import tkinter as tk
 import grooving
-import subprocess
 
 
 class Application(tk.Frame):
