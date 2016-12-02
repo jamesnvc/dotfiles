@@ -61,8 +61,12 @@ def todays_exercises():
     c = conn.cursor()
     c.execute("SELECT exercise, count FROM exercises WHERE date = ?",
               (today, ))
-    print(' '.join("[{0[0]}]: {0[1]}".format(r)
-                   for r in c.fetchall()))
+    exercises = c.fetchall()
+    if len(exercises) == 0:
+        print("Nothing so far")
+    else:
+        print(' '.join("[{0[0]}]: {0[1]}".format(r)
+                       for r in exercises))
 
 
 if __name__ == '__main__':
