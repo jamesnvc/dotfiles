@@ -42,7 +42,7 @@ class Application(tk.Frame):
         exercise = self.exercise.get()
         count = self.count.get()
         grooving.increment_count(exercise, count)
-        self.exit()
+        self.exit(None)
 
 
 def main():
