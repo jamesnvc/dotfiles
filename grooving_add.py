@@ -1,0 +1,48 @@
+#!/usr/bin/env python3
+
+import tkinter as tk
+import grooving
+import subprocess
+
+
+class Application(tk.Frame):
+
+    def __init__(self, master=None):
+        super().__init__(master)
+        self.title = "Add Dialog"
+        self.pack()
+
+        self.create_widgets()
+
+    def create_widgets(self):
+
+        self.exercise_entry = tk.Entry()
+        self.exercise_entry.pack()
+        self.exercise = tk.StringVar()
+        self.exercise.set("")
+        self.exercise_entry["textvariable"] = self.exercise
+        self.exercise_entry.bind('<Key-Return>', self.maybe_save)
+
+        self.count_entry = tk.Entry()
+        self.count_entry.pack()
+        self.count = tk.IntVar()
+        self.count.set(0)
+        self.count_entry["textvariable"] = self.count
+        self.count_entry.bind('<Key-Return>', self.maybe_save)
+
+    def maybe_save(self, event):
+        exercise = self.exercise.get()
+        count = self.count.get()
+        grooving.increment_count(exercise, count)
+        self.master.destroy()
+        subprocess.Popen(["pkill", "-RTMIN+12", "i3blocks"])
+
+
+def main():
+    root = tk.Tk()
+    root.title("Add Dialog")
+    app = Application(master=root)
+    app.mainloop()
+
+if __name__ == '__main__':
+    main()

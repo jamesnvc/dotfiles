@@ -162,6 +162,7 @@ bar {
   status_command i3blocks
 }
 
+for_window [title="Add Dialog"] floating enable
 for_window [class="Wine"] floating enable
 for_window [class="1Password.exe"] floating enable
 
