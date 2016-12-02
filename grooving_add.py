@@ -15,6 +15,9 @@ class Application(tk.Frame):
 
     def create_widgets(self):
 
+        self.bind('<Destroy>', self.on_exit)
+        self.master.bind('<Key-Escape>', self.exit)
+
         self.exercise_entry = tk.Entry()
         self.exercise_entry.pack()
         self.exercise = tk.StringVar()
@@ -29,12 +32,17 @@ class Application(tk.Frame):
         self.count_entry["textvariable"] = self.count
         self.count_entry.bind('<Key-Return>', self.maybe_save)
 
+    def on_exit(self, event):
+        grooving.todays_exercises()
+
+    def exit(self, event):
+        self.master.destroy()
+
     def maybe_save(self, event):
         exercise = self.exercise.get()
         count = self.count.get()
         grooving.increment_count(exercise, count)
-        grooving.todays_exercises()
-        self.master.destroy()
+        self.exit()
 
 
 def main():
