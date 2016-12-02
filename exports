@@ -47,6 +47,8 @@ export LEIN_FAST_TRAMPOLINE=y
 #pyenv
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
+#rbenv
+eval "$(rbenv init -)"
 
 # Needed to make building stuff under Lion work
 #if [ `uname` = 'Darwin' ]; then
