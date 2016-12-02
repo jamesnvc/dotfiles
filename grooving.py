@@ -48,6 +48,7 @@ def todays_exercises():
     c.execute("SELECT exercise, count FROM exercises WHERE date = ?",
               (today, ))
     exercises = c.fetchall()
+    conn.close()
     if len(exercises) == 0:
         print("Nothing so far")
     else:
