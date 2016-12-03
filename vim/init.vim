@@ -828,9 +828,7 @@ highlight InterestingWord3 ctermbg=172
 highlight bufexplorermapping guifg=white
 highlight IndentGuidesOdd  guibg=red   ctermbg=DarkGray
 highlight IndentGuidesEven guibg=green ctermbg=Gray
-if !has("gui_running")
-  hi SpellBad ctermfg=Red
-endif
+highlight SpellBad guifg=Red
 "highlight Comment cterm=Italic
 " }}
 
