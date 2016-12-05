@@ -767,6 +767,8 @@ let $RUST_SRC_PATH = expand("~/src/rustc-1.6.0/src")
 let $CARGO_HOME = expand("~/.cargo")
 " }}
 let g:clang_library_path = '/usr/lib/llvm-3.8/lib/libclang.so.1'
+let g:pymode_rope_completion = 0
+let g:pymode_rope_complete_on_dot = 0
 let g:echodoc_enable_at_startup = 1
 let g:indent_guides_auto_colors = 0
 let g:gitgutter_enabled = 1
@@ -817,9 +819,7 @@ highlight InterestingWord3 ctermbg=172
 highlight bufexplorermapping guifg=white
 highlight IndentGuidesOdd  guibg=red   ctermbg=DarkGray
 highlight IndentGuidesEven guibg=green ctermbg=Gray
-if !has("gui_running")
-  hi SpellBad ctermfg=Red
-endif
+highlight SpellBad guifg=Red
 "highlight Comment cterm=Italic
 " }}
 
