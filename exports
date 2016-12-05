@@ -14,7 +14,7 @@ if [ $(uname) = 'Darwin' ]; then
   export PATH=$HOME/Dropbox/dotfiles/git-util:$PATH
   export PATH=/usr/local/apache-maven/current/bin:$PATH
   export PATH=/Applications/Racket\ v6.1.1/bin:$PATH
-  export PATH=$HOME/.multirust/toolchains/stable/cargo/bin:$PATH
+  export PATH="$HOME/.cargo/bin:$PATH"
   # PATH fixes for rvm
   if [ `which ruby` = '/usr/bin/ruby' ]; then
     export PATH=~/.rvm/bin:$PATH
@@ -36,19 +36,15 @@ if [ $(uname) = 'Darwin' ]; then
   #[[ -s "$HOME/.pythonbrew/etc/bashrc" ]] && source "$HOME/.pythonbrew/etc/bashrc"
   ## New, using pyenv
   export PYENV_ROOT=/usr/local/var/pyenv
-  if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
   # if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
   export IOS_SDK="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk"
-
-  source $HOME/.cargo/env
 fi
 # Make leiningen start faster
 export LEIN_FAST_TRAMPOLINE=y
 
 #pyenv
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
 # Needed to make building stuff under Lion work
 #if [ `uname` = 'Darwin' ]; then
@@ -65,11 +61,7 @@ export __CF_USER_TEXT_ENCODING=0x1F5:0x8000100:0x8000100
 
 export EDITOR='nvim'
 
-if [ $(uname) = 'Darwin' ]; then
-  export TERM=xterm-256color-italic
-else
-  export TERM=screen-256color
-fi
+export TERM=screen-256color
 
 LS_COLORS='';
 LS_COLORS=$LS_COLORS:'no=00'           # normal text
