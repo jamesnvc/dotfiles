@@ -5,9 +5,6 @@
 " ***** Setup plug.vim for loading bundles ***** {{
 call plug#begin('~/.config/nvim/plugged')
 " Colorschemes
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'gregsexton/Muon'
-Plug 'sjl/badwolf'
 Plug 'w0ng/vim-hybrid'
 Plug 'tpope/vim-vividchalk'
 Plug 'morhetz/gruvbox'
@@ -18,9 +15,9 @@ Plug 'vim-airline/vim-airline-themes'
 " Clojure
 Plug 'guns/vim-sexp' | Plug 'tpope/vim-sexp-mappings-for-regular-people'
 Plug 'tpope/vim-fireplace'
-Plug 'typedclojure/vim-typedclojure'
 Plug 'guns/vim-clojure-static'
 Plug 'guns/vim-clojure-highlight'
+Plug 'alexander-yakushev/compliment'
 
 " Haskell
 Plug 'bitc/vim-hdevtools'
@@ -45,17 +42,14 @@ Plug 'Shougo/vimproc.vim', {'do': 'make'}
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-afterimage'
 Plug 'tpope/vim-characterize'
-Plug 'tpope/vim-cucumber'
 Plug 'tpope/vim-dispatch'
-Plug 'tpope/vim-endwise'
 Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-haml'
-Plug 'tpope/vim-salve'
 Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-projectile'
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-salve'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-tbone'
@@ -63,7 +57,6 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-vinegar'
 
 " Steve Losh misc
-Plug 'sjl/gundo.vim'
 Plug 'sjl/threesome.vim'
 
 " My stuff & forks
@@ -71,10 +64,9 @@ Plug 'jamesnvc/potion'
 Plug 'jamesnvc/vim-penyocomic'
 
 " misc
+Plug 'Konfekt/FastFold'
 Plug 'Rip-Rip/clang_complete'
 Plug 'airblade/vim-gitgutter'
-Plug 'alexander-yakushev/compliment'
-Plug 'altercation/vim-colors-solarized'
 Plug 'benekastah/neomake'
 Plug 'elixir-lang/vim-elixir'
 Plug 'godlygeek/tabular'
@@ -95,11 +87,10 @@ Plug 'othree/html5.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/syntastic'
-Plug 'timrobinson/fsharp-vim'
-Plug 'tyru/current-func-info.vim'
-Plug 'wlangstroth/vim-racket'
-Plug 'Konfekt/FastFold'
 Plug 'tikhomirov/vim-glsl'
+Plug 'timrobinson/fsharp-vim'
+Plug 'wlangstroth/vim-racket'
+Plug 'andreimaxim/vim-io'
 
 call plug#end()
 
