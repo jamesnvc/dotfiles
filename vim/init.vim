@@ -703,12 +703,12 @@ endif
 " ***** Plugin options ***** {{
 " Denite {{
 " Change mappings.
-call denite#custom#map('insert', '<C-n>', 'move_to_next_line')
-call denite#custom#map('insert', '<C-p>', 'move_to_prev_line')
-call denite#custom#map('insert', '<C-s>', 'do_action:split')
-call denite#custom#map('insert', '<C-v>', 'do_action:vsplit')
-call denite#custom#map('insert', '<C-l>', 'redraw')
-call denite#custom#map('normal', '<C-l>', 'redraw')
+call denite#custom#map('insert', '<C-n>', '<denite:move_to_next_line>', 'noremap')
+call denite#custom#map('insert', '<C-p>', '<denite:move_to_previous_line>', 'noremap')
+call denite#custom#map('insert', '<C-s>', '<denite:do_action:split>', 'noremap')
+call denite#custom#map('insert', '<C-v>', '<denite:do_action:vsplit>', 'noremap')
+call denite#custom#map('insert', '<C-l>', '<denite:redraw>', 'noremap')
+call denite#custom#map('normal', '<C-l>', '<denite:redraw>', 'noremap')
 " Define alias
 call denite#custom#alias('source', 'file_rec/git', 'file_rec')
 call denite#custom#var('file_rec/git', 'command',
