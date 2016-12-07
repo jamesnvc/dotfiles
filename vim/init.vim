@@ -703,12 +703,12 @@ endif
 " ***** Plugin options ***** {{
 " Denite {{
 " Change mappings.
-call denite#custom#map('insert', '<C-n>', 'move_to_next_line')
-call denite#custom#map('insert', '<C-p>', 'move_to_prev_line')
-call denite#custom#map('insert', '<C-s>', 'do_action:split')
-call denite#custom#map('insert', '<C-v>', 'do_action:vsplit')
-call denite#custom#map('insert', '<C-l>', 'redraw')
-call denite#custom#map('normal', '<C-l>', 'redraw')
+call denite#custom#map('insert', '<C-n>', '<denite:move_to_next_line>', 'noremap')
+call denite#custom#map('insert', '<C-p>', '<denite:move_to_previous_line>', 'noremap')
+call denite#custom#map('insert', '<C-s>', '<denite:do_action:split>', 'noremap')
+call denite#custom#map('insert', '<C-v>', '<denite:do_action:vsplit>', 'noremap')
+call denite#custom#map('insert', '<C-l>', '<denite:redraw>', 'noremap')
+call denite#custom#map('normal', '<C-l>', '<denite:redraw>', 'noremap')
 " Define alias
 call denite#custom#alias('source', 'file_rec/git', 'file_rec')
 call denite#custom#var('file_rec/git', 'command',
@@ -767,6 +767,8 @@ let $RUST_SRC_PATH = expand("~/src/rustc-1.6.0/src")
 let $CARGO_HOME = expand("~/.cargo")
 " }}
 let g:clang_library_path = '/usr/lib/llvm-3.8/lib/libclang.so.1'
+let g:pymode_rope_completion = 0
+let g:pymode_rope_complete_on_dot = 0
 let g:echodoc_enable_at_startup = 1
 let g:indent_guides_auto_colors = 0
 let g:gitgutter_enabled = 1
@@ -817,9 +819,7 @@ highlight InterestingWord3 ctermbg=172
 highlight bufexplorermapping guifg=white
 highlight IndentGuidesOdd  guibg=red   ctermbg=DarkGray
 highlight IndentGuidesEven guibg=green ctermbg=Gray
-if !has("gui_running")
-  hi SpellBad ctermfg=Red
-endif
+highlight SpellBad guifg=Red
 "highlight Comment cterm=Italic
 " }}
 

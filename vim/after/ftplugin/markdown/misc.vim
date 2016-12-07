@@ -1,5 +1,5 @@
 setlocal spell
-setlocal textwidth=80
+setlocal textwidth=0
 
 " Underline the current line with "=" signs
 nnoremap <buffer> <leader>_ yypVr=
