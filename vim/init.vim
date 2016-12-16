@@ -178,6 +178,8 @@ set makeprg=rake
 set nrformats+=alpha
 set omnifunc=syntaxcomplete#Complete
 set pastetoggle=<F2>
+set path-=/usr/include
+set path+=**
 if exists("&relativenumber")
   set relativenumber
 endif
