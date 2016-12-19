@@ -26,8 +26,6 @@ if [ $(uname) = 'Darwin' ]; then
   fi
   # Homebrew
   export HOMEBREW_GITHUB_API_TOKEN="21273a7f2e3886fce211486cde638c310f3ed922"
-  # Perlbrew
-  source /Users/james/perl5/perlbrew/etc/bashrc
   # Node stuff
   export NODE_PATH=/usr/local/lib/node_modules
   [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
