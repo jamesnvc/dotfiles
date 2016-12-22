@@ -86,11 +86,16 @@ Plug 'neovim/node-host'
 Plug 'othree/html5.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/syntastic'
+Plug 'vim-syntastic/syntastic'
 Plug 'tikhomirov/vim-glsl'
 Plug 'timrobinson/fsharp-vim'
 Plug 'wlangstroth/vim-racket'
 Plug 'andreimaxim/vim-io'
+
+" neovim plugins in CL
+" Disabling for now, since it makes startup time v. long
+" also crashes :UpdateRemovePlugins; reinvestigate later?
+"Plug 'adolenc/cl-neovim'
 
 call plug#end()
 
@@ -722,6 +727,14 @@ let g:syntastic_auto_loc_list=2
 " Don't use syntastic for coffeescript (screws up) or python (pyflakes
 " instead)
 let g:syntastic_disabled_filetypes = ['coffee', 'python', 'sass']
+if executable('proselint')
+  let g:syntastic_markdown_checkers = ['proselint']
+endif
+if executable('ocamlmerlin') && has('python')
+  let s:ocamlmerlin = substitute(system('opam config var share'), '\n$', '', '''') . "/ocamlmerlin"
+  execute "set rtp+=".s:ocamlmerlin."/vim"
+  let g:syntastic_ocaml_checkers = ['merlin']
+endif
 " }}
 " UltiSnips  {{
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -801,11 +814,6 @@ let g:projectiles = {
       \     }
       \   }
       \ }
-if executable('ocamlmerlin') && has('python')
-  let s:ocamlmerlin = substitute(system('opam config var share'), '\n$', '', '''') . "/ocamlmerlin"
-  execute "set rtp+=".s:ocamlmerlin."/vim"
-  let g:syntastic_ocaml_checkers = ['merlin']
-endif
 let g:neomake_clojure_leintest_maker = {
       \ 'exe': 'lein',
       \ 'args': ['test'],
