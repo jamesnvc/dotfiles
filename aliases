@@ -27,24 +27,10 @@ function ssh-newkey() {
 function psg() {
   ps auxww | grep --color=always $* | grep -v grep | collapse | cuts -f 2,11-
 }
-alias ec=emacsclient
-alias dmt='dmesg | tail'
 alias curl='noglob curl'
 alias wget='noglob wget'
 alias ql='qlmanage -p 2>/dev/null'
 alias dims='sips -g pixelWidth -g pixelHeight'
-function vltube() {
-   open -a VLC ${1:s/https/http}
-}
-alias vltube='noglob vltube'
-# Rails
-alias ss="script/server"
-alias sc="script/console"
-alias sg="script/generate"
-function manps () {
-  man -t $1 | open -f -a Preview
-}
-
 alias cljsbuild="lein trampoline cljsbuild $@"
 # JRuby
 alias jrake="jruby -S rake"
