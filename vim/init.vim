@@ -536,7 +536,6 @@ nnoremap <leader>gci :Gcommit<CR>
 nnoremap <leader>gm :Gmove<CR>
 nnoremap <leader>gr :Gremove<CR>
 " }}
-nnoremap <leader>gg :grep <C-R>=expand("<cword>")<CR><CR>
 " Show syntax group
 nnoremap <leader>P :call <SID>SynStack()<CR>
 " Visually select the text last edited/pasted
