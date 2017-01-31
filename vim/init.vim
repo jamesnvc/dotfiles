@@ -501,15 +501,9 @@ noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 " Toggle spellchecking
 noremap <leader>ss :setlocal spell!<CR>
-"noremap <leader>o :BufExplorer<CR>
 noremap Y y$
 " Undo tree
-noremap <leader>U :GundoToggle<CR>
-" Change LaTeX suite bindings from <C-j>
-noremap <leader>J <Plug>IMAP_JumpForward
 noremap <leader>x :bd!<CR>
-noremap <leader>B :FufBuffer<CR>
-noremap <leader>F :FufFileWithCurrentBufferDir<CR>
 " Execute current file (assuming it's a script)
 noremap <leader>R :!./%<CR>
 noremap <F12> :TagbarToggle<CR>
@@ -543,7 +537,6 @@ nnoremap <leader>gci :Gcommit<CR>
 nnoremap <leader>gm :Gmove<CR>
 nnoremap <leader>gr :Gremove<CR>
 " }}
-nnoremap <leader>gg :grep <C-R>=expand("<cword>")<CR><CR>
 " Show syntax group
 nnoremap <leader>P :call <SID>SynStack()<CR>
 " Visually select the text last edited/pasted
