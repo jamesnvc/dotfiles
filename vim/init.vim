@@ -47,7 +47,7 @@ Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-obsession'
-Plug 'tpope/vim-projectile'
+Plug 'tpope/vim-projectionist'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-salve'
 Plug 'tpope/vim-speeddating'
@@ -100,7 +100,7 @@ call plug#helptags()
 
 " ***** Neovim stuff ***** {{
 if has('nvim')
-  let g:python_host_prog = '/usr/local/var/pyenv/shims/python2.7'
+  let g:python_host_prog = '/usr/local/bin/python2.7'
   let g:python3_host_prog = '/usr/local/var/pyenv/shims/python3'
   " TODO: make conditional
   "let g:python_host_prog = '/Users/james/.pythonbrew/pythons/Python-2.7.2/bin/python'
@@ -118,6 +118,7 @@ let maplocalleader = '\'
 if !exists('g:initially_set_colours')
   syntax enable
   set background=dark
+  set termguicolors
   let g:gruvbox_italic = 1
   let g:gruvbox_contrast_dark = 'hard'
   colorscheme gruvbox
@@ -730,7 +731,7 @@ let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
 let g:tagbar_usearrows = 1
 " }}
 " deoplete {{
-let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_at_startup = 0
 let g:deoplete#enable_smart_case = 1
 let g:deoplete#omni#input_patterns = {}
 let g:deoplete#omni#input_patterns.c = '[^.\d *\t]\%(\.\|->\)\w*'
@@ -782,22 +783,6 @@ autocmd BufRead,BufNewFile *.cljs,*.edn
       \   '^h3', '^input', '^label', '^li', '^ul', '^span', '^svg', '^g', '^form',
       \   '^table', '^this-as', '^td', '^tr', '^thead', '^tbody', '^h4', '^h2',
       \ '^tfoot', '^nav', '^header', '^select', '^section', '^dl', '^p\>']
-let g:projectiles = {
-      \   "project.clj": {
-      \     "src/*.clj": {
-      \       "command": "src",
-      \       "template": ["(ns %d)"],
-      \       "alternate": "test/%s_test.clj",
-      \     },
-      \     "test/*_test.clj": {
-      \       "command": "test",
-      \       "template": ["(ns %d-test",
-      \                    "  (:require [clojure.test :refer :all]",
-      \                    "            %d))"],
-      \       "alternate": "src/%s.clj",
-      \     }
-      \   }
-      \ }
 if executable('ocamlmerlin') && has('python')
   let s:ocamlmerlin = substitute(system('opam config var share'), '\n$', '', '''') . "/ocamlmerlin"
   execute "set rtp+=".s:ocamlmerlin."/vim"
@@ -818,7 +803,7 @@ highlight InterestingWord3 ctermbg=172
 highlight bufexplorermapping guifg=white
 highlight IndentGuidesOdd  guibg=red   ctermbg=DarkGray
 highlight IndentGuidesEven guibg=green ctermbg=Gray
-highlight SpellBad guifg=Red
+highlight SpellBad guifg=Red ctermfg=9
 "highlight Comment cterm=Italic
 " }}
 
