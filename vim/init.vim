@@ -47,7 +47,7 @@ Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-markdown'
 Plug 'tpope/vim-obsession'
-Plug 'tpope/vim-projectionist'
+Plug 'tpope/vim-projectile'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-salve'
 Plug 'tpope/vim-speeddating'
@@ -86,11 +86,16 @@ Plug 'neovim/node-host'
 Plug 'othree/html5.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/syntastic'
+Plug 'vim-syntastic/syntastic'
 Plug 'tikhomirov/vim-glsl'
 Plug 'timrobinson/fsharp-vim'
 Plug 'wlangstroth/vim-racket'
 Plug 'andreimaxim/vim-io'
+
+" neovim plugins in CL
+" Disabling for now, since it makes startup time v. long
+" also crashes :UpdateRemovePlugins; reinvestigate later?
+"Plug 'adolenc/cl-neovim'
 
 call plug#end()
 
@@ -100,8 +105,9 @@ call plug#helptags()
 
 " ***** Neovim stuff ***** {{
 if has('nvim')
-  let g:python_host_prog = '/usr/local/bin/python2.7'
-  let g:python3_host_prog = '/usr/local/var/pyenv/shims/python3'
+  let g:python_host_prog = expand('/usr/bin/python2')
+  let g:python3_host_prog = expand('~/.pyenv/shims/python3')
+  set termguicolors
   " TODO: make conditional
   "let g:python_host_prog = '/Users/james/.pythonbrew/pythons/Python-2.7.2/bin/python'
   "let g:python3_host_prog = '/usr/local/var/pyenv/shims/python'
@@ -118,7 +124,6 @@ let maplocalleader = '\'
 if !exists('g:initially_set_colours')
   syntax enable
   set background=dark
-  set termguicolors
   let g:gruvbox_italic = 1
   let g:gruvbox_contrast_dark = 'hard'
   colorscheme gruvbox
@@ -178,9 +183,10 @@ set makeprg=rake
 set nrformats+=alpha
 set omnifunc=syntaxcomplete#Complete
 set pastetoggle=<F2>
+set path-=/usr/include
+set path+=**
 if exists("&relativenumber")
   set relativenumber
-  set number
 endif
 set ruler
 set scrolloff=2
@@ -345,110 +351,6 @@ function! Scratch() " {{
 endf
 command! Scratch call Scratch()
 " }}
-" Ruby Commands {{
-" Ruby matching strings for matchit
-function! GetRubyMatchWords()  " {{
-  return '\<if>:\<end\>,\<def\>:\<end\>,\<do\>:\<end\>'
-endfunction  " }}
-" Lists functions/methods in current file
-function! g:ListRubyFunctions()  " {{
-  let s:file_name = expand("%")
-
-  exe 'vimgrep =def = ' . s:file_name
-
-  vertical copen
-  vertical resize 50
-
-  setlocal modifiable
-  silent exe '%s=' . s:file_name . '==g'
-  silent exe '%s=def ==g'
-  silent exe '%s=|.*|==g'
-  setlocal nomodified
-  setlocal nomodifiable
-  setlocal nonumber
-  setlocal readonly
-endfunction  " }}
-" Searches for function/method definition under the cursor
-function! g:GotoRubyFunc()  " {{
-  let find_command = 'find . -type f | grep .rb  | xargs grep -n def\ '.expand('<cword>')
-  echo(find_command)
-  set errorformat=%f:%l:%m
-  lgetexpr system(find_command)
-  rightb lopen
-endfunction  " }}
-" Executes spec (rspec 1.3) command in different modes
-" and display results in :Error buffer
-" available modes:
-" - file - all specs in current file
-" - line - current context or current example (cursor within context {} or it   {} block
-" - all - runs whole test case
-function! g:RunRspec(mode)  " {{
-  "current line
-  if a:mode == 'line'
-    let line_num = line(".")
-    let res =  system('spec -l '.line_num.' '.expand('%'))
-  elseif a:mode == 'file'
-    let res = system('spec '.expand('%'))
-  elseif a:mode == 'all'
-    let res = system('RAILS_ENV=test rake spec')
-  endif
-  vnew
-  let e_file = tempname()
-  silent execute 'e '.e_file
-  put = res
-  silent w | bd
-  set errorformat=%f:%l:
-  silent execute 'cgetfile '.e_file
-  copen
-endfunction  " }}
-
-command! -bar -narg=* RRRGotoDef call g:GotoRubyFunc()
-command! -bar -narg=* RRListDefs call g:ListRubyFunctions()
-
-command! -bar -narg=0 RRSpecF call g:RunRspec('file')
-command! -bar -narg=0 RRSpecL call g:RunRspec('line')
-command! -bar -narg=0 RRSpecAll call g:RunRspec('all')
-" }}
-" TPope stuff {{
-function! OpenURL(url)
-  if has("win32")
-    exe "!start cmd /cstart /b ".a:url.""
-  elseif has("mac")
-    exe "silent !open \"" . a:url . "\""
-  else
-    exe "silent !links \"".a:url."\""
-  endif
-endfunction
-command! -nargs=1 OpenURL :call OpenURL(<q-args>)
-" }}
-" Refactoring {{
-function! ExtractVariable() " {{
-  let name = input("Variable name: ")
-  if name == ''
-    return
-  endif
-  normal! gv
-  exec "normal! c" . name
-  exec "normal! O" . name . " = "
-  normal! $p
-endfunction
-"   }}
-function! InlineVariable() " {{
-  let l:tmp_a = @a
-  let l:tmp_b = @b
-  normal! "ayiW
-  " Delete variable and equal sign
-  normal! 2daW
-  normal! "bd$
-  normal! dd
-  normal! k$
-  exec '/\<' . @a . '\>'
-  exec ':s/\<' . @a . '\>/' . @b
-  let @a = l:tmp_a
-  let @b = l:tmp_b
-endfunction
-"   }}
-"  }}
 " Tab setting functions {{
 " From Wolever
 " HardTabs([width=8]): Sets up the current buffers so that:
@@ -495,15 +397,9 @@ noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 " Toggle spellchecking
 noremap <leader>ss :setlocal spell!<CR>
-"noremap <leader>o :BufExplorer<CR>
 noremap Y y$
 " Undo tree
-noremap <leader>U :GundoToggle<CR>
-" Change LaTeX suite bindings from <C-j>
-noremap <leader>J <Plug>IMAP_JumpForward
 noremap <leader>x :bd!<CR>
-noremap <leader>B :FufBuffer<CR>
-noremap <leader>F :FufFileWithCurrentBufferDir<CR>
 " Execute current file (assuming it's a script)
 noremap <leader>R :!./%<CR>
 noremap <F12> :TagbarToggle<CR>
@@ -553,8 +449,6 @@ nnoremap <Right> :tabnext<CR>
 nnoremap <Leader>b= :Tabularize /=<CR>
 nnoremap <Leader>b: :Tabularize /^[^:]*:\zs/r0c0l0<CR>
 nnoremap <Leader>b, :Tabularize /^[^,]*,\zs/r0c0l0<CR>
-" open URL under cursor in browser
-nnoremap <leader>ri :call InlineVariable()<CR>
 " Denite
 nnoremap <leader>t :<C-u>Denite -buffer-name=files
       \ `finddir('.git', ';') != '' ? 'file_rec/git' : 'file_rec'`<CR>
@@ -720,6 +614,14 @@ let g:syntastic_auto_loc_list=2
 " Don't use syntastic for coffeescript (screws up) or python (pyflakes
 " instead)
 let g:syntastic_disabled_filetypes = ['coffee', 'python', 'sass']
+if executable('proselint')
+  let g:syntastic_markdown_checkers = ['proselint']
+endif
+if executable('ocamlmerlin') && has('python')
+  let s:ocamlmerlin = substitute(system('opam config var share'), '\n$', '', '''') . "/ocamlmerlin"
+  execute "set rtp+=".s:ocamlmerlin."/vim"
+  let g:syntastic_ocaml_checkers = ['merlin']
+endif
 " }}
 " UltiSnips  {{
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -731,7 +633,7 @@ let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
 let g:tagbar_usearrows = 1
 " }}
 " deoplete {{
-let g:deoplete#enable_at_startup = 0
+let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
 let g:deoplete#omni#input_patterns = {}
 let g:deoplete#omni#input_patterns.c = '[^.\d *\t]\%(\.\|->\)\w*'
@@ -783,11 +685,22 @@ autocmd BufRead,BufNewFile *.cljs,*.edn
       \   '^h3', '^input', '^label', '^li', '^ul', '^span', '^svg', '^g', '^form',
       \   '^table', '^this-as', '^td', '^tr', '^thead', '^tbody', '^h4', '^h2',
       \ '^tfoot', '^nav', '^header', '^select', '^section', '^dl', '^p\>']
-if executable('ocamlmerlin') && has('python')
-  let s:ocamlmerlin = substitute(system('opam config var share'), '\n$', '', '''') . "/ocamlmerlin"
-  execute "set rtp+=".s:ocamlmerlin."/vim"
-  let g:syntastic_ocaml_checkers = ['merlin']
-endif
+let g:projectiles = {
+      \   "project.clj": {
+      \     "src/*.clj": {
+      \       "command": "src",
+      \       "template": ["(ns %d)"],
+      \       "alternate": "test/%s_test.clj",
+      \     },
+      \     "test/*_test.clj": {
+      \       "command": "test",
+      \       "template": ["(ns %d-test",
+      \                    "  (:require [clojure.test :refer :all]",
+      \                    "            %d))"],
+      \       "alternate": "src/%s.clj",
+      \     }
+      \   }
+      \ }
 let g:neomake_clojure_leintest_maker = {
       \ 'exe': 'lein',
       \ 'args': ['test'],
@@ -803,7 +716,7 @@ highlight InterestingWord3 ctermbg=172
 highlight bufexplorermapping guifg=white
 highlight IndentGuidesOdd  guibg=red   ctermbg=DarkGray
 highlight IndentGuidesEven guibg=green ctermbg=Gray
-highlight SpellBad guifg=Red ctermfg=9
+highlight SpellBad guifg=Red
 "highlight Comment cterm=Italic
 " }}
 
