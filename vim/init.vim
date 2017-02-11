@@ -587,8 +587,12 @@ if has('autocmd')
     autocmd BufReadPost fugitive://* set bufhidden=delete
     autocmd BufNewFile,BufRead .git/index setlocal nolist
   augroup END  "}}
-  augroup terminalstuff " {{
+  augroup nonumberbuffers " {{
     autocmd BufEnter term://* setlocal nonumber norelativenumber
+    autocmd BufEnter man://* setlocal nonumber norelativenumber
+  augroup END "}}
+  augroup deoplete_stuff "{{
+    autocmd BufEnter *.cljs let b:deoplete_disable_auto_complete = 1
   augroup END "}}
 endif
 " }}
