@@ -679,12 +679,6 @@ let g:clojure_fuzzy_indent_patterns = ['^with', '^def', '^let', '^clone-for',
       \ '^complex', '^match', '^POST', '^GET', '^DELETE', '^PUT', '^context',
       \ '^OPTIONS']
 let g:clojure_special_indent_words = 'deftype,defrecord,reify,proxy,extend-type,extend-protocol,letfn,defcomponent,defcomponentmethod,defui'
-" For clojurescript files, add the Om DOM functions to indent patterns
-autocmd BufRead,BufNewFile *.cljs,*.edn
-      \ let g:clojure_fuzzy_indent_patterns += ['^div', '^a', '^h1', '^button',
-      \   '^h3', '^input', '^label', '^li', '^ul', '^span', '^svg', '^g', '^form',
-      \   '^table', '^this-as', '^td', '^tr', '^thead', '^tbody', '^h4', '^h2',
-      \ '^tfoot', '^nav', '^header', '^select', '^section', '^dl', '^p\>']
 let g:projectiles = {
       \   "project.clj": {
       \     "src/*.clj": {
