@@ -613,8 +613,9 @@ call denite#custom#var('file_rec/git', 'command',
       \ ['git', 'ls-files', '-co', '--exclude-standard'])
 " }}
 " Syntastic {{
-let g:syntastic_enable_signs=1
-let g:syntastic_auto_loc_list=2
+let g:syntastic_enable_signs = 1
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 2
 " Don't use syntastic for coffeescript (screws up) or python (pyflakes
 " instead)
 let g:syntastic_disabled_filetypes = ['coffee', 'python', 'sass']
@@ -625,6 +626,16 @@ if executable('ocamlmerlin') && has('python')
   let s:ocamlmerlin = substitute(system('opam config var share'), '\n$', '', '''') . "/ocamlmerlin"
   execute "set rtp+=".s:ocamlmerlin."/vim"
   let g:syntastic_ocaml_checkers = ['merlin']
+endif
+if executable('joker')
+  let g:syntastic_clojure_checkers = ['joker']
+  let g:syntastic_clojure_joker_args = ['--lint']
+  augroup clojureLinter
+    autocmd BufEnter *.cljs let b:syntastic_clojure_joker_args = ['--lintcljs']
+  augroup END
+  augroup ednClinter
+    autocmd BufEnter *.edn let b:syntastic_clojure_joker_args = ['--lintedn']
+  augroup END
 endif
 " }}
 " UltiSnips  {{
