@@ -105,8 +105,8 @@ call plug#helptags()
 
 " ***** Neovim stuff ***** {{
 if has('nvim')
-  let g:python_host_prog = expand('/usr/bin/python2')
-  let g:python3_host_prog = expand('~/.pyenv/shims/python3')
+  let g:python_host_prog = expand('/usr/local/bin/python2')
+  let g:python3_host_prog = expand('/usr/local/bin/python3')
   set termguicolors
   " TODO: make conditional
   "let g:python_host_prog = '/Users/james/.pythonbrew/pythons/Python-2.7.2/bin/python'
@@ -633,7 +633,7 @@ let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
 let g:tagbar_usearrows = 1
 " }}
 " deoplete {{
-let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_at_startup = 0
 let g:deoplete#enable_smart_case = 1
 let g:deoplete#omni#input_patterns = {}
 let g:deoplete#omni#input_patterns.c = '[^.\d *\t]\%(\.\|->\)\w*'
