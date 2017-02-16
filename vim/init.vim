@@ -587,8 +587,12 @@ if has('autocmd')
     autocmd BufReadPost fugitive://* set bufhidden=delete
     autocmd BufNewFile,BufRead .git/index setlocal nolist
   augroup END  "}}
-  augroup terminalstuff " {{
+  augroup nonumberbuffers " {{
     autocmd BufEnter term://* setlocal nonumber norelativenumber
+    autocmd BufEnter man://* setlocal nonumber norelativenumber
+  augroup END "}}
+  augroup deoplete_stuff "{{
+    autocmd BufEnter *.cljs let b:deoplete_disable_auto_complete = 1
   augroup END "}}
 endif
 " }}
@@ -609,8 +613,9 @@ call denite#custom#var('file_rec/git', 'command',
       \ ['git', 'ls-files', '-co', '--exclude-standard'])
 " }}
 " Syntastic {{
-let g:syntastic_enable_signs=1
-let g:syntastic_auto_loc_list=2
+let g:syntastic_enable_signs = 1
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 2
 " Don't use syntastic for coffeescript (screws up) or python (pyflakes
 " instead)
 let g:syntastic_disabled_filetypes = ['coffee', 'python', 'sass']
@@ -621,6 +626,16 @@ if executable('ocamlmerlin') && has('python')
   let s:ocamlmerlin = substitute(system('opam config var share'), '\n$', '', '''') . "/ocamlmerlin"
   execute "set rtp+=".s:ocamlmerlin."/vim"
   let g:syntastic_ocaml_checkers = ['merlin']
+endif
+if executable('joker')
+  let g:syntastic_clojure_checkers = ['joker']
+  let g:syntastic_clojure_joker_args = ['--lint']
+  augroup clojureLinter
+    autocmd BufEnter *.cljs let b:syntastic_clojure_joker_args = ['--lintcljs']
+  augroup END
+  augroup ednClinter
+    autocmd BufEnter *.edn let b:syntastic_clojure_joker_args = ['--lintedn']
+  augroup END
 endif
 " }}
 " UltiSnips  {{
@@ -679,12 +694,6 @@ let g:clojure_fuzzy_indent_patterns = ['^with', '^def', '^let', '^clone-for',
       \ '^complex', '^match', '^POST', '^GET', '^DELETE', '^PUT', '^context',
       \ '^OPTIONS']
 let g:clojure_special_indent_words = 'deftype,defrecord,reify,proxy,extend-type,extend-protocol,letfn,defcomponent,defcomponentmethod,defui'
-" For clojurescript files, add the Om DOM functions to indent patterns
-autocmd BufRead,BufNewFile *.cljs,*.edn
-      \ let g:clojure_fuzzy_indent_patterns += ['^div', '^a', '^h1', '^button',
-      \   '^h3', '^input', '^label', '^li', '^ul', '^span', '^svg', '^g', '^form',
-      \   '^table', '^this-as', '^td', '^tr', '^thead', '^tbody', '^h4', '^h2',
-      \ '^tfoot', '^nav', '^header', '^select', '^section', '^dl', '^p\>']
 let g:projectiles = {
       \   "project.clj": {
       \     "src/*.clj": {
