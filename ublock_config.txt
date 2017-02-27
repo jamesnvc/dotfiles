@@ -1,0 +1,106 @@
+{
+  "timeStamp": 1488077946107,
+  "version": "1.11.0",
+  "userSettings": {
+    "advancedUserEnabled": true,
+    "alwaysDetachLogger": false,
+    "autoUpdate": true,
+    "cloudStorageEnabled": false,
+    "collapseBlocked": true,
+    "colorBlindFriendly": false,
+    "contextMenuEnabled": true,
+    "dynamicFilteringEnabled": true,
+    "externalLists": "! Examples:\n! https://easylist-downloads.adblockplus.org/fb_annoyances_full.txt\n! https://easylist-downloads.adblockplus.org/yt_annoyances_full.txt\n",
+    "firewallPaneMinimized": true,
+    "hyperlinkAuditingDisabled": true,
+    "ignoreGenericCosmeticFilters": false,
+    "largeMediaSize": 50,
+    "parseAllABPHideFilters": true,
+    "prefetchingDisabled": true,
+    "requestLogMaxEntries": 1000,
+    "showIconBadge": true,
+    "tooltipsDisabled": false,
+    "webrtcIPAddressHidden": false
+  },
+  "selectedFilterLists": [
+    "awrl-0",
+    "disconnect-malvertising",
+    "disconnect-malware",
+    "disconnect-tracking",
+    "easylist",
+    "easyprivacy",
+    "fanboy-enhanced",
+    "malware-0",
+    "malware-1",
+    "malware-2",
+    "plowe-0",
+    "reek-0",
+    "ublock-badware",
+    "ublock-filters",
+    "ublock-privacy",
+    "ublock-unbreak",
+    "user-filters"
+  ],
+  "hiddenSettingsString": "assetFetchTimeout 30\nautoUpdateAssetFetchPeriod 120\nautoUpdatePeriod 7\nignoreRedirectFilters false\nignoreScriptInjectFilters false\nmanualUpdateAssetFetchPeriod 2000\npopupFontSize unset\nsuspendTabsUntilReady false",
+  "netWhitelist": "about-scheme\nachewood.com\napp.asana.com\napp.simpletax.ca\napp.webinarjam.net\narstechnica.com\nasana.com\nask.metafilter.com\naws.amazon.com\nbehind-the-scene\nbitbucket.org\nbloomventures.io\nbraid.chat\nc4s.torontopolice.on.ca\ncalendar.google.com\nchat.leanpixel.com\nchrome-extension-scheme\nchrome-scheme\nclojurians.slack.com\ncloud.digitalocean.com\ncognitory.github.io\ncommunity.keyboard.io\nconsole.aws.amazon.com\ndashboard.heroku.com\ndashboard.stripe.com\ndeveloper.apple.com\ndeveloper.mozilla.org\ndiscordapp.com\ndocs.datomic.com\ndocs.google.com\ndonate.idex.org\ndrive.google.com\nfeedwrangler.net\nfisherman.sh\ngetsupport.apple.com\ngithub.com\ngreyhound.ca\nhaveibeenpwned.com\nhttp://killsixbilliondemons.com/comic/wielder-of-names-6-116/\nhub.asurion.com\nidmsa.apple.com\niverly.com\nkillsixbilliondemons.com\nkloudsec.com\nlighthouse-students.slack.com\nlighthouse.slack.com\nlighthouselabs.slack.com\nlocalhost\nlogin.metafilter.com\nloopconversation.about-scheme\nmail.google.com\nmailgun.com\nmaps.here.com\nmaps.torontopolice.on.ca\noccasionallycogent.com\noglaf.com\nopera-scheme\nphotos.google.com\nprojects.invisionapp.com\npvponline.com\nrealfavicongenerator.net\nsecure.splitwise.com\nshops.rbcrewards.com\nshops1.rbcrewards.com\nsteamcommunity.com\nsupport.squarespace.com\ntransactions.sendowl.com\nus-west-2.console.aws.amazon.com\nus.battle.net\nwww.achewood.com\nwww.amazon.ca\nwww.apple.com\nwww.census.gc.ca\nwww.cloudflare.com\nwww.girlgeniusonline.com\nwww.google.ca\nwww.google.com\nwww.heroku.com\nwww.humblebundle.com\nwww.hypercrud.com\nwww.ibm.com\nwww.ikea.com\nwww.instagram.com\nwww.metafilter.com\nwww.microsoft.com\nwww.mydemocracy.ca\nwww.patreon.com\nwww.skype.com\nwww.teamtraininglab.com\nwww.travelocity.ca\nwww.tumblr.com\nwww.unburntwitch.com\nwww1.royalbank.com",
+  "dynamicFilteringString": "* * 3p-script block\n* * 3p-frame block\n* * 3p block\nbehind-the-scene * 3p-frame noop\nbehind-the-scene * 3p noop\nchat.leanpixel.com bootstrapcdn.com * noop\nchat.leanpixel.com s3.amazonaws.com * noop\n* gravatar.com * noop\nfeedwrangler.net typekit.net * noop\n* s3-us-west-1.amazonaws.com * noop\nwww.patreon.com s3-us-west-1.amazonaws.com * noop\n* cloudflare.com * noop\n* bootstrapcdn.com * noop\n* s3.amazonaws.com * noop\nstackoverflow.com ajax.googleapis.com * noop\nstackoverflow.com sstatic.net * noop\nstackoverflow.com quantserve.com * noop\n* mathjax.org * noop\nwhat-if.xkcd.com ajax.googleapis.com * noop\naskubuntu.com ajax.googleapis.com * noop\naskubuntu.com sstatic.net * noop\naskubuntu.com quantserve.com * noop\ndrmcninja.com fonts.googleapis.com * noop\ndrmcninja.com googlesyndication.com * noop\ndrmcninja.com projectwonderful.com * noop\nwww.youtube.com ytimg.com * noop\nwww.youtube.com gstatic.com * noop\nwww.youtube.com googlevideo.com * noop\nsteamcommunity.com akamaihd.net * noop\nwww.facebook.com fbcdn.net * noop\nwww.aliexpress.com alicdn.com * noop\nwww.aliexpress.com aliimg.com * noop\n* typekit.net * noop\nsuperuser.com sstatic.net * noop\nsuperuser.com quantserve.com * noop\nwww.metafilter.com d217i264rvtnq0.cloudfront.net * noop\nwww.amazon.com images-amazon.com * noop\nwww.amazon.com ssl-images-amazon.com * noop\nwww.amazon.com amazonaws.com * noop\nwww.meundies.com dqm6q3p11zmp0.cloudfront.net * noop\nwww.meundies.com djnf6e5yyirys.cloudfront.net * noop\nwww.meundies.com d8rk54i4mohrb.cloudfront.net * noop\nwww.meundies.com df2iqnjv15ch4.cloudfront.net * noop\nwww.meundies.com yimg.com * noop\nwww.meundies.com quantserve.com * noop\nwww.zipcar.ca zipcar.com * noop\nmembers.zipcar.ca zipcar.com * noop\ncrypto.stackexchange.com sstatic.net * noop\ncrypto.stackexchange.com quantserve.com * noop\ncrypto.stackexchange.com ajax.googleapis.com * noop\nwww.hypercrud.com google.com * noop\nwww.hypercrud.com googleusercontent.com * noop\nwww.linkedin.com licdn.com * noop\nen.wikipedia.org wikimedia.org * noop\nwww.reddit.com redditstatic.com * noop\ntwitter.com twimg.com * noop\nwww.somethingawful.com youtube.com * noop\nwww.somethingawful.com ytimg.com * noop\nmysquatmechanics.com fonts.googleapis.com * noop\nmysquatmechanics.com plot.ly * noop\nwww.cooksillustrated.com d3cizcpymoenau.cloudfront.net * noop\nwww.penny-arcade.com hwcdn.net * noop\nwww.penny-arcade.com rackcdn.com * noop\nwww.avclub.com onionstatic.com * noop\n* youtube.com * noop\n* ytimg.com * noop\n* googlevideo.com * noop\nmedium.com github.com * noop\nsites.google.com gstatic.com * noop\nios-compass.lighthouselabs.ca avatars.githubusercontent.com * noop\nwww.zdnet.com cbsistatic.com * noop\nwww.zdnet.com ns-cdn.com * noop\necc-comp.blogspot.ca imgur.com * noop\necc-comp.blogspot.ca googleusercontent.com * noop\ngoogleresearch.blogspot.ca ajax.googleapis.com * noop\nmashable.com mshcdn.com * noop\nniginsblog.wordpress.com wp.com * noop\nwww.esquire.co.uk cdnds.net * noop\nitswalky.deviantart.com deviantart.net * noop\nwww.twitch.tv ttvnw.net * noop\nwww.twitch.tv quantserve.com * noop\nwww.twitch.tv d2lv4zbk7v5f93.cloudfront.net * noop\nmetro.co.uk wp.com * noop\nwww.imdb.com media-imdb.com * noop\nmetro.co.uk wordpress.com * noop\nstrengtheory.com fonts.googleapis.com * noop\nstrengtheory.com netdna-ssl.com * noop\nstrengtheory.com strengtheory.comakismet__plugin_url_inc * noop\nstrengtheory.com wp.com * noop\nhviii-brand-goods.myshopify.com shopify.com * noop\nhviii-brand-goods.myshopify.com fonts.googleapis.com * noop\nhviii-brand-goods.myshopify.com ajax.googleapis.com * noop\nvimeo.com vimeocdn.com * noop\nsoundcloud.com sndcdn.com * noop\nwww.myfonts.com myfonts.net * noop\nwww.goodhousekeeping.com h-cdn.co * noop\ndota2.gamepedia.com cursecdn.com * noop\nwww.dropbox.com dropboxstatic.com * noop\nfacebook.com fbcdn.net * noop\nlobste.rs fbcdn.net * noop\nwww1.royalbank.com rbcroyalbank.com * noop\nmozilla.github.io mozilla.net * noop\nmozilla.github.io ajax.googleapis.com * noop\n* ajax.googleapis.com * noop\nunix.stackexchange.com sstatic.net * noop\nwww.whocalledme.com wcmstatic.com * noop\nserverfault.com sstatic.net * noop\nserverfault.com stackoverflow.com * noop\ncommunity.letsencrypt.org discourse.org * noop\nssldecoder.org hosted-oswa.org * noop\nwww.twsbi.com shopify.com * noop\nwww.nytimes.com nyt.com * noop\nallrecipes.com media-allrecipes.com * noop\ndamn.dog jquery.com * noop\nyaytext.com fonts.googleapis.com * noop\nwww.gocomics.com amuniversal.com * noop\nwww.canadiantire.ca scene7.com * noop\ntorontopolice.on.ca tpsnet.ca * noop\nwww.braidchat.org fonts.googleapis.com * noop\nwww.braidchat.org gstatic.com * noop\ngetkerf.wordpress.com wp.com * noop\nexamine.com raxcdn.com * noop\nwww.wonderpens.ca volusion.com * noop\nwww.wonderpens.ca rackcdn.com * noop\nnoahveltman.com fonts.googleapis.com * noop\nnoahveltman.com d3js.org * noop\nnoahveltman.com gstatic.com * noop\nhorrorfreaknews.com netdna-cdn.com * noop\nhorrorfreaknews.com d31qbv1cthcecs.cloudfront.net * noop\nwww.bloodyelbow.com vox-cdn.com * noop\nwww.kickstarter.com imgix.net * noop\nwww.bikebandit.com bikebandit-images.com * noop\nblog.arkency.com imgix.net * noop\nmeh.com d3306cnzm6n89c.cloudfront.net * noop\nmeh.com cloudinary.com * noop\nmeh.com d3cxv97fi8q177.cloudfront.net * noop\nmeh.com imgur.com * noop\nmeh.com gstatic.com * noop\ndevcenter.heroku.com d2f2p26ywennn8.cloudfront.net * noop\nwww.gitbook.com cloudimg.io * noop\nwww.cracked.com crackedcdn.com * noop\nplay.riffstation.com d1dnrkmvcwhqt9.cloudfront.net * noop\nwww.dota2.com steamcommunity.com * noop\n* wp.com * noop\nwww.jtsstrength.com netdna-ssl.com * noop\nwww.jtsstrength.com flywheelsites.com * noop\n* squarespace.com * noop\nqcjeph.livejournal.com livejournal.net * noop\nqcjeph.livejournal.com questionablecontent.net * noop\nqcjeph.livejournal.com photobucket.com * noop\nmidoco.ca google.com * noop\nwww.bunniestudios.com bunniefoo.com * noop\nwww.shawstrength.com nitrosell.com * noop\nwww.dropbox.com dropboxusercontent.com * noop\nbarbend.com dyelnkahf1k03.cloudfront.net * noop\ndoom.wikia.com nocookie.net * noop\nminimsft.blogspot.ca blogger.com * noop\nmsdn.microsoft.com s-msft.com * noop\n* feedwrangler.net * noop\nwww.office.com msocdn.com * noop\nproducts.office.com aspnetcdn.com * noop\nproducts.office.com s-microsoft.com * noop\nproducts.office.com microsoft.com * noop\nprogrammers.stackexchange.com sstatic.net * noop\nos.phil-opp.com disqus.com * noop\nos.phil-opp.com disquscdn.com * noop\npilif.github.io gnegg.ch * noop\npilif.github.io github.com * noop\nmedium.com d262ilb51hltx0.cloudfront.net * noop\naddons.mozilla.org mozilla.net * noop\naeon.co d2e1bqvws99ptg.cloudfront.net * noop\n* instapaper.com * noop\nsupport.cloudflare.com zdassets.com * noop\nsupport.cloudflare.com zendesk.com * noop\nforum.getsync.com dk07ux9rg1i5a.cloudfront.net * noop\ntex.stackexchange.com sstatic.net * noop\nthenextweb.com tnwcdn.com * noop\ndevelopers.google.com googleusercontent.com * noop\ndevelopers.google.com gstatic.com * noop\nstore.kabukistrength.net shopify.com * noop\ncodeship.com d1089v03p3mzyq.cloudfront.net * noop\nwww.mcdonalds.ca mcdonalds.com * noop\nusers.rust-lang.org discourse.org * noop\napi.giphy.com s3-eu-west-1.amazonaws.com * noop\napi.giphy.com typeform.com * noop\napi.giphy.com d4z6dx8qrln4r.cloudfront.net * noop\napi.giphy.com dkl3g0z0k6qzr.cloudfront.net * noop\nsketch.bysusanlin.com tumblr.com * noop\nstore.steampowered.com steamstatic.com * noop\naccounts.google.com gstatic.com * noop\nswift.ayaka.me imgur.com * noop\nwww.bloomberg.com bbthat.com * noop\nagilebits.com da36klfizjv29.cloudfront.net * noop\nnotvice.com medium.com * noop\nnotvice.com d262ilb51hltx0.cloudfront.net * noop\nwww.learningstem.ca tumblr.com * noop\nwww.canadaparacord.ca windows.net * noop\nbitcoin.stackexchange.com sstatic.net * noop\nchrismm.com imgur.com * noop\ncrate.io daks2k3a4ib2z.cloudfront.net * noop\nwww.walmart.com walmartimages.com * noop\nbristolcrypto.blogspot.ca bp.blogspot.com * noop\nponyfoo.com imgur.com * noop\nhelp.getsync.com zdassets.com * noop\nhelp.getsync.com zendesk.com * noop\nshop.keyboard.io shopify.com * noop\nshop.keyboard.io imgix.net * noop\nasciinema.org asciinema-bb-eu.s3-eu-west-1.amazonaws.com * noop\nwww.goruck.com mozu.com * noop\nwww.goruck.com shop.pe * noop\nwww.goruck.com googlecommerce.com * noop\nwww.goruck.com gstatic.com * noop\npinboard.in stripe.com * noop\npinboard.in stripecdn.com * noop\njimwendler.com shopify.com * noop\nwww.southcarolinabarbell.com nitrosell.com * noop\nricardomartins.cc convertkit.com * noop\nwww.alicegrove.com tumblr.com * noop\nwww.alicegrove.com modernizr.com * noop\nwww.alicegrove.com projectwonderful.com * noop\nwww.splitwise.com dx0qysuen8cbs.cloudfront.net * noop\nstore.sorinex.com volusion.com * noop\nhackernoon.com medium.com * noop\nhackernoon.com d262ilb51hltx0.cloudfront.net * noop\nvocabulary.ugent.be s3-eu-west-1.amazonaws.com * noop\nhgcontrarianapproach.com google.com * noop\nwww.mcmansionhell.com tumblr.com * noop\nboards.4chan.org 4cdn.org * noop\nmangafox.me mfcdn.net * noop\nmangafox.me gumgum.com * noop\nwww.suppermariobroth.com tumblr.com * noop\nwww.suppermariobroth.com imgur.com * noop\nwww.cutandtso.com parastorage.com * noop\nwww.cutandtso.com wix.com * noop\nwww.cutandtso.com wixstatic.com * noop\nrelayfm.memberful.com stripe.com * noop\nrelayfm.memberful.com d1zgk03a9fsd43.cloudfront.net * noop\novercast.fm d2uzvmey2c90kn.cloudfront.net * noop\novercast.fm d1eedt7bo0oujw.cloudfront.net * noop\nwww.flickr.com yimg.com * noop\nwww.flickr.com staticflickr.com * noop\nthewirecutter.com netdna-cdn.com * noop\nthewirecutter.com gstatic.com * noop\nthewirecutter.com quantserve.com * noop\ndba.stackexchange.com sstatic.net * noop\nwww.kirkton.ca parastorage.com * noop\nwww.kirkton.ca wix.com * noop\nwww.kirkton.ca wixstatic.com * noop\nkeyboardio.typeform.com d4z6dx8qrln4r.cloudfront.net * noop\nwww.staples.ca staples-static.com * noop\nfloraverse.com veekun.com * noop\nwww.ansible.com hubspot.net * noop\nwww.useronboard.com dnn506yrbagrg.cloudfront.net * noop\nwww.useronboard.com s3-us-west-2.amazonaws.com * noop\nmy.pottermore.com google.com * noop\nmy.pottermore.com gstatic.com * noop\nblog.thedyrt.com fbcdn.net * noop\nwww.onnit.com imgix.net * noop\nlighthouse-students.slack.com slack-edge.com * noop\ntoronto.craigslist.ca craigslist.org * noop\nwww.yummly.com yumm.ly * noop\nexamine.com examinecdn.com * noop\nexamine.com instantssl.com * noop\nexamine.com jsdelivr.net * noop\nhyper.is cloud.githubusercontent.com * noop\nhyper.is zeit.co * noop\n100ftrobotgolf.com nogoblin.com * noop\nhappyitemroom.com libsyn.com * noop\nw3c.github.io w3.org * noop\nwww.penny-arcade.com smugmug.com * noop\nwww.youtube.com google.com * noop\nwww.youtube.com youtube-nocookie.com * noop\nwww.walmart.ca wal.co * noop\nwww.walmart.ca walmartimages.ca * noop\nprecursorapp.com dtwdl3ecuoduc.cloudfront.net * noop\nprecursorapp.com d37gvrvc0wt4s1.cloudfront.net * noop\nwww.microsoftstore.com digitalrivercontent.net * noop\nwww.microsoftstore.com onestore.ms * noop\nwww.microsoftstore.com optimizely.com * noop\nwww.microsoftstore.com microsoft.com * noop\ndanganronpa.wikia.com nocookie.net * noop\ndanganronpa.wikia.com optimizely.com * noop\ndanganronpa.wikia.com quantserve.com * noop\nwww.keyboard-layout-editor.com github.com * noop\nmostergonomickeyboard.blogspot.ca blogger.com * noop\nmostergonomickeyboard.blogspot.ca blogblog.com * noop\nmostergonomickeyboard.blogspot.ca photobucket.com * noop\nmostergonomickeyboard.blogspot.ca maltron.com * noop\nmathematica.stackexchange.com sstatic.net * noop\nmathematica.stackexchange.com imgur.com * noop\nmathematica.stackexchange.com quantserve.com * noop\nsecure.leadnow.ca rackcdn.com * noop\nsecure.leadnow.ca google.com * noop\nhaveibeenpwned.com google.com * noop\nhaveibeenpwned.com report-uri.io * noop\nsteve-yegge.blogspot.ca blogger.com * noop\nsteve-yegge.blogspot.ca blogblog.com * noop\nsteve-yegge.blogspot.ca amazon.com * noop\npositionusa.com shopify.com * noop\nsarms.ca wsimg.com * noop\nsunsfan.gg moonduck.tv * noop\nsunsfan.gg imgur.com * noop\nsunsfan.gg jquery.com * noop\nwww.humblebundle.com akamaihd.net * noop\nwww.humblebundle.com stripe.com * noop\nwww.humblebundle.com imgix.net * noop\neev.ee disqus.com * noop\neev.ee disquscdn.com * noop\nwww.mvmtwatches.com shopify.com * noop\nwww.mvmtwatches.com d2jjzw81hqbuqv.cloudfront.net * noop\nwww.mvmtwatches.com bluecore.com * noop\nwww.mvmtwatches.com jquery.com * noop\nsystem76.com d1vhcvzji58n1j.cloudfront.net * noop\nsystem76.com d9jmv9u00p0mv.cloudfront.net * noop\nwww.tuckshopco.com shopify.com * noop\nwww.tuckshopco.com d2z0bn1jv8xwtk.cloudfront.net * noop\nwww.tuckshopco.com prod-shopify-etl.herokuapp.com * noop\ntmuxp.readthedocs.io readthedocs.org * noop\nwww.bbc.com bbci.co.uk * noop\nwww.bbc.com bbc.co.uk * noop\nbookofhook.blogspot.ca blogger.com * noop\nbookofhook.blogspot.ca blogblog.com * noop\nbookofhook.blogspot.ca google.com * noop\nwriters.stackexchange.com sstatic.net * noop\nmemory-alpha.wikia.com nocookie.net * noop\nmemory-alpha.wikia.com wikia-beacon.com * noop\nmemory-alpha.wikia.com quantserve.com * noop\nwww.statefarm.ca st8fm.com * noop\nurasunday.com tokyo-cdn.com * noop\nalmostarchaeology.com tumblr.com * noop\nwww.mikasa.com edgesuite.net * noop\nwww.bloodyelbow.com sbnation.com * noop\nwww.bloodyelbow.com gfycat.com * noop\nwww.bloodyelbow.com embed.ly * noop\nmovio.co aldryn-media.io * noop\n0xabad1dea.itch.io hwcdn.net * noop\nblog.klipse.tech github.com * noop\nsoftwareengineering.stackexchange.com sstatic.net * noop\nwww.barnesandnoble.com css-bn.com * noop\nwww.barnesandnoble.com js-bn.com * noop\nwww.barnesandnoble.com images-bn.com * noop\nblog.wilshipley.com blogger.com * noop\nblog.wilshipley.com blogblog.com * noop\nsmile.amazon.com images-amazon.com * noop\nsmile.amazon.com ssl-images-amazon.com * noop\nclojure-to.slack.com slack-edge.com * noop\nclojure-to.slack.com cedexis.com * noop\nclojure-to.slack.com slack-msgs.com * noop\nclojure-to.slack.com slack-imgs.com * noop\nclojure-to.slack.com slack.global.ssl.fastly.net * noop",
+  "urlFilteringString": "",
+  "hostnameSwitchesString": "no-strict-blocking: rbc.bridgetrack.com true",
+  "userFilters": "",
+  "filterLists": {
+    "https://easylist-downloads.adblockplus.org/antiadblockfilters.txt": {
+      "off": false
+    },
+    "https://s3.amazonaws.com/lists.disconnect.me/simple_malvertising.txt": {
+      "off": false
+    },
+    "https://s3.amazonaws.com/lists.disconnect.me/simple_malware.txt": {
+      "off": false
+    },
+    "https://s3.amazonaws.com/lists.disconnect.me/simple_tracking.txt": {
+      "off": false
+    },
+    "assets/thirdparties/easylist-downloads.adblockplus.org/easylist.txt": {
+      "off": false
+    },
+    "assets/thirdparties/easylist-downloads.adblockplus.org/easyprivacy.txt": {
+      "off": false
+    },
+    "https://www.fanboy.co.nz/enhancedstats.txt": {
+      "off": false
+    },
+    "assets/thirdparties/www.malwaredomainlist.com/hostslist/hosts.txt": {
+      "off": false
+    },
+    "assets/thirdparties/mirror1.malwaredomains.com/files/justdomains": {
+      "off": false
+    },
+    "http://malwaredomains.lehigh.edu/files/immortal_domains.txt": {
+      "off": false
+    },
+    "assets/thirdparties/pgl.yoyo.org/as/serverlist": {
+      "off": false
+    },
+    "https://raw.githubusercontent.com/reek/anti-adblock-killer/master/anti-adblock-killer-filters.txt": {
+      "off": false
+    },
+    "assets/ublock/badware.txt": {
+      "off": false
+    },
+    "assets/ublock/filters.txt": {
+      "off": false
+    },
+    "assets/ublock/privacy.txt": {
+      "off": false
+    },
+    "assets/ublock/unbreak.txt": {
+      "off": false
+    },
+    "assets/user/filters.txt": {
+      "off": false
+    },
+    "assets/ublock/experimental.txt": {
+      "off": true
+    }
+  }
+}
