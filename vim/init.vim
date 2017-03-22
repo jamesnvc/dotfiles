@@ -91,6 +91,7 @@ Plug 'tikhomirov/vim-glsl'
 Plug 'timrobinson/fsharp-vim'
 Plug 'wlangstroth/vim-racket'
 Plug 'andreimaxim/vim-io'
+Plug 'raichoo/purescript-vim'
 
 " neovim plugins in CL
 " Disabling for now, since it makes startup time v. long
