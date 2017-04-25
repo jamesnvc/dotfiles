@@ -17,7 +17,7 @@ Plug 'guns/vim-sexp' | Plug 'tpope/vim-sexp-mappings-for-regular-people'
 Plug 'tpope/vim-fireplace'
 Plug 'guns/vim-clojure-static'
 Plug 'guns/vim-clojure-highlight'
-Plug 'alexander-yakushev/compliment'
+Plug 'clojure-vim/async-clj-omni'
 
 " Haskell
 Plug 'bitc/vim-hdevtools'
@@ -651,6 +651,8 @@ let g:tagbar_usearrows = 1
 " deoplete {{
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
+let g:deoplete#keyword_patterns = {}
+let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
 let g:deoplete#omni#input_patterns = {}
 let g:deoplete#omni#input_patterns.c = '[^.\d *\t]\%(\.\|->\)\w*'
 " TODO: make this not match inside string or comment
