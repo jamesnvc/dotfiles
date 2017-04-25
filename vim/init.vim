@@ -20,8 +20,8 @@ Plug 'guns/vim-clojure-highlight'
 Plug 'clojure-vim/async-clj-omni'
 
 " Haskell
-Plug 'bitc/vim-hdevtools'
-Plug 'lukerandall/haskellmode-vim'
+Plug 'eagletmt/ghcmod-vim'
+Plug 'eagletmt/neco-ghc'
 
 " Rust
 Plug 'racer-rust/vim-racer'
@@ -675,6 +675,7 @@ let g:deoplete#sources = {}
 let g:deoplete#sources._ = ['buffer', 'look']
 let g:deoplete#sources.clojure = ['buffer', 'omni', 'look']
 let g:deoplete#sources.rust = ['buffer', 'racer']
+let g:deoplete#sources.haskell = ['buffer', 'ghc']
 " }}
 " airline {{
 let g:airline_powerline_fonts = 1
@@ -686,6 +687,7 @@ let g:rustfmt_commond=expand("~/.cargo/bin/rustfmt")
 let $RUST_SRC_PATH = expand("~/src/rustc-1.6.0/src")
 let $CARGO_HOME = expand("~/.cargo")
 " }}
+let g:haskellmode_completion_ghc = 0
 let g:clang_library_path = '/usr/lib/llvm-3.8/lib/libclang.so.1'
 let g:pymode_rope_completion = 0
 let g:pymode_rope_complete_on_dot = 0
