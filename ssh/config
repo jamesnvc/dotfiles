@@ -170,9 +170,9 @@ Host cyberleague
   TCPKeepAlive yes
   IdentitiesOnly yes
 
-Host vox2
+Host vox3
   User james
-  Hostname 159.203.39.189
+  Hostname 138.197.128.120
   IdentityFile ~/.ssh-keys/vox2
   TCPKeepAlive yes
   IdentitiesOnly yes
