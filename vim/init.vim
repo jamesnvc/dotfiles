@@ -17,15 +17,21 @@ Plug 'guns/vim-sexp' | Plug 'tpope/vim-sexp-mappings-for-regular-people'
 Plug 'tpope/vim-fireplace'
 Plug 'guns/vim-clojure-static'
 Plug 'guns/vim-clojure-highlight'
-Plug 'alexander-yakushev/compliment'
+Plug 'clojure-vim/async-clj-omni'
 
 " Haskell
-Plug 'bitc/vim-hdevtools'
-Plug 'lukerandall/haskellmode-vim'
+Plug 'eagletmt/ghcmod-vim'
+Plug 'eagletmt/neco-ghc'
 
 " Rust
 Plug 'racer-rust/vim-racer'
 Plug 'rust-lang/rust.vim'
+
+" Elixir
+Plug 'elixir-lang/vim-elixir'
+Plug 'thinca/vim-ref'
+Plug 'awetzel/elixir.nvim', { 'do': 'yes \| ./install.sh' }
+Plug 'w0rp/ale'
 
 " Completion
 Plug 'ujihisa/neco-look'
@@ -67,8 +73,7 @@ Plug 'jamesnvc/vim-penyocomic'
 Plug 'Konfekt/FastFold'
 Plug 'Rip-Rip/clang_complete'
 Plug 'airblade/vim-gitgutter'
-Plug 'benekastah/neomake'
-Plug 'elixir-lang/vim-elixir'
+"Plug 'benekastah/neomake'
 Plug 'godlygeek/tabular'
 Plug 'gregsexton/gitv'
 Plug 'groenewege/vim-less'
@@ -86,11 +91,12 @@ Plug 'neovim/node-host'
 Plug 'othree/html5.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'scrooloose/nerdcommenter'
-Plug 'vim-syntastic/syntastic'
+"Plug 'vim-syntastic/syntastic'
 Plug 'tikhomirov/vim-glsl'
 Plug 'timrobinson/fsharp-vim'
 Plug 'wlangstroth/vim-racket'
 Plug 'andreimaxim/vim-io'
+Plug 'raichoo/purescript-vim'
 
 " neovim plugins in CL
 " Disabling for now, since it makes startup time v. long
@@ -128,17 +134,6 @@ if !exists('g:initially_set_colours')
   let g:gruvbox_contrast_dark = 'hard'
   colorscheme gruvbox
   let g:initially_set_colours = 1
-endif
-
-" Use a bar-shaped cursor for insert mode, even through tmux.
-if has('nvim')
-  let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-elseif exists('$TMUX')
-  let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
-  let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
-else
-  let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-  let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
 
 filetype on
@@ -650,6 +645,8 @@ let g:tagbar_usearrows = 1
 " deoplete {{
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
+let g:deoplete#keyword_patterns = {}
+let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
 let g:deoplete#omni#input_patterns = {}
 let g:deoplete#omni#input_patterns.c = '[^.\d *\t]\%(\.\|->\)\w*'
 " TODO: make this not match inside string or comment
@@ -672,6 +669,7 @@ let g:deoplete#sources = {}
 let g:deoplete#sources._ = ['buffer', 'look']
 let g:deoplete#sources.clojure = ['buffer', 'omni', 'look']
 let g:deoplete#sources.rust = ['buffer', 'racer']
+let g:deoplete#sources.haskell = ['buffer', 'ghc']
 " }}
 " airline {{
 let g:airline_powerline_fonts = 1
@@ -683,6 +681,7 @@ let g:rustfmt_commond=expand("~/.cargo/bin/rustfmt")
 let $RUST_SRC_PATH = expand("~/src/rustc-1.6.0/src")
 let $CARGO_HOME = expand("~/.cargo")
 " }}
+let g:haskellmode_completion_ghc = 0
 let g:clang_library_path = '/usr/lib/llvm-3.8/lib/libclang.so.1'
 let g:pymode_rope_completion = 0
 let g:pymode_rope_complete_on_dot = 0
