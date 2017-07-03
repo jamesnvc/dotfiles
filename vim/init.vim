@@ -168,6 +168,7 @@ set history=1000
 set hlsearch
 set ignorecase
 set incsearch
+set inccommand=nosplit " when doing a substitute, show the results live
 set matchtime=3
 set laststatus=2
 set lazyredraw " redraw only when required (speed up macros)
