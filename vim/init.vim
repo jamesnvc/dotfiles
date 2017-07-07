@@ -26,6 +26,7 @@ Plug 'eagletmt/neco-ghc'
 " Rust
 Plug 'racer-rust/vim-racer'
 Plug 'rust-lang/rust.vim'
+Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
 
 " Elixir
 Plug 'elixir-lang/vim-elixir'
@@ -679,9 +680,15 @@ let g:airline_theme = 'gruvbox'
 " rust stuff {{
 let g:racer_cmd = expand("~/.cargo/bin/racer")
 let g:rustfmt_commond=expand("~/.cargo/bin/rustfmt")
-let $RUST_SRC_PATH = expand("~/src/rustc-1.6.0/src")
+let $RUST_SRC_PATH = expand("~/.multirust/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src")
 let $CARGO_HOME = expand("~/.cargo")
 " }}
+" language client {{
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+    \ }
+" }}
+let g:LanguageClient_autoStart = 1
 let g:haskellmode_completion_ghc = 0
 let g:clang_library_path = '/usr/lib/llvm-3.8/lib/libclang.so.1'
 let g:pymode_rope_completion = 0
@@ -709,11 +716,6 @@ let g:projectiles = {
       \       "alternate": "src/%s.clj",
       \     }
       \   }
-      \ }
-let g:neomake_clojure_leintest_maker = {
-      \ 'exe': 'lein',
-      \ 'args': ['test'],
-      \ 'errorformat': ''
       \ }
 " }}
 
