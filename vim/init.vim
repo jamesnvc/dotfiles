@@ -18,6 +18,7 @@ Plug 'tpope/vim-fireplace'
 Plug 'guns/vim-clojure-static'
 Plug 'guns/vim-clojure-highlight'
 Plug 'clojure-vim/async-clj-omni'
+Plug 'jamesnvc/clj.nvim', {'do': 'lein uberjar'}
 
 " Haskell
 Plug 'eagletmt/ghcmod-vim'
@@ -546,6 +547,7 @@ if has('autocmd')
     autocmd!
     " Delete trailing whitespace on save
     autocmd BufWritePre * :call CleanupWhitespace()
+    autocmd BufWritePre *.clj :TidyNS
   augroup END  " }}
   augroup misc  " {{
     autocmd!
