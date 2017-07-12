@@ -18,6 +18,7 @@ Plug 'tpope/vim-fireplace'
 Plug 'guns/vim-clojure-static'
 Plug 'guns/vim-clojure-highlight'
 Plug 'clojure-vim/async-clj-omni'
+Plug 'jamesnvc/clj.nvim', {'do': 'lein uberjar'}
 
 " Haskell
 Plug 'eagletmt/ghcmod-vim'
@@ -26,6 +27,7 @@ Plug 'eagletmt/neco-ghc'
 " Rust
 Plug 'racer-rust/vim-racer'
 Plug 'rust-lang/rust.vim'
+Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
 
 " Elixir
 Plug 'elixir-lang/vim-elixir'
@@ -374,6 +376,18 @@ fun! SoftTabs(...) " {{
     let &l:expandtab=1
 endfun " }}
 "  }}
+" Convert quickfix/vimgrep list to args {{
+command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()
+
+" populate the argument list with each of the files named in the quickfix list
+function! QuickfixFilenames()
+  let buffer_numbers = {}
+  for quickfix_item in getqflist()
+    let buffer_numbers[quickfix_item['bufnr']] = bufname(quickfix_item['bufnr'])
+  endfor
+  return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
+endfunction
+" }}
 " }}
 
 
@@ -533,6 +547,7 @@ if has('autocmd')
     autocmd!
     " Delete trailing whitespace on save
     autocmd BufWritePre * :call CleanupWhitespace()
+    autocmd BufWritePre *.clj,*.cljs :TidyNS
   augroup END  " }}
   augroup misc  " {{
     autocmd!
@@ -679,9 +694,15 @@ let g:airline_theme = 'gruvbox'
 " rust stuff {{
 let g:racer_cmd = expand("~/.cargo/bin/racer")
 let g:rustfmt_commond=expand("~/.cargo/bin/rustfmt")
-let $RUST_SRC_PATH = expand("~/src/rustc-1.6.0/src")
+let $RUST_SRC_PATH = expand("~/.multirust/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src")
 let $CARGO_HOME = expand("~/.cargo")
 " }}
+" language client {{
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+    \ }
+" }}
+let g:LanguageClient_autoStart = 1
 let g:haskellmode_completion_ghc = 0
 let g:clang_library_path = '/usr/lib/llvm-3.8/lib/libclang.so.1'
 let g:pymode_rope_completion = 0
@@ -710,11 +731,6 @@ let g:projectiles = {
       \       "alternate": "src/%s.clj",
       \     }
       \   }
-      \ }
-let g:neomake_clojure_leintest_maker = {
-      \ 'exe': 'lein',
-      \ 'args': ['test'],
-      \ 'errorformat': ''
       \ }
 " }}
 
