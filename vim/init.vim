@@ -644,7 +644,7 @@ let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
 let g:tagbar_usearrows = 1
 " }}
 " deoplete {{
-let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_at_startup = 0
 let g:deoplete#enable_smart_case = 1
 let g:deoplete#keyword_patterns = {}
 let g:deoplete#keyword_patterns.clojure = '[\w!$%&*+/:<=>?@\^_~\-\.#]*'
