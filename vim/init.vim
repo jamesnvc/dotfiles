@@ -429,6 +429,7 @@ nnoremap <silent> <leader>hh :execute 'match InterestingWord1 /\<<C-r><C-w>\>/'<
 nnoremap <silent> <leader>h1 :execute 'match InterestingWord1 /\<<C-r><C-w>\>/'<CR>
 nnoremap <silent> <leader>h2 :execute '2match InterestingWord2 /\<<C-r><C-w>\>/'<CR>
 nnoremap <silent> <leader>h3 :execute '3match InterestingWord3 /\<<C-r><C-w>\>/'<CR>
+nnoremap <silent> <leader>hc :execute "match none \| 2match none \| 3match none"<CR>
 " }}
 nnoremap <silent> <leader>/ :let @/=""<CR>
 nnoremap <leader>W :w<CR>
@@ -736,9 +737,9 @@ let g:projectiles = {
 
 
 " Setting some colours {{
-highlight InterestingWord1 ctermbg=110
-highlight InterestingWord2 ctermbg=148
-highlight InterestingWord3 ctermbg=172
+highlight InterestingWord1 ctermbg=110 guibg=green
+highlight InterestingWord2 ctermbg=148 guibg=blue
+highlight InterestingWord3 ctermbg=172 guibg=red
 highlight bufexplorermapping guifg=white
 highlight IndentGuidesOdd  guibg=red   ctermbg=DarkGray
 highlight IndentGuidesEven guibg=green ctermbg=Gray
