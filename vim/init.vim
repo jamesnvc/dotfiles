@@ -710,9 +710,13 @@ let g:LanguageClient_serverCommands = {
 " ale {{
 let g:ale_sign_error = '✗'
 let g:ale_sign_warning = '🛆'
+let g:ale_sign_style_error = '✗'
+let g:ale_sign_style_warning = '🛆'
 let g:ale_sign_info = 'ℹ'
 highlight ALEErrorSign guifg=red
 highlight ALEWarningSign guifg=yellow
+highlight ALEStyleErrorSign guifg=LightRed
+highlight ALEStyleWarningSign guifg=LightYellow
 highlight ALEInfoSign guifg=blue
 " }}
 let g:LanguageClient_autoStart = 1
