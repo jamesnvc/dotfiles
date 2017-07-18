@@ -116,6 +116,10 @@ if has('nvim')
   let g:python_host_prog = expand('/usr/bin/python2')
   let g:python3_host_prog = expand('~/.pyenv/shims/python3')
   set termguicolors
+  set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+        \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
+        \,sm:block-blinkwait175-blinkoff150-blinkon175
+
   " TODO: make conditional
   "let g:python_host_prog = '/Users/james/.pythonbrew/pythons/Python-2.7.2/bin/python'
   "let g:python3_host_prog = '/usr/local/var/pyenv/shims/python'

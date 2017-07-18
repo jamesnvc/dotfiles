@@ -68,8 +68,10 @@ export EDITOR='nvim'
 
 if [ $(uname) = 'Darwin' ]; then
   export TERM=xterm-256color-italic
+elif [ ! -z "$TMUX" ]; then
+  export TERM=tmux-256color
 else
-  export TERM=screen-256color
+  export TERM=st-256color
 fi
 
 LS_COLORS='';
