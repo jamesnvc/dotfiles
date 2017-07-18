@@ -707,6 +707,14 @@ let g:LanguageClient_serverCommands = {
     \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
     \ }
 " }}
+" ale {{
+let g:ale_sign_error = '✗'
+let g:ale_sign_warning = '🛆'
+let g:ale_sign_info = 'ℹ'
+highlight ALEErrorSign guifg=red
+highlight ALEWarningSign guifg=yellow
+highlight ALEInfoSign guifg=blue
+" }}
 let g:LanguageClient_autoStart = 1
 let g:haskellmode_completion_ghc = 0
 let g:clang_library_path = '/usr/lib/llvm-3.8/lib/libclang.so.1'
