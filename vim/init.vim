@@ -552,7 +552,7 @@ if has('autocmd')
     autocmd!
     " Delete trailing whitespace on save
     autocmd BufWritePre * :call CleanupWhitespace()
-    autocmd BufWritePre *.clj,*.cljs :TidyNS
+    "autocmd BufWritePre *.clj,*.cljs :TidyNS
   augroup END  " }}
   augroup misc  " {{
     autocmd!
