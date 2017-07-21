@@ -116,6 +116,10 @@ if has('nvim')
   let g:python_host_prog = expand('/usr/local/bin/python2')
   let g:python3_host_prog = expand('/usr/local/bin/python3')
   set termguicolors
+  set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+        \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
+        \,sm:block-blinkwait175-blinkoff150-blinkon175
+
   " TODO: make conditional
   "let g:python_host_prog = '/Users/james/.pythonbrew/pythons/Python-2.7.2/bin/python'
   "let g:python3_host_prog = '/usr/local/var/pyenv/shims/python'
@@ -548,7 +552,7 @@ if has('autocmd')
     autocmd!
     " Delete trailing whitespace on save
     autocmd BufWritePre * :call CleanupWhitespace()
-    autocmd BufWritePre *.clj,*.cljs :TidyNS
+    "autocmd BufWritePre *.clj,*.cljs :TidyNS
   augroup END  " }}
   augroup misc  " {{
     autocmd!
@@ -702,6 +706,18 @@ let $CARGO_HOME = expand("~/.cargo")
 let g:LanguageClient_serverCommands = {
     \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
     \ }
+" }}
+" ale {{
+let g:ale_sign_error = '✗'
+let g:ale_sign_warning = '🛆'
+let g:ale_sign_style_error = '✗'
+let g:ale_sign_style_warning = '🛆'
+let g:ale_sign_info = 'ℹ'
+highlight ALEErrorSign guifg=red
+highlight ALEWarningSign guifg=yellow
+highlight ALEStyleErrorSign guifg=LightRed
+highlight ALEStyleWarningSign guifg=LightYellow
+highlight ALEInfoSign guifg=blue
 " }}
 let g:LanguageClient_autoStart = 1
 let g:haskellmode_completion_ghc = 0
