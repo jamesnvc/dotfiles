@@ -308,6 +308,16 @@ function! RedirToClipboardFunction(cmd, ...) " {{
 endfunction
 command! -complete=command -nargs=+ RedirToClipboard
       \ silent! call RedirToClipboardFunction(<f-args>)
+function! OutputToBufferFn(cmd, ...)
+  let cmd = a:cmd . " " . join(a:000, " ")
+  let l:out
+  redir => l:out
+  execute cmd
+  redir END
+  new
+  put =l:out
+endfunction
+command! -complete=command -nargs=+ ToBuf silent! call OutputToBufferFn(<f-args>)
 " }}
 " Run jslint on the current file
 function! JSLintFile() " {{
