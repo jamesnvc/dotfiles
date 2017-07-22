@@ -100,6 +100,10 @@ Plug 'wlangstroth/vim-racket'
 Plug 'andreimaxim/vim-io'
 Plug 'raichoo/purescript-vim'
 
+" GUI things
+Plug 'equalsraf/neovim-gui-shim'
+Plug 'jamesnvc/gonvim-fuzzy'
+
 " neovim plugins in CL
 " Disabling for now, since it makes startup time v. long
 " also crashes :UpdateRemovePlugins; reinvestigate later?
@@ -464,11 +468,17 @@ nnoremap <Right> :tabnext<CR>
 nnoremap <Leader>b= :Tabularize /=<CR>
 nnoremap <Leader>b: :Tabularize /^[^:]*:\zs/r0c0l0<CR>
 nnoremap <Leader>b, :Tabularize /^[^,]*,\zs/r0c0l0<CR>
-" Denite
-nnoremap <leader>t :<C-u>Denite -buffer-name=files
-      \ `finddir('.git', ';') != '' ? 'file_rec/git' : 'file_rec'`<CR>
-nnoremap <leader>o :<C-u>Denite -buffer-name=buffers buffer<CR>
-nnoremap <leader>l :<C-u>Denite -buffer-name=lines line<CR>
+" Fuzzy finding
+if exists('g:gonvim_running')
+  nnoremap <leader>t :<C-u>GonvimFuzzyFiles<CR>
+  nnoremap <leader>o :<C-u>GonvimFuzzyBuffers<CR>
+  nnoremap <leader>l :<C-u>GonvimFuzzyBLines<CR>
+else
+  nnoremap <leader>t :<C-u>Denite -buffer-name=files
+        \ `finddir('.git', ';') != '' ? 'file_rec/git' : 'file_rec'`<CR>
+  nnoremap <leader>o :<C-u>Denite -buffer-name=buffers buffer<CR>
+  nnoremap <leader>l :<C-u>Denite -buffer-name=lines line<CR>
+endif
 " Map <leader>n to move to nth split
 for n in range(1, 9)
   exe "nnoremap <silent> <leader>" . n . " :" . n . "wincmd w<CR>"
