@@ -429,6 +429,8 @@ nnoremap <silent> <leader>* :exe 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 nnoremap <silent> <leader>ev :e $MYVIMRC<CR>
 if has("gui_running")
   nnoremap <silent> <leader>sv :so $MYVIMRC<CR>:so $MYGVIMRC<CR>
+elseif exists("g:gonvim_running")
+  nnoremap <silent> <leader>eg :e ~/.config/nvim/ginit.vim<CR>
 else
   nnoremap <silent> <leader>sv :so $MYVIMRC<CR>
 endif
