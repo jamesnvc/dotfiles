@@ -5,6 +5,7 @@ export PATH=$HOME/.cargo/bin:$PATH
 export PATH="/home/james/.pyenv/bin:$PATH"
 export PATH="${HOME}/swift-3.0-RELEASE-ubuntu15.10/usr/bin:$PATH"
 export PATH="${HOME}/.local/bin:$PATH"
+export PATH="${HOME}/software/arduino-1.8.3:$PATH"
 if [ $(uname) = 'Darwin' ]; then
   export PATH=$HOME/node_modules/.bin:/usr/local/bin:/usr/local/sbin:$PATH:/Developer/usr/bin
   export PATH=/usr/local/ActivePerl-5.12/site/bin:$PATH
@@ -44,6 +45,8 @@ if [ $(uname) = 'Darwin' ]; then
 fi
 # Make leiningen start faster
 export LEIN_FAST_TRAMPOLINE=y
+
+export ARDUINO_PATH="${HOME}/software/arduino-1.8.3/"
 
 #pyenv
 eval "$(pyenv init -)"
