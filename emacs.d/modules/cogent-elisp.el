@@ -3,15 +3,14 @@
 (require 'cogent-package)
 
 (use-package paredit
-  :commands paredit-mode
-  :config (add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)
+  :commands paredit-mode enable-paredit-mode
+  :init
+  (add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)
   :diminish paredit-mode)
-
-; TODO: add evil bindings for paredit 
 
 (use-package highlight-parentheses
   :commands highlight-parentheses-mode
-  :config
+  :init
   (add-hook 'emacs-lisp-mode-hook 'highlight-parentheses-mode)
   :diminish highlight-parentheses-mode)
 
@@ -30,9 +29,7 @@
 ;; Show the result of evaluating as an overlay in the elisp buffer
 (use-package eros
   :commands eros-mode
-  :config
+  :init
   (add-hook 'emacs-lisp-mode-hook 'eros-mode))
-
-(evil-define-key 'normal emacs-lisp-mode-map (kbd "] C-d") 'find-function-at-point)
 
 (provide 'cogent-elisp)

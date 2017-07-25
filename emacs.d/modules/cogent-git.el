@@ -6,7 +6,6 @@
   :commands magit-status
   :bind ("C-x g" . magit-status)
   :config
-  (evil-leader/set-key "g s" 'magit-status)
   (use-package evil-magit
     :demand t))
 
@@ -14,8 +13,9 @@
 
 (use-package fringe-helper)
 (use-package git-gutter-fringe+
-  ;; :config
-  ;; (global-git-gutter-mode t)
+  :demand t
+  :config
+  (global-git-gutter+-mode t)
   :diminish git-gutter-mode)
 
 (provide 'cogent-git)

@@ -17,14 +17,15 @@
 (load custom-file 'noerror)
 
 ;; Load packages
+(require 'cogent-general)
 (require 'cogent-base)
 (require 'cogent-package)
 (require 'cogent-appearance)
 (require 'cogent-helm)
+(require 'cogent-elisp)
 (require 'cogent-evil)
 (require 'cogent-editing)
 (require 'cogent-git)
-(require 'cogent-elisp)
 
 ;; Other things
 (load (concat dotfiles-dir "user.el") 'noerror)
