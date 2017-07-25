@@ -18,7 +18,7 @@
   (use-package evil-nerd-commenter
     :config
     (evil-leader/set-key
-      "c<SPC>" 'evilnc-comment-or-uncomment-lines)))
+      "cc" 'evilnc-comment-or-uncomment-lines)))
 
 (evil-mode 1)
 

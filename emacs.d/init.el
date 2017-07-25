@@ -19,9 +19,12 @@
 ;; Load packages
 (require 'cogent-base)
 (require 'cogent-package)
+(require 'cogent-appearance)
 (require 'cogent-helm)
 (require 'cogent-evil)
-(require 'cogent-appearance)
+(require 'cogent-editing)
+(require 'cogent-git)
+(require 'cogent-elisp)
 
 ;; Other things
 (load (concat dotfiles-dir "user.el") 'noerror)
