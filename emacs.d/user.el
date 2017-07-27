@@ -28,7 +28,7 @@
 (define-key evil-normal-state-map (kbd "[c") 'git-gutter+-previous-hunk)
 (evil-leader/set-key "h s" 'git-gutter+-stage-hunks)
 (evil-leader/set-key "g w" 'magit-stage-file)
-(evil-leader/set-key "g i" 'magit-commit)
+(evil-leader/set-key "g c" 'magit-commit)
 
 ;;; esc quits
 (defun minibuffer-keyboard-quit ()
