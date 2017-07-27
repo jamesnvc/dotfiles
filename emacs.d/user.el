@@ -21,6 +21,13 @@
 
 (evil-define-key 'normal emacs-lisp-mode-map (kbd "] C-d") 'find-function-at-point)
 
+;; TODO: indent >> << bindings
+
+;; git gutter bindings
+(define-key evil-normal-state-map (kbd "]c") 'git-gutter+-next-hunk)
+(define-key evil-normal-state-map (kbd "[c") 'git-gutter+-previous-hunk)
+(evil-leader/set-key "h s" 'git-gutter+-stage-hunks)
+
 ;;; esc quits
 (defun minibuffer-keyboard-quit ()
   "Abort recursive edit.
