@@ -40,7 +40,9 @@
     :bind ("C-\\" . company-try-hard)
     :config
     (bind-keys :map company-active-map
-	       ("C-\\" . company-try-hard))
+	       ("C-\\" . company-try-hard)
+	       ("C-n" . company-select-next)
+	       ("C-p" . company-select-previous))
     :diminish company-mode))
 
 (provide 'cogent-complete)
