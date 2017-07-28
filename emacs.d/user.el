@@ -127,6 +127,8 @@ insert mode at the end of the new sexp"
   "Evil bindings for paredit to imitate vim-sexp"
   (evil-define-key 'normal paredit-mode-map "W" 'cogent/evil-forward-sexp)
   (evil-define-key 'normal paredit-mode-map "B" 'cogent/evil-backward-sexp)
+  (evil-define-key 'operator paredit-mode-map "W" 'cogent/evil-forward-sexp)
+  (evil-define-key 'operator paredit-mode-map "B" 'cogent/evil-backward-sexp)
   (evil-define-key 'normal paredit-mode-map "\\@" 'paredit-splice-sexp)
   (evil-define-key 'normal paredit-mode-map "\\o" 'paredit-raise-sexp)
   (evil-define-key 'normal paredit-mode-map ">)" 'paredit-forward-slurp-sexp)
@@ -138,9 +140,7 @@ insert mode at the end of the new sexp"
   (evil-define-key 'normal paredit-mode-map "\\w" 'cogent/wrap-sexp-start)
   (evil-define-key 'normal paredit-mode-map "\\W" 'cogent/wrap-sexp-end)
   (evil-define-key 'normal paredit-mode-map "(" 'paredit-backward-up)
-  (evil-define-key 'normal paredit-mode-map ")" 'paredit-forward-up)
-  ;; TODO: operator-pending bindings for forward/backward sexp W/B
-  )
+  (evil-define-key 'normal paredit-mode-map ")" 'paredit-forward-up))
 
 (add-hook 'paredit-mode-hook 'cogent/paredit-vim-bindings)
 
