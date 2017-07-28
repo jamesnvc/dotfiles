@@ -28,6 +28,7 @@
 (require 'cogent-editing)
 (require 'cogent-git)
 (require 'cogent-clojure)
+(require 'cogent-project)
 
 ;; Other things
 (load (concat dotfiles-dir "user.el") 'noerror)

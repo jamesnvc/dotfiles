@@ -47,7 +47,8 @@
       (cl-case command
 	(interactive (company-begin-backend 'company-monroe))
 	(prefix (and (eq major-mode 'clojure-mode)
-		     (get-buffer "*monroe-connection*")))
+		     (get-buffer "*monroe-connection*")
+		     (company-grab-symbol)))
 	(candidates
 	 (cons :async
 	       (lambda (callback)
