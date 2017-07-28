@@ -16,6 +16,24 @@
   "<SPC>" 'evil-ex
   "m" 'helm-M-x)
 
+;; Like vim-unimpaired
+(evil-define-key 'normal emacs-lisp-mode-map (kbd "] C-d") 'find-function-at-point)
+(defun cogent/line-below (&optional argument)
+  (interactive "P")
+  (save-excursion
+    (dotimes (_ (or argument 1))
+      (evil-insert-newline-below))))
+(define-key evil-normal-state-map (kbd "] <SPC>") 'cogent/line-below)
+(defun cogent/line-above (&optional argument)
+  (interactive "P")
+  (save-excursion
+    (dotimes (_ (or argument 1))
+      (evil-insert-newline-above))))
+(define-key evil-normal-state-map (kbd "[ <SPC>") 'cogent/line-above)
+
+;; TODO: indent >> << bindings
+
+;; Moving windows
 (define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
 (define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)
 (define-key evil-normal-state-map (kbd "C-j") 'evil-window-down)
