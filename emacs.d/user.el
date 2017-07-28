@@ -4,31 +4,31 @@
 
 (define-key evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
 
+;; Like vim-vinegar
 (define-key evil-normal-state-map "-" 'dired)
 
 (evil-leader/set-key
-      "t" 'helm-find-files
-      "o" 'helm-buffers-list
-      "w" 'save-buffer
-      "<SPC>" 'evil-ex
-      "g s" 'magit-status
-      "m" 'helm-M-x)
+  ;; like Denite
+  "t" 'helm-find-files
+  "o" 'helm-buffers-list
+  "w" 'save-buffer
+  ;; misc to make command mode easier
+  "<SPC>" 'evil-ex
+  "m" 'helm-M-x)
 
 (define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
 (define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)
 (define-key evil-normal-state-map (kbd "C-j") 'evil-window-down)
 (define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
 
-(evil-define-key 'normal emacs-lisp-mode-map (kbd "] C-d") 'find-function-at-point)
-
-;; TODO: indent >> << bindings
-
 ;; git bindings
 (define-key evil-normal-state-map (kbd "]c") 'git-gutter+-next-hunk)
 (define-key evil-normal-state-map (kbd "[c") 'git-gutter+-previous-hunk)
-(evil-leader/set-key "h s" 'git-gutter+-stage-hunks)
-(evil-leader/set-key "g w" 'magit-stage-file)
-(evil-leader/set-key "g c" 'magit-commit)
+(evil-leader/set-key
+  "h s" 'git-gutter+-stage-hunks
+  "g s" 'magit-status
+  "g w" 'magit-stage-file
+  "g c" 'magit-commit)
 
 ;;; esc quits
 (defun minibuffer-keyboard-quit ()
@@ -126,6 +126,7 @@ insert mode at the end of the new sexp"
 
 (add-hook 'paredit-mode-hook 'cogent/paredit-vim-bindings)
 
+;; Like vim-fireplace
 (defun cogent/clojure-hook ()
   (evil-define-key 'normal clojure-mode-map "cpp" 'monroe-eval-expression-at-point))
 
