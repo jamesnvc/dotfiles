@@ -24,8 +24,10 @@
 (require 'cogent-helm)
 (require 'cogent-elisp)
 (require 'cogent-evil)
+(require 'cogent-complete)
 (require 'cogent-editing)
 (require 'cogent-git)
+(require 'cogent-clojure)
 
 ;; Other things
 (load (concat dotfiles-dir "user.el") 'noerror)

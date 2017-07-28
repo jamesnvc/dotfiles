@@ -43,6 +43,8 @@
 
 (global-linum-mode t)
 (setq linum-format "%4d")
+(use-package linum-relative)
+(linum-relative-mode)
 
 
 (use-package hlinum
