@@ -156,3 +156,7 @@ insert mode at the end of the new sexp"
   (evil-define-key 'normal clojure-mode-map "cpp" 'monroe-eval-expression-at-point))
 
 (add-hook 'clojure-mode-hook 'cogent-clojure-hook)
+
+;; Eshell
+(global-set-key (kbd "<f3>") 'eshell)
+(add-to-list 'eshell-visual-commands "htop")
