@@ -10,6 +10,18 @@
 (define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up)
 (define-key evil-normal-state-map (kbd "M-u") 'universal-argument)
 
+;; Fix Y behaviour in evil
+(defun cogent/evil-yank-to-eol (&optional argument)
+  (interactive "P")
+  (let ((beg (point))
+        end)
+    (save-excursion
+      (evil-end-of-line)
+      (forward-char)
+      (setq end (point)))
+    (evil-yank beg end)))
+(define-key evil-normal-state-map "Y" 'cogent/evil-yank-to-eol)
+
 ;; Like vim-vinegar
 (define-key evil-normal-state-map "-" 'dired)
 
