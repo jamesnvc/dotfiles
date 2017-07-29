@@ -28,10 +28,11 @@
 (require 'cogent-sexp)
 (require 'cogent-complete)
 (require 'cogent-editing)
+(require 'cogent-project)
 (require 'cogent-git)
 (require 'cogent-clojure)
 (require 'cogent-elixir)
-(require 'cogent-project)
+(require 'cogent-html)
 
 ;; Other things
 (load (concat dotfiles-dir "user.el") 'noerror)
