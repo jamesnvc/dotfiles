@@ -107,6 +107,8 @@
   (require 'spaceline-config)
   (spaceline-emacs-theme))
 
+(eval-after-load 'dash '(dash-enable-font-lock))
+
 (cogent-appearance/dark)
 
 (provide 'cogent-appearance)
