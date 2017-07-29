@@ -18,9 +18,9 @@
   "If you're saving an elisp file, you probably want to remove the now-invalid elc file"
   (make-local-variable 'after-save-hook)
   (add-hook 'after-save-hook
-	    (lambda ()
-	      (if (file-exists-p (concat buffer-file-name "c"))
-		  (delete-file (concat buffer-file-name "c"))))))
+            (lambda ()
+              (if (file-exists-p (concat buffer-file-name "c"))
+                  (delete-file (concat buffer-file-name "c"))))))
 (add-hook 'emacs-lisp-mode-hook 'cogent-elisp/remove-elc-on-save)
 
 ;; Show context-based docs in minibuffer
