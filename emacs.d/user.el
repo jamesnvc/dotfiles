@@ -4,6 +4,12 @@
 
 (define-key evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
 
+;; Make C-u inverse of C-d like vim & move universal-argument to M-u
+;; (since that's upcase-word by default & we'll use vim bindings for
+;; that anyway)
+(define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up)
+(define-key evil-normal-state-map (kbd "M-u") 'universal-argument)
+
 ;; Like vim-vinegar
 (define-key evil-normal-state-map "-" 'dired)
 
@@ -14,7 +20,8 @@
   "w" 'save-buffer
   ;; misc to make command mode easier
   "<SPC>" 'evil-ex
-  "m" 'helm-M-x)
+  "m" 'helm-M-x
+  "x" 'evil-delete-buffer)
 
 ;; Like vim-unimpaired
 (evil-define-key 'normal emacs-lisp-mode-map (kbd "] C-d") 'find-function-at-point)
