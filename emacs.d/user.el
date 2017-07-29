@@ -217,4 +217,3 @@ insert mode at the end of the new sexp"
 
 ;; Eshell
 (global-set-key (kbd "<f3>") 'eshell)
-(add-to-list 'eshell-visual-commands "htop")
