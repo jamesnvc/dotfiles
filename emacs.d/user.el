@@ -15,7 +15,8 @@
 
 (evil-leader/set-key
   ;; like Denite
-  "t" 'helm-find-files
+  "T" 'helm-find-files
+  "t" 'helm-projectile-find-file-dwim
   "o" 'helm-buffers-list
   "w" 'save-buffer
   ;; misc to make command mode easier

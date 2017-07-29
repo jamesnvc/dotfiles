@@ -6,6 +6,9 @@
   (require 'helm-config)
   (require 'helm)
   (helm-mode 1)
+  (with-eval-after-load "cogent-project"
+    (use-package helm-projectile
+      :config (helm-projectile-on)))
   (helm-autoresize-mode 1)
   (setq-default helm-display-header-line nil
 		helm-autoresize-min-height 0
