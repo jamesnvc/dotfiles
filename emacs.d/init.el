@@ -25,6 +25,7 @@
 (require 'cogent-helm)
 (require 'cogent-elisp)
 (require 'cogent-evil)
+(require 'cogent-sexp)
 (require 'cogent-complete)
 (require 'cogent-editing)
 (require 'cogent-git)
