@@ -1,6 +1,6 @@
 ;;; -*- lexical-binding: t -*-
 
-(require 'cl)
+(require 'cl-lib)
 
 ; Use MELPA repo as well as standard
 (setq package-user-dir (concat dotfiles-dir "elpa"))
