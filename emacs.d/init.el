@@ -1,4 +1,4 @@
-;;; 
+;;; -*- lexical-binding: t -*-
 ;; My emacs configuration, based on ohai-emacs by Bodil Stokke
 ;; Basically the same, but doing it myself so I understand how things work
 
@@ -21,6 +21,7 @@
 (require 'cogent-base)
 (require 'cogent-package)
 (require 'cogent-appearance)
+(require 'cogent-codestyle)
 (require 'cogent-helm)
 (require 'cogent-elisp)
 (require 'cogent-evil)
@@ -28,6 +29,7 @@
 (require 'cogent-editing)
 (require 'cogent-git)
 (require 'cogent-clojure)
+(require 'cogent-elixir)
 (require 'cogent-project)
 
 ;; Other things

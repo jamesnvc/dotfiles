@@ -17,6 +17,7 @@
   ;; like Denite
   "T" 'helm-find-files
   "t" 'helm-projectile-find-file-dwim
+  "s" 'helm-projectile-ag
   "o" 'helm-buffers-list
   "w" 'save-buffer
   ;; misc to make command mode easier
