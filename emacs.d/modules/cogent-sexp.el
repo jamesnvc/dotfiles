@@ -16,8 +16,8 @@
   (backward-char)
   (evil-insert 0))
 
-(defun cogent/insert-at-begining-of-sexp (&optional argument)
-  "Go to the begining of the current containing sexp and enter insert mode"
+(defun cogent/insert-at-beginning-of-sexp (&optional argument)
+  "Go to the beginning of the current containing sexp and enter insert mode"
   (interactive "P")
   (backward-up-list)
   (forward-char)
@@ -42,7 +42,7 @@ we can't move past the last character in a line in normal mode"
 
 (defun cogent/wrap-sexp-start (&optional argument)
   "Wrap the sexp under the cursor in parentheses and put the cursor in
-insert mode at the begining of the new sexp"
+insert mode at the beginning of the new sexp"
   (interactive "P")
   (save-excursion
     (insert (make-string (or argument 1) ?\())
@@ -62,7 +62,7 @@ insert mode at the end of the new sexp"
 
 (defun cogent/wrap-braces-start (&optional argument)
   "Wrap the sexp under the cursor in braces ({}) and put the cursor in
-insert mode at the begining of the new sexp"
+insert mode at the beginning of the new sexp"
   (interactive "P")
   (save-excursion
     (insert (make-string (or argument 1) ?\{))
@@ -82,7 +82,7 @@ insert mode at the end of the new sexp"
 
 (defun cogent/wrap-brackets-start (&optional argument)
   "Wrap the sexp under the cursor in brackets ([]) and put the cursor in
-insert mode at the begining of the new sexp"
+insert mode at the beginning of the new sexp"
   (interactive "P")
   (save-excursion
     (insert (make-string (or argument 1) ?\[))
@@ -125,7 +125,7 @@ insert mode at the end of the new sexp"
   (evil-define-key 'normal paredit-mode-map "<(" 'paredit-backward-slurp-sexp)
   (evil-define-key 'normal paredit-mode-map ">(" 'paredit-backward-barf-sexp)
   (evil-define-key 'normal paredit-mode-map ">i" 'cogent/insert-at-end-of-sexp)
-  (evil-define-key 'normal paredit-mode-map "<i" 'cogent/insert-at-begining-of-sexp)
+  (evil-define-key 'normal paredit-mode-map "<i" 'cogent/insert-at-beginning-of-sexp)
   (evil-define-key 'normal paredit-mode-map "\\w" 'cogent/wrap-sexp-start)
   (evil-define-key 'normal paredit-mode-map "\\W" 'cogent/wrap-sexp-end)
   (evil-define-key 'normal paredit-mode-map "\\{" 'cogent/wrap-braces-start)

@@ -23,7 +23,7 @@
 (define-key evil-normal-state-map "Y" 'cogent/evil-yank-to-eol)
 
 ;; Like vim-vinegar
-(define-key evil-normal-state-map "-" 'dired)
+(define-key evil-normal-state-map "-" '(lambda () (interactive) (dired (f-dirname (buffer-file-name)))))
 
 (evil-leader/set-key
   ;; like Denite
@@ -59,6 +59,10 @@
 (define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)
 (define-key evil-normal-state-map (kbd "C-j") 'evil-window-down)
 (define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
+(define-key dired-mode-map (kbd "C-l") 'evil-window-right)
+(define-key dired-mode-map (kbd "C-h") 'evil-window-left)
+(define-key dired-mode-map (kbd "C-j") 'evil-window-down)
+(define-key dired-mode-map (kbd "C-k") 'evil-window-up)
 
 ;; git bindings
 (define-key evil-normal-state-map (kbd "]c") 'git-gutter+-next-hunk)
@@ -90,7 +94,16 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 ;; Like vim-fireplace
 (defun cogent/clojure-hook ()
   (evil-define-key 'normal clojure-mode-map "cpp" 'monroe-eval-expression-at-point))
-(add-hook 'clojure-mode-hook 'cogent-clojure-hook)
+(add-hook 'clojure-mode-hook 'cogent/clojure-hook)
 
 ;; Eshell
 (global-set-key (kbd "<f3>") 'eshell)
+
+;; Fancy symbols
+(cogent/font-lock-replace-symbol 'emacs-lisp-mode "\\(lambda\\)" "λ")
+
+(defun cogent/company-hook ()
+  ;; TODO: trying to make C-w when completion open delete instead of
+  ;; whatever it is it does now
+  (evil-define-key 'insert company-active-map (kbd "C-w") 'evil-delete-backward-word))
+(add-hook 'company-mode-hook 'cogent/company-hook)

@@ -9,12 +9,12 @@
   (global-company-mode)
   (setq company-global-modes '(not term-mode))
   (setq company-minimum-prefix-length 2
-	company-selection-wrap-around t
-	company-show-numbers t
-	company-tooltip-align-annotations t
-	company-require-match nil
-	company-deabbrev-downcase nil
-	company-dabbrev-ignore-case nil)
+        company-selection-wrap-around t
+        company-show-numbers t
+        company-tooltip-align-annotations t
+        company-require-match nil
+        company-deabbrev-downcase nil
+        company-dabbrev-ignore-case nil)
   (setq company-transformers '(company-sort-by-occurrence))
   (use-package company-quickhelp
     :config
@@ -40,9 +40,9 @@
     :bind ("C-\\" . company-try-hard)
     :config
     (bind-keys :map company-active-map
-	       ("C-\\" . company-try-hard)
-	       ("C-n" . company-select-next)
-	       ("C-p" . company-select-previous))
+               ("C-\\" . company-try-hard)
+               ("C-n" . company-select-next)
+               ("C-p" . company-select-previous))
     :diminish company-mode))
 
 (provide 'cogent-complete)
