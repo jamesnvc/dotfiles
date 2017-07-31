@@ -108,7 +108,6 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
     (cider-eval-last-sexp-and-replace)))
 
 (defun cogent/clojure-hook ()
-  (eldoc-mode 1)
   ;; TODO: would be nice to bind like in vim, but it seems bindings
   ;; like `cp' make `c-<operator>' not work
   (evil-leader/set-key-for-mode 'clojure-mode "p" 'cogent/eval-last-sexp)
@@ -124,8 +123,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 ;; Fancy symbols
 (cogent/font-lock-replace-symbol 'emacs-lisp-mode "\\(lambda\\)" "λ")
 
-(defun cogent/company-hook ()
-  ;; TODO: trying to make C-w when completion open delete instead of
-  ;; whatever it is it does now
-  (evil-define-key 'insert company-active-map (kbd "C-w") 'evil-delete-backward-word))
-(add-hook 'company-mode-hook 'cogent/company-hook)
+(with-eval-after-load "company"
+  (evil-define-key 'insert company-active-map (kbd "C-w") 'evil-delete-backward-word)
+  (define-key company-active-map (kbd "C-n") 'company-select-next)
+  (define-key company-active-map (kbd "C-p") 'company-select-previous))
