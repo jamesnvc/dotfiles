@@ -24,6 +24,7 @@
 
 ;; Like vim-vinegar
 (define-key evil-normal-state-map "-" '(lambda () (interactive) (dired (f-dirname (buffer-file-name)))))
+(evil-define-key 'normal dired-mode-map "-" 'dired-up-directory)
 
 (evil-leader/set-key
   ;; like Denite
