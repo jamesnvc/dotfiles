@@ -8,7 +8,6 @@
    'clojure-mode-hook
    (lambda ()
      (paredit-mode)
-     ;; start an nREPL elsewhere, use M-x monroe to connect
      (use-package cider
        :commands cider-jack-in
        :config
@@ -26,7 +25,6 @@
            :commands cljr-helm
            :config
            (evil-leader/set-key-for-mode 'clojure-mode "r" 'cljr-helm))))))
-  ;; Add completion using monroe + company-mode
   (with-eval-after-load "company"
     (add-hook 'cider-repl-mode-hook #'cider-company-enable-fuzzy-completion)
     (add-hook 'cider-mode-hook #'cider-company-enable-fuzzy-completion)))
