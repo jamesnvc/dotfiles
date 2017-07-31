@@ -93,7 +93,8 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 
 ;; Like vim-fireplace
 (defun cogent/clojure-hook ()
-  (evil-define-key 'normal clojure-mode-map "cpp" 'monroe-eval-expression-at-point))
+  (evil-define-key 'normal clojure-mode-map "cpp" 'monroe-eval-expression-at-point)
+  (evil-define-key 'normal clojure-mode-map (kbd "] C-d") 'monroe-jump))
 (add-hook 'clojure-mode-hook 'cogent/clojure-hook)
 
 ;; Eshell

@@ -23,6 +23,7 @@
 (require 'cogent-appearance)
 (require 'cogent-evil)
 (require 'cogent-codestyle)
+(require 'cogent-eshell)
 (require 'cogent-helm)
 (require 'cogent-flycheck)
 (require 'cogent-elisp)

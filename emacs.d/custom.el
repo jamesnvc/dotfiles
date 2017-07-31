@@ -9,6 +9,7 @@
  '(eshell-visual-commands
    (quote
     ("htop" "vi" "screen" "top" "less" "more" "lynx" "ncftp" "pine" "tin" "trn" "elm")))
+ '(eshell-visual-subcommands (quote (("git " "log" "lol" "diff" "show"))))
  '(menu-bar-mode nil)
  '(scroll-bar-mode nil)
  '(tool-bar-mode nil))

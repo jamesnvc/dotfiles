@@ -18,6 +18,7 @@ i3/saved-layout.json
 emacs.d/elpa
 *.el~
 emacs.d/eshell
+!emacs.d/eshell/alias
 emacs.d/auto-save-list/
 emacs.d/bak/
 emacs.d/projectile-bookmarks.eld
