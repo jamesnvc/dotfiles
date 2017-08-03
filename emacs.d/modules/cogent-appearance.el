@@ -62,6 +62,12 @@
 
 (show-paren-mode 1)
 
+(use-package nyan-mode
+  :config
+  (nyan-mode 1)
+  (setq nyan-bar-length 16
+        nyan-wavy-trail nil))
+
 (use-package diminish)
 
 (eval-after-load "eldoc" '(diminish 'eldoc-mode))

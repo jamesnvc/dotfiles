@@ -122,9 +122,19 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (global-set-key (kbd "<f3>") 'eshell)
 
 ;; Fancy symbols
-(cogent/font-lock-replace-symbol 'emacs-lisp-mode "\\(lambda\\)" "λ")
+(prettify-symbols-mode 1)
+(setq prettify-symbols-alist
+      '(("lambda" . 955)))
 
 (with-eval-after-load "company"
   (evil-define-key 'insert company-active-map (kbd "C-w") 'evil-delete-backward-word)
   (define-key company-active-map (kbd "C-n") 'company-select-next)
   (define-key company-active-map (kbd "C-p") 'company-select-previous))
+
+;; Arduino
+(add-to-list 'auto-mode-alist '("\\.ino\\'" . c++-mode))
+
+;; Org
+(with-eval-after-load "org"
+  (evil-define-key 'normal org-mode-map (kbd ">>") 'org-metaright)
+  (evil-define-key 'normal org-mode-map (kbd "<<") 'org-metaleft))

@@ -29,7 +29,8 @@ we can't move past the last character in a line in normal mode"
   (interactive "P")
   (if (= ?\) (char-after (point)))
       (forward-char))
-  (paredit-forward argument))
+  (paredit-forward argument)
+  (backward-char))
 
 (defun cogent/evil-backward-sexp (&optional argument)
   "Wrapper around paredit-backward to take into account the fact that
