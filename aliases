@@ -222,6 +222,7 @@ lsarchive () {
     case $1 in
     *.tar.bz2) tar -jtf $1                       ;;
     *.tar.gz)  tar -ztf $1                       ;;
+    *.tar.xz)  tar -Jtf $1                       ;;
     *.tar)     tar -tf $1                        ;;
     *.tgz)     tar -ztf $1                       ;;
     *.zip)     unzip -l $1                       ;;
