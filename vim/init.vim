@@ -100,6 +100,10 @@ Plug 'wlangstroth/vim-racket'
 Plug 'andreimaxim/vim-io'
 Plug 'raichoo/purescript-vim'
 
+" GUI things
+Plug 'equalsraf/neovim-gui-shim'
+Plug 'jamesnvc/gonvim-fuzzy'
+
 " neovim plugins in CL
 " Disabling for now, since it makes startup time v. long
 " also crashes :UpdateRemovePlugins; reinvestigate later?
@@ -116,6 +120,10 @@ if has('nvim')
   let g:python_host_prog = expand('/usr/local/bin/python2')
   let g:python3_host_prog = expand('/usr/local/bin/python3')
   set termguicolors
+  set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50
+        \,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor
+        \,sm:block-blinkwait175-blinkoff150-blinkon175
+
   " TODO: make conditional
   "let g:python_host_prog = '/Users/james/.pythonbrew/pythons/Python-2.7.2/bin/python'
   "let g:python3_host_prog = '/usr/local/var/pyenv/shims/python'
@@ -300,6 +308,16 @@ function! RedirToClipboardFunction(cmd, ...) " {{
 endfunction
 command! -complete=command -nargs=+ RedirToClipboard
       \ silent! call RedirToClipboardFunction(<f-args>)
+function! OutputToBufferFn(cmd, ...)
+  let cmd = a:cmd . " " . join(a:000, " ")
+  let l:out
+  redir => l:out
+  execute cmd
+  redir END
+  new
+  put =l:out
+endfunction
+command! -complete=command -nargs=+ ToBuf silent! call OutputToBufferFn(<f-args>)
 " }}
 " Run jslint on the current file
 function! JSLintFile() " {{
@@ -421,6 +439,8 @@ nnoremap <silent> <leader>* :exe 'vimgrep /'.@/.'/g %'<CR>:copen<CR>
 nnoremap <silent> <leader>ev :e $MYVIMRC<CR>
 if has("gui_running")
   nnoremap <silent> <leader>sv :so $MYVIMRC<CR>:so $MYGVIMRC<CR>
+elseif exists("g:gonvim_running")
+  nnoremap <silent> <leader>eg :e ~/.config/nvim/ginit.vim<CR>
 else
   nnoremap <silent> <leader>sv :so $MYVIMRC<CR>
 endif
@@ -460,11 +480,17 @@ nnoremap <Right> :tabnext<CR>
 nnoremap <Leader>b= :Tabularize /=<CR>
 nnoremap <Leader>b: :Tabularize /^[^:]*:\zs/r0c0l0<CR>
 nnoremap <Leader>b, :Tabularize /^[^,]*,\zs/r0c0l0<CR>
-" Denite
-nnoremap <leader>t :<C-u>Denite -buffer-name=files
-      \ `finddir('.git', ';') != '' ? 'file_rec/git' : 'file_rec'`<CR>
-nnoremap <leader>o :<C-u>Denite -buffer-name=buffers buffer<CR>
-nnoremap <leader>l :<C-u>Denite -buffer-name=lines line<CR>
+" Fuzzy finding
+if exists('g:gonvim_running')
+  nnoremap <leader>t :<C-u>GonvimFuzzyFiles<CR>
+  nnoremap <leader>o :<C-u>GonvimFuzzyBuffers<CR>
+  nnoremap <leader>l :<C-u>GonvimFuzzyBLines<CR>
+else
+  nnoremap <leader>t :<C-u>Denite -buffer-name=files
+        \ `finddir('.git', ';') != '' ? 'file_rec/git' : 'file_rec'`<CR>
+  nnoremap <leader>o :<C-u>Denite -buffer-name=buffers buffer<CR>
+  nnoremap <leader>l :<C-u>Denite -buffer-name=lines line<CR>
+endif
 " Map <leader>n to move to nth split
 for n in range(1, 9)
   exe "nnoremap <silent> <leader>" . n . " :" . n . "wincmd w<CR>"
@@ -548,7 +574,7 @@ if has('autocmd')
     autocmd!
     " Delete trailing whitespace on save
     autocmd BufWritePre * :call CleanupWhitespace()
-    autocmd BufWritePre *.clj,*.cljs :TidyNS
+    "autocmd BufWritePre *.clj,*.cljs :TidyNS
   augroup END  " }}
   augroup misc  " {{
     autocmd!
@@ -702,6 +728,18 @@ let $CARGO_HOME = expand("~/.cargo")
 let g:LanguageClient_serverCommands = {
     \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
     \ }
+" }}
+" ale {{
+let g:ale_sign_error = '✗'
+let g:ale_sign_warning = '🛆'
+let g:ale_sign_style_error = '✗'
+let g:ale_sign_style_warning = '🛆'
+let g:ale_sign_info = 'ℹ'
+highlight ALEErrorSign guifg=red
+highlight ALEWarningSign guifg=yellow
+highlight ALEStyleErrorSign guifg=LightRed
+highlight ALEStyleWarningSign guifg=LightYellow
+highlight ALEInfoSign guifg=blue
 " }}
 let g:LanguageClient_autoStart = 1
 let g:haskellmode_completion_ghc = 0
