@@ -2,6 +2,11 @@
 ;; My emacs configuration, based on ohai-emacs by Bodil Stokke
 ;; Basically the same, but doing it myself so I understand how things work
 
+(setq gc-cons-threshold 64000000)
+(add-hook 'after-init-hook #'(lambda ()
+                               ;; restore after startup
+                               (setq gc-cons-threshold 800000)))
+
 (package-initialize)
 
 (setq inhibit-startup-message t)
