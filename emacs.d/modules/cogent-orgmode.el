@@ -6,6 +6,7 @@
   :ensure org-plus-contrib
   :config
   (setq org-replace-disputed-keys t)
+  (setq org-default-notes-file (concat org-directory "/notes.org"))
   (add-hook
    'org-mode-hook
    (lambda ()
@@ -19,5 +20,14 @@
     :config
     (with-eval-after-load "org"
       (define-key org-mode-map (kbd "C-c M-l") 'org-cliplink))))
+
+(use-package evil-org
+  :ensure t
+  :after org
+  :config
+  (add-hook 'org-mode-hook 'evil-org-mode)
+  (add-hook 'evil-org-mode-hook
+            (lambda ()
+              (evil-org-set-key-theme))))
 
 (provide 'cogent-orgmode)

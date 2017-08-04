@@ -32,6 +32,15 @@ we can't move past the last character in a line in normal mode"
   (paredit-forward argument)
   (backward-char))
 
+(defun cogent/evil-forward-sexp-op (&optional argument)
+  "Wrapper around paredit-forward to take into account the fact that
+we can't move past the last character in a line in normal mode.
+This version is for operator mode, where we want it to include the last paren"
+  (interactive "P")
+  (if (= ?\) (char-after (point)))
+      (forward-char))
+  (paredit-forward argument))
+
 (defun cogent/evil-backward-sexp (&optional argument)
   "Wrapper around paredit-backward to take into account the fact that
 we can't move past the last character in a line in normal mode"
@@ -40,6 +49,17 @@ we can't move past the last character in a line in normal mode"
   (if (= ?\) (char-after (point)))
       (forward-char))
   (paredit-backward argument))
+
+;; TODO: fix this
+(defun cogent/evil-backward-sexp-op (&optional argument)
+  "Wrapper around paredit-backward to take into account the fact that
+we can't move past the last character in a line in normal mode.
+This version is for operator mode, where we want it to include the paren."
+  (interactive "P")
+  (if (= ?\) (char-after (point)))
+      (forward-char))
+  (paredit-backward argument)
+  (forward-char))
 
 (defun cogent/wrap-sexp-start (&optional argument)
   "Wrap the sexp under the cursor in parentheses and put the cursor in
@@ -117,8 +137,8 @@ insert mode at the end of the new sexp"
   (evil-define-key 'normal paredit-mode-map "B" 'cogent/evil-backward-sexp)
   (evil-define-key 'visual paredit-mode-map "W" 'cogent/evil-forward-sexp)
   (evil-define-key 'visual paredit-mode-map "B" 'cogent/evil-backward-sexp)
-  (evil-define-key 'operator paredit-mode-map "W" 'cogent/evil-forward-sexp)
-  (evil-define-key 'operator paredit-mode-map "B" 'cogent/evil-backward-sexp)
+  (evil-define-key 'operator paredit-mode-map "W" 'cogent/evil-forward-sexp-op)
+  (evil-define-key 'operator paredit-mode-map "B" 'cogent/evil-backward-sexp-op)
   (evil-define-key 'normal paredit-mode-map "\\@" 'paredit-splice-sexp)
   (evil-define-key 'normal paredit-mode-map "\\o" 'paredit-raise-sexp)
   (evil-define-key 'normal paredit-mode-map ">)" 'paredit-forward-slurp-sexp)
