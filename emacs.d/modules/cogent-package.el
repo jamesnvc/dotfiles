@@ -12,6 +12,7 @@
 
 ; Paradox is a better interface for package managment
 (when (not (package-installed-p 'paradox))
+  (package-refresh-contents)
   (package-install 'paradox))
 
 ; Going to use 'use-package' to manage depedencies
