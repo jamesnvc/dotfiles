@@ -140,3 +140,4 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (evil-leader/set-key
   "o a" 'org-agenda
   "o c" 'org-capture)
+(set-register ?o (cons 'file org-default-notes-file))
