@@ -25,7 +25,9 @@
 (define-key evil-normal-state-map "Y" 'cogent/evil-yank-to-eol)
 
 ;; Like vim-vinegar
-(define-key evil-normal-state-map "-" '(lambda () (interactive) (dired (f-dirname (buffer-file-name)))))
+(define-key evil-normal-state-map "-" '(lambda ()
+                                         (interactive)
+                                         (dired (f-dirname (buffer-file-name)))))
 (evil-define-key 'normal dired-mode-map "-" 'dired-up-directory)
 
 (evil-leader/set-key
@@ -34,6 +36,7 @@
   "t" 'helm-projectile-find-file-dwim
   "s" 'helm-projectile-ag
   "b" 'helm-buffers-list
+  "l" 'swiper-helm
   "w" 'save-buffer
   ;; misc to make command mode easier
   "<SPC>" 'evil-ex
