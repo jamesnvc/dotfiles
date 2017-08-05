@@ -4,6 +4,8 @@
 
 (define-key evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
 
+(global-set-key (kbd "<f4>") 'calc)
+
 ;; Make C-u inverse of C-d like vim & move universal-argument to M-u
 ;; (since that's upcase-word by default & we'll use vim bindings for
 ;; that anyway)
