@@ -117,7 +117,8 @@
 (use-package spaceline
   :config
   (require 'spaceline-config)
-  (spaceline-emacs-theme))
+  (spaceline-emacs-theme)
+  (setq spaceline-highlight-face-func #'spaceline-highlight-face-evil-state))
 
 (eval-after-load 'dash '(dash-enable-font-lock))
 
