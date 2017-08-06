@@ -1,2 +1,3 @@
-alias ll ls -l $*
+alias pw openssl rand -base64 18
 alias g git $*
+alias ll ls -l $*
