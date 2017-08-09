@@ -143,4 +143,11 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (evil-leader/set-key
   "o a" 'org-agenda
   "o c" 'org-capture)
+(setq cogent/org-capture-file (concat org-directory "/refile.org"))
+(setq cogent/org-diary-file (concat org-directory "/diary.org"))
 (set-register ?o (cons 'file org-default-notes-file))
+(setq org-todo-keywords
+      '((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
+        (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)" "PHONE" "MEETING")))
+(setq org-use-fast-todo-selection t)
+(setq org-agenda-files (list (concat org-directory "/notes.org")))
