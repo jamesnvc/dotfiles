@@ -128,7 +128,8 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (with-eval-after-load "company"
   (evil-define-key 'insert company-active-map (kbd "C-w") #'evil-delete-backward-word)
   (define-key company-active-map (kbd "C-n") #'company-select-next)
-  (define-key company-active-map (kbd "C-p") #'company-select-previous))
+  (define-key company-active-map (kbd "C-p") #'company-select-previous)
+  (define-key company-active-map (kbd "C-w") #'evil-delete-backward-word))
 
 ;; Arduino
 (add-to-list 'auto-mode-alist '("\\.ino\\'" . c++-mode))
