@@ -2,7 +2,7 @@
                   [lein-pprint "1.1.1"]
                   ;[lein-ancient "0.6.10" :exclusions [commons-logging]]
                   [lein-checkouts "1.1.0"]
-                  [cider/cider-nrepl "0.14.0"]
+                  [cider/cider-nrepl "0.15.1-SNAPSHOT"]
                   [lein-exec "0.3.5"]
                   ;[lein-depdocs "1.0.1-SNAPSHOT"]
                   ]

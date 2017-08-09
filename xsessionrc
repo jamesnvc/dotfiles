@@ -6,6 +6,11 @@ if [ -s ~/.Xmodmap ]; then
   xmodmap ~/.Xmodmap
 fi
 
+if xinput --list | grep "Slimblade Trackball" &> /dev/null ; then
+  # Make pressing both bottom buttons same as the middle-click button
+  xinput set-prop "Kensington Kensington Slimblade Trackball" "Evdev Middle Button Emulation" 1                                                                                                  [INSERT ]
+fi
+
 XKBDIR="$HOME/.xkb"
 XKBMAPFILE="$XKBDIR/keymap/custom"
 
