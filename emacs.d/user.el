@@ -1,6 +1,6 @@
 ;; -*- lexical-binding: t -*-
 
-(set-frame-font "PragmataPro 7" nil t)
+(set-frame-font "PragmataPro 14" nil t)
 
 (define-key evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
 
