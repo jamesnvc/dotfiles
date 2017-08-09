@@ -15,7 +15,8 @@
   :diminish highlight-parentheses-mode)
 
 (defun cogent-elisp/remove-elc-on-save ()
-  "If you're saving an elisp file, you probably want to remove the now-invalid elc file"
+  "If you're saving an elisp file, you probably want to remove the
+now-invalid elc file"
   (make-local-variable 'after-save-hook)
   (add-hook 'after-save-hook
             (lambda ()

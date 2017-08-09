@@ -15,11 +15,11 @@
   (package-refresh-contents)
   (package-install 'paradox))
 
-; Going to use 'use-package' to manage depedencies
-; This lets us defer loading stuff until needed
-; and keeps the configuration together
+;; Going to use 'use-package' to manage depedencies
+;; This lets us defer loading stuff until needed
+;; and keeps the configuration together
 
-; Make sure it's installed
+;; Make sure it's installed
 (paradox-require 'use-package)
 ; Load it so it's available
 (require 'use-package)
