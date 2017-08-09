@@ -164,7 +164,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
                             (select-window (car (last (winner-sorted-window-list))))
                             ;; Display buffers in new windows
                             (dolist (cand (helm-marked-candidates))
-                              (select-window (,split-fn cand))
+                              (select-window (,split-fn))
                               (,open-fn cand))
                             ;; Adjust size of windows
                             (balance-windows))))
