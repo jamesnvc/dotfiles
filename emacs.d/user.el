@@ -116,12 +116,12 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (defun cogent/clojure-hook ()
   ;; TODO: would be nice to bind like in vim, but it seems bindings
   ;; like `cp' make `c-<operator>' not work
-  (evil-leader/set-key-for-mode 'clojure-mode "p" 'cogent/eval-last-sexp)
-  (evil-leader/set-key-for-mode 'clojure-mode "!" 'cogent/eval-last-sexp-and-replace)
-  (evil-define-key 'normal clojure-mode-map (kbd "] C-d") 'cider-find-var)
-  (evil-define-key 'normal clojure-mode-map "K" 'cider-doc)
-  (evil-define-key 'normal clojure-mode-map (kbd "M-r") 'cider-refresh))
-(add-hook 'clojure-mode-hook 'cogent/clojure-hook)
+  (evil-leader/set-key-for-mode 'clojure-mode "p" #'cogent/eval-last-sexp)
+  (evil-leader/set-key-for-mode 'clojure-mode "!" #'cogent/eval-last-sexp-and-replace)
+  (evil-define-key 'normal clojure-mode-map (kbd "] C-d") #'cider-find-var)
+  (evil-define-key 'normal clojure-mode-map "K" #'cider-doc)
+  (evil-define-key 'normal clojure-mode-map (kbd "M-r") #'cider-refresh))
+(add-hook 'clojure-mode-hook #'cogent/clojure-hook)
 
 ;; Eshell
 (global-set-key (kbd "<f3>") 'eshell)
@@ -132,9 +132,9 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
       '(("lambda" . 955)))
 
 (with-eval-after-load "company"
-  (evil-define-key 'insert company-active-map (kbd "C-w") 'evil-delete-backward-word)
-  (define-key company-active-map (kbd "C-n") 'company-select-next)
-  (define-key company-active-map (kbd "C-p") 'company-select-previous))
+  (evil-define-key 'insert company-active-map (kbd "C-w") #'evil-delete-backward-word)
+  (define-key company-active-map (kbd "C-n") #'company-select-next)
+  (define-key company-active-map (kbd "C-p") #'company-select-previous))
 
 ;; Arduino
 (add-to-list 'auto-mode-alist '("\\.ino\\'" . c++-mode))
