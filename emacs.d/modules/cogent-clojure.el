@@ -7,7 +7,7 @@
   (add-hook
    'clojure-mode-hook
    (lambda ()
-     (paredit-mode)
+     (enable-paredit-mode)
      (use-package cider
        :commands cider-jack-in
        :config
@@ -31,8 +31,6 @@
 
 (use-package paredit
   :commands enable-paredit-mode paredit-mode
-  :diminish paredit-mode
-  :init
-  (add-hook 'clojure-mode-hook 'enable-paredit-mode))
+  :diminish paredit-mode)
 
 (provide 'cogent-clojure)
