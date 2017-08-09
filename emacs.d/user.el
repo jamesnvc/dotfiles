@@ -31,12 +31,6 @@
 (evil-define-key 'normal dired-mode-map "-" 'dired-up-directory)
 
 (evil-leader/set-key
-  ;; like Denite
-  "T" 'helm-find-files
-  "t" 'helm-projectile-find-file-dwim
-  "s" 'helm-projectile-ag
-  "b" 'helm-buffers-list
-  "l" 'swiper-helm
   "w" 'save-buffer
   ;; misc to make command mode easier
   "<SPC>" 'evil-ex
@@ -151,3 +145,81 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
         (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)" "PHONE" "MEETING")))
 (setq org-use-fast-todo-selection t)
 (setq org-agenda-files (list (concat org-directory "/notes.org")))
+(setq org-refile-targets '((nil . (:maxlevel . 3))))
+
+;; Helm
+(evil-leader/set-key
+  ;; like Denite
+  "T" 'helm-find-files
+  "t" 'helm-projectile-find-file-dwim
+  "s" 'helm-projectile-ag
+  "b" 'helm-buffers-list
+  "l" 'swiper-helm)
+
+;; Enable opening helm results in splits
+(cl-macrolet
+    ((make-helm-splitter (name open-fn split-fn)
+                         `(defun ,name (_candidate)
+                            (require 'winner)
+                            (select-window (car (last (winner-sorted-window-list))))
+                            ;; Display buffers in new windows
+                            (dolist (cand (helm-marked-candidates))
+                              (select-window (,split-fn cand))
+                              (,open-fn cand))
+                            ;; Adjust size of windows
+                            (balance-windows))))
+
+  (make-helm-splitter helm-buffer-switch-to-new-vert-window
+                      switch-to-buffer split-window-right)
+
+  (make-helm-splitter helm-buffer-switch-to-new-horiz-window
+                      switch-to-buffer split-window-below)
+
+  (make-helm-splitter helm-file-switch-to-new-vert-window
+                      find-file split-window-right)
+
+  (make-helm-splitter helm-file-switch-to-new-horiz-window
+                      find-file split-window-below))
+
+(add-to-list 'helm-type-buffer-actions
+             '("Display buffer(s) in new vertical split(s) `C-v'" .
+               helm-buffer-switch-to-new-vert-window) 'append)
+
+(add-to-list 'helm-type-buffer-actions
+             '("Display buffer(s) in new horizontal split(s) `C-s'" .
+               helm-buffer-switch-to-new-horiz-window) 'append)
+
+(add-to-list 'helm-type-file-actions
+             '("Display buffer(s) in new vertical split(s) `C-v'" .
+               helm-file-switch-to-new-vert-window) 'append)
+
+(add-to-list 'helm-type-file-actions
+             '("Display buffer(s) in new horizontal split(s) `C-s'" .
+               helm-file-switch-to-new-horiz-window) 'append)
+
+(defun helm-buffer-switch-new-vert-window ()
+  (interactive)
+  (with-helm-alive-p
+    (helm-exit-and-execute-action 'helm-buffer-switch-to-new-vert-window)))
+
+(defun helm-buffer-switch-new-horiz-window ()
+  (interactive)
+  (with-helm-alive-p
+    (helm-exit-and-execute-action 'helm-buffer-switch-to-new-horiz-window)))
+
+(defun helm-file-switch-new-vert-window ()
+  (interactive)
+  (with-helm-alive-p
+    (helm-exit-and-execute-action 'helm-file-switch-to-new-vert-window)))
+
+(defun helm-file-switch-new-horiz-window ()
+  (interactive)
+  (with-helm-alive-p
+    (helm-exit-and-execute-action 'helm-file-switch-to-new-horiz-window)))
+
+(define-key helm-buffer-map (kbd "C-v") #'helm-buffer-switch-new-vert-window)
+(define-key helm-buffer-map (kbd "C-s") #'helm-buffer-switch-new-horiz-window)
+(define-key helm-projectile-find-file-map (kbd "C-v") #'helm-file-switch-new-vert-window)
+(define-key helm-find-files-map (kbd "C-v") #'helm-file-switch-new-vert-window)
+(define-key helm-projectile-find-file-map (kbd "C-s") #'helm-file-switch-new-horiz-window)
+(define-key helm-find-files-map (kbd "C-s") #'helm-file-switch-new-horiz-window)
