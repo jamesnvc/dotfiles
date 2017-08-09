@@ -134,6 +134,11 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 ;; Arduino
 (add-to-list 'auto-mode-alist '("\\.ino\\'" . c++-mode))
 
+;; Dired
+(with-eval-after-load "dired"
+  ;; Make "jump backwards" act as I expect in dired
+  (define-key dired-mode-map (kbd "C-o") 'quit-window))
+
 ;; Org
 (evil-leader/set-key
   "o a" 'org-agenda
