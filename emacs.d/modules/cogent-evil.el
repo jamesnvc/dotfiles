@@ -21,7 +21,14 @@
       "c SPC" 'evilnc-comment-or-uncomment-lines))
   (use-package evil-mc
     :config
-    (global-evil-mc-mode 1)))
+    (global-evil-mc-mode 1))
+  (use-package smooth-scrolling
+    :demand t
+    :config
+    (setq scroll-margin 2
+          ;; value > 100 = redisplay won't re-center cursor when going offscreen
+          scroll-conservatively 101
+          scroll-step 1)))
 
 (evil-mode 1)
 
