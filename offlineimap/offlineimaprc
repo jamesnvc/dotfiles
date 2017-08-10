@@ -1,0 +1,32 @@
+[general]
+accounts = Gmail
+maxsyncaccounts = 1
+pythonfile = ~/.config/offlineimap/offlineimap.py
+
+[Account Gmail]
+localrepository = Gmail-Local
+remoterepository = Gmail-Remote
+synclabels = yes
+status_backend = sqlite
+autorefresh = 2
+
+postsynchook = ~/.config/offlineimap/postsync.sh
+
+[Repository Gmail-Local]
+type = GmailMaildir
+localfolders = ~/mail/Gmail
+nametrans = lambda f: '[Gmail]/' + f if f in ['Drafts', 'Starred', 'Important',
+                                              'Spam', 'Trash', 'All Mail',
+                                              'Sent Mail'] else f
+
+[Repository Gmail-Remote]
+type = Gmail
+remoteuser  = james.nvc@gmail.com
+remotepasseval = mailpassword("gmail")
+realdelete = no
+auth_mechanisms = LOGIN
+
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+
+folderfilter = lambda foldername: foldername in ['[Gmail]/All Mail']
+nametrans = lambda f: f.replace('[Gmail]/', '') if f.startswith('[Gmail]/') else f
