@@ -229,3 +229,9 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (define-key helm-find-files-map (kbd "C-v") #'helm-file-switch-new-vert-window)
 (define-key helm-projectile-find-file-map (kbd "C-s") #'helm-file-switch-new-horiz-window)
 (define-key helm-find-files-map (kbd "C-s") #'helm-file-switch-new-horiz-window)
+
+;; Mail
+
+(with-eval-after-load "notmuch"
+  (define-key notmuch-search-mode-map (kbd "j") 'notmuch-search-next-thread)
+  (define-key notmuch-search-mode-map (kbd "k") 'notmuch-search-previous-thread))

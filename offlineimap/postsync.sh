@@ -1,4 +1,6 @@
 #!/bin/bash
 
 notmuch new
-notmuch tag -inbox +sent from:james.nvc@gmail.com
+notmuch tag --batch <<EOF
++inbox tag:new and folder:Gmail/INBOX
+EOF

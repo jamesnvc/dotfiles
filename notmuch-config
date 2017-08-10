@@ -48,7 +48,7 @@ other_email=james@bloomventures.io;james.cash@occasionallycogent.com;
 #   in the mail store.
 #
 [new]
-tags=
+tags=new
 ignore=
 
 # Search configuration
@@ -85,7 +85,7 @@ exclude_tags=deleted;spam;
 # commands will notice tag changes and update flags in filenames
 #
 [maildir]
-synchronize_flags=true
+synchronize_flags=false
 
 # Cryptography related configuration
 #

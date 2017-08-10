@@ -7,26 +7,40 @@ pythonfile = ~/.config/offlineimap/offlineimap.py
 localrepository = Gmail-Local
 remoterepository = Gmail-Remote
 synclabels = yes
+labelsheader = X-Keywords
 status_backend = sqlite
 autorefresh = 2
-
-postsynchook = ~/.config/offlineimap/postsync.sh
+presynchook = ~/.config/offlineimap/maildir-notmuch-sync pre ~/mail/Gmail
+postsynchook = ~/.config/offlineimap/maildir-notmuch-sync post ~/mail/Gmail
 
 [Repository Gmail-Local]
 type = GmailMaildir
 localfolders = ~/mail/Gmail
-nametrans = lambda f: '[Gmail]/' + f if f in ['Drafts', 'Starred', 'Important',
-                                              'Spam', 'Trash', 'All Mail',
-                                              'Sent Mail'] else f
+nametrans = lambda f: {'archive': '[Gmail]/All Mail',
+                       'drafts':  '[Gmail]/Drafts',
+                       'sent':    '[Gmail]/Sent Mail',
+                       'spam':    '[Gmail]/Spam',
+                       'flagged': '[Gmail]/Starred',
+                       'trash':   '[Gmail]/Trash',
+                       'inbox':   'INBOX'
+                      }.get(f, f)
 
 [Repository Gmail-Remote]
 type = Gmail
 remoteuser  = james.nvc@gmail.com
 remotepasseval = mailpassword("gmail")
 realdelete = no
+subscribedonly = no
 auth_mechanisms = LOGIN
-
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
-
-folderfilter = lambda foldername: foldername in ['[Gmail]/All Mail']
-nametrans = lambda f: f.replace('[Gmail]/', '') if f.startswith('[Gmail]/') else f
+folderfilter = lambda foldername: foldername in ['[Gmail]/All Mail',
+                                                 'INBOX',
+                                                 '[Gmail]/Drafts',
+                                                 '[Gmail]/Starred']
+nametrans = lambda f: {'[Gmail]/All Mail':   'archive',
+                       '[Gmail]/Drafts':     'drafts',
+                       '[Gmail]/Sent Mail':  'sent',
+                       '[Gmail]/Spam':       'spam',
+                       '[Gmail]/Starred':    'flagged',
+                       'INBOX':              'inbox'
+                      }.get(f, f)
