@@ -23,7 +23,10 @@
      (:name "new" :query "tag:inbox and tag:unread"))))
  '(org-capture-templates
    (quote
-    (("w" "Bloom work tasks" entry
+    (("n" "Note" entry
+      (file "~/org/notes.org")
+      "* %? %U")
+     ("w" "Bloom work tasks" entry
       (file "~/org/bloom.org")
       "* %?
 Entered on %U
