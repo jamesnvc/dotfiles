@@ -11,6 +11,7 @@
    (quote
     ("htop" "vi" "screen" "top" "less" "more" "lynx" "ncftp" "pine" "tin" "trn" "elm")))
  '(eshell-visual-subcommands (quote (("git " "log" "lol" "diff" "show"))))
+ '(helm-ag-base-command "/usr/local/bin/ag --nocolor --nogroup")
  '(menu-bar-mode nil)
  '(notmuch-saved-searches
    (quote
