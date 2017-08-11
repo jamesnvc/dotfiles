@@ -85,7 +85,7 @@ exclude_tags=deleted;spam;
 # commands will notice tag changes and update flags in filenames
 #
 [maildir]
-synchronize_flags=false
+synchronize_flags=true
 
 # Cryptography related configuration
 #
