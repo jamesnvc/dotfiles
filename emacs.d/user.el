@@ -6,6 +6,9 @@
 
 (global-set-key (kbd "<f4>") 'calc)
 
+(when (member "Symbola" (font-family-list))
+  (set-fontset-font t 'unicode "Symbola" nil 'prepend))
+
 ;; Make C-u inverse of C-d like vim & move universal-argument to M-u
 ;; (since that's upcase-word by default & we'll use vim bindings for
 ;; that anyway)
@@ -151,7 +154,10 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
         (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)" "PHONE" "MEETING")))
 (setq org-use-fast-todo-selection t)
 (setq org-agenda-files (list (concat org-directory "/notes.org")))
-(setq org-refile-targets '((nil . (:maxlevel . 3))))
+(setq org-refile-targets '((nil . (:maxlevel . 9))))
+(setq org-refile-use-outline-path t)
+(setq org-outline-path-complete-in-steps nil)
+(setq org-refile-allow-creating-parent-nodes 'confirm)
 
 ;; Helm
 (evil-leader/set-key
@@ -229,3 +235,21 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (define-key helm-find-files-map (kbd "C-v") #'helm-file-switch-new-vert-window)
 (define-key helm-projectile-find-file-map (kbd "C-s") #'helm-file-switch-new-horiz-window)
 (define-key helm-find-files-map (kbd "C-s") #'helm-file-switch-new-horiz-window)
+
+;; Mail
+
+(with-eval-after-load "notmuch"
+  (define-key notmuch-search-mode-map (kbd "j") 'notmuch-search-next-thread)
+  (define-key notmuch-search-mode-map (kbd "k") 'notmuch-search-previous-thread)
+  (define-key notmuch-search-mode-map (kbd "g g") 'notmuch-search-first-thread)
+  (define-key notmuch-search-mode-map (kbd "G") 'notmuch-search-last-thread)
+
+  (define-key notmuch-search-mode-map (kbd "C-l") 'evil-window-right)
+  (define-key notmuch-search-mode-map (kbd "C-h") 'evil-window-left)
+  (define-key notmuch-search-mode-map (kbd "C-j") 'evil-window-down)
+  (define-key notmuch-search-mode-map (kbd "C-k") 'evil-window-up)
+
+  (define-key notmuch-hello-mode-map (kbd "C-l") 'evil-window-right)
+  (define-key notmuch-hello-mode-map (kbd "C-h") 'evil-window-left)
+  (define-key notmuch-hello-mode-map (kbd "C-j") 'evil-window-down)
+  (define-key notmuch-hello-mode-map (kbd "C-k") 'evil-window-up))

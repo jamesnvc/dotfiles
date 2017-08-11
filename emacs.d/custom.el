@@ -12,6 +12,22 @@
     ("htop" "vi" "screen" "top" "less" "more" "lynx" "ncftp" "pine" "tin" "trn" "elm")))
  '(eshell-visual-subcommands (quote (("git " "log" "lol" "diff" "show"))))
  '(menu-bar-mode nil)
+ '(notmuch-saved-searches
+   (quote
+    ((:name "inbox" :query "tag:inbox" :key "i")
+     (:name "unread" :query "tag:unread" :key "u")
+     (:name "flagged" :query "tag:flagged" :key "f")
+     (:name "sent" :query "tag:sent" :key "t")
+     (:name "drafts" :query "tag:draft" :key "d")
+     (:name "all mail" :query "*" :key "a")
+     (:name "new" :query "tag:inbox and tag:unread"))))
+ '(org-capture-templates
+   (quote
+    (("w" "Bloom work tasks" entry
+      (file "~/org/bloom.org")
+      "* %?
+Entered on %U
+   %a"))))
  '(scroll-bar-mode nil)
  '(tool-bar-mode nil))
 (custom-set-faces
