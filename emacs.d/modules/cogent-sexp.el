@@ -41,6 +41,16 @@ This version is for operator mode, where we want it to include the last paren"
       (forward-char))
   (paredit-forward argument))
 
+(defun cogent/evil-forward-sexp-visual (&optional argument)
+  "Wrapper around paredit-forward to take into account the fact that
+we can't move past the last character in a line in normal mode.
+This version is for visual mode"
+  (interactive "P")
+  (if (= ?\) (char-after (point)))
+      (forward-char))
+  (backward-char)
+  (paredit-forward argument))
+
 (defun cogent/evil-backward-sexp (&optional argument)
   "Wrapper around paredit-backward to take into account the fact that
 we can't move past the last character in a line in normal mode"
@@ -59,6 +69,15 @@ This version is for operator mode, where we want it to include the paren."
       (forward-char))
   (paredit-backward argument)
   (forward-char))
+
+(defun cogent/evil-backward-sexp-visual (&optional argument)
+  "Wrapper around paredit-backward to take into account the fact that
+we can't move past the last character in a line in normal mode.
+This version is for visual mode."
+  (interactive "P")
+  (if (= ?\) (char-after (point)))
+      (forward-char))
+  (paredit-backward argument))
 
 (defun cogent/wrap-sexp-start (&optional argument)
   "Wrap the sexp under the cursor in parentheses and put the cursor in
@@ -134,8 +153,8 @@ insert mode at the end of the new sexp"
   "Evil bindings for paredit to imitate vim-sexp"
   (evil-define-key 'normal paredit-mode-map "W" #'cogent/evil-forward-sexp)
   (evil-define-key 'normal paredit-mode-map "B" #'cogent/evil-backward-sexp)
-  (evil-define-key 'visual paredit-mode-map "W" #'cogent/evil-forward-sexp-op)
-  (evil-define-key 'visual paredit-mode-map "B" #'cogent/evil-backward-sexp-op)
+  (evil-define-key 'visual paredit-mode-map "W" #'cogent/evil-forward-sexp-visual)
+  (evil-define-key 'visual paredit-mode-map "B" #'cogent/evil-backward-sexp-visual)
   (evil-define-key 'operator paredit-mode-map "W" #'cogent/evil-forward-sexp-op)
   (evil-define-key 'operator paredit-mode-map "B" #'cogent/evil-backward-sexp-op)
   (evil-define-key 'normal paredit-mode-map "\\@" #'paredit-splice-sexp)
