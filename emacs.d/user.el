@@ -2,9 +2,13 @@
 
 (set-frame-font "PragmataPro 7" nil t)
 
+;; Quick way to jump here
+(set-register ?e (cons 'file (concat dotfiles-dir "user.el")))
+
 (define-key evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
 
 (global-set-key (kbd "<f4>") 'calc)
+(global-set-key (kbd "<f5>") 'notmuch)
 
 (when (member "Symbola" (font-family-list))
   (set-fontset-font t 'unicode "Symbola" nil 'prepend))
