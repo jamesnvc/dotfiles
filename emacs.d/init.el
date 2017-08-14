@@ -46,6 +46,7 @@
 (require 'cogent-markdown)
 (require 'cogent-mail)
 (require 'cogent-twitter)
+(require 'cogent-feeds)
 
 ;; Other things
 (load (concat dotfiles-dir "user.el") 'noerror)
