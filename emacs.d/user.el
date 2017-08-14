@@ -9,6 +9,7 @@
 
 (global-set-key (kbd "<f4>") 'calc)
 (global-set-key (kbd "<f5>") 'notmuch)
+(global-set-key (kbd "<f6>") 'elfeed)
 
 (when (member "Symbola" (font-family-list))
   (set-fontset-font t 'unicode "Symbola" nil 'prepend))
@@ -260,3 +261,6 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
   (define-key notmuch-hello-mode-map (kbd "C-h") 'evil-window-left)
   (define-key notmuch-hello-mode-map (kbd "C-j") 'evil-window-down)
   (define-key notmuch-hello-mode-map (kbd "C-k") 'evil-window-up))
+
+;; Elfeed
+(load (concat dotfiles-dir "feeds.el"))
