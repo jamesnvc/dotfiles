@@ -25,4 +25,12 @@
 ;; change the directory to store the sent mail
 (setq message-directory "~/mail/")
 
+(with-eval-after-load "notmuch"
+  (setq notmuch-address-selection-function
+        (lambda (prompt collection initial-input)
+          (completing-read prompt (cons initial-input collection) nil t nil
+                           'notmuch-address-history)))
+  (require 'notmuch-address)
+  (notmuch-address-message-insinuate))
+
 (provide 'cogent-mail)

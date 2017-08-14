@@ -2,9 +2,13 @@
 
 (set-frame-font "PragmataPro 14" nil t)
 
+;; Quick way to jump here
+(set-register ?e (cons 'file (concat dotfiles-dir "user.el")))
+
 (define-key evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
 
 (global-set-key (kbd "<f4>") 'calc)
+(global-set-key (kbd "<f5>") 'notmuch)
 
 (when (member "Symbola" (font-family-list))
   (set-fontset-font t 'unicode "Symbola" nil 'prepend))
@@ -117,7 +121,8 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
   (evil-leader/set-key-for-mode 'clojure-mode "!" #'cogent/eval-last-sexp-and-replace)
   (evil-define-key 'normal clojure-mode-map (kbd "] C-d") #'cider-find-var)
   (evil-define-key 'normal clojure-mode-map "K" #'cider-doc)
-  (evil-define-key 'normal clojure-mode-map (kbd "M-r") #'cider-refresh))
+  (evil-define-key 'normal clojure-mode-map (kbd "M-r") #'(lambda () (interactive)
+                                                            (cider-load-file (buffer-file-name)))))
 (add-hook 'clojure-mode-hook #'cogent/clojure-hook)
 
 ;; Eshell
@@ -154,7 +159,8 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
         (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)" "PHONE" "MEETING")))
 (setq org-use-fast-todo-selection t)
 (setq org-agenda-files (list (concat org-directory "/notes.org")
-                             (concat org-directory "/bloom.org")))
+                             (concat org-directory "/bloom.org")
+                             "~/Dropbox/Apps/MobileOrg/mobileorg.org"))
 (setq org-refile-targets '((nil . (:maxlevel . 9))))
 (setq org-refile-use-outline-path t)
 (setq org-outline-path-complete-in-steps nil)
