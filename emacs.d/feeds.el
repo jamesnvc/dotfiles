@@ -92,7 +92,7 @@
         ("http://www.pvk.ca/atom.xml" lisp)
         ("http://amultiverse.com/feed/" comic)
         "http://david-smith.org/atom.xml"
-        "http://feeds.feedburner.com/VioletBlueOpenSourceSex"
+        ("http://feeds.feedburner.com/VioletBlueOpenSourceSex" nsfw)
         "http://circastrength.blogspot.com/feeds/posts/default"
         "https://grokswift.com/feed/index.xml"
         "http://www.stumptuous.com/feed"
@@ -109,7 +109,6 @@
         ("http://qcjeph.livejournal.com/data/rss" comic)
         ("http://thepunchlineismachismo.com/?feed=rss" comic)
         "http://www.mistys-internet.website/blog/atom.xml"
-        "http://feeds.feedburner.com/jackcheng"
         ("http://feeds2.feedburner.com/WastedTalentRss" comic)
         ("http://www.hunterblackcomics.com/feed" comic)
         "http://cannaw.blogspot.com/feeds/posts/default"
