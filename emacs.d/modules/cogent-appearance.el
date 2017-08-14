@@ -118,7 +118,13 @@
   :config
   (require 'spaceline-config)
   (spaceline-emacs-theme)
-  (setq spaceline-highlight-face-func #'spaceline-highlight-face-evil-state))
+  (spaceline-helm-mode 1)
+  (spaceline-toggle-buffer-encoding-abbrev-off)
+  (spaceline-toggle-buffer-size-off)
+  (spaceline-toggle-major-mode-off)
+  (setq spaceline-highlight-face-func #'spaceline-highlight-face-evil-state
+        spaceline-window-numbers-unicode t
+        spaceline-workspace-numbers-unicode t))
 
 (eval-after-load 'dash '(dash-enable-font-lock))
 
