@@ -24,11 +24,10 @@
 (defun cogent/evil-yank-to-eol (&optional argument)
   (interactive "P")
   (let ((beg (point))
-        end)
-    (save-excursion
-      (evil-end-of-line)
-      (forward-char)
-      (setq end (point)))
+        (end (save-excursion
+               (evil-end-of-line)
+               (forward-char)
+               (point))))
     (evil-yank beg end)))
 (define-key evil-normal-state-map "Y" 'cogent/evil-yank-to-eol)
 
