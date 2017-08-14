@@ -1,17 +1,11 @@
 (setq elfeed-feeds
       '(("http://www.peppercarrot.com/feed/en/rss" comic)
         "http://words.steveklabnik.com/feed"
-        ("http://judecca.co.uk/feed/" comic)
         ("http://killsixbilliondemons.com/?feed=rss2" comic)
         "http://blog.ashleynh.me/rss/"
-        "https://medium.com/feed/@nerdonica"
         "http://marcysutton.com/feed/"
-        "http://meaganwaller.com/index.php/feed/"
         "http://lambdamaphone.blogspot.com/feeds/posts/default"
         "https://kateheddleston.com/blog/feed.atom"
-        "https://medium.com/feed/@emarley"
-        "https://medium.com/feed/@tessr"
-        "http://www.lindadong.com/blog?format=RSS"
         "http://blog.ellenchisa.com/feed/"
         "http://blog.nicoleblee.com/feed/"
         "http://sketch.bysusanlin.com/rss"
@@ -21,183 +15,110 @@
         "https://ktzine.com/feed"
         "http://www.nadynerichmond.com/blog/feed/"
         "http://nothe.purplellamas.net/index.xml"
-        "http://feed.katiefloyd.com"
         "http://jessysaurusrex.com/feed/"
         "http://redqueencoder.com/feed/"
-        "http://www.michele.io//feed"
         "http://pewpewthespells.com/feed.xml"
         "http://ericasadun.com/feed/"
-        "http://designatednerd.com/feed/"
-        "http://pointersgonewild.com/feed/"
-        "http://appcamp4girls.com/blog?format=RSS"
         "http://www.blog.juliaferraioli.com/feeds/posts/default"
         "http://www.virginiaroberts.com/feed/"
         "http://feralscrutiny.co/feed/"
-        "https://medium.com/feed/@jaimeejaimee"
         "http://www.rebeccamiller-webster.com/feed/"
-        "http://blog.cocoabythefire.com/rss"
         "http://corinnekrych.blogspot.com/feeds/posts/default"
-        "http://blog.erynwells.me/rss"
-        "http://feeds.feedburner.com/BadYewex"
         "http://nataliepo.typepad.com/nataliepo/rss.xml"
         "http://www.backupbrain.com/feed/"
         "http://swift.ayaka.me/posts?format=RSS"
         "http://www.catehuston.com/blog/feed/"
-        "http://www.kristinathai.com/feed/"
-        "http://www.aleenmean.com/feed.xml"
-        "http://beckyhansmeyer.com/feed/"
-        "https://blog.alltheflow.com/rss/"
-        "http://www.mechanicalgirl.com/feeds/all/"
-        "http://natashatherobot.com/feed/"
+        ("http://www.kristinathai.com/feed/" tech apple)
+        ("http://www.aleenmean.com/feed.xml" tech apple)
+        ("http://beckyhansmeyer.com/feed/" tech aple)
+        ("https://blog.alltheflow.com/rss/" tech apple)
+        ("http://www.mechanicalgirl.com/feeds/all/" tech)
+        ("http://natashatherobot.com/feed/" tech apple)
         ("http://www.foxtrot.com/feed/" comic)
         ("http://cdn.drivecomic.com/rss.xml" comic)
         "http://www.johndcook.com/blog/feed/"
         ("http://www.harkavagrant.com/rssfeed.php" comic)
-        "http://furbo.org/feed/"
-        "http://feeds.arstechnica.com/arstechnica/index/"
-        "http://joshreads.com/?feed=rss2"
-        "http://aphyr.com/posts.atom"
-        "http://www.kabukiwarrior.com/feed/"
-        "http://techdistortion.com/articles/feed"
-        "http://bc.tech.coop/blog/rss.xml"
-        "http://praguestepchild.blogspot.com/feeds/posts/default"
-        "http://thebrief.io/atom.xml"
+        ("http://furbo.org/feed/" tech)
+        ("http://feeds.arstechnica.com/arstechnica/index/" tech)
+        ("http://joshreads.com/?feed=rss2" comic)
+        ("http://aphyr.com/posts.atom" tech)
+        ("http://techdistortion.com/articles/feed" tech)
         "http://www.randsinrepose.com/index.xml"
-        "http://feeds.feedburner.com/schneier/fulltext"
-        "http://feeds.feedburner.com/marcoorg"
-        "http://norvig.com/rss-feed.xml"
-        "http://daringfireball.net/index.xml"
-        "http://rafd.heroku.com/atom.xml"
-        "http://hypercritical.co/feeds/main"
-        "http://gridwriter.com/rss"
-        "http://feeds.feedburner.com/PartialObjects"
-        "http://www.tbray.org/ongoing/ongoing.atom"
-        "http://steve-yegge.blogspot.com/atom.xml"
-        "http://feeds.feedburner.com/codinghorror"
-        "http://blog.nicksieger.com/xml/rss20/feed.xml"
-        "http://feeds.feedburner.com/PracticallyEfficient"
-        "http://www.lispcast.com/feed"
-        "http://blog.stackoverflow.com/feed/"
-        "http://swolesister.wordpress.com/feed/"
-        "http://www.overcomingbias.com/atom.xml"
+        ("http://feeds.feedburner.com/schneier/fulltext" infosec)
+        ("http://feeds.feedburner.com/marcoorg" tech apple)
+        ("http://norvig.com/rss-feed.xml" tech)
+        ("http://daringfireball.net/index.xml" tech apple)
+        ("http://hypercritical.co/feeds/main" tech)
+        ("http://www.tbray.org/ongoing/ongoing.atom" tech)
+        ("http://steve-yegge.blogspot.com/atom.xml" tech lisp)
+        ("http://feeds.feedburner.com/codinghorror" tech)
         ("http://xkcd.com/atom.xml" comic)
-        "http://sageolylifting.blogspot.com/feeds/posts/default"
-        "http://www.rsspect.com/rss/wigu.xml"
-        "http://feeds.feedburner.com/wondermark"
+        ("http://feeds.feedburner.com/wondermark" comic)
         ("http://www.daisyowl.com/rss" comic)
         ("http://overcompensating.com/rss/" comic)
         "http://blog.wilshipley.com/rss.xml"
-        "http://scienceblogs.com/insolence/feed/"
-        "http://blog.wolfram.com/feed/"
         "http://thelastpsychiatrist.com/atom.xml"
-        "http://blog.1024cores.net/feeds/posts/default"
         "http://feeds.feedburner.com/VirtuousCode"
-        "http://pyre.third-bit.com/blog/feed/"
         "http://texblog.net/feed/"
         "http://sachachua.com/wp/feed/"
         "http://thedriveforstrength.blogspot.com/feeds/posts/default"
         ("http://nedroid.com/feed/" comic)
-        "http://www.rsspect.com/rss/threeps.xml"
         ("http://pbfcomics.com/feed/feed.xml" comic)
         ("http://feeds.feedburner.com/Hyperbole-and-a-half" comic)
         ("http://www.girlgeniusonline.com/ggmain.rss" comic)
         ("http://www.marecomic.com/feed/" comic)
-        "http://nshipster.com/feed.xml"
-        "http://smuglispweeny.blogspot.com/feeds/posts/default"
+        ("http://nshipster.com/feed.xml" apple)
+        ("http://smuglispweeny.blogspot.com/feeds/posts/default" lisp)
         "http://feeds.feedburner.com/sportsblogs/bloodyelbow.xml"
         "http://what-if.xkcd.com/feed.atom"
-        ("http://www.questionablecontent.net/QCRSS.xml" comic)
         ("http://www.glamrockgorilla.com/feed/" comic)
         "http://www.jwz.org/blog/feed/"
         "http://www.shadycharacters.co.uk/feed/"
         "http://kickingbear.com/blog/feed"
-        "http://www.asymco.com/feed/"
-        "http://www.red-sweater.com/blog/feed"
         "http://www.leancrew.com/all-this/feed/"
-        "http://www.macsparky.com/blog/atom.xml"
-        "http://thejoeconwayblog.wordpress.com/feed/"
         "http://feeds.feedburner.com/newartisanscom"
-        "http://olabini.com/blog/feed/"
-        "http://scientopia.org/blogs/goodmath/feed/"
         ("http://www.dumbingofage.com/feed/" comic)
-        "http://feeds2.feedburner.com/rsspect/fJur"
-        "http://feeds2.feedburner.com/Smarterware"
+        ("http://feeds2.feedburner.com/rsspect/fJur" comic)
         "http://blog.keyboard.io/rss"
-        "https://krebsonsecurity.com/feed/atom/"
+        ("https://krebsonsecurity.com/feed/atom/" infosec)
         ("http://automansdaughter.com/rss.php" comic)
-        "http://feedpress.me/sixcolors"
-        "http://xahlee.info/kbd/keyboard_blog.xml"
+        ("http://feedpress.me/sixcolors" apple)
         ("http://www.last-halloween.com/posts.rss" comic)
         "http://feeds.feedburner.com/mefi/PopularPosts"
         "http://stilldrinking.org/rss/feed.xml"
         "http://feeds.feedburner.com/Cosmodrome"
         "http://www.objc.io/feed.xml"
         "http://psy-lob-saw.blogspot.com/feeds/posts/default"
-        "http://www.pvk.ca/atom.xml"
+        ("http://www.pvk.ca/atom.xml" lisp)
         ("http://amultiverse.com/feed/" comic)
         "http://david-smith.org/atom.xml"
-        "http://www.mananarya.com/rss.xml"
-        "https://incrementalistblog.wordpress.com/feed/"
         "http://feeds.feedburner.com/VioletBlueOpenSourceSex"
         "http://circastrength.blogspot.com/feeds/posts/default"
-        "http://www.rsspect.com/rss/95.xml"
-        "http://sensualjava.blogspot.com/feeds/posts/default"
-        "http://platinumblackcomic.com/feed"
         "https://grokswift.com/feed/index.xml"
-        "http://70sbig.com/feed/"
         "http://www.stumptuous.com/feed"
         "http://gregnuckols.wordpress.com/feed/"
         "http://glennpendlay.wordpress.com/feed/"
         "http://loopinsight.com/feed/"
         "http://feeds2.feedburner.com/subtraction"
-        "http://feeds.feedburner.com/CoolTools"
-        "http://feeds.feedburner.com/toolsandtoys"
-        "http://blog.okcupid.com/index.php/feed/"
         "http://defectiveyeti.com/feed/"
         "http://feedproxy.google.com/Metafilter"
         ("http://www.smbc-comics.com/rss.php" comic)
-        "http://www.raywenderlich.com/feed"
-        "http://swoleateveryheight.blogspot.com/feeds/posts/default"
-        "http://givemevelocity.blogspot.com/feeds/posts/default"
-        "http://youarenotsosmart.com/feed/"
-        "http://paul.kishimoto.name/rss.xml"
-        "http://pantherarouge.tumblr.com/rss"
         "http://billhiggins.us/blog/feed"
-        "http://feeds.feedburner.com/EricWendelin"
-        "http://feeds.feedburner.com/massivegreatness"
-        "http://feeds.feedburner.com/dansdata/feed1"
         ("http://broodhollow.chainsawsuit.com/feed" comic)
-        "http://www.silverhydra.com/feed/"
         "http://www.howtospotapsychopath.com/feed/"
-        "http://scienceblogs.com/feed/"
         ("http://qcjeph.livejournal.com/data/rss" comic)
         ("http://thepunchlineismachismo.com/?feed=rss" comic)
-        "http://www.mostgood.net/blog?format=RSS"
         "http://www.mistys-internet.website/blog/atom.xml"
-        "http://blog.thoughtbrain.com/feed/"
-        "http://www.zdnet.com/blog/violetblue/rss?m=50"
         "http://feeds.feedburner.com/jackcheng"
         ("http://feeds2.feedburner.com/WastedTalentRss" comic)
-        ("http://paranatural.net/feed/" comic)
         ("http://www.hunterblackcomics.com/feed" comic)
         "http://cannaw.blogspot.com/feeds/posts/default"
         "http://billhiggins.us/journal/feed/"
         "http://blog.plover.com/index.rss"
-        "http://blogs.msdn.com/oldnewthing/atom.xml"
         "http://technomancy.us/feed/atom.xml"
-        "http://planet.factorcode.org/feed.xml"
-        "http://conway.rutgers.edu/~ccshan/wiki/blog/index.atom"
         "http://blog.sanctum.geek.nz/feed/"
         ("http://www.threewordphrase.com/rss.xml" comic)
         ("http://achewood.com/rss.php" comic)
-        "http://emacs.wordpress.com/feed/"
         "http://www.bluishcoder.co.nz/atom.xml"
-        "http://www.catonmat.net/feed/"
         "http://joelonsoftware.com/rss.xml"
-        "http://feeds.feedburner.com/BrettTerpstra"
-        "http://feeds.feedburner.com/allthingsgym"
-        "http://chaosandpain.blogspot.com/feeds/posts/default"
-        "http://theorytopractice.wordpress.com/feed/"
-        "http://wildgorillaman.blogspot.com/feeds/posts/default"
-        "http://mattgemmell.com/feed"
-        "http://www.cimgf.com/feed/"))
+        "http://feeds.feedburner.com/allthingsgym"))
