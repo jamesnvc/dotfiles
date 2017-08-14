@@ -22,3 +22,6 @@ emacs.d/eshell
 emacs.d/auto-save-list/
 emacs.d/bak/
 emacs.d/projectile-bookmarks.eld
+emacs.d/undo
+emacs.d/bookmarks
+emacs.d/url
