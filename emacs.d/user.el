@@ -121,7 +121,8 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
   (evil-leader/set-key-for-mode 'clojure-mode "!" #'cogent/eval-last-sexp-and-replace)
   (evil-define-key 'normal clojure-mode-map (kbd "] C-d") #'cider-find-var)
   (evil-define-key 'normal clojure-mode-map "K" #'cider-doc)
-  (evil-define-key 'normal clojure-mode-map (kbd "M-r") #'cider-refresh))
+  (evil-define-key 'normal clojure-mode-map (kbd "M-r") #'(lambda () (interactive)
+                                                            (cider-load-file (buffer-file-name)))))
 (add-hook 'clojure-mode-hook #'cogent/clojure-hook)
 
 ;; Eshell
