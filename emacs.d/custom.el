@@ -35,7 +35,7 @@ Entered on %U
  '(scroll-bar-mode nil)
  '(tool-bar-mode nil)
  '(undo-tree-auto-save-history t)
- '(undo-tree-history-directory-alist (quote (("." . "/home/james/.emacs.d/undo")))))
+ '(undo-tree-history-directory-alist (quote (("." . "/Users/james/.emacs.d/undo")))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
