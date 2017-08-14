@@ -120,10 +120,11 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
   ;; like `cp' make `c-<operator>' not work
   (evil-leader/set-key-for-mode 'clojure-mode "p" #'cogent/eval-last-sexp)
   (evil-leader/set-key-for-mode 'clojure-mode "!" #'cogent/eval-last-sexp-and-replace)
-  (evil-define-key 'normal clojure-mode-map (kbd "] C-d") #'cider-find-var)
-  (evil-define-key 'normal clojure-mode-map "K" #'cider-doc)
-  (evil-define-key 'normal clojure-mode-map (kbd "M-r") #'(lambda () (interactive)
-                                                            (cider-load-file (buffer-file-name)))))
+  (evil-define-key 'normal clojure-mode-map
+    (kbd "] C-d") #'cider-find-var
+    "K" #'cider-doc
+    (kbd "M-r") #'(lambda () (interactive)
+                    (cider-load-file (buffer-file-name)))))
 (add-hook 'clojure-mode-hook #'cogent/clojure-hook)
 
 ;; Eshell
