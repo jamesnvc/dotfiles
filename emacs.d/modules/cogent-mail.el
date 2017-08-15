@@ -12,7 +12,7 @@
       ;; smtp config
       smtpmail-smtp-server "smtp.gmail.com"
       smtpmail-smtp-service 465
-      smtpmail-stream-type 'starttls
+      smtpmail-stream-type 'ssl
       message-send-mail-function 'message-smtpmail-send-it
 
       ;; report problems with the smtp server
