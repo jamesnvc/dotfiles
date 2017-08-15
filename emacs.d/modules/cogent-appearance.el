@@ -85,7 +85,6 @@
 (eval-after-load "flycheck" '(diminish 'flycheck-mode))
 (eval-after-load "git-gutter+" '(diminish 'git-gutter+-mode))
 (eval-after-load "evil-mc" '(diminish 'evil-mc-mode "cursors"))
-(eval-after-load "helm" '(diminish 'helm-mode))
 (diminish 'auto-revert-mode)
 
 (eval-after-load "js2-mode"
