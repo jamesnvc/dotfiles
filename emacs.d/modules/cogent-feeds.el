@@ -17,7 +17,7 @@
     "o" #'elfeed-search-browse-url
     "r" #'elfeed-search-untag-all-unread
     "y" #'elfeed-search-yank
-    "R" #'elfeed-update
+    "=" #'elfeed-update
     (kbd "RET") #'elfeed-search-show-entry)
   (evil-define-key 'normal elfeed-show-mode-map
     "q" #'elfeed-kill-buffer
