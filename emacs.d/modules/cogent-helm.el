@@ -20,6 +20,7 @@
                 helm-recentf-fuzzy-match t
                 helm-apropos-fuzzy-match t)
   (set-face-attribute 'helm-source-header nil :height 0.75)
+  (diminish 'helm-mode)
   :bind (("M-x" . helm-M-x)
          ("C-x C-f" . helm-find-files)
          ("C-x C-g" . helm-do-grep)

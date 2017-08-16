@@ -3,27 +3,30 @@
 (autoload 'notmuch "notmuch"
   "notmuch mail" t)
 
+
 ;; setup the mail address and use name
-(setq mail-user-agent 'message-user-agent)
-(setq user-mail-address (cogent/user-email)
-      user-full-name (cogent/user-full-name))
+(setq mail-user-agent 'message-user-agent
+      user-mail-address (cogent/user-email)
+      user-full-name (cogent/user-full-name)
 
-;; smtp config
-(setq smtpmail-smtp-server "smtp.gmail.com"
-      message-send-mail-function 'message-smtpmail-send-it)
+      ;; smtp config
+      smtpmail-smtp-server "smtp.gmail.com"
+      smtpmail-smtp-service 465
+      smtpmail-stream-type 'ssl
+      message-send-mail-function 'message-smtpmail-send-it
 
-;; report problems with the smtp server
-(setq smtpmail-debug-info t)
+      ;; report problems with the smtp server
+      smtpmail-debug-info t
 
-;; add Cc and Bcc headers to the message buffer
-(setq message-default-mail-headers "Cc: \nBcc: \n")
+      ;; add Cc and Bcc headers to the message buffer
+      message-default-mail-headers "Cc: \nBcc: \n"
 
-;; postponed message is put in the following draft directory
-(setq message-auto-save-directory "~/mail/draft")
-(setq message-kill-buffer-on-exit t)
+      ;; postponed message is put in the following draft directory
+      message-auto-save-directory "~/mail/draft"
+      message-kill-buffer-on-exit t
 
-;; change the directory to store the sent mail
-(setq message-directory "~/mail/")
+      ;; change the directory to store the sent mail
+      message-directory "~/mail/")
 
 (with-eval-after-load "notmuch"
   (setq notmuch-address-selection-function

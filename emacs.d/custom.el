@@ -32,6 +32,9 @@
       "* %?
 Entered on %U
    %a"))))
+ '(package-selected-packages
+   (quote
+    (elfeed-goodies elfeed spaceline-all-the-icons web-mode volatile-highlights use-package twittering-mode tern swiper-helm spaceline smooth-scrolling shrink-whitespace rainbow-mode paradox org-plus-contrib org-cliplink org-bullets nyan-mode material-theme markdown-mode linum-relative json-mode js2-refactor ibuffer-projectile hlinum highlight-parentheses helm-projectile helm-flycheck helm-flx helm-ext helm-cider helm-ag git-gutter-fringe+ gist flycheck-color-mode-line f evil-surround evil-search-highlight-persist evil-org evil-nerd-commenter evil-mc evil-magit evil-leader ethan-wspace eshell-git-prompt eros dired+ company-try-hard company-quickhelp company-emoji cljr-helm alchemist)))
  '(scroll-bar-mode nil)
  '(tool-bar-mode nil)
  '(undo-tree-auto-save-history t)
@@ -42,4 +45,6 @@ Entered on %U
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((((class color) (min-colors 89)) (:foreground "#ffffff" :background "#263238"))))
+ '(mode-line ((t (:background "#1c1f26" :foreground "#ffffff" :family "PragmataPro"))))
+ '(mode-line-highlight ((t (:foreground "#b39ddb" :box nil))))
  '(spaceline-evil-visual ((t (:inherit mode-line :background "dark slate blue" :foreground "#ffffff")))))
