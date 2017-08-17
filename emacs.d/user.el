@@ -181,7 +181,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
     ((make-helm-splitter (name open-fn split-fn)
                          `(defun ,name (_candidate)
                             (require 'winner)
-                            (select-window (car (last (winner-sorted-window-list))))
+                            (select-window (first (winner-sorted-window-list)))
                             ;; Display buffers in new windows
                             (dolist (cand (helm-marked-candidates))
                               (select-window (,split-fn))
