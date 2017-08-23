@@ -1,6 +1,7 @@
 ;; -*- lexical-binding: t -*-
 
 (set-frame-font "PragmataPro 7" nil t)
+(require 'cogent-pragmata)
 
 ;; Quick way to jump here
 (set-register ?e (cons 'file (concat dotfiles-dir "user.el")))
@@ -10,9 +11,6 @@
 (global-set-key (kbd "<f4>") 'calc)
 (global-set-key (kbd "<f5>") 'notmuch)
 (global-set-key (kbd "<f6>") 'elfeed)
-
-(when (member "Symbola" (font-family-list))
-  (set-fontset-font t 'unicode "Symbola" nil 'prepend))
 
 ;; Make C-u inverse of C-d like vim & move universal-argument to M-u
 ;; (since that's upcase-word by default & we'll use vim bindings for
@@ -130,8 +128,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (global-set-key (kbd "<f3>") 'eshell)
 
 ;; Fancy symbols
-(setq prettify-symbols-alist
-      '(("lambda" . 955)))
+(push '("lambda" . 955) prettify-symbols-alist)
 (add-hook 'emacs-lisp-mode-hook 'prettify-symbols-mode)
 
 (with-eval-after-load "company"
