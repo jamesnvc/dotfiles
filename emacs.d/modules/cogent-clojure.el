@@ -20,11 +20,10 @@
      (use-package clj-refactor
        :config
        (add-hook 'clojure-mode-hook (lambda () (clj-refactor-mode 1)))
-       (with-eval-after-load "helm"
-         (use-package cljr-helm
-           :commands cljr-helm
-           :config
-           (evil-leader/set-key-for-mode 'clojure-mode "r" 'cljr-helm))))))
+       (use-package cljr-helm
+         :commands cljr-helm
+         :config
+         (evil-leader/set-key-for-mode 'clojure-mode "r" 'cljr-helm)))))
   (with-eval-after-load "company"
     (add-hook 'cider-repl-mode-hook #'cider-company-enable-fuzzy-completion)
     (add-hook 'cider-mode-hook #'cider-company-enable-fuzzy-completion)))
