@@ -84,7 +84,9 @@
 (eval-after-load "undo-tree" '(diminish 'undo-tree-mode))
 (eval-after-load "flycheck" '(diminish 'flycheck-mode))
 (eval-after-load "git-gutter+" '(diminish 'git-gutter+-mode))
-(eval-after-load "evil-mc" '(diminish 'evil-mc-mode "cursors"))
+(eval-after-load "evil-mc" '(diminish 'evil-mc-mode))
+(eval-after-load "geiser" '(diminish 'geiser-autodoc-mode))
+(eval-after-load "company" '(diminish 'company-mode))
 (diminish 'auto-revert-mode)
 
 (eval-after-load "js2-mode"
@@ -121,6 +123,7 @@
   (spaceline-toggle-buffer-encoding-abbrev-off)
   (spaceline-toggle-buffer-size-off)
   (spaceline-toggle-major-mode-off)
+  (spaceline-toggle-version-control-on)
   (setq spaceline-highlight-face-func #'spaceline-highlight-face-evil-state
         spaceline-window-numbers-unicode t
         spaceline-workspace-numbers-unicode t))
