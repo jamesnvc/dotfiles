@@ -132,4 +132,7 @@
 
 (cogent-appearance/dark)
 
+(when (member "Symbola" (font-family-list))
+  (set-fontset-font t 'unicode "Symbola" nil 'prepend))
+
 (provide 'cogent-appearance)
