@@ -31,6 +31,7 @@
       "* %?
 Entered on %U
    %a"))))
+ '(powerline-default-separator (quote bar))
  '(scroll-bar-mode nil)
  '(tool-bar-mode nil)
  '(undo-tree-auto-save-history t)
