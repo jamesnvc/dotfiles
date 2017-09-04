@@ -3,6 +3,10 @@
 (set-frame-font "PragmataPro 14" nil t)
 (require 'cogent-pragmata)
 
+;; Fix path for mac
+(add-to-list 'exec-path "/Users/james/bin")
+(setenv "PATH" (concat "/Users/james/bin:" (getenv "PATH")))
+
 ;; Quick way to jump here
 (set-register ?e (cons 'file (concat dotfiles-dir "user.el")))
 
