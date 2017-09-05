@@ -32,6 +32,9 @@
       "* %?
 Entered on %U
    %a"))))
+ '(package-selected-packages
+   (quote
+    (quack geiser web-mode web volatile-highlights use-package twittering-mode tern swiper-helm spaceline smooth-scrolling shrink-whitespace rainbow-mode paradox org-plus-contrib org-cliplink org-bullets nyan-mode monroe material-theme markdown-mode linum-relative json-mode js2-refactor ibuffer-projectile hlinum highlight-parentheses helm-projectile helm-flycheck helm-flx helm-ext helm-cider helm-ag git-gutter-fringe+ git-gutter gist flycheck-color-mode-line f evil-surround evil-search-highlight-persist evil-org evil-nerd-commenter evil-mc evil-magit evil-leader ethan-wspace eshell-git-prompt eros elfeed-org elfeed-goodies dired+ company-try-hard company-quickhelp company-emoji cljr-helm alchemist)))
  '(scroll-bar-mode nil)
  '(tool-bar-mode nil)
  '(undo-tree-auto-save-history t)
