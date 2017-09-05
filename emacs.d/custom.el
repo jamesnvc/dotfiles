@@ -9,18 +9,19 @@
     ("98cc377af705c0f2133bb6d340bf0becd08944a588804ee655809da5d8140de6" default)))
  '(eshell-visual-commands
    (quote
-    ("htop" "vi" "screen" "top" "less" "more" "lynx" "ncftp" "pine" "tin" "trn" "elm")))
+    ("htop" "vi" "screen" "top" "less" "more" "lynx" "ncftp" "pine" "tin" "trn" "elm" "psql")))
  '(eshell-visual-subcommands (quote (("git " "log" "lol" "diff" "show"))))
+ '(evil-search-module (quote evil-search))
  '(menu-bar-mode nil)
  '(notmuch-saved-searches
    (quote
     ((:name "inbox" :query "tag:inbox" :key "i")
      (:name "unread" :query "tag:unread" :key "u")
-     (:name "flagged" :query "tag:flagged" :key "f")
      (:name "sent" :query "tag:sent" :key "t")
      (:name "drafts" :query "tag:draft" :key "d")
      (:name "all mail" :query "*" :key "a")
-     (:name "new" :query "tag:inbox and tag:unread"))))
+     (:name "new" :query "tag:inbox and tag:unread")
+     (:name "flagged" :query "tag:flagged"))))
  '(org-capture-templates
    (quote
     (("n" "Note" entry
