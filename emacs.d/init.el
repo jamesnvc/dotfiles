@@ -40,6 +40,7 @@
 (require 'cogent-git)
 (require 'cogent-clojure)
 (require 'cogent-common-lisp)
+(require 'cogent-racket)
 (require 'cogent-elixir)
 (require 'cogent-html)
 (require 'cogent-javascript)
