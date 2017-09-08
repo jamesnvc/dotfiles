@@ -126,6 +126,11 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 
 ;; Eshell
 (global-set-key (kbd "<f3>") 'eshell)
+(defun cogent/eshell-hook ()
+  (define-key eshell-mode-map [remap eshell-pcomplete] 'helm-esh-pcomplete)
+  (define-key eshell-mode-map (kbd "M-r") #'helm-eshell-history)
+  (evil-mc-mode -1))
+(add-hook 'eshell-mode-hook #'cogent/eshell-hook)
 
 ;; Fancy symbols
 (push '("lambda" . 955) prettify-symbols-alist)
