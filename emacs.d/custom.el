@@ -46,4 +46,5 @@ Entered on %U
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((((class color) (min-colors 89)) (:foreground "#ffffff" :background "#263238"))))
+ '(quack-pltish-defn-face ((t (:foreground "dodger blue" :weight bold))))
  '(spaceline-evil-visual ((t (:inherit mode-line :background "dark slate blue" :foreground "#ffffff")))))
