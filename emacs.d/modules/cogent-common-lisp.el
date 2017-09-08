@@ -11,6 +11,8 @@
   (use-package slime-company
     :demand t
     :config
-    (setq slime-contribs '(slime-fancy slime-company))))
+    (setq slime-contribs '(slime-fancy slime-company)))
+  :init
+  (evil-define-key 'normal slime-mode-map (kbd "] C-d") #'slime-edit-definition))
 
 (provide 'cogent-common-lisp)
