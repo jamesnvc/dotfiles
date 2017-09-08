@@ -7,7 +7,7 @@
   (use-package quack
     :demand t)
   (add-hook 'scheme-mode-hook #'enable-paredit-mode)
-  (evil-define-key 'normal geiser-mode-map (kbd "] C-d")
-    #'geiser-edit-definition))
+  (evil-define-key 'normal geiser-mode-map
+    (kbd "] C-d") #'geiser-edit-symbol-at-point))
 
 (provide 'cogent-racket)
