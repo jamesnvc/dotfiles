@@ -5,8 +5,9 @@
 
 (defun cogent-appearance/dark ()
   (interactive)
-  (use-package material-theme)
-  (load-theme 'material)
+  ;; (use-package material-theme)
+  ;; (load-theme 'material)
+  (use-package dracula-theme)
 
   ;; (set-face-background 'default "#000")
 
