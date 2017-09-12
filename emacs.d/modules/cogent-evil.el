@@ -13,8 +13,14 @@
   (use-package evil-search-highlight-persist
     :demand t
     :config
+    (defun cogent/evil-remove-search-highlight ()
+      (interactive)
+      (if (equalp evil-search-module 'evil-search)
+          (evil-ex-nohighlight)
+        (evil-search-highlight-persist-remove-all)))
+
     (global-evil-search-highlight-persist t)
-    (evil-leader/set-key "/" 'evil-search-highlight-persist-remove-all))
+    (evil-leader/set-key "/" #'cogent/evil-remove-search-highlight))
   (use-package evil-nerd-commenter
     :config
     (evil-leader/set-key
