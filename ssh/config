@@ -225,3 +225,8 @@ Host munch
   Hostname 45.63.78.0
   TCPKeepAlive yes
   IdentitiesOnly yes
+
+Host mealsurfers
+  User james
+  IdentityFile ~/.ssh-keys/mealsurfers
+  Hostname 45.63.78.0
