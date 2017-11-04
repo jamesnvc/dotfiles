@@ -44,6 +44,7 @@
 (require 'cogent-elixir)
 (require 'cogent-html)
 (require 'cogent-javascript)
+(require 'cogent-haskell)
 (require 'cogent-orgmode)
 (require 'cogent-markdown)
 (require 'cogent-mail)
