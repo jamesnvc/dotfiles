@@ -103,6 +103,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
   (interactive "P")
   (save-excursion
     (cogent/evil-forward-sexp)
+    (forward-char)
     (cider-eval-last-sexp prefix)))
 
 (defun cogent/eval-last-sexp-and-replace ()
@@ -110,6 +111,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
   (interactive)
   (save-excursion
     (cogent/evil-forward-sexp)
+    (forward-char)
     (cider-eval-last-sexp-and-replace)))
 
 (defun cogent/clojure-hook ()
