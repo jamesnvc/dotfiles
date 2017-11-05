@@ -273,3 +273,17 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (defun cogent/scheme-hook ()
   (put 'if-let 'scheme-indent-function 1))
 (add-hook 'scheme-mode-hook #'cogent/scheme-hook)
+
+;; Make Gnome unicode input method work for emacs as well
+;; Doing this instead of C-x 8 RET so the Kaleidoscope unicode input
+;; method works in Emacs too
+(require 's)
+(define-key global-map (kbd "C-S-u")
+  #'(lambda ()
+      (interactive)
+      (let* ((input-chs (cl-loop for ch = (read-char)
+                                until (= ch ?\s)
+                                collect ch ))
+            (input-str (apply #'string input-chs))
+            (input-num (string-to-number input-str 16)))
+        (insert-char input-num))))
