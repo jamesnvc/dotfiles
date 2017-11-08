@@ -26,6 +26,7 @@
 (require 'cogent-base)
 (require 'cogent-package)
 (require 'cogent-appearance)
+(require 'cogent-windows)
 (require 'cogent-evil)
 (require 'cogent-codestyle)
 (require 'cogent-eshell)
