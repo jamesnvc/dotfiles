@@ -59,8 +59,6 @@
       (evil-insert-newline-above))))
 (define-key evil-normal-state-map (kbd "[ <SPC>") 'cogent/line-above)
 
-;; TODO: indent >> << bindings
-
 ;; Moving windows
 (define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
 (define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)
