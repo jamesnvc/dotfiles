@@ -5,11 +5,12 @@
   (use-package evil-surround
     :demand t
     :config (global-evil-surround-mode 1))
-  (use-package evil-leader
+  (use-package general
+    :demand t
     :config
-    (setq evil-leader/in-all-states 1)
-    (global-evil-leader-mode)
-    (evil-leader/set-leader "<SPC>"))
+    (setq general-default-keymaps 'evil-normal-state-map)
+    ;; (setq general-default-prefix "SPC")
+    (general-evil-setup))
   (use-package evil-search-highlight-persist
     :demand t
     :config
@@ -20,11 +21,12 @@
         (evil-search-highlight-persist-remove-all)))
 
     (global-evil-search-highlight-persist t)
-    (evil-leader/set-key "/" #'cogent/evil-remove-search-highlight))
+    (general-nmap :prefix "SPC"
+     "/" 'cogent/evil-remove-search-highlight))
   (use-package evil-nerd-commenter
     :config
-    (evil-leader/set-key
-      "c SPC" 'evilnc-comment-or-uncomment-lines))
+    (general-nmap :prefix "SPC"
+     "c SPC" 'evilnc-comment-or-uncomment-lines))
   (use-package evil-mc
     :config
     (global-evil-mc-mode 1))

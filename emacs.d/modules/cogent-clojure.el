@@ -23,7 +23,9 @@
        (use-package cljr-helm
          :commands cljr-helm
          :config
-         (evil-leader/set-key-for-mode 'clojure-mode "r" 'cljr-helm)))))
+         (general-nmap :prefix "SPC"
+                       :keymaps 'clojure-mode-map
+                       "r" 'cljr-helm)))))
   (with-eval-after-load "company"
     (add-hook 'cider-repl-mode-hook #'cider-company-enable-fuzzy-completion)
     (add-hook 'cider-mode-hook #'cider-company-enable-fuzzy-completion)))
