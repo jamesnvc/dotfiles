@@ -37,7 +37,7 @@
                                          (dired (f-dirname (buffer-file-name)))))
 (evil-define-key 'normal dired-mode-map "-" 'dired-up-directory)
 
-(evil-leader/set-key
+(general-nmap :prefix "SPC"
   "w" 'save-buffer
   ;; misc to make command mode easier
   "<SPC>" 'evil-ex
@@ -60,19 +60,18 @@
 (define-key evil-normal-state-map (kbd "[ <SPC>") 'cogent/line-above)
 
 ;; Moving windows
-(define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
-(define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)
-(define-key evil-normal-state-map (kbd "C-j") 'evil-window-down)
-(define-key evil-normal-state-map (kbd "C-k") 'evil-window-up)
-(define-key dired-mode-map (kbd "C-l") 'evil-window-right)
-(define-key dired-mode-map (kbd "C-h") 'evil-window-left)
-(define-key dired-mode-map (kbd "C-j") 'evil-window-down)
-(define-key dired-mode-map (kbd "C-k") 'evil-window-up)
+(general-define-key :keymaps '(evil-normal-state-map
+                               dired-mode-map)
+                    "C-l" 'evil-window-right
+                    "C-h" 'evil-window-left
+                    "C-j" 'evil-window-down
+                    "C-k" 'evil-window-up)
 
 ;; git bindings
-(define-key evil-normal-state-map (kbd "]c") 'git-gutter+-next-hunk)
-(define-key evil-normal-state-map (kbd "[c") 'git-gutter+-previous-hunk)
-(evil-leader/set-key
+(general-nmap
+ "]c" 'git-gutter+-next-hunk
+ "[c" 'git-gutter+-previous-hunk)
+(general-nmap :prefix "SPC"
   "h s" 'git-gutter+-stage-hunks
   "g s" 'magit-status
   "g w" 'magit-stage-file
@@ -88,13 +87,15 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
       (setq deactivate-mark t)
     (when (get-buffer "*Completions*") (delete-windows-on "*Completions*"))
     (abort-recursive-edit)))
-(define-key evil-normal-state-map [escape] 'keyboard-quit)
-(define-key evil-visual-state-map [escape] 'keyboard-quit)
-(define-key minibuffer-local-map [escape] 'minibuffer-keyboard-quit)
-(define-key minibuffer-local-ns-map [escape] 'minibuffer-keyboard-quit)
-(define-key minibuffer-local-completion-map [escape] 'minibuffer-keyboard-quit)
-(define-key minibuffer-local-must-match-map [escape] 'minibuffer-keyboard-quit)
-(define-key minibuffer-local-isearch-map [escape] 'minibuffer-keyboard-quit)
+(general-define-key :keymaps '(evil-normal-state-map evil-visual-state-map)
+                    "<ESC>" 'keyboard-quit)
+(general-define-key :keymaps '(minibuffer-local-map
+                               minibuffer-local-map
+                               minibuffer-local-ns-map
+                               minibuffer-local-completion-map
+                               minibuffer-local-must-match-map
+                               minibuffer-local-isearch-map)
+                    "<ESC>" 'minibuffer-keyboard-quit)
 
 ;; Like vim-fireplace
 ;; TODO: put this in cogent-clojure
@@ -117,8 +118,10 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (defun cogent/clojure-hook ()
   ;; TODO: would be nice to bind like in vim, but it seems bindings
   ;; like `cp' make `c-<operator>' not work
-  (evil-leader/set-key-for-mode 'clojure-mode "p" #'cogent/eval-last-sexp)
-  (evil-leader/set-key-for-mode 'clojure-mode "!" #'cogent/eval-last-sexp-and-replace)
+  (general-nmap :prefix "SPC"
+                :keymaps 'clojure-mode-map
+                "p" #'cogent/eval-last-sexp
+                "!" #'cogent/eval-last-sexp-and-replace)
   (evil-define-key 'normal clojure-mode-map
     (kbd "] C-d") #'cider-find-var
     "K" #'cider-doc
@@ -153,9 +156,9 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
   (define-key dired-mode-map (kbd "C-o") 'quit-window))
 
 ;; Org
-(evil-leader/set-key
-  "o a" 'org-agenda
-  "o c" 'org-capture)
+(general-nmap :prefix "SPC o"
+  "a" 'org-agenda
+  "c" 'org-capture)
 (setq cogent/org-capture-file (concat org-directory "/refile.org"))
 (setq cogent/org-diary-file (concat org-directory "/diary.org"))
 (set-register ?o (cons 'file org-default-notes-file))
@@ -172,7 +175,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (setq org-refile-allow-creating-parent-nodes 'confirm)
 
 ;; Helm
-(evil-leader/set-key
+(general-nmap :prefix "SPC"
   ;; like Denite
   "T" 'helm-find-files
   "t" 'helm-projectile-find-file-dwim
@@ -251,20 +254,18 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 ;; Mail
 
 (with-eval-after-load "notmuch"
-  (define-key notmuch-search-mode-map (kbd "j") 'notmuch-search-next-thread)
-  (define-key notmuch-search-mode-map (kbd "k") 'notmuch-search-previous-thread)
-  (define-key notmuch-search-mode-map (kbd "g g") 'notmuch-search-first-thread)
-  (define-key notmuch-search-mode-map (kbd "G") 'notmuch-search-last-thread)
+  (general-define-key :keymaps '(notmuch-search-mode-map)
+                      "j" 'notmuch-search-next-thread
+                      "k" 'notmuch-search-previous-thread
+                      "g g" 'notmuch-search-first-thread
+                      "G" 'notmuch-search-last-thread)
 
-  (define-key notmuch-search-mode-map (kbd "C-l") 'evil-window-right)
-  (define-key notmuch-search-mode-map (kbd "C-h") 'evil-window-left)
-  (define-key notmuch-search-mode-map (kbd "C-j") 'evil-window-down)
-  (define-key notmuch-search-mode-map (kbd "C-k") 'evil-window-up)
-
-  (define-key notmuch-hello-mode-map (kbd "C-l") 'evil-window-right)
-  (define-key notmuch-hello-mode-map (kbd "C-h") 'evil-window-left)
-  (define-key notmuch-hello-mode-map (kbd "C-j") 'evil-window-down)
-  (define-key notmuch-hello-mode-map (kbd "C-k") 'evil-window-up))
+  (general-define-key :keymaps '(notmuch-search-mode-map
+                                 notmuch-hello-mode-map)
+                      "C-l" 'evil-window-right
+                      "C-h" 'evil-window-left
+                      "C-j" 'evil-window-down
+                      "C-k" 'evil-window-up))
 
 ;; Elfeed
 (load (concat dotfiles-dir "feeds.el"))
