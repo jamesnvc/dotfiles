@@ -66,13 +66,16 @@
 ;; Moving windows
 (general-define-key :keymaps '(evil-normal-state-map
                                dired-mode-map)
+                    :repeat t
                     "C-l" 'evil-window-right
                     "C-h" 'evil-window-left
                     "C-j" 'evil-window-down
                     "C-k" 'evil-window-up)
 
 ;; git bindings
-(general-nmap
+(general-define-key
+ :keymaps 'normal
+ :jump t
  "]c" 'git-gutter+-next-hunk
  "[c" 'git-gutter+-previous-hunk)
 (general-nmap :prefix "SPC"
