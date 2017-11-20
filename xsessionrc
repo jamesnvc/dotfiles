@@ -11,14 +11,14 @@ if xinput --list | grep "Slimblade Trackball" &> /dev/null ; then
   xinput set-prop "Kensington Kensington Slimblade Trackball" "Evdev Middle Button Emulation" 1                                                                                                  [INSERT ]
 fi
 
-XKBDIR="$HOME/.xkb"
-XKBMAPFILE="$XKBDIR/keymap/custom"
+# XKBDIR="$HOME/.xkb"
+# XKBMAPFILE="$XKBDIR/keymap/custom"
 
-xkbcomp -I"$XKBDIR" "$XKBMAPFILE" "${DISPLAY%%.*}"
+# xkbcomp -I"$XKBDIR" "$XKBMAPFILE" "${DISPLAY%%.*}"
 
 wine "C:\Program Files (x86)\1Password 4\Agile1pAgent.exe" &
 
-xcape -e 'Shift_L=parenleft;Shift_R=parenright;Control_L=Escape'
+#xcape -e 'Shift_L=parenleft;Shift_R=parenright;Control_L=Escape'
 
 eval $(gpg-agent --daemon)
 

@@ -11,6 +11,8 @@
 (set-register ?e (cons 'file (concat dotfiles-dir "user.el")))
 
 (define-key evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
+(define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
+(define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
 
 (global-set-key (kbd "<f4>") 'calc)
 (global-set-key (kbd "<f5>") 'notmuch)
@@ -61,8 +63,6 @@
       (evil-insert-newline-above))))
 (define-key evil-normal-state-map (kbd "[ <SPC>") 'cogent/line-above)
 
-;; TODO: indent >> << bindings
-
 ;; Moving windows
 (define-key evil-normal-state-map (kbd "C-l") 'evil-window-right)
 (define-key evil-normal-state-map (kbd "C-h") 'evil-window-left)
@@ -107,6 +107,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
   (interactive "P")
   (save-excursion
     (cogent/evil-forward-sexp)
+    (forward-char)
     (cider-eval-last-sexp prefix)))
 
 (defun cogent/eval-last-sexp-and-replace ()
@@ -114,6 +115,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
   (interactive)
   (save-excursion
     (cogent/evil-forward-sexp)
+    (forward-char)
     (cider-eval-last-sexp-and-replace)))
 
 (defun cogent/clojure-hook ()
@@ -275,3 +277,17 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (defun cogent/scheme-hook ()
   (put 'if-let 'scheme-indent-function 1))
 (add-hook 'scheme-mode-hook #'cogent/scheme-hook)
+
+;; Make Gnome unicode input method work for emacs as well
+;; Doing this instead of C-x 8 RET so the Kaleidoscope unicode input
+;; method works in Emacs too
+(require 's)
+(define-key global-map (kbd "C-S-u")
+  #'(lambda ()
+      (interactive)
+      (let* ((input-chs (cl-loop for ch = (read-char)
+                                until (= ch ?\s)
+                                collect ch ))
+            (input-str (apply #'string input-chs))
+            (input-num (string-to-number input-str 16)))
+        (insert-char input-num))))
