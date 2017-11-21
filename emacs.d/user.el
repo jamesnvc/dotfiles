@@ -94,15 +94,14 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
     (when (get-buffer "*Completions*") (delete-windows-on "*Completions*"))
     (abort-recursive-edit)))
 (general-define-key :keymaps '(evil-normal-state-map evil-visual-state-map)
-                    "<ESC>" 'keyboard-quit)
+                    [escape] 'keyboard-quit)
 (general-define-key :keymaps '(minibuffer-local-map
-                               minibuffer-local-map
                                minibuffer-local-ns-map
                                minibuffer-local-completion-map
                                minibuffer-local-must-match-map
                                minibuffer-local-isearch-map)
-                    :states '(emacs)
-                    "<ESC>" 'minibuffer-keyboard-quit)
+                    :states nil
+                    [escape] 'minibuffer-keyboard-quit)
 
 ;; Like vim-fireplace
 ;; TODO: put this in cogent-clojure
