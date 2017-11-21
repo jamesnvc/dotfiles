@@ -105,7 +105,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 
 ;; Like vim-fireplace
 ;; TODO: put this in cogent-clojure
-(defun cogent/eval-last-sexp (&optional prefix)
+(defun cogent/eval-next-sexp (&optional prefix)
   "Wrap `cider-eval-last-sexp' for evil-mode, by moving one character ahead"
   (interactive "P")
   (save-excursion
@@ -113,7 +113,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
     (forward-char)
     (cider-eval-last-sexp prefix)))
 
-(defun cogent/eval-last-sexp-and-replace ()
+(defun cogent/eval-next-sexp-and-replace ()
   "Wrap `cider-eval-last-sexp-and-replace' for evil-mode, by moving one character ahead"
   (interactive)
   (save-excursion
@@ -122,17 +122,18 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
     (cider-eval-last-sexp-and-replace)))
 
 (defun cogent/clojure-hook ()
-  ;; TODO: would be nice to bind like in vim, but it seems bindings
-  ;; like `cp' make `c-<operator>' not work
-  (general-nmap :prefix "SPC"
-                :keymaps 'clojure-mode-map
-                "p" #'cogent/eval-last-sexp
-                "!" #'cogent/eval-last-sexp-and-replace)
-  (evil-define-key 'normal clojure-mode-map
-    (kbd "] C-d") #'cider-find-var
-    "K" #'cider-doc
-    (kbd "M-r") #'(lambda () (interactive)
-                    (cider-load-file (buffer-file-name)))))
+  (general-nmap "c"
+                (general-key-dispatch 'evil-change
+                  "pp" 'cogent/eval-next-sexp
+                  "p!" 'cogent/eval-next-sexp-and-replace
+                  "c" 'evil-change-whole-line))
+  (general-vmap "c" 'evil-change)
+
+  (general-nmap
+   :keymaps '(cider-mode-map)
+   "] C-d" 'cider-find-var
+   "K" 'cider-doc
+   "M-r" #'(lambda () (interactive) (cider-load-file (buffer-file-name)))))
 (add-hook 'clojure-mode-hook #'cogent/clojure-hook)
 
 ;; Eshell
