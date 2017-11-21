@@ -98,6 +98,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
                                minibuffer-local-completion-map
                                minibuffer-local-must-match-map
                                minibuffer-local-isearch-map)
+                    :states '(emacs)
                     "<ESC>" 'minibuffer-keyboard-quit)
 
 ;; Like vim-fireplace
