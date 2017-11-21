@@ -74,11 +74,14 @@
  :jump t
  "]c" 'git-gutter+-next-hunk
  "[c" 'git-gutter+-previous-hunk)
-(general-nmap :prefix "SPC"
-  "h s" 'git-gutter+-stage-hunks
-  "g s" 'magit-status
-  "g w" 'magit-stage-file
-  "g c" 'magit-commit)
+
+(general-nmap :prefix "SPC h"
+              "s" 'git-gutter+-stage-hunks)
+(general-nmap :prefix "SPC g"
+              "s" 'magit-status
+              "w" 'magit-stage-file
+              "c" 'magit-commit
+              "H" 'magit-log-buffer-file)
 
 ;;; esc quits
 (defun minibuffer-keyboard-quit ()
