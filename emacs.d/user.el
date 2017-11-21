@@ -37,7 +37,7 @@
                                          (dired (f-dirname (buffer-file-name)))))
 (evil-define-key 'normal dired-mode-map "-" 'dired-up-directory)
 
-(general-nmap :prefix "SPC"
+(general-nvmap :prefix "SPC"
   "w" 'save-buffer
   ;; misc to make command mode easier
   "<SPC>" 'evil-ex
@@ -75,9 +75,9 @@
  "]c" 'git-gutter+-next-hunk
  "[c" 'git-gutter+-previous-hunk)
 
-(general-nmap :prefix "SPC h"
+(general-nvmap :prefix "SPC h"
               "s" 'git-gutter+-stage-hunks)
-(general-nmap :prefix "SPC g"
+(general-nvmap :prefix "SPC g"
               "s" 'magit-status
               "w" 'magit-stage-file
               "c" 'magit-commit
@@ -163,7 +163,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
   (define-key dired-mode-map (kbd "C-o") 'quit-window))
 
 ;; Org
-(general-nmap :prefix "SPC o"
+(general-nvmap :prefix "SPC o"
   "a" 'org-agenda
   "c" 'org-capture)
 (setq cogent/org-capture-file (concat org-directory "/refile.org"))
@@ -182,7 +182,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (setq org-refile-allow-creating-parent-nodes 'confirm)
 
 ;; Helm
-(general-nmap :prefix "SPC"
+(general-nvmap :prefix "SPC"
   ;; like Denite
   "T" 'helm-find-files
   "t" 'helm-projectile-find-file-dwim
