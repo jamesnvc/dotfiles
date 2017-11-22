@@ -79,7 +79,6 @@ evil to have."
                     ;; Like vim-unimpaired
                     "] C-d" 'find-function-at-point)
 
-
 ;; Moving windows
 (general-define-key :keymaps '(normal
                                dired-mode-map
