@@ -5,12 +5,6 @@
   (use-package evil-surround
     :demand t
     :config (global-evil-surround-mode 1))
-  (use-package general
-    :demand t
-    :config
-    (setq general-default-keymaps 'evil-normal-state-map)
-    ;; (setq general-default-prefix "SPC")
-    (general-evil-setup))
   (use-package evil-search-highlight-persist
     :demand t
     :config

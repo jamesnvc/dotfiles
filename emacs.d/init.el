@@ -25,6 +25,7 @@
 (require 'cogent-general)
 (require 'cogent-base)
 (require 'cogent-package)
+(require 'cogent-keys)
 (require 'cogent-appearance)
 (require 'cogent-windows)
 (require 'cogent-evil)
