@@ -155,10 +155,14 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (general-vmap :keymaps 'cider-mode-map "c" 'evil-change)
 
 ;; Eshell
-(general-define-key :keymaps 'eshell-mode-map
-   [remap eshell-pcomplete] 'helm-esh-pcomplete
-   "M-r" 'helm-eshell-history)
-(add-hook 'eshell-mode-hook #'(lambda () (evil-mc-mode -1)))
+(add-hook 'eshell-mode-hook
+          #'(lambda ()
+              (evil-mc-mode -1)
+              ;; Need to do this in the hook because eshell defines its keymap
+              ;; in kind of a bizarre way
+              (general-define-key :keymaps 'eshell-mode-map
+                                  [remap eshell-pcomplete] 'helm-esh-pcomplete
+                                  "M-r" 'helm-eshell-history)))
 
 ;; Fancy symbols
 (push '("lambda" . 955) prettify-symbols-alist)
