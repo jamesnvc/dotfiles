@@ -22,6 +22,10 @@
                     "<f6>" 'elfeed)
 
 ;; Leader key stuff
+(defun cogent/quit-help-window ()
+  (interactive)
+  (quit-window nil (get-buffer-window "*Help*")))
+
 (general-nvmap :prefix "SPC"
                "w" 'save-buffer
                "x" 'evil-delete-buffer
@@ -31,7 +35,8 @@
                "t" 'helm-projectile-find-file-dwim
                "s" 'helm-projectile-ag
                "b" 'helm-buffers-list
-               "l" 'swiper-helm)
+               "l" 'swiper-helm
+               "q" 'cogent/quit-help-window)
 
 (defun cogent/evil-yank-to-eol (&optional argument)
   "Yank from point to end of line; like the behaviour I prefer `Y' in
