@@ -60,8 +60,7 @@
 (define-key evil-normal-state-map (kbd "[ <SPC>") 'cogent/line-above)
 
 ;; Moving windows
-(general-define-key :keymaps '(evil-normal-state-map
-                               dired-mode-map)
+(general-define-key :keymaps '(normal dired-mode-map)
                     :repeat t
                     "C-l" 'evil-window-right
                     "C-h" 'evil-window-left
