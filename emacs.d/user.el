@@ -24,7 +24,9 @@
 ;; Leader key stuff
 (defun cogent/quit-help-window ()
   (interactive)
-  (quit-window nil (get-buffer-window "*Help*")))
+  (let ((help-win (get-buffer-window "*Help*")))
+    (when help-win
+      (quit-window nil help-win))))
 
 (general-nvmap :prefix "SPC"
                "w" 'save-buffer
