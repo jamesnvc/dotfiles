@@ -53,6 +53,7 @@
 
 (general-nmap :keymaps 'cider-mode-map
               "c" (general-key-dispatch 'evil-change
+                    :name cogent/clojure-change-dispatch
                     "pp" 'cogent/cider-eval-next-sexp
                     "p!" 'cogent/cider-eval-next-sexp-and-replace
                     "c" 'evil-change-whole-line)

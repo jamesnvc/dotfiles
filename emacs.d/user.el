@@ -97,10 +97,11 @@ evil to have."
       (setq end (point))
       (eros-eval-last-sexp t)
       (delete-region start end))))
-(general-nmap :keymaps '(emacs-lisp-mode-map lisp-interaction-mode-map)
+(general-nmap :keymaps 'emacs-lisp-mode-map
               ;; Like vim-unimpaired
               "] C-d" 'find-function-at-point
               "c" (general-key-dispatch 'evil-change
+                    :name cogent/elisp-change-dispatch
                     "pp" 'cogent/elisp-eval-next-sexp
                     "p!" 'cogent/elisp-eval-and-replace-next-sexp
                     "c" 'evil-change-whole-line))
