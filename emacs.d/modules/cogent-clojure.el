@@ -34,4 +34,31 @@
   :commands enable-paredit-mode paredit-mode
   :diminish paredit-mode)
 
+;; Like vim-fireplace
+(defun cogent/cider-eval-next-sexp (&optional prefix)
+  "Wrap `cider-eval-last-sexp' for evil-mode, by moving one character ahead"
+  (interactive "P")
+  (save-excursion
+    (cogent/evil-forward-sexp)
+    (forward-char)
+    (cider-eval-last-sexp prefix)))
+
+(defun cogent/cider-eval-next-sexp-and-replace ()
+  "Wrap `cider-eval-last-sexp-and-replace' for evil-mode, by moving one character ahead"
+  (interactive)
+  (save-excursion
+    (cogent/evil-forward-sexp)
+    (forward-char)
+    (cider-eval-last-sexp-and-replace)))
+
+(general-nmap :keymaps 'cider-mode-map
+              "c" (general-key-dispatch 'evil-change
+                    "pp" 'cogent/cider-eval-next-sexp
+                    "p!" 'cogent/cider-eval-next-sexp-and-replace
+                    "c" 'evil-change-whole-line)
+              "] C-d" 'cider-find-var
+              "K" 'cider-doc
+              "M-r" #'(lambda () (interactive) (cider-load-file (buffer-file-name))))
+(general-vmap :keymaps 'cider-mode-map "c" 'evil-change)
+
 (provide 'cogent-clojure)
