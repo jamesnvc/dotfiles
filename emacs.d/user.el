@@ -81,9 +81,30 @@ evil to have."
 
 
 ;; Emacs-lisp
-(general-define-key :keymaps 'emacs-lisp-mode-map
-                    ;; Like vim-unimpaired
-                    "] C-d" 'find-function-at-point)
+(defun cogent/elisp-eval-next-sexp ()
+  (interactive)
+  (save-excursion
+    (cogent/evil-forward-sexp)
+    (forward-char)
+    (eros-eval-last-sexp nil)))
+(defun cogent/elisp-eval-and-replace-next-sexp ()
+  (interactive)
+  (let ((start (point))
+        end)
+    (save-excursion
+      (cogent/evil-forward-sexp)
+      (forward-char)
+      (setq end (point))
+      (eros-eval-last-sexp t)
+      (delete-region start end))))
+(general-nmap :keymaps '(emacs-lisp-mode-map lisp-interaction-mode-map)
+              ;; Like vim-unimpaired
+              "] C-d" 'find-function-at-point
+              "c" (general-key-dispatch 'evil-change
+                    "pp" 'cogent/elisp-eval-next-sexp
+                    "p!" 'cogent/elisp-eval-and-replace-next-sexp
+                    "c" 'evil-change-whole-line))
+(general-vmap :keymaps 'emacs-lisp-mode-map "c" 'evil-change)
 
 ;; Moving windows
 (general-define-key :keymaps '(normal
