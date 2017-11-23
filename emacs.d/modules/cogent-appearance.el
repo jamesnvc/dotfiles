@@ -133,7 +133,10 @@
 
 (cogent-appearance/dark)
 
-(when (member "Symbola" (font-family-list))
-  (set-fontset-font t 'unicode "Symbola" nil 'prepend))
+(cond
+ ((member "FSD Emoji" (font-family-list))
+  (set-fontset-font t 'unicode "FSD Emoji" nil 'prepend))
+ ((member "Symbola" (font-family-list))
+  (set-fontset-font t 'unicode "Symbola" nil 'prepend)))
 
 (provide 'cogent-appearance)
