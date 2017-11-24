@@ -88,6 +88,7 @@
 (eval-after-load "evil-mc" '(diminish 'evil-mc-mode))
 (eval-after-load "geiser" '(diminish 'geiser-autodoc-mode))
 (eval-after-load "company" '(diminish 'company-mode))
+(eval-after-load "flyspell" '(diminish 'flyspell-mode ""))
 (diminish 'auto-revert-mode)
 
 (use-package cyphejor
@@ -105,7 +106,9 @@
           ("sql" "")
           ("dired" "")
           ("eshell" "")
-          ("html" ""))))
+          ("html" "")
+          ("rust" "")
+          ("swift" ""))))
 (cyphejor-mode 1)
 
 ;; Handle ANSI colours in compile buffer output.
