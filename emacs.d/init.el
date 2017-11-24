@@ -48,6 +48,7 @@
 (require 'cogent-html)
 (require 'cogent-javascript)
 (require 'cogent-haskell)
+(require 'cogent-rust)
 (require 'cogent-orgmode)
 (require 'cogent-markdown)
 (require 'cogent-mail)
