@@ -104,7 +104,8 @@
           ("js2" "")
           ("sql" "")
           ("dired" "")
-          ("eshell" ""))))
+          ("eshell" "")
+          ("html" ""))))
 (cyphejor-mode 1)
 
 ;; Handle ANSI colours in compile buffer output.
