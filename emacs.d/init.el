@@ -27,6 +27,7 @@
 (require 'cogent-package)
 (require 'cogent-keys)
 (require 'cogent-appearance)
+(require 'cogent-fonts)
 (require 'cogent-windows)
 (require 'cogent-evil)
 (require 'cogent-codestyle)

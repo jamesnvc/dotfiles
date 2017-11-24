@@ -1,6 +1,6 @@
 ;; -*- lexical-binding: t -*-
 
-(set-frame-font "PragmataPro 8" nil t)
+(set-frame-font "PragmataPro 7" nil t)
 (require 'cogent-pragmata)
 
 ;; Quick way to jump here
@@ -35,7 +35,9 @@
                "s" 'helm-projectile-ag
                "b" 'helm-buffers-list
                "l" 'swiper-helm
-               "q" 'cogent/quit-help-window)
+               "q" 'cogent/quit-help-window
+               "+" (lambda () (interactive) (cogent-fonts/update-font-size 1))
+               "-" (lambda () (interactive) (cogent-fonts/update-font-size -1)))
 
 (defun cogent/evil-yank-to-eol (&optional argument)
   "Yank from point to end of line; like the behaviour I prefer `Y' in
