@@ -80,33 +80,32 @@
 (eval-after-load "skewer-mode" '(diminish 'skewer-mode))
 (eval-after-load "auto-indent-mode" '(diminish 'auto-indent-minor-mode))
 ;; (eval-after-load "subword" '(diminish 'subword-mode))
-(eval-after-load "cider" '(diminish 'cider-mode))
+(eval-after-load "cider" '(diminish 'cider-mode "🤖"))
 (eval-after-load "smartparens" '(diminish 'smartparens-mode))
-(eval-after-load "undo-tree" '(diminish 'undo-tree-mode))
+(eval-after-load "undo-tree" '(diminish 'undo-tree-mode ""))
 (eval-after-load "flycheck" '(diminish 'flycheck-mode))
-(eval-after-load "git-gutter+" '(diminish 'git-gutter+-mode ""))
+(eval-after-load "git-gutter+" '(diminish 'git-gutter+-mode ""))
 (eval-after-load "evil-mc" '(diminish 'evil-mc-mode))
 (eval-after-load "geiser" '(diminish 'geiser-autodoc-mode))
 (eval-after-load "company" '(diminish 'company-mode))
 (diminish 'auto-revert-mode)
 
-(eval-after-load "js2-mode"
-  '(defadvice js2-mode (after js2-rename-modeline activate)
-     (setq mode-name "JS+")))
-(eval-after-load "clojure-mode"
-  '(defadvice clojure-mode (after clj-rename-modeline activate)
-     (setq mode-name "Clj")))
-(eval-after-load "typescript"
-  '(defadvice typescript-mode (after typescript-rename-modeline activate)
-     (setq mode-name "TS")))
-(eval-after-load "nxhtml-mode"
-  '(defadvice nxhtml-mode (after nxhtml-rename-modeline activate)
-     (setq mode-name "HTML")))
-(eval-after-load "js"
-  '(defadvice js-mode (after js-rename-modeline activate)
-     (setq mode-name "JS")))
-(defadvice emacs-lisp-mode (after elisp-rename-modeline activate)
-  (setq mode-name "ELisp"))
+(use-package cyphejor
+  :config
+  (setq cyphejor-rules
+        '(("mode" "")
+          ("haskell" "")
+          ("emacs" "")
+          ("sh" "")
+          ("ruby" "")
+          ("magit" "")
+          ("clojure" "")
+          ("markdown" "")
+          ("js2" "")
+          ("sql" "")
+          ("dired" "")
+          ("eshell" ""))))
+(cyphejor-mode 1)
 
 ;; Handle ANSI colours in compile buffer output.
 ;; From https://gist.github.com/jwiegley/8ae7145ba5ce64250a05
@@ -123,7 +122,7 @@
   (spaceline-helm-mode 1)
   (spaceline-toggle-buffer-encoding-abbrev-off)
   (spaceline-toggle-buffer-size-off)
-  (spaceline-toggle-major-mode-off)
+  (spaceline-toggle-major-mode-on)
   (spaceline-toggle-version-control-on)
   (setq spaceline-highlight-face-func #'spaceline-highlight-face-evil-state
         spaceline-window-numbers-unicode t
