@@ -280,9 +280,6 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
   (put 'if-let 'scheme-indent-function 1))
 (add-hook 'scheme-mode-hook #'cogent/scheme-hook)
 
-;; markdown
-(add-hook 'markdown-mode-hook #'(lambda () (flyspell-mode 1)))
-
 ;; Make Gnome unicode input method work for emacs as well
 ;; Doing this instead of C-x 8 RET so the Kaleidoscope unicode input
 ;; method works in Emacs too
