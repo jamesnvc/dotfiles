@@ -89,6 +89,8 @@
 (eval-after-load "geiser" '(diminish 'geiser-autodoc-mode))
 (eval-after-load "company" '(diminish 'company-mode))
 (eval-after-load "flyspell" '(diminish 'flyspell-mode ""))
+(eval-after-load "alchemist" '(diminish 'alchemist-mode ""))
+(diminish 'visual-line-mode "⮓")
 (diminish 'auto-revert-mode)
 
 (use-package cyphejor
@@ -108,7 +110,12 @@
           ("eshell" "")
           ("html" "")
           ("rust" "")
-          ("swift" ""))))
+          ("swift" "")
+          ("erlang" "")
+          ("elixir" "")
+          ("alchemist" "")
+          ("erc" "")
+          ("notmuch" ""))))
 (cyphejor-mode 1)
 
 ;; Handle ANSI colours in compile buffer output.
