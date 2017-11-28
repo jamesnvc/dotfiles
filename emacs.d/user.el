@@ -15,6 +15,8 @@
                     "C-u" 'evil-scroll-up
                     "M-u" 'universal-argument)
 
+(general-def "<XF86MenuKB>" 'helm-M-x)
+
 (general-define-key :keymaps 'global
                     "<f3>" 'eshell
                     "<f4>" 'calc
@@ -37,7 +39,9 @@
                "s" 'helm-projectile-ag
                "b" 'helm-buffers-list
                "l" 'swiper-helm
-               "q" 'cogent/quit-help-window)
+               "q" 'cogent/quit-help-window
+               "+" (lambda () (interactive) (cogent-fonts/update-font-size 1))
+               "-" (lambda () (interactive) (cogent-fonts/update-font-size -1)))
 
 (defun cogent/evil-yank-to-eol (&optional argument)
   "Yank from point to end of line; like the behaviour I prefer `Y' in
@@ -83,9 +87,31 @@ evil to have."
 
 
 ;; Emacs-lisp
-(general-define-key :keymaps 'emacs-lisp-mode-map
-                    ;; Like vim-unimpaired
-                    "] C-d" 'find-function-at-point)
+(defun cogent/elisp-eval-next-sexp ()
+  (interactive)
+  (save-excursion
+    (cogent/evil-forward-sexp)
+    (forward-char)
+    (eros-eval-last-sexp nil)))
+(defun cogent/elisp-eval-and-replace-next-sexp ()
+  (interactive)
+  (let ((start (point))
+        end)
+    (save-excursion
+      (cogent/evil-forward-sexp)
+      (forward-char)
+      (setq end (point))
+      (eros-eval-last-sexp t)
+      (delete-region start end))))
+(general-nmap :keymaps '(emacs-lisp-mode-map lisp-interaction-mode-map)
+              ;; Like vim-unimpaired
+              "] C-d" 'find-function-at-point
+              "c" (general-key-dispatch 'evil-change
+                    :name cogent/elisp-change-dispatch
+                    "pp" 'cogent/elisp-eval-next-sexp
+                    "p!" 'cogent/elisp-eval-and-replace-next-sexp
+                    "c" 'evil-change-whole-line))
+(general-vmap :keymaps 'emacs-lisp-mode-map "c" 'evil-change)
 
 ;; Moving windows
 (general-define-key :keymaps '(normal
@@ -132,33 +158,6 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
                     :states nil
                     [escape] 'minibuffer-keyboard-quit)
 
-;; Like vim-fireplace
-;; TODO: put this in cogent-clojure
-(defun cogent/eval-next-sexp (&optional prefix)
-  "Wrap `cider-eval-last-sexp' for evil-mode, by moving one character ahead"
-  (interactive "P")
-  (save-excursion
-    (cogent/evil-forward-sexp)
-    (forward-char)
-    (cider-eval-last-sexp prefix)))
-
-(defun cogent/eval-next-sexp-and-replace ()
-  "Wrap `cider-eval-last-sexp-and-replace' for evil-mode, by moving one character ahead"
-  (interactive)
-  (save-excursion
-    (cogent/evil-forward-sexp)
-    (forward-char)
-    (cider-eval-last-sexp-and-replace)))
-
-(general-nmap :keymaps 'cider-mode-map
-              "c" (general-key-dispatch 'evil-change
-                    "pp" 'cogent/eval-next-sexp
-                    "p!" 'cogent/eval-next-sexp-and-replace
-                    "c" 'evil-change-whole-line)
-              "] C-d" 'cider-find-var
-              "K" 'cider-doc
-              "M-r" #'(lambda () (interactive) (cider-load-file (buffer-file-name))))
-(general-vmap :keymaps 'cider-mode-map "c" 'evil-change)
 
 ;; Eshell
 (add-hook 'eshell-mode-hook
@@ -265,12 +264,15 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
   (with-helm-alive-p
     (helm-exit-and-execute-action 'helm-file-switch-to-new-horiz-window)))
 
-(define-key helm-buffer-map (kbd "C-v") #'helm-buffer-switch-new-vert-window)
-(define-key helm-buffer-map (kbd "C-s") #'helm-buffer-switch-new-horiz-window)
-(define-key helm-projectile-find-file-map (kbd "C-v") #'helm-file-switch-new-vert-window)
-(define-key helm-find-files-map (kbd "C-v") #'helm-file-switch-new-vert-window)
-(define-key helm-projectile-find-file-map (kbd "C-s") #'helm-file-switch-new-horiz-window)
-(define-key helm-find-files-map (kbd "C-s") #'helm-file-switch-new-horiz-window)
+(general-def helm-buffer-map
+  "C-v" #'helm-buffer-switch-new-vert-window
+  "C-s" #'helm-buffer-switch-new-horiz-window)
+(general-def helm-projectile-find-file-map
+  "C-v" #'helm-file-switch-new-vert-window
+  "C-s" #'helm-file-switch-new-horiz-window)
+(general-def helm-find-files-map
+  "C-v" #'helm-file-switch-new-vert-window
+  "C-s" #'helm-file-switch-new-horiz-window)
 
 ;; Mail
 (general-define-key :keymaps '(notmuch-search-mode-map)

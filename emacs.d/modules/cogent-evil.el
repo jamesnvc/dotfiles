@@ -19,7 +19,7 @@
      "/" 'cogent/evil-remove-search-highlight))
   (use-package evil-nerd-commenter
     :config
-    (general-nmap :prefix "SPC"
+    (general-nvmap :prefix "SPC"
      "c SPC" 'evilnc-comment-or-uncomment-lines))
   (use-package evil-mc
     :config
