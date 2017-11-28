@@ -260,12 +260,15 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
   (with-helm-alive-p
     (helm-exit-and-execute-action 'helm-file-switch-to-new-horiz-window)))
 
-(define-key helm-buffer-map (kbd "C-v") #'helm-buffer-switch-new-vert-window)
-(define-key helm-buffer-map (kbd "C-s") #'helm-buffer-switch-new-horiz-window)
-(define-key helm-projectile-find-file-map (kbd "C-v") #'helm-file-switch-new-vert-window)
-(define-key helm-find-files-map (kbd "C-v") #'helm-file-switch-new-vert-window)
-(define-key helm-projectile-find-file-map (kbd "C-s") #'helm-file-switch-new-horiz-window)
-(define-key helm-find-files-map (kbd "C-s") #'helm-file-switch-new-horiz-window)
+(general-def helm-buffer-map
+  "C-v" #'helm-buffer-switch-new-vert-window
+  "C-s" #'helm-buffer-switch-new-horiz-window)
+(general-def helm-projectile-find-file-map
+  "C-v" #'helm-file-switch-new-vert-window
+  "C-s" #'helm-file-switch-new-horiz-window)
+(general-def helm-find-files-map
+  "C-v" #'helm-file-switch-new-vert-window
+  "C-s" #'helm-file-switch-new-horiz-window)
 
 ;; Mail
 (general-define-key :keymaps '(notmuch-search-mode-map)
