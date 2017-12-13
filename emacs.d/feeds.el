@@ -121,4 +121,5 @@
         "http://www.bluishcoder.co.nz/atom.xml"
         "http://joelonsoftware.com/rss.xml"
         "http://feeds.feedburner.com/allthingsgym"
-        ("http://endlessparentheses.com/atom.xml" lisp tech)))
+        ("http://endlessparentheses.com/atom.xml" lisp tech)
+        ("http://nullprogram.com/feed/" lisp emacs tech)))
