@@ -120,4 +120,5 @@
         ("http://achewood.com/rss.php" comic)
         "http://www.bluishcoder.co.nz/atom.xml"
         "http://joelonsoftware.com/rss.xml"
-        "http://feeds.feedburner.com/allthingsgym"))
+        "http://feeds.feedburner.com/allthingsgym"
+        ("http://endlessparentheses.com/atom.xml" lisp tech)))
