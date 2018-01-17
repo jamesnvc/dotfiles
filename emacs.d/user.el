@@ -214,55 +214,44 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
                               (select-window (,split-fn))
                               (,open-fn cand))
                             ;; Adjust size of windows
-                            (balance-windows))))
+                            (balance-windows)))
+     (generate-splitter-funcs
+      (op-type open-fn)
+      (let* ((prefix (s-concat "helm-" op-type "-switch-to-new-"))
+             (vert-split (intern (s-concat prefix "-vert-window")))
+             (horiz-split (intern (s-concat prefix "-horiz-window"))))
+        `(progn
+           (make-helm-splitter ,vert-split ,open-fn split-window-right)
 
-  (make-helm-splitter helm-buffer-switch-to-new-vert-window
-                      switch-to-buffer split-window-right)
+           (make-helm-splitter ,horiz-split ,open-fn split-window-below)
 
-  (make-helm-splitter helm-buffer-switch-to-new-horiz-window
-                      switch-to-buffer split-window-below)
+           (add-to-list
+            (quote ,(intern (s-concat "helm-type-" op-type "-actions")))
+            '(,(s-concat "Display " op-type "(s) in new vertical split(s) `C-v'" )
+              . ,vert-split)
+            'append)
 
-  (make-helm-splitter helm-file-switch-to-new-vert-window
-                      find-file split-window-right)
+           (add-to-list
+            (quote ,(intern (s-concat "helm-type-" op-type "-actions")))
+            '(,(s-concat "Display " op-type "(s) in new horizontal split(s) `C-s'" )
+              . ,vert-split)
+            'append)
 
-  (make-helm-splitter helm-file-switch-to-new-horiz-window
-                      find-file split-window-below))
+           (defun ,(intern (s-concat "helm-" op-type "-switch-new-vert-window"))
+               ()
+             (interactive)
+             (with-helm-alive-p
+               (helm-exit-and-execute-action (quote ,vert-split))))
 
-(add-to-list 'helm-type-buffer-actions
-             '("Display buffer(s) in new vertical split(s) `C-v'" .
-               helm-buffer-switch-to-new-vert-window) 'append)
+           (defun ,(intern (s-concat "helm-" op-type "-switch-new-horiz-window"))
+               ()
+             (interactive)
+             (with-helm-alive-p
+               (helm-exit-and-execute-action (quote ,horiz-split))))))))
 
-(add-to-list 'helm-type-buffer-actions
-             '("Display buffer(s) in new horizontal split(s) `C-s'" .
-               helm-buffer-switch-to-new-horiz-window) 'append)
+  (generate-splitter-funcs "buffer" switch-to-buffer)
 
-(add-to-list 'helm-type-file-actions
-             '("Display buffer(s) in new vertical split(s) `C-v'" .
-               helm-file-switch-to-new-vert-window) 'append)
-
-(add-to-list 'helm-type-file-actions
-             '("Display buffer(s) in new horizontal split(s) `C-s'" .
-               helm-file-switch-to-new-horiz-window) 'append)
-
-(defun helm-buffer-switch-new-vert-window ()
-  (interactive)
-  (with-helm-alive-p
-    (helm-exit-and-execute-action 'helm-buffer-switch-to-new-vert-window)))
-
-(defun helm-buffer-switch-new-horiz-window ()
-  (interactive)
-  (with-helm-alive-p
-    (helm-exit-and-execute-action 'helm-buffer-switch-to-new-horiz-window)))
-
-(defun helm-file-switch-new-vert-window ()
-  (interactive)
-  (with-helm-alive-p
-    (helm-exit-and-execute-action 'helm-file-switch-to-new-vert-window)))
-
-(defun helm-file-switch-new-horiz-window ()
-  (interactive)
-  (with-helm-alive-p
-    (helm-exit-and-execute-action 'helm-file-switch-to-new-horiz-window)))
+  (generate-splitter-funcs "file" find-file))
 
 (general-def helm-buffer-map
   "C-v" #'helm-buffer-switch-new-vert-window
