@@ -205,7 +205,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 
 ;; Enable opening helm results in splits
 (cl-macrolet
-    ((make-helm-splitter (name open-fn split-fn)
+    ((make-splitter-fn (name open-fn split-fn)
                          `(defun ,name (_candidate)
                             ;; Display buffers in new windows
                             (dolist (cand (helm-marked-candidates))
@@ -213,15 +213,15 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
                               (,open-fn cand))
                             ;; Adjust size of windows
                             (balance-windows)))
-     (generate-splitter-funcs
+     (generate-helm-splitter-funcs
       (op-type open-fn)
       (let* ((prefix (s-concat "helm-" op-type "-switch-to-new-"))
              (vert-split (intern (s-concat prefix "-vert-window")))
              (horiz-split (intern (s-concat prefix "-horiz-window"))))
         `(progn
-           (make-helm-splitter ,vert-split ,open-fn split-window-right)
+           (make-splitter-fn ,vert-split ,open-fn split-window-right)
 
-           (make-helm-splitter ,horiz-split ,open-fn split-window-below)
+           (make-splitter-fn ,horiz-split ,open-fn split-window-below)
 
            (add-to-list
             (quote ,(intern (s-concat "helm-type-" op-type "-actions")))
@@ -247,9 +247,8 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
              (with-helm-alive-p
                (helm-exit-and-execute-action (quote ,horiz-split))))))))
 
-  (generate-splitter-funcs "buffer" switch-to-buffer)
-
-  (generate-splitter-funcs "file" find-file))
+  (generate-helm-splitter-funcs "buffer" switch-to-buffer)
+  (generate-helm-splitter-funcs "file" find-file))
 
 (general-def helm-buffer-map
   "C-v" #'helm-buffer-switch-new-vert-window
