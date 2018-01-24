@@ -1,5 +1,6 @@
 (setq elfeed-feeds
       '(("http://www.peppercarrot.com/feed/en/rss" comic)
+        ("https://medium.com/feed/@steve.yegge" tech lisp)
         "http://words.steveklabnik.com/feed"
         ("http://killsixbilliondemons.com/?feed=rss2" comic)
         "http://blog.ashleynh.me/rss/"
