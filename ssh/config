@@ -230,3 +230,8 @@ Host mealsurfers
   User james
   IdentityFile ~/.ssh-keys/mealsurfers
   Hostname 45.63.78.0
+
+Host gitlab
+  User jamesnvc
+  identityFile ~/.ssh-keys/gitlab
+  Hostname gitlab.com
