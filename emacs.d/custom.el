@@ -17,7 +17,6 @@
      (mustread elfeed-log-info-level-face)
      (comic elfeed-log-debug-level-face)
      (busy shadow))))
->>>>>>> origin/master
  '(eshell-visual-commands
    (quote
     ("htop" "vi" "screen" "top" "less" "more" "lynx" "ncftp" "pine" "tin" "trn" "elm" "psql")))
