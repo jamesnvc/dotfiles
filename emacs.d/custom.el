@@ -11,12 +11,35 @@
  '(custom-safe-themes
    (quote
     ("ff7625ad8aa2615eae96d6b4469fcc7d3d20b2e1ebc63b761a349bebbb9d23cb" "98cc377af705c0f2133bb6d340bf0becd08944a588804ee655809da5d8140de6" default)))
+ '(elfeed-search-face-alist
+   (quote
+    ((unread elfeed-search-unread-title-face)
+     (mustread elfeed-log-info-level-face)
+     (comic elfeed-log-debug-level-face)
+     (busy shadow))))
+>>>>>>> origin/master
  '(eshell-visual-commands
    (quote
     ("htop" "vi" "screen" "top" "less" "more" "lynx" "ncftp" "pine" "tin" "trn" "elm" "psql")))
  '(eshell-visual-subcommands (quote (("git " "log" "lol" "diff" "show"))))
  '(helm-ag-base-command "/usr/local/bin/ag --nocolor --nogroup")
  '(evil-search-module (quote evil-search))
+ '(evil-surround-pairs-alist
+   (quote
+    ((40 "( " . " )")
+     (91 "[ " . " ]")
+     (123 "{ " . " }")
+     (41 "(" . ")")
+     (93 "[" . "]")
+     (125 "{" . "}")
+     (35 "#{" . "}")
+     (98 "(" . ")")
+     (66 "{" . "}")
+     (62 "<" . ">")
+     (116 . evil-surround-read-tag)
+     (60 . evil-surround-read-tag)
+     (102 . evil-surround-function)
+     (124 "「" . "」"))))
  '(fci-rule-color "#37474f")
  '(hl-sexp-background-color "#1c1f26")
  '(menu-bar-mode t)
@@ -44,8 +67,11 @@ Entered on %U
     (org-bbdb org-bibtex org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m org-drill org-learn)))
  '(package-selected-packages
    (quote
-    (rust-mode cyphejor general switch-window haskell-mode dracula-theme centered-window-mode quack geiser web-mode web volatile-highlights use-package twittering-mode tern swiper-helm spaceline smooth-scrolling shrink-whitespace rainbow-mode paradox org-plus-contrib org-cliplink org-bullets nyan-mode monroe material-theme markdown-mode linum-relative json-mode js2-refactor ibuffer-projectile hlinum highlight-parentheses helm-projectile helm-flycheck helm-flx helm-ext helm-cider helm-ag git-gutter-fringe+ git-gutter gist flycheck-color-mode-line f evil-surround evil-search-highlight-persist evil-org evil-nerd-commenter evil-mc evil-magit evil-leader ethan-wspace eshell-git-prompt eros elfeed-org elfeed-goodies dired+ company-try-hard company-quickhelp company-emoji cljr-helm alchemist)))
+    (slime-company cargo racer flycheck-rust rust-mode cyphejor general switch-window haskell-mode dracula-theme centered-window-mode quack geiser web-mode web volatile-highlights use-package twittering-mode tern swiper-helm spaceline smooth-scrolling shrink-whitespace rainbow-mode paradox org-plus-contrib org-cliplink org-bullets nyan-mode monroe material-theme markdown-mode linum-relative json-mode js2-refactor ibuffer-projectile hlinum highlight-parentheses helm-projectile helm-flycheck helm-flx helm-ext helm-cider helm-ag git-gutter-fringe+ git-gutter gist flycheck-color-mode-line f evil-surround evil-search-highlight-persist evil-org evil-nerd-commenter evil-mc evil-magit evil-leader ethan-wspace eshell-git-prompt eros elfeed-org elfeed-goodies dired+ company-try-hard company-quickhelp company-emoji cljr-helm alchemist)))
  '(powerline-default-separator (quote bar))
+ '(quack-programs
+   (quote
+    ("mzscheme" "bigloo" "csi" "csi -hygienic" "gosh" "gracket" "gsi" "gsi ~~/syntax-case.scm -" "guile" "kawa" "mit-scheme" "racket" "racket -il typed/racket" "rs" "scheme" "scheme48" "scsh" "sisc" "stklos" "sxi")))
  '(scroll-bar-mode nil)
  '(tool-bar-mode nil)
  '(undo-tree-auto-save-history t)

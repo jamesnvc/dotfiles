@@ -26,4 +26,7 @@ dropbox start
 
 $HOME/software/bin/btsync
 
+# Force numlock to be on
+numlockx on
+
 # vim: ft=zsh

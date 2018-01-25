@@ -1,6 +1,8 @@
 (setq elfeed-feeds
       '(("http://www.peppercarrot.com/feed/en/rss" comic)
+        ("https://medium.com/feed/@steve.yegge" tech lisp mustread)
         "http://words.steveklabnik.com/feed"
+        ("http://xahlee.info/kbd/keyboard_blog.xml" tech)
         ("http://killsixbilliondemons.com/?feed=rss2" comic)
         "http://blog.ashleynh.me/rss/"
         "http://marcysutton.com/feed/"
@@ -39,9 +41,9 @@
         "http://www.johndcook.com/blog/feed/"
         ("http://www.harkavagrant.com/rssfeed.php" comic)
         ("http://furbo.org/feed/" tech)
-        ("http://feeds.arstechnica.com/arstechnica/index/" tech)
+        ("http://feeds.arstechnica.com/arstechnica/index/" tech busy)
         ("http://joshreads.com/?feed=rss2" comic)
-        ("http://aphyr.com/posts.atom" tech)
+        ("http://aphyr.com/posts.atom" tech mustread)
         ("http://techdistortion.com/articles/feed" tech)
         "http://www.randsinrepose.com/index.xml"
         ("http://feeds.feedburner.com/schneier/fulltext" infosec)
@@ -50,7 +52,7 @@
         ("http://daringfireball.net/index.xml" tech apple)
         ("http://hypercritical.co/feeds/main" tech)
         ("http://www.tbray.org/ongoing/ongoing.atom" tech)
-        ("http://steve-yegge.blogspot.com/atom.xml" tech lisp)
+        ("http://steve-yegge.blogspot.com/atom.xml" tech lisp mustread)
         ("http://feeds.feedburner.com/codinghorror" tech)
         ("http://xkcd.com/atom.xml" comic)
         ("http://feeds.feedburner.com/wondermark" comic)
@@ -69,7 +71,7 @@
         ("http://www.marecomic.com/feed/" comic)
         ("http://nshipster.com/feed.xml" apple)
         ("http://smuglispweeny.blogspot.com/feeds/posts/default" lisp)
-        "http://feeds.feedburner.com/sportsblogs/bloodyelbow.xml"
+        ("http://feeds.feedburner.com/sportsblogs/bloodyelbow.xml" busy)
         "http://what-if.xkcd.com/feed.atom"
         ("http://www.glamrockgorilla.com/feed/" comic)
         "http://www.jwz.org/blog/feed/"
@@ -85,7 +87,7 @@
         ("http://feedpress.me/sixcolors" apple)
         ("http://www.last-halloween.com/posts.rss" comic)
         "http://feeds.feedburner.com/mefi/PopularPosts"
-        "http://stilldrinking.org/rss/feed.xml"
+        ("http://stilldrinking.org/rss/feed.xml" mustread)
         "http://feeds.feedburner.com/Cosmodrome"
         "http://www.objc.io/feed.xml"
         "http://psy-lob-saw.blogspot.com/feeds/posts/default"
@@ -98,10 +100,9 @@
         "http://www.stumptuous.com/feed"
         "http://gregnuckols.wordpress.com/feed/"
         "http://glennpendlay.wordpress.com/feed/"
-        "http://loopinsight.com/feed/"
         "http://feeds2.feedburner.com/subtraction"
         "http://defectiveyeti.com/feed/"
-        "http://feedproxy.google.com/Metafilter"
+        ("http://feedproxy.google.com/Metafilter" busy)
         ("http://www.smbc-comics.com/rss.php" comic)
         "http://billhiggins.us/blog/feed"
         ("http://broodhollow.chainsawsuit.com/feed" comic)
@@ -122,4 +123,4 @@
         "http://joelonsoftware.com/rss.xml"
         "http://feeds.feedburner.com/allthingsgym"
         ("http://endlessparentheses.com/atom.xml" lisp tech)
-        ("http://nullprogram.com/feed/" lisp emacs tech)))
+        ("http://nullprogram.com/feed/" lisp emacs tech mustread)))
