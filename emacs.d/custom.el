@@ -78,4 +78,5 @@ Entered on %U
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((((type nil)) (:background "#000000" :foreground "#f8f8f2")) (((class color) (min-colors 89)) (:background "#282a36" :foreground "#f8f8f2"))))
+ '(quack-pltish-defn-face ((t (:foreground "RoyalBlue1" :weight bold))))
  '(spaceline-evil-visual ((t (:inherit mode-line :background "dark slate blue" :foreground "#ffffff")))))

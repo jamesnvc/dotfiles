@@ -10,6 +10,7 @@
   (add-hook 'elfeed-new-entry-hook
             (elfeed-make-tagger :before "2 weeks ago"
                                 :remove 'unread))
+  (add-hook 'elfeed-show-mode-hook #'visual-line-mode)
   (evil-define-key 'normal elfeed-search-mode-map
     "q" #'quit-window
     "S" #'elfeed-search-set-filter
