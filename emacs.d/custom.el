@@ -11,6 +11,12 @@
  '(custom-safe-themes
    (quote
     ("98cc377af705c0f2133bb6d340bf0becd08944a588804ee655809da5d8140de6" default)))
+ '(elfeed-search-face-alist
+   (quote
+    ((unread elfeed-search-unread-title-face)
+     (mustread elfeed-log-info-level-face)
+     (comic elfeed-log-debug-level-face)
+     (busy shadow))))
  '(eshell-visual-commands
    (quote
     ("htop" "vi" "screen" "top" "less" "more" "lynx" "ncftp" "pine" "tin" "trn" "elm" "psql")))
@@ -95,5 +101,6 @@ Entered on %U
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(default ((((type nil)) (:background "#000000" :foreground "#f8f8f2")) (((class color) (min-colors 89)) (:background "#282a36" :foreground "#f8f8f2"))))
  '(quack-pltish-defn-face ((t (:foreground "RoyalBlue1" :weight bold))))
  '(spaceline-evil-visual ((t (:inherit mode-line :background "dark slate blue" :foreground "#ffffff")))))
