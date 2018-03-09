@@ -288,3 +288,8 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
             (input-str (apply #'string input-chs))
             (input-num (string-to-number input-str 16)))
         (insert-char input-num))))
+
+
+;; Prolog
+(add-to-list 'auto-mode-alist '("\\.pl$" . prolog-mode))
+(add-to-list 'auto-mode-alist '("\\.plt$" . prolog-mode))
