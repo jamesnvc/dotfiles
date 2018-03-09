@@ -33,7 +33,8 @@ bindsym $mod+Return exec st -f "PragmataPro Mono:size=9"
 bindsym $mod+Shift+apostrophe kill
 
 # start dmenu (a program launcher)
-bindsym $mod+space exec dmenu_run
+# bindsym $mod+space exec dmenu_run
+bindsym $mod+space exec ~/bin/rofi_runner.sh
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
