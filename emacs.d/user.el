@@ -13,7 +13,7 @@
                     "C-u" 'evil-scroll-up
                     "M-u" 'universal-argument)
 
-(general-def "<XF86MenuKB>" 'helm-M-x)
+(general-def "<menu>" 'helm-M-x)
 
 (general-define-key :keymaps 'global
                     "<f3>" 'eshell

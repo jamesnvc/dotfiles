@@ -47,7 +47,7 @@ bindsym $mod+backslash exec rofi-pass
 # Move spaces
 bindsym $mod+grave workspace next
 bindsym $mod+Shift+grave workspace prev
-bindsym $mod+XF86MenuKB workspace back_and_forth
+bindsym $mod+Menu workspace back_and_forth
 
 # change focus
 bindsym $mod+h focus left
