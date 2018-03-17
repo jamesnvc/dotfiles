@@ -69,12 +69,29 @@
   (setq nyan-bar-length 16
         nyan-wavy-trail nil))
 
-(use-package minions
-  :ensure t
-  :config
-  (setq
-   minions-mode-line-lighter "λ="
-   minions-direct '(flycheck-mode cider-mode)))
+(use-package diminish)
+
+(with-eval-after-load 'eldoc (diminish 'eldoc-mode))
+(with-eval-after-load 'autopair (diminish 'autopair-mode))
+(with-eval-after-load 'abbrev (diminish 'abbrev-mode))
+(with-eval-after-load 'js2-highlight-vars (diminish 'js2-highlight-vars-mode))
+(with-eval-after-load 'mmm-mode (diminish 'mmm-mode))
+(with-eval-after-load 'skewer-html (diminish 'skewer-html-mode))
+(with-eval-after-load 'skewer-mode (diminish 'skewer-mode))
+(with-eval-after-load 'auto-indent-mode (diminish 'auto-indent-minor-mode))
+;; (eval-after-load "subword" '(diminish 'subword-mode))
+(with-eval-after-load 'cider (diminish 'cider-mode "🤖"))
+(with-eval-after-load 'smartparens (diminish 'smartparens-mode))
+(with-eval-after-load 'undo-tree (diminish 'undo-tree-mode ""))
+(with-eval-after-load 'flycheck (diminish 'flycheck-mode))
+(with-eval-after-load 'git-gutter+ (diminish 'git-gutter+-mode ""))
+(with-eval-after-load 'evil-mc (diminish 'evil-mc-mode))
+(with-eval-after-load 'geiser (diminish 'geiser-autodoc-mode))
+(with-eval-after-load 'company (diminish 'company-mode))
+(with-eval-after-load 'flyspell (diminish 'flyspell-mode ""))
+(with-eval-after-load 'alchemist (diminish 'alchemist-mode ""))
+(diminish 'visual-line-mode "⮓")
+(diminish 'auto-revert-mode)
 
 (use-package cyphejor
   :config
@@ -98,8 +115,8 @@
           ("elixir" "")
           ("alchemist" "")
           ("erc" "")
-          ("notmuch" "")))
-  (cyphejor-mode 1))
+          ("notmuch" ""))))
+(cyphejor-mode 1)
 
 ;; Handle ANSI colours in compile buffer output.
 ;; From https://gist.github.com/jwiegley/8ae7145ba5ce64250a05
