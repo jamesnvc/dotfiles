@@ -68,6 +68,7 @@ evil to have."
       (evil-insert-newline-above))))
 
 (general-define-key
+ :states '(normal visual)
  ;; Fix Y behaviour in evil
  "Y" 'cogent/evil-yank-to-eol
  ;; Like vim-vinegar
@@ -78,11 +79,12 @@ evil to have."
  "[ <SPC>" 'cogent/line-above
  "] <SPC>" 'cogent/line-below)
 
-(general-define-key :keymaps 'dired-mode-map
-                    ;; still like vim-vinegar
-                    "-" 'dired-up-directory
-                    ;; Make "jump backwards" act as I expect in dired
-                    "C-o" 'quit-window)
+(general-define-key
+ :keymaps 'dired-mode-map
+ ;; still like vim-vinegar
+ "-" 'dired-up-directory
+ ;; Make "jump backwards" act as I expect in dired
+ "C-o" 'quit-window)
 
 
 ;; Emacs-lisp
