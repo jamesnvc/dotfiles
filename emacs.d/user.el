@@ -27,19 +27,20 @@
   (when-let (help-win (get-buffer-window "*Help*"))
       (quit-window nil help-win)))
 
-(general-nvmap :prefix "SPC"
-               "w" 'save-buffer
-               "x" 'evil-delete-buffer
-               "<SPC>" 'evil-ex
-               "m" 'helm-M-x
-               "T" 'helm-find-files
-               "t" 'helm-projectile-find-file-dwim
-               "s" 'helm-projectile-ag
-               "b" 'helm-buffers-list
-               "l" 'swiper-helm
-               "q" 'cogent/quit-help-window
-               "+" (lambda () (interactive) (cogent-fonts/update-font-size 1))
-               "-" (lambda () (interactive) (cogent-fonts/update-font-size -1)))
+(my-leader-def
+  :states '(normal visual)
+  "w" 'save-buffer
+  "x" 'evil-delete-buffer
+  "<SPC>" 'evil-ex
+  "m" 'helm-M-x
+  "T" 'helm-find-files
+  "t" 'helm-projectile-find-file-dwim
+  "s" 'helm-projectile-ag
+  "b" 'helm-buffers-list
+  "l" 'swiper-helm
+  "q" 'cogent/quit-help-window
+  "+" (lambda () (interactive) (cogent-fonts/update-font-size 1))
+  "-" (lambda () (interactive) (cogent-fonts/update-font-size -1)))
 
 (defun cogent/evil-yank-to-eol (&optional argument)
   "Yank from point to end of line; like the behaviour I prefer `Y' in
