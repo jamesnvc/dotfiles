@@ -71,7 +71,6 @@
         ("http://www.marecomic.com/feed/" comic)
         ("http://nshipster.com/feed.xml" apple)
         ("http://smuglispweeny.blogspot.com/feeds/posts/default" lisp)
-        ("http://feeds.feedburner.com/sportsblogs/bloodyelbow.xml" busy)
         "http://what-if.xkcd.com/feed.atom"
         ("http://www.glamrockgorilla.com/feed/" comic)
         "http://www.jwz.org/blog/feed/"
