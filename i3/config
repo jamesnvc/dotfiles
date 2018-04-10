@@ -33,22 +33,27 @@ bindsym $mod+Return exec st -f "PragmataPro Mono:size=9"
 bindsym $mod+Shift+apostrophe kill
 
 # start dmenu (a program launcher)
-bindsym $mod+space exec dmenu_run
+# bindsym $mod+space exec dmenu_run
+bindsym $mod+space exec ~/bin/rofi_runner.sh
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
+# passmenu
+# bindsym $mod+backslash exec passmenu
+bindsym $mod+backslash exec rofi-pass
+
 # Move spaces
 bindsym $mod+grave workspace next
 bindsym $mod+Shift+grave workspace prev
-bindsym $mod+XF86MenuKB workspace back_and_forth
+bindsym $mod+Menu workspace back_and_forth
 
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+t focus down
-bindsym $mod+n focus up
-bindsym $mod+s focus right
+bindsym $mod+c focus up
+bindsym $mod+n focus right
 bindsym $mod+Tab focus right
 bindsym $mod+Shift+Tab focus left
 
@@ -60,9 +65,9 @@ bindsym $mod+Right focus right
 
 # move focused window
 bindsym $mod+Shift+h move left
+bindsym $mod+Shift+c move up
 bindsym $mod+Shift+t move down
-bindsym $mod+Shift+n move up
-bindsym $mod+Shift+s move right
+bindsym $mod+Shift+n move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left

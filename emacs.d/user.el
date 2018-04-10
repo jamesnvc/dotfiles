@@ -15,7 +15,7 @@
                     "C-u" 'evil-scroll-up
                     "M-u" 'universal-argument)
 
-(general-def "<XF86MenuKB>" 'helm-M-x)
+(general-def "<menu>" 'helm-M-x)
 
 (general-define-key :keymaps 'global
                     "<f3>" 'eshell
@@ -29,19 +29,20 @@
   (when-let (help-win (get-buffer-window "*Help*"))
       (quit-window nil help-win)))
 
-(general-nvmap :prefix "SPC"
-               "w" 'save-buffer
-               "x" 'evil-delete-buffer
-               "<SPC>" 'evil-ex
-               "m" 'helm-M-x
-               "T" 'helm-find-files
-               "t" 'helm-projectile-find-file-dwim
-               "s" 'helm-projectile-ag
-               "b" 'helm-buffers-list
-               "l" 'swiper-helm
-               "q" 'cogent/quit-help-window
-               "+" (lambda () (interactive) (cogent-fonts/update-font-size 1))
-               "-" (lambda () (interactive) (cogent-fonts/update-font-size -1)))
+(my-leader-def
+  :states '(normal visual)
+  "w" 'save-buffer
+  "x" 'evil-delete-buffer
+  "<SPC>" 'evil-ex
+  "m" 'helm-M-x
+  "T" 'helm-find-files
+  "t" 'helm-projectile-find-file-dwim
+  "s" 'helm-projectile-ag
+  "b" 'helm-buffers-list
+  "l" 'swiper-helm
+  "q" 'cogent/quit-help-window
+  "+" (lambda () (interactive) (cogent-fonts/update-font-size 1))
+  "-" (lambda () (interactive) (cogent-fonts/update-font-size -1)))
 
 (defun cogent/evil-yank-to-eol (&optional argument)
   "Yank from point to end of line; like the behaviour I prefer `Y' in
@@ -69,6 +70,7 @@ evil to have."
       (evil-insert-newline-above))))
 
 (general-define-key
+ :states '(normal visual)
  ;; Fix Y behaviour in evil
  "Y" 'cogent/evil-yank-to-eol
  ;; Like vim-vinegar
@@ -79,11 +81,12 @@ evil to have."
  "[ <SPC>" 'cogent/line-above
  "] <SPC>" 'cogent/line-below)
 
-(general-define-key :keymaps 'dired-mode-map
-                    ;; still like vim-vinegar
-                    "-" 'dired-up-directory
-                    ;; Make "jump backwards" act as I expect in dired
-                    "C-o" 'quit-window)
+(general-define-key
+ :keymaps 'dired-mode-map
+ ;; still like vim-vinegar
+ "-" 'dired-up-directory
+ ;; Make "jump backwards" act as I expect in dired
+ "C-o" 'quit-window)
 
 
 ;; Emacs-lisp
@@ -290,3 +293,8 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
             (input-str (apply #'string input-chs))
             (input-num (string-to-number input-str 16)))
         (insert-char input-num))))
+
+
+;; Prolog
+(add-to-list 'auto-mode-alist '("\\.pl$" . prolog-mode))
+(add-to-list 'auto-mode-alist '("\\.plt$" . prolog-mode))
