@@ -1,6 +1,6 @@
 ;; -*- lexical-binding: t -*-
 
-(set-frame-font "PragmataPro 14" nil t)
+(set-frame-font "PragmataPro 16" nil t)
 (add-to-list 'exec-path "/Users/james/bin")
 (setenv "PATH" (concat "/Users/james/bin:" (getenv "PATH")))
 (require 'cogent-pragmata)
