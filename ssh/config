@@ -230,3 +230,13 @@ Host mealsurfers
   User james
   IdentityFile ~/.ssh-keys/mealsurfers
   Hostname 45.63.78.0
+
+Host sculpture
+   User james
+   identityFile ~/.ssh-keys/sculpture
+   Hostname 107.191.48.28
+
+Host spike
+   User james
+   identityFile ~/.ssh-keys/sculpture
+   Hostname 195.201.133.196
