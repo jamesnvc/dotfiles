@@ -115,8 +115,8 @@
           ("elixir" "")
           ("alchemist" "")
           ("erc" "")
-          ("notmuch" ""))))
-(cyphejor-mode 1)
+          ("notmuch" "")))
+  (cyphejor-mode 1))
 
 ;; Handle ANSI colours in compile buffer output.
 ;; From https://gist.github.com/jwiegley/8ae7145ba5ce64250a05
