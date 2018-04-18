@@ -50,6 +50,7 @@
 (require 'cogent-rust)
 (require 'cogent-orgmode)
 (require 'cogent-markdown)
+(require 'cogent-yaml)
 (require 'cogent-mail)
 (require 'cogent-twitter)
 (require 'cogent-feeds)

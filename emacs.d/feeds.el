@@ -122,4 +122,5 @@
         "http://joelonsoftware.com/rss.xml"
         "http://feeds.feedburner.com/allthingsgym"
         ("http://endlessparentheses.com/atom.xml" lisp tech)
-        ("http://nullprogram.com/feed/" lisp emacs tech mustread)))
+        ("http://nullprogram.com/feed/" lisp emacs tech mustread)
+        ("https://emacsair.me/feed.xml" emacs)))
