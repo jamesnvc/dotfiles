@@ -45,6 +45,7 @@
  '(hl-sexp-background-color "#1c1f26")
  '(menu-bar-mode t)
  '(moody-mode-line-height 28)
+ '(helm-ag-base-command "/usr/local/bin/ag --nocolor --nogroup")
  '(notmuch-saved-searches
    (quote
     ((:name "inbox" :query "tag:inbox" :key "i")
@@ -113,6 +114,7 @@ Entered on %U
      (340 . "#fff59d")
      (360 . "#8bc34a"))))
  '(vc-annotate-very-old-color nil))
+ '(undo-tree-history-directory-alist (quote (("." . "/Users/james/.emacs.d/undo")))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
