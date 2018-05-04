@@ -296,3 +296,6 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 ;; Prolog
 (add-to-list 'auto-mode-alist '("\\.pl$" . prolog-mode))
 (add-to-list 'auto-mode-alist '("\\.plt$" . prolog-mode))
+
+;; Make old Ubuntu shellcheck not complain with flycheck
+(setq flycheck-shellcheck-follow-sources nil)
