@@ -315,7 +315,12 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
           (search-forward "[")
           (insert predicates ", "))
       (progn
-        (search-backward-regexp "^:- use_module")
+        (unless (search-backward-regexp "^:- use_module" nil t)
+          (search-backward-regexp "^:- module")
+          (next-line))
+        (search-forward "(")
+        (backward-char)
+        (forward-sexp)
         (next-line)
         (insert ":- use_module(" module ", [" predicates "]).\n")))))
 
