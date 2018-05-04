@@ -69,7 +69,7 @@ export ARCHFLAGS="-arch i386 -arch x86_64"
 # Make OS X shell use UTF8
 export __CF_USER_TEXT_ENCODING=0x1F5:0x8000100:0x8000100
 
-export EDITOR='nvim'
+export EDITOR='emacs'
 
 if [ $(uname) = 'Darwin' ]; then
   export TERM=xterm-256color-italic
