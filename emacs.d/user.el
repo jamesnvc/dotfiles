@@ -298,3 +298,26 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 ;; Prolog
 (add-to-list 'auto-mode-alist '("\\.pl$" . prolog-mode))
 (add-to-list 'auto-mode-alist '("\\.plt$" . prolog-mode))
+
+(defun cogent/prolog-add-use-module (module predicates)
+  "Add a use_module statement to the top of the current prolog file"
+  (interactive "Mmodule name: \nMpredicates: ")
+
+  (save-excursion
+    (if-let (search-point
+             (save-excursion
+               (beginning-of-buffer)
+               (re-search-forward
+                (s-concat "^:- use_module(" (regexp-quote module))
+                nil t)))
+        (progn
+          (goto-char search-point)
+          (search-forward "[")
+          (insert predicates ", "))
+      (progn
+        (search-backward-regexp "^:- use_module")
+        (next-line)
+        (insert ":- use_module(" module ", [" predicates "]).\n")))))
+
+(general-nvmap :keymaps '(prolog-mode-map)
+  "\\ u" 'cogent/prolog-add-use-module)
