@@ -23,7 +23,7 @@ rofi.font:                           mono 12
 ! "Whether to load and show icons" Set from: Default
 ! rofi.show-icons:                     false
 ! "Terminal to use" Set from: Default
-rofi.terminal:                       st
+rofi.terminal:                       alacritty
 ! "Ssh client to use" Set from: Default
 ! rofi.ssh-client:                     ssh
 ! "Ssh command to execute" Set from: Default
@@ -33,7 +33,7 @@ rofi.terminal:                       st
 ! "Command to get extra run targets" Set from: Default
 ! rofi.run-list-command:
 ! "Run command to execute that runs in shell" Set from: Default
-rofi.run-shell-command:              {terminal} -f 'PragmataPro Mono:size=9' -e {cmd}
+rofi.run-shell-command:              {terminal} -e {cmd}
 ! "Command executed on accep-entry-custom for window modus" Set from: Default
 ! rofi.window-command:                 xkill -id {window}
 ! "Window fields to match in window mode" Set from: Default
