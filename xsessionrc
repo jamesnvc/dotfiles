@@ -24,7 +24,7 @@ eval $(gpg-agent --daemon)
 
 dropbox start
 
-$HOME/software/bin/btsync
+#$HOME/software/bin/btsync
 
 # Force numlock to be on
 numlockx on
