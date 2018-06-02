@@ -125,4 +125,5 @@
         ("http://nullprogram.com/feed/" lisp emacs tech mustread)
         ("https://emacsair.me/feed.xml" emacs)
         ("http://occasionallycogent.com/feed.xml" mustread)
-        ("https://blog.cannawen.com/rss" mustread)))
+        ("https://blog.cannawen.com/rss" mustread)
+        ("http://existentialcomics.com/rss.xml" comic)))
