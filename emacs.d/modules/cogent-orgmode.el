@@ -2,16 +2,21 @@
 
 (require 'cogent-package)
 
+(defun cogent/org-note-file-name ()
+  (expand-file-name
+   (concat (read-string "Name: ") ".org")
+   "~/org/notebook/"))
+
 (use-package org
   :ensure org-plus-contrib
   :config
   (setq org-replace-disputed-keys t)
   (setq org-default-notes-file (concat org-directory "/notes.org"))
-  (add-hook
-   'org-mode-hook
-   (lambda ()
-     (visual-line-mode 1)
-     (set-visual-wrap-column 80)))
+  ;; (add-hook
+  ;;  'org-mode-hook
+  ;;  (lambda ()
+  ;;    (visual-line-mode 1)
+  ;;    (set-visual-wrap-column 80)))
   ;; Fancy bullet rendering
   (use-package org-bullets
     :config

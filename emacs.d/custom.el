@@ -55,9 +55,15 @@
      (:name "flagged" :query "tag:flagged"))))
  '(org-capture-templates
    (quote
-    (("n" "Note" entry
-      (file "~/org/notes.org")
-      "* %? %U")
+    (("n" "Note" plain
+      (file cogent/org-note-file-name)
+      "#+TITLE: %^{title}
+#+AUTHOR: James Cash
+#+EMAIL: james.cash@occassionallycogent.com
+#+DATE: %t
+#+TAGS: %^g
+
+%?" :prepend t)
      ("w" "Bloom work tasks" entry
       (file "~/org/bloom.org")
       "* %?
