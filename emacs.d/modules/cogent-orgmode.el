@@ -12,11 +12,11 @@
   :config
   (setq org-replace-disputed-keys t)
   (setq org-default-notes-file (concat org-directory "/notes.org"))
-  ;; (add-hook
-  ;;  'org-mode-hook
-  ;;  (lambda ()
-  ;;    (visual-line-mode 1)
-  ;;    (set-visual-wrap-column 80)))
+  (add-hook
+   'org-mode-hook
+   (lambda ()
+     (visual-line-mode 1)
+     (set-visual-wrap-column 120)))
   ;; Fancy bullet rendering
   (use-package org-bullets
     :config
