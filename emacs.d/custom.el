@@ -85,9 +85,9 @@ Entered on %U
      (eclipse "eclipse")
      (mercury nil)
      (sicstus "sicstus")
-     (swi "~/.swivm/versions/7.7.9/bin/swipl")
+     (swi "~/.swivm/versions/7.7.14/bin/swipl")
      (gnu "gprolog")
-     (t "~/.swivm/versions/7.7.9/bin/swipl"))))
+     (t "~/.swivm/versions/7.7.14/bin/swipl"))))
  '(prolog-program-switches (quote ((sicstus ("-i")) (t nil))))
  '(quack-programs
    (quote
