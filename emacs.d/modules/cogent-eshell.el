@@ -1,8 +1,5 @@
 ;;; -*- lexical-binding: t -*-
 
-(use-package eshell-git-prompt
-  :config
-  (eshell-git-prompt-use-theme 'powerline))
 
 ;; most of the below config is from
 ;; https://github.com/howardabrams/dot-files/blob/master/emacs-eshell.org
