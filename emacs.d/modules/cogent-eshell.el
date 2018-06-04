@@ -43,9 +43,8 @@ PWD is not in a git repo (or the git command is not found)."
            (git-repo (file-name-base (s-trim git-url)))
            (git-output (shell-command-to-string (concat "git rev-parse --abbrev-ref HEAD")))
            (git-branch (s-trim git-output))
-           (git-icon  "\xe0a0")
-           (git-icon2 (propertize "\xf020" 'face `(:family "octicons"))))
-      (concat git-repo " " git-icon2 " " git-branch))))
+           (git-icon  "\xe0a0"))
+      (concat git-repo " " git-icon " " git-branch))))
 
 ;; The function takes the current directory passed in via pwd and
 ;; replaces the $HOME part with a tilde. I’m sure this function
