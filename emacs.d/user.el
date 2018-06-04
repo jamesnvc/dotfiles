@@ -161,7 +161,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 
 
 ;; Eshell
-(add-hook 'eshell-mode-hook
+(add-hook 'eshell-first-time-mode-hook
           #'(lambda ()
               (evil-mc-mode -1)
               ;; Need to do this in the hook because eshell defines its keymap
