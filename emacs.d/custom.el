@@ -57,8 +57,11 @@
    (quote
     (("n" "Note" plain
       (file cogent/org-note-file-name)
-      "#+DATE: %t
-* %^{title}    %^g
+      "#+TITLE: %^{title}
+#+AUTHOR: James Cash
+#+EMAIL: james.cash@occassionallycogent.com
+#+DATE: %t
+#+TAGS: %^g
 
 %?" :prepend t)
      ("w" "Bloom work tasks" entry
