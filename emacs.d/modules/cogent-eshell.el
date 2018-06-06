@@ -31,6 +31,8 @@ it doesn't contain the org-mode #+TAGS: entry specified."
     (magit-status (pop args) nil)
     (eshell/echo))   ;; The echo command suppresses output
 
+(require 'dash)
+
 ;; funky eshell prompt
 (defun curr-dir-git-branch-string (pwd)
   "Returns current git branch as a string, or the empty string if
@@ -39,11 +41,12 @@ PWD is not in a git repo (or the git command is not found)."
   (when (and (not (file-remote-p pwd))
              (eshell-search-path "git")
              (locate-dominating-file pwd ".git"))
-    (let* ((git-url (shell-command-to-string "git config --get remote.origin.url"))
-           (git-repo (file-name-base (s-trim git-url)))
-           (git-output (shell-command-to-string (concat "git rev-parse --abbrev-ref HEAD")))
-           (git-branch (s-trim git-output))
-           (git-icon  "\xe0a0"))
+    (require 'magit)
+    (let* ((git-url (magit-get "remote.origin.url"))
+           (git-repo (or (-some-> git-url s-trim file-name-base)
+                         "???"))
+           (git-branch (magit-get-current-branch))
+           (git-icon  ""))
       (concat git-repo " " git-icon " " git-branch))))
 
 ;; The function takes the current directory passed in via pwd and
