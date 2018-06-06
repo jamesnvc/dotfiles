@@ -8,6 +8,8 @@
   ;; (use-package material-theme)
   ;; (load-theme 'material)
   (use-package dracula-theme)
+  (set-face-background 'powerline-active1 "gray9")
+  (set-face-background 'powerline-active2 "gray13")
 
   ;; (set-face-background 'default "#000")
 
