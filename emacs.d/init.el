@@ -51,6 +51,7 @@
 (require 'cogent-lua)
 (require 'cogent-orgmode)
 (require 'cogent-markdown)
+(require 'cogent-prolog)
 (require 'cogent-yaml)
 (require 'cogent-mail)
 (require 'cogent-twitter)
