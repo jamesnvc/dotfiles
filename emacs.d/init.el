@@ -48,6 +48,7 @@
 (require 'cogent-javascript)
 (require 'cogent-haskell)
 (require 'cogent-rust)
+(require 'cogent-lua)
 (require 'cogent-orgmode)
 (require 'cogent-markdown)
 (require 'cogent-yaml)

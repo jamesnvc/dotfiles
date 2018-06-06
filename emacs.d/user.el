@@ -163,7 +163,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 
 
 ;; Eshell
-(add-hook 'eshell-mode-hook
+(add-hook 'eshell-first-time-mode-hook
           #'(lambda ()
               (evil-mc-mode -1)
               ;; Need to do this in the hook because eshell defines its keymap
@@ -200,7 +200,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (setq org-use-fast-todo-selection t)
 (setq org-agenda-files (list (concat org-directory "/notes.org")
                              (concat org-directory "/bloom.org")
-                             "~/Dropbox/Apps/MobileOrg/mobileorg.org"))
+                             (concat org-directory "/notebook")))
 (setq org-refile-targets '((nil . (:maxlevel . 9))))
 (setq org-refile-use-outline-path t)
 (setq org-outline-path-complete-in-steps nil)
@@ -326,3 +326,6 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 
 (general-nvmap :keymaps '(prolog-mode-map)
   "\\ u" 'cogent/prolog-add-use-module)
+
+;; Make old Ubuntu shellcheck not complain with flycheck
+(setq flycheck-shellcheck-follow-sources nil)

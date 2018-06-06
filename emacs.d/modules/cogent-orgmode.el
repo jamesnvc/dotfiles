@@ -2,6 +2,11 @@
 
 (require 'cogent-package)
 
+(defun cogent/org-note-file-name ()
+  (expand-file-name
+   (concat (read-string "Name: ") ".org")
+   "~/org/notebook/"))
+
 (use-package org
   :ensure org-plus-contrib
   :config
@@ -11,7 +16,7 @@
    'org-mode-hook
    (lambda ()
      (visual-line-mode 1)
-     (set-visual-wrap-column 80)))
+     (set-visual-wrap-column 120)))
   ;; Fancy bullet rendering
   (use-package org-bullets
     :config

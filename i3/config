@@ -27,21 +27,14 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle $update
 
 # start a terminal
-bindsym $mod+Return exec st -f "PragmataPro Mono:size=9"
+bindsym $mod+Return exec alacritty -e tmux
 
 # kill focused window
 bindsym $mod+Shift+apostrophe kill
 
-# start dmenu (a program launcher)
-# bindsym $mod+space exec dmenu_run
+# start rofi (a program launcher)
 bindsym $mod+space exec ~/bin/rofi_runner.sh
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
-
-# passmenu
-# bindsym $mod+backslash exec passmenu
+# 1password-esque
 bindsym $mod+backslash exec rofi-pass
 
 # Move spaces
@@ -99,7 +92,7 @@ bindsym $mod+f focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+shift+a focus child
 
 # switch to workspace
 bindsym $mod+1 workspace number 1

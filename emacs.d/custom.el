@@ -56,9 +56,15 @@
      (:name "flagged" :query "tag:flagged"))))
  '(org-capture-templates
    (quote
-    (("n" "Note" entry
-      (file "~/org/notes.org")
-      "* %? %U")
+    (("n" "Note" plain
+      (file cogent/org-note-file-name)
+      "#+TITLE: %^{title}
+#+AUTHOR: James Cash
+#+EMAIL: james.cash@occassionallycogent.com
+#+DATE: %t
+#+TAGS: %^g
+
+%?" :prepend t)
      ("w" "Bloom work tasks" entry
       (file "~/org/bloom.org")
       "* %?
@@ -69,7 +75,7 @@ Entered on %U
     (org-bbdb org-bibtex org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m org-drill org-learn)))
  '(package-selected-packages
    (quote
-    (swift-mode yaml-mode diminish minions slime-company cargo racer flycheck-rust rust-mode cyphejor general switch-window haskell-mode dracula-theme centered-window-mode quack geiser web-mode web volatile-highlights use-package twittering-mode tern swiper-helm spaceline smooth-scrolling shrink-whitespace rainbow-mode paradox org-plus-contrib org-cliplink org-bullets nyan-mode monroe material-theme markdown-mode linum-relative json-mode js2-refactor ibuffer-projectile hlinum highlight-parentheses helm-projectile helm-flycheck helm-flx helm-ext helm-cider helm-ag git-gutter-fringe+ git-gutter gist flycheck-color-mode-line f evil-surround evil-search-highlight-persist evil-org evil-nerd-commenter evil-mc evil-magit evil-leader ethan-wspace eshell-git-prompt eros elfeed-org elfeed-goodies dired+ company-try-hard company-quickhelp company-emoji cljr-helm alchemist)))
+    (lua-mode swift-mode yaml-mode diminish minions slime-company cargo racer flycheck-rust rust-mode cyphejor general switch-window haskell-mode dracula-theme centered-window-mode quack geiser web-mode web volatile-highlights use-package twittering-mode tern swiper-helm spaceline smooth-scrolling shrink-whitespace rainbow-mode paradox org-plus-contrib org-cliplink org-bullets nyan-mode monroe material-theme markdown-mode linum-relative json-mode js2-refactor ibuffer-projectile hlinum highlight-parentheses helm-projectile helm-flycheck helm-flx helm-ext helm-cider helm-ag git-gutter-fringe+ git-gutter gist flycheck-color-mode-line f evil-surround evil-search-highlight-persist evil-org evil-nerd-commenter evil-mc evil-magit evil-leader ethan-wspace eshell-git-prompt eros elfeed-org elfeed-goodies dired+ company-try-hard company-quickhelp company-emoji cljr-helm alchemist)))
  '(powerline-default-separator (quote bar))
  '(prolog-left-indent-regexp "\\(;\\|\\*?->\\)")
  '(prolog-program-name
@@ -80,7 +86,7 @@ Entered on %U
      (eclipse "eclipse")
      (mercury nil)
      (sicstus "sicstus")
-     (swi "~/.swivm/versions/7.7.9/bin/swipl")
+     (swi "~/.swivm/versions/7.7.14/bin/swipl")
      (gnu "gprolog")
      (t "/Applications/SWI-Prolog.app/Contents/MacOS/swipl"))))
  '(prolog-program-switches (quote ((sicstus ("-i")) (t nil))))
