@@ -118,10 +118,7 @@ more-helpful local prompt."
        (concat (propertize " ── "    'face for-bars)
                (propertize branch   'face for-git)))
 
-     (propertize "\n"     'face for-bars)
-     (propertize (if (= (user-uid) 0) " #" " $") 'face `(:weight ultra-bold))
-     ;; (propertize " └→" 'face (if (= (user-uid) 0) `(:weight ultra-bold :foreground "red") `(:weight ultra-bold)))
-     (propertize " "    'face `(:weight bold)))))
+     (propertize "\n"     'face for-bars))))
 
 (setq-default eshell-prompt-function #'eshell/eshell-local-prompt-function)
 
