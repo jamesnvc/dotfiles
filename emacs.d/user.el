@@ -286,12 +286,11 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
   #'(lambda ()
       (interactive)
       (let* ((input-chs (cl-loop for ch = (read-char)
-                                until (= ch ?\s)
-                                collect ch ))
-            (input-str (apply #'string input-chs))
-            (input-num (string-to-number input-str 16)))
+                                 until (= ch ?\s)
+                                 collect ch))
+             (input-str (apply #'string input-chs))
+             (input-num (string-to-number input-str 16)))
         (insert-char input-num))))
-
 
 ;; Prolog
 (add-to-list 'auto-mode-alist '("\\.pl$" . prolog-mode))
