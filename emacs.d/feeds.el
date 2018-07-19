@@ -126,4 +126,5 @@
         ("https://emacsair.me/feed.xml" emacs)
         ("http://occasionallycogent.com/feed.xml" mustread)
         ("https://blog.cannawen.com/rss" mustread)
-        ("http://existentialcomics.com/rss.xml" comic)))
+        ("http://existentialcomics.com/rss.xml" comic)
+        ("http://badmachinery.com/index.xml" comic)))
