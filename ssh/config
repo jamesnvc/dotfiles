@@ -2,14 +2,6 @@ Host *
   VisualHostKey yes
   UseRoaming no
 
-Host penyopal.com
-  User rafd_penyopal
-  Port 22
-  Hostname ssh.phx.nearlyfreespeech.net
-  IdentityFile ~/.ssh-keys/nfshost
-  TCPKeepAlive yes
-  IdentitiesOnly yes
-
 Host github
   User git
   Port 22
@@ -21,133 +13,15 @@ Host github
 Host bitbucket.org
   User git
   HostName bitbucket.org
-  IdentityFile ~/.ssh-keys/bitbucket
+  IdentityFile ~/.ssh-keys/bitbucket_new
   TCPKeepAlive yes
   IdentitiesOnly yes
-
-Host wolever.net
-  User james
-  Port 22
-  Hostname wolever.net
-  IdentityFile ~/.ssh-keys/id_wolever_np
-  TCPKeepAlive yes
-
-Host rafd.xen.prgmr.com
-  User git
-  Hostname rafd.xen.prgmr.com
-  IdentityFile ~/.ssh-keys/career_fair
-  TCPKeepAlive yes
-
-Host ecf
-  User cashjame
-  Hostname p170.ecf.toronto.edu
-  IdentityFile ~/.ssh-keys/ecf
-  TCPKeepAlive yes
-
-Host ug
-  User cashjame
-  Hostname ug151.eecg.utoronto.ca
-  IdentityFile ~/.ssh-keys/ug
-  TCPKeepAlive yes
-
-Host remote.ecf.utoronto.ca
-  User cashjame
-  Hostname remote.ecf.utoronto.ca
-  IdentityFile ~/.ssh-keys/ecf
-  TCPKeepAlive yes
-
-Host official.heroku.com
-  HostName heroku.com
-  User git
-  IdentitiesOnly yes
-  IdentityFile ~/.ssh-keys/id_rsa
-
-Host ec2
-  HostName 50.16.226.15
-  User ubuntu
-  IdentitiesOnly yes
-  IdentityFile ~/.ssh-keys/james-ec2.pem
-
-Host heracles
-  User git
-  IdentitiesOnly yes
-  IdentityFile ~/.ssh-keys/heracles-git
-
-Host rotman
-  User james
-  HostName 198.199.86.211
-  IdentitiesOnly yes
-  IdentityFile ~/.ssh-keys/rotman
-
-Host rotmangit
-  User git
-  HostName 198.199.86.211
-  IdentitiesOnly yes
-  IdentityFile ~/.ssh-keys/rotman-git
-
-Host n36
-  User james
-  HostName 192.241.166.86
-  IdentitiesOnly yes
-  IdentityFile ~/.ssh-keys/n36
 
 Host palantir
   User james
   HostName 162.243.135.98
   IdentitiesOnly yes
   IdentityFile ~/.ssh-keys/palantir
-
-Host ryerson
-  User james
-  Hostname 162.243.51.66
-  IdentitiesOnly yes
-  IdentityFile ~/.ssh-keys/ryerson
-
-Host ryersongit
-  User git
-  Hostname 162.243.51.66
-  IdentitiesOnly yes
-  IdentityFile ~/.ssh-keys/ryerson-git
-
-Host ryerson-frontend
-  User james
-  Hostname 162.243.255.62
-  IdentitiesOnly yes
-  IdentityFile ~/.ssh-keys/ryerson-frontend
-
-Host ryerson-frontendgit
-  User git
-  Hostname 162.243.255.62
-  IdentitiesOnly yes
-  IdentityFile ~/.ssh-keys/ryerson-frontend-git
-
-Host git.wpengine.com
-  User git
-  HostName git.wpengine.com
-  IdentityFile ~/.ssh-keys/next36wpe
-  TCPKeepAlive yes
-  IdentitiesOnly yes
-
-Host next36-discourse
-  User root
-  Hostname 159.203.31.237
-  IdentityFile ~/.ssh-keys/palantir
-  TCPKeepAlive yes
-  IdentitiesOnly yes
-
-Host next36-discourse-archive
-  User root
-  Hostname 45.55.145.138
-  IdentityFile ~/.ssh-keys/palantir
-  TCPKeepAlive yes
-  IdentitiesOnly yes
-
-Host n36-digest
-  User james
-  Hostname 162.243.90.167
-  IdentityFile ~/.ssh-keys/n36-digest
-  TCPKeepAlive yes
-  IdentitiesOnly yes
 
 Host flexdb
   User james
@@ -156,38 +30,17 @@ Host flexdb
   TCPKeepAlive yes
   IdentitiesOnly yes
 
-Host ein
-  User james
-  Hostname ein.leanpixel.com
-  IdentityFile ~/.ssh-keys/ein
-  TCPKeepAlive yes
-  IdentitiesOnly yes
-
-Host cyberleague
-  User james
-  Hostname 104.236.7.105
-  IdentityFile ~/.ssh-keys/cyberleague
-  TCPKeepAlive yes
-  IdentitiesOnly yes
-
 Host vox3
   User james
   Hostname 138.197.128.120
-  IdentityFile ~/.ssh-keys/vox2
+  IdentityFile ~/.ssh-keys/vox3
   TCPKeepAlive yes
   IdentitiesOnly yes
 
 Host chat
   User james
   Hostname 104.236.213.222
-  IdentityFile ~/.ssh-keys/chat
-  TCPKeepAlive yes
-  IdentitiesOnly yes
-
-Host mech-discourse
-  User james
-  Hostname 45.79.185.125
-  IdentityFile ~/.ssh-keys/womenmech
+  IdentityFile ~/.ssh-keys/chat_new
   TCPKeepAlive yes
   IdentitiesOnly yes
 
@@ -195,13 +48,6 @@ Host penyo-cms
   User james
   Hostname 159.203.41.3
   IdentityFile ~/.ssh-keys/penyocms
-  TCPKeepAlive yes
-  IdentitiesOnly yes
-
-Host mailmerge
-  User james
-  IdentityFile ~/.ssh-keys/mailmerge
-  Hostname 159.203.39.181
   TCPKeepAlive yes
   IdentitiesOnly yes
 
