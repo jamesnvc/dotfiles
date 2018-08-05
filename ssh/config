@@ -23,13 +23,6 @@ Host palantir
   IdentitiesOnly yes
   IdentityFile ~/.ssh-keys/palantir
 
-Host flexdb
-  User james
-  Hostname 107.170.30.8
-  IdentityFile ~/.ssh-keys/flexdb
-  TCPKeepAlive yes
-  IdentitiesOnly yes
-
 Host vox3
   User james
   Hostname 138.197.128.120
@@ -55,13 +48,6 @@ Host braid-onyx
   User james
   IdentityFile ~/.ssh-keys/braid-onyx
   Hostname 159.203.33.218
-  TCPKeepAlive yes
-  IdentitiesOnly yes
-
-Host rookie
-  User james
-  IdentityFile ~/.ssh-keys/rookie
-  Hostname 138.197.141.23
   TCPKeepAlive yes
   IdentitiesOnly yes
 
