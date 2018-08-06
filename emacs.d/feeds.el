@@ -23,7 +23,6 @@
         "http://ericasadun.com/feed/"
         "http://www.blog.juliaferraioli.com/feeds/posts/default"
         "http://www.virginiaroberts.com/feed/"
-        "http://feralscrutiny.co/feed/"
         "http://www.rebeccamiller-webster.com/feed/"
         "http://corinnekrych.blogspot.com/feeds/posts/default"
         "http://nataliepo.typepad.com/nataliepo/rss.xml"
