@@ -126,4 +126,5 @@
         ("http://occasionallycogent.com/feed.xml" mustread)
         ("https://blog.cannawen.com/rss" mustread)
         ("http://existentialcomics.com/rss.xml" comic)
-        ("http://badmachinery.com/index.xml" comic)))
+        ("http://badmachinery.com/index.xml" comic)
+        ("http://lawsandsausagescomic.com/comic/rss" comic)))
