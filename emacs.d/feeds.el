@@ -23,7 +23,6 @@
         "http://ericasadun.com/feed/"
         "http://www.blog.juliaferraioli.com/feeds/posts/default"
         "http://www.virginiaroberts.com/feed/"
-        "http://feralscrutiny.co/feed/"
         "http://www.rebeccamiller-webster.com/feed/"
         "http://corinnekrych.blogspot.com/feeds/posts/default"
         "http://nataliepo.typepad.com/nataliepo/rss.xml"
@@ -126,4 +125,6 @@
         ("https://emacsair.me/feed.xml" emacs)
         ("http://occasionallycogent.com/feed.xml" mustread)
         ("https://blog.cannawen.com/rss" mustread)
-        ("http://existentialcomics.com/rss.xml" comic)))
+        ("http://existentialcomics.com/rss.xml" comic)
+        ("http://badmachinery.com/index.xml" comic)
+        ("http://lawsandsausagescomic.com/comic/rss" comic)))

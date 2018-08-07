@@ -36,6 +36,9 @@ bindsym $mod+Shift+apostrophe kill
 bindsym $mod+space exec ~/bin/rofi_runner.sh
 # 1password-esque
 bindsym $mod+backslash exec rofi-pass
+# searching
+bindsym $mod+equal exec ~/bin/web-search.sh -p duckduckgo
+bindsym $mod+Shift+equal exec ~/bin/web-search.sh
 
 # Move spaces
 bindsym $mod+grave workspace next
