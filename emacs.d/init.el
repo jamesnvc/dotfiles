@@ -56,6 +56,7 @@
 (require 'cogent-mail)
 (require 'cogent-twitter)
 (require 'cogent-feeds)
+(require 'cogent-misc-langs)
 
 ;; Other things
 (load (concat dotfiles-dir "user.el") 'noerror)
