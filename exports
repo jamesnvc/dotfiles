@@ -7,8 +7,8 @@ export PATH="${HOME}/swift-3.0-RELEASE-ubuntu15.10/usr/bin:$PATH"
 export PATH="${HOME}/.local/bin:$PATH"
 if [ $(uname) = 'Darwin' ]; then
   export PATH=$HOME/node_modules/.bin:/usr/local/bin:/usr/local/sbin:$PATH:/Developer/usr/bin
-  export PATH=/usr/local/ActivePerl-5.12/site/bin:$PATH
-  export PATH=/usr/local/ActivePerl-5.12/bin:$PATH
+  # export PATH=/usr/local/ActivePerl-5.12/site/bin:$PATH
+  # export PATH=/usr/local/ActivePerl-5.12/bin:$PATH
   export PATH=$HOME/.cabal/bin:$PATH
   export PATH=/usr/local/lib/node:$PATH
   export PATH=/Library/TeX/Distributions/TeXLive-2011.texdist/Contents/Programs/texbin:$PATH
@@ -17,9 +17,9 @@ if [ $(uname) = 'Darwin' ]; then
   export PATH=/Applications/Racket\ v6.1.1/bin:$PATH
   export PATH="$HOME/.cargo/bin:$PATH"
   # PATH fixes for rvm
-  if [ `which ruby` = '/usr/bin/ruby' ]; then
-    export PATH=~/.rvm/bin:$PATH
-  fi
+  # if [ `which ruby` = '/usr/bin/ruby' ]; then
+  #   export PATH=~/.rvm/bin:$PATH
+  # fi
   # Java
   export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
   if [ -z $JAVA_HOME ]; then
@@ -29,7 +29,7 @@ if [ $(uname) = 'Darwin' ]; then
   export HOMEBREW_GITHUB_API_TOKEN="21273a7f2e3886fce211486cde638c310f3ed922"
   # Node stuff
   export NODE_PATH=/usr/local/lib/node_modules
-  [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+  #[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
   # Python stuff
   ## Old, using pythonbrew
   #[[ -s "$HOME/.pythonbrew/etc/bashrc" ]] && source "$HOME/.pythonbrew/etc/bashrc"
@@ -38,6 +38,7 @@ if [ $(uname) = 'Darwin' ]; then
   # if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
   export IOS_SDK="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk"
+  export SWIVM_DIR="$HOME/.swivm"
 fi
 # Make leiningen start faster
 export LEIN_FAST_TRAMPOLINE=y
