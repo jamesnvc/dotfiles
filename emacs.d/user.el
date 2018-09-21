@@ -330,3 +330,5 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 
 ;; Make old Ubuntu shellcheck not complain with flycheck
 (setq flycheck-shellcheck-follow-sources nil)
+
+(server-start)
