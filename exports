@@ -61,7 +61,7 @@ export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
 # Make OS X shell use UTF8
 export __CF_USER_TEXT_ENCODING=0x1F5:0x8000100:0x8000100
 
-export EDITOR='emacs'
+export EDITOR='emacsclient --alternate-editor=emacs --no-wait +%l %f'
 
 export TERM=screen-256color
 
