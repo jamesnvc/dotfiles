@@ -2,7 +2,9 @@
 
 (set-frame-font "PragmataPro 16" nil t)
 (add-to-list 'exec-path "/Users/james/bin")
-(setenv "PATH" (concat "/Users/james/bin:" (getenv "PATH")))
+(add-to-list 'exec-path "/usr/local/bin")
+(setenv "PATH" (concat "/usr/local/bin:/Users/james/bin:" (getenv "PATH")))
+(global-prettify-symbols-mode -1)
 (require 'cogent-pragmata)
 
 ;; Quick way to jump here
