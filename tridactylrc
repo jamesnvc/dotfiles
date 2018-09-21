@@ -1,0 +1,2 @@
+set editorcmd /Applications/Emacs.app/Contents/MacOS/bin/emacsclient
+set searchengine duckduckgo
