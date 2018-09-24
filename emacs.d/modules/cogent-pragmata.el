@@ -213,6 +213,19 @@
 (add-hook 'prog-mode-hook
           #'cogent/add-pragmatapro-prettify-symbols-alist)
 
+(defun cogent/prettify-symbols-anywhere-compose-p (start end _match)
+  "Like the default, but don't care if we're in a comment"
+  ;; Check that the chars should really be composed into a symbol.
+  (let* ((syntaxes-beg (if (memq (char-syntax (char-after start)) '(?w ?_))
+                           '(?w ?_) '(?. ?\\)))
+         (syntaxes-end (if (memq (char-syntax (char-before end)) '(?w ?_))
+                           '(?w ?_) '(?. ?\\))))
+    (not (or (memq (char-syntax (or (char-before start) ?\s)) syntaxes-beg)
+             (memq (char-syntax (or (char-after end) ?\s)) syntaxes-end)))))
+(add-hook 'prog-mode-hook
+          #'(lambda () (setq-local prettify-symbols-compose-predicate
+                              #'cogent/prettify-symbols-anywhere-compose-p)))
+
 (global-prettify-symbols-mode +1)
 
 (provide 'cogent-pragmata)
