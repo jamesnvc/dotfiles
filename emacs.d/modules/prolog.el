@@ -10,7 +10,7 @@
 ;; Maintainer: Stefan Bruda <stefan(at)bruda(dot)ca>
 ;; Keywords: prolog major mode sicstus swi mercury
 
-(defvar prolog-mode-version "1.22"
+(defvar prolog-mode-version "1.23"
   "Prolog mode version number.")
 
 ;; This file is part of GNU Emacs.
