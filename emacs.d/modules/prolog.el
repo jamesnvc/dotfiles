@@ -1491,8 +1491,7 @@ If COMPILEP is non-nil then use compilation, otherwise consulting."
     (process-send-string
      "prolog" (prolog-build-prolog-command
              compilep buffer-file-name
-             (prolog-bsts buffer-file-name)))
-  (prolog-goto-prolog-process-buffer))
+             (prolog-bsts buffer-file-name))))
 
 
 ;;------------------------------------------------------------
