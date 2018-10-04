@@ -8,6 +8,7 @@ alias -g ...='../..'
 alias -g ....='../../..'
 alias gvim='open -a MacVim'
 alias rvim="gvim —remote-silent"
+alias ec='emacsclient --create-frame --alternate-editor=emacs'
 alias vime="vim -u ~/.vimencrypt -x"
 alias py=python
 alias be='bundle exec'
