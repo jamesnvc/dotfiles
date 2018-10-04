@@ -1062,7 +1062,7 @@ VERSION is of the format (Major . Minor)"
     (syntax-propertize-rules
      ;; GNU Prolog only accepts 0'\' rather than 0'', but the only
      ;; possible meaning of 0'' is rather clear.
-     ("\\<0\\(''?\\)"
+     ("\\<0\\('.\\)"
       (1 (unless (save-excursion (nth 8 (syntax-ppss (match-beginning 0))))
            (string-to-syntax "_"))))
      ;; We could check that we're not inside an atom, but I don't think
