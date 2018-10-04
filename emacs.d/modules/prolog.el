@@ -2620,8 +2620,7 @@ and end of list building."
 (defun prolog-goto-prolog-process-buffer ()
   "Switch to the prolog process buffer and go to its end."
   (switch-to-buffer-other-window "*prolog*")
-  (goto-char (point-max))
-)
+  (goto-char (point-max)))
 
 (declare-function pltrace-on "ext:pltrace" ())
 
