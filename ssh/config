@@ -83,3 +83,8 @@ Host partyserver
    Hostname partyserver.rocks
    IdentityFile ~/.ssh-keys/partyserver
    TCPKeepAlive yes
+
+Host gitlab.com
+   User jamesnvc
+   IdentityFile ~/.ssh-keys/gitlab
+   TCPKeepAlive yes

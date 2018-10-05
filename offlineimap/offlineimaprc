@@ -8,7 +8,6 @@ localrepository = Gmail-Local
 remoterepository = Gmail-Remote
 synclabels = yes
 labelsheader = X-Keywords
-status_backend = sqlite
 autorefresh = 2
 presynchook = ~/.config/offlineimap/maildir-notmuch-sync pre ~/mail/Gmail
 postsynchook = ~/.config/offlineimap/maildir-notmuch-sync post ~/mail/Gmail

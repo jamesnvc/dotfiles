@@ -26,6 +26,20 @@
     (with-eval-after-load "org"
       (define-key org-mode-map (kbd "C-c M-l") 'org-cliplink))))
 
+(use-package htmlize)
+
+(defun cogent/org-inline-css-hook (exporter)
+  "Make <pre> blocks in exported HTML have the same background colour
+as my default face, so it will be readable"
+  (when (eq exporter 'html)
+    (let ((pre-bg (face-background 'default))
+          (pre-fg (face-foreground 'default)))
+      (setq org-html-head-include-default-style nil)
+      (setq org-html-head
+            (format "<style type=\"text/css\">\n pre.src { background-color: %s; color: %s}</style>\n"
+                    pre-bg pre-fg)))))
+(add-hook 'org-export-before-processing-hook #'cogent/org-inline-css-hook)
+
 (use-package evil-org
   :ensure t
   :after org
