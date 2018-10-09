@@ -331,4 +331,12 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 ;; Make old Ubuntu shellcheck not complain with flycheck
 (setq flycheck-shellcheck-follow-sources nil)
 
+(defun cogent/lectureify ()
+  (interactive)
+  (set-frame-font "PragmataPro 30" nil t)
+  (use-package solarized-theme)
+  (load-theme 'solarized-light)
+  (global-prettify-symbols-mode -1))
+(general-define-key :keymaps 'global "<f10>" #'cogent/lectureify)
+
 (server-start)
