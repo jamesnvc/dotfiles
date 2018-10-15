@@ -864,6 +864,9 @@ This is really kludgy, and unneeded (i.e. obsolete) in Emacs>=24."
            ((not (zerop (skip-syntax-forward "w_'"))))
            ;; In case of non-ASCII punctuation.
            ((not (zerop (skip-syntax-forward ".")))))
+          (when (looking-at "\\.\\w")
+            (forward-char 1)
+            (skip-syntax-forward "w_"))
           (point))))
 
 (defun prolog-smie-backward-token ()
@@ -878,6 +881,9 @@ This is really kludgy, and unneeded (i.e. obsolete) in Emacs>=24."
            ((not (zerop (skip-syntax-backward "w_'"))))
            ;; In case of non-ASCII punctuation.
            ((not (zerop (skip-syntax-backward ".")))))
+          (when (and (eq ?. (char-before)) (memq 2 (syntax-after (point))))
+            (backward-char 1)
+            (skip-syntax-backward "w_"))
           (point))))
 
 (defconst prolog-smie-grammar
