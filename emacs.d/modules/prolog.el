@@ -853,12 +853,11 @@ This is really kludgy, and unneeded (i.e. obsolete) in Emacs>=24."
 (defconst prolog-operator-chars "-\\\\#&*+./:<=>?@\\^`~")
 
 (defun prolog-smie-forward-token ()
-  ;; FIXME: Add support for 0'<char>, if needed after adding it to
-  ;; syntax-propertize-functions.
   (forward-comment (point-max))
   (buffer-substring-no-properties
    (point)
    (progn (cond
+           ((looking-at "0'.") (forward-char 3))
            ((looking-at "[!;]") (forward-char 1))
            ((not (zerop (skip-chars-forward prolog-operator-chars))))
            ((not (zerop (skip-syntax-forward "w_'"))))
@@ -870,12 +869,13 @@ This is really kludgy, and unneeded (i.e. obsolete) in Emacs>=24."
           (point))))
 
 (defun prolog-smie-backward-token ()
-  ;; FIXME: Add support for 0'<char>, if needed after adding it to
-  ;; syntax-propertize-functions.
   (forward-comment (- (point-max)))
   (buffer-substring-no-properties
    (point)
    (progn (cond
+           ((and (eq ?' (char-before (1- (point))))
+                 (eq ?0 (char-before (- (point) 2))))
+            (backward-char 3))
            ((memq (char-before) '(?! ?\; ?\,)) (forward-char -1))
            ((not (zerop (skip-chars-backward prolog-operator-chars))))
            ((not (zerop (skip-syntax-backward "w_'"))))
