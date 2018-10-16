@@ -25,3 +25,8 @@ emacs.d/projectile-bookmarks.eld
 emacs.d/undo
 emacs.d/bookmarks
 emacs.d/url
+emacs.d/history
+emacs.d/projectile.cache
+emacs.d/recentf
+emacs.d/tramp
+emacs.d/.org-id-locations
