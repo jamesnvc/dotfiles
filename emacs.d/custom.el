@@ -11,7 +11,7 @@
  '(clojure-indent-style :align-arguments)
  '(custom-safe-themes
    (quote
-    ("ff7625ad8aa2615eae96d6b4469fcc7d3d20b2e1ebc63b761a349bebbb9d23cb" "98cc377af705c0f2133bb6d340bf0becd08944a588804ee655809da5d8140de6" default)))
+    ("a4df5d4a4c343b2712a8ed16bc1488807cd71b25e3108e648d4a26b02bc990b3" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "ff7625ad8aa2615eae96d6b4469fcc7d3d20b2e1ebc63b761a349bebbb9d23cb" "98cc377af705c0f2133bb6d340bf0becd08944a588804ee655809da5d8140de6" default)))
  '(elfeed-search-face-alist
    (quote
     ((unread elfeed-search-unread-title-face)
@@ -83,9 +83,9 @@ Entered on %U
      (eclipse "eclipse")
      (mercury nil)
      (sicstus "sicstus")
-     (swi "~/.swivm/versions/7.7.18/bin/swipl")
+     (swi "~/.swivm/versions/7.7.19/bin/swipl")
      (gnu "gprolog")
-     (t "~/.swivm/versions/7.7.18/bin/swipl"))))
+     (t "~/.swivm/versions/7.7.19/bin/swipl"))))
  '(prolog-program-switches (quote ((sicstus ("-i")) (t nil))))
  '(quack-programs
    (quote
@@ -122,5 +122,6 @@ Entered on %U
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(default ((((type tty)) (:background "#000000" :foreground "#f8f8f2")) (((type graphic)) (:background "#282a36" :foreground "#f8f8f2"))))
  '(quack-pltish-defn-face ((t (:foreground "RoyalBlue1" :weight bold))))
  '(spaceline-evil-visual ((t (:inherit mode-line :background "dark slate blue" :foreground "#ffffff")))))
