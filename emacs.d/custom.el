@@ -39,7 +39,6 @@
      (60 . evil-surround-read-tag)
      (102 . evil-surround-function)
      (124 "「" . "」"))))
- '(fci-rule-color "#37474f")
  '(flycheck-proselint-executable "~/.pyenv/shims/proselint")
  '(hl-sexp-background-color "#1c1f26")
  '(menu-bar-mode t)
@@ -73,6 +72,19 @@ Entered on %U
    (quote
     (lua-mode yaml-mode diminish minions slime-company cargo racer flycheck-rust rust-mode cyphejor general switch-window haskell-mode dracula-theme centered-window-mode quack geiser web-mode web volatile-highlights use-package twittering-mode tern swiper-helm spaceline smooth-scrolling shrink-whitespace rainbow-mode paradox org-plus-contrib org-cliplink org-bullets nyan-mode monroe material-theme markdown-mode linum-relative json-mode js2-refactor ibuffer-projectile hlinum highlight-parentheses helm-projectile helm-flycheck helm-flx helm-ext helm-cider helm-ag git-gutter-fringe+ git-gutter gist flycheck-color-mode-line f evil-surround evil-search-highlight-persist evil-org evil-nerd-commenter evil-mc evil-magit evil-leader ethan-wspace eros elfeed-org elfeed-goodies dired+ company-try-hard company-quickhelp company-emoji cljr-helm alchemist)))
  '(powerline-default-separator (quote bar))
+ '(prolog-compile-string
+   (quote
+    ((eclipse "[%f].")
+     (mercury "mmake ")
+     (sicstus
+      (eval
+       (if
+           (prolog-atleast-version
+            (quote
+             (3 . 7)))
+           "prolog:zap_file(%m,%b,compile,%l)." "prolog:zap_file(%m,%b,compile).")))
+     (swi "make.")
+     (t "compile(%f)."))))
  '(prolog-left-indent-regexp "\\(;\\|\\*?->\\)")
  '(prolog-program-name
    (quote
@@ -82,10 +94,12 @@ Entered on %U
      (eclipse "eclipse")
      (mercury nil)
      (sicstus "sicstus")
-     (swi "~/.swivm/versions/7.7.14/bin/swipl")
+     (swi "~/.swivm/versions/7.7.19/bin/swipl")
      (gnu "gprolog")
-     (t "~/.swivm/versions/7.7.14/bin/swipl"))))
+     (t "~/.swivm/versions/7.7.19/bin/swipl"))))
  '(prolog-program-switches (quote ((sicstus ("-i")) (t nil))))
+ '(prolog-system (quote swi))
+ '(prolog-use-standard-consult-compile-method-flag t)
  '(quack-programs
    (quote
     ("mzscheme" "bigloo" "csi" "csi -hygienic" "gosh" "gracket" "gsi" "gsi ~~/syntax-case.scm -" "guile" "kawa" "mit-scheme" "racket" "racket -il typed/racket" "rs" "scheme" "scheme48" "scsh" "sisc" "stklos" "sxi")))
