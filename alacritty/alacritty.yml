@@ -69,7 +69,7 @@ font:
 
   # The bold font face
   bold:
-    family: PragmataPro # should be "Menlo" or something on macOS.
+    family: PragmataPro Mono # should be "Menlo" or something on macOS.
     antialias: false
     rgba: none
     # Style can be specified to pick a specific face.
@@ -77,7 +77,7 @@ font:
 
   # The italic font face
   italic:
-    family: PragmataPro # should be "Menlo" or something on macOS.
+    family: PragmataPro Mono # should be "Menlo" or something on macOS.
     antialias: false
     rgba: none
     # Style can be specified to pick a specific face.
