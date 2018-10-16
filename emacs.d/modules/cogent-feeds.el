@@ -6,7 +6,7 @@
   (use-package elfeed-goodies
     :demand t
     :init
-    (elfeed-goodies/setup ))
+    (elfeed-goodies/setup))
   (add-hook 'elfeed-new-entry-hook
             (elfeed-make-tagger :before "2 weeks ago"
                                 :remove 'unread))
