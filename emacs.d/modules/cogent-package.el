@@ -2,6 +2,15 @@
 
 (require 'cl-lib)
 
+(defun online? ()
+  (if (and (functionp 'network-interface-list)
+           (network-interface-list))
+      (cl-some (lambda (iface) (unless (equal "lo" (car iface))
+                         (member 'up (car (last (network-interface-info
+                                                   (car iface)))))))
+            (network-interface-list))
+    t))
+
 ; Use MELPA repo as well as standard
 (setq package-user-dir (concat dotfiles-dir "elpa"))
 (require 'package)
@@ -10,9 +19,11 @@
 
 (package-initialize)
 
+(when (online?)
+  (unless package-archive-contents (package-refresh-contents)))
+
 ; Paradox is a better interface for package managment
 (when (not (package-installed-p 'paradox))
-  (package-refresh-contents)
   (package-install 'paradox))
 
 ;; Going to use 'use-package' to manage depedencies

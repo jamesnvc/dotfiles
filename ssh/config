@@ -88,3 +88,14 @@ Host gitlab.com
    User jamesnvc
    IdentityFile ~/.ssh-keys/gitlab
    TCPKeepAlive yes
+
+Host touchdowntunes
+    Hostname 50.116.24.27
+    User james
+    IdentityFile ~/.ssh-keys/touchdowntunes
+    IdentitiesOnly yes
+
+Host linode-lish
+    Hostname lish-dallas.linode.com
+    User jamesnvc
+    IdentityFile ~/.ssh-keys/linode_lish
