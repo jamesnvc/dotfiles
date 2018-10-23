@@ -38,7 +38,7 @@
   "<SPC>" 'evil-ex
   "m" 'helm-M-x
   "T" 'helm-find-files
-  "t" 'helm-projectile-find-file-dwim
+  "t" 'helm-projectile-find-file
   "s" 'helm-projectile-ag
   "b" 'helm-buffers-list
   "l" 'swiper-helm
