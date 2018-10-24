@@ -8,7 +8,8 @@
   (helm-mode 1)
   (with-eval-after-load "cogent-project"
     (use-package helm-projectile
-      :commands helm-projectile-on))
+      :commands helm-projectile-on helm-projectile-find-file
+      :config (projectile-mode)))
   (helm-autoresize-mode 1)
   (setq-default helm-display-header-line nil
                 helm-autoresize-min-height 0
