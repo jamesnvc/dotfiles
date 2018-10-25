@@ -28,6 +28,15 @@
             )
         (s-append "/bin/bash-language-server" npm-prefix))
      "start"))
-  (add-hook 'sh-mode #'lsp-sh-enable))
+  (add-hook 'sh-mode #'lsp-sh-enable)
+
+
+  ;; Rust
+  ;; to install the client:
+  ;; rustup component add rls-preview rust-analysis rust-src
+  (use-package lsp-rust
+    :commands lsp-rust-enable
+    :init (add-hook 'rust-mode #'lsp-rust-enable))
+  )
 
 (provide 'cogent-lsp)
