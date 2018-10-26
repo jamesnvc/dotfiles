@@ -3,6 +3,7 @@
 (set-frame-font "PragmataPro 16" nil t)
 (add-to-list 'exec-path "/Users/james/bin")
 (add-to-list 'exec-path "/usr/local/bin")
+(add-to-list 'exec-path "/Library/TeX/Distributions/TeXLive-2011.texdist/Contents/Programs/texbin")
 (setenv "PATH" (concat "/usr/local/bin:/Users/james/bin:" (getenv "PATH")))
 (global-prettify-symbols-mode -1)
 (require 'cogent-pragmata)
