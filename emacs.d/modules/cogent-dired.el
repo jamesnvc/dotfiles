@@ -1,11 +1,6 @@
 ;;; -*- lexical-binding: t -*-
 
-(use-package dired+
-  :init
-  (setq diredp-hide-details-initially-flag nil)
-  :config
-  (set-face-foreground 'diredp-file-name nil))
-
+(require 'dired+)
 ;; Keep dired buffers updated when the file system changes
 (setq global-auto-revert-non-file-buffers t)
 (setq auto-revert-verbose nil)
