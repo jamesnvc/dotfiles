@@ -34,6 +34,16 @@
   (use-package lsp-rust
     :commands lsp-rust-enable
     :init
-    (add-hook 'rust-mode-hook #'lsp-rust-enable)))
+    (add-hook 'rust-mode-hook #'lsp-rust-enable))
+
+  ;; C/C++/Objective-C
+  ;; to install the client
+  ;; https://github.com/MaskRay/ccls/wiki/Getting-started
+  (use-package ccls
+    :commands lsp-ccls-enable
+    :config
+    (setq ccls-executable (expand-file-name "~/software/ccls/Release/ccls"))
+    :init
+    (add-hook 'objc-mode-hook #'lsp-ccls-enable)))
 
 (provide 'cogent-lsp)

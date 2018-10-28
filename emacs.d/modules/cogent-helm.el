@@ -14,7 +14,7 @@
   (setq-default helm-display-header-line nil
                 helm-autoresize-min-height 0
                 helm-autoresize-max-height 35
-                helm-split-window-in-side-p t
+                helm-split-window-inside-p t
 
                 helm-M-x-fuzzy-match t
                 helm-buffers-fuzzy-matching t

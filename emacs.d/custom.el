@@ -40,6 +40,7 @@
      (102 . evil-surround-function)
      (124 "「" . "」"))))
  '(flycheck-proselint-executable "~/.pyenv/shims/proselint")
+ '(helm-use-undecorated-frame-option t)
  '(hl-sexp-background-color "#1c1f26")
  '(menu-bar-mode t)
  '(moody-mode-line-height 28)
@@ -70,7 +71,7 @@ Entered on %U
     (org-bbdb org-bibtex org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m org-drill org-learn)))
  '(package-selected-packages
    (quote
-    (lsp-rust racket-mode lsp-sh company-lsp lsp-ui lsp-mode htmlize swift-mode swift evil-matchit ediprolog mmm-mode org-tree-slide lua-mode yaml-mode diminish minions slime-company cargo racer flycheck-rust rust-mode cyphejor general switch-window haskell-mode dracula-theme centered-window-mode web-mode web volatile-highlights use-package twittering-mode tern swiper-helm spaceline smooth-scrolling shrink-whitespace rainbow-mode paradox org-plus-contrib org-cliplink org-bullets nyan-mode monroe material-theme markdown-mode linum-relative json-mode js2-refactor ibuffer-projectile hlinum highlight-parentheses helm-projectile helm-flycheck helm-flx helm-ext helm-cider helm-ag git-gutter-fringe+ git-gutter gist flycheck-color-mode-line f evil-surround evil-search-highlight-persist evil-org evil-nerd-commenter evil-mc evil-magit evil-leader ethan-wspace eros elfeed-org elfeed-goodies company-try-hard company-quickhelp company-emoji cljr-helm alchemist)))
+    (ccls lsp-rust racket-mode lsp-sh company-lsp lsp-ui lsp-mode htmlize swift-mode swift evil-matchit ediprolog mmm-mode org-tree-slide lua-mode yaml-mode diminish minions slime-company cargo racer flycheck-rust rust-mode cyphejor general switch-window haskell-mode dracula-theme centered-window-mode web-mode web volatile-highlights use-package twittering-mode tern swiper-helm spaceline smooth-scrolling shrink-whitespace rainbow-mode paradox org-plus-contrib org-cliplink org-bullets nyan-mode monroe material-theme markdown-mode linum-relative json-mode js2-refactor ibuffer-projectile hlinum highlight-parentheses helm-projectile helm-flycheck helm-flx helm-ext helm-cider helm-ag git-gutter-fringe+ git-gutter gist flycheck-color-mode-line f evil-surround evil-search-highlight-persist evil-org evil-nerd-commenter evil-mc evil-magit evil-leader ethan-wspace eros elfeed-org elfeed-goodies company-try-hard company-quickhelp company-emoji cljr-helm alchemist)))
  '(powerline-default-separator (quote bar))
  '(projectile-enable-caching t)
  '(prolog-compile-string
@@ -132,5 +133,4 @@ Entered on %U
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((((type tty)) (:background "#000000" :foreground "#f8f8f2")) (((type graphic)) (:background "#282a36" :foreground "#f8f8f2"))))
  '(spaceline-evil-visual ((t (:inherit mode-line :background "dark slate blue" :foreground "#ffffff")))))
