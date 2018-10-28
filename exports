@@ -50,6 +50,11 @@ if [ $(uname) = 'Darwin' ]; then
   export IOS_SDK="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk"
 fi
 # zsh glob to only selecting paths that match
+# '^' is the parameter expansion flag that says to apply the glob
+# qualifier to each item in the array.
+# (N) is the glob qualifier for "null glob", which seems to mean "if
+# this doesn't expand to a valid path, remove it"
+# So the combination of the two removes all invalid paths from the array
 path=($^path(N))
 
 # Make leiningen start faster
