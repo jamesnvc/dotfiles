@@ -96,3 +96,8 @@ Host linode-lish
     Hostname lish-dallas.linode.com
     User jamesnvc
     IdentityFile ~/.ssh-keys/linode_lish
+
+Host fuchikoma
+    Hostname Fuchikoma.local
+    User james
+    IdentityFile ~/.ssh-keys/fuchikoma
