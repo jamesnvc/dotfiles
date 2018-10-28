@@ -1,6 +1,8 @@
 Host *
   VisualHostKey yes
-  UseRoaming no
+  TCPKeepAlive yes
+  ControlMaster auto
+  ControlPath ~/.ssh/master-%r@%h:%p
 
 Host github
   User git
