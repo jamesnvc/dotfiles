@@ -1,28 +1,30 @@
 # -*- sh -*-
 # vim: syntax=sh :
-export PATH=$HOME/bin:$HOME/software/bin:/home/james/.multirust/toolchains/stable/cargo/bin:$PATH
-export PATH=$HOME/.cargo/bin:$PATH
-export PATH="/home/james/.pyenv/bin:$PATH"
-export PATH="${HOME}/swift-3.0-RELEASE-ubuntu15.10/usr/bin:$PATH"
-export PATH="${HOME}/.local/bin:$PATH"
-export PATH="${HOME}/software/arduino-1.8.3:$PATH"
+path+=$HOME/bin
+path+=$HOME/software/bin
+path+=$HOME/.multirust/toolchains/stable/cargo/bin
+path+=$HOME/.cargo/bin
+path+=${HOME}/.pyenv/bin
+path+=${HOME}/swift-3.0-RELEASE-ubuntu15.10/usr/bin
+path+=${HOME}/.local/bin
+path+=${HOME}/software/arduino-1.8.3
 # npm config set prefix="${HOME}/.node_modules_global"
-export PATH="${HOME}/.node_modules_global/bin:$PATH"
+path+=${HOME}/.node_modules_global/bin
 if [ $(uname) = 'Darwin' ]; then
-  export PATH=$HOME/node_modules/.bin:/usr/local/bin:/usr/local/sbin:$PATH:/Developer/usr/bin
-  # export PATH=/usr/local/ActivePerl-5.12/site/bin:$PATH
-  # export PATH=/usr/local/ActivePerl-5.12/bin:$PATH
-  export PATH=$HOME/.cabal/bin:$PATH
-  export PATH=/usr/local/lib/node:$PATH
-  export PATH=/Library/TeX/Distributions/TeXLive-2011.texdist/Contents/Programs/texbin:$PATH
-  export PATH=$HOME/Dropbox/dotfiles/git-util:$PATH
-  export PATH=/usr/local/apache-maven/current/bin:$PATH
-  export PATH=/Applications/Racket\ v6.1.1/bin:$PATH
-  export PATH="$HOME/.cargo/bin:$PATH"
+  path+=$HOME/node_modules/.bin
+  path+=/usr/local/bin
+  path+=/usr/local/sbin
+  path+=$HOME/.cabal/bin
+  path+=/usr/local/lib/node
+  path+=/Library/TeX/Distributions/TeXLive-2011.texdist/Contents/Programs/texbin
+  path+=$HOME/Dropbox/dotfiles/git-util
+  path+=/usr/local/apache-maven/current/bin
+  path+=/Applications/Racket\ v6.1.1/bin
+  path+=/Developer/usr/bin
   # PATH fixes for rvm
-  # if [ `which ruby` = '/usr/bin/ruby' ]; then
-  #   export PATH=~/.rvm/bin:$PATH
-  # fi
+  #if [ `which ruby` = '/usr/bin/ruby' ]; then
+  #  path+=~/.rvm/bin
+  #fi
   # Java
   export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
   if [ -z $JAVA_HOME ]; then
@@ -43,6 +45,9 @@ if [ $(uname) = 'Darwin' ]; then
   export IOS_SDK="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk"
   export SWIVM_DIR="$HOME/.swivm"
 fi
+# zsh glob to only selecting paths that match
+path=($^path(N))
+
 # Make leiningen start faster
 export LEIN_FAST_TRAMPOLINE=y
 
