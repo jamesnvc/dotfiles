@@ -1,20 +1,25 @@
 Host *
   VisualHostKey yes
   UseRoaming no
+  TCPKeepAlive no
+  ServerAliveInterval 60
+  ServerAliveCountMax 10
+  ControlPersist 4h
+  ControlMaster auto
+  ControlPath ~/.ssh/master-%r@%h:%p
+  AddKeysToAgent yes
 
 Host github
   User git
   Port 22
   Hostname github.com
   IdentityFile ~/.ssh-keys/github_new
-  TCPKeepAlive yes
   IdentitiesOnly yes
 
 Host bitbucket.org
   User git
   HostName bitbucket.org
   IdentityFile ~/.ssh-keys/bitbucket_new
-  TCPKeepAlive yes
   IdentitiesOnly yes
 
 Host palantir
@@ -27,35 +32,30 @@ Host vox3
   User james
   Hostname 138.197.128.120
   IdentityFile ~/.ssh-keys/vox3
-  TCPKeepAlive yes
   IdentitiesOnly yes
 
 Host chat
   User james
   Hostname 104.236.213.222
   IdentityFile ~/.ssh-keys/chat_new
-  TCPKeepAlive yes
   IdentitiesOnly yes
 
 Host penyo-cms
   User james
   Hostname 159.203.41.3
   IdentityFile ~/.ssh-keys/penyocms
-  TCPKeepAlive yes
   IdentitiesOnly yes
 
 Host braid-onyx
   User james
   IdentityFile ~/.ssh-keys/braid-onyx
   Hostname 159.203.33.218
-  TCPKeepAlive yes
   IdentitiesOnly yes
 
 Host munch
   User james
   IdentityFile ~/.ssh-keys/munch
   Hostname 45.63.78.0
-  TCPKeepAlive yes
   IdentitiesOnly yes
 
 Host mealsurfers
@@ -82,12 +82,10 @@ Host partyserver
    User jamesnvc
    Hostname partyserver.rocks
    IdentityFile ~/.ssh-keys/partyserver
-   TCPKeepAlive yes
 
 Host gitlab.com
    User jamesnvc
    IdentityFile ~/.ssh-keys/gitlab
-   TCPKeepAlive yes
 
 Host touchdowntunes
     Hostname 50.116.24.27
