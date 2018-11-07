@@ -4,9 +4,10 @@
 (add-to-list 'exec-path "/Users/james/bin")
 (add-to-list 'exec-path "/usr/local/bin")
 (add-to-list 'exec-path "/Library/TeX/Distributions/TeXLive-2011.texdist/Contents/Programs/texbin")
-(setenv "PATH" (concat "/usr/local/bin:/Users/james/bin:" (getenv "PATH")))
-(global-prettify-symbols-mode -1)
+(add-to-list 'exec-path "/Users/james/.node_modules_global/bin")
+(setenv "PATH" (concat "/Users/james/.node_modules_global/bin:/usr/local/bin:/Users/james/bin:" (getenv "PATH")))
 (require 'cogent-pragmata)
+(global-prettify-symbols-mode -1)
 
 ;; Quick way to jump here
 (set-register ?e (cons 'file (concat dotfiles-dir "user.el")))
@@ -336,8 +337,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
   (interactive)
   (set-frame-font "PragmataPro 30" nil t)
   (use-package solarized-theme)
-  (load-theme 'solarized-light)
-  (global-prettify-symbols-mode -1))
+  (load-theme 'solarized-light))
 (general-define-key :keymaps 'global "<f10>" #'cogent/lectureify)
 
 (server-start)
