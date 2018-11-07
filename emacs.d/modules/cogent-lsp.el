@@ -7,13 +7,9 @@
   :config
   (require 'lsp-imenu)
   (add-hook 'lsp-after-open-hook #'lsp-enable-imenu)
-  (use-package lsp-ui
-    :config
-    (add-hook 'lsp-mode-hook #'lsp-ui-mode))
+
   (require 'cogent-complete)
-  (use-package company-lsp
-    :demand t
-    :init (push 'company-lsp company-backends))
+
 
   ;; SH
   ;; to install the client:
@@ -26,24 +22,36 @@
      "start"))
   ;; not enabling it by default - kinda overkill
   ;; (add-hook 'sh-mode-hook #'lsp-sh-enable)
+  )
 
+(use-package lsp-ui
+  :after lsp-mode
+  :config
+  (add-hook 'lsp-mode-hook #'lsp-ui-mode))
+
+(use-package company-lsp
+  :after company lsp-mode
+  :demand t
+  :init (push 'company-lsp company-backends))
+
+;; Rust
+;; to install the client:
+;; rustup component add rls-preview rust-analysis rust-src
+(use-package lsp-rust
+  :after lsp-mode
+  :commands lsp-rust-enable
   :init
-  ;; Rust
-  ;; to install the client:
-  ;; rustup component add rls-preview rust-analysis rust-src
-  (use-package lsp-rust
-    :commands lsp-rust-enable
-    :init
-    (add-hook 'rust-mode-hook #'lsp-rust-enable))
+  (add-hook 'rust-mode-hook #'lsp-rust-enable))
 
-  ;; C/C++/Objective-C
-  ;; to install the client
-  ;; https://github.com/MaskRay/ccls/wiki/Getting-started
-  (use-package ccls
-    :commands lsp-ccls-enable
-    :config
-    (setq ccls-executable (expand-file-name "~/software/ccls/Release/ccls"))
-    :init
-    (add-hook 'objc-mode-hook #'lsp-ccls-enable)))
+;; C/C++/Objective-C
+;; to install the client
+;; https://github.com/MaskRay/ccls/wiki/Getting-started
+(use-package ccls
+  :after lsp-mode
+  :commands lsp-ccls-enable
+  :config
+  (setq ccls-executable (expand-file-name "~/software/ccls/Release/ccls"))
+  :init
+  (add-hook 'objc-mode-hook #'lsp-ccls-enable))
 
 (provide 'cogent-lsp)

@@ -31,9 +31,9 @@
   (set-face-foreground 'flycheck-color-mode-line-warning-face "#ffffff")
   (set-face-foreground 'flycheck-color-mode-line-info-face nil))
 
-(with-eval-after-load "helm"
-  (use-package helm-flycheck
-    ;; TODO: evil bindings
-    :bind (("C-c ! !" . helm-flycheck))))
+(use-package helm-flycheck
+  :after helm
+  ;; TODO: evil bindings
+  :bind (("C-c ! !" . helm-flycheck)))
 
 (provide 'cogent-flycheck)

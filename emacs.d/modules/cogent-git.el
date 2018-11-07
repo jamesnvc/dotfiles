@@ -4,10 +4,11 @@
 
 (use-package magit
   :commands magit-status
-  :bind ("C-x g" . magit-status)
-  :config
-  (use-package evil-magit
-    :demand t))
+  :bind ("C-x g" . magit-status))
+
+(use-package evil-magit
+  :after magit
+  :demand t)
 
 (use-package gist)
 
