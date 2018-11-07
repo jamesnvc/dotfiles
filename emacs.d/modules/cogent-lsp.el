@@ -50,7 +50,9 @@
   :after lsp-mode
   :commands lsp-ccls-enable
   :config
-  (setq ccls-executable (expand-file-name "~/software/ccls/Release/ccls"))
+  (if-let ((ccls-path (cogent/resolve-exec "ccls")))
+      (setq ccls-executable ccls-path)
+    (setq ccls-executable (expand-file-name "~/software/ccls/Release/ccls")))
   :init
   (add-hook 'objc-mode-hook #'lsp-ccls-enable))
 
