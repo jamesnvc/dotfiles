@@ -11,7 +11,7 @@
  '(clojure-indent-style :align-arguments)
  '(custom-safe-themes
    (quote
-    ("aaffceb9b0f539b6ad6becb8e96a04f2140c8faa1de8039a343a4f1e009174fb" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "a4df5d4a4c343b2712a8ed16bc1488807cd71b25e3108e648d4a26b02bc990b3" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "ff7625ad8aa2615eae96d6b4469fcc7d3d20b2e1ebc63b761a349bebbb9d23cb" "98cc377af705c0f2133bb6d340bf0becd08944a588804ee655809da5d8140de6" default)))
+    ("98cc377af705c0f2133bb6d340bf0becd08944a588804ee655809da5d8140de6" default)))
  '(elfeed-search-face-alist
    (quote
     ((unread elfeed-search-unread-title-face)
@@ -40,7 +40,7 @@
      (102 . evil-surround-function)
      (124 "「" . "」"))))
  '(flycheck-proselint-executable "~/.pyenv/shims/proselint")
- '(helm-ag-base-command "/usr/local/bin/ag --nocolor --nogroup")
+ '(helm-use-undecorated-frame-option t)
  '(hl-sexp-background-color "#1c1f26")
  '(menu-bar-mode t)
  '(moody-mode-line-height 28)
@@ -70,9 +70,6 @@ Entered on %U
  '(org-modules
    (quote
     (org-bbdb org-bibtex org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m org-drill org-learn)))
- '(package-selected-packages
-   (quote
-    (racket-mode company-lsp lsp-ui lsp-mode lua-mode swift-mode yaml-mode diminish minions slime-company cargo racer flycheck-rust rust-mode cyphejor general switch-window haskell-mode dracula-theme centered-window-mode web-mode web volatile-highlights use-package twittering-mode tern swiper-helm spaceline smooth-scrolling shrink-whitespace rainbow-mode paradox org-plus-contrib org-cliplink org-bullets nyan-mode monroe material-theme markdown-mode linum-relative json-mode js2-refactor ibuffer-projectile hlinum highlight-parentheses helm-projectile helm-flycheck helm-flx helm-ext helm-cider helm-ag git-gutter-fringe+ git-gutter gist flycheck-color-mode-line f evil-surround evil-search-highlight-persist evil-org evil-nerd-commenter evil-mc evil-magit evil-leader ethan-wspace eshell-git-prompt eros elfeed-org elfeed-goodies company-try-hard company-quickhelp company-emoji cljr-helm alchemist)))
  '(powerline-default-separator (quote bar))
  '(projectile-enable-caching t)
  '(prolog-compile-string
@@ -106,7 +103,7 @@ Entered on %U
  '(scroll-bar-mode nil)
  '(tool-bar-mode nil)
  '(undo-tree-auto-save-history t)
- '(undo-tree-history-directory-alist (quote (("." . "/Users/james/.emacs.d/undo"))))
+ '(undo-tree-history-directory-alist (quote (("." . "/home/james/.emacs.d/undo"))))
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
    (quote
@@ -129,7 +126,6 @@ Entered on %U
      (340 . "#fff59d")
      (360 . "#8bc34a"))))
  '(vc-annotate-very-old-color nil))
-
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

@@ -7,8 +7,6 @@
                                ;; restore after startup
                                (setq gc-cons-threshold 800000)))
 
-(package-initialize)
-
 (setq inhibit-startup-message t)
 
 (setq dotfiles-dir (file-name-directory (or (buffer-file-name) (file-chase-links load-file-name))))
@@ -22,9 +20,9 @@
 (load custom-file 'noerror)
 
 ;; Load packages
+(require 'cogent-package)
 (require 'cogent-general)
 (require 'cogent-base)
-(require 'cogent-package)
 (require 'cogent-keys)
 (require 'cogent-appearance)
 (require 'cogent-fonts)
