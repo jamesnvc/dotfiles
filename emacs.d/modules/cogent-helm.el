@@ -1,6 +1,5 @@
 ;;; -*- lexical-binding: t -*-
 
-
 (use-package helm
   :config
   (require 'helm-config)
@@ -37,6 +36,8 @@
   (with-eval-after-load "helm"
     (require 'helm-flx)
     (helm-flx-mode 1)))
+
+(use-package helm-ag)
 
 (use-package helm-ext
   :config

@@ -70,9 +70,6 @@ Entered on %U
  '(org-modules
    (quote
     (org-bbdb org-bibtex org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m org-drill org-learn)))
- '(package-selected-packages
-   (quote
-    (ccls lsp-rust racket-mode lsp-sh company-lsp lsp-ui lsp-mode htmlize swift-mode swift evil-matchit ediprolog mmm-mode org-tree-slide lua-mode yaml-mode diminish minions slime-company cargo racer flycheck-rust rust-mode cyphejor general switch-window haskell-mode dracula-theme centered-window-mode web-mode web volatile-highlights use-package twittering-mode tern swiper-helm spaceline smooth-scrolling shrink-whitespace rainbow-mode paradox org-plus-contrib org-cliplink org-bullets nyan-mode monroe material-theme markdown-mode linum-relative json-mode js2-refactor ibuffer-projectile hlinum highlight-parentheses helm-projectile helm-flycheck helm-flx helm-ext helm-cider helm-ag git-gutter-fringe+ git-gutter gist flycheck-color-mode-line f evil-surround evil-search-highlight-persist evil-org evil-nerd-commenter evil-mc evil-magit evil-leader ethan-wspace eros elfeed-org elfeed-goodies company-try-hard company-quickhelp company-emoji cljr-helm alchemist)))
  '(powerline-default-separator (quote bar))
  '(projectile-enable-caching t)
  '(prolog-compile-string

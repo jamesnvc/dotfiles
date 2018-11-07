@@ -11,31 +11,20 @@
             (network-interface-list))
     t))
 
-; Use MELPA repo as well as standard
-(setq package-user-dir (concat dotfiles-dir "elpa"))
-(require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
+;; Set up straight.el for packages
+(defvar bootstrap-version)
+(let ((bootstrap-file (expand-file-name "straight/repos/straight.el/bootstrap.el"
+                                        user-emacs-directory))
+      (bootstrap-version 5))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer (url-retrieve-synchronously
+                          "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+                          'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
+(setq straight-use-package-by-default t)
 
-(package-initialize)
-
-(when (online?)
-  (unless package-archive-contents (package-refresh-contents)))
-
-; Paradox is a better interface for package managment
-(when (not (package-installed-p 'paradox))
-  (package-install 'paradox))
-
-;; Going to use 'use-package' to manage depedencies
-;; This lets us defer loading stuff until needed
-;; and keeps the configuration together
-
-;; Make sure it's installed
-(paradox-require 'use-package)
-; Load it so it's available
-(require 'use-package)
-
-; make use-package install packages as needed, instead of us having to manually do that
-(setq use-package-always-ensure t)
+(straight-use-package 'use-package)
 
 (provide 'cogent-package)

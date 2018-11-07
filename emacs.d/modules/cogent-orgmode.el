@@ -8,7 +8,6 @@
    "~/org/notebook/"))
 
 (use-package org
-  :ensure org-plus-contrib
   :config
   (setq org-replace-disputed-keys t)
   (setq org-default-notes-file (concat org-directory "/notes.org"))
@@ -41,7 +40,6 @@ as my default face, so it will be readable"
 (add-hook 'org-export-before-processing-hook #'cogent/org-inline-css-hook)
 
 (use-package evil-org
-  :ensure t
   :after org
   :config
   (add-hook 'org-mode-hook 'evil-org-mode)
