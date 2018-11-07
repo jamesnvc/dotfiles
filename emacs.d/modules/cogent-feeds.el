@@ -3,13 +3,6 @@
 (use-package elfeed
   :commands elfeed
   :init
-  (use-package elfeed-goodies
-    :demand t
-    :init
-    (elfeed-goodies/setup))
-  (add-hook 'elfeed-new-entry-hook
-            (elfeed-make-tagger :before "2 weeks ago"
-                                :remove 'unread))
   (add-hook 'elfeed-show-mode-hook #'visual-line-mode)
   (evil-define-key 'normal elfeed-search-mode-map
     "q" #'quit-window
@@ -25,5 +18,14 @@
     "n" #'elfeed-show-next
     "p" #'elfeed-show-prev
     "o" #'elfeed-show-visit))
+
+(use-package elfeed-goodies
+  :after elfeed
+  :demand t
+  :init
+  (elfeed-goodies/setup)
+  (add-hook 'elfeed-new-entry-hook
+            (elfeed-make-tagger :before "2 weeks ago"
+                                :remove 'unread)))
 
 (provide 'cogent-feeds)

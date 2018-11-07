@@ -15,15 +15,18 @@
    'org-mode-hook
    (lambda ()
      (visual-line-mode 1)
-     (set-visual-wrap-column 120)))
-  ;; Fancy bullet rendering
-  (use-package org-bullets
-    :config
-    (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
-  (use-package org-cliplink
-    :config
-    (with-eval-after-load "org"
-      (define-key org-mode-map (kbd "C-c M-l") 'org-cliplink))))
+     (set-visual-wrap-column 120))))
+
+(use-package org-bullets
+  :after org
+  :config
+  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+
+(use-package org-cliplink
+  :after org
+  :config
+  (with-eval-after-load "org"
+    (define-key org-mode-map (kbd "C-c M-l") 'org-cliplink)))
 
 (use-package htmlize)
 

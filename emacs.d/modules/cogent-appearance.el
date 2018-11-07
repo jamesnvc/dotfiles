@@ -3,11 +3,13 @@
 
 (require 'term)
 
+(use-package dracula-theme)
+
 (defun cogent-appearance/dark ()
   (interactive)
   ;; (use-package material-theme)
   ;; (load-theme 'material)
-  (use-package dracula-theme)
+  (load-theme 'dracula t)
   (set-face-background 'powerline-active1 "gray9")
   (set-face-background 'powerline-active2 "gray13")
 
