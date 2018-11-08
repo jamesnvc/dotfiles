@@ -8,22 +8,27 @@
    "~/org/notebook/"))
 
 (use-package org
+  :straight org-plus-contrib
   :config
+  (require 'org-tempo) ;; for expanding templates
   (setq org-replace-disputed-keys t)
   (setq org-default-notes-file (concat org-directory "/notes.org"))
   (add-hook
    'org-mode-hook
    (lambda ()
+     (let ((default-pred electric-pair-inhibit-predicate))
+       (setq-local electric-pair-inhibit-predicate
+                   #'(lambda (c) (if (char-equal c ?<) t default-pred))))
      (visual-line-mode 1)
      (set-visual-wrap-column 120))))
 
 (use-package org-bullets
-  :after org
+  :after org-plus-contrib
   :config
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
 (use-package org-cliplink
-  :after org
+  :after org-plus-contrib
   :config
   (with-eval-after-load "org"
     (define-key org-mode-map (kbd "C-c M-l") 'org-cliplink)))
@@ -43,7 +48,7 @@ as my default face, so it will be readable"
 (add-hook 'org-export-before-processing-hook #'cogent/org-inline-css-hook)
 
 (use-package evil-org
-  :after org
+  :after org-plus-contrib
   :config
   (add-hook 'org-mode-hook 'evil-org-mode)
   (add-hook 'evil-org-mode-hook
