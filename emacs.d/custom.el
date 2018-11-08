@@ -69,7 +69,7 @@ Entered on %U
    %a"))))
  '(org-modules
    (quote
-    (org-bbdb org-bibtex org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m org-drill org-learn)))
+    (org-bbdb org-bibtex org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m)))
  '(powerline-default-separator (quote bar))
  '(projectile-enable-caching t)
  '(prolog-compile-string
