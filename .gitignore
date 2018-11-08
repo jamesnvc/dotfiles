@@ -30,3 +30,5 @@ emacs.d/projectile.cache
 emacs.d/recentf
 emacs.d/tramp
 emacs.d/.org-id-locations
+emacs.d/straight/*
+!emacs.d/straight/versions
