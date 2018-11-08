@@ -8,7 +8,6 @@
    "~/org/notebook/"))
 
 (use-package org
-  :straight org-plus-contrib
   :config
   (require 'org-tempo) ;; for expanding templates
   (setq org-replace-disputed-keys t)
@@ -23,12 +22,12 @@
      (set-visual-wrap-column 120))))
 
 (use-package org-bullets
-  :after org-plus-contrib
+  :after org
   :config
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
 (use-package org-cliplink
-  :after org-plus-contrib
+  :after org
   :config
   (with-eval-after-load "org"
     (define-key org-mode-map (kbd "C-c M-l") 'org-cliplink)))
@@ -48,7 +47,7 @@ as my default face, so it will be readable"
 (add-hook 'org-export-before-processing-hook #'cogent/org-inline-css-hook)
 
 (use-package evil-org
-  :after org-plus-contrib
+  :after org
   :config
   (add-hook 'org-mode-hook 'evil-org-mode)
   (add-hook 'evil-org-mode-hook
