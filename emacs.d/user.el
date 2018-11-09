@@ -5,7 +5,8 @@
 (add-to-list 'exec-path "/usr/local/bin")
 (add-to-list 'exec-path "/Library/TeX/Distributions/TeXLive-2011.texdist/Contents/Programs/texbin")
 (add-to-list 'exec-path "/Users/james/.node_modules_global/bin")
-(setenv "PATH" (concat "/Users/james/.node_modules_global/bin:/usr/local/bin:/Users/james/bin:" (getenv "PATH")))
+(add-to-list 'exec-path "/Users/james/.rvm/rubies/default/bin")
+(setenv "PATH" (concat "/Users/james/.rvm/rubies/default/bin:/Users/james/.node_modules_global/bin:/usr/local/bin:/Users/james/bin:" (getenv "PATH")))
 (require 'cogent-pragmata)
 (global-prettify-symbols-mode -1)
 
