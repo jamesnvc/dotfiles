@@ -338,7 +338,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
   (interactive)
   (set-frame-font "PragmataPro 30" nil t)
   (use-package solarized-theme)
-  (load-theme 'solarized-light))
+  (load-theme 'solarized-light t))
 (general-define-key :keymaps 'global "<f10>" #'cogent/lectureify)
 
 (server-start)
