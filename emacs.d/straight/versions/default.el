@@ -78,7 +78,7 @@
  ("lsp-rust" . "ecc889cc8735b280e0e6e84d2f4526b0048148b3")
  ("lsp-ui" . "5138e720451dfbcae2f55a8380416340d5706583")
  ("lua-mode" . "99312b8d6c500ba3067da6d81efcfbbea05a1cbd")
- ("magit" . "9ff2663580bcfe5f49dd418610dc4c0c017ba75a")
+ ("magit" . "13b32ae1c6f459a140f92dfac8f7e4de9fc1274a")
  ("magit-popup" . "8436447e3166b797edc596cf220f3bf9b41ff4d0")
  ("markdown-mode" . "a1e1ecc3246ae96f9054d4c7879063a25b9d139c")
  ("marshal.el" . "f038689cbd5b3680b80b44edd0c7a63ca3038e26")
