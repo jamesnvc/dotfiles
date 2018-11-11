@@ -1,5 +1,7 @@
 ;;; -*- lexical-binding: t -*-
 
+(require 'cogent-package)
+
 (use-package elfeed
   :commands elfeed
   :init

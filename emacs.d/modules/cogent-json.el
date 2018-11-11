@@ -1,5 +1,7 @@
 ;;; -*- lexical-binding: t -*-
 
+(require 'cogent-package)
+
 (use-package json-mode
   :commands json-mode
   :config

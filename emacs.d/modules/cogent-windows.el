@@ -1,5 +1,7 @@
 ;;; -*- lexical-binding: t -*-
 
+(require 'cogent-package)
+
 (use-package switch-window
   :bind
   (("C-x o" . switch-window)

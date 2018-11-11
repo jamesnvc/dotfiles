@@ -1,5 +1,7 @@
 ;;; -*- lexical-binding: t -*-
 
+(require 'cogent-package)
+
 (use-package twittering-mode
   :config
   (setq twittering-use-master-password t)

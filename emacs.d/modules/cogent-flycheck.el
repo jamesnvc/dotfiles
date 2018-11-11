@@ -1,7 +1,10 @@
 ;;; -*- lexical-binding: t -*-
 
-(define-key evil-normal-state-map (kbd "] q") 'next-error)
-(define-key evil-normal-state-map (kbd "[ q") 'previous-error)
+(require 'cogent-package)
+
+(with-eval-after-load 'evil
+  (define-key evil-normal-state-map (kbd "] q") 'next-error)
+  (define-key evil-normal-state-map (kbd "[ q") 'previous-error))
 
 (use-package flycheck
   :config

@@ -1,5 +1,7 @@
 ;;; -*- lexical-binding: t -*-
 
+(require 'cogent-package)
+
 (use-package general
   :demand t
   :config

@@ -1,5 +1,7 @@
 ;;; -*- lexical-binding: t -*-
 
+(require 'cogent-package)
+
 (use-package markdown-mode
   :commands markdown-mode
   :mode (("\\.markdown$" . markdown-mode)
