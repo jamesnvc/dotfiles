@@ -1,34 +1,44 @@
 ;;; -*- lexical-binding: t -*-
 (require 'cogent-package)
 
-(require 'term)
-
-(use-package dracula-theme)
-
-(defun cogent-appearance/dark ()
+;; theme switching stuff from https://www.greghendershott.com/2017/02/emacs-themes.html
+(defun cogent/disable-all-themes ()
   (interactive)
-  ;; (use-package material-theme)
-  ;; (load-theme 'material)
-  (load-theme 'dracula t)
-  (set-face-background 'powerline-active1 "gray9")
-  (set-face-background 'powerline-active2 "gray13")
+  (mapc #'disable-theme custom-enabled-themes))
 
-  ;; (set-face-background 'default "#000")
+(defvar cogent/theme-hooks nil
+  "((theme-id . function) ...)")
 
-  ;; (set-face-background 'region "#223355")
-  ;; (set-face-background 'fringe "#000")
-  (set-face-attribute
-   'linum nil
-   :foreground "#678"
-   ;; :background "#000"
-   :height 0.9)
-  (set-face-attribute
-   'linum-highlight-face nil
-   :foreground "#96989c"
-   ;; :background "#263238"
-   :height 0.9)
-  ;(set-face-foreground 'which-func "#7f9f7f")
+(defun cogent/add-theme-hook (theme-id hook-func)
+  (add-to-list 'cogent/theme-hooks (cons theme-id hook-func)))
 
+(defun cogent/load-theme-advice (f theme-id &optional no-confirm no-enable &rest args)
+  "Enhance `load-theme' by disabling other enabled themes & calling hooks"
+  (unless no-enable
+    (cogent/disable-all-themes))
+  (prog1
+      (apply f theme-id no-confirm no-enable args)
+    (unless no-enable
+      (pcase (assq theme-id cogent/theme-hooks)
+        (`(,_ . ,f) (funcall f))))))
+
+(advice-add 'load-theme :around #'cogent/load-theme-advice)
+
+(use-package dracula-theme
+  :defer t
+  :init
+  (defun cogent/dracula-theme-hook ()
+    (set-face-background 'powerline-active1 "gray9")
+    (set-face-background 'powerline-active2 "gray13")
+    (set-face-attribute 'linum nil :foreground "#678" :height 0.9)
+    (set-face-attribute 'linum-highlight-face nil :foreground "#96989c" :height 0.9))
+  (cogent/add-theme-hook 'dracula #'cogent/dracula-theme-hook))
+
+(use-package solarized
+  :straight solarized-theme
+  :defer t)
+
+(with-eval-after-load 'term
   (set-face-foreground 'term-color-black "#3f3f3f")
   (set-face-foreground 'term-color-red "#cc9393")
   (set-face-foreground 'term-color-green "#7f9f7f")
@@ -145,12 +155,12 @@
 
 (with-eval-after-load 'dash (dash-enable-font-lock))
 
-(cogent-appearance/dark)
-
 (cond
  ((member "FSD Emoji" (font-family-list))
   (set-fontset-font t 'unicode "FSD Emoji" nil 'prepend))
  ((member "Symbola" (font-family-list))
   (set-fontset-font t 'unicode "Symbola" nil 'prepend)))
+
+(load-theme 'dracula t)
 
 (provide 'cogent-appearance)
