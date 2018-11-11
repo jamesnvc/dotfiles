@@ -72,9 +72,9 @@ evil to have."
  ;; Fix Y behaviour in evil
  "Y" 'cogent/evil-yank-to-eol
  ;; Like vim-vinegar
- "-" #'(lambda ()
-         (interactive)
-         (dired (f-dirname (buffer-file-name))))
+ "-" (lambda ()
+       (interactive)
+       (dired (f-dirname (buffer-file-name))))
  ;; Like vim-unimpaired
  "[ <SPC>" 'cogent/line-above
  "] <SPC>" 'cogent/line-below)
@@ -162,13 +162,13 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 
 ;; Eshell
 (add-hook 'eshell-first-time-mode-hook
-          #'(lambda ()
-              (evil-mc-mode -1)
-              ;; Need to do this in the hook because eshell defines its keymap
-              ;; in kind of a bizarre way
-              (general-define-key :keymaps 'eshell-mode-map
-                                  [remap eshell-pcomplete] 'helm-esh-pcomplete
-                                  "M-r" 'helm-eshell-history)))
+          (lambda ()
+            (evil-mc-mode -1)
+            ;; Need to do this in the hook because eshell defines its keymap
+            ;; in kind of a bizarre way
+            (general-define-key :keymaps 'eshell-mode-map
+                                [remap eshell-pcomplete] 'helm-esh-pcomplete
+                                "M-r" 'helm-eshell-history)))
 
 ;; Fancy symbols
 (push '("lambda" . 955) prettify-symbols-alist)
@@ -283,14 +283,14 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 ;; method works in Emacs too
 (require 's)
 (define-key global-map (kbd "C-S-u")
-  #'(lambda ()
-      (interactive)
-      (let* ((input-chs (cl-loop for ch = (read-char)
-                                 until (= ch ?\s)
-                                 collect ch))
-             (input-str (apply #'string input-chs))
-             (input-num (string-to-number input-str 16)))
-        (insert-char input-num))))
+  (lambda ()
+    (interactive)
+    (let* ((input-chs (cl-loop for ch = (read-char)
+                               until (= ch ?\s)
+                               collect ch))
+           (input-str (apply #'string input-chs))
+           (input-num (string-to-number input-str 16)))
+      (insert-char input-num))))
 
 ;; Prolog
 (add-to-list 'auto-mode-alist '("\\.pl$" . prolog-mode))
@@ -327,4 +327,4 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 ;; Make old Ubuntu shellcheck not complain with flycheck
 (setq flycheck-shellcheck-follow-sources nil)
 
-(add-hook 'objc-mode-hook #'(lambda () (setq c-basic-offset 4)))
+(add-hook 'objc-mode-hook (lambda () (setq c-basic-offset 4)))
