@@ -38,10 +38,11 @@
 ;; to install the client:
 ;; rustup component add rls-preview rust-analysis rust-src
 (use-package lsp-rust
-  :after lsp-mode
+  :after lsp-mode rust-mode
   :commands lsp-rust-enable
   :init
-  (add-hook 'rust-mode-hook #'lsp-rust-enable))
+  (add-hook 'rust-mode-hook #'lsp-rust-enable)
+  (setq lsp-rust-rls-command '("rustup" "run" "nightly" "rls")))
 
 ;; C/C++/Objective-C
 ;; to install the client
