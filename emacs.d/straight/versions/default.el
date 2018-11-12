@@ -104,6 +104,7 @@
  ("sesman" . "1a6c5448cbcab6320570ca17a04b7487cdae0bd5")
  ("shrink-whitespace.el" . "0407b89c142bd17e65edb666f35e2c6755bd0867")
  ("smooth-scrolling" . "2462c13640aa4c75ab3ddad443fedc29acf68f84")
+ ("solarized-emacs" . "87d4758e7ecc8ed873f3326e4f8b185fd2b9da0a")
  ("spaceline" . "29ced71ed0097cd5eba15d6bfdbafd9d18f5bd82")
  ("straight.el" . "3162136026660f3c9ab9e96a3a81b2a99f2612c0")
  ("swift-mode" . "fc718a5d48a4fc16e8be1c4bde65bb11cd107a09")
