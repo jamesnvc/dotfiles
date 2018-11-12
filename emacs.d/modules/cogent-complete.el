@@ -51,6 +51,8 @@
              ("C-p" . company-select-previous))
   :diminish company-mode)
 
+;; fancy machine-learning autocomplete thing
+;; after install, run `company-tabnine-install-binary'
 (use-package company-tabnine
   :straight (:host github :repo "TommyX12/company-tabnine" :branch "master")
   :after company
