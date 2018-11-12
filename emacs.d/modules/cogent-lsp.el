@@ -3,6 +3,7 @@
 (require 'cogent-package)
 
 (use-package lsp-mode
+  ;; :demand t
   :commands lsp-define-stdio-client lsp-mode lsp-sh-enable
   :config
   (require 'lsp-imenu)
