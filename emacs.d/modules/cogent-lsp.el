@@ -3,6 +3,7 @@
 (require 'cogent-package)
 
 (use-package lsp-mode
+  ;; un-comment this to make the various other lsp-backends get loaded
   ;; :demand t
   :commands lsp-define-stdio-client lsp-mode lsp-sh-enable
   :config
