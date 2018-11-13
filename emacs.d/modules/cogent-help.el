@@ -1,4 +1,4 @@
-;; -*- lexical-bindings: t -*-
+;; -*- lexical-binding: t -*-
 
 (require 'cogent-package)
 

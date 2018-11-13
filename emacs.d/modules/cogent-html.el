@@ -1,7 +1,6 @@
 ;;; -*- lexical-binding: t -*-
 
 (require 'cogent-package)
-(require 'cogent-editing)
 
 ;; Special mode for HTML that deals with embedded JS & CSS, JSX, and
 ;; various templating systems

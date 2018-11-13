@@ -1,5 +1,8 @@
 ;;; -*- lexical-binding: t -*-
 
+(require 'cogent-package)
+(require 'cogent-keys)
+
 (use-package mmm-mode
   :config
   (setq mmm-global-mode 'maybe)
