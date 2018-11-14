@@ -12,7 +12,8 @@ env:
   # Note that some xterm terminfo databases don't declare support for italics.
   # You can verify this by checking for the presence of `smso` and `sitm` in
   # `infocmp xterm-256color`.
-  TERM: xterm-256color
+  TERM: alacritty
+  WINIT_HIDPI_FACTOR: 1.5
 
 window:
   # Window dimensions in character columns and lines
@@ -30,11 +31,13 @@ window:
     y: 2
 
   # Window decorations
-  # Setting this to false will result in window without borders and title bar.
-  decorations: true
+  decorations: full
 
 # Display tabs using this many cells (changes require restart)
 tabspaces: 8
+
+scrolling:
+  history: 0
 
 # When true, bold text is drawn using the bright variant of colors.
 draw_bold_text_with_bright_colors: true
@@ -84,7 +87,7 @@ font:
     style: Italic
 
   # Point size of the font
-  size: 13.0
+  size: 8.5
 
   # Offset is the extra space around each character. offset.y can be thought of
   # as modifying the linespacing, and offset.x as modifying the letter spacing.
@@ -99,17 +102,8 @@ font:
     x: 0
     y: 0
 
-  # OS X only: use thin stroke font rendering. Thin strokes are suitable
-  # for retina displays, but for non-retina you probably want this set to
-  # false.
-  use_thin_strokes: true
-
 # Should display the render timer
 render_timer: false
-
-# Use custom cursor colors. If true, display the cursor in the cursor.foreground
-# and cursor.background colors, otherwise invert the colors of the cursor.
-custom_cursor_colors: false
 
 # Base16 Dracula - alacritty color config
 # Mike Barkmin (http://github.com/mikebarkmin) based on Dracula Theme (http://github.com/dracula)
@@ -210,14 +204,14 @@ mouse:
   # scrolling for applications like `man`.
   #
   # To disable this completely, set `faux_scrollback_lines` to 0.
-  faux_scrollback_lines: 1
+  faux_scrolling_lines: 1
+
+  hide_when_typing: false
 
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>"
 
 dynamic_title: true
-
-hide_cursor_when_typing: false
 
 # Style of the cursor
 #
@@ -225,7 +219,8 @@ hide_cursor_when_typing: false
 # - Block
 # - Underline
 # - Beam
-cursor_style: Block
+cursor:
+  style: Block
 
 # Live config reload (changes require restart)
 live_config_reload: true
