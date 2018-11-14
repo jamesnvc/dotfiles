@@ -1,3 +1,4 @@
+# -*- mode: sh -*-
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.zsh_history
 HISTSIZE=50000
