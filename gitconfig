@@ -14,7 +14,7 @@
   vim = !vim .git/index
   s = status --short
   d = diff
-  dc = diff --cached
+  dc = diff --cached --diff-algorithm=minimal -w
   dw = diff --word-diff
   cm = commit -m
   co = checkout
@@ -27,6 +27,7 @@
   assumed  = "!git ls-files -v | grep ^h | cut -c 3-"
   dd = "! git status --short | awk '$1 == \"D\" { print $2}' | xargs git rm --cached"
   blast = for-each-ref --sort=-committerdate refs/heads/ --format="%(committerdate:relative)%09%(refname:short)"
+  conflicted = diff --name-only --diff-filter=U
 [color]
   branch = auto
   diff = auto
@@ -38,10 +39,16 @@
   pager = less -r
 [merge]
   tool = threesome
-	ff = no
+  ff = no
+  defaultToUpstream = true
 [mergetool "threesome"]
   cmd = "vim -f $BASE $LOCAL $REMOTE $MERGED -c 'ThreesomeInit'"
   trustExitCode = true
+[filter "lfs"]
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+  clean = git-lfs clean -- %f
 [sendemail]
   smtpEncryption = tls
   smtpServer = smtp.gmail.com
