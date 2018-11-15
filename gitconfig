@@ -49,6 +49,12 @@
   process = git-lfs filter-process
   required = true
   clean = git-lfs clean -- %f
+[imap]
+  folder = "[Gmail]/Drafts"
+  host = imaps://imap.gmail.com
+  user = james.nvc@gmail.com
+  port = 993
+  sslverify = false
 [sendemail]
   smtpEncryption = tls
   smtpServer = smtp.gmail.com
