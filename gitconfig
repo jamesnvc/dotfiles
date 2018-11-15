@@ -42,3 +42,8 @@
 [mergetool "threesome"]
   cmd = "vim -f $BASE $LOCAL $REMOTE $MERGED -c 'ThreesomeInit'"
   trustExitCode = true
+[sendemail]
+  smtpEncryption = tls
+  smtpServer = smtp.gmail.com
+  smtpUser = james.nvc@gmail.com
+  smtpServerPort = 587
