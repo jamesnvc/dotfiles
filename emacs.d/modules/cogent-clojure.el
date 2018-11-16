@@ -64,7 +64,8 @@
         "c" #'evil-change-whole-line
         "r-" #'cogent/kebab-case
         "r_" #'cogent/snake-case
-        "rc" #'cogent/camel-case)
+        "rc" #'cogent/camel-case
+        "rC" #'cogent/camel-case-upper)
   "] C-d" 'cider-find-var
   "K" 'cider-doc
   "M-r" #'(lambda () (interactive) (cider-load-file (buffer-file-name))))
