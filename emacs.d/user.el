@@ -93,6 +93,35 @@ evil to have."
  ;; Make "jump backwards" act as I expect in dired
  "C-o" 'quit-window)
 
+;; changing variable naming style
+(defun cogent/change-word-at-point (f)
+  (destructuring-bind (start . end) (bounds-of-thing-at-point 'symbol)
+    (save-excursion
+      (let ((text (buffer-substring-no-properties start end)))
+        (while (s-matches? "^[^[:alpha:]]" text)
+          (incf start)
+          (setf text (buffer-substring-no-properties start end)))
+        (delete-region start end)
+        (insert (funcall f text))))))
+
+(defun cogent/kebab-case ()
+  (interactive)
+  (cogent/change-word-at-point #'s-dashed-words))
+
+(defun cogent/snake-case ()
+  (interactive)
+  (cogent/change-word-at-point #'s-snake-case))
+
+(defun cogent/camel-case ()
+  (interactive)
+  (cogent/change-word-at-point #'s-lower-camel-case))
+
+(general-nmap "c" (general-key-dispatch 'evil-change
+                    :name cogent/change-word-case
+                    "r-" #'cogent/kebab-case
+                    "r_" #'cogent/snake-case
+                    "rc" #'cogent/camel-case))
+(general-vmap "c" 'evil-change)
 
 ;; Emacs-lisp
 (defun cogent/elisp-eval-next-sexp ()
@@ -116,9 +145,12 @@ evil to have."
               "] C-d" 'find-function-at-point
               "c" (general-key-dispatch 'evil-change
                     :name cogent/elisp-change-dispatch
-                    "pp" 'cogent/elisp-eval-next-sexp
-                    "p!" 'cogent/elisp-eval-and-replace-next-sexp
-                    "c" 'evil-change-whole-line))
+                    "pp" #'cogent/elisp-eval-next-sexp
+                    "p!" #'cogent/elisp-eval-and-replace-next-sexp
+                    "c" #'evil-change-whole-line
+                    "r-" #'cogent/kebab-case
+                    "r_" #'cogent/snake-case
+                    "rc" #'cogent/camel-case))
 (general-vmap :keymaps 'emacs-lisp-mode-map "c" 'evil-change)
 
 ;; Moving windows

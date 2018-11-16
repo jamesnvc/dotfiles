@@ -55,16 +55,19 @@
     (cider-eval-last-sexp-and-replace)))
 
 (general-nmap :keymaps 'cider-mode-map
-              "c" (general-key-dispatch 'evil-change
-                    :name cogent/clojure-change-dispatch
-                    "pp" 'cogent/cider-eval-next-sexp
-                    "p!" 'cogent/cider-eval-next-sexp-and-replace
-                    ; prefix arg to debug defun
-                    "d" 'cider-eval-defun-at-point
-                    "c" 'evil-change-whole-line)
-              "] C-d" 'cider-find-var
-              "K" 'cider-doc
-              "M-r" #'(lambda () (interactive) (cider-load-file (buffer-file-name))))
+  "c" (general-key-dispatch 'evil-change
+        :name cogent/clojure-change-dispatch
+        "pp" #'cogent/cider-eval-next-sexp
+        "p!" #'cogent/cider-eval-next-sexp-and-replace
+                                        ; prefix arg to debug defun
+        "d" #'cider-eval-defun-at-point
+        "c" #'evil-change-whole-line
+        "r-" #'cogent/kebab-case
+        "r_" #'cogent/snake-case
+        "rc" #'cogent/camel-case)
+  "] C-d" 'cider-find-var
+  "K" 'cider-doc
+  "M-r" #'(lambda () (interactive) (cider-load-file (buffer-file-name))))
 (general-vmap :keymaps 'cider-mode-map "c" 'evil-change)
 
 (provide 'cogent-clojure)
