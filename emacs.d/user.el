@@ -86,6 +86,43 @@ evil to have."
  ;; Make "jump backwards" act as I expect in dired
  "C-o" 'quit-window)
 
+;; changing variable naming style
+(require 's)
+
+(defun cogent/change-word-at-point (f)
+  (destructuring-bind (start . end) (bounds-of-thing-at-point 'symbol)
+    (save-excursion
+      (let ((text (buffer-substring-no-properties start end)))
+        (while (s-matches? "^[^[:alpha:]]" text)
+          (incf start)
+          (setf text (buffer-substring-no-properties start end)))
+        (delete-region start end)
+        (insert (funcall f text))))))
+
+(defun cogent/kebab-case ()
+  (interactive)
+  (cogent/change-word-at-point #'s-dashed-words))
+
+(defun cogent/snake-case ()
+  (interactive)
+  (cogent/change-word-at-point #'s-snake-case))
+
+(defun cogent/camel-case ()
+  (interactive)
+  (cogent/change-word-at-point #'s-lower-camel-case))
+
+(defun cogent/camel-case-upper ()
+  (interactive)
+  (cogent/change-word-at-point #'s-upper-camel-case))
+
+
+(general-nmap "c" (general-key-dispatch 'evil-change
+                    :name cogent/change-word-case
+                    "r-" #'cogent/kebab-case
+                    "r_" #'cogent/snake-case
+                    "rc" #'cogent/camel-case
+                    "rC" #'cogent/camel-case-upper))
+(general-vmap "c" 'evil-change)
 
 ;; Emacs-lisp
 (defun cogent/elisp-eval-next-sexp ()
@@ -109,9 +146,13 @@ evil to have."
               "] C-d" 'find-function-at-point
               "c" (general-key-dispatch 'evil-change
                     :name cogent/elisp-change-dispatch
-                    "pp" 'cogent/elisp-eval-next-sexp
-                    "p!" 'cogent/elisp-eval-and-replace-next-sexp
-                    "c" 'evil-change-whole-line))
+                    "pp" #'cogent/elisp-eval-next-sexp
+                    "p!" #'cogent/elisp-eval-and-replace-next-sexp
+                    "c" #'evil-change-whole-line
+                    "r-" #'cogent/kebab-case
+                    "r_" #'cogent/snake-case
+                    "rc" #'cogent/camel-case
+                    "rC" #'cogent/camel-case-upper))
 (general-vmap :keymaps 'emacs-lisp-mode-map "c" 'evil-change)
 
 ;; Moving windows
@@ -281,7 +322,6 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 ;; Make Gnome unicode input method work for emacs as well
 ;; Doing this instead of C-x 8 RET so the Kaleidoscope unicode input
 ;; method works in Emacs too
-(require 's)
 (define-key global-map (kbd "C-S-u")
   (lambda ()
     (interactive)
