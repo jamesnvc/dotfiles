@@ -279,14 +279,12 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
               . ,vert-split)
             'append)
 
-           (defun ,(intern (s-concat "helm-" op-type "-switch-new-vert-window"))
-               ()
+           (defun ,(intern (s-concat "helm-" op-type "-switch-new-vert-window")) ()
              (interactive)
              (with-helm-alive-p
                (helm-exit-and-execute-action (quote ,vert-split))))
 
-           (defun ,(intern (s-concat "helm-" op-type "-switch-new-horiz-window"))
-               ()
+           (defun ,(intern (s-concat "helm-" op-type "-switch-new-horiz-window")) ()
              (interactive)
              (with-helm-alive-p
                (helm-exit-and-execute-action (quote ,horiz-split))))))))
