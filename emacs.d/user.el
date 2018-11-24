@@ -245,63 +245,6 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (setq org-outline-path-complete-in-steps nil)
 (setq org-refile-allow-creating-parent-nodes 'confirm)
 
-
-
-;; Enable opening helm results in splits
-(cl-macrolet
-    ((make-splitter-fn (name open-fn split-fn)
-                         `(defun ,name (_candidate)
-                            ;; Display buffers in new windows
-                            (dolist (cand (helm-marked-candidates))
-                              (select-window (,split-fn))
-                              (,open-fn cand))
-                            ;; Adjust size of windows
-                            (balance-windows)))
-     (generate-helm-splitter-funcs
-      (op-type open-fn)
-      (let* ((prefix (s-concat "helm-" op-type "-switch-to-new-"))
-             (vert-split (intern (s-concat prefix "-vert-window")))
-             (horiz-split (intern (s-concat prefix "-horiz-window"))))
-        `(progn
-           (make-splitter-fn ,vert-split ,open-fn split-window-right)
-
-           (make-splitter-fn ,horiz-split ,open-fn split-window-below)
-
-           (add-to-list
-            (quote ,(intern (s-concat "helm-type-" op-type "-actions")))
-            '(,(s-concat "Display " op-type "(s) in new vertical split(s) `C-v'" )
-              . ,vert-split)
-            'append)
-
-           (add-to-list
-            (quote ,(intern (s-concat "helm-type-" op-type "-actions")))
-            '(,(s-concat "Display " op-type "(s) in new horizontal split(s) `C-s'" )
-              . ,vert-split)
-            'append)
-
-           (defun ,(intern (s-concat "helm-" op-type "-switch-new-vert-window")) ()
-             (interactive)
-             (with-helm-alive-p
-               (helm-exit-and-execute-action (quote ,vert-split))))
-
-           (defun ,(intern (s-concat "helm-" op-type "-switch-new-horiz-window")) ()
-             (interactive)
-             (with-helm-alive-p
-               (helm-exit-and-execute-action (quote ,horiz-split))))))))
-
-  (generate-helm-splitter-funcs "buffer" switch-to-buffer)
-  (generate-helm-splitter-funcs "file" find-file))
-
-(general-def helm-buffer-map
-  "C-v" #'helm-buffer-switch-new-vert-window
-  "C-s" #'helm-buffer-switch-new-horiz-window)
-(general-def helm-projectile-find-file-map
-  "C-v" #'helm-file-switch-new-vert-window
-  "C-s" #'helm-file-switch-new-horiz-window)
-(general-def helm-find-files-map
-  "C-v" #'helm-file-switch-new-vert-window
-  "C-s" #'helm-file-switch-new-horiz-window)
-
 ;; Mail
 (general-define-key :keymaps '(notmuch-search-mode-map)
                     "j" 'notmuch-search-next-thread
