@@ -98,33 +98,38 @@
     (select-window (funcall split-fn))
     (find-file f)))
 
+(defun cogent/helm-ag--open-horiz-window (candidate)
+  (helm-ag--find-file-action
+   candidate
+   (cogent/make-find-file-in-split #'split-window-below)
+   (helm-ag--search-this-file-p)))
+
+(defun cogent/helm-ag--open-vert-window (candidate)
+  (helm-ag--find-file-action
+   candidate
+   (cogent/make-find-file-in-split #'split-window-right)
+   (helm-ag--search-this-file-p)))
+
 (defun cogent/helm-ag-switch-new-horiz-window ()
   (interactive)
   (with-helm-alive-p
-    (helm-exit-and-execute-action
-     (lambda (candidate)
-       (helm-ag--find-file-action
-        candidate
-        (cogent/make-find-file-in-split #'split-window-below)
-        (helm-ag--search-this-file-p))))))
+    (helm-exit-and-execute-action #'cogent/helm-ag--open-horiz-window)))
 
 (defun cogent/helm-ag-switch-new-vert-window ()
   (interactive)
   (with-helm-alive-p
-    (helm-exit-and-execute-action
-     (lambda (candidate)
-       (helm-ag--find-file-action
-        candidate
-        (cogent/make-find-file-in-split #'split-window-right)
-        (helm-ag--search-this-file-p))))))
+    (helm-exit-and-execute-action #'cogent/helm-ag--open-vert-window)))
 
-(with-eval-after-load 'helm-ag
-  (add-to-list 'helm-ag--actions
-               (cons "Display file in new horizontal split"
-                     #'cogent/helm-ag-switch-new-horiz-window))
-  (add-to-list 'helm-ag--actions
-               (cons "Display file in new vertical split"
-                     #'cogent/helm-ag-switch-new-vert-window)))
+;; [TODO] figure out why these actions aren't showing up in the actions list
+(add-to-list 'helm-ag--actions
+             (cons "Display file in new horizontal split"
+                   #'cogent/helm-ag--open-horiz-window)
+             'append)
+
+(add-to-list 'helm-ag--actions
+             (cons "Display file in new vertical split"
+                   #'cogent/helm-ag--open-vert-window)
+             'append)
 
 (general-def helm-buffer-map
   "C-v" #'helm-buffer-switch-new-vert-window
