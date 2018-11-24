@@ -32,3 +32,5 @@ emacs.d/tramp
 emacs.d/.org-id-locations
 emacs.d/straight/*
 !emacs.d/straight/versions
+emacs.d/straight/repos
+emacs.d/straight/build-cache.el
