@@ -209,7 +209,8 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
             ;; in kind of a bizarre way
             (general-define-key :keymaps 'eshell-mode-map
                                 [remap eshell-pcomplete] 'helm-esh-pcomplete
-                                "M-r" 'helm-eshell-history)))
+                                "M-r" 'helm-eshell-history)
+            (display-line-numbers-mode -1)))
 
 ;; Fancy symbols
 (push '("lambda" . 955) prettify-symbols-alist)
