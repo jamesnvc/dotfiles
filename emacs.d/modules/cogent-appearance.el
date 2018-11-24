@@ -30,8 +30,8 @@
   (defun cogent/dracula-theme-hook ()
     (set-face-background 'powerline-active1 "gray9")
     (set-face-background 'powerline-active2 "gray13")
-    (set-face-attribute 'linum nil :foreground "#678" :height 0.9)
-    (set-face-attribute 'linum-highlight-face nil :foreground "#96989c" :height 0.9))
+    (set-face-attribute 'line-number nil :foreground "#678")
+    (set-face-attribute 'line-number-current-line nil :foreground "#96989c"))
   (cogent/add-theme-hook 'dracula #'cogent/dracula-theme-hook))
 
 (use-package solarized
@@ -56,14 +56,7 @@
   (mouse-wheel-mode t)
   (blink-cursor-mode -1))
 
-(global-linum-mode t)
-(setq linum-format "%4d")
-(use-package linum-relative)
-(linum-relative-mode)
-
-
-(use-package hlinum
-  :config (hlinum-activate))
+(global-display-line-numbers-mode)
 
 (setq column-number-mode t)
 
@@ -71,9 +64,6 @@
       '(term-mode slime-repl-mode magit-status-mode help-mode nrepl-mode
         mu4e-main-mode mu4e-headers-mode mu4e-view-mode
         mu4e-compose-mode))
-(defun linum-on ()
-  (unless (or (minibufferp) (member major-mode linum-disabled-modes))
-    (linum-mode 1)))
 
 (show-paren-mode 1)
 
