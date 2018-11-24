@@ -82,9 +82,10 @@ evil to have."
 (general-define-key
  :keymaps 'dired-mode-map
  ;; still like vim-vinegar
- "-" 'dired-up-directory
+ "-" #'dired-up-directory
  ;; Make "jump backwards" act as I expect in dired
- "C-o" 'quit-window)
+ "C-o" #'quit-window
+ "C-c C-e" #'wdired-change-to-wdired-mode)
 
 ;; changing variable naming style
 (require 's)
