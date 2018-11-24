@@ -12,6 +12,7 @@
  '(custom-safe-themes
    (quote
     ("98cc377af705c0f2133bb6d340bf0becd08944a588804ee655809da5d8140de6" default)))
+ '(display-line-numbers-type (quote relative))
  '(elfeed-search-face-alist
    (quote
     ((unread elfeed-search-unread-title-face)
