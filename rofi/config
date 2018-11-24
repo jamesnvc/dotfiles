@@ -272,3 +272,4 @@ rofi.kb-select-5:                    Control+5
 ! rofi.me-accept-entry:                MouseDPrimary
 ! "Accept hovered row with custom action" Set from: Default
 ! rofi.me-accept-custom:               Control+MouseDPrimary
+rofi.theme: /home/james/.config/rofi/dracula.rasi
