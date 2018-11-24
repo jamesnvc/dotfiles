@@ -39,6 +39,6 @@
 (use-package company-tern
   :after tern company
   :config
-  (add-to-list 'company-backends 'company-tern))
+  (add-to-list 'company-backends #'company-tern))
 
 (provide 'cogent-javascript)

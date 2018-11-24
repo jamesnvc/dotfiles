@@ -35,6 +35,6 @@
           (message "File '%s' successfully renamed to '%s'"
                    name (file-name-nondirectory new-name)))))))
 ;; TODO: evil binding too?
-(global-set-key (kbd "C-x C-r") 'rename-current-buffer-file)
+(global-set-key (kbd "C-x C-r") #'rename-current-buffer-file)
 
 (provide 'cogent-dired)

@@ -5,7 +5,7 @@
 (set-default 'indent-tabs-mode nil)
 (setq sentence-end-double-space nil)
 
-(define-key global-map (kbd "RET") 'newline-and-indent)
+(define-key global-map (kbd "RET") #'newline-and-indent)
 
 ;; Strict whitespace, highlight problems, automatically clean up on save
 ;; see https://github.com/glasserc/ethan-wspace

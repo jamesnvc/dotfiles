@@ -20,7 +20,7 @@
 (use-package cider
   :commands cider-jack-in
   :config
-  (add-hook 'cider-mode-hook 'eldoc-mode)
+  (add-hook 'cider-mode-hook #'eldoc-mode)
   (evil-set-initial-state 'cider-docview-mode 'insert)
   (evil-set-initial-state 'cider-stacktrace-mode 'insert)
   (setq cider-prompt-for-symbol nil)
@@ -66,8 +66,8 @@
         "r_" #'cogent/snake-case
         "rc" #'cogent/camel-case
         "rC" #'cogent/camel-case-upper)
-  "] C-d" 'cider-find-var
-  "K" 'cider-doc
+  "] C-d" #'cider-find-var
+  "K" #'cider-doc
   "M-r" #'(lambda () (interactive) (cider-load-file (buffer-file-name))))
 (general-vmap :keymaps 'cider-mode-map "c" 'evil-change)
 

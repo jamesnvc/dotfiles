@@ -30,7 +30,7 @@
   :after org
   :config
   (with-eval-after-load "org"
-    (define-key org-mode-map (kbd "C-c M-l") 'org-cliplink)))
+    (define-key org-mode-map (kbd "C-c M-l") #'org-cliplink)))
 
 (use-package htmlize)
 
@@ -49,9 +49,7 @@ as my default face, so it will be readable"
 (use-package evil-org
   :after org
   :config
-  (add-hook 'org-mode-hook 'evil-org-mode)
-  (add-hook 'evil-org-mode-hook
-            (lambda ()
-              (evil-org-set-key-theme))))
+  (add-hook 'org-mode-hook #'evil-org-mode)
+  (add-hook 'evil-org-mode-hook #'evil-org-set-key-theme))
 
 (provide 'cogent-orgmode)

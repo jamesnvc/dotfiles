@@ -8,18 +8,18 @@
 
 (define-key evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
 (general-define-key :keymaps 'normal
-                    "j" 'evil-next-visual-line
-                    "k" 'evil-previous-visual-line
-                    "C-u" 'evil-scroll-up
-                    "M-u" 'universal-argument)
+                    "j" #'evil-next-visual-line
+                    "k" #'evil-previous-visual-line
+                    "C-u" #'evil-scroll-up
+                    "M-u" #'universal-argument)
 
-(general-def "<menu>" 'helm-M-x)
+(general-def "<menu>" #'helm-M-x)
 
 (general-define-key :keymaps 'global
-                    "<f3>" 'eshell
-                    "<f4>" 'calc
-                    "<f5>" 'notmuch
-                    "<f6>" 'elfeed)
+                    "<f3>" #'eshell
+                    "<f4>" #'calc
+                    "<f5>" #'notmuch
+                    "<f6>" #'elfeed)
 
 ;; Leader key stuff
 (defun cogent/quit-help-window ()
@@ -29,16 +29,16 @@
 
 (my-leader-def
   :states '(normal visual)
-  "w" 'save-buffer
-  "x" 'evil-delete-buffer
-  "<SPC>" 'evil-ex
-  "m" 'helm-M-x
-  "T" 'helm-find-files
-  "t" 'helm-projectile-find-file
-  "s" 'helm-projectile-ag
-  "b" 'helm-buffers-list
-  "l" 'swiper-helm
-  "q" 'cogent/quit-help-window
+  "w" #'save-buffer
+  "x" #'evil-delete-buffer
+  "<SPC>" #'evil-ex
+  "m" #'helm-M-x
+  "T" #'helm-find-files
+  "t" #'helm-projectile-find-file
+  "s" #'helm-projectile-ag
+  "b" #'helm-buffers-list
+  "l" #'swiper-helm
+  "q" #'cogent/quit-help-window
   "+" (lambda () (interactive) (cogent-fonts/update-font-size 1))
   "-" (lambda () (interactive) (cogent-fonts/update-font-size -1)))
 
@@ -70,14 +70,14 @@ evil to have."
 (general-define-key
  :states '(normal visual)
  ;; Fix Y behaviour in evil
- "Y" 'cogent/evil-yank-to-eol
+ "Y" #'cogent/evil-yank-to-eol
  ;; Like vim-vinegar
  "-" (lambda ()
        (interactive)
        (dired (f-dirname (buffer-file-name))))
  ;; Like vim-unimpaired
- "[ <SPC>" 'cogent/line-above
- "] <SPC>" 'cogent/line-below)
+ "[ <SPC>" #'cogent/line-above
+ "] <SPC>" #'cogent/line-below)
 
 (general-define-key
  :keymaps 'dired-mode-map
@@ -162,24 +162,24 @@ evil to have."
                                notmuch-search-mode-map
                                notmuch-hello-mode-map)
                     :repeat t
-                    "C-l" 'evil-window-right
-                    "C-h" 'evil-window-left
-                    "C-j" 'evil-window-down
-                    "C-k" 'evil-window-up)
+                    "C-l" #'evil-window-right
+                    "C-h" #'evil-window-left
+                    "C-j" #'evil-window-down
+                    "C-k" #'evil-window-up)
 
 ;; git bindings
 (general-define-key
  :keymaps 'normal
  :jump t
- "]c" 'git-gutter+-next-hunk
- "[c" 'git-gutter+-previous-hunk)
+ "]c" #'git-gutter+-next-hunk
+ "[c" #'git-gutter+-previous-hunk)
 (general-nvmap :prefix "SPC h"
-              "s" 'git-gutter+-stage-hunks)
+              "s" #'git-gutter+-stage-hunks)
 (general-nvmap :prefix "SPC g"
-              "s" 'magit-status
-              "w" 'magit-stage-file
-              "c" 'magit-commit
-              "H" 'magit-log-buffer-file)
+              "s" #'magit-status
+              "w" #'magit-stage-file
+              "c" #'magit-commit
+              "H" #'magit-log-buffer-file)
 
 ;;; esc quits
 (defun minibuffer-keyboard-quit ()
@@ -192,14 +192,14 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
     (when (get-buffer "*Completions*") (delete-windows-on "*Completions*"))
     (abort-recursive-edit)))
 (general-define-key :keymaps '(evil-normal-state-map evil-visual-state-map)
-                    [escape] 'keyboard-quit)
+                    [escape] #'keyboard-quit)
 (general-define-key :keymaps '(minibuffer-local-map
                                minibuffer-local-ns-map
                                minibuffer-local-completion-map
                                minibuffer-local-must-match-map
                                minibuffer-local-isearch-map)
                     :states nil
-                    [escape] 'minibuffer-keyboard-quit)
+                    [escape] #'minibuffer-keyboard-quit)
 
 
 ;; Eshell
@@ -209,29 +209,29 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
             ;; Need to do this in the hook because eshell defines its keymap
             ;; in kind of a bizarre way
             (general-define-key :keymaps 'eshell-mode-map
-                                [remap eshell-pcomplete] 'helm-esh-pcomplete
-                                "M-r" 'helm-eshell-history)
+                                [remap eshell-pcomplete] #'helm-esh-pcomplete
+                                "M-r" #'helm-eshell-history)
             (display-line-numbers-mode -1)))
 
 ;; Fancy symbols
 (push '("lambda" . 955) prettify-symbols-alist)
-(add-hook 'emacs-lisp-mode-hook 'prettify-symbols-mode)
+(add-hook 'emacs-lisp-mode-hook #'prettify-symbols-mode)
 
 (general-define-key :keymaps 'company-active-map
-                    "C-n" 'company-select-next
-                    "C-p" 'company-select-previous
-                    "C-w" 'evil-delete-backward-word)
+                    "C-n" #'company-select-next
+                    "C-p" #'company-select-previous
+                    "C-w" #'evil-delete-backward-word)
 (general-define-key :keymaps 'company-active-map
                     :states 'insert
-                    "C-w" 'evil-delete-backward-word)
+                    "C-w" #'evil-delete-backward-word)
 
 ;; Arduino
 (add-to-list 'auto-mode-alist '("\\.ino\\'" . c++-mode))
 
 ;; Org
 (general-nvmap :prefix "SPC o"
-  "a" 'org-agenda
-  "c" 'org-capture)
+  "a" #'org-agenda
+  "c" #'org-capture)
 (setq cogent/org-capture-file (concat org-directory "/refile.org"))
 (setq cogent/org-diary-file (concat org-directory "/diary.org"))
 (set-register ?o (cons 'file org-default-notes-file))
@@ -249,10 +249,10 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 
 ;; Mail
 (general-define-key :keymaps '(notmuch-search-mode-map)
-                    "j" 'notmuch-search-next-thread
-                    "k" 'notmuch-search-previous-thread
-                    "g g" 'notmuch-search-first-thread
-                    "G" 'notmuch-search-last-thread)
+                    "j" #'notmuch-search-next-thread
+                    "k" #'notmuch-search-previous-thread
+                    "g g" #'notmuch-search-first-thread
+                    "G" #'notmuch-search-last-thread)
 
 ;; Elfeed
 (load (concat dotfiles-dir "feeds.el"))

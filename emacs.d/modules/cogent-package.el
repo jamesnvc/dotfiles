@@ -5,10 +5,11 @@
 (defun online? ()
   (if (and (functionp 'network-interface-list)
            (network-interface-list))
-      (cl-some (lambda (iface) (unless (equal "lo" (car iface))
-                         (member 'up (car (last (network-interface-info
-                                                   (car iface)))))))
-            (network-interface-list))
+      (cl-some (lambda (iface)
+                 (unless (equal "lo" (car iface))
+                   (member 'up (car (last (network-interface-info
+                                           (car iface)))))))
+               (network-interface-list))
     t))
 
 ;; Set up straight.el for packages

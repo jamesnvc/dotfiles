@@ -44,6 +44,6 @@
         (insert ":- use_module(" module ", [" predicates "]).\n")))))
 
 (general-nvmap :keymaps '(prolog-mode-map)
-  "\\ u" 'cogent/prolog-add-use-module)
+  "\\ u" #'cogent/prolog-add-use-module)
 
 (provide 'cogent-prolog)

@@ -17,7 +17,7 @@
 
 (use-package cargo
   :config
-  (add-hook 'rust-mode-hook 'cargo-minor-mode)
+  (add-hook 'rust-mode-hook #'cargo-minor-mode)
   (setq compilation-ask-about-save nil)
   :diminish cargo-minor-mode)
 

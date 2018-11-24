@@ -20,17 +20,17 @@ now-invalid elc file"
   (make-local-variable 'after-save-hook)
   (add-hook 'after-save-hook
             (lambda ()
-              (if (file-exists-p (concat buffer-file-name "c"))
-                  (delete-file (concat buffer-file-name "c"))))))
-(add-hook 'emacs-lisp-mode-hook 'cogent-elisp/remove-elc-on-save)
+              (when (file-exists-p (concat buffer-file-name "c"))
+                (delete-file (concat buffer-file-name "c"))))))
+(add-hook 'emacs-lisp-mode-hook #'cogent-elisp/remove-elc-on-save)
 
 ;; Show context-based docs in minibuffer
-(add-hook 'emacs-lisp-mode-hook 'turn-on-eldoc-mode)
+(add-hook 'emacs-lisp-mode-hook #'turn-on-eldoc-mode)
 
 ;; Show the result of evaluating as an overlay in the elisp buffer
 (use-package eros
   :commands eros-mode
   :init
-  (add-hook 'emacs-lisp-mode-hook 'eros-mode))
+  (add-hook 'emacs-lisp-mode-hook #'eros-mode))
 
 (provide 'cogent-elisp)

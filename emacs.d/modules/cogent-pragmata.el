@@ -223,8 +223,8 @@
     (not (or (memq (char-syntax (or (char-before start) ?\s)) syntaxes-beg)
              (memq (char-syntax (or (char-after end) ?\s)) syntaxes-end)))))
 (add-hook 'prog-mode-hook
-          #'(lambda () (setq-local prettify-symbols-compose-predicate
-                              #'cogent/prettify-symbols-anywhere-compose-p)))
+          (lambda () (setq-local prettify-symbols-compose-predicate
+                            #'cogent/prettify-symbols-anywhere-compose-p)))
 
 (global-prettify-symbols-mode +1)
 

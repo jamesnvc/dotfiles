@@ -23,13 +23,14 @@ it doesn't contain the org-mode #+TAGS: entry specified."
              (insert-file-contents file)
              (re-search-forward ,reg nil t 1))))
     (error "The `T' predicate takes an org-mode tag value in single quotes.")))
-(add-hook 'eshell-pred-load-hook (lambda ()
-  (add-to-list 'eshell-predicate-alist '(?T . (eshell-org-file-tags)))))
+(add-hook 'eshell-pred-load-hook
+          (lambda ()
+            (add-to-list 'eshell-predicate-alist '(?T . (eshell-org-file-tags)))))
 
 ;; make `gst' open magit-status in the current directory
 (defun eshell/gst (&rest args)
-    (magit-status (pop args) nil)
-    (eshell/echo))   ;; The echo command suppresses output
+  (magit-status (pop args) nil)
+  (eshell/echo))   ;; The echo command suppresses output
 
 (require 'dash)
 

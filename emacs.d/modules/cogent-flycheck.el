@@ -3,8 +3,8 @@
 (require 'cogent-package)
 
 (with-eval-after-load 'evil
-  (define-key evil-normal-state-map (kbd "] q") 'next-error)
-  (define-key evil-normal-state-map (kbd "[ q") 'previous-error))
+  (define-key evil-normal-state-map (kbd "] q") #'next-error)
+  (define-key evil-normal-state-map (kbd "[ q") #'previous-error))
 
 (use-package flycheck
   :config
@@ -19,7 +19,7 @@
   :config
   (with-eval-after-load "flycheck"
     (setq flycheck-highlighting-mode 'symbols)
-    (add-hook 'flycheck-mode-hook 'flycheck-color-mode-line-mode)))
+    (add-hook 'flycheck-mode-hook #'flycheck-color-mode-line-mode)))
 
 (with-eval-after-load "flycheck"
   (set-face-background 'flycheck-error "#660000")

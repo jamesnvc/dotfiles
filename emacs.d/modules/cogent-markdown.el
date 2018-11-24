@@ -7,7 +7,7 @@
   :mode (("\\.markdown$" . markdown-mode)
          ("\\.md$" . markdown-mode))
   :config
-  (add-hook 'markdown-mode-hook 'flyspell-mode)
-  (add-hook 'markdown-mode-hook 'visual-line-mode))
+  (add-hook 'markdown-mode-hook #'flyspell-mode)
+  (add-hook 'markdown-mode-hook #'visual-line-mode))
 
 (provide 'cogent-markdown)
