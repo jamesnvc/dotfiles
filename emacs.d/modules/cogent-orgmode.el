@@ -8,6 +8,7 @@
    "~/org/notebook/"))
 
 (use-package org
+  :demand t
   :config
   (require 'org-tempo) ;; for expanding templates
   (setq org-replace-disputed-keys t)
@@ -19,7 +20,12 @@
        (setq-local electric-pair-inhibit-predicate
                    #'(lambda (c) (if (char-equal c ?<) t default-pred))))
      (visual-line-mode 1)
-     (set-visual-wrap-column 120))))
+     (set-visual-wrap-column 120)))
+
+  :general
+  (general-nvmap :prefix "SPC o"
+    "a" #'org-agenda
+    "c" #'org-capture))
 
 (use-package org-bullets
   :after org

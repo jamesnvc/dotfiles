@@ -1,6 +1,7 @@
 ;;; -*- lexical-binding: t -*-
 
 (require 'cogent-package)
+(require 'cogent-keys)
 
 (use-package paredit
   :commands paredit-mode enable-paredit-mode
@@ -32,5 +33,38 @@ now-invalid elc file"
   :commands eros-mode
   :init
   (add-hook 'emacs-lisp-mode-hook #'eros-mode))
+
+(defun cogent/elisp-eval-next-sexp ()
+  (interactive)
+  (save-excursion
+    (cogent/evil-forward-sexp)
+    (forward-char)
+    (eros-eval-last-sexp nil)))
+
+(defun cogent/elisp-eval-and-replace-next-sexp ()
+  (interactive)
+  (let ((start (point))
+        end)
+    (save-excursion
+      (cogent/evil-forward-sexp)
+      (forward-char)
+      (setq end (point))
+      (eros-eval-last-sexp t)
+      (delete-region start end))))
+
+(general-nmap :keymaps '(emacs-lisp-mode-map lisp-interaction-mode-map)
+  ;; Like vim-unimpaired
+  "] C-d" 'find-function-at-point
+  "c" (general-key-dispatch 'evil-change
+        :name cogent/elisp-change-dispatch
+        "pp" #'cogent/elisp-eval-next-sexp
+        "p!" #'cogent/elisp-eval-and-replace-next-sexp
+        "c" #'evil-change-whole-line
+        "r-" #'cogent/kebab-case
+        "r_" #'cogent/snake-case
+        "rc" #'cogent/camel-case
+        "rC" #'cogent/camel-case-upper))
+(general-vmap :keymaps 'emacs-lisp-mode-map "c" 'evil-change)
+
 
 (provide 'cogent-elisp)
