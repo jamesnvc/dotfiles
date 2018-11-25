@@ -247,13 +247,6 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (setq org-outline-path-complete-in-steps nil)
 (setq org-refile-allow-creating-parent-nodes 'confirm)
 
-;; Mail
-(general-define-key :keymaps '(notmuch-search-mode-map)
-                    "j" #'notmuch-search-next-thread
-                    "k" #'notmuch-search-previous-thread
-                    "g g" #'notmuch-search-first-thread
-                    "G" #'notmuch-search-last-thread)
-
 ;; Elfeed
 (load (concat dotfiles-dir "feeds.el"))
 

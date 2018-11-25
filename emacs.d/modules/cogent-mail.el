@@ -1,5 +1,7 @@
 ;;; -*- lexical-binding: t -*-
 
+(require 'cogent-keys)
+
 (autoload 'notmuch "notmuch"
   "notmuch mail" t)
 
@@ -35,5 +37,11 @@
                            'notmuch-address-history)))
   (require 'notmuch-address)
   (notmuch-address-message-insinuate))
+
+(general-define-key :keymaps '(notmuch-search-mode-map)
+                    "j" #'notmuch-search-next-thread
+                    "k" #'notmuch-search-previous-thread
+                    "g g" #'notmuch-search-first-thread
+                    "G" #'notmuch-search-last-thread)
 
 (provide 'cogent-mail)
