@@ -27,47 +27,9 @@
 
 (cogent/leader-def
   :states '(normal visual)
-  "w" #'save-buffer
   "q" #'cogent/quit-help-window
   "+" (lambda () (interactive) (cogent-fonts/update-font-size 1))
   "-" (lambda () (interactive) (cogent-fonts/update-font-size -1)))
-
-(defun cogent/evil-yank-to-eol (&optional argument)
-  "Yank from point to end of line; like the behaviour I prefer `Y' in
-evil to have."
-  (interactive "P")
-  (let ((beg (point))
-        (end (save-excursion
-               (evil-end-of-line)
-               (forward-char)
-               (point))))
-    (evil-yank beg end)))
-
-(defun cogent/line-below (&optional argument)
-  "New blank line below the current line; like vim-unimpaired."
-  (interactive "P")
-  (save-excursion
-    (dotimes (_ (or argument 1))
-      (evil-insert-newline-below))))
-
-(defun cogent/line-above (&optional argument)
-  "New blank line above the current line; like vim-unimpaired."
-  (interactive "P")
-  (save-excursion
-    (dotimes (_ (or argument 1))
-      (evil-insert-newline-above))))
-
-(general-define-key
- :states '(normal visual)
- ;; Fix Y behaviour in evil
- "Y" 'cogent/evil-yank-to-eol
- ;; Like vim-vinegar
- "-" (lambda ()
-       (interactive)
-       (dired (f-dirname (buffer-file-name))))
- ;; Like vim-unimpaired
- "[ <SPC>" 'cogent/line-above
- "] <SPC>" 'cogent/line-below)
 
 (general-define-key
  :keymaps 'dired-mode-map
@@ -75,55 +37,6 @@ evil to have."
  "-" 'dired-up-directory
  ;; Make "jump backwards" act as I expect in dired
  "C-o" 'quit-window)
-
-;; changing variable naming style
-(require 's)
-
-(defun cogent/change-word-at-point (f)
-  (destructuring-bind (start . end) (bounds-of-thing-at-point 'symbol)
-    (save-excursion
-      (let ((text (buffer-substring-no-properties start end)))
-        (while (s-matches? "^[^[:alpha:]]" text)
-          (incf start)
-          (setf text (buffer-substring-no-properties start end)))
-        (delete-region start end)
-        (insert (funcall f text))))))
-
-(defun cogent/kebab-case ()
-  (interactive)
-  (cogent/change-word-at-point #'s-dashed-words))
-
-(defun cogent/snake-case ()
-  (interactive)
-  (cogent/change-word-at-point #'s-snake-case))
-
-(defun cogent/camel-case ()
-  (interactive)
-  (cogent/change-word-at-point #'s-lower-camel-case))
-
-(defun cogent/camel-case-upper ()
-  (interactive)
-  (cogent/change-word-at-point #'s-upper-camel-case))
-
-
-(general-nmap "c" (general-key-dispatch 'evil-change
-                    :name cogent/change-word-case
-                    "r-" #'cogent/kebab-case
-                    "r_" #'cogent/snake-case
-                    "rc" #'cogent/camel-case
-                    "rC" #'cogent/camel-case-upper))
-(general-vmap "c" 'evil-change)
-
-;; Moving windows
-(general-define-key :keymaps '(normal
-                               dired-mode-map
-                               notmuch-search-mode-map
-                               notmuch-hello-mode-map)
-                    :repeat t
-                    "C-l" 'evil-window-right
-                    "C-h" 'evil-window-left
-                    "C-j" 'evil-window-down
-                    "C-k" 'evil-window-up)
 
 ;;; esc quits
 (defun minibuffer-keyboard-quit ()

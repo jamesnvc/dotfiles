@@ -5,7 +5,69 @@
 
 (use-package evil
   :demand t
+  :config
+  (defun cogent/evil-yank-to-eol (&optional argument)
+    "Yank from point to end of line; like the behaviour I prefer `Y' in
+evil to have."
+    (interactive "P")
+    (let ((beg (point))
+          (end (save-excursion
+                 (evil-end-of-line)
+                 (forward-char)
+                 (point))))
+      (evil-yank beg end)))
+
+  ;; like vim-unimpaired
+  (defun cogent/line-below (&optional argument)
+    "New blank line below the current line; like vim-unimpaired."
+    (interactive "P")
+    (save-excursion
+      (dotimes (_ (or argument 1))
+        (evil-insert-newline-below))))
+
+  (defun cogent/line-above (&optional argument)
+    "New blank line above the current line; like vim-unimpaired."
+    (interactive "P")
+    (save-excursion
+      (dotimes (_ (or argument 1))
+        (evil-insert-newline-above))))
+
+  (require 's)
+
+  ;; like vim-abolish
+  (defun cogent/change-word-at-point (f)
+    (destructuring-bind (start . end) (bounds-of-thing-at-point 'symbol)
+      (save-excursion
+        (let ((text (buffer-substring-no-properties start end)))
+          (while (s-matches? "^[^[:alpha:]]" text)
+            (incf start)
+            (setf text (buffer-substring-no-properties start end)))
+          (delete-region start end)
+          (insert (funcall f text))))))
+
+  (defun cogent/kebab-case ()
+    (interactive)
+    (cogent/change-word-at-point #'s-dashed-words))
+
+  (defun cogent/snake-case ()
+    (interactive)
+    (cogent/change-word-at-point #'s-snake-case))
+
+  (defun cogent/camel-case ()
+    (interactive)
+    (cogent/change-word-at-point #'s-lower-camel-case))
+
+  (defun cogent/camel-case-upper ()
+    (interactive)
+    (cogent/change-word-at-point #'s-upper-camel-case))
+
   :general
+  (:keymaps '(normal dired-mode-map notmuch-search-mode-map notmuch-hello-mode-map)
+   :repeat t
+              "C-l" #'evil-window-right
+              "C-h" #'evil-window-left
+              "C-j" #'evil-window-down
+              "C-k" #'evil-window-up)
   (:keymaps 'insert
             "C-h" #'evil-delete-backward-char-and-join)
   (:keymaps 'normal
@@ -13,10 +75,28 @@
             "k" #'evil-previous-visual-line
             "C-u" #'evil-scroll-up
             "M-u" #'universal-argument)
+  (:keymaps '(normal visual)
+            "Y" #'cogent/evil-yank-to-eol
+            ;; Like vim-unimpaired
+            "[ <SPC>" #'cogent/line-above
+            "] <SPC>" #'cogent/line-below
+            ;; Like vim-vinegar
+            "-" (lambda ()
+                  (interactive)
+                  (dired (f-dirname (buffer-file-name)))))
   (cogent/leader-def
-   :states '(normal visual)
-   "<SPC>" #'evil-ex
-   "x" #'evil-delete-buffer))
+    :states '(normal visual)
+    "w" #'save-buffer
+    "<SPC>" #'evil-ex
+    "x" #'evil-delete-buffer)
+
+  (general-nmap "c" (general-key-dispatch 'evil-change
+                      :name cogent/change-word-case
+                      "r-" #'cogent/kebab-case
+                      "r_" #'cogent/snake-case
+                      "rc" #'cogent/camel-case
+                      "rC" #'cogent/camel-case-upper))
+  (general-vmap "c" 'evil-change))
 
 (use-package evil-surround
   :demand t
