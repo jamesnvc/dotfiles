@@ -25,7 +25,15 @@
   (set-face-background 'company-tooltip-selection "#aaa")
   (set-face-foreground 'company-tooltip-common "#9a0000")
   (set-face-foreground 'company-tooltip-common-selection "#9a0000")
-  (set-face-foreground 'company-tooltip-annotation "#00008e"))
+  (set-face-foreground 'company-tooltip-annotation "#00008e")
+
+  :general
+  (:keymaps 'company-active-map
+            "C-n" #'company-select-next
+            "C-p" #'company-select-previous
+            "C-w" #'evil-delete-backward-word)
+  (:keymaps 'company-active-map :states 'insert
+            "C-w" #'evil-delete-backward-word))
 
 (use-package company-quickhelp
   :after company

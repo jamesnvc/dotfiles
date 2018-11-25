@@ -1,6 +1,7 @@
 ;;; -*- lexical-binding: t -*-
 
 (require 'cogent-package)
+(require 'cogent-keys)
 
 (use-package helm
   :config
@@ -10,7 +11,12 @@
   (with-eval-after-load "cogent-project"
     (use-package helm-projectile
       :commands helm-projectile-on helm-projectile-find-file
-      :config (projectile-mode)))
+      :config (projectile-mode)
+      :general
+      (cogent/leader-def
+        :states '(normal visual)
+        "t" #'helm-projectile-find-file
+        "s" #'helm-projectile-ag)))
   (helm-autoresize-mode 1)
   (setq-default helm-display-header-line nil
                 helm-autoresize-min-height 0
@@ -28,10 +34,20 @@
          ("C-x C-g" . helm-do-grep)
          ("C-x b" . helm-buffers-list)
          ("C-t" . helm-imenu)
-         ("M-y" . helm-show-kill-ring)))
+         ("M-y" . helm-show-kill-ring)
+         ("<menu>" . helm-M-x))
+  :general
+  (cogent/leader-def
+    :states '(normal visual)
+    "m" #'helm-M-x
+    "T" #'helm-find-files
+    "b" #'helm-buffers-list))
 
 (use-package swiper-helm
-  :bind (("C-S-s" . swiper-helm)))
+  :general
+  (cogent/leader-def
+    :states '(normal visual)
+    "l" #'swiper-helm))
 
 (use-package helm-flx
   :config

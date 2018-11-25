@@ -1,8 +1,22 @@
 ;;; -*- lexical-binding: t -*-
 
 (require 'cogent-package)
+(require 'cogent-keys)
 
-(use-package evil)
+(use-package evil
+  :demand t
+  :general
+  (:keymaps 'insert
+            "C-h" #'evil-delete-backward-char-and-join)
+  (:keymaps 'normal
+            "j" #'evil-next-visual-line
+            "k" #'evil-previous-visual-line
+            "C-u" #'evil-scroll-up
+            "M-u" #'universal-argument)
+  (cogent/leader-def
+   :states '(normal visual)
+   "<SPC>" #'evil-ex
+   "x" #'evil-delete-buffer))
 
 (use-package evil-surround
   :demand t
@@ -18,11 +32,12 @@
       (evil-search-highlight-persist-remove-all)))
 
   (global-evil-search-highlight-persist t)
+  :general
   (general-nmap :prefix "SPC"
     "/" 'cogent/evil-remove-search-highlight))
 
 (use-package evil-nerd-commenter
-  :config
+  :general
   (general-nvmap :prefix "SPC"
     "c SPC" 'evilnc-comment-or-uncomment-lines))
 

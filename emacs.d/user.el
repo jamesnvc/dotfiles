@@ -13,15 +13,6 @@
 ;; Quick way to jump here
 (set-register ?e (cons 'file (concat dotfiles-dir "user.el")))
 
-(define-key evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
-(general-define-key :keymaps 'normal
-                    "j" 'evil-next-visual-line
-                    "k" 'evil-previous-visual-line
-                    "C-u" 'evil-scroll-up
-                    "M-u" 'universal-argument)
-
-(general-def "<menu>" 'helm-M-x)
-
 (general-define-key :keymaps 'global
                     "<f3>" 'eshell
                     "<f4>" 'calc
@@ -34,18 +25,10 @@
   (when-let (help-win (get-buffer-window "*Help*"))
       (quit-window nil help-win)))
 
-(my-leader-def
+(cogent/leader-def
   :states '(normal visual)
-  "w" 'save-buffer
-  "x" 'evil-delete-buffer
-  "<SPC>" 'evil-ex
-  "m" 'helm-M-x
-  "T" 'helm-find-files
-  "t" 'helm-projectile-find-file
-  "s" 'helm-projectile-ag
-  "b" 'helm-buffers-list
-  "l" 'swiper-helm
-  "q" 'cogent/quit-help-window
+  "w" #'save-buffer
+  "q" #'cogent/quit-help-window
   "+" (lambda () (interactive) (cogent-fonts/update-font-size 1))
   "-" (lambda () (interactive) (cogent-fonts/update-font-size -1)))
 
@@ -131,37 +114,6 @@ evil to have."
                     "rC" #'cogent/camel-case-upper))
 (general-vmap "c" 'evil-change)
 
-;; Emacs-lisp
-(defun cogent/elisp-eval-next-sexp ()
-  (interactive)
-  (save-excursion
-    (cogent/evil-forward-sexp)
-    (forward-char)
-    (eros-eval-last-sexp nil)))
-(defun cogent/elisp-eval-and-replace-next-sexp ()
-  (interactive)
-  (let ((start (point))
-        end)
-    (save-excursion
-      (cogent/evil-forward-sexp)
-      (forward-char)
-      (setq end (point))
-      (eros-eval-last-sexp t)
-      (delete-region start end))))
-(general-nmap :keymaps '(emacs-lisp-mode-map lisp-interaction-mode-map)
-              ;; Like vim-unimpaired
-              "] C-d" 'find-function-at-point
-              "c" (general-key-dispatch 'evil-change
-                    :name cogent/elisp-change-dispatch
-                    "pp" #'cogent/elisp-eval-next-sexp
-                    "p!" #'cogent/elisp-eval-and-replace-next-sexp
-                    "c" #'evil-change-whole-line
-                    "r-" #'cogent/kebab-case
-                    "r_" #'cogent/snake-case
-                    "rc" #'cogent/camel-case
-                    "rC" #'cogent/camel-case-upper))
-(general-vmap :keymaps 'emacs-lisp-mode-map "c" 'evil-change)
-
 ;; Moving windows
 (general-define-key :keymaps '(normal
                                dired-mode-map
@@ -172,20 +124,6 @@ evil to have."
                     "C-h" 'evil-window-left
                     "C-j" 'evil-window-down
                     "C-k" 'evil-window-up)
-
-;; git bindings
-(general-define-key
- :keymaps 'normal
- :jump t
- "]c" 'git-gutter+-next-hunk
- "[c" 'git-gutter+-previous-hunk)
-(general-nvmap :prefix "SPC h"
-              "s" 'git-gutter+-stage-hunks)
-(general-nvmap :prefix "SPC g"
-              "s" 'magit-status
-              "w" 'magit-stage-file
-              "c" 'magit-commit
-              "H" 'magit-log-buffer-file)
 
 ;;; esc quits
 (defun minibuffer-keyboard-quit ()
@@ -222,21 +160,11 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (push '("lambda" . 955) prettify-symbols-alist)
 (add-hook 'emacs-lisp-mode-hook 'prettify-symbols-mode)
 
-(general-define-key :keymaps 'company-active-map
-                    "C-n" 'company-select-next
-                    "C-p" 'company-select-previous
-                    "C-w" 'evil-delete-backward-word)
-(general-define-key :keymaps 'company-active-map
-                    :states 'insert
-                    "C-w" 'evil-delete-backward-word)
-
 ;; Arduino
 (add-to-list 'auto-mode-alist '("\\.ino\\'" . c++-mode))
 
 ;; Org
-(general-nvmap :prefix "SPC o"
-  "a" 'org-agenda
-  "c" 'org-capture)
+
 (setq cogent/org-capture-file (concat org-directory "/refile.org"))
 (setq cogent/org-diary-file (concat org-directory "/diary.org"))
 (set-register ?o (cons 'file org-default-notes-file))
