@@ -6,7 +6,8 @@
   :commands elfeed
   :init
   (add-hook 'elfeed-show-mode-hook #'visual-line-mode)
-  (evil-define-key 'normal elfeed-search-mode-map
+  :general
+  (general-nmap :keymaps 'elfeed-search-mode-map
     "q" #'quit-window
     "S" #'elfeed-search-set-filter
     "s" #'elfeed-search-live-filter
@@ -15,7 +16,7 @@
     "y" #'elfeed-search-yank
     "=" #'elfeed-update
     (kbd "RET") #'elfeed-search-show-entry)
-  (evil-define-key 'normal elfeed-show-mode-map
+  (general-nmap :keymaps 'elfeed-show-mode-map
     "q" #'elfeed-kill-buffer
     "n" #'elfeed-show-next
     "p" #'elfeed-show-prev
