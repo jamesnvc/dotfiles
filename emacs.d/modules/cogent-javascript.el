@@ -23,6 +23,8 @@
    js2-global-externs '("module" "require" "__dirname" "process" "console"
                         "JSON" "$" "_")))
 
+(use-package rjsx-mode)
+
 (use-package js2-refactor
   :after js2-mode
   :commands (js2r-add-keybindings-with-prefix)

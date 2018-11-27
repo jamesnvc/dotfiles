@@ -99,6 +99,7 @@
  ("powerline" . "af5ef31a33c3589a9be0b2a55a2741582e605efd")
  ("projectile" . "aa74ae12bbb73581a9f2d0e868720f9b69aa2017")
  ("racket-mode" . "f6bbd970f4a9aa2402b3531e6916fb2557b9c15c")
+ ("rjsx-mode" . "89358fd230878a19e3232a3e4ce21b7fb608faae")
  ("rust-mode" . "12cb16964ce01f0e484b082ccc8a3430cc1c4158")
  ("s.el" . "03410e6a7a2b11e47e1fea3b7d9899c7df26435e")
  ("sesman" . "1a6c5448cbcab6320570ca17a04b7487cdae0bd5")
