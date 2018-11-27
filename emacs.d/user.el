@@ -10,7 +10,8 @@
                     "<f3>" #'eshell
                     "<f4>" #'calc
                     "<f5>" #'notmuch
-                    "<f6>" #'elfeed)
+                    "<f6>" #'elfeed
+                    "<f9>" #'helm-bookmarks)
 
 ;; Leader key stuff
 (defun cogent/quit-help-window ()
