@@ -119,6 +119,7 @@
  ("use-package" . "23c5c431f2d238f2c0fb2509687bb94d6c375889")
  ("volatile-highlights.el" . "9a20091f0ce7fc0a6b3e641a6a46d5f3ac4d8392")
  ("web-mode" . "29ced993bb1a435bd82d3e7395bed13b99e87de4")
+ ("window-end-visible" . "525500fb2ebc08f3f9ea493972e5f2e1d79f89ef")
  ("with-editor" . "87c96b3a7cdf9ab9477e27f1ae2010883a83a426")
  ("yaml-mode" . "40067a10ac1360f0b9533f0bbbb2eea128e2574d")
  ("yasnippet" . "1d96da2e08664c31ff7f6f7441da1f4fa5680b1f"))
