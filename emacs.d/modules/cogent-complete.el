@@ -51,20 +51,12 @@
 (use-package company-try-hard
   :after company
   :commands company-try-hard
-  :bind ("C-\\" . company-try-hard)
-  :config
-  (bind-keys :map company-active-map
-             ("C-\\" . company-try-hard)
-             ("C-n" . company-select-next)
-             ("C-p" . company-select-previous))
+  :general
+  ("C-\\" #'company-try-hard)
+  (:keymaps 'company-active-map
+            "C-\\" #'company-try-hard
+            "C-n" #'company-select-next
+            "C-p" #'company-select-previous)
   :diminish company-mode)
-
-;; fancy machine-learning autocomplete thing
-;; after install, run `company-tabnine-install-binary'
-(use-package company-tabnine
-  :straight (:host github :repo "TommyX12/company-tabnine" :branch "master")
-  :after company
-  :config
-  (add-to-list 'company-backends #'company-tabnine))
 
 (provide 'cogent-complete)
