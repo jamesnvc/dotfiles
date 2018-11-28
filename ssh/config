@@ -8,54 +8,45 @@ Host *
   ControlPath ~/.ssh/master-%r@%h:%p
   AddKeysToAgent yes
 
-Host github
+Host github.com
   User git
   Port 22
-  Hostname github.com
   IdentityFile ~/.ssh-keys/github_new
-  IdentitiesOnly yes
 
 Host bitbucket.org
   User git
   HostName bitbucket.org
   IdentityFile ~/.ssh-keys/bitbucket_new
-  IdentitiesOnly yes
 
 Host palantir
   User james
   HostName 162.243.135.98
-  IdentitiesOnly yes
   IdentityFile ~/.ssh-keys/palantir
 
 Host vox3
   User james
   Hostname 138.197.128.120
   IdentityFile ~/.ssh-keys/vox3
-  IdentitiesOnly yes
 
 Host chat
   User james
   Hostname 104.236.213.222
   IdentityFile ~/.ssh-keys/chat_new
-  IdentitiesOnly yes
 
 Host penyo-cms
   User james
   Hostname 159.203.41.3
   IdentityFile ~/.ssh-keys/penyocms
-  IdentitiesOnly yes
 
 Host braid-onyx
   User james
   IdentityFile ~/.ssh-keys/braid-onyx
   Hostname 159.203.33.218
-  IdentitiesOnly yes
 
 Host munch
   User james
   IdentityFile ~/.ssh-keys/munch
   Hostname 45.63.78.0
-  IdentitiesOnly yes
 
 Host mealsurfers
   User james
@@ -69,8 +60,9 @@ Host sculpture
 
 Host spike
    User james
-   identityFile ~/.ssh-keys/sculpture
+   IdentityFile ~/.ssh-keys/sculpture
    Hostname 195.201.133.196
+   ForwardAgent yes
 
 Host partyserver
    User jamesnvc
@@ -85,7 +77,6 @@ Host touchdowntunes
     Hostname 50.116.24.27
     User james
     IdentityFile ~/.ssh-keys/touchdowntunes
-    IdentitiesOnly yes
 
 Host linode-lish
     Hostname lish-dallas.linode.com
