@@ -39,6 +39,8 @@ bindsym $mod+backslash exec rofi-pass
 # searching
 bindsym $mod+equal exec ~/bin/web-search.sh -p duckduckgo
 bindsym $mod+Shift+equal exec ~/bin/web-search.sh
+# mail
+bindsym $mod+F10 exec ~/bin/fetch_mail.sh
 
 # Move spaces
 bindsym $mod+grave workspace next
@@ -182,4 +184,3 @@ for_window [title="emacs-popup-frame"] floating enable
 bindsym --release Print exec scrot -c screenshot-$(date +%Y-%m-%d_%T_%Z%:z_%s).png -e 'mv $f ~/Pictures/'
 bindsym --release Shift+Print exec scrot -s screenshot-$(date +%Y-%m-%d_%T_%Z%:z_%s).png -e 'mv $f ~/Pictures/'
 bindsym --release Control+Shift+Print exec scrot -d 3 -s screenshot-$(date +%Y-%m-%d_%T_%Z%:z_%s).png -e 'mv $f ~/Pictures/'
-
