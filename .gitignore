@@ -34,3 +34,4 @@ emacs.d/straight/*
 !emacs.d/straight/versions
 emacs.d/straight/repos
 emacs.d/straight/build-cache.el
+fish/fish_history
