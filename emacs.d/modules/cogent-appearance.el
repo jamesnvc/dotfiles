@@ -151,6 +151,20 @@
  ((member "Symbola" (font-family-list))
   (set-fontset-font t 'unicode "Symbola" nil 'prepend)))
 
+(with-eval-after-load "flycheck"
+  (set-face-background 'flycheck-error "#660000")
+  (set-face-foreground 'flycheck-error nil)
+  (set-face-background 'flycheck-warning "#331800")
+  (set-face-foreground 'flycheck-warning nil))
+
+(with-eval-after-load "flycheck-color-mode-line"
+  (set-face-background 'flycheck-color-mode-line-error-face "#440000")
+  (set-face-background 'flycheck-color-mode-line-warning-face "#553300")
+  (set-face-background 'flycheck-color-mode-line-info-face nil)
+  (set-face-foreground 'flycheck-color-mode-line-error-face "#ffffff")
+  (set-face-foreground 'flycheck-color-mode-line-warning-face "#ffffff")
+  (set-face-foreground 'flycheck-color-mode-line-info-face nil))
+
 (load-theme 'dracula t)
 
 (provide 'cogent-appearance)
