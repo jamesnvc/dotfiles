@@ -3,4 +3,6 @@
 
 (use-package swift-mode)
 
+(use-package fish-mode)
+
 (provide 'cogent-misc-langs)

@@ -22,6 +22,7 @@
  ("emacs-async" . "d17c11e6082aa51f421bb037b828bdb15f405618")
  ("emacs-ccls" . "07ad553950e69f862f7c74c9b1f02c00ab450d22")
  ("emacs-elixir" . "bfd09392a0253e4b96c642472e5d5b757a5254f8")
+ ("emacs-fish" . "35fc7c1e243a7410823088a571ecf378e9f3efa6")
  ("emacs-helm-ag" . "2fc02c4ead29bf0db06fd70740cc7c364cb650ac")
  ("emacs-htmlize" . "8db0aa6aab77475a732b7363f0d57bd3933c18fd")
  ("emacs-noflet" . "7ae84dc3257637af7334101456dafe1759c6b68a")
