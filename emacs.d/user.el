@@ -114,3 +114,6 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (setq flycheck-shellcheck-follow-sources nil)
 
 (add-hook 'objc-mode-hook (lambda () (setq c-basic-offset 4)))
+
+(when (not (server-running-p))
+  (server-start))
