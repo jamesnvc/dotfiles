@@ -179,6 +179,7 @@ for_window [title="emacs-popup-frame"] floating enable
 #bindsym $mod+Shift+m exec i3-input -F '[con_mark=%s] focus' -P 'Go to mark: '
 
 # Screenshots
- bindsym --release Print exec scrot -c screenshot-$(date +%Y-%m-%d_%T_%Z%:z_%s).png -e 'mv $f ~/Pictures/'
- bindsym --release Shift+Print exec scrot -s screenshot-$(date +%Y-%m-%d_%T_%Z%:z_%s).png -e 'mv $f ~/Pictures/'
- bindsym --release Control+Shift+Print exec scrot -d 3 -s screenshot-$(date +%Y-%m-%d_%T_%Z%:z_%s).png -e 'mv $f ~/Pictures/'
+bindsym --release Print exec scrot -c screenshot-$(date +%Y-%m-%d_%T_%Z%:z_%s).png -e 'mv $f ~/Pictures/'
+bindsym --release Shift+Print exec scrot -s screenshot-$(date +%Y-%m-%d_%T_%Z%:z_%s).png -e 'mv $f ~/Pictures/'
+bindsym --release Control+Shift+Print exec scrot -d 3 -s screenshot-$(date +%Y-%m-%d_%T_%Z%:z_%s).png -e 'mv $f ~/Pictures/'
+
