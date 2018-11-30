@@ -107,7 +107,6 @@ Entered on %U
  '(scroll-bar-mode nil)
  '(tool-bar-mode nil)
  '(undo-tree-auto-save-history t)
- '(undo-tree-history-directory-alist (quote (("." . "/home/james/.emacs.d/undo"))))
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
    (quote

@@ -6,7 +6,10 @@
 (require 'iso-transl)
 
 (setq backup-directory-alist
-      `(("." . ,(expand-file-name (concat dotfiles-dir "bak")))))
+      `(("." . ,(expand-file-name (concat dotfiles-dir "bak"))))
+
+      undo-tree-history-directory-alist
+      `(("." . ,(expand-file-name (concat dotfiles-dir "undo")))))
 
 (setq compilation-ask-about-save nil)
 
