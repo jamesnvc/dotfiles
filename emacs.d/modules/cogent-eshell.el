@@ -130,8 +130,9 @@ more-helpful local prompt."
          (parent (car directory))
          (name   (cadr directory))
          (branch (curr-dir-git-branch-string pwd))
-         (ruby   (when (not (file-remote-p pwd)) (ruby-prompt)))
-         (python (when (not (file-remote-p pwd)) (python-prompt)))
+         (mac-p (string-equal system-type "darwin"))
+         (ruby   (when (not (or mac-p (file-remote-p pwd))) (ruby-prompt)))
+         (python (when (not (or mac-p (file-remote-p pwd))) (python-prompt)))
 
          (dark-env (eq 'dark (frame-parameter nil 'background-mode)))
          (for-bars                 `(:weight bold))
