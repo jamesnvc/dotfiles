@@ -175,6 +175,6 @@ insert mode at the end of the new sexp"
   (evil-define-key 'normal paredit-mode-map ")" #'paredit-forward-up)
   (evil-define-key 'normal paredit-mode-map "=" #'cogent/paredit-indent))
 
-(add-hook 'paredit-mode-hook 'cogent/paredit-vim-bindings)
+(add-hook 'paredit-mode-hook #'cogent/paredit-vim-bindings)
 
 (provide 'cogent-sexp)
