@@ -13,8 +13,7 @@ path+=${HOME}/.node_modules_global/bin
 if [ $(uname) = 'Darwin' ]; then
     path=($HOME/node_modules/.bin
           $path)
-    path=($HOME/.rvm/rubies/default/bin
-          $path)
+    path+=$HOME/.rvm/rubies/default/bin
     path+=/usr/local/bin
     path+=/usr/local/sbin
     path+=$HOME/.cabal/bin
