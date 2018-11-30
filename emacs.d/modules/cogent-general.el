@@ -20,6 +20,8 @@
 
 (setq-default
  browse-url-browser-function (quote browse-url-generic)
- browse-url-generic-program "xdg-open")
+ browse-url-generic-program (if (string-equal system-type "darwin")
+                                "open"
+                              "xdg-open"))
 
 (provide 'cogent-general)
