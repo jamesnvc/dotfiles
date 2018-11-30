@@ -15,39 +15,33 @@ if [ $(uname) = 'Darwin' ]; then
   path+=/usr/local/bin
   path+=/usr/local/sbin
   path+=$HOME/.cabal/bin
-  path+=/Developer/usr/bin
-  path+=/usr/local/ActivePerl-5.12/site/bin
-  path+=/usr/local/ActivePerl-5.12/bin
   path+=/usr/local/lib/node
   path+=/Library/TeX/Distributions/TeXLive-2011.texdist/Contents/Programs/texbin
   path+=$HOME/Dropbox/dotfiles/git-util
   path+=/usr/local/apache-maven/current/bin
   path+=/Applications/Racket\ v6.1.1/bin
-  # PATH fixes for rvm
-  if [ `which ruby` = '/usr/bin/ruby' ]; then
-    path+=~/.rvm/bin
-  fi
+  path+=/Developer/usr/bin
   # Java
   export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
   if [ -z $JAVA_HOME ]; then
     export JAVA_HOME="/System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK/Home"
   fi
   # Homebrew
-  export HOMEBREW_GITHUB_API_TOKEN="21273a7f2e3886fce211486cde638c310f3ed922"
-  # Perlbrew
-  source /Users/james/perl5/perlbrew/etc/bashrc
+  if [ -e ~/.homebrew_github_token]; then
+      export HOMEBREW_GITHUB_API_TOKEN=#(cat ~/.homebrew_github_token)
+  fi
   # Node stuff
   export NODE_PATH=/usr/local/lib/node_modules
   [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
-  # Python stuff
-  ## Old, using pythonbrew
-  #[[ -s "$HOME/.pythonbrew/etc/bashrc" ]] && source "$HOME/.pythonbrew/etc/bashrc"
-  ## New, using pyenv
-  export PYENV_ROOT=/usr/local/var/pyenv
-  if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
-  # if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
 
   export IOS_SDK="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk"
+  export SWIVM_DIR="$HOME/.swivm"
+else
+    #pyenv
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+    #rbenv
+    eval "$(rbenv init -)"
 fi
 # zsh glob to only selecting paths that match
 # '^' is the parameter expansion flag that says to apply the glob
@@ -63,12 +57,6 @@ export LEIN_FAST_TRAMPOLINE=y
 export ARDUINO_PATH="${HOME}/software/arduino-1.8.3/"
 
 export PASSWORD_STORE_ENABLE_EXTENSIONS=true
-
-#pyenv
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-#rbenv
-eval "$(rbenv init -)"
 
 # Needed to make building stuff under Lion work
 #if [ `uname` = 'Darwin' ]; then
