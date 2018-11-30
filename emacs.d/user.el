@@ -2,6 +2,9 @@
 
 (set-frame-font "PragmataPro 7" nil t)
 (require 'cogent-pragmata)
+(when (string-equal system-type "darwin")
+  (set-frame-font "PragmataPro 16" nil t)
+  (global-prettify-symbols-mode -1))
 
 ;; Quick way to jump here
 (set-register ?e (cons 'file (concat dotfiles-dir "user.el")))

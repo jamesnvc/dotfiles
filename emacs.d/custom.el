@@ -42,6 +42,7 @@
      (102 . evil-surround-function)
      (124 "「" . "」")
      (107 "【" . "】"))))
+ '(exec-path-from-shell-arguments (quote ("-l")))
  '(flycheck-proselint-executable "~/.pyenv/shims/proselint")
  '(helm-use-undecorated-frame-option t)
  '(hl-sexp-background-color "#1c1f26")

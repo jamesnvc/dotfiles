@@ -11,31 +11,34 @@ path+=${HOME}/software/arduino-1.8.3
 # npm config set prefix="${HOME}/.node_modules_global"
 path+=${HOME}/.node_modules_global/bin
 if [ $(uname) = 'Darwin' ]; then
-  path+=$HOME/node_modules/.bin
-  path+=/usr/local/bin
-  path+=/usr/local/sbin
-  path+=$HOME/.cabal/bin
-  path+=/usr/local/lib/node
-  path+=/Library/TeX/Distributions/TeXLive-2011.texdist/Contents/Programs/texbin
-  path+=$HOME/Dropbox/dotfiles/git-util
-  path+=/usr/local/apache-maven/current/bin
-  path+=/Applications/Racket\ v6.1.1/bin
-  path+=/Developer/usr/bin
-  # Java
-  export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
-  if [ -z $JAVA_HOME ]; then
-    export JAVA_HOME="/System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK/Home"
-  fi
-  # Homebrew
-  if [ -e ~/.homebrew_github_token]; then
-      export HOMEBREW_GITHUB_API_TOKEN=#(cat ~/.homebrew_github_token)
-  fi
-  # Node stuff
-  export NODE_PATH=/usr/local/lib/node_modules
-  [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+    path=($HOME/node_modules/.bin
+          $path)
+    path=($HOME/.rvm/rubies/default/bin
+          $path)
+    path+=/usr/local/bin
+    path+=/usr/local/sbin
+    path+=$HOME/.cabal/bin
+    path+=/usr/local/lib/node
+    path+=/Library/TeX/Distributions/TeXLive-2011.texdist/Contents/Programs/texbin
+    path+=$HOME/Dropbox/dotfiles/git-util
+    path+=/usr/local/apache-maven/current/bin
+    path+=/Applications/Racket\ v6.1.1/bin
+    path+=/Developer/usr/bin
+    # Java
+    export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+    if [ -z $JAVA_HOME ]; then
+        export JAVA_HOME="/System/Library/Frameworks/JavaVM.framework/Versions/CurrentJDK/Home"
+    fi
+    # Homebrew
+    if [ -e ~/.homebrew_github_token ]; then
+        export HOMEBREW_GITHUB_API_TOKEN=#(cat ~/.homebrew_github_token)
+    fi
+    # Node stuff
+    export NODE_PATH=/usr/local/lib/node_modules
+    [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
-  export IOS_SDK="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk"
-  export SWIVM_DIR="$HOME/.swivm"
+    export IOS_SDK="/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk"
+    export SWIVM_DIR="$HOME/.swivm"
 else
     #pyenv
     eval "$(pyenv init -)"
@@ -60,7 +63,7 @@ export PASSWORD_STORE_ENABLE_EXTENSIONS=true
 
 # Needed to make building stuff under Lion work
 #if [ `uname` = 'Darwin' ]; then
-  #export CFLAGS="-isysroot /Developer/SDKs/MacOSX10.7.sdk"
+#export CFLAGS="-isysroot /Developer/SDKs/MacOSX10.7.sdk"
 #fi
 export FULLNAME="James Cash"
 export EMAIL="james.nvc@gmail.com"
@@ -74,11 +77,11 @@ export __CF_USER_TEXT_ENCODING=0x1F5:0x8000100:0x8000100
 export EDITOR='emacsclient --create-frame --alternate-editor=emacs'
 
 if [ $(uname) = 'Darwin' ]; then
-  export TERM=xterm-256color-italic
+    export TERM=xterm-256color-italic
 elif [ ! -z "$TMUX" ]; then
-  export TERM=tmux-256color
+    export TERM=tmux-256color
 else
-  export TERM=st-256color
+    export TERM=st-256color
 fi
 
 LS_COLORS='';

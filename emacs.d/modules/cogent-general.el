@@ -1,5 +1,13 @@
 ;;; -*- lexical-binding: t -*-
 
+(require 'cogent-package)
+
+(use-package exec-path-from-shell
+  :commands exec-path-from-shell-initialize
+  :if (memq window-system '(mac ns x))
+  :init
+  (exec-path-from-shell-initialize))
+
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
