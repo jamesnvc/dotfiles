@@ -81,9 +81,7 @@ evil to have."
             "[ <SPC>" #'cogent/line-above
             "] <SPC>" #'cogent/line-below
             ;; Like vim-vinegar
-            "-" (lambda ()
-                  (interactive)
-                  (dired (f-dirname (buffer-file-name)))))
+            "-" #'dired-jump)
   (cogent/leader-def
     :states '(normal visual)
     "w" #'save-buffer
