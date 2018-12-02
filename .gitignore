@@ -35,5 +35,6 @@ emacs.d/straight/*
 emacs.d/straight/repos
 emacs.d/straight/build-cache.el
 fish/fish_history
+fish/fishd.*
 emacs.d/image-dired/
 emacs.d/%backup%~
