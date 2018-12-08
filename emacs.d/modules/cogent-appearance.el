@@ -31,7 +31,9 @@
     (set-face-background 'powerline-active1 "gray9")
     (set-face-background 'powerline-active2 "gray13")
     (set-face-attribute 'line-number nil :foreground "#678")
-    (set-face-attribute 'line-number-current-line nil :foreground "#96989c"))
+    (set-face-attribute 'line-number-current-line nil :foreground "#96989c")
+    ;; Comments exist for a reason - make them stand out
+    (set-face-attribute 'font-lock-comment-face nil :weight 'semi-bold))
   (cogent/add-theme-hook 'dracula #'cogent/dracula-theme-hook))
 
 (use-package solarized
