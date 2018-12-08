@@ -1,22 +1,23 @@
-#!/usr/bin/zsh
+#!/usr/bin/env bash
 
 # to connect, put this in /etc/X11/Xsession.d/99_setup
+# this might actually work in just ~/.xsessionrc now?
 
 if [ -s ~/.Xmodmap ]; then
   xmodmap ~/.Xmodmap
 fi
 
-if xinput --list | grep "Slimblade Trackball" &> /dev/null ; then
-  # Make pressing both bottom buttons same as the middle-click button
-  xinput set-prop "Kensington Kensington Slimblade Trackball" "Evdev Middle Button Emulation" 1                                                                                                  [INSERT ]
-fi
+# if xinput --list | grep "Slimblade Trackball" &> /dev/null ; then
+#   # Make pressing both bottom buttons same as the middle-click button
+#   xinput set-prop "Kensington Kensington Slimblade Trackball" "Evdev Middle Button Emulation" 1
+# fi
 
 # XKBDIR="$HOME/.xkb"
 # XKBMAPFILE="$XKBDIR/keymap/custom"
 
 # xkbcomp -I"$XKBDIR" "$XKBMAPFILE" "${DISPLAY%%.*}"
 
-wine "C:\Program Files (x86)\1Password 4\Agile1pAgent.exe" &
+#wine "C:\Program Files (x86)\1Password 4\Agile1pAgent.exe" &
 
 #xcape -e 'Shift_L=parenleft;Shift_R=parenright;Control_L=Escape'
 
@@ -25,6 +26,8 @@ eval $(gpg-agent --daemon)
 dropbox start
 
 #$HOME/software/bin/btsync
+
+xscreensaver &
 
 # Force numlock to be on
 numlockx on
