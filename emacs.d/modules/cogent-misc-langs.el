@@ -7,7 +7,7 @@
 
 (use-package lua-mode)
 
-(use-package racket-mode)
+;;(use-package racket-mode)
 
 (use-package yaml-mode)
 
