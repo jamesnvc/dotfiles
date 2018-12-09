@@ -816,7 +816,7 @@ This is really kludgy, and unneeded (i.e. obsolete) in Emacs>=24."
 (defconst prolog-string-regexp
   "\\(\"\\([^\n\"]\\|\\\\\"\\)*\"\\)"
   "Regexp matching a string.")
-(defconst prolog-head-delimiter "\\(:-\\|\\+:\\|-:\\|\\+\\?\\|-\\?\\|-->\\)"
+(defconst prolog-head-delimiter "\\(:-\\|\\+:\\|-:\\|\\+\\?\\|-\\?\\|-->>?\\)"
   "A regexp for matching on the end delimiter of a head (e.g. \":-\").")
 
 (defvar prolog-compilation-buffer "*prolog-compilation*"
@@ -843,7 +843,7 @@ This is really kludgy, and unneeded (i.e. obsolete) in Emacs>=24."
            (tab-stop . nil)
            (modes . '(prolog-mode))
            (group . (1 2)))))
-     '(("dcg" . "-->") ("rule" . ":-") ("simplification" . "<=>")
+     '(("dcg" . "-->") ("edcg" . "-->>") ("rule" . ":-") ("simplification" . "<=>")
        ("propagation" . "==>")))))
 
 ;; SMIE support
@@ -896,6 +896,7 @@ This is really kludgy, and unneeded (i.e. obsolete) in Emacs>=24."
     ("?-" nil -1200)
     (":-" -1200 -1200)
     ("-->" -1200 -1200)
+    ("-->>" -1200 -1200)
     ("discontiguous" nil -1150)
     ("dynamic" nil -1150)
     ("meta_predicate" nil -1150)
@@ -1013,7 +1014,8 @@ This is really kludgy, and unneeded (i.e. obsolete) in Emacs>=24."
                prolog-indent-width
              (min prolog-indent-width (current-column))))
        prolog-indent-width))
-    (`(:after . "-->") prolog-indent-width)))
+    (`(:after . "-->") prolog-indent-width)
+    (`(:after . "-->>") prolog-indent-width)))
 
 
 ;;-------------------------------------------------------------------
