@@ -74,6 +74,7 @@ Entered on %U
  '(org-modules
    (quote
     (org-bbdb org-bibtex org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m)))
+ '(org-return-follows-link t)
  '(pop-up-frame-alist (quote ((title . "emacs-popup-frame"))))
  '(powerline-default-separator (quote bar))
  '(projectile-enable-caching t)

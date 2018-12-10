@@ -23,6 +23,8 @@
      (set-visual-wrap-column 120)))
 
   :general
+  (general-nmap :keymaps 'org-mode-map
+    "<return>" #'org-return)
   (general-nvmap :prefix "SPC o"
     "a" #'org-agenda
     "c" #'org-capture))
