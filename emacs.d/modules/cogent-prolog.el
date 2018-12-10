@@ -46,4 +46,7 @@
 (general-nvmap :keymaps '(prolog-mode-map)
   "\\ u" #'cogent/prolog-add-use-module)
 
+(use-package ob-prolog
+  :after org)
+
 (provide 'cogent-prolog)
