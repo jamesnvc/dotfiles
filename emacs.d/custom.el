@@ -9,6 +9,7 @@
    (vector "#ffffff" "#f36c60" "#8bc34a" "#fff59d" "#4dd0e1" "#b39ddb" "#81d4fa" "#263238"))
  '(auth-sources (quote ("~/.authinfo.gpg" "~/.netrc")))
  '(clojure-indent-style :align-arguments)
+ '(confirm-kill-emacs (quote yes-or-no-p))
  '(custom-safe-themes
    (quote
     ("98cc377af705c0f2133bb6d340bf0becd08944a588804ee655809da5d8140de6" default)))
