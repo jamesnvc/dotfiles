@@ -41,9 +41,8 @@
 (defun cogent/sync-mail ()
   "Run mail syncing shell script."
   (interactive)
-  (shell-command
-   (s-concat (expand-file-name "~/bin/sync_mail.sh")
-             " &")))
+  (start-process "sync-mail-process" nil
+                 (expand-file-name "~/bin/sync_mail.sh")))
 
 (general-define-key :keymaps '(notmuch-search-mode-map)
                     "j" #'notmuch-search-next-thread
