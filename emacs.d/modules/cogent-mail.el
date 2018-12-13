@@ -38,10 +38,20 @@
   (require 'notmuch-address)
   (notmuch-address-message-insinuate))
 
+(defun cogent/sync-mail ()
+  "Run mail syncing shell script."
+  (interactive)
+  (shell-command
+   (s-concat (expand-file-name "~/bin/sync_mail.sh")
+             " &")))
+
 (general-define-key :keymaps '(notmuch-search-mode-map)
                     "j" #'notmuch-search-next-thread
                     "k" #'notmuch-search-previous-thread
                     "g g" #'notmuch-search-first-thread
                     "G" #'notmuch-search-last-thread)
+(general-def :keymaps '(notmuch-hello-mode-map
+                        notmuch-search-mode-map)
+  "!" #'cogent/sync-mail)
 
 (provide 'cogent-mail)
