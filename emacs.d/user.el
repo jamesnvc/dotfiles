@@ -118,5 +118,19 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 
 (add-hook 'objc-mode-hook (lambda () (setq c-basic-offset 4)))
 
+;; ediff
+(defun cogent/ediff-copy-both-to-C ()
+  "Via https://stackoverflow.com/questions/9656311/conflict-resolution-with-emacs-ediff-how-can-i-take-the-changes-of-both-version. Take both changes in diff."
+  (interactive)
+  (ediff-copy-diff
+   ediff-current-difference nil 'C nil
+   (mapconcat
+    (lambda (d) (ediff-get-region-contents ediff-current-difference d ediff-control-buffer))
+    '(A B)
+    "")))
+(defun cogent/ediff-mode-hook ()
+  (define-key ediff-mode-map "B" #'cogent/ediff-copy-both-to-C))
+(add-hook 'ediff-keymap-setup-hook #'cogent/ediff-mode-hook)
+
 (when (not (server-running-p))
   (server-start))
