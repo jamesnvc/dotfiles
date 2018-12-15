@@ -40,6 +40,10 @@
   (with-eval-after-load "org"
     (define-key org-mode-map (kbd "C-c M-l") #'org-cliplink)))
 
+;; add :async to BEGIN_SRC blocks & they run asynchronously!
+(use-package ob-async
+  :after org)
+
 (use-package htmlize)
 
 (defun cogent/org-inline-css-hook (exporter)
