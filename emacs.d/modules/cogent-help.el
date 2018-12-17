@@ -10,12 +10,14 @@
   (which-key-mode)
   (setq-default which-key-idle-deplay 2.0)
   (setq-default which-key-special-keys nil)
-  :bind ("C-h C-k" . which-key-show-top-level)
+  :bind ("<f1> C-k" . which-key-show-top-level)
   :diminish which-key-mode)
 
-;; See current major mode wich C-h C-m
 (use-package discover-my-major
   :commands (discover-my-major discover-my-mode)
-  :bind ("C-h C-m" . discover-my-major))
+  :bind ("<f1> C-m" . discover-my-major))
+
+;; Run helm-dash-install-docset to download docsets
+(use-package helm-dash)
 
 (provide 'cogent-help)
