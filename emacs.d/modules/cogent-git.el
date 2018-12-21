@@ -11,6 +11,21 @@
     "c" #'magit-commit
     "H" #'magit-log-buffer-file))
 
+(use-package ghub
+  :straight (ghub
+             :type git
+             :host github
+             :repo "magit/ghub"))
+
+(use-package forge
+  :straight (forge
+             :type git
+             :host github
+             :repo "magit/forge")
+  :general
+  (general-nmap :keymaps 'magit-mode-map
+    "`" #'forge-dispatch))
+
 (use-package evil-magit
   :after magit
   :demand t)
