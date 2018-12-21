@@ -60,3 +60,5 @@
   smtpServer = smtp.gmail.com
   smtpUser = james.nvc@gmail.com
   smtpServerPort = 587
+[gitlab]
+	user = jamesnvc
