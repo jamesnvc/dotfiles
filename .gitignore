@@ -38,3 +38,4 @@ fish/fish_history
 fish/fishd.*
 emacs.d/image-dired/
 emacs.d/%backup%~
+emacs.d/forge-database.sqlite
