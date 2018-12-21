@@ -23,7 +23,7 @@
              :host github
              :repo "magit/forge")
   :general
-  (general-nmap :keymaps 'magit-mode-map
+  (:states 'normal :keymaps 'magit-mode-map
     "`" #'forge-dispatch))
 
 (use-package evil-magit
@@ -43,7 +43,7 @@
    :jump t
    "]c" #'git-gutter+-next-hunk
    "[c" #'git-gutter+-previous-hunk)
-  (general-nvmap :prefix "SPC h"
+  (:states '(normal visual) :prefix "SPC h"
     "s" #'git-gutter+-stage-hunks))
 
 (provide 'cogent-git)
