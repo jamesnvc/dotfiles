@@ -94,6 +94,7 @@
  ("multiple-cursors.el" . "6a7c3c0853e3fe9e4b8e5985dbed8fd4075f33ff")
  ("nyan-mode" . "a85ac925367ddc542827182a2d9f0133b421c41b")
  ("ob-async" . "2470490e6efb3f8efde1702f7986f6e31cc1ab6c")
+ ("ob-prolog" . "85ada8fc1f523167f137746c82d823a194160141")
  ("org" . "bfb946c7daacf5f7226ed1019370570c49a5409a")
  ("org-bullets" . "b56f2e3812626f2c4ac1686073d102c71f4a8513")
  ("org-cliplink" . "7ab98f2b17a627e907b50c27737ec1a8ae8b0f3d")
