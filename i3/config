@@ -172,10 +172,11 @@ bar {
     background #282a36
     statusline #f8f8f2
 
-    focused_workspace  #282a36 #282a36 #bd93f9
+    #                  border  bg      fg
+    focused_workspace  #282a36 #282a36 #ff79c6
     inactive_workspace #282a36 #282a36 #f8f8f2
-    urgent_workspace   #ff79c9 #ff79c9 #6272a4
-    binding_mode       #ffb86c #ffb86c #44475a
+    urgent_workspace   #ff79c6 #ff79c6 #282a36
+    binding_mode       #ffb86c #ffb86c #282a36
   }
   status_command i3blocks
 }
@@ -195,10 +196,10 @@ bindsym --release Shift+Print exec scrot -s screenshot-$(date +%Y-%m-%d_%T_%Z%:z
 bindsym --release Control+Shift+Print exec scrot -d 3 -s screenshot-$(date +%Y-%m-%d_%T_%Z%:z_%s).png -e 'mv $f ~/Pictures/'
 
 # Colours
-# class                 border   background text    indicator child_border
-client.focused          #bd93f9  #bd93f9    #f8f8f2 #ff79c6   #282a36
-client.focused_inactive #6272a4  #282a36    #f8f8f2 #f1fa8c   #282a36
-client.unfocused        #6272a4  #282a36    #f8f8f2 #f1fa8c   #282a36
-client.urgent           #ff79c6  #ff79c6    #f8f8f2 #ffb86c   #ff79c6
+# class                 border   background text     indicator child_border
+client.focused          #282a36  #282a36    #ff79c6  #ff79c6   #282a36
+client.focused_inactive #282a36  #282a36    #bd93f9  #f1fa8c   #282a36
+client.unfocused        #282a36  #282a36    #6272a4  #f1fa8c   #282a36
+client.urgent           #ff79c6  #ff79c6    #282a36  #ffb86c   #ff79c6
 
 client.background       ##ff79c6
