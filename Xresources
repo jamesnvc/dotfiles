@@ -1,0 +1,11 @@
+Xft.dpi: 180
+Xft.autohint: 0
+Xft.lcdfilter:  lcddefault
+Xft.hintstyle:  hintfull
+Xft.hinting: 1
+Xft.antialias: 0
+Xft.rgba: rgb
+
+URxvt.font: xft:PragmataPro\ Mono:size=10:antialias=False
+URxvt.background: rgb:0/0/0
+URxvt.cursorColor: rgb:ff/ff/ff
