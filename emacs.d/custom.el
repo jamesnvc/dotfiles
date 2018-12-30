@@ -76,6 +76,8 @@ Entered on %U
    (quote
     (org-bbdb org-bibtex org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m)))
  '(org-return-follows-link t)
+ '(pdf-annot-activate-created-annotations t)
+ '(pdf-view-display-size (quote fit-page))
  '(pop-up-frame-alist (quote ((title . "emacs-popup-frame"))))
  '(powerline-default-separator (quote bar))
  '(projectile-enable-caching t)
