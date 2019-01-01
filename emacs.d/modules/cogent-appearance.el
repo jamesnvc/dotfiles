@@ -35,7 +35,8 @@
     (set-face-background 'powerline-inactive2 "#282a36")
     ;; Comments exist for a reason - make them stand out
     (set-face-attribute 'font-lock-comment-face nil :weight 'semi-bold)
-    (set-face-background 'org-block-begin-line "#44475a"))
+    (with-eval-after-load 'org
+      (set-face-background 'org-block-begin-line "#44475a")))
   (cogent/add-theme-hook 'dracula #'cogent/dracula-theme-hook))
 
 (use-package solarized
