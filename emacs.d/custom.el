@@ -47,6 +47,7 @@
  '(flycheck-proselint-executable "~/.pyenv/shims/proselint")
  '(helm-use-undecorated-frame-option t)
  '(hl-sexp-background-color "#1c1f26")
+ '(magit-diff-refine-hunk t)
  '(menu-bar-mode t)
  '(moody-mode-line-height 28)
  '(notmuch-saved-searches
