@@ -44,6 +44,11 @@
 (use-package ob-async
   :after org)
 
+(use-package org-tree-slide
+  :commands (org-tree-slide-mode org-tree-slide-skip-done-toggle))
+(general-def :keymaps 'org-mode-map
+  "<f8>" #'org-tree-slide-mode)
+
 (use-package htmlize)
 
 (defun cogent/org-inline-css-hook (exporter)
