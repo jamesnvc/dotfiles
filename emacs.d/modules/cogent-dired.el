@@ -34,8 +34,8 @@
           (set-buffer-modified-p nil)
           (message "File '%s' successfully renamed to '%s'"
                    name (file-name-nondirectory new-name)))))))
-;; TODO: evil binding too?
-(global-set-key (kbd "C-x C-r") #'rename-current-buffer-file)
+
+(general-def "C-x C-r" #'rename-current-buffer-file)
 (general-def :keymaps 'dired-mode-map
   "C-x g" #'magit)
 
