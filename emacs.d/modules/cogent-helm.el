@@ -15,6 +15,7 @@
       :general
       (cogent/leader-def
         :states '(normal visual)
+        "P" #'helm-projectile
         "t" #'helm-projectile-find-file
         "s" #'helm-projectile-ag)))
   (helm-autoresize-mode 1)
