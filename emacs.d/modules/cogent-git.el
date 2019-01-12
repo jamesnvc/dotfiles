@@ -4,6 +4,10 @@
 
 (use-package magit
   :commands magit-status
+  :init
+  (defadvice magit-status (after cogent/magit-status-evil-emacs)
+    (evil-emacs-state))
+  (ad-activate #'magit-status)
   :general
   (general-nvmap :prefix "SPC g"
     "s" #'magit-status
