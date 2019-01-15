@@ -12,7 +12,7 @@
   (general-nvmap :prefix "SPC g"
     "s" #'magit-status
     "w" #'magit-stage-file
-    "c" #'magit-commit
+    "c" #'magit-commit-create
     "H" #'magit-log-buffer-file))
 
 (use-package ghub
