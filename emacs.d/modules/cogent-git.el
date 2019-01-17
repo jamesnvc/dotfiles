@@ -5,9 +5,9 @@
 (use-package magit
   :commands magit-status
   :init
-  (defadvice magit-status (after cogent/magit-status-evil-emacs)
+  (defun cogent/magit-status-evil-emacs (&rest _args)
     (evil-emacs-state))
-  (ad-activate #'magit-status)
+  (advice-add 'magit-status :after #'cogent/magit-status-evil-emacs)
   :general
   (general-nvmap :prefix "SPC g"
     "s" #'magit-status
