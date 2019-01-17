@@ -98,6 +98,7 @@
  ("org" . "bfb946c7daacf5f7226ed1019370570c49a5409a")
  ("org-bullets" . "b56f2e3812626f2c4ac1686073d102c71f4a8513")
  ("org-cliplink" . "7ab98f2b17a627e907b50c27737ec1a8ae8b0f3d")
+ ("org-tree-slide" . "603a383117b8c19004baeecfe34837e20568fdbd")
  ("paredit" . "acbe10fdd85d2e91831adf70b6a828bc7e900da0")
  ("pcache" . "1f8086077d770e524492e6fa59b07856e85a6fea")
  ("pdf-tools" . "a4cd69ea1d50b8e74ea515eec95948ad87c6c732")
