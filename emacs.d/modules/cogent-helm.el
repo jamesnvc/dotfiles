@@ -17,7 +17,7 @@
         :states '(normal visual)
         "P" #'helm-projectile
         "t" #'helm-projectile-find-file
-        "s" #'helm-projectile-ag)))
+        "s" #'helm-projectile-rg)))
   (helm-autoresize-mode 1)
   (setq-default helm-display-header-line nil
                 helm-autoresize-min-height 0
@@ -56,7 +56,41 @@
     (require 'helm-flx)
     (helm-flx-mode 1)))
 
-(use-package helm-ag)
+(use-package helm-rg
+  :config
+  (defun cogent/switch-to-buffer-split-vert (name)
+    (select-window (split-window-right))
+    (switch-to-buffer name))
+  (defun cogent/switch-to-buffer-split-horiz (name)
+    (select-window (split-window-below))
+    (switch-to-buffer name))
+
+  (defun cogent/helm-rg-switch-vert (parsed-output &optional highlight-matches)
+    (let ((helm-rg-display-buffer-normal-method #'cogent/switch-to-buffer-split-vert))
+      (helm-rg--async-action parsed-output highlight-matches)))
+  (defun cogent/helm-rg-switch-horiz (parsed-output &optional highlight-matches)
+    (let ((helm-rg-display-buffer-normal-method #'cogent/switch-to-buffer-split-horiz))
+      (helm-rg--async-action parsed-output highlight-matches)))
+
+  (helm-add-action-to-source
+   "Open in horizontal split" #'cogent/helm-rg-switch-horiz
+   helm-rg-process-source)
+  (helm-add-action-to-source
+   "Open in vertical split" #'cogent/helm-rg-switch-vert
+   helm-rg-process-source)
+
+  (defun cogent/helm-rg-switch-vert-command ()
+    (interactive)
+    (with-helm-alive-p
+      (helm-exit-and-execute-action #'cogent/helm-rg-switch-vert)))
+  (defun cogent/helm-rg-switch-horiz-command ()
+    (interactive)
+    (with-helm-alive-p
+      (helm-exit-and-execute-action #'cogent/helm-rg-switch-horiz)))
+
+  (general-def helm-rg-map
+    "C-s" #'cogent/helm-rg-switch-horiz-command
+    "C-v" #'cogent/helm-rg-switch-vert-command))
 
 (use-package helm-ext
   :config
@@ -110,44 +144,6 @@
   (generate-helm-splitter-funcs "buffer" switch-to-buffer)
   (generate-helm-splitter-funcs "file" find-file))
 
-(defun cogent/make-find-file-in-split (split-fn)
-  (lambda (f)
-    (select-window (funcall split-fn))
-    (find-file f)))
-
-(defun cogent/helm-ag--open-horiz-window (candidate)
-  (helm-ag--find-file-action
-   candidate
-   (cogent/make-find-file-in-split #'split-window-below)
-   (helm-ag--search-this-file-p)))
-
-(defun cogent/helm-ag--open-vert-window (candidate)
-  (helm-ag--find-file-action
-   candidate
-   (cogent/make-find-file-in-split #'split-window-right)
-   (helm-ag--search-this-file-p)))
-
-(defun cogent/helm-ag-switch-new-horiz-window ()
-  (interactive)
-  (with-helm-alive-p
-    (helm-exit-and-execute-action #'cogent/helm-ag--open-horiz-window)))
-
-(defun cogent/helm-ag-switch-new-vert-window ()
-  (interactive)
-  (with-helm-alive-p
-    (helm-exit-and-execute-action #'cogent/helm-ag--open-vert-window)))
-
-;; [TODO] figure out why these actions aren't showing up in the actions list
-(add-to-list 'helm-ag--actions
-             (cons "Display file in new horizontal split"
-                   #'cogent/helm-ag--open-horiz-window)
-             'append)
-
-(add-to-list 'helm-ag--actions
-             (cons "Display file in new vertical split"
-                   #'cogent/helm-ag--open-vert-window)
-             'append)
-
 (general-def helm-buffer-map
   "C-v" #'helm-buffer-switch-new-vert-window
   "C-s" #'helm-buffer-switch-new-horiz-window)
@@ -157,8 +153,5 @@
 (general-def helm-find-files-map
   "C-v" #'helm-file-switch-new-vert-window
   "C-s" #'helm-file-switch-new-horiz-window)
-(general-def helm-ag-map
-  "C-s" #'cogent/helm-ag-switch-new-horiz-window
-  "C-v" #'cogent/helm-ag-switch-new-vert-window)
 
 (provide 'cogent-helm)
