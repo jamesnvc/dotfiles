@@ -8,16 +8,7 @@
   (require 'helm-config)
   (require 'helm)
   (helm-mode 1)
-  (with-eval-after-load "cogent-project"
-    (use-package helm-projectile
-      :commands helm-projectile-on helm-projectile-find-file
-      :config (projectile-mode)
-      :general
-      (cogent/leader-def
-        :states '(normal visual)
-        "P" #'helm-projectile
-        "t" #'helm-projectile-find-file
-        "s" #'helm-projectile-rg)))
+
   (helm-autoresize-mode 1)
   (setq-default helm-display-header-line nil
                 helm-autoresize-min-height 0
@@ -113,6 +104,17 @@
     "m" #'helm-M-x
     "T" #'helm-find-files
     "b" #'helm-buffers-list))
+
+(use-package helm-projectile
+  :after projectile
+  :commands helm-projectile-on helm-projectile-find-file
+  :config (projectile-mode)
+  :general
+  (cogent/leader-def
+    :states '(normal visual)
+    "P" #'helm-projectile
+    "t" #'helm-projectile-find-file
+    "s" #'helm-projectile-rg))
 
 (use-package swiper-helm
   :general
