@@ -57,7 +57,7 @@
         :name cogent/clojure-change-dispatch
         "pp" #'cogent/cider-eval-next-sexp
         "p!" #'cogent/cider-eval-next-sexp-and-replace
-                                        ; prefix arg to debug defun
+        ;; prefix arg to debug defun
         "d" #'cider-eval-defun-at-point
         "c" #'evil-change-whole-line
         "r-" #'cogent/kebab-case
