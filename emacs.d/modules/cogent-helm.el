@@ -105,29 +105,6 @@
     "T" #'helm-find-files
     "b" #'helm-buffers-list))
 
-(use-package helm-projectile
-  :after projectile
-  :commands helm-projectile-on helm-projectile-find-file
-  :config (projectile-mode)
-  :general
-  (cogent/leader-def
-    :states '(normal visual)
-    "P" #'helm-projectile
-    "t" #'helm-projectile-find-file
-    "s" #'helm-projectile-rg))
-
-(use-package swiper-helm
-  :general
-  (cogent/leader-def
-    :states '(normal visual)
-    "l" #'swiper-helm))
-
-(use-package helm-flx
-  :config
-  (with-eval-after-load "helm"
-    (require 'helm-flx)
-    (helm-flx-mode 1)))
-
 (use-package helm-rg
   :config
   (defun cogent/switch-to-buffer-split-vert (name)
@@ -163,6 +140,29 @@
   (general-def helm-rg-map
     "C-s" #'cogent/helm-rg-switch-horiz-command
     "C-v" #'cogent/helm-rg-switch-vert-command))
+
+(use-package helm-projectile
+  :after projectile
+  :commands helm-projectile-on helm-projectile-find-file
+  :config (projectile-mode)
+  :general
+  (cogent/leader-def
+    :states '(normal visual)
+    "P" #'helm-projectile
+    "t" #'helm-projectile-find-file
+    "s" #'helm-projectile-rg))
+
+(use-package swiper-helm
+  :general
+  (cogent/leader-def
+    :states '(normal visual)
+    "l" #'swiper-helm))
+
+(use-package helm-flx
+  :config
+  (with-eval-after-load "helm"
+    (require 'helm-flx)
+    (helm-flx-mode 1)))
 
 (use-package helm-ext
   :config
