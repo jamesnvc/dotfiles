@@ -8,7 +8,6 @@
   :commands lsp-define-stdio-client lsp-mode lsp-sh-enable
   :config
   (require 'lsp-imenu)
-  (add-hook 'lsp-after-open-hook #'lsp-enable-imenu)
 
   (require 'cogent-complete)
 
@@ -24,12 +23,11 @@
      "start"))
   ;; not enabling it by default - kinda overkill
   ;; (add-hook 'sh-mode-hook #'lsp-sh-enable)
-  )
+  :hook (lsp-after-open . lsp-enable-imenu))
 
 (use-package lsp-ui
   :after lsp-mode
-  :config
-  (add-hook 'lsp-mode-hook #'lsp-ui-mode))
+  :hook (lsp-mode . lsp-ui-mode))
 
 (use-package company-lsp
   :after company lsp-mode
@@ -42,8 +40,8 @@
 (use-package lsp-rust
   :after lsp-mode rust-mode
   :commands lsp-rust-enable
+  :hook (rust-mode . lsp-rust-enable)
   :init
-  (add-hook 'rust-mode-hook #'lsp-rust-enable)
   (setq lsp-rust-rls-command '("rustup" "run" "nightly" "rls")))
 
 ;; C/C++/Objective-C
@@ -56,7 +54,6 @@
   (if-let ((ccls-path (cogent/resolve-exec "ccls")))
       (setq ccls-executable ccls-path)
     (setq ccls-executable (expand-file-name "~/software/ccls/Release/ccls")))
-  :init
-  (add-hook 'objc-mode-hook #'lsp-ccls-enable))
+  :hook (objc-mode . lsp-ccls-enable))
 
 (provide 'cogent-lsp)

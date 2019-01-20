@@ -3,8 +3,7 @@
 
 (use-package clojure-mode
   :commands clojure-mode
-  :config
-  (add-hook 'clojure-mode-hook #'enable-paredit-mode))
+  :hook (clojure-mode . enable-paredit-mode))
 
 (use-package cljr-helm
   :after general clojure-mode
@@ -14,13 +13,12 @@
 
 (use-package clj-refactor
   :after clojure-mode
-  :config
-  (add-hook 'clojure-mode-hook (lambda () (clj-refactor-mode 1))))
+  :hook (clojure-mode . (lambda () (clj-refactor-mode 1))))
 
 (use-package cider
   :commands cider-jack-in
+  :hook (cider-mode . eldoc-mode)
   :config
-  (add-hook 'cider-mode-hook #'eldoc-mode)
   (evil-set-initial-state 'cider-docview-mode 'insert)
   (evil-set-initial-state 'cider-stacktrace-mode 'insert)
   (setq cider-prompt-for-symbol nil)

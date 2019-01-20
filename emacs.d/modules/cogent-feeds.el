@@ -6,8 +6,7 @@
 
 (use-package elfeed
   :commands elfeed
-  :init
-  (add-hook 'elfeed-show-mode-hook #'visual-line-mode)
+  :hook (elfeed-show-mode . visual-line-mode)
   :config
   (defun cogent/elfeed-mark-visible-read ()
     "From http://xenodium.com/#faster-elfeed-browsing-with-paging"

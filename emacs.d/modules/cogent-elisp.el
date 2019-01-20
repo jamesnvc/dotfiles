@@ -5,14 +5,12 @@
 
 (use-package paredit
   :commands paredit-mode enable-paredit-mode
-  :init
-  (add-hook 'emacs-lisp-mode-hook 'enable-paredit-mode)
+  :hook (emacs-lisp-mode . enable-paredit-mode)
   :diminish paredit-mode)
 
 (use-package highlight-parentheses
   :commands highlight-parentheses-mode
-  :init
-  (add-hook 'emacs-lisp-mode-hook 'highlight-parentheses-mode)
+  :hook (emacs-lisp-mode . highlight-parentheses-mode)
   :diminish highlight-parentheses-mode)
 
 (defun cogent-elisp/remove-elc-on-save ()
@@ -31,8 +29,7 @@ now-invalid elc file"
 ;; Show the result of evaluating as an overlay in the elisp buffer
 (use-package eros
   :commands eros-mode
-  :init
-  (add-hook 'emacs-lisp-mode-hook #'eros-mode))
+  :hook (emacs-lisp-mode . eros-mode))
 
 (defun cogent/elisp-eval-next-sexp ()
   (interactive)

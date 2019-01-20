@@ -9,7 +9,7 @@
   :demand t
   :config
   (pdf-tools-install)
-  (add-hook 'pdf-view-mode-hook #'cogent/disable-display-line-numbers-mode))
+  :hook (pdf-view-mode . cogent/disable-display-line-numbers-mode))
 
 
 (provide 'cogent-reading)
