@@ -49,11 +49,10 @@ now-invalid elc file"
       (eros-eval-last-sexp t)
       (delete-region start end))))
 
-(general-nmap :keymaps '(emacs-lisp-mode-map lisp-interaction-mode-map)
+(general-nmap '(emacs-lisp-mode-map lisp-interaction-mode-map)
   ;; Like vim-unimpaired
   "] C-d" 'find-function-at-point
   "c" (general-key-dispatch 'evil-change
-        :name cogent/elisp-change-dispatch
         "pp" #'cogent/elisp-eval-next-sexp
         "p!" #'cogent/elisp-eval-and-replace-next-sexp
         "c" #'evil-change-whole-line
@@ -61,7 +60,7 @@ now-invalid elc file"
         "r_" #'cogent/snake-case
         "rc" #'cogent/camel-case
         "rC" #'cogent/camel-case-upper))
-(general-vmap :keymaps 'emacs-lisp-mode-map "c" 'evil-change)
+(general-vmap 'emacs-lisp-mode-map "c" 'evil-change)
 
 
 (provide 'cogent-elisp)
