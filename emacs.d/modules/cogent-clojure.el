@@ -65,7 +65,7 @@
         "rC" #'cogent/camel-case-upper)
   "] C-d" #'cider-find-var
   "K" #'cider-doc
-  "M-r" #'(lambda () (interactive) (cider-load-file (buffer-file-name))))
+  "M-r" (lambda () (interactive) (cider-load-file (buffer-file-name))))
 (general-vmap 'cider-mode-map "c" 'evil-change)
 
 (provide 'cogent-clojure)
