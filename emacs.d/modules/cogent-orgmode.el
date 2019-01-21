@@ -18,7 +18,7 @@
    (lambda ()
      (let ((default-pred electric-pair-inhibit-predicate))
        (setq-local electric-pair-inhibit-predicate
-                   #'(lambda (c) (if (char-equal c ?<) t default-pred))))
+                   (lambda (c) (if (char-equal c ?<) t default-pred))))
      (visual-line-mode 1)
      (set-visual-wrap-column 120)))
 

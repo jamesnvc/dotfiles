@@ -3,9 +3,9 @@
 ;; Basically the same, but doing it myself so I understand how things work
 
 (setq gc-cons-threshold 64000000)
-(add-hook 'after-init-hook #'(lambda ()
-                               ;; restore after startup
-                               (setq gc-cons-threshold 800000)))
+(add-hook 'after-init-hook (lambda ()
+                             ;; restore after startup
+                             (setq gc-cons-threshold 800000)))
 
 (setq inhibit-startup-message t)
 

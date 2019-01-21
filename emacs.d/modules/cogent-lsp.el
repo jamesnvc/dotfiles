@@ -17,7 +17,7 @@
   ;; npm i -g bash-language-server
   (lsp-define-stdio-client
    lsp-sh "sh"
-   #'(lambda () default-directory)
+   (lambda () default-directory)
    `(,(let ((npm-prefix (s-chomp (shell-command-to-string "npm config get prefix"))))
         (s-append "/bin/bash-language-server" npm-prefix))
      "start"))
