@@ -4,7 +4,10 @@
 (require 'cogent-pragmata)
 (when (string-equal system-type "darwin")
   (set-frame-font "PragmataPro 16" nil t)
-  (global-prettify-symbols-mode -1))
+  (global-prettify-symbols-mode -1)
+  (mac-auto-operator-composition-mode 1)
+  (setq mac-command-modifier 'super
+        mac-option-modifier 'meta))
 
 ;; Quick way to jump here
 (set-register ?e (cons 'file (concat dotfiles-dir "user.el")))
