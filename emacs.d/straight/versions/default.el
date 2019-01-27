@@ -17,6 +17,7 @@
  ("diminish.el" . "565a983a39d2e2cffab5df13b34f3b6116723208")
  ("discover-my-major" . "c592e5e67454f0d1b68669ac0c270073164b16b3")
  ("edn.el" . "be9e32d1b49e35247b263b0243df7cfdc8d413ab")
+ ("el-patch" . "66510e01598a2c4ce6c973e0b6c1691d8d24c8e6")
  ("elfeed" . "afafa1f7d9e29de55ce5b1709074738a7e185f2a")
  ("elfeed-goodies" . "fc0c3e72f9fcd7bbf5237f6f2323bc666e8240b4")
  ("elpa" . "fa31d3a8482c220f2f850ce33d244be108dfaae5")
