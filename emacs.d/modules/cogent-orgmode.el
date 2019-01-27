@@ -11,6 +11,7 @@
   :demand t
   :config
   (require 'org-tempo) ;; for expanding templates
+  (require 'ox-beamer)
   (setq org-replace-disputed-keys t)
   (setq org-default-notes-file (concat org-directory "/notes.org"))
   (add-hook
