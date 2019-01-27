@@ -28,4 +28,6 @@
 
 (straight-use-package 'use-package)
 
+(use-package el-patch)
+
 (provide 'cogent-package)
