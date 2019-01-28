@@ -68,7 +68,7 @@
  ("helm-flx" . "6640fac5cb16bee73c95b8ed1248a4e5e113690e")
  ("helm-flycheck" . "3cf7d3bb194acacc6395f88360588013d92675d6")
  ("helm-projectile" . "8a2dbc973548fac89356c11d70f7f474ea1367a5")
- ("helm-rg" . "d356a2abb6359d709487ed49414e151627287577")
+ ("helm-rg" . "0a4878e977072e5e08475c4f957d4ef522b6ca5d")
  ("highlight-parentheses.el" . "f0bd58c8dadd2db703b7bfd09e911b5fda05b3df")
  ("highlight.el" . "ea733e17884aeae19172407e20559fc693fdd3a7")
  ("ht.el" . "5a665d00dc8fda77bad2a43277d8809c23e46ab8")

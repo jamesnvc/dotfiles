@@ -105,23 +105,8 @@
     "T" #'helm-find-files
     "b" #'helm-buffers-list))
 
-(el-patch-feature helm-rg)
 (use-package helm-rg
   :config
-  (el-patch-defun helm-rg--process-paths-to-search (paths)
-    (cl-check-type helm-rg--current-dir helm-rg-existing-directory)
-    (cl-loop
-     for path in paths
-     for expanded = (expand-file-name path helm-rg--current-dir)
-     unless (file-exists-p expanded)
-     do (error (concat "Error: expanded path '%s' does not exist. "
-                       "The cwd was '%s', and the paths provided were %S.")
-               expanded
-               helm-rg--current-dir
-               paths)
-     collect (el-patch-swap (file-relative-name expanded helm-rg--current-dir)
-                            expanded)))
-
   (defun cogent/switch-to-buffer-split-vert (name)
     (select-window (split-window-right))
     (switch-to-buffer name))
