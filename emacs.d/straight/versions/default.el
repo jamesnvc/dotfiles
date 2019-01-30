@@ -45,6 +45,7 @@
  ("evil-search-highlight-persist" . "979d2dec58d3b9c5ca5fdf4bb802a0209913794e")
  ("evil-surround" . "63ce01848878ce011eb4fee59c51109dd1e3ddb5")
  ("exec-path-from-shell" . "9bc0f4a762f16d488376fb52409c58239a86d75d")
+ ("eyebrowse" . "a11c9044861318c8c2ca0b3387205c7b2bd83a06")
  ("f.el" . "de6d4d40ddc844eee643e92d47b9d6a63fbebb48")
  ("flx" . "46040d0b096a0340d91235561f27a959a61d0fef")
  ("flycheck" . "1702d2db3d8ba9bcb9b2bf810e791e907fcc3adc")

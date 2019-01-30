@@ -15,4 +15,8 @@
   (setq switch-window-qwerty-shortcuts
         '("a" "o" "e" "u" "i" "d" "h" "t" "n" "s")))
 
+(use-package eyebrowse
+  :commands eyebrowse-mode
+  :init (eyebrowse-mode t))
+
 (provide 'cogent-windows)
