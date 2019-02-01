@@ -45,6 +45,7 @@
      (124 "「" . "」")
      (107 "【" . "】"))))
  '(exec-path-from-shell-arguments (quote ("-l")))
+ '(eyebrowse-new-workspace t)
  '(flycheck-proselint-executable "~/.pyenv/shims/proselint")
  '(helm-rg-file-paths-in-matches-behavior (quote absolute))
  '(helm-use-undecorated-frame-option t)
