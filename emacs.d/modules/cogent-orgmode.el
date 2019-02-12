@@ -69,4 +69,40 @@ as my default face, so it will be readable"
   :hook ((org-mode . evil-org-mode)
          (evil-org-mode . evil-org-set-key-theme)))
 
+(defun org-dblock-write:rangereport (params)
+  "Display day-by-day time reports.
+   To use, make a block like
+
+#+BEGIN: rangereport :maxlevel 2 :tstart \"<2019-02-08 Fri>\" :tend \"<2019-02-12 Tue>\"
+#+END:
+
+Then press C-c C-x C-u inside
+"
+  (let* ((ts (plist-get params :tstart))
+         (te (plist-get params :tend))
+         (start (time-to-seconds
+                 (apply 'encode-time (org-parse-time-string ts))))
+         (end (time-to-seconds
+               (apply 'encode-time (org-parse-time-string te))))
+         day-numbers)
+    (setq params (plist-put params :tstart nil))
+    (setq params (plist-put params :end nil))
+    (while (<= start end)
+      (save-excursion
+        (insert "\n\n"
+                (format-time-string (car org-time-stamp-formats)
+                                    (seconds-to-time start))
+                "----------------\n")
+        (org-dblock-write:clocktable
+         (plist-put
+          (plist-put
+           params
+           :tstart
+           (format-time-string (car org-time-stamp-formats)
+                               (seconds-to-time start)))
+          :tend
+          (format-time-string (car org-time-stamp-formats)
+                              (seconds-to-time end))))
+        (setq start (+ 86400 start))))))
+
 (provide 'cogent-orgmode)
