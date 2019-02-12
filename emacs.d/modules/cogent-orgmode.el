@@ -89,10 +89,10 @@ Then press C-c C-x C-u inside
     (setq params (plist-put params :end nil))
     (while (<= start end)
       (save-excursion
-        (insert "\n\n"
+        (insert "\n\nDAY: "
                 (format-time-string (car org-time-stamp-formats)
                                     (seconds-to-time start))
-                "----------------\n")
+                "\n")
         (org-dblock-write:clocktable
          (plist-put
           (plist-put
@@ -104,5 +104,44 @@ Then press C-c C-x C-u inside
           (format-time-string (car org-time-stamp-formats)
                               (seconds-to-time end))))
         (setq start (+ 86400 start))))))
+
+(require 'rx)
+(defun org-dblock-write:merged-rangereport (params)
+  (org-dblock-write:rangereport params)
+  (message "WROTE RANGEREPORT")
+  (save-excursion
+    (save-restriction
+      (let* ((case-fold-search t)
+             (blockp (org-between-regexps-p
+                      (rx bol (0+ blank) "#+begin")
+                      (rx bol (0+ blank) "#+end"))))
+        (when blockp
+          (narrow-to-region (car blockp) (cdr blockp))))
+      (goto-char (point-min))
+      (forward-line)
+      (insert "| Day | Task | Time | Subtask time |\n")
+      (insert "|-----+------+------+--------------|\n")
+      (save-excursion
+        (delete-matching-lines (rx bol "#+CAPTION: ")))
+      (save-excursion
+        (delete-matching-lines (rx bol "| Headline")))
+      (save-excursion
+        (delete-matching-lines (rx bol "|----")))
+      (save-excursion
+        (delete-matching-lines (rx bol (0+ blank) eol)))
+      (while (re-search-forward (rx bol "DAY: ") nil t)
+        (message "DAY")
+        (delete-char -5)
+        (insert "| " )
+        (end-of-line)
+        (insert " ")
+        (forward-line)
+        (join-line)
+        (let ((next-start (save-excursion
+                            (re-search-forward (rx bol "DAY: ") nil t))))
+          (message "NEXT START " next-start)
+          (while (re-search-forward (rx bol "|") next-start t)
+            (insert "| "))))
+      (org-table-align))))
 
 (provide 'cogent-orgmode)
