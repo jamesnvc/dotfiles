@@ -94,31 +94,32 @@ Then press C-c C-x C-u inside
                                     (seconds-to-time start))
                 "\n")
         (org-dblock-write:clocktable
-         (plist-put
-          (plist-put
-           params
-           :tstart
-           (format-time-string (car org-time-stamp-formats)
-                               (seconds-to-time start)))
-          :tend
-          (format-time-string (car org-time-stamp-formats)
-                              (seconds-to-time end))))
+         (-> params
+             (plist-put
+              :tstart
+              (format-time-string (car org-time-stamp-formats)
+                                  (seconds-to-time start)))
+             (plist-put
+              :tend
+              (format-time-string (car org-time-stamp-formats)
+                                  (seconds-to-time (+ 86400 start))))))
         (setq start (+ 86400 start))))))
 
 (require 'rx)
 (defun org-dblock-write:merged-rangereport (params)
   (org-dblock-write:rangereport params)
-  (message "WROTE RANGEREPORT")
   (save-excursion
     (save-restriction
+      ;; like org-narrow-to-block, but that only works for blocks like
+      ;; "#+begin_*", while this is like "#+begin:"
       (let* ((case-fold-search t)
              (blockp (org-between-regexps-p
                       (rx bol (0+ blank) "#+begin")
                       (rx bol (0+ blank) "#+end"))))
         (when blockp
           (narrow-to-region (car blockp) (cdr blockp))))
-      (goto-char (point-min))
-      (forward-line)
+      ;; point-min in the block is the #+BEGIN line, so go down one
+      (goto-char (point-min)) (forward-line)
       (insert "| Day | Task | Time | Subtask time |\n")
       (insert "|-----+------+------+--------------|\n")
       (save-excursion
@@ -130,18 +131,20 @@ Then press C-c C-x C-u inside
       (save-excursion
         (delete-matching-lines (rx bol (0+ blank) eol)))
       (while (re-search-forward (rx bol "DAY: ") nil t)
-        (message "DAY")
-        (delete-char -5)
-        (insert "| " )
-        (end-of-line)
-        (insert " ")
-        (forward-line)
-        (join-line)
+        (delete-char -5) ; Delete "DAY: " before timestamp
+        ;; make timestamp be the first column in a table row
+        (insert "| " ) (end-of-line) (insert " ")
+        ;; join-line joins the current line with the line *above*
+        ;; so we do this to merge the first line of the table
+        ;; with the new row that has the timestamp in column 0
+        (forward-line) (join-line)
+        ;; then we need to insert an empty column for the other entries
+        ;; in the table for this day
         (let ((next-start (save-excursion
                             (re-search-forward (rx bol "DAY: ") nil t))))
-          (message "NEXT START " next-start)
           (while (re-search-forward (rx bol "|") next-start t)
             (insert "| "))))
+      ;; when it's all done, fix up the table
       (org-table-align))))
 
 (provide 'cogent-orgmode)
