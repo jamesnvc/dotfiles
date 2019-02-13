@@ -69,6 +69,7 @@ as my default face, so it will be readable"
   :hook ((org-mode . evil-org-mode)
          (evil-org-mode . evil-org-set-key-theme)))
 
+;; from http://sachachua.com/blog/2007/12/clocking-time-with-emacs-org/
 (defun org-dblock-write:rangereport (params)
   "Display day-by-day time reports.
    To use, make a block like
@@ -107,6 +108,7 @@ Then press C-c C-x C-u inside
 
 (require 'rx)
 (defun org-dblock-write:merged-rangereport (params)
+  "Like `org-dblock-write:rangereport', but puts combines the entries into one table"
   (org-dblock-write:rangereport params)
   (save-excursion
     (save-restriction
