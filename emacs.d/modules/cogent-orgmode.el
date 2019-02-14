@@ -125,13 +125,11 @@ Then press C-c C-x C-u inside
       (insert "| Day | Task | Time | Subtask time |\n")
       (insert "|-----+------+------+--------------|\n")
       (save-excursion
-        (delete-matching-lines (rx bol "#+CAPTION: ")))
-      (save-excursion
-        (delete-matching-lines (rx bol "| Headline")))
-      (save-excursion
-        (delete-matching-lines (rx bol "|----")))
-      (save-excursion
-        (delete-matching-lines (rx bol (0+ blank) eol)))
+        (delete-matching-lines
+         (rx bol (| "#+CAPTION: "
+                    "| Headline"
+                    "|----"
+                    (: (0+ blank) eol)))))
       (while (re-search-forward (rx bol "DAY: ") nil t)
         (delete-char -5) ; Delete "DAY: " before timestamp
         ;; make timestamp be the first column in a table row
