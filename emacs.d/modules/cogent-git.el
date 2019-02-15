@@ -30,10 +30,7 @@
   :straight (forge
              :type git
              :host github
-             :repo "magit/forge")
-  :general
-  (:states 'normal :keymaps 'magit-mode-map
-    "`" #'forge-dispatch))
+             :repo "magit/forge"))
 
 ;; (use-package evil-magit
 ;;   :after magit
