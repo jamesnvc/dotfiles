@@ -11,9 +11,7 @@
 (use-package magit
   :commands magit-status
   :init
-  (defun cogent/magit-status-evil-emacs (&rest _args)
-    (evil-emacs-state))
-  (advice-add 'magit-status :after #'cogent/magit-status-evil-emacs)
+  (evil-set-initial-state 'git-commit-mode evil-default-state)
   :general
   (general-nvmap :prefix "SPC g"
     "s" #'magit-status
