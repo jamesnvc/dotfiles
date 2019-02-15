@@ -2,6 +2,12 @@
 
 (require 'cogent-package)
 
+(use-package transient
+  :straight (transient
+             :type git
+             :host github
+             :repo "magit/transient"))
+
 (use-package magit
   :commands magit-status
   :init
@@ -22,6 +28,7 @@
              :repo "magit/ghub"))
 
 (use-package forge
+  :after magit
   :straight (forge
              :type git
              :host github
@@ -30,9 +37,9 @@
   (:states 'normal :keymaps 'magit-mode-map
     "`" #'forge-dispatch))
 
-(use-package evil-magit
-  :after magit
-  :demand t)
+;; (use-package evil-magit
+;;   :after magit
+;;   :demand t)
 
 (use-package gist)
 
