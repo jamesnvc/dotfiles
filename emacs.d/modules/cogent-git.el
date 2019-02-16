@@ -32,10 +32,6 @@
              :host github
              :repo "magit/forge"))
 
-;; (use-package evil-magit
-;;   :after magit
-;;   :demand t)
-
 (use-package gist)
 
 (use-package fringe-helper)
