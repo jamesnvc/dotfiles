@@ -62,12 +62,12 @@ evil to have."
     (cogent/change-word-at-point #'s-upper-camel-case))
 
   :general
-  (:keymaps '(normal dired-mode-map notmuch-search-mode-map notmuch-hello-mode-map)
-   :repeat t
-              "C-l" #'evil-window-right
-              "C-h" #'evil-window-left
-              "C-j" #'evil-window-down
-              "C-k" #'evil-window-up)
+  (:keymaps '(normal notmuch-search-mode-map notmuch-hello-mode-map)
+            :repeat t
+            "C-l" #'evil-window-right
+            "C-h" #'evil-window-left
+            "C-j" #'evil-window-down
+            "C-k" #'evil-window-up)
   (:keymaps 'insert
             "C-h" #'evil-delete-backward-char-and-join)
   (:keymaps 'normal
