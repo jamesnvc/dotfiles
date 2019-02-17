@@ -37,7 +37,8 @@
 
 (general-def "C-x C-r" #'rename-current-buffer-file)
 (general-def :keymaps 'dired-mode-map
-  "C-x g" #'magit
+  "C-x g" #'magit)
+(general-def :states 'normal :keymaps 'dired-mode-map
   "C-l" #'evil-window-right
   "C-h" #'evil-window-left
   "C-j" #'evil-window-down
