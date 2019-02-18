@@ -74,37 +74,57 @@ as my default face, so it will be readable"
   "Display day-by-day time reports.
    To use, make a block like
 
-#+BEGIN: rangereport :maxlevel 2 :tstart \"<2019-02-08 Fri>\" :tend \"<2019-02-12 Tue>\"
+#+BEGIN: rangereport :maxlevel 2 :tstart \"<2019-02-08 Fri>\" :tend \"<2019-02-12 Tue>\" :step \"day\"
 #+END:
 
 Then press C-c C-x C-u inside
 "
   (let* ((ts (plist-get params :tstart))
          (te (plist-get params :tend))
-         (start (time-to-seconds
-                 (apply 'encode-time (org-parse-time-string ts))))
-         (end (time-to-seconds
-               (apply 'encode-time (org-parse-time-string te))))
-         day-numbers)
-    (setq params (plist-put params :tstart nil))
-    (setq params (plist-put params :end nil))
+         (ts->sec (lambda (ts)
+                    (time-to-seconds
+                     (apply #'encode-time (org-parse-time-string ts)))))
+         (sec->ts (lambda (s)
+                    (format-time-string (car org-time-stamp-formats)
+                                        (seconds-to-time s))))
+         (start (funcall ts->sec ts))
+         (end (funcall ts->sec te))
+         (step (or (plist-get params :step) "day"))
+         (stepfn (pcase step
+                   ("day"  (lambda (d) (+ d (* 3600 24))))
+                   ("week"  (lambda (d) (+ d (* 3600 24 7))))
+                   ("month" (lambda (d)
+                              (->> d
+                                  (funcall sec->ts)
+                                  (format "incmonth(newmonth(%s))")
+                                  calc-eval
+                                  (parse-time-string)
+                                  cdddr
+                                  (cons 0) (cons 0) (cons 0)
+                                  (apply #'encode-time)
+                                  time-to-seconds)))
+                   (_ (error "Invalid step '%s'" step)))))
     (while (<= start end)
-      (save-excursion
-        (insert "\n\nDAY: "
-                (format-time-string (car org-time-stamp-formats)
-                                    (seconds-to-time start))
-                "\n")
-        (org-dblock-write:clocktable
-         (-> params
-             (plist-put
-              :tstart
-              (format-time-string (car org-time-stamp-formats)
-                                  (seconds-to-time start)))
-             (plist-put
-              :tend
-              (format-time-string (car org-time-stamp-formats)
-                                  (seconds-to-time (+ 86400 start))))))
-        (setq start (+ 86400 start))))))
+      (let ((block-end (funcall stepfn start)))
+        (save-excursion
+          (insert "\n\nDAY: "
+                  (funcall sec->ts start)
+                  (if (not (string= step "day"))
+                      (s-concat
+                       " to "
+                       (funcall sec->ts block-end))
+                    "")
+                  "\n")
+          (org-dblock-write:clocktable
+           (-> params
+               (plist-put
+                :tstart
+                (funcall sec->ts start))
+               (plist-put
+                :tend
+                (funcall sec->ts block-end))
+               (plist-put :step nil)))
+          (setq start block-end))))))
 
 (require 'rx)
 (defun org-dblock-write:merged-rangereport (params)
