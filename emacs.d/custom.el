@@ -13,6 +13,12 @@
  '(custom-safe-themes
    (quote
     ("98cc377af705c0f2133bb6d340bf0becd08944a588804ee655809da5d8140de6" default)))
+ '(dired-guess-shell-alist-user
+   (quote
+    (("\\.wav"
+      (if
+          (string-equal system-type "darwin")
+          "afplay" "aplay")))))
  '(display-line-numbers-type (quote relative))
  '(display-raw-bytes-as-hex t)
  '(ediff-window-setup-function (quote ediff-setup-windows-plain))
