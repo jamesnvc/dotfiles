@@ -1,0 +1,5 @@
+# key: module
+# name: module
+# --
+:- module(${1:`(file-name-base (buffer-file-name))`}, []).
+$0
