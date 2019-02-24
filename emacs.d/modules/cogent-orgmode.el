@@ -110,19 +110,13 @@ Then press C-c C-x C-u inside
           (insert "\n\nDAY: "
                   (funcall sec->ts start)
                   (if (not (string= step "day"))
-                      (s-concat
-                       " to "
-                       (funcall sec->ts block-end))
+                      (s-concat " to " (funcall sec->ts block-end))
                     "")
                   "\n")
           (org-dblock-write:clocktable
            (-> params
-               (plist-put
-                :tstart
-                (funcall sec->ts start))
-               (plist-put
-                :tend
-                (funcall sec->ts block-end))
+               (plist-put :tstart (funcall sec->ts start))
+               (plist-put :tend (funcall sec->ts block-end))
                (plist-put :step nil)))
           (setq start block-end))))))
 
