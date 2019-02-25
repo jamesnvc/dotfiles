@@ -4,6 +4,10 @@
 (require 'cogent-keys)
 
 (use-package mmm-mode
+  :straight (mmm-mode
+             :type git
+             :host github
+             :repo "emacs-straight/mmm-mode")
   :config
   (setq mmm-global-mode 'maybe)
   (mmm-add-classes
