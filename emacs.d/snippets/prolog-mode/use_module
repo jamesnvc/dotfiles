@@ -1,5 +1,4 @@
-# key: module
-# name: module
+# key: use
+# name: use_module
 # --
-:- module(${1:`(file-name-base (buffer-file-name))`}, []).
-$0
+:- use_module(${1:library(${2:module})}${3:, [${4:predicates...}]}).
