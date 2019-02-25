@@ -55,6 +55,7 @@
 (require 'cogent-lsp)
 (require 'cogent-help)
 (require 'cogent-reading)
+(require 'cogent-snippets)
 
 ;; Other things
 (load (concat dotfiles-dir "user.el") 'noerror)
