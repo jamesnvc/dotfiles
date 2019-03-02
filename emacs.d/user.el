@@ -135,5 +135,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
   (define-key ediff-mode-map "B" #'cogent/ediff-copy-both-to-C))
 (add-hook 'ediff-keymap-setup-hook #'cogent/ediff-mode-hook)
 
+(add-hook 'after-save-hook #'executable-make-buffer-file-executable-if-script-p)
+
 (when (not (server-running-p))
   (server-start))
