@@ -1,4 +1,4 @@
-;;; -*- lexical-scoping: t -*-
+;;; -*- lexical-binding: t -*-
 
 (use-package yasnippet
   :demand t
