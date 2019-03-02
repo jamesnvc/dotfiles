@@ -9,6 +9,8 @@
    (vector "#ffffff" "#f36c60" "#8bc34a" "#fff59d" "#4dd0e1" "#b39ddb" "#81d4fa" "#263238"))
  '(auth-sources (quote ("~/.authinfo.gpg" "~/.netrc")))
  '(clojure-indent-style :align-arguments)
+ '(company-quickhelp-color-background "#44475a")
+ '(company-quickhelp-color-foreground "#f8f8f2")
  '(confirm-kill-emacs (quote yes-or-no-p))
  '(custom-safe-themes
    (quote
@@ -149,4 +151,7 @@ Entered on %U
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(company-tooltip ((t (:background "#44475a" :foreground "#f8f8f2" :weight bold))))
+ '(company-tooltip-common ((t (:foreground "#ff79c6"))))
+ '(company-tooltip-common-selection ((t (:foreground "#bd93f9"))))
  '(spaceline-evil-visual ((t (:inherit mode-line :background "dark slate blue" :foreground "#ffffff")))))
