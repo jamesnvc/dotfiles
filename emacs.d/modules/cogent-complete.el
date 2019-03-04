@@ -17,16 +17,6 @@
         company-dabbrev-ignore-case nil)
   (setq company-transformers '(company-sort-by-occurrence))
 
-  ;; Make company look good in dark mode
-  (set-face-foreground 'company-tooltip "#000")
-  (set-face-background 'company-tooltip "#ddd")
-  (set-face-background 'company-scrollbar-bg "#fff")
-  (set-face-background 'company-scrollbar-fg "#999")
-  (set-face-background 'company-tooltip-selection "#aaa")
-  (set-face-foreground 'company-tooltip-common "#9a0000")
-  (set-face-foreground 'company-tooltip-common-selection "#9a0000")
-  (set-face-foreground 'company-tooltip-annotation "#00008e")
-
   :general
   (:keymaps 'company-active-map
             "C-n" #'company-select-next
