@@ -39,7 +39,8 @@
 (setq-default mode-line-format
               (list
 
-               '(:eval (propertize "  " 'face (cogent/evil-state-face)))
+               '(:eval (propertize (if (eq 'emacs evil-state) "  " "  ")
+                                   'face (cogent/evil-state-face)))
 
                mode-line-misc-info ; for eyebrowse
 
