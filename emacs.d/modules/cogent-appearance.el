@@ -1,4 +1,5 @@
 ;;; -*- lexical-binding: t -*-
+
 (require 'cogent-package)
 
 ;; theme switching stuff from https://www.greghendershott.com/2017/02/emacs-themes.html
@@ -24,19 +25,19 @@
 
 (advice-add 'load-theme :around #'cogent/load-theme-advice)
 
+(require 'cogent-modeline)
+
 (use-package dracula-theme
   :defer t
   :init
   (defun cogent/dracula-theme-hook ()
-    (set-face-background 'powerline-active1 "gray9")
-    (set-face-background 'powerline-active2 "gray13")
     (set-face-attribute 'line-number nil :foreground "#678")
     (set-face-attribute 'line-number-current-line nil :foreground "#96989c")
-    (set-face-background 'powerline-inactive2 "#282a36")
     ;; Comments exist for a reason - make them stand out
     (set-face-attribute 'font-lock-comment-face nil :weight 'semi-bold)
     (with-eval-after-load 'org
-      (set-face-background 'org-block-begin-line "#44475a")))
+      (set-face-background 'org-block-begin-line "#44475a"))
+    (cogent/dracula-mode-line))
   (cogent/add-theme-hook 'dracula #'cogent/dracula-theme-hook))
 
 (use-package solarized
@@ -99,6 +100,7 @@
 (with-eval-after-load 'company (diminish 'company-mode))
 (with-eval-after-load 'flyspell (diminish 'flyspell-mode ""))
 (with-eval-after-load 'alchemist (diminish 'alchemist-mode ""))
+(with-eval-after-load 'yasnippet (diminish 'yas-minor-mode))
 (diminish 'visual-line-mode "⮓")
 (diminish 'auto-revert-mode)
 
@@ -124,7 +126,9 @@
           ("elixir" "")
           ("alchemist" "")
           ("erc" "")
-          ("notmuch" "")))
+          ("notmuch" "")
+          ("prolog" "")
+          ("python" "")))
   (cyphejor-mode 1))
 
 ;; Handle ANSI colours in compile buffer output.
@@ -135,18 +139,18 @@
        (point-marker)))
 (add-hook 'compilation-filter-hook #'compilation-ansi-color-process-output)
 
-(use-package spaceline
-  :config
-  (require 'spaceline-config)
-  (spaceline-emacs-theme)
-  (spaceline-helm-mode 1)
-  (spaceline-toggle-buffer-encoding-abbrev-off)
-  (spaceline-toggle-buffer-size-off)
-  (spaceline-toggle-major-mode-on)
-  (spaceline-toggle-version-control-on)
-  (setq spaceline-highlight-face-func #'spaceline-highlight-face-evil-state
-        spaceline-window-numbers-unicode t
-        spaceline-workspace-numbers-unicode t))
+;; (use-package spaceline
+;;   :config
+;;   (require 'spaceline-config)
+;;   (spaceline-emacs-theme)
+;;   (spaceline-helm-mode 1)
+;;   (spaceline-toggle-buffer-encoding-abbrev-off)
+;;   (spaceline-toggle-buffer-size-off)
+;;   (spaceline-toggle-major-mode-on)
+;;   (spaceline-toggle-version-control-on)
+;;   (setq spaceline-highlight-face-func #'spaceline-highlight-face-evil-state
+;;         spaceline-window-numbers-unicode t
+;;         spaceline-workspace-numbers-unicode t))
 
 (with-eval-after-load 'dash (dash-enable-font-lock))
 
