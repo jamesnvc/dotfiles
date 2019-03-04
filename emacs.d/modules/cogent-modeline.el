@@ -39,8 +39,11 @@
 (setq-default mode-line-format
               (list
 
-               '(:eval (propertize " " 'face (cogent/evil-state-face)))
+               '(:eval (propertize "  " 'face (cogent/evil-state-face)))
 
+               mode-line-misc-info ; for eyebrowse
+
+               " "
                '(:eval (when-let (vc vc-mode)
                          (propertize (substring vc 5) 'face 'font-lock-comment-face)))
 
@@ -51,19 +54,10 @@
                                      (if face 'font-lock-warning-face
                                        'font-lock-type-face))
                                    'help-echo (buffer-file-name)))
-
-               ;; line and column
-               " (" ;; '%02' to set to 2 chars at least; prevents flickering
-               (propertize "%02l" 'face 'font-lock-keyword-face) ","
-               (propertize "%02c" 'face 'font-lock-keyword-face)
-               ") "
+               (propertize "%I" 'face 'font-lock-constant-face) ;; size
 
                ;; relative position, size of file
-               " ["
-               (propertize "%p" 'face 'font-lock-constant-face) ;; % above top
-               "/"
-               (propertize "%I" 'face 'font-lock-constant-face) ;; size
-               "] "
+               (propertize "  %p" 'face 'font-lock-constant-face) ;; % above top
 
                ;; spaces to align right
                '(:eval (propertize
