@@ -154,4 +154,5 @@ Entered on %U
  '(company-tooltip ((t (:background "#44475a" :foreground "#f8f8f2" :weight bold))))
  '(company-tooltip-common ((t (:foreground "#8be9fd"))))
  '(company-tooltip-common-selection ((t (:foreground "#bd93f9"))))
+ '(company-tooltip-selection ((t (:background "#55586b" :foreground "#ccccc7"))))
  '(spaceline-evil-visual ((t (:inherit mode-line :background "dark slate blue" :foreground "#ffffff")))))
