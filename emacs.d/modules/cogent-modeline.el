@@ -43,9 +43,9 @@
 
                mode-line-misc-info ; for eyebrowse
 
-               " "
                '(:eval (when-let (vc vc-mode)
-                         (propertize (substring vc 5) 'face 'font-lock-comment-face)))
+                         (list " "
+                          (propertize (substring vc 5) 'face 'font-lock-comment-face))))
 
                ;; the buffer name; the file name as a tool tip
                '(:eval (propertize " %b "
@@ -54,10 +54,10 @@
                                      (if face 'font-lock-warning-face
                                        'font-lock-type-face))
                                    'help-echo (buffer-file-name)))
-               (propertize "%I" 'face 'font-lock-constant-face) ;; size
 
                ;; relative position, size of file
-               (propertize "  %p" 'face 'font-lock-constant-face) ;; % above top
+               '(:eval (list (nyan-create)))
+               (propertize "%p" 'face 'font-lock-constant-face) ;; % above top
 
                ;; spaces to align right
                '(:eval (propertize
