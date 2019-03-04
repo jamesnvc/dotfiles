@@ -74,13 +74,13 @@
 (defun cogent/dracula-mode-line ()
   (set-face-attribute 'mode-line nil
                       :background "#353644"
-                      :foreground "white"
+                      :foreground "#f8f8f2"
                       :box '(:line-width 4 :color "#353644")
                       :overline nil
                       :underline nil)
   (set-face-attribute 'mode-line-inactive nil
                       :background "#242533"
-                      :foreground "white"
+                      :foreground "#f8f8f2"
                       :box '(:line-width 4 :color "#242533")
                       :overline nil
                       :underline nil))
