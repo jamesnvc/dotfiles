@@ -36,6 +36,11 @@
         (if face (cdr face) cogent-line-default-face))
     cogent-line-default-face))
 
+(defface cogent-line-modified-face
+  `((t (:foreground "#ffb86c" :background nil)))
+  "Modeline modified-file face"
+  :group 'cogent)
+
 (setq-default mode-line-format
               (list
 
@@ -52,13 +57,13 @@
                '(:eval (propertize " %b "
                                    'face
                                    (let ((face (buffer-modified-p)))
-                                     (if face 'font-lock-warning-face
+                                     (if face 'cogent-line-modified-face
                                        'font-lock-type-face))
                                    'help-echo (buffer-file-name)))
 
                ;; relative position, size of file
                '(:eval (list (nyan-create)))
-               (propertize "%p" 'face 'font-lock-constant-face) ;; % above top
+               (propertize "%p" 'face 'font-lock-constant-face) ; % above top
 
                ;; spaces to align right
                '(:eval (propertize
