@@ -88,6 +88,9 @@
                       :foreground "#f8f8f2"
                       :box '(:line-width 4 :color "#242533")
                       :overline nil
-                      :underline nil))
+                      :underline nil)
+  (with-eval-after-load 'org-faces
+    (set-face-attribute 'org-mode-line-clock nil
+                        :background nil :inherit nil)))
 
 (provide 'cogent-modeline)
