@@ -54,12 +54,11 @@
                           (propertize (substring vc 5) 'face 'font-lock-comment-face))))
 
                ;; the buffer name; the file name as a tool tip
-               '(:eval (propertize " %b "
-                                   'face
-                                   (let ((face (buffer-modified-p)))
-                                     (if face 'cogent-line-modified-face
-                                       'font-lock-type-face))
-                                   'help-echo (buffer-file-name)))
+               '(:eval (list
+                        (propertize " %b " 'face 'font-lock-type-face
+                                    'help-echo (buffer-file-name))
+                        (when (buffer-modified-p)
+                          (propertize "" 'face 'cogent-line-modified-face))))
 
                ;; relative position, size of file
                '(:eval (list (nyan-create)))
