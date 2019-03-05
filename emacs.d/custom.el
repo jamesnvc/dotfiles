@@ -24,6 +24,7 @@
  '(display-line-numbers-type (quote relative))
  '(display-raw-bytes-as-hex t)
  '(ediff-window-setup-function (quote ediff-setup-windows-plain))
+ '(elfeed-goodies/powerline-default-separator (quote utf-8))
  '(elfeed-search-face-alist
    (quote
     ((unread elfeed-search-unread-title-face)
