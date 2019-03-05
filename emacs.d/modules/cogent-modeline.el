@@ -58,12 +58,12 @@
     cogent-line-default-face))
 
 (defface cogent-line-modified-face
-  `((t (:foreground "#ffb86c" :background nil)))
+  `((t (:foreground "#8be9fd" :background nil)))
   "Modeline modified-file face"
   :group 'cogent)
 
 (defface cogent-line-modified-face-inactive
-  `((t (:foreground "#a58767" :background nil)))
+  `((t (:foreground "#6272a4" :background nil)))
   "Modeline modified-file face for inactive windows"
   :group 'cogent)
 
