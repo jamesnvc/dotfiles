@@ -98,6 +98,7 @@
                '(:eval (propertize (if (eq 'emacs evil-state) "  " "  ")
                                    'face (cogent/evil-state-face)))
 
+               " "
                mode-line-misc-info ; for eyebrowse
 
                '(:eval (when-let (vc vc-mode)
