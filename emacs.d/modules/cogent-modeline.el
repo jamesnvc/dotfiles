@@ -17,7 +17,6 @@
              (cogent-line-evil-operator "plum3" "Evil operator state face.")
              (cogent-line-unmodified "DarkGoldenrod2" "Unmodified buffer face.")
              (cogent-line-modified "SkyBlue2" "Modified buffer face.")
-             (cogent-line-read-only "plum3" "Read-only buffer face.")
              (cogent-line-highlight-face "DarkGoldenrod2" "Default highlight face.")))
   (eval `(defface ,(nth 0 s)
            (list (list t (list :background ,(nth 1 s)
@@ -65,8 +64,16 @@
 
 (defface cogent-line-modified-face-inactive
   `((t (:foreground "#a58767" :background nil)))
-  "Modeline modified-file face"
+  "Modeline modified-file face for inactive windows"
   :group 'cogent)
+
+(defface cogent-line-read-only-face
+  `((t (:foreground "#ff5555")))
+  "Modeline readonly file face.")
+
+(defface cogent-line-read-only-face-inactive
+  `((t (:foreground "#aa4949")))
+  "Modeline readonly file face for inactive windows.")
 
 ;; Keep track of selected window, so we can render the modeline differently
 (defvar cogent-line-selected-window (frame-selected-window))
@@ -100,12 +107,17 @@
 
                ;; the buffer name; the file name as a tool tip
                '(:eval (list
-                        (propertize " %b " 'face 'font-lock-type-face
+                        (propertize " %b" 'face 'font-lock-type-face
                                     'help-echo (buffer-file-name))
                         (when (buffer-modified-p)
                           (propertize "" 'face (if (cogent-line-selected-window-active-p)
                                                     'cogent-line-modified-face
-                                                  'cogent-line-modified-face-inactive)))))
+                                                  'cogent-line-modified-face-inactive)))
+                        (when buffer-read-only
+                          (propertize "" 'face (if (cogent-line-selected-window-active-p)
+                                                    'cogent-line-read-only-face
+                                                  'cogent-line-read-only-face-inactive)))
+                        " "))
 
                ;; relative position, size of file
                '(:eval (list (nyan-create)))
