@@ -2,6 +2,12 @@
 
 (require 'cogent-evil)
 
+(defvar cogent-line-active-bg "#353644"
+  "Modeline background colour for active window")
+
+(defvar cogent-line-inactive-bg "#242533"
+  "Modeline background colour for inactive window")
+
 (dolist (s '((cogent-line-evil-normal "DarkGoldenrod2" "Evil normal state face.")
              (cogent-line-evil-insert "chartreuse3" "Evil insert state face.")
              (cogent-line-evil-emacs "SkyBlue2" "Evil emacs state face.")
@@ -14,6 +20,12 @@
              (cogent-line-read-only "plum3" "Read-only buffer face.")
              (cogent-line-highlight-face "DarkGoldenrod2" "Default highlight face.")))
   (eval `(defface ,(nth 0 s)
+           (list (list t (list :background ,(nth 1 s)
+                               :box (list :line-width 4 :color ,(nth 1 s))
+                               :foreground ,cogent-line-active-bg)))
+           ,(nth 2 s)
+           :group 'cogent))
+  (eval `(defface ,(intern (s-concat (symbol-name (nth 0 s)) "-inactive"))
            (list (list t (list :foreground ,(nth 1 s)
                                :background nil)))
            ,(nth 2 s)
@@ -27,12 +39,22 @@
     (replace . cogent-line-evil-replace)
     (visual . cogent-line-evil-visual)
     (motion . cogent-line-evil-motion)))
+(defvar cogent/evil-state-faces-inactive
+  '((normal . cogent-line-evil-normal-inactive)
+    (insert . cogent-line-evil-insert-inactive)
+    (operator . cogent-line-evil-operator-inactive)
+    (emacs . cogent-line-evil-emacs-inactive)
+    (replace . cogent-line-evil-replace-inactive)
+    (visual . cogent-line-evil-visual-inactive)
+    (motion . cogent-line-evil-motion-inactive)))
 
 (defun cogent/evil-state-face ()
   (if (bound-and-true-p evil-local-mode)
       ;; nb. spaceline checks if the state is evil-operator state &
       ;; uses evil-previous-state if so
-      (let ((face (assq evil-state cogent/evil-state-faces)))
+      (let* ((activep (cogent-line-selected-window-active-p))
+             (face (assq evil-state (if activep cogent/evil-state-faces
+                                      cogent/evil-state-faces-inactive))))
         (if face (cdr face) cogent-line-default-face))
     cogent-line-default-face))
 
@@ -40,6 +62,28 @@
   `((t (:foreground "#ffb86c" :background nil)))
   "Modeline modified-file face"
   :group 'cogent)
+
+(defface cogent-line-modified-face-inactive
+  `((t (:foreground "#a58767" :background nil)))
+  "Modeline modified-file face"
+  :group 'cogent)
+
+;; Keep track of selected window, so we can render the modeline differently
+(defvar cogent-line-selected-window (frame-selected-window))
+(defun cogent-line-set-selected-window (&rest _args)
+  (when (not (minibuffer-window-active-p (frame-selected-window)))
+    (setq cogent-line-selected-window (frame-selected-window))
+    (force-mode-line-update)))
+(defun cogent-line-unset-selected-window ()
+  (setq cogent-line-selected-window nil)
+  (force-mode-line-update))
+(add-hook 'window-configuration-change-hook #'cogent-line-set-selected-window)
+(add-hook 'focus-in-hook #'cogent-line-set-selected-window)
+(add-hook 'focus-out-hook #'cogent-line-unset-selected-window)
+(advice-add 'handle-switch-frame :after #'cogent-line-set-selected-window)
+(advice-add 'select-window :after #'cogent-line-set-selected-window)
+(defun cogent-line-selected-window-active-p ()
+  (eq cogent-line-selected-window (selected-window)))
 
 (setq-default mode-line-format
               (list
@@ -51,14 +95,17 @@
 
                '(:eval (when-let (vc vc-mode)
                          (list " "
-                          (propertize (substring vc 5) 'face 'font-lock-comment-face))))
+                               (propertize (substring vc 5) 'face 'font-lock-comment-face)
+                               " ")))
 
                ;; the buffer name; the file name as a tool tip
                '(:eval (list
                         (propertize " %b " 'face 'font-lock-type-face
                                     'help-echo (buffer-file-name))
                         (when (buffer-modified-p)
-                          (propertize "" 'face 'cogent-line-modified-face))))
+                          (propertize "" 'face (if (cogent-line-selected-window-active-p)
+                                                    'cogent-line-modified-face
+                                                  'cogent-line-modified-face-inactive)))))
 
                ;; relative position, size of file
                '(:eval (list (nyan-create)))
@@ -77,15 +124,15 @@
 
 (defun cogent/dracula-mode-line ()
   (set-face-attribute 'mode-line nil
-                      :background "#353644"
+                      :background cogent-line-active-bg
                       :foreground "#f8f8f2"
-                      :box '(:line-width 4 :color "#353644")
+                      :box `(:line-width 4 :color ,cogent-line-active-bg)
                       :overline nil
                       :underline nil)
   (set-face-attribute 'mode-line-inactive nil
-                      :background "#242533"
+                      :background cogent-line-inactive-bg
                       :foreground "#f8f8f2"
-                      :box '(:line-width 4 :color "#242533")
+                      :box `(:line-width 4 :color ,cogent-line-inactive-bg)
                       :overline nil
                       :underline nil)
   (with-eval-after-load 'org-faces
