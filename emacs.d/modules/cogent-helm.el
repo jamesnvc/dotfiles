@@ -167,6 +167,7 @@
 (use-package helm-ext
   :config
   (helm-ext-ff-enable-skipping-dots t)
-  (helm-ext-ff-enable-auto-path-expansion t))
+  (helm-ext-ff-enable-auto-path-expansion t)
+  (helm-ext-minibuffer-enable-header-line-maybe t))
 
 (provide 'cogent-helm)
