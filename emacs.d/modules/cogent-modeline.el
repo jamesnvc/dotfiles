@@ -111,7 +111,7 @@
                         (propertize " %b" 'face 'font-lock-type-face
                                     'help-echo (buffer-file-name))
                         (when (buffer-modified-p)
-                          (propertize "" 'face (if (cogent-line-selected-window-active-p)
+                          (propertize " " 'face (if (cogent-line-selected-window-active-p)
                                                     'cogent-line-modified-face
                                                   'cogent-line-modified-face-inactive)))
                         (when buffer-read-only
