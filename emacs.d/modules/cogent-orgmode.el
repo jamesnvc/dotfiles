@@ -22,6 +22,7 @@
                    (lambda (c) (if (char-equal c ?<) t default-pred))))
      (visual-line-mode 1)
      (set-visual-wrap-column 120)))
+  (advice-add 'org-meta-return :before #'org-end-of-line)
 
   :general
   (general-nmap :keymaps 'org-mode-map
