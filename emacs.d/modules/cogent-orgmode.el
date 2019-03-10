@@ -20,8 +20,7 @@
      (let ((default-pred electric-pair-inhibit-predicate))
        (setq-local electric-pair-inhibit-predicate
                    (lambda (c) (if (char-equal c ?<) t default-pred))))
-     (visual-line-mode 1)
-     (set-visual-wrap-column 120)))
+     (visual-line-mode 1)))
   (advice-add 'org-meta-return :before #'org-end-of-line)
 
   :general
