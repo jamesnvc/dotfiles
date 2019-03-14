@@ -43,4 +43,7 @@
   :config
   (add-to-list 'company-backends #'company-tern))
 
+(with-eval-after-load 'flycheck
+  (setq flycheck-jshintrc (s-concat dotfiles-dir "jshintrc")))
+
 (provide 'cogent-javascript)
