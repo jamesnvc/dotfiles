@@ -36,26 +36,19 @@
   :diminish paredit-mode)
 
 ;; Like vim-fireplace
-(defun cogent/cider-eval-next-sexp (&optional prefix)
-  "Wrap `cider-eval-last-sexp' for evil-mode, by moving one character ahead"
-  (interactive "P")
-  (save-excursion
-    (cogent/evil-forward-sexp)
-    (forward-char)
-    (cider-eval-last-sexp prefix)))
+(evil-define-operator cogent/evil-cider-eval (beg end)
+  (cider-eval-region beg end))
 
-(defun cogent/cider-eval-next-sexp-and-replace ()
-  "Wrap `cider-eval-last-sexp-and-replace' for evil-mode, by moving one character ahead"
-  (interactive)
-  (save-excursion
-    (cogent/evil-forward-sexp)
-    (forward-char)
-    (cider-eval-last-sexp-and-replace)))
+(evil-define-operator cogent/evil-cider-eval-replace (beg end)
+  (let ((exp (read (buffer-substring-no-properties beg end))))
+    (cider-nrepl-sync-request:eval exp)
+    (delete-region beg end)
+    (cider-interactive-eval exp (cider-eval-print-handler))))
 
 (general-nmap 'cider-mode-map
+  "go" 'cogent/evil-cider-eval
+  "g!" 'cogent/evil-cider-eval-replace
   "c" (general-key-dispatch 'evil-change
-        "pp" #'cogent/cider-eval-next-sexp
-        "p!" #'cogent/cider-eval-next-sexp-and-replace
         ;; prefix arg to debug defun
         "d" #'cider-eval-defun-at-point
         "c" #'evil-change-whole-line
