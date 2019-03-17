@@ -27,7 +27,7 @@ dropbox start
 
 #$HOME/software/bin/btsync
 
-xscreensaver &
+#xscreensaver &
 
 # Force numlock to be on
 numlockx on
