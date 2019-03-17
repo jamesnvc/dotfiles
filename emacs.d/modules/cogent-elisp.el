@@ -31,30 +31,26 @@ now-invalid elc file"
   :commands eros-mode
   :hook (emacs-lisp-mode . eros-mode))
 
-(defun cogent/elisp-eval-next-sexp ()
-  (interactive)
-  (save-excursion
-    (cogent/evil-forward-sexp)
-    (forward-char)
-    (eros-eval-last-sexp nil)))
+(evil-define-operator cogent/evil-elisp-eval (beg end)
+  (eros--eval-overlay
+   (eval-expression (read (buffer-substring-no-properties beg end))
+                    nil
+                    nil)
+   end))
 
-(defun cogent/elisp-eval-and-replace-next-sexp ()
-  (interactive)
-  (let ((start (point))
-        end)
-    (save-excursion
-      (cogent/evil-forward-sexp)
-      (forward-char)
-      (setq end (point))
-      (eros-eval-last-sexp t)
-      (delete-region start end))))
+(evil-define-operator cogent/evil-elisp-eval-replace (beg end)
+  (let ((exp (read (buffer-substring-no-properties beg end))))
+    (delete-region beg end)
+    (eros--eval-overlay
+     (eval-expression exp t nil)
+     (point))))
 
 (general-nmap '(emacs-lisp-mode-map lisp-interaction-mode-map)
   ;; Like vim-unimpaired
   "] C-d" 'find-function-at-point
+  "go" 'cogent/evil-elisp-eval
+  "g!" 'cogent/evil-elisp-eval-replace
   "c" (general-key-dispatch 'evil-change
-        "pp" #'cogent/elisp-eval-next-sexp
-        "p!" #'cogent/elisp-eval-and-replace-next-sexp
         "c" #'evil-change-whole-line
         "r-" #'cogent/kebab-case
         "r_" #'cogent/snake-case
