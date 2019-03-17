@@ -87,3 +87,7 @@ Host fuchikoma
     Hostname Fuchikoma.local
     User james
     IdentityFile ~/.ssh-keys/fuchikoma
+
+Host *sr.ht
+     PreferredAuthentications publickey
+     IdentityFile ~/.ssh-keys/sourcehut
