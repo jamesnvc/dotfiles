@@ -103,26 +103,31 @@
 
                '(:eval (when-let (vc vc-mode)
                          (list " "
-                               (propertize (substring vc 5) 'face 'font-lock-comment-face)
+                               (propertize (substring vc 5)
+                                           'face 'font-lock-comment-face)
                                " ")))
 
-               ;; the buffer name; the file name as a tool tip
                '(:eval (list
+                        ;; the buffer name; the file name as a tool tip
                         (propertize " %b" 'face 'font-lock-type-face
                                     'help-echo (buffer-file-name))
                         (when (buffer-modified-p)
-                          (propertize " " 'face (if (cogent-line-selected-window-active-p)
-                                                    'cogent-line-modified-face
-                                                  'cogent-line-modified-face-inactive)))
+                          (propertize
+                           " "
+                           'face (if (cogent-line-selected-window-active-p)
+                                     'cogent-line-modified-face
+                                   'cogent-line-modified-face-inactive)))
                         (when buffer-read-only
-                          (propertize "" 'face (if (cogent-line-selected-window-active-p)
-                                                    'cogent-line-read-only-face
-                                                  'cogent-line-read-only-face-inactive)))
+                          (propertize
+                           ""
+                           'face (if (cogent-line-selected-window-active-p)
+                                     'cogent-line-read-only-face
+                                   'cogent-line-read-only-face-inactive)))
                         " "))
 
-               ;; relative position, size of file
+               ;; relative position in file
                '(:eval (list (nyan-create)))
-               (propertize "%p" 'face 'font-lock-constant-face) ; % above top
+               (propertize "%p" 'face 'font-lock-constant-face)
 
                ;; spaces to align right
                '(:eval (propertize
