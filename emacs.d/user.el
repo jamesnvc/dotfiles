@@ -23,7 +23,7 @@
 (defun cogent/quit-help-window ()
   (interactive)
   (when-let (help-win (get-buffer-window "*Help*"))
-      (quit-window nil help-win)))
+    (quit-window nil help-win)))
 
 (cogent/leader-def
   :states '(normal visual)
