@@ -41,9 +41,7 @@ now-invalid elc file"
 (evil-define-operator cogent/evil-elisp-eval-replace (beg end)
   (let ((exp (read (buffer-substring-no-properties beg end))))
     (delete-region beg end)
-    (eros--eval-overlay
-     (eval-expression exp t nil)
-     (point))))
+    (eval-expression exp t nil)))
 
 (general-nmap '(emacs-lisp-mode-map lisp-interaction-mode-map)
   ;; Like vim-unimpaired
