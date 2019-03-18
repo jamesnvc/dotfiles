@@ -32,6 +32,8 @@ now-invalid elc file"
   :hook (emacs-lisp-mode . eros-mode))
 
 (evil-define-operator cogent/evil-elisp-eval (beg end)
+  "Evaluate emacs-lisp expression given by <motion>, displaying
+results using eros overlay."
   (eros--eval-overlay
    (eval-expression (read (buffer-substring-no-properties beg end))
                     nil
@@ -39,6 +41,7 @@ now-invalid elc file"
    end))
 
 (evil-define-operator cogent/evil-elisp-eval-replace (beg end)
+  "Evaluate and replace emacs-lisp expression given by <motion>."
   (let ((exp (read (buffer-substring-no-properties beg end))))
     (delete-region beg end)
     (eval-expression exp t nil)))

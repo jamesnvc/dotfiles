@@ -37,9 +37,12 @@
 
 ;; Like vim-fireplace
 (evil-define-operator cogent/evil-cider-eval (beg end)
+ "Evaluate clojure expression given by <motion> via cider."
   (cider-eval-region beg end))
 
 (evil-define-operator cogent/evil-cider-eval-replace (beg end)
+  "Evaluate clojure expression given by <motion> via cider and replace
+the expression with the result."
   (let ((exp (read (buffer-substring-no-properties beg end))))
     (cider-nrepl-sync-request:eval exp)
     (delete-region beg end)
