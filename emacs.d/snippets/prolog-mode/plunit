@@ -1,0 +1,12 @@
+# key: plunit
+# name: plunit tests
+# --
+:- module(${1:`(file-name-base (buffer-file-name))`}_t, []).
+
+:- use_module(library(plunit)).
+:- use_module($1).
+:- begin_tests($1).
+
+$0
+
+:- end_tests($1).
