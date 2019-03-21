@@ -139,5 +139,11 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 
 (add-hook 'java-mode-hook (lambda () (setq c-basic-offset 4)))
 
+(general-define-key :states '(normal)
+                    ;; Evil overrides these to be something I never use
+                    "M-." #'xref-find-definitions
+                    ;; and paredit overrides this to be something I don't understand
+                    "M-?" #'xref-find-references)
+
 (when (not (server-running-p))
   (server-start))
