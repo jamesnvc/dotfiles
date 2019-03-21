@@ -14,6 +14,9 @@
   ;; to install the client:
   ;; rustup component add rls-preview rust-analysis rust-src
   ;; (setq lsp-rust-rls-command '("rustup" "run" "nightly" "rls"))
+
+  ;; Ruby
+  ;; gem install solargraph
   )
 
 (use-package lsp-ui
