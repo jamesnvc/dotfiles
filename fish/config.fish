@@ -2,6 +2,8 @@
 function fish_default_mode_prompt
 end
 
+fish_vi_key_bindings
+
 set -gx EDITOR 'emacsclient --create-frame --alternate-editor=emacs'
 
 alias g=git
