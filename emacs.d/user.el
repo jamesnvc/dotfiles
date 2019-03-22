@@ -6,6 +6,10 @@
   (set-frame-font "PragmataPro 16" nil t)
   (global-prettify-symbols-mode -1)
   (mac-auto-operator-composition-mode 1)
+  (add-to-list 'exec-path "/Users/james/.rvm/gems/ruby-2.4.2/wrappers")
+  (setenv "PATH" (concat "/Users/james/.rvm/gems/ruby-2.4.2/wrappers:" (getenv "PATH")))
+  (add-hook 'eshell-mode-hook
+            (lambda () (setq eshell-path-env (concat "/Users/james/.rvm/gems/ruby-2.4.2/wrappers:" eshell-path-env))))
   (setq mac-command-modifier 'super
         mac-option-modifier 'meta))
 
