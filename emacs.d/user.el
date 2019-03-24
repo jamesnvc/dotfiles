@@ -2,14 +2,21 @@
 
 (set-frame-font "PragmataPro 7" nil t)
 (require 'cogent-pragmata)
+
+(defun cogent/add-to-all-paths (dir)
+  "Add directory to exec-path, $PATH and eshell-path-env"
+  (add-to-list 'exec-path dir)
+  (setenv "PATH" (concat dir ":" (getenv "PATH")))
+  (add-hook 'eshell-mode-hook
+            (lambda () (setq eshell-path-env (concat dir ":" eshell-path-env)))))
+
+(cogent/add-to-all-paths (expand-file-name "~/.swivm/versions/8.1.0/bin"))
+
 (when (string-equal system-type "darwin")
   (set-frame-font "PragmataPro 16" nil t)
   (global-prettify-symbols-mode -1)
   (mac-auto-operator-composition-mode 1)
-  (add-to-list 'exec-path "/Users/james/.rvm/gems/ruby-2.4.2/wrappers")
-  (setenv "PATH" (concat "/Users/james/.rvm/gems/ruby-2.4.2/wrappers:" (getenv "PATH")))
-  (add-hook 'eshell-mode-hook
-            (lambda () (setq eshell-path-env (concat "/Users/james/.rvm/gems/ruby-2.4.2/wrappers:" eshell-path-env))))
+  (cogent/add-to-all-paths (expand-file-name "~/.rvm/gems/ruby-2.4.2/wrappers"))
   (setq mac-command-modifier 'super
         mac-option-modifier 'meta))
 
