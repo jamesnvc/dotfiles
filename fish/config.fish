@@ -4,6 +4,8 @@ end
 
 set -gx EDITOR 'emacsclient --create-frame --alternate-editor=emacs'
 
+# set -U fish_key_bindings fish_vi_key_bindings
+
 alias g=git
 alias l=ls
 alias ec="emacsclient --create-frame --alternate-editor=emacs"
