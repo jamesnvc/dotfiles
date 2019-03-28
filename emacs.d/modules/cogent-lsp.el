@@ -8,14 +8,18 @@
   :commands lsp
   :config
 
+  (setq prolog-server-file (expand-file-name "~/Projects/prolog-lsp/prolog/server.pl"))
   (lsp-register-client
-   (make-lsp-client :new-connection (lsp-stdio-connection (list "swipl"
-                                                                "-s"
-                                                                (expand-file-name "~/Projects/prolog-lsp/prolog/server.pl") "-g" "main" "-t" "halt" "--" "stdio"))
-                    :major-modes '(prolog-mode)
-                    :priority 1
-                    :multi-root t
-                    :server-id 'prolog-ls))
+   (make-lsp-client
+    :new-connection
+    (lsp-stdio-connection (list "swipl"
+                                "-s" prolog-server-file
+                                "-g" "main" "-t" "halt" "--" "stdio"))
+    :major-modes '(prolog-mode)
+    :priority 1
+    :multi-root t
+    :server-id 'prolog-ls))
+
   ;; SH
   ;; to install the client:
   ;; npm i -g bash-language-server
