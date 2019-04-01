@@ -20,6 +20,9 @@
   (setq mac-command-modifier 'super
         mac-option-modifier 'meta))
 
+(when (string-equal (system-name) "roy")
+  (set-frame-font "PragmataPro 16" nil t))
+
 ;; Quick way to jump here
 (set-register ?e (cons 'file (concat dotfiles-dir "user.el")))
 
