@@ -79,14 +79,15 @@ as my default face, so it will be readable"
 
 Then press C-c C-x C-u inside
 "
-  (let* ((ts (plist-get params :tstart))
-         (te (plist-get params :tend))
-         (ts->sec (lambda (ts)
+  (let* ((ts->sec (lambda (ts)
                     (time-to-seconds
                      (apply #'encode-time (org-parse-time-string ts)))))
          (sec->ts (lambda (s)
                     (format-time-string (car org-time-stamp-formats)
                                         (seconds-to-time s))))
+         (ts (plist-get params :tstart))
+         (te (or (plist-get params :tend)
+                 (funcall sec->ts (current-time))))
          (start (funcall ts->sec ts))
          (end (funcall ts->sec te))
          (step (or (plist-get params :step) "day"))
