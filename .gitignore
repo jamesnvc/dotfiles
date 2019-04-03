@@ -39,3 +39,6 @@ fish/fishd.*
 emacs.d/image-dired/
 emacs.d/%backup%~
 emacs.d/forge-database.sqlite
+/emacs.d/transient
+/emacs.d/games
+/emacs.d/.lsp-session-v1
