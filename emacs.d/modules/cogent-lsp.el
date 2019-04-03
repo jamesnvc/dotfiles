@@ -6,6 +6,7 @@
   ;; un-comment this to make the various other lsp-backends get loaded
   ;; :demand t
   :commands lsp
+  :hook (prolog-mode . lsp)
   :config
 
   (setq prolog-server-file (expand-file-name "~/Projects/prolog-lsp/prolog/server.pl"))
