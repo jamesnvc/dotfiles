@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: uuid
+# key: uuid
+# --
+`(cogent/exec "uuidgen")`
