@@ -35,6 +35,7 @@
     (set-face-attribute 'line-number-current-line nil :foreground "#96989c")
     ;; Comments exist for a reason - make them stand out
     (set-face-attribute 'font-lock-comment-face nil :weight 'semi-bold)
+    (set-face-attribute 'region nil :background "#8be9fd")
     (with-eval-after-load 'org
       (set-face-background 'org-block-begin-line "#44475a"))
     (cogent/dracula-mode-line))
