@@ -9,7 +9,7 @@
   "Modeline background colour for inactive window")
 
 (dolist (s '((cogent-line-evil-normal "DarkGoldenrod2" "Evil normal state face.")
-             (cogent-line-evil-insert "lime green" "Evil insert state face.")
+             (cogent-line-evil-insert "medium sea green" "Evil insert state face.")
              (cogent-line-evil-emacs "SkyBlue2" "Evil emacs state face.")
              (cogent-line-evil-replace "chocolate" "Evil replace state face.")
              (cogent-line-evil-visual "gray" "Evil visual state face.")
