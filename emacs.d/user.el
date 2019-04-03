@@ -137,7 +137,9 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 
 ;; ediff
 (defun cogent/ediff-copy-both-to-C ()
-  "Via https://stackoverflow.com/questions/9656311/conflict-resolution-with-emacs-ediff-how-can-i-take-the-changes-of-both-version. Take both changes in diff."
+  "Via
+https://stackoverflow.com/questions/9656311/conflict-resolution-with-emacs-ediff-how-can-i-take-the-changes-of-both-version.
+Take both changes in diff."
   (interactive)
   (ediff-copy-diff
    ediff-current-difference nil 'C nil
