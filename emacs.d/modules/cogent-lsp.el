@@ -9,13 +9,14 @@
   :hook (prolog-mode . lsp)
   :config
 
-  (setq prolog-server-file (expand-file-name "~/Projects/prolog-lsp/prolog/server.pl"))
   (lsp-register-client
    (make-lsp-client
     :new-connection
     (lsp-stdio-connection (list "swipl"
-                                "-s" prolog-server-file
-                                "-g" "main" "-t" "halt" "--" "stdio"))
+                                "-g" "use_module(library(lsp_server))."
+                                "-g" "lsp_server:main"
+                                "-t" "halt"
+                                "--" "stdio"))
     :major-modes '(prolog-mode)
     :priority 1
     :multi-root t
