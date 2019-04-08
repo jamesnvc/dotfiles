@@ -1,0 +1,1 @@
+((magit-merge "--ff-only"))
