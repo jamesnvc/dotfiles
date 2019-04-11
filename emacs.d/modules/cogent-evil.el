@@ -80,17 +80,16 @@ evil to have."
             "] <SPC>" #'cogent/line-below
             ;; Like vim-vinegar
             "-" #'dired-jump)
+  (:states 'operator
+           "r-" #'cogent/kebab-case
+           "r_" #'cogent/snake-case
+           "rc" #'cogent/camel-case
+           "rC" #'cogent/camel-case-upper)
   (cogent/leader-def
     :states '(normal visual)
     "w" #'save-buffer
     "<SPC>" #'evil-ex
-    "x" #'evil-delete-buffer)
-  (general-define-key
-   :states 'operator
-   "r-" #'cogent/kebab-case
-   "r_" #'cogent/snake-case
-   "rc" #'cogent/camel-case
-   "rC" #'cogent/camel-case-upper))
+    "x" #'evil-delete-buffer))
 
 (use-package evil-surround
   :demand t
