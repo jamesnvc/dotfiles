@@ -45,21 +45,19 @@ evil to have."
           (delete-region start end)
           (insert (funcall f text))))))
 
-  (defun cogent/kebab-case ()
-    (interactive)
-    (cogent/change-word-at-point #'s-dashed-words))
+  (defun cogent/evil-interactive-setup ()
+    (setq evil-inhibit-operator t)
+    (list evil-this-operator))
 
-  (defun cogent/snake-case ()
-    (interactive)
-    (cogent/change-word-at-point #'s-snake-case))
-
-  (defun cogent/camel-case ()
-    (interactive)
-    (cogent/change-word-at-point #'s-lower-camel-case))
-
-  (defun cogent/camel-case-upper ()
-    (interactive)
-    (cogent/change-word-at-point #'s-upper-camel-case))
+  (cl-macrolet ((def-abolish-fn (name function)
+                  `(defun ,name (operator)
+                     (interactive (cogent/evil-interactive-setup))
+                     (cl-case operator
+                       (evil-change (cogent/change-word-at-point ,function))))))
+    (def-abolish-fn cogent/kebab-case #'s-dashed-words)
+    (def-abolish-fn cogent/snake-case #'s-snake-case)
+    (def-abolish-fn cogent/camel-case #'s-lower-camel-case)
+    (def-abolish-fn cogent/camel-case-upper #'s-upper-camel-case))
 
   :general
   (:keymaps '(normal notmuch-search-mode-map notmuch-hello-mode-map)
@@ -87,14 +85,12 @@ evil to have."
     "w" #'save-buffer
     "<SPC>" #'evil-ex
     "x" #'evil-delete-buffer)
-
-  (general-nmap "c" (general-key-dispatch 'evil-change
-                      :name cogent/change-word-case
-                      "r-" #'cogent/kebab-case
-                      "r_" #'cogent/snake-case
-                      "rc" #'cogent/camel-case
-                      "rC" #'cogent/camel-case-upper))
-  (general-vmap "c" 'evil-change))
+  (general-define-key
+   :states 'operator
+   "r-" #'cogent/kebab-case
+   "r_" #'cogent/snake-case
+   "rc" #'cogent/camel-case
+   "rC" #'cogent/camel-case-upper))
 
 (use-package evil-surround
   :demand t

@@ -48,16 +48,8 @@ results using eros overlay."
 
 (general-nmap '(emacs-lisp-mode-map lisp-interaction-mode-map)
   ;; Like vim-unimpaired
-  "] C-d" 'find-function-at-point
-  "go" 'cogent/evil-elisp-eval
-  "g!" 'cogent/evil-elisp-eval-replace
-  "c" (general-key-dispatch 'evil-change
-        "c" #'evil-change-whole-line
-        "r-" #'cogent/kebab-case
-        "r_" #'cogent/snake-case
-        "rc" #'cogent/camel-case
-        "rC" #'cogent/camel-case-upper))
-(general-vmap 'emacs-lisp-mode-map "c" 'evil-change)
-
+  "] C-d" #'find-function-at-point
+  "go" #'cogent/evil-elisp-eval
+  "g!" #'cogent/evil-elisp-eval-replace)
 
 (provide 'cogent-elisp)

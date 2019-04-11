@@ -40,7 +40,7 @@
  ("ethan-wspace" . "e055ee6730c0b03525d32e67511ef6c51e4c29e4")
  ("evil" . "297b8f323754d967beeaed28080311f5afbe25c8")
  ("evil-matchit" . "e15ad8406b8c41a73131f2ab3874d4fb5ab4ea99")
- ("evil-mc" . "2af29ecd2fbed1571c4cc2501dfb2e38ffd4bfa2")
+ ("evil-mc" . "5205fe671803465149e578849bbbe803c23a8e4e")
  ("evil-nerd-commenter" . "275c95c89cc09c7096bd6fd0deabd49f29634f5d")
  ("evil-org-mode" . "b6d652a9163d3430a9e0933a554bdbee5244bbf6")
  ("evil-search-highlight-persist" . "979d2dec58d3b9c5ca5fdf4bb802a0209913794e")

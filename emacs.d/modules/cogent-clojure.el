@@ -51,17 +51,10 @@ the expression with the result."
 (general-nmap 'cider-mode-map
   "go" 'cogent/evil-cider-eval
   "g!" 'cogent/evil-cider-eval-replace
-  "c" (general-key-dispatch 'evil-change
-        ;; prefix arg to debug defun
-        "d" #'cider-eval-defun-at-point
-        "c" #'evil-change-whole-line
-        "r-" #'cogent/kebab-case
-        "r_" #'cogent/snake-case
-        "rc" #'cogent/camel-case
-        "rC" #'cogent/camel-case-upper)
+  ;; prefix arg to debug defun
+  "gd" #'cogent/eval-defun-at-point
   "] C-d" #'cider-find-var
   "K" #'cider-doc
   "M-r" (lambda () (interactive) (cider-load-file (buffer-file-name))))
-(general-vmap 'cider-mode-map "c" 'evil-change)
 
 (provide 'cogent-clojure)
