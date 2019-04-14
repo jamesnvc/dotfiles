@@ -61,30 +61,30 @@ evil to have."
 
   :general
   (:keymaps '(normal notmuch-search-mode-map notmuch-hello-mode-map)
-            :repeat t
-            "C-l" #'evil-window-right
-            "C-h" #'evil-window-left
-            "C-j" #'evil-window-down
-            "C-k" #'evil-window-up)
+   :repeat t
+   "C-l" #'evil-window-right
+   "C-h" #'evil-window-left
+   "C-j" #'evil-window-down
+   "C-k" #'evil-window-up)
   (:keymaps 'insert
-            "C-h" #'evil-delete-backward-char-and-join)
+   "C-h" #'evil-delete-backward-char-and-join)
   (:keymaps 'normal
-            "j"   #'evil-next-visual-line
-            "k"   #'evil-previous-visual-line
-            "C-u" #'evil-scroll-up
-            "M-u" #'universal-argument)
+   "j"   #'evil-next-visual-line
+   "k"   #'evil-previous-visual-line
+   "C-u" #'evil-scroll-up
+   "M-u" #'universal-argument)
   (:keymaps '(normal visual)
-            "Y"       #'cogent/evil-yank-to-eol
-            ;; Like vim-unimpaired
-            "[ <SPC>" #'cogent/line-above
-            "] <SPC>" #'cogent/line-below
-            ;; Like vim-vinegar
-            "-"       #'dired-jump)
+   "Y"       #'cogent/evil-yank-to-eol
+   ;; Like vim-unimpaired
+   "[ <SPC>" #'cogent/line-above
+   "] <SPC>" #'cogent/line-below
+   ;; Like vim-vinegar
+   "-"       #'dired-jump)
   (:states 'operator
-           "r-" #'cogent/kebab-case
-           "r_" #'cogent/snake-case
-           "rc" #'cogent/camel-case
-           "rC" #'cogent/camel-case-upper)
+   "r-" #'cogent/kebab-case
+   "r_" #'cogent/snake-case
+   "rc" #'cogent/camel-case
+   "rC" #'cogent/camel-case-upper)
   (cogent/leader-def
     :states '(normal visual)
     "w" #'save-buffer
