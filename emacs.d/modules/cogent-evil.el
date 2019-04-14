@@ -69,17 +69,17 @@ evil to have."
   (:keymaps 'insert
             "C-h" #'evil-delete-backward-char-and-join)
   (:keymaps 'normal
-            "j" #'evil-next-visual-line
-            "k" #'evil-previous-visual-line
+            "j"   #'evil-next-visual-line
+            "k"   #'evil-previous-visual-line
             "C-u" #'evil-scroll-up
             "M-u" #'universal-argument)
   (:keymaps '(normal visual)
-            "Y" #'cogent/evil-yank-to-eol
+            "Y"       #'cogent/evil-yank-to-eol
             ;; Like vim-unimpaired
             "[ <SPC>" #'cogent/line-above
             "] <SPC>" #'cogent/line-below
             ;; Like vim-vinegar
-            "-" #'dired-jump)
+            "-"       #'dired-jump)
   (:states 'operator
            "r-" #'cogent/kebab-case
            "r_" #'cogent/snake-case
