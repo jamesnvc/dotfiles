@@ -130,6 +130,14 @@ evil to have."
         scroll-conservatively 101
         scroll-step 1))
 
+;; for aligning stuff
+(use-package evil-lion
+  :commands (evil-lion-left evil-lion-right)
+  :general
+  (:states 'normal
+           "g l" #'evil-lion-left
+           "g L" #'evil-lion-right))
+
 (evil-mode 1)
 
 (provide 'cogent-evil)

@@ -46,6 +46,9 @@
 
 (use-package htmlize)
 
+(use-package gnuplot
+  :after org-plot)
+
 (defun cogent/org-inline-css-hook (exporter)
   "Make <pre> blocks in exported HTML have the same background colour
 as my default face, so it will be readable"
