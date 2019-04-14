@@ -84,6 +84,7 @@
      (:name "all mail" :query "*" :key "a")
      (:name "new" :query "tag:inbox and tag:unread")
      (:name "flagged" :query "tag:flagged"))))
+ '(org-babel-clojure-backend (quote cider))
  '(org-babel-load-languages (quote ((shell . t) (emacs-lisp . t) (dot . t))))
  '(org-capture-templates
    (quote
@@ -98,9 +99,7 @@
       "* %?
 Entered on %U
    %a"))))
- '(org-modules
-   (quote
-    (org-bbdb org-bibtex org-docview org-gnus org-habit org-info org-irc org-mhe org-rmail org-w3m)))
+ '(org-modules (quote (ol-info ol-eshell ol-git-link ol-notmuch)))
  '(org-return-follows-link t)
  '(pdf-annot-activate-created-annotations t)
  '(pdf-view-display-size (quote fit-page))

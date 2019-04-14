@@ -10,7 +10,6 @@
 (use-package org
   :demand t
   :config
-  (require 'org-tempo) ;; for expanding templates
   (require 'ox-beamer)
   (setq org-replace-disputed-keys t)
   (setq org-default-notes-file (concat org-directory "/notes.org"))
@@ -44,11 +43,6 @@
 ;; add :async to BEGIN_SRC blocks & they run asynchronously!
 (use-package ob-async
   :after org)
-
-(use-package org-tree-slide
-  :commands (org-tree-slide-mode org-tree-slide-skip-done-toggle))
-(general-def :keymaps 'org-mode-map
-  "<f8>" #'org-tree-slide-mode)
 
 (use-package htmlize)
 
