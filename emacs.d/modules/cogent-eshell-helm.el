@@ -17,8 +17,10 @@
                                           (let ((dir (buffer-local-value 'default-directory buff)))
                                             (cons (pwd-replace-home dir) buff)))))
                                      (remove nil)))
+                   ;; [TODO] make completing-read function be directory
                    :action (lambda (candidate)
                              (message "candidate %s" candidate)
+                             ;; [TODO] need to make helm allow candidate that wasn't in the list
                              (if (bufferp candidate)
                                  (switch-to-buffer candidate)
                                (let ((default-directory candidate))
