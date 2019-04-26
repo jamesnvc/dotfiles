@@ -164,4 +164,7 @@ more-helpful local prompt."
 
 (setq eshell-highlight-prompt nil)
 
+(autoload 'cogent/eshell-helm "cogent-eshell-helm"
+  "Eshell helm source" t)
+
 (provide 'cogent-eshell)
