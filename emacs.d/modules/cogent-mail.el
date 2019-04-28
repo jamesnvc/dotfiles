@@ -54,4 +54,6 @@
                         notmuch-search-mode-map)
   "!" #'cogent/sync-mail)
 
+(use-package helm-notmuch)
+
 (provide 'cogent-mail)
