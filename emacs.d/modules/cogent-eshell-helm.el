@@ -35,26 +35,25 @@
   (interactive)
   (add-hook 'helm-after-update-hook
             #'cogent/eshell-helm-move-to-first-real-candidate)
-  (unwind-protect
-      (helm :sources
-            (helm-build-sync-source "eshell"
-              :candidates #'cogent/eshell-helm--get-candidates
-              :action (list
-                       (cons
-                        "Switch to eshell"
-                        (lambda (candidate)
-                          (if (bufferp candidate)
-                              (switch-to-buffer candidate)
-                            (let ((default-directory candidate))
-                              (eshell t))))))
-              ;; make the candidates get re-generated on input, so one can
-              ;; actually create an eshell in a new directory
-              :volatile t
-              :cleanup
-              (lambda ()
-                (remove-hook 'helm-after-update-hook
-                             #'cogent/eshell-helm-move-to-first-real-candidate)) )
-            :buffer "*helm eshell*"
-            :prompt "eshell in: ")))
+  (helm :sources
+        (helm-build-sync-source "eshell"
+          :candidates #'cogent/eshell-helm--get-candidates
+          :action (list
+                   (cons
+                    "Switch to eshell"
+                    (lambda (candidate)
+                      (if (bufferp candidate)
+                          (switch-to-buffer candidate)
+                        (let ((default-directory candidate))
+                          (eshell t))))))
+          ;; make the candidates get re-generated on input, so one can
+          ;; actually create an eshell in a new directory
+          :volatile t
+          :cleanup
+          (lambda ()
+            (remove-hook 'helm-after-update-hook
+                         #'cogent/eshell-helm-move-to-first-real-candidate)) )
+        :buffer "*helm eshell*"
+        :prompt "eshell in: "))
 
 (provide 'cogent-eshell-helm)
