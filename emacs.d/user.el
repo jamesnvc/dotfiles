@@ -27,7 +27,7 @@
 (set-register ?e (cons 'file (concat dotfiles-dir "user.el")))
 
 (general-define-key :keymaps 'global
-                    "<f3>" #'eshell
+                    "<f3>" #'cogent/eshell-helm
                     "<f4>" #'calc
                     "<f5>" #'notmuch
                     "<f6>" #'elfeed
