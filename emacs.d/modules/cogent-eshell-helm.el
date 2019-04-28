@@ -10,25 +10,29 @@
   (interactive)
   (helm :sources
         (helm-build-sync-source "eshell"
-          :candidates (lambda ()
-                        (->> (buffer-list)
-                            (mapcar
-                             (lambda (buff)
-                               (when (string-prefix-p "*eshell*" (buffer-name buff))
-                                 (let ((dir (buffer-local-value 'default-directory buff)))
-                                   (cons (pwd-replace-home dir) buff)))))
-                            (cons
-                             (let ((new-dir (if (string-blank-p helm-input) default-directory helm-input)))
-                               (cons (s-concat "new " (pwd-replace-home new-dir))
-                                     new-dir)))
-                            (remove nil)))
+          :candidates
+          (lambda ()
+            (-> (cl-loop for buf in (buffer-list)
+                     when (string-prefix-p "*eshell*" (buffer-name buf))
+                     collect (cons (pwd-replace-home
+                                    (buffer-local-value
+                                     'default-directory buf))
+                                   buf))
+                (append
+                 (let ((new-dir (if (string-blank-p helm-input)
+                                    default-directory
+                                  helm-input)))
+                   (list
+                    (cons (s-concat "new " (pwd-replace-home new-dir))
+                         new-dir))))))
           ;; [TODO] make completing-read function be directory
           :action (lambda (candidate)
-                    (message "candidate %s" candidate)
                     (if (bufferp candidate)
                         (switch-to-buffer candidate)
                       (let ((default-directory candidate))
                         (eshell t))))
+          ;; make the candidates get re-generated on input, so one can
+          ;; actually create an eshell in a new directory
           :volatile t)
         :buffer "*helm eshell*"))
 
