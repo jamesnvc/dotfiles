@@ -4,13 +4,15 @@
 (require 'helm-lib)
 (require 'cl-lib)
 
+(defun cogent/buffer-dir-name (buf)
+  (pwd-replace-home (buffer-local-value 'default-directory buf)))
+
 (defun cogent/eshell-helm--get-candidates ()
   (let* ((eshells (cl-loop for buf in (buffer-list)
                            when (string-prefix-p "*eshell*" (buffer-name buf))
-                           collect (cons (pwd-replace-home
-                                          (buffer-local-value
-                                           'default-directory buf))
-                                         buf)))
+                           collect (cons (cogent/buffer-dir-name buf) buf) into cands
+                           finally return (sort cands (lambda (a b) (string< (car a)
+                                                                        (car b))))))
          (new-dir (if (string-blank-p helm-input)
                       default-directory
                     helm-input))
