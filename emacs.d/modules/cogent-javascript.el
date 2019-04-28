@@ -46,4 +46,7 @@
 (with-eval-after-load 'flycheck
   (setq flycheck-jshintrc (s-concat dotfiles-dir "jshintrc")))
 
+(use-package typescript-mode
+  :commands typescript-mode)
+
 (provide 'cogent-javascript)
