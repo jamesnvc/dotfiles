@@ -29,7 +29,10 @@
 (general-define-key :keymaps 'global
                     "<f3>" #'cogent/eshell-helm
                     "<f4>" #'calc
-                    "<f5>" #'notmuch
+                    "<f5>" (lambda (arg) (interactive "P")
+                             (if arg
+                                 (helm-notmuch)
+                               (notmuch)))
                     "<f6>" #'elfeed
                     "<f9>" #'helm-bookmarks)
 
