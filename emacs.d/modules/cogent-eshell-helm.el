@@ -3,6 +3,7 @@
 (require 'helm)
 (require 'helm-lib)
 (require 'cl-lib)
+(require 'cogent-helm) ; for vert/horiz switching functions
 
 (defun cogent/buffer-dir-name (buf)
   (pwd-replace-home (buffer-local-value 'default-directory buf)))
@@ -31,6 +32,14 @@
     (unless (bufferp sel)
       (helm-next-line))))
 
+(defvar helm-cogent-eshell-map
+  (let ((map (make-sparse-keymap)))
+    (set-keymap-parent map helm-map)
+    (define-key map (kbd "C-s") #'helm-buffer-switch-horiz-window-command)
+    (define-key map (kbd "C-v") #'helm-buffer-switch-vert-window-command)
+    map)
+  "Keymap for cogent/eshell-helm")
+
 ;;;###autoload
 (defun cogent/eshell-helm ()
   "Switch between or create eshell buffers using helm"
@@ -39,6 +48,7 @@
             #'cogent/eshell-helm-move-to-first-real-candidate)
   (helm :sources
         (helm-build-sync-source "eshell"
+          :keymap helm-cogent-eshell-map
           :candidates #'cogent/eshell-helm--get-candidates
           :action (list
                    (cons
@@ -47,7 +57,13 @@
                       (if (bufferp candidate)
                           (switch-to-buffer candidate)
                         (let ((default-directory candidate))
-                          (eshell t))))))
+                          (eshell t)))))
+                   (cons
+                    "Open shell in horizontal split"
+                    #'helm-buffer-switch-horiz-window)
+                   (cons
+                    "Open shell in vertial split"
+                    #'helm-buffer-switch-vert-window))
           ;; make the candidates get re-generated on input, so one can
           ;; actually create an eshell in a new directory
           :volatile t
