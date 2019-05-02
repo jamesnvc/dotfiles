@@ -68,8 +68,6 @@
     (generate-helm-splitter-funcs "buffer" switch-to-buffer)
     (generate-helm-splitter-funcs "file" find-file)
 
-
-
     (with-eval-after-load "helm-projectile"
       (helm-add-action-to-source "Display file(s) in new vertical split(s) `C-v'"
                                  #'helm-file-switch-vert-window
