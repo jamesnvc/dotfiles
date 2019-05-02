@@ -68,37 +68,36 @@
     (generate-helm-splitter-funcs "buffer" switch-to-buffer)
     (generate-helm-splitter-funcs "file" find-file)
 
+    (add-to-list 'helm-type-buffer-actions
+                 (cons
+                  "Display buffer(s) in new vertical split(s) `C-v'"
+                  #'helm-buffer-switch-vert-window)
+                 t)
+    (add-to-list 'helm-type-buffer-actions
+                 (cons
+                  "Display buffer(s) in new horizontal split(s) `C-s'"
+                  #'helm-buffer-switch-horiz-window)
+                 t)
+
+    (dolist (list-var '(helm-type-file-actions helm-find-files-actions))
+      (add-to-list list-var
+                   (cons
+                    "Display file(s) in new vertical split(s) `C-v'"
+                    #'helm-file-switch-vert-window)
+                   t)
+      (add-to-list list-var
+                   (cons
+                    "Display file(s) in new horizontal split(s) `C-s'"
+                    #'helm-file-switch-horiz-window)
+                   t))
+
     (with-eval-after-load "helm-projectile"
       (helm-add-action-to-source "Display file(s) in new vertical split(s) `C-v'"
                                  #'helm-file-switch-vert-window
                                  helm-source-projectile-files-list)
       (helm-add-action-to-source "Display file(s) in new horizontal split(s) `C-s'"
                                  #'helm-file-switch-horiz-window
-                                 helm-source-projectile-files-list))
-
-    (setq cogent/helm-file-actions-added nil)
-    (defun cogent/add-helm-file-actions ()
-      (when (not cogent/helm-file-actions-added)
-        (setq cogent/helm-file-actions-added t)
-        (helm-add-action-to-source "Display file(s) in new vertical split(s) `C-v'"
-                                   #'helm-file-switch-vert-window
-                                   helm-source-find-files)
-        (helm-add-action-to-source "Display file(s) in new horizontal split(s) `C-s'"
-                                   #'helm-file-switch-horiz-window
-                                   helm-source-find-files)))
-    (add-hook 'helm-find-files-after-init-hook #'cogent/add-helm-file-actions)
-
-    (setq cogent/helm-buffer-actions-added nil)
-    (defun cogent/add-helm-buffer-actions (&rest _args)
-      (when (not cogent/helm-buffer-actions-added)
-        (setq cogent/helm-buffer-actions-added t)
-        (helm-add-action-to-source "Display buffer(s) in new vertical split(s) `C-v'"
-                                   #'helm-buffer-switch-vert-window
-                                   helm-source-buffers-list)
-        (helm-add-action-to-source "Display buffer(s) in new horizontal split(s) `C-s'"
-                                   #'helm-buffer-switch-horiz-window
-                                   helm-source-buffers-list)))
-    (advice-add 'helm-buffers-list--init :after #'cogent/add-helm-buffer-actions))
+                                 helm-source-projectile-files-list)))
   :bind (("M-x" . helm-M-x)
          ("C-x C-f" . helm-find-files)
          ("C-x C-g" . helm-do-grep)

@@ -32,11 +32,37 @@
     (unless (bufferp sel)
       (helm-next-line))))
 
+(defun cogent/eshell-helm-horiz-split (candidate)
+  (if (bufferp candidate)
+      (helm-buffer-switch-horiz-window candidate)
+    (let ((default-directory candidate))
+      (select-window (split-window-below))
+      (eshell t)
+      (balance-windows))))
+
+(defun cogent/eshell-helm-vert-split (candidate)
+  (if (bufferp candidate)
+      (helm-buffer-switch-vert-window candidate)
+    (let ((default-directory candidate))
+      (select-window (split-window-right))
+      (eshell t)
+      (balance-windows))))
+
+(defun cogent/eshell-helm-horiz-split-command ()
+  (interactive)
+  (with-helm-alive-p
+    (helm-exit-and-execute-action #'cogent/eshell-helm-horiz-split)))
+
+(defun cogent/eshell-helm-vert-split-command ()
+  (interactive)
+  (with-helm-alive-p
+    (helm-exit-and-execute-action #'cogent/eshell-helm-vert-split)))
+
 (defvar helm-cogent-eshell-map
   (let ((map (make-sparse-keymap)))
     (set-keymap-parent map helm-map)
-    (define-key map (kbd "C-s") #'helm-buffer-switch-horiz-window-command)
-    (define-key map (kbd "C-v") #'helm-buffer-switch-vert-window-command)
+    (define-key map (kbd "C-s") #'cogent/eshell-helm-horiz-split-command)
+    (define-key map (kbd "C-v") #'cogent/eshell-helm-vert-split-command)
     map)
   "Keymap for cogent/eshell-helm")
 
@@ -60,17 +86,17 @@
                           (eshell t)))))
                    (cons
                     "Open shell in horizontal split"
-                    #'helm-buffer-switch-horiz-window)
+                    #'cogent/eshell-helm-horiz-split)
                    (cons
-                    "Open shell in vertial split"
-                    #'helm-buffer-switch-vert-window))
+                    "Open shell in vertical split"
+                    #'cogent/eshell-helm-vert-split))
           ;; make the candidates get re-generated on input, so one can
           ;; actually create an eshell in a new directory
           :volatile t
           :cleanup
           (lambda ()
             (remove-hook 'helm-after-update-hook
-                         #'cogent/eshell-helm-move-to-first-real-candidate)) )
+                         #'cogent/eshell-helm-move-to-first-real-candidate)))
         :buffer "*helm eshell*"
         :prompt "eshell in: "))
 
