@@ -59,7 +59,4 @@
     (setq ccls-executable (expand-file-name "~/software/ccls/Release/ccls")))
   :hook ((objc-mode c++-mode c-mode) . (lambda () (require 'ccls) (lsp))))
 
-(use-package dap-mode
-  :commands dap-debug dap-debug-edit-template)
-
 (provide 'cogent-lsp)
