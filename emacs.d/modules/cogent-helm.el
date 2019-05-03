@@ -186,4 +186,8 @@
   (helm-ext-ff-enable-auto-path-expansion t)
   (helm-ext-minibuffer-enable-header-line-maybe t))
 
+(use-package helm-descbinds
+  :commands helm-descbinds-mode
+  :init (helm-descbinds-mode))
+
 (provide 'cogent-helm)
