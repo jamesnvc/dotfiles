@@ -9,7 +9,7 @@
   (require 'helm)
   (helm-mode 1)
 
-  (defmethod helm-setup-user-source ((source helm-source-ffiles))
+  (cl-defmethod helm-setup-user-source ((source helm-source-ffiles))
     (helm-source-add-action-to-source-if
      "Magit status"
      (lambda (_candidate)
