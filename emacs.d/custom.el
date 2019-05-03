@@ -77,6 +77,7 @@
  '(lsp-ui-sideline-show-hover nil)
  '(magit-diff-refine-hunk t)
  '(menu-bar-mode t)
+ '(mode-require-final-newline nil)
  '(moody-mode-line-height 28)
  '(mouse-drag-and-drop-region (quote modifier))
  '(notmuch-saved-searches
