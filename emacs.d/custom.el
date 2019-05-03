@@ -104,7 +104,7 @@
       "* %?
 Entered on %U
    %a"))))
- '(org-modules (quote (ol-info ol-eshell ol-git-link ol-notmuch)))
+ '(org-modules (quote (ol-info ol-eshell)))
  '(org-return-follows-link t)
  '(pdf-annot-activate-created-annotations t)
  '(pdf-view-display-size (quote fit-page))
