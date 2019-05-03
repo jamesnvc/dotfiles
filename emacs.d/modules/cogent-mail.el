@@ -35,8 +35,7 @@
         (lambda (prompt collection initial-input)
           (completing-read prompt (cons initial-input collection) nil t nil
                            'notmuch-address-history)))
-  (require 'notmuch-address)
-  (notmuch-address-message-insinuate))
+  (require 'notmuch-address))
 
 (defun cogent/sync-mail ()
   "Run mail syncing shell script."
