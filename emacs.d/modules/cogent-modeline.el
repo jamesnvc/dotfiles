@@ -75,6 +75,10 @@
   `((t (:foreground "#aa4949")))
   "Modeline readonly file face for inactive windows.")
 
+(defface cogent-line-buffer-name-face
+  `((t (:inherit 'font-lock-type-face)))
+  "Modeline buffer name face")
+
 ;; Keep track of selected window, so we can render the modeline differently
 (defvar cogent-line-selected-window (frame-selected-window))
 (defun cogent-line-set-selected-window (&rest _args)
@@ -109,7 +113,8 @@
 
                '(:eval (list
                         ;; the buffer name; the file name as a tool tip
-                        (propertize " %b" 'face 'font-lock-type-face
+                        " "
+                        (propertize "%b" 'face 'cogent-line-buffer-name-face
                                     'help-echo (buffer-file-name))
                         (when (buffer-modified-p)
                           (propertize
