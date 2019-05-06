@@ -49,12 +49,12 @@
 
 (defun cogent/evil-state-face ()
   (if (bound-and-true-p evil-local-mode)
-      ;; nb. spaceline checks if the state is evil-operator state &
-      ;; uses evil-previous-state if so
-      (let* ((activep (cogent-line-selected-window-active-p))
-             (face (assq evil-state (if activep cogent/evil-state-faces
-                                      cogent/evil-state-faces-inactive))))
-        (if face (cdr face) cogent-line-default-face))
+      (if-let ((face (assq evil-state
+                           (if (cogent-line-selected-window-active-p)
+                               cogent/evil-state-faces
+                             cogent/evil-state-faces-inactive))))
+          (cdr face)
+        cogent-line-default-face)
     cogent-line-default-face))
 
 (defface cogent-line-modified-face
