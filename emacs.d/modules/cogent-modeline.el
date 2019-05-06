@@ -48,13 +48,13 @@
     (motion . cogent-line-evil-motion-inactive)))
 
 (defun cogent/evil-state-face ()
-  (if (bound-and-true-p evil-local-mode)
-      (if-let ((face (assq evil-state
-                           (if (cogent-line-selected-window-active-p)
-                               cogent/evil-state-faces
-                             cogent/evil-state-faces-inactive))))
-          (cdr face)
-        cogent-line-default-face)
+  (if-let ((face (and
+                  (bound-and-true-p evil-local-mode)
+                  (assq evil-state
+                        (if (cogent-line-selected-window-active-p)
+                            cogent/evil-state-faces
+                          cogent/evil-state-faces-inactive)))))
+      (cdr face)
     cogent-line-default-face))
 
 (defface cogent-line-modified-face
