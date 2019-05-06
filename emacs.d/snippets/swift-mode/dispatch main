@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: dispatch main
+# key: main
+# --
+OperationQueue.main.addOperation {
+  $0
+}
