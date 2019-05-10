@@ -96,6 +96,26 @@
 (defun cogent-line-selected-window-active-p ()
   (eq cogent-line-selected-window (selected-window)))
 
+(defun cogent/custom-eyebrowse-mode-line-indicator (f &rest args)
+  (let ((indicator (apply f args)))
+    (if (> (length indicator) 35)
+        (let* ((confs (eyebrowse--get 'window-configs))
+               (cur (assq (eyebrowse--get 'current-slot) confs))
+               (idx (-elem-index cur confs))
+               (keymap (let ((map (make-sparse-keymap)))
+                         (define-key map (kbd "<mode-line><mouse-1>")
+                           (lambda (_e)
+                             (interactive "e")
+                             (eyebrowse-switch-to-window-config
+                              (+ 1 (mod (+ idx 1) (length confs))))))
+                         map))
+               (text (format "[%s/%s]" (+ 1 idx) (length confs))))
+          (propertize text
+                      'local-map keymap
+                      'help-echo "Next workspace"))
+      indicator)))
+(advice-add 'eyebrowse-mode-line-indicator :around #'cogent/custom-eyebrowse-mode-line-indicator)
+
 (setq-default mode-line-format
               (list
 
