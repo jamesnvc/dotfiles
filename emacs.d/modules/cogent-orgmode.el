@@ -14,6 +14,8 @@
   (setq org-replace-disputed-keys t)
   (setq org-default-notes-file (concat org-directory "/notes.org"))
 
+  (setq org-catch-invisible-edits 'show-and-error)
+
   (defun yas/org-very-safe-expand ()
     (let ((yas/fallback-behavior 'return-nil)) (yas/expand)))
 
