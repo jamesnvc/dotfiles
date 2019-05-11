@@ -61,8 +61,6 @@
                        (remove-hook 'helm-after-update-hook
                                     #'helm-next-line)))
           :buffer "*helm eyebrowse*"
-          :prompt "eyebrowse: "))
-
-  )
+          :prompt "eyebrowse: ")))
 
 (provide 'cogent-windows)
