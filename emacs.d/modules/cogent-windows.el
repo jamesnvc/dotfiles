@@ -55,8 +55,15 @@
                       (cons "Close config"
                             (lambda (candidate)
                               (unless (stringp candidate)
-                                (eyebrowse-switch-to-window-config candidate)
-                                (eyebrowse-close-window-config))))
+                                (let ((window-configs (eyebrowse--get 'window-configs))
+                                      (current (eyebrowse--get 'current-slot)))
+                                  (when (> (length window-configs) 1)
+                                    (when (= candidate current)
+                                      (if (equal (assq current window-configs)
+                                                 (car (last window-configs)))
+                                          (eyebrowse-prev-window-config nil)
+                                        (eyebrowse-next-window-config nil)))
+                                    (eyebrowse--delete-window-config candidate))))))
                       (cons "Rename config"
                             (lambda (candidate)
                               (unless (stringp candidate)
