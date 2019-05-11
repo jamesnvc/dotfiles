@@ -54,9 +54,15 @@
                                 (eyebrowse-switch-to-window-config candidate))))
                       (cons "Close config"
                             (lambda (candidate)
-                              (eyebrowse-switch-to-window-config candidate)
-                              (eyebrowse-close-window-config))))
-
+                              (unless (stringp candidate)
+                                (eyebrowse-switch-to-window-config candidate)
+                                (eyebrowse-close-window-config))))
+                      (cons "Rename config"
+                            (lambda (candidate)
+                              (unless (stringp candidate)
+                                (eyebrowse-rename-window-config
+                                 candidate
+                                 (read-string "New tag: "))))))
             :cleanup (lambda ()
                        (remove-hook 'helm-after-update-hook
                                     #'helm-next-line)))
