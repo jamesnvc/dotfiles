@@ -17,6 +17,52 @@
 
 (use-package eyebrowse
   :commands eyebrowse-mode
-  :init (eyebrowse-mode t))
+  :init (eyebrowse-mode t)
+  :config
+
+  (defun cogent/eyebrowse-get-candidates ()
+    (->> (--map (cons (eyebrowse-format-slot it)
+                 (car it))
+               (eyebrowse--get 'window-configs))
+        (cons (cons
+               (concat
+                (propertize
+                 " " 'display
+                 (propertize "[+]" 'font-lock-face
+                             '(:background "#ff69c6" :foreground "#282a36")))
+                " " helm-input)
+               helm-input))))
+
+  (defun cogent/eyebrowse-helm ()
+    "Manage eyebrowse window configs"
+    (interactive)
+    (add-hook 'helm-after-update-hook
+              #'helm-next-line)
+    (helm :sources
+          (helm-build-sync-source "eyebrowse"
+            :volatile t
+            :candidates #'cogent/eyebrowse-get-candidates
+            :action (list
+                      (cons "Switch to config"
+                            (lambda (candidate)
+                              (if (stringp candidate)
+                                  (progn
+                                    (eyebrowse-create-window-config)
+                                    (eyebrowse-rename-window-config
+                                     (eyebrowse--get 'current-slot)
+                                     candidate))
+                                (eyebrowse-switch-to-window-config candidate))))
+                      (cons "Close config"
+                            (lambda (candidate)
+                              (eyebrowse-switch-to-window-config candidate)
+                              (eyebrowse-close-window-config))))
+
+            :cleanup (lambda ()
+                       (remove-hook 'helm-after-update-hook
+                                    #'helm-next-line)))
+          :buffer "*helm eyebrowse*"
+          :prompt "eyebrowse: "))
+
+  )
 
 (provide 'cogent-windows)
