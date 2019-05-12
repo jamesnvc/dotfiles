@@ -20,6 +20,7 @@
     "H" #'magit-log-buffer-file))
 
 (use-package ghub
+  :after magit
   :straight (ghub
              :type git
              :host github
@@ -32,13 +33,15 @@
              :host github
              :repo "magit/forge"))
 
-(use-package gist)
-
 (use-package fringe-helper)
 (use-package git-gutter-fringe+
-  :demand t
-  :config
-  (global-git-gutter+-mode t)
+  :commands (global-git-gutter+-mode git-gutter+-mode)
+  :defer t
+  :init
+  (defun cogent/load-git-gutter-once ()
+    (remove-hook 'find-file-hook #'cogent/load-git-gutter-once)
+    (global-git-gutter+-mode t))
+  (add-hook 'find-file-hook #'cogent/load-git-gutter-once)
   :diminish git-gutter-mode
   :general
   (:keymaps 'normal

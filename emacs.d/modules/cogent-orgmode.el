@@ -8,7 +8,7 @@
    "~/org/notebook/"))
 
 (use-package org
-  :demand t
+  :defer t
   :config
   (require 'ox-beamer)
   (setq org-replace-disputed-keys t)

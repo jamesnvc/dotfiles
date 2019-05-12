@@ -98,20 +98,21 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 
 ;; Org
 
-(setq cogent/org-capture-file (concat org-directory "/refile.org"))
-(setq cogent/org-diary-file (concat org-directory "/diary.org"))
-(set-register ?o (cons 'file org-default-notes-file))
-(setq org-todo-keywords
-      '((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
-        (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)" "PHONE" "MEETING")))
-(setq org-use-fast-todo-selection t)
-(setq org-agenda-files (list (concat org-directory "/notes.org")
-                             (concat org-directory "/bloom.org")
-                             (concat org-directory "/notebook")))
-(setq org-refile-targets '((nil . (:maxlevel . 9))))
-(setq org-refile-use-outline-path t)
-(setq org-outline-path-complete-in-steps nil)
-(setq org-refile-allow-creating-parent-nodes 'confirm)
+(with-eval-after-load "org"
+  (setq cogent/org-capture-file (concat org-directory "/refile.org"))
+  (setq cogent/org-diary-file (concat org-directory "/diary.org"))
+  (set-register ?o (cons 'file org-default-notes-file))
+  (setq org-todo-keywords
+        '((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
+          (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)" "PHONE" "MEETING")))
+  (setq org-use-fast-todo-selection t)
+  (setq org-agenda-files (list (concat org-directory "/notes.org")
+                               (concat org-directory "/bloom.org")
+                               (concat org-directory "/notebook")))
+  (setq org-refile-targets '((nil . (:maxlevel . 9))))
+  (setq org-refile-use-outline-path t)
+  (setq org-outline-path-complete-in-steps nil)
+  (setq org-refile-allow-creating-parent-nodes 'confirm))
 
 ;; Elfeed
 (load (concat dotfiles-dir "feeds.el"))
@@ -165,5 +166,6 @@ Take both changes in diff."
                     ;; and paredit overrides this to be something I don't understand
                     "M-?" #'xref-find-references)
 
+(require 'server)
 (when (not (server-running-p))
   (server-start))

@@ -3,9 +3,10 @@
 (require 'cogent-package)
 
 (use-package exec-path-from-shell
+  :defer 2
   :commands exec-path-from-shell-initialize
   :if (memq window-system '(mac ns x))
-  :init
+  :config
   (exec-path-from-shell-initialize))
 
 (set-terminal-coding-system 'utf-8)

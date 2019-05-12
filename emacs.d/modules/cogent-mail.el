@@ -8,8 +8,8 @@
 
 ;; setup the mail address and use name
 (setq mail-user-agent 'message-user-agent
-      user-mail-address (cogent/user-email)
-      user-full-name (cogent/user-full-name)
+      user-mail-address "james.nvc@gmail.com"
+      user-full-name "James N. V. Cash"
 
       ;; smtp config
       smtpmail-smtp-server "smtp.gmail.com"
@@ -53,6 +53,7 @@
                         notmuch-search-mode-map)
   "!" #'cogent/sync-mail)
 
-(use-package helm-notmuch)
+(use-package helm-notmuch
+  :defer t)
 
 (provide 'cogent-mail)

@@ -8,9 +8,7 @@
              :type git
              :host gitlab
              :repo "ambrevar/emacs-fish-completion")
-  :init
-  (when (and (cogent/is-exec "fish")
-             (require 'fish-completion nil t))
-    (global-fish-completion-mode)))
+  :commands (global-fish-completion-mode fish-completion-mode)
+  :hook (eshell-mode . (lambda () (fish-completion-mode 1))))
 
 (provide 'cogent-fish)
