@@ -158,7 +158,8 @@ more-helpful local prompt."
                (propertize python 'face for-python)))
      (propertize "\n"     'face for-bars))))
 
-(setq-default eshell-prompt-function #'eshell/eshell-local-prompt-function)
+(setq-default eshell-prompt-function #'eshell/eshell-local-prompt-function
+              eshell-prompt-regexp "^⟣─ [^\\n]*$")
 
 ;; Turn off the default prompt, otherwise, it won’t use ours:
 
