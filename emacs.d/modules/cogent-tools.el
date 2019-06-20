@@ -10,4 +10,9 @@
   :straight
   (:type git :host github :repo "emacsmirror/disk-usage"))
 
-(provide 'cogent-os)
+(use-package pass
+  :commands pass
+  :config
+  (evil-set-initial-state 'pass-mode 'emacs))
+
+(provide 'cogent-tools)
