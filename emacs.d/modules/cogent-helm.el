@@ -154,6 +154,7 @@
       (helm-exit-and-execute-action #'cogent/helm-rg-switch-horiz)))
 
   (general-def helm-rg-map
+    "C-c C-e" #'helm-rg--bounce
     "C-s" #'cogent/helm-rg-switch-horiz-command
     "C-v" #'cogent/helm-rg-switch-vert-command))
 
