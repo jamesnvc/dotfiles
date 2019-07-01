@@ -2,3 +2,4 @@ set theme dark
 set editorcmd "emacsclient -c"
 set searchengine duckduckgo
 unbind <F1>
+set smoothscroll true
