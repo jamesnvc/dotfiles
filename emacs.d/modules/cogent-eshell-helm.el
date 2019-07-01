@@ -10,25 +10,25 @@
 
 (defun cogent/eshell-helm--get-candidates ()
   (let* ((here (expand-file-name default-directory))
-         (key-fn (lambda (d)
-                   (let ((prefix (compare-strings
-                                  here 0 nil
-                                  (expand-file-name d) 0 nil)))
-                     (->> (if (numberp prefix)
-                             (- (abs prefix) 1)
-                           (length d))
-                         (substring here 0)
-                         (s-split "/")
-                         length
-                         (+ (if (numberp prefix) 0 2))))))
+         (dist2here (lambda (d)
+                      (let ((prefix (compare-strings
+                                     here 0 nil
+                                     (expand-file-name d) 0 nil)))
+                        (->> (if (numberp prefix)
+                                (- (abs prefix) 1)
+                              (length d))
+                            (substring here 0)
+                            (s-split "/")
+                            length
+                            (+ (if (numberp prefix) 0 2))))))
          (eshells (cl-loop for buf in (buffer-list)
                            when (string-prefix-p "*eshell*" (buffer-name buf))
                            collect (cons (cogent/buffer-dir-name buf) buf) into cands
                            finally return (-> cands
                                               (sort (lambda (a b) (< (length (car a)) (length (car b)))))
                                               (sort
-                                                (lambda (a b) (> (funcall key-fn (car a))
-                                                            (funcall key-fn (car b))))))))
+                                               (lambda (a b) (> (funcall dist2here (car a))
+                                                           (funcall dist2here (car b))))))))
          (new-dir (if (string-blank-p helm-input)
                       default-directory
                     helm-input))
