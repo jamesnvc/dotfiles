@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: module documentation comment
+# key: moddoc
+# --
+/** <module> $0
+
+@author James Cash
+*/
