@@ -13,6 +13,7 @@
 (use-package pass
   :commands pass
   :config
-  (evil-set-initial-state 'pass-mode 'emacs))
+  (evil-set-initial-state 'pass-mode 'emacs)
+  (setq-default password-store-password-length 18))
 
 (provide 'cogent-tools)

@@ -186,6 +186,7 @@ for_window [title="Add Dialog"] floating enable
 for_window [class="Wine"] floating enable
 for_window [class="1Password.exe"] floating enable
 for_window [title="emacs-popup-frame"] floating enable
+for_window [title="QEMU"] floating enable
 
 # Disabling this for now; not using it & want to take the shortcut
 #bindsym $mod+m exec i3-input -F 'mark %s' -P 'Mark name: '
