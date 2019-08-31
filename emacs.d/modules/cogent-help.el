@@ -17,7 +17,4 @@
   :commands (discover-my-major discover-my-mode)
   :bind ("<f1> C-m" . discover-my-major))
 
-;; Run helm-dash-install-docset to download docsets
-(use-package helm-dash)
-
 (provide 'cogent-help)
