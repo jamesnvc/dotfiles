@@ -21,6 +21,7 @@
     :priority 1
     :multi-root t
     :server-id 'prolog-ls))
+  (add-to-list 'lsp-language-id-configuration '(prolog-mode . "prolog"))
 
   ;; SH
   ;; to install the client:
