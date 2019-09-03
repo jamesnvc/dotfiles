@@ -91,3 +91,8 @@ Host fuchikoma
 Host *sr.ht
      PreferredAuthentications publickey
      IdentityFile ~/.ssh-keys/sourcehut
+
+Host cosmiccms
+    Hostname cms.cosmicwalk.app
+    User james
+    IdentityFile ~/.ssh-keys/cosmiccms
