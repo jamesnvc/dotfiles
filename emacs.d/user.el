@@ -10,7 +10,7 @@
   (add-hook 'eshell-mode-hook
             (lambda () (setq eshell-path-env (concat dir ":" eshell-path-env)))))
 
-(cogent/add-to-all-paths (expand-file-name "~/.swivm/versions/8.1.5/bin"))
+(cogent/add-to-all-paths (expand-file-name "~/.swivm/versions/8.1.10/bin"))
 
 (when (string-equal system-type "darwin")
   (set-frame-font "PragmataPro 16" nil t)
