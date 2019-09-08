@@ -129,7 +129,9 @@
           ("erc" "")
           ("notmuch" "")
           ("prolog" "")
-          ("python" "")))
+          ("python" "")
+          ("web" "")
+          ("conf" "")))
   (cyphejor-mode 1))
 
 ;; Handle ANSI colours in compile buffer output.
