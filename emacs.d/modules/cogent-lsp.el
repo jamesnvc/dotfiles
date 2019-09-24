@@ -42,7 +42,11 @@
   :config
   (general-define-key :keymaps '(lsp-ui-mode-map)
                       [remap xref-find-definitions] #'lsp-ui-peek-find-definitions
-                      [remap xref-find-references] #'lsp-ui-peek-find-references))
+                      [remap xref-find-references] #'lsp-ui-peek-find-references)
+  (add-hook 'lsp-ui-mode-hook
+            (lambda ()
+              (lsp-ui-doc-mode -1)
+              (setq-local evil-lookup-func #'lsp-ui-doc-show))))
 
 (use-package company-lsp
   :after lsp-mode
