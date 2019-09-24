@@ -1,4 +1,4 @@
-# key: module
+# key: mod
 # name: module
 # --
 :- module(${1:`(file-name-base (buffer-file-name))`}, []).
