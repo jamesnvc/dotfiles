@@ -4,6 +4,7 @@
 ;; Keep dired buffers updated when the file system changes
 (setq global-auto-revert-non-file-buffers t)
 (setq auto-revert-verbose nil)
+(setq dired-dwim-target t)
 
 (defun delete-current-buffer-file ()
   "Remove the file connected to the current buffer and kills the buffer"
