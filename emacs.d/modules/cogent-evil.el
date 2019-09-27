@@ -65,7 +65,9 @@ evil to have."
    "C-l" #'evil-window-right
    "C-h" #'evil-window-left
    "C-j" #'evil-window-down
-   "C-k" #'evil-window-up)
+   "C-k" #'evil-window-up
+   "<C-tab>" #'evil-window-next
+   "<C-S-tab>" #'evil-window-prev)
   (:keymaps 'insert
    "C-h" #'evil-delete-backward-char-and-join)
   (:keymaps 'normal
