@@ -23,9 +23,6 @@
 (when (string-equal (system-name) "roy")
   (set-frame-font "PragmataPro 10" nil t))
 
-;; Quick way to jump here
-(set-register ?e (cons 'file (concat dotfiles-dir "user.el")))
-
 (general-define-key :keymaps 'global
                     "<f2>" #'cogent/eyebrowse-helm
                     "<f3>" #'cogent/eshell-helm
@@ -101,7 +98,6 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (with-eval-after-load "org"
   (setq cogent/org-capture-file (concat org-directory "/refile.org"))
   (setq cogent/org-diary-file (concat org-directory "/diary.org"))
-  (set-register ?o (cons 'file org-default-notes-file))
   (setq org-todo-keywords
         '((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
           (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)" "PHONE" "MEETING")))
