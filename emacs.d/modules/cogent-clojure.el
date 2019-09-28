@@ -19,8 +19,8 @@
   :commands cider-jack-in
   :hook (cider-mode . eldoc-mode)
   :config
-  (evil-set-initial-state 'cider-docview-mode 'insert)
-  (evil-set-initial-state 'cider-stacktrace-mode 'insert)
+  (evil-set-initial-state 'cider-docview-mode 'emacs)
+  (evil-set-initial-state 'cider-stacktrace-mode 'emacs)
   (setq cider-prompt-for-symbol nil)
   (setq cider-font-lock-dynamically '(macro core function var))
   (with-eval-after-load "company"
