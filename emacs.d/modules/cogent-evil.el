@@ -32,6 +32,21 @@ evil to have."
       (dotimes (_ (or argument 1))
         (evil-insert-newline-above))))
 
+  (defun cogent/move-line-up (&optional argument)
+    "Move current line up by one or arg"
+    (interactive "P")
+    (dotimes (_ (or argument 1))
+      (transpose-lines 1)
+      (previous-logical-line 2)))
+
+  (defun cogent/move-line-down (&optional argument)
+    "Move current line down by one or arg"
+    (interactive "P")
+    (dotimes (_ (or argument 1))
+      (next-logical-line 1)
+      (transpose-lines 1)
+      (previous-logical-line 1)))
+
   (require 's)
 
   ;; like vim-abolish
@@ -81,6 +96,8 @@ evil to have."
    ;; Like vim-unimpaired
    "[ <SPC>" #'cogent/line-above
    "] <SPC>" #'cogent/line-below
+   "[ e"  #'cogent/move-line-up
+   "] e"  #'cogent/move-line-down
    ;; Like vim-vinegar
    "-"       #'dired-jump)
   (:states 'operator
