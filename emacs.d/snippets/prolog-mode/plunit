@@ -4,9 +4,10 @@
 :- module(${1:`(file-name-base (buffer-file-name))`}, []).
 
 :- use_module(library(plunit)).
-:- use_module($1).
-:- begin_tests($1).
+:- use_module(${1:$(s-replace-regexp "_test$" "" yas-text)}).
+
+:- begin_tests(${1:$(s-replace-regexp "_test$" "" yas-text)}).
 
 $0
 
-:- end_tests($1).
+:- end_tests(${1:$(s-replace-regexp "_test$" "" yas-text)}).
