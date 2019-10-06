@@ -6,6 +6,9 @@
 (setq auto-revert-verbose nil)
 (setq dired-dwim-target t)
 
+(use-package dired-git-info
+  :bind (:map dired-mode-map (")" . dired-git-info-mode)))
+
 (defun delete-current-buffer-file ()
   "Remove the file connected to the current buffer and kills the buffer"
   (interactive)
