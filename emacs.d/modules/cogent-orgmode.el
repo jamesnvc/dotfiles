@@ -36,6 +36,10 @@
      (visual-line-mode 1)))
   (advice-add 'org-meta-return :before #'org-end-of-line)
 
+  (org-babel-do-load-languages
+   'org-babel-load-languages
+   '((sql . t)))
+
   :general
   (general-nmap :keymaps 'org-mode-map
     "<return>" #'org-return)
