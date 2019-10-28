@@ -43,10 +43,10 @@
 (evil-define-operator cogent/evil-cider-eval-replace (beg end)
   "Evaluate clojure expression given by <motion> via cider and replace
 the expression with the result."
-  (let ((exp (read (buffer-substring-no-properties beg end))))
-    (cider-nrepl-sync-request:eval exp)
+  (let* ((exp (buffer-substring-no-properties beg end))
+         (res (cider-nrepl-sync-request:eval exp)))
     (delete-region beg end)
-    (cider-interactive-eval exp (cider-eval-print-handler))))
+    (insert (format "%s" (lax-plist-get (rest res) "value")))))
 
 (general-nmap 'cider-mode-map
   "go" 'cogent/evil-cider-eval
