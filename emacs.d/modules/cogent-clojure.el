@@ -51,8 +51,6 @@ the expression with the result."
 (general-nmap 'cider-mode-map
   "go" 'cogent/evil-cider-eval
   "g!" 'cogent/evil-cider-eval-replace
-  ;; prefix arg to debug defun
-  "gd" #'cogent/eval-defun-at-point
   "] C-d" #'cider-find-var
   "K" #'cider-doc
   "M-r" (lambda () (interactive) (cider-load-file (buffer-file-name))))
