@@ -38,7 +38,13 @@
 
   (org-babel-do-load-languages
    'org-babel-load-languages
-   '((sql . t)))
+   '((sql . t)
+     (ruby . t)
+     (js . t)))
+
+  (with-eval-after-load 'ob-js
+    (setq org-babel-js-function-wrapper
+          "process.stdout.write(require('util').inspect(function(){\n%s\n}()));" ))
 
   :general
   (general-nmap :keymaps 'org-mode-map
