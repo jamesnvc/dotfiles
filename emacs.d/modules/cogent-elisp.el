@@ -44,7 +44,7 @@ results using eros overlay."
   "Evaluate and replace emacs-lisp expression given by <motion>."
   (let ((exp (read (buffer-substring-no-properties beg end))))
     (delete-region beg end)
-    (eval-expression exp t nil)))
+    (eval-expression exp t t)))
 
 (general-nmap '(emacs-lisp-mode-map lisp-interaction-mode-map)
   ;; Like vim-unimpaired
