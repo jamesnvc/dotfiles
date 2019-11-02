@@ -124,6 +124,7 @@
 
                " "
                mode-line-misc-info ; for eyebrowse
+               '(t erc-modified-channels-object)
 
                '(:eval (when-let (vc vc-mode)
                          (list " "
