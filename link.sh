@@ -37,3 +37,4 @@ link mbsyncrc ~/.mbsyncrc
 link notmuch-config ~/.notmuch-config
 link systemd_user/mbsync.service ~/.config/systemd/user/mbsync.service
 link systemd_user/mbsync.timer ~/.config/systemd/user/mbsync.timer
+link notmuch_hooks ~/.mail/gmail/.notmuch/hooks

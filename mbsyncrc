@@ -16,6 +16,6 @@ Inbox ~/.mail/gmail/Inbox
 Channel gmail
 Master :gmail-remote:
 Slave :gmail-local:
-Patterns Inbox ![Gmail]* "[Gmail]/Sent Mail" "[Gmail]/Starred" "[Gmail]/All Mail"
+Patterns Inbox ![Gmail]* "[Gmail]/Sent Mail" "[Gmail]/Starred" "[Gmail]/All Mail" "[Gmail]/Drafts"
 Create Both
 SyncState *

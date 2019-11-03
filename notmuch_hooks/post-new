@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+notmuch tag +inbox -- folder:Inbox and tag:new
+notmuch tag -new -- tag:new

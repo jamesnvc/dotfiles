@@ -24,11 +24,11 @@
       message-default-mail-headers "Cc: \nBcc: \n"
 
       ;; postponed message is put in the following draft directory
-      message-auto-save-directory "~/.mail/draft"
+      message-auto-save-directory "~/.mail/gmail/[Gmail]/Drafts"
       message-kill-buffer-on-exit t
 
       ;; change the directory to store the sent mail
-      message-directory "~/.mail/")
+      message-directory "~/.mail/gmail/[Gmail]/Sent Mail")
 
 (with-eval-after-load 'notmuch
   (setq notmuch-address-selection-function
