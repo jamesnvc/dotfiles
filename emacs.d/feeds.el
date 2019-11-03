@@ -2,7 +2,6 @@
       '(("http://www.peppercarrot.com/feed/en/rss" comic)
         ("https://medium.com/feed/@steve.yegge" tech lisp mustread)
         "http://words.steveklabnik.com/feed"
-        ("http://xahlee.info/kbd/keyboard_blog.xml" tech)
         ("http://killsixbilliondemons.com/?feed=rss2" comic)
         "http://blog.ashleynh.me/rss/"
         "http://marcysutton.com/feed/"
@@ -109,7 +108,6 @@
         ("http://thepunchlineismachismo.com/?feed=rss" comic)
         "http://www.mistys-internet.website/blog/atom.xml"
         ("http://feeds2.feedburner.com/WastedTalentRss" comic)
-        ("http://www.hunterblackcomics.com/feed" comic)
         "http://cannaw.blogspot.com/feeds/posts/default"
         "http://billhiggins.us/journal/feed/"
         "http://blog.plover.com/index.rss"
