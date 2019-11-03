@@ -30,12 +30,14 @@
       ;; change the directory to store the sent mail
       message-directory "~/mail/")
 
-(with-eval-after-load "notmuch"
+(with-eval-after-load 'notmuch
   (setq notmuch-address-selection-function
         (lambda (prompt collection initial-input)
           (completing-read prompt (cons initial-input collection) nil t nil
                            'notmuch-address-history)))
   (require 'notmuch-address))
+
+(add-hook 'message-mode-hook (lambda () (auto-fill-mode -1)))
 
 (defun cogent/sync-mail ()
   "Run mail syncing shell script."
