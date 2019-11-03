@@ -33,3 +33,4 @@ link xsessionrc ~/.xsessionrc
 link zsh.d ~/.zsh.d
 link zshenv ~/.zshenv
 link zshrc ~/.zshrc
+link mbsyncrc ~/.mbsyncrc
