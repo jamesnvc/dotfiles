@@ -7,7 +7,6 @@
   :hook (erc-mode . erc-hl-nicks-enable))
 
 (with-eval-after-load 'erc
-  (setq erc-network-hide-list '(("localhost:6667" "QUIT" "JOIN" "MODE" "PART")))
   (add-hook 'window-configuration-change-hook
             (lambda () (setq erc-fill-column (- (window-width) 2)))))
 

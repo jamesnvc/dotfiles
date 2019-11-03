@@ -32,6 +32,7 @@
      (comic elfeed-log-debug-level-face)
      (busy shadow))))
  '(erc-autojoin-timing (quote ident))
+ '(erc-lurker-hide-list (quote ("JOIN" "PART" "QUIT" "MODE")))
  '(erc-modules
    (quote
     (autojoin button completion fill irccontrols list match menu move-to-prompt netsplit networks noncommands notifications readonly ring stamp spelling track)))
