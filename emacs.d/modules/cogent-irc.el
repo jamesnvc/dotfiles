@@ -6,6 +6,9 @@
   :commands erc-hl-nicks-enable
   :hook (erc-mode . erc-hl-nicks-enable))
 
-(setq erc-network-hide-list '(("localhost:6667" "QUIT" "JOIN" "MODE" "PART")))
+(with-eval-after-load 'erc
+  (setq erc-network-hide-list '(("localhost:6667" "QUIT" "JOIN" "MODE" "PART")))
+  (add-hook 'window-configuration-change-hook
+            (lambda () (setq erc-fill-column (- (window-width) 2)))))
 
 (provide 'cogent-irc)
