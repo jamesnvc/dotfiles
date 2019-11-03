@@ -34,3 +34,6 @@ link zsh.d ~/.zsh.d
 link zshenv ~/.zshenv
 link zshrc ~/.zshrc
 link mbsyncrc ~/.mbsyncrc
+link notmuch-config ~/.notmuch-config
+link systemd_user/mbsync.service ~/.config/systemd/user/mbsync.service
+link systemd_user/mbsync.timer ~/.config/systemd/user/mbsync.timer
