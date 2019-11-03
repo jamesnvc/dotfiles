@@ -32,7 +32,6 @@
      (comic elfeed-log-debug-level-face)
      (busy shadow))))
  '(erc-autojoin-timing (quote ident))
- '(erc-network-hide-list (quote (("localhost:6667" "QUIT" "JOIN" "MODE" "PART"))))
  '(erc-modules
    (quote
     (autojoin button completion fill irccontrols list match menu move-to-prompt netsplit networks noncommands notifications readonly ring stamp spelling track)))
