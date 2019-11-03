@@ -24,11 +24,11 @@
       message-default-mail-headers "Cc: \nBcc: \n"
 
       ;; postponed message is put in the following draft directory
-      message-auto-save-directory "~/mail/draft"
+      message-auto-save-directory "~/.mail/draft"
       message-kill-buffer-on-exit t
 
       ;; change the directory to store the sent mail
-      message-directory "~/mail/")
+      message-directory "~/.mail/")
 
 (with-eval-after-load 'notmuch
   (setq notmuch-address-selection-function
@@ -39,21 +39,11 @@
 
 (add-hook 'message-mode-hook (lambda () (auto-fill-mode -1)))
 
-(defun cogent/sync-mail ()
-  "Run mail syncing shell script."
-  (interactive)
-  (let ((process-connection-type nil))
-    (start-process "sync-mail-process" nil
-                   (expand-file-name "~/bin/sync_mail.sh"))))
-
 (general-define-key :keymaps '(notmuch-search-mode-map)
                     "j" #'notmuch-search-next-thread
                     "k" #'notmuch-search-previous-thread
                     "g g" #'notmuch-search-first-thread
                     "G" #'notmuch-search-last-thread)
-(general-def :keymaps '(notmuch-hello-mode-map
-                        notmuch-search-mode-map)
-  "!" #'cogent/sync-mail)
 
 (use-package helm-notmuch
   :defer t)
