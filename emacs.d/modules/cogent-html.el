@@ -14,10 +14,10 @@
   (setq-default web-mode-enable-current-element-highlight t))
 
 (use-package rainbow-mode
-  :config
-  (dolist (mode '(css-mode less-css-mode html-mode web-mode))
-    (add-hook (intern (concat (symbol-name mode) "-hook"))
-              (lambda () (rainbow-mode))))
+  :hook ((css-mode . rainbow-mode)
+         (less-css-mode . rainbow-mode)
+         (html-mode . rainbow-mode)
+         (web-mode . rainbow-mode))
   :diminish rainbow-mode)
 
 (provide 'cogent-html)
