@@ -48,7 +48,6 @@
 (require 'cogent-markdown)
 (require 'cogent-prolog)
 (require 'cogent-mail)
-(require 'cogent-twitter)
 (require 'cogent-feeds)
 (require 'cogent-misc-langs)
 (require 'cogent-fish)
