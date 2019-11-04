@@ -31,6 +31,9 @@
      (mustread elfeed-log-info-level-face)
      (comic elfeed-log-debug-level-face)
      (busy shadow))))
+ '(erc-autojoin-channels-alist
+   (quote
+    (("localhost:6667" "#fb-family" "#fb-western-chums" "#lhl-teachers" "&bitlbee"))))
  '(erc-autojoin-timing (quote ident))
  '(erc-lurker-hide-list (quote ("JOIN" "PART" "QUIT" "MODE")))
  '(erc-modules
