@@ -142,19 +142,6 @@
        (point-marker)))
 (add-hook 'compilation-filter-hook #'compilation-ansi-color-process-output)
 
-;; (use-package spaceline
-;;   :config
-;;   (require 'spaceline-config)
-;;   (spaceline-emacs-theme)
-;;   (spaceline-helm-mode 1)
-;;   (spaceline-toggle-buffer-encoding-abbrev-off)
-;;   (spaceline-toggle-buffer-size-off)
-;;   (spaceline-toggle-major-mode-on)
-;;   (spaceline-toggle-version-control-on)
-;;   (setq spaceline-highlight-face-func #'spaceline-highlight-face-evil-state
-;;         spaceline-window-numbers-unicode t
-;;         spaceline-workspace-numbers-unicode t))
-
 (with-eval-after-load 'dash (dash-enable-font-lock))
 
 (cond
