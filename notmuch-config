@@ -48,8 +48,8 @@ other_email=james@bloomventures.io;james.cash@occasionallycogent.com;
 #   in the mail store.
 #
 [new]
-tags=new
-ignore=
+tags=new;
+ignore=.mbsyncstate;.uidvalidity
 
 # Search configuration
 #
