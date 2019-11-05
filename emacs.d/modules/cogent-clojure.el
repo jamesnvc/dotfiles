@@ -44,7 +44,10 @@
   "Evaluate clojure expression given by <motion> via cider and replace
 the expression with the result."
   (let* ((exp (buffer-substring-no-properties beg end))
-         (res (cider-nrepl-sync-request:eval exp)))
+         (res (cider-nrepl-sync-request:eval
+               exp
+               nil
+               (if (cider-ns-form-p exp) "user" (cider-current-ns)))))
     (delete-region beg end)
     (insert (format "%s" (lax-plist-get (rest res) "value")))))
 
