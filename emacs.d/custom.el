@@ -33,8 +33,9 @@
      (busy shadow))))
  '(erc-autojoin-channels-alist
    (quote
-    (("localhost:6667" "#fb-family" "#fb-western-chums" "#lhl-teachers" "&bitlbee"))))
+    (("localhost:6667" "#fb-family" "#lhl-teachers" "#fb-western-chums" "&bitlbee"))))
  '(erc-autojoin-timing (quote ident))
+ '(erc-join-buffer (quote bury))
  '(erc-lurker-hide-list (quote ("JOIN" "PART" "QUIT" "MODE")))
  '(erc-modules
    (quote
