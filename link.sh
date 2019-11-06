@@ -35,6 +35,9 @@ link zshenv ~/.zshenv
 link zshrc ~/.zshrc
 link mbsyncrc ~/.mbsyncrc
 link notmuch-config ~/.notmuch-config
+# To set up systemd user units,
+# systemctl --user daemon-reload
+# systemctl --user start mbsync.timer
 link systemd_user/mbsync.service ~/.config/systemd/user/mbsync.service
 link systemd_user/mbsync.timer ~/.config/systemd/user/mbsync.timer
 link notmuch_hooks ~/.mail/gmail/.notmuch/hooks
