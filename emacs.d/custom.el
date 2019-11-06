@@ -21,6 +21,7 @@
       (if
           (string-equal system-type "darwin")
           "afplay" "aplay")))))
+ '(dired-listing-switches "-alh")
  '(display-line-numbers-type (quote relative))
  '(display-raw-bytes-as-hex t)
  '(ediff-window-setup-function (quote ediff-setup-windows-plain))
