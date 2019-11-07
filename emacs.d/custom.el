@@ -117,6 +117,7 @@
       "* %?
 Entered on %U
    %a"))))
+ '(org-confirm-babel-evaluate nil)
  '(org-modules (quote (ol-info ol-eshell)))
  '(org-return-follows-link t)
  '(pdf-annot-activate-created-annotations t)
