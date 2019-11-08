@@ -1,9 +1,9 @@
 [Unit]
 Description=Mailbox synchronization service
+JobRunningTimeoutSec=600
 
 [Service]
 Type=oneshot
-JobRunningTimeoutSec=300
 ExecStartPre=-/home/james/dotfiles/notmuch_archive.sh
 ExecStart=/usr/bin/mbsync -Va
 ExecStartPost=/usr/bin/notmuch new
