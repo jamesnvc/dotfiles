@@ -27,11 +27,7 @@
                     "<f2>" #'cogent/eyebrowse-helm
                     "<f3>" #'cogent/eshell-helm
                     "<f4>" #'calc
-                    "<f5>" (lambda (arg) (interactive "P")
-                             (cond
-                              ((eq arg 1) (notmuch-search "tag:inbox" nil))
-                              (arg (helm-notmuch))
-                              (t (notmuch))))
+                    "<f5>" #'cogent/notmuch
                     "<f6>" #'elfeed
                     "<f9>" #'helm-bookmarks)
 
