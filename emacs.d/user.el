@@ -27,7 +27,9 @@
                     "<f2>" #'cogent/eyebrowse-helm
                     "<f3>" #'cogent/eshell-helm
                     "<f4>" #'calc
-                    "<f5>" #'cogent/notmuch
+                    "<f5> 5" #'cogent/notmuch-inbox
+                    "<f5> 4" #'helm-notmuch
+                    "<f5> 3" #'notmuch
                     "<f6>" #'elfeed
                     "<f9>" #'helm-bookmarks)
 

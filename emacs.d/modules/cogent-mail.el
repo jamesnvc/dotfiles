@@ -49,11 +49,8 @@
 (use-package helm-notmuch
   :defer t)
 
-(defun cogent/notmuch (arg)
-  (interactive "P")
-  (cond
-   ((eq arg 1) (notmuch))
-   (arg (helm-notmuch))
-   (t (notmuch-search "tag:inbox" t))))
+(defun cogent/notmuch-inbox ()
+  (interactive)
+  (notmuch-search "tag:inbox" t))
 
 (provide 'cogent-mail)
