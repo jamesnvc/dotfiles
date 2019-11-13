@@ -5,7 +5,6 @@
 (autoload 'notmuch "notmuch"
   "notmuch mail" t)
 
-
 ;; setup the mail address and use name
 (setq mail-user-agent 'message-user-agent
       user-mail-address "james.nvc@gmail.com"
