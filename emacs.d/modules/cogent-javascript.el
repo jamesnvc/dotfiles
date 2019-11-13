@@ -49,6 +49,7 @@
 (use-package typescript-mode
   :commands typescript-mode)
 
+;;; autoformat stuff - from https://github.com/munen/emacs.d/#auto-formatting
 (defun autoformat-with (strategy)
   "Automatically format current buffer using STRATEGY."
   (let ((p (point))
