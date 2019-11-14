@@ -132,4 +132,5 @@
         ("http://www.thestar.com/feeds.articles.news.canada.rss" busy news news-canada)
         ("http://www.thestar.com/feeds.articles.news.world.rss" busy news news-world)
         ("https://blogs.msdn.microsoft.com/oldnewthing/feed" tech)
-        ("http://prologhub.pl/updates.atom" tech prolog)))
+        ("http://prologhub.pl/updates.atom" tech prolog)
+        ("https://200ok.ch/atom.xml" tech)))
