@@ -25,14 +25,14 @@
   (set-frame-font "PragmataPro 10" nil t))
 
 (general-define-key :keymaps 'global
-                    "<f2>" #'cogent/eyebrowse-helm
-                    "<f3>" #'cogent/eshell-helm
-                    "<f4>" #'calc
+                    "<f2>"   #'cogent/eyebrowse-helm
+                    "<f3>"   #'cogent/eshell-helm
+                    "<f4>"   #'calc
                     "<f5> 5" #'cogent/notmuch-inbox
                     "<f5> 4" #'helm-notmuch
                     "<f5> 3" #'notmuch
-                    "<f6>" #'elfeed
-                    "<f9>" #'helm-bookmarks)
+                    "<f6>"   #'elfeed
+                    "<f9>"   #'helm-bookmarks)
 
 ;; Leader key stuff
 (defun cogent/quit-help-window ()
