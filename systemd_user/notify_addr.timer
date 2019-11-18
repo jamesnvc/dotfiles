@@ -1,0 +1,10 @@
+[Unit]
+Description=v6 logging timer
+
+[Timer]
+OnBootSec=5m
+OnUnitActiveSec=30m
+Unit=notify_addr.service
+
+[Install]
+WantedBy=timers.target

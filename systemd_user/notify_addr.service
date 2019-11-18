@@ -1,0 +1,7 @@
+[Unit]
+Description=Upload my v6 IP address
+JobRunningTimeoutSec=10
+
+[Service]
+Type=oneshot
+ExecStart=/home/james/dotfiles/get_6addr.sh
