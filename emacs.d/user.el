@@ -11,8 +11,7 @@
             (lambda () (setq eshell-path-env (concat dir ":" eshell-path-env)))))
 
 (cogent/add-to-all-paths (expand-file-name "~/.swivm/versions/8.1.10/bin"))
-(when (file-exists-p "~/.nvm/versions/node/v12.13.0/bin")
-  (cogent/add-to-all-paths (expand-file-name "~/.nvm/versions/node/v12.13.0/bin")))
+(cogent/add-to-all-paths (expand-file-name "~/.nvm/versions/node/v12.13.0/bin"))
 
 (when (string-equal system-type "darwin")
   (set-frame-font "PragmataPro 16" nil t)
