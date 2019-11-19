@@ -120,6 +120,7 @@ Entered on %U
  '(org-confirm-babel-evaluate nil)
  '(org-modules (quote (ol-info ol-eshell)))
  '(org-return-follows-link t)
+ '(org-src-tab-acts-natively t)
  '(pdf-annot-activate-created-annotations t)
  '(pdf-view-display-size (quote fit-page))
  '(pop-up-frame-alist (quote ((title . "emacs-popup-frame"))))
