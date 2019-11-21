@@ -3,12 +3,21 @@
 (set-frame-font "PragmataPro 7" nil t)
 (require 'cogent-pragmata)
 
+(defvar cogent/extra-path-dirs nil
+  "Extra directories I want added to PATH")
+
+(defun cogent/eshell-add-paths ()
+  (when cogent/extra-path-dirs
+    (setq eshell-path-env (concat (s-join ":" cogent/extra-path-dirs)
+                                  ":"
+                                  eshell-path-env))))
+(add-hook 'eshell-mode-hook #'cogent/eshell-add-paths)
+
 (defun cogent/add-to-all-paths (dir)
   "Add directory to exec-path, $PATH and eshell-path-env"
   (add-to-list 'exec-path dir)
   (setenv "PATH" (concat dir ":" (getenv "PATH")))
-  (add-hook 'eshell-mode-hook
-            (lambda () (setq eshell-path-env (concat dir ":" eshell-path-env)))))
+  (add-to-list 'cogent/extra-path-dirs dir))
 
 (cogent/add-to-all-paths (expand-file-name "~/.swivm/versions/8.1.10/bin"))
 (cogent/add-to-all-paths (expand-file-name "~/.nvm/versions/node/v12.13.0/bin"))
