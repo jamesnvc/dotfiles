@@ -50,6 +50,7 @@ results using eros overlay."
   ;; Like vim-unimpaired
   "] C-d" #'find-function-at-point
   "go" #'cogent/evil-elisp-eval
-  "g!" #'cogent/evil-elisp-eval-replace)
+  "g!" #'cogent/evil-elisp-eval-replace
+  "M-r" #'eval-buffer)
 
 (provide 'cogent-elisp)
