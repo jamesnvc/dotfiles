@@ -2,12 +2,29 @@
 
 (require 'cogent-package)
 
+(defvar cogent/exec-path-initialized nil)
+
+(defvar cogent/exec-path-after-inited nil)
+
+(defmacro cogent/after-path-init (&rest body)
+  "Make sure `body' is run after the path is inited from shell env."
+  `(if cogent/exec-path-initialized
+       (progn ,@body)
+     (push (lambda () (progn ,@body)) cogent/exec-path-after-inited)))
+
+(defun cogent/path-inited ()
+  (dolist (hook cogent/exec-path-after-inited)
+    (funcall hook))
+  (setq cogent/exec-path-after-inited nil))
+
 (use-package exec-path-from-shell
   :defer 2
   :commands exec-path-from-shell-initialize
   :if (memq window-system '(mac ns x))
   :config
-  (exec-path-from-shell-initialize))
+  (exec-path-from-shell-initialize)
+  (setq cogent/exec-path-initialized t)
+  (cogent/path-inited))
 
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)

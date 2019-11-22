@@ -15,9 +15,10 @@
 
 (defun cogent/add-to-all-paths (dir)
   "Add directory to exec-path, $PATH and eshell-path-env"
-  (add-to-list 'exec-path dir)
-  (setenv "PATH" (concat dir ":" (getenv "PATH")))
-  (add-to-list 'cogent/extra-path-dirs dir))
+  (cogent/after-path-init
+   (add-to-list 'exec-path dir)
+   (setenv "PATH" (concat dir ":" (getenv "PATH")))
+   (add-to-list 'cogent/extra-path-dirs dir)))
 
 (cogent/add-to-all-paths (expand-file-name "~/.swivm/versions/8.1.10/bin"))
 (cogent/add-to-all-paths (expand-file-name "~/.nvm/versions/node/v12.13.0/bin"))
