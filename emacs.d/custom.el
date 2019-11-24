@@ -104,6 +104,7 @@
      (:name "flagged" :query "tag:flagged"))))
  '(org-babel-clojure-backend (quote cider))
  '(org-babel-load-languages (quote ((shell . t) (emacs-lisp . t) (dot . t))))
+ '(org-bullets-bullet-list (quote ("●" "◉" "◎" "○")))
  '(org-capture-templates
    (quote
     (("n" "Note" plain
