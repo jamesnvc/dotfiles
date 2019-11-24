@@ -117,7 +117,10 @@
       (file "~/org/bloom.org")
       "* %?
 Entered on %U
-   %a"))))
+   %a")
+     ("t" "Errand" entry
+      (file+headline "~/org/todo.org" "Errands")
+      "** TODO %?"))))
  '(org-confirm-babel-evaluate nil)
  '(org-modules (quote (ol-info ol-eshell)))
  '(org-return-follows-link t)
