@@ -103,6 +103,7 @@
      (:name "new" :query "tag:inbox and tag:unread")
      (:name "flagged" :query "tag:flagged"))))
  '(org-agenda-show-future-repeats nil)
+ '(org-agenda-skip-scheduled-if-done t)
  '(org-babel-clojure-backend (quote cider))
  '(org-babel-load-languages (quote ((shell . t) (emacs-lisp . t) (dot . t))))
  '(org-bullets-bullet-list (quote ("●" "◉" "◎" "○")))
