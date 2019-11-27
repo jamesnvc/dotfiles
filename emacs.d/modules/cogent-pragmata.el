@@ -196,9 +196,6 @@
   (dolist (alias pragmatapro-prettify-symbols-alist)
     (push alias prettify-symbols-alist)))
 
-(add-hook 'prog-mode-hook
-          #'cogent/add-pragmatapro-prettify-symbols-alist)
-
 (defun cogent/prettify-symbols-anywhere-compose-p (start end _match)
   "Like the default, but don't care if we're in a comment"
   ;; Check that the chars should really be composed into a symbol.
@@ -208,10 +205,13 @@
                            '(?w ?_) '(?. ?\\))))
     (not (or (memq (char-syntax (or (char-before start) ?\s)) syntaxes-beg)
              (memq (char-syntax (or (char-after end) ?\s)) syntaxes-end)))))
-(add-hook 'prog-mode-hook
-          (lambda () (setq-local prettify-symbols-compose-predicate
-                            #'cogent/prettify-symbols-anywhere-compose-p)))
 
-(global-prettify-symbols-mode +1)
+(when (version< emacs-version "27.0")
+  (add-hook 'prog-mode-hook
+            #'cogent/add-pragmatapro-prettify-symbols-alist)
+  (add-hook 'prog-mode-hook
+            (lambda () (setq-local prettify-symbols-compose-predicate
+                              #'cogent/prettify-symbols-anywhere-compose-p)))
+  (global-prettify-symbols-mode +1))
 
 (provide 'cogent-pragmata)
