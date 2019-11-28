@@ -165,7 +165,11 @@ more-helpful local prompt."
 
 (setq eshell-highlight-prompt nil)
 
-(autoload 'cogent/eshell-helm "cogent-eshell-helm"
-  "Eshell helm source" t)
+(use-package helm-switch-eshell
+  :commands helm-switch-eshell
+  :straight (helm-switch-eshell
+             :type git
+             :host github
+             :repo "jamesnvc/helm-switch-eshell"))
 
 (provide 'cogent-eshell)
