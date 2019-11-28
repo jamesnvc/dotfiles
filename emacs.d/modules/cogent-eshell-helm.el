@@ -3,7 +3,6 @@
 (require 'helm)
 (require 'helm-lib)
 (require 'cl-lib)
-(require 'cogent-helm) ; for vert/horiz switching functions
 
 (defun cogent/buffer-dir-name (buf)
   (pwd-replace-home (buffer-local-value 'default-directory buf)))
@@ -49,7 +48,9 @@
 
 (defun cogent/eshell-helm-horiz-split (candidate)
   (if (bufferp candidate)
-      (helm-buffer-switch-horiz-window candidate)
+      (progn
+        (select-window (split-window-below))
+        (switch-to-buffer candidate))
     (let ((default-directory candidate))
       (select-window (split-window-below))
       (eshell t)
@@ -57,7 +58,9 @@
 
 (defun cogent/eshell-helm-vert-split (candidate)
   (if (bufferp candidate)
-      (helm-buffer-switch-vert-window candidate)
+      (progn
+        (select-window (split-window-right))
+        (switch-to-buffer candidate))
     (let ((default-directory candidate))
       (select-window (split-window-right))
       (eshell t)
