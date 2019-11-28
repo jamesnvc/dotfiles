@@ -191,4 +191,11 @@
   :commands helm-descbinds-mode
   :init (helm-descbinds-mode))
 
+(use-package helm-eshell
+  :commands helm-eshell
+  :straight (helm-eshell
+             :type git
+             :host github
+             :repo "jamesnvc/helm-eshell"))
+
 (provide 'cogent-helm)
