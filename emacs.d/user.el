@@ -36,7 +36,7 @@
 
 (general-define-key :keymaps 'global
                     "<f2>"   #'cogent/eyebrowse-helm
-                    "<f3>"   #'helm-switch-eshell
+                    "<f3>"   #'helm-switch-shell
                     "<f4>"   #'calc
                     "<f5> 5" #'cogent/notmuch-inbox
                     "<f5> 4" #'helm-notmuch
