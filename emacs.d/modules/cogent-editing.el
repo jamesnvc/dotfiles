@@ -52,7 +52,7 @@
 
 ;; A function for easily editing a file as root through TRAMP.
 (defun sudo-edit (&optional arg)
-  (interactive "p")
+  (interactive "P")
   (if (or arg (not buffer-file-name))
       (find-file (concat "/sudo:root@localhost:"
                          (if (fboundp 'helm-read-file-name)
