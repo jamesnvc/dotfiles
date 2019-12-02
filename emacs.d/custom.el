@@ -41,7 +41,7 @@
  '(erc-lurker-hide-list (quote ("JOIN" "PART" "QUIT" "MODE")))
  '(erc-modules
    (quote
-    (autojoin button completion fill irccontrols list match menu move-to-prompt netsplit networks noncommands notifications readonly ring stamp spelling track)))
+    (hl-nicks autojoin button completion fill irccontrols list match menu move-to-prompt netsplit networks noncommands notifications readonly ring stamp spelling track image)))
  '(erc-track-exclude-types (quote ("JOIN" "NICK" "PART" "QUIT" "MODE" "333" "353")))
  '(eshell-visual-commands
    (quote
