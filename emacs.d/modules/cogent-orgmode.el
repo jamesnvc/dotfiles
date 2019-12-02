@@ -7,9 +7,10 @@
    (concat (read-string "Name: ") ".org")
    "~/org/notebook/"))
 
-(use-package org-plus-contrib
-  :defer t
-  :config
+(straight-use-package 'org-plus-contrib)
+(progn
+  ;; :demand t
+  ;; :config
   (require 'ox-beamer)
   (setq org-replace-disputed-keys t)
   (setq org-default-notes-file (concat org-directory "/notes.org"))
@@ -46,7 +47,7 @@
     (setq org-babel-js-function-wrapper
           "process.stdout.write(require('util').inspect(function(){\n%s\n}()));" ))
 
-  :general
+  ;; :general
   (general-nmap :keymaps 'org-mode-map
     "<return>" #'org-return)
   (general-nvmap :prefix "SPC o"
