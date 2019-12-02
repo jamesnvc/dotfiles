@@ -76,4 +76,6 @@
           :buffer "*helm eyebrowse*"
           :prompt "eyebrowse: ")))
 
+(winner-mode 1)
+
 (provide 'cogent-windows)
