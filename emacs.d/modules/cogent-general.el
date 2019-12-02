@@ -50,4 +50,7 @@
                                 "open"
                               "xdg-open"))
 
+(put 'narrow-to-region 'disabled nil)
+(put 'narrow-to-page 'disabled nil)
+
 (provide 'cogent-general)

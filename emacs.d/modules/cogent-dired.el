@@ -48,4 +48,6 @@
   "C-j" #'evil-window-down
   "C-k" #'evil-window-up )
 
+(put 'dired-find-alternate-file 'disabled nil)
+
 (provide 'cogent-dired)
