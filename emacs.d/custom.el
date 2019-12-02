@@ -125,7 +125,7 @@ Entered on %U
       (file+headline "~/org/todo.org" "Errands")
       "** TODO %?"))))
  '(org-confirm-babel-evaluate nil)
- '(org-modules (quote (ol-info ol-eshell)))
+ '(org-modules (quote (ol-info ol-eshell ol-notmuch)))
  '(org-return-follows-link t)
  '(org-src-tab-acts-natively t)
  '(pdf-annot-activate-created-annotations t)
