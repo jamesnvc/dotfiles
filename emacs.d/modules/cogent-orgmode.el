@@ -7,7 +7,7 @@
    (concat (read-string "Name: ") ".org")
    "~/org/notebook/"))
 
-(use-package org
+(use-package org-plus-contrib
   :defer t
   :config
   (require 'ox-beamer)
