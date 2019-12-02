@@ -8,6 +8,7 @@
  '(ansi-color-names-vector
    (vector "#ffffff" "#f36c60" "#8bc34a" "#fff59d" "#4dd0e1" "#b39ddb" "#81d4fa" "#263238"))
  '(auth-sources (quote ("~/.authinfo.gpg" "~/.netrc")))
+ '(calendar-week-start-day 1)
  '(clojure-indent-style :align-arguments)
  '(company-quickhelp-color-background "#44475a")
  '(company-quickhelp-color-foreground "#f8f8f2")
