@@ -8,7 +8,8 @@
   :magic ("%PDF" . pdf-view-mode)
   :config
   (pdf-tools-install)
-  :hook (pdf-view-mode . (lambda () (display-line-numbers-mode -1))))
+  :hook ((pdf-view-mode . (lambda () (display-line-numbers-mode -1)))
+         (pdf-view-mode . pdf-tools-enable-minor-modes)))
 
 
 (provide 'cogent-reading)
