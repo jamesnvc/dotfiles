@@ -166,6 +166,7 @@
   (cogent/leader-def
     :states '(normal visual)
     "P" #'helm-projectile
+    "B" #'helm-projectile-switch-to-buffer
     "t" #'helm-projectile-find-file
     "s" #'helm-projectile-rg))
 
