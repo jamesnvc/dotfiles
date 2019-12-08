@@ -50,12 +50,15 @@
   (defun cogent/save-all-agenda-buffers ()
     "Function to save all agenda buffers that are currently open, based on `org-agenda-files'."
     (interactive)
-    (save-current-buffer
-      (dolist (buffer (buffer-list t))
-        (set-buffer buffer)
-        (when (member (buffer-file-name)
-                      (mapcar #'expand-file-name (org-agenda-files t)))
-          (save-buffer)))))
+    (let ((agenda-files (->> (org-agenda-files t)
+                            (mapcar #'expand-file-name))))
+      (save-current-buffer
+        (dolist (buffer (buffer-list t))
+          (when (and
+                 (buffer-modified-p buffer)
+                 (member (buffer-file-name buffer) agenda-files))
+            (set-buffer buffer)
+            (save-buffer))))))
 
   (add-hook 'org-agenda-finalize-hook #'cogent/save-all-agenda-buffers)
 
