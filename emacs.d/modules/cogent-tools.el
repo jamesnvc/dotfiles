@@ -16,4 +16,24 @@
   (evil-set-initial-state 'pass-mode 'emacs)
   (setq-default password-store-password-length 18))
 
+(use-package keycast
+  :commands keycast-mode
+  :straight (keycast
+             :type git
+             :host github
+             :repo "tarsius/keycast")
+  :config
+  (setq keycast-insert-after '(:eval (list (nyan-create)))))
+
+(use-package gif-screencast
+  :commands gif-screencast
+  :straight (gif-screencast
+             :type git
+             :host gitlab
+             :repo "ambrevar/emacs-gif-screencast")
+  :config
+  (when (string= system-type "darwin")
+    (setq gif-screencast-args '("-x")))
+  (setq gif-screencast-cropping-program "mogrify"))
+
 (provide 'cogent-tools)
