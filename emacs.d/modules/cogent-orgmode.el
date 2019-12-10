@@ -47,21 +47,6 @@
     (setq org-babel-js-function-wrapper
           "process.stdout.write(require('util').inspect(function(){\n%s\n}()));" ))
 
-  (defun cogent/save-all-agenda-buffers ()
-    "Function to save all agenda buffers that are currently open, based on `org-agenda-files'."
-    (interactive)
-    (let ((agenda-files (->> (org-agenda-files t)
-                            (mapcar #'expand-file-name))))
-      (save-current-buffer
-        (dolist (buffer (buffer-list t))
-          (when (and
-                 (buffer-modified-p buffer)
-                 (member (buffer-file-name buffer) agenda-files))
-            (set-buffer buffer)
-            (save-buffer))))))
-
-  (add-hook 'org-agenda-finalize-hook #'cogent/save-all-agenda-buffers)
-
   ;; :general
   (general-nmap :keymaps 'org-mode-map
     "<return>" #'org-return)
