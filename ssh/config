@@ -96,3 +96,8 @@ Host cosmiccms
     Hostname cms.cosmicwalk.app
     User james
     IdentityFile ~/.ssh-keys/cosmiccms
+
+Host familytree
+     Hostname familytree.occasionallycogent.com
+     User james
+     IdentityFile ~/.ssh-keys/familytree
