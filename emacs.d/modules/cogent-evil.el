@@ -113,6 +113,24 @@ evil to have."
 
 (use-package evil-surround
   :demand t
+  :init
+  (el-patch-feature evil-surround)
+  (el-patch-defvar evil-surround-read-tag-map
+    (let ((map (copy-keymap minibuffer-local-map)))
+      (define-key map ">" (lambda ()
+                            (interactive)
+                            (call-interactively 'self-insert-command)
+                            (el-patch-swap
+                              (run-at-time nil nil
+                                           (lambda ()
+                                             (when (active-minibuffer-window)
+                                               (select-window (active-minibuffer-window))
+                                               (exit-minibuffer))))
+                              (when (active-minibuffer-window)
+                                (select-window (active-minibuffer-window))
+                                (exit-minibuffer)))))
+      map)
+    "Keymap used by `evil-surround-read-tag'.")
   :config (global-evil-surround-mode 1))
 
 (use-package evil-search-highlight-persist
