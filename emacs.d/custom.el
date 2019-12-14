@@ -79,6 +79,7 @@
  '(helm-use-undecorated-frame-option t)
  '(hl-sexp-background-color "#1c1f26")
  '(load-prefer-newer t)
+ '(lsp-enable-text-document-color nil)
  '(lsp-ui-doc-border "royal blue")
  '(lsp-ui-doc-header nil)
  '(lsp-ui-doc-max-height 50)
