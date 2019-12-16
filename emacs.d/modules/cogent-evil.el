@@ -129,6 +129,19 @@ evil to have."
                               (exit-minibuffer))))
       map)
     "Keymap used by `evil-surround-read-tag'.")
+  (el-patch-defun evil-surround-read-from-minibuffer (&rest args)
+    (when (el-patch-wrap
+            1 1
+            (or evil-surround-record-repeat
+                (evil-repeat-recording-p)))
+      (evil-repeat-keystrokes 'post))
+    (let ((res (apply #'read-from-minibuffer args)))
+      (when (el-patch-wrap
+              1 1
+              (or evil-surround-record-repeat
+                  (evil-repeat-recording-p)))
+        (evil-repeat-record res))
+      res))
   :config (global-evil-surround-mode 1))
 
 (use-package evil-search-highlight-persist
