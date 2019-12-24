@@ -19,6 +19,10 @@ if test -d "$HOME/src/plugin-foreign-env"
     set fish_function_path $fish_function_path "$HOME/src/plugin-foreign-env/functions"
 end
 
-if is_func fenv; and test -f /etc/profile.d/nix.sh
-    fenv source /etc/profile.d/nix.sh
+if is_func fenv
+    if test -f /etc/profile.d/nix.sh
+        fenv source /etc/profile.d/nix.sh
+    else if test -f /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+        fenv source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+    end
 end
