@@ -36,4 +36,7 @@
     (setq gif-screencast-args '("-x")))
   (setq gif-screencast-cropping-program "mogrify"))
 
+(use-package direnv
+  :config (direnv-mode))
+
 (provide 'cogent-tools)
