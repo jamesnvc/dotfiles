@@ -14,3 +14,11 @@ alias l=ls
 alias ec="emacsclient --create-frame --alternate-editor=emacs"
 
 direnv hook fish | source
+
+if test -d "$HOME/src/plugin-foreign-env"
+    set fish_function_path $fish_function_path "$HOME/src/plugin-foreign-env/functions"
+end
+
+if is_func fenv; and test -f /etc/profile.d/nix.sh
+    fenv source /etc/profile.d/nix.sh
+end
