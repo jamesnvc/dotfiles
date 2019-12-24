@@ -1,5 +1,7 @@
 # -*- sh -*-
 # vim: syntax=sh :
+export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libgtk3-nocsd.so.0
+
 path+=$HOME/bin
 path+=$HOME/software/bin
 path+=$HOME/.multirust/toolchains/stable/cargo/bin
