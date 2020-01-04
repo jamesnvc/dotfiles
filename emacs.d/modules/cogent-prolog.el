@@ -19,8 +19,8 @@
       :back "|}")))
   (mmm-add-mode-ext-class 'prolog-mode nil 'prolog-javascript))
 
-(add-to-list 'auto-mode-alist '("\\.pl$" . prolog-mode))
-(add-to-list 'auto-mode-alist '("\\.plt$" . prolog-mode))
+(add-to-list 'auto-mode-alist '("\\.pl\\'" . prolog-mode))
+(add-to-list 'auto-mode-alist '("\\.plt\\'" . prolog-mode))
 
 (defun cogent/prolog-add-use-module (module predicates)
   "Add a use_module statement to the top of the current prolog file"
