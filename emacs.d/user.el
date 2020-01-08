@@ -114,6 +114,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
   (setq org-use-fast-todo-selection t)
   (setq org-agenda-files (list (concat org-directory "/notes.org")
                                (concat org-directory "/bloom.org")
+                               (concat org-directory "/Raj_work.org")
                                (concat org-directory "/todo.org")
                                (concat org-directory "/notebook")))
   (setq org-refile-targets '((nil . (:maxlevel . 9))))
