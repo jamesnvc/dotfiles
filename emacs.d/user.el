@@ -125,7 +125,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 ;; Elfeed
 (load (concat dotfiles-dir "feeds.el"))
 
-;; Scheme indentition for my macros
+;; Scheme indentation for my macros
 (defun cogent/scheme-hook ()
   (put 'if-let 'scheme-indent-function 1))
 (add-hook 'scheme-mode-hook #'cogent/scheme-hook)
