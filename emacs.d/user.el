@@ -23,7 +23,10 @@
 (cogent/add-to-all-paths (expand-file-name "~/.swivm/versions/v8.1.19/bin"))
 (cogent/add-to-all-paths (expand-file-name "~/.nvm/versions/node/v12.13.0/bin"))
 
-(when (string-equal system-type "darwin")
+(when (string-equal (system-name) "zhora.local")
+  (set-frame-font "PragmataPro 14" nil t))
+
+(when (string-equal (system-name) "fuchikoma.local")
   (set-frame-font "PragmataPro 16" nil t)
   (global-prettify-symbols-mode -1)
   (mac-auto-operator-composition-mode 1)
