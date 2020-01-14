@@ -26,7 +26,7 @@
 (when (string-equal (system-name) "zhora.local")
   (set-frame-font "PragmataPro 14" nil t))
 
-(when (string-equal (system-name) "fuchikoma.local")
+(when (string-equal (system-name) "fuchikoma")
   (set-frame-font "PragmataPro 16" nil t)
   (global-prettify-symbols-mode -1)
   (mac-auto-operator-composition-mode 1)
