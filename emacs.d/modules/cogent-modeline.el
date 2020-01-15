@@ -156,14 +156,15 @@
 
                (propertize "%p" 'face 'font-lock-constant-face)
                '(pdf-misc-size-indication-minor-mode
-                 (:eval (list
-                         " "
-                         (nth (1- (pdf-view-current-page))
-                              (pdf-cache-pagelabels))
-                         "/"
-                         (number-to-string (pdf-view-current-page))
-                         "/"
-                         (number-to-string (pdf-cache-number-of-pages)))))
+                 (:eval (let* ((page (pdf-view-current-page))
+                               (pdf-page (nth (1- page) (pdf-cache-pagelabels))))
+                          (list
+                           " "
+                           (when (not (string= (number-to-string page) pdf-page))
+                             (list "(" pdf-page ") "))
+                           (number-to-string (pdf-view-current-page))
+                           "/"
+                           (number-to-string (pdf-cache-number-of-pages))))))
 
                ;; spaces to align right
                '(:eval (propertize
