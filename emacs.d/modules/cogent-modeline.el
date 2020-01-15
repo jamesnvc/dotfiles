@@ -153,7 +153,17 @@
 
                ;; relative position in file
                '(:eval (list (nyan-create)))
+
                (propertize "%p" 'face 'font-lock-constant-face)
+               '(pdf-misc-size-indication-minor-mode
+                 (:eval (list
+                         " "
+                         (nth (1- (pdf-view-current-page))
+                              (pdf-cache-pagelabels))
+                         "/"
+                         (number-to-string (pdf-view-current-page))
+                         "/"
+                         (number-to-string (pdf-cache-number-of-pages)))))
 
                ;; spaces to align right
                '(:eval (propertize
