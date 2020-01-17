@@ -8,6 +8,7 @@
   :magic ("%PDF" . pdf-view-mode)
   :config
   (pdf-tools-install)
+  (define-pdf-cache-function pagelabels)
   :hook ((pdf-view-mode . (lambda () (display-line-numbers-mode -1)))
          (pdf-view-mode . pdf-tools-enable-minor-modes)))
 
