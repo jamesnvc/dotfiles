@@ -12,5 +12,10 @@
   :hook ((pdf-view-mode . (lambda () (display-line-numbers-mode -1)))
          (pdf-view-mode . pdf-tools-enable-minor-modes)))
 
+(use-package org-pdftools
+  :straight (org-pdftools
+             :type git
+             :host github
+             :repo "fuxialexander/org-pdftools"))
 
 (provide 'cogent-reading)
