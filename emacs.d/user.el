@@ -24,7 +24,9 @@
 (cogent/add-to-all-paths (expand-file-name "~/.nvm/versions/node/v12.13.0/bin"))
 
 (when (string-equal (system-name) "zhora.local")
-  (set-frame-font "PragmataPro 14" nil t))
+  (set-frame-font "PragmataPro 14" nil t)
+  (setq ns-antialias-text nil)
+  (cogent/add-to-all-paths (expand-file-name "~/bin")))
 
 (when (string-equal (system-name) "fuchikoma")
   (set-frame-font "PragmataPro 16" nil t)
