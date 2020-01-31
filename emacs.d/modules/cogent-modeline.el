@@ -109,7 +109,13 @@
                              (eyebrowse-switch-to-window-config
                               (+ 1 (mod (+ idx 1) (length confs))))))
                          map))
-               (text (format "%s/%s" (+ 1 idx) (length confs))))
+               (text (concat
+                      (propertize (number-to-string (1+ idx))
+                                  'face 'eyebrowse-mode-line-active)
+                      (propertize "/"
+                                  'face 'eyebrowse-mode-line-separator)
+                      (propertize (number-to-string (length confs))
+                                  'face 'eyebrowse-mode-line-inactive)) ))
           (concat
            (propertize eyebrowse-mode-line-left-delimiter
                        'face 'eyebrowse-mode-line-delimiters)

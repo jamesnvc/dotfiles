@@ -68,6 +68,7 @@
  '(exec-path-from-shell-arguments (quote ("-l")))
  '(eyebrowse-mode-line-left-delimiter "❲")
  '(eyebrowse-mode-line-right-delimiter "❳")
+ '(eyebrowse-mode-line-separator " ")
  '(eyebrowse-new-workspace t)
  '(flycheck-checkers
    (quote
@@ -202,6 +203,7 @@ Entered on %U
  '(company-tooltip-selection ((t (:background "#55586b" :foreground "#ccccc7"))))
  '(eyebrowse-mode-line-delimiters ((t (:foreground "#bd93f9"))))
  '(eyebrowse-mode-line-inactive ((t (:foreground "#6272a4"))))
+ '(eyebrowse-mode-line-separator ((t (:foreground "#8292c4"))))
  '(helm-candidate-number ((t (:background "#44475a" :foreground "#f8f8f2"))))
  '(helm-prefarg ((t (:foreground "#50fa7b"))))
  '(lsp-ui-peek-filename ((t (:foreground "#ffb86c"))))
