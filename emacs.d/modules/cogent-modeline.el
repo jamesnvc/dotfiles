@@ -109,10 +109,15 @@
                              (eyebrowse-switch-to-window-config
                               (+ 1 (mod (+ idx 1) (length confs))))))
                          map))
-               (text (format "[%s/%s]" (+ 1 idx) (length confs))))
-          (propertize text
-                      'local-map keymap
-                      'help-echo "Next workspace"))
+               (text (format "%s/%s" (+ 1 idx) (length confs))))
+          (concat
+           (propertize eyebrowse-mode-line-left-delimiter
+                       'face 'eyebrowse-mode-line-delimiters)
+           (propertize text
+                       'local-map keymap
+                       'help-echo "Next workspace")
+           (propertize eyebrowse-mode-line-right-delimiter
+                       'face 'eyebrowse-mode-line-delimiters)))
       indicator)))
 (advice-add 'eyebrowse-mode-line-indicator :around #'cogent/custom-eyebrowse-mode-line-indicator)
 
