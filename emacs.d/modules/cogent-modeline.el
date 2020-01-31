@@ -115,7 +115,7 @@
                       (propertize "/"
                                   'face 'eyebrowse-mode-line-separator)
                       (propertize (number-to-string (length confs))
-                                  'face 'eyebrowse-mode-line-inactive)) ))
+                                  'face 'eyebrowse-mode-line-inactive))))
           (concat
            (propertize eyebrowse-mode-line-left-delimiter
                        'face 'eyebrowse-mode-line-delimiters)
