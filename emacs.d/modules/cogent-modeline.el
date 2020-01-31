@@ -125,7 +125,8 @@
            (propertize eyebrowse-mode-line-right-delimiter
                        'face 'eyebrowse-mode-line-delimiters)))
       indicator)))
-(advice-add 'eyebrowse-mode-line-indicator :around #'cogent/custom-eyebrowse-mode-line-indicator)
+(advice-add 'eyebrowse-mode-line-indicator
+            :around #'cogent/custom-eyebrowse-mode-line-indicator)
 
 (setq-default mode-line-format
               (list
