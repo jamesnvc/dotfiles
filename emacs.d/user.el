@@ -47,6 +47,7 @@
                     "<f5> 4" #'helm-notmuch
                     "<f5> 3" #'notmuch
                     "<f6>"   #'elfeed
+                    "<f8>"   #'org-store-link
                     "<f9>"   #'helm-bookmarks)
 
 ;; Leader key stuff
