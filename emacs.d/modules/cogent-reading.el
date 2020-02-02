@@ -3,6 +3,7 @@
 (require 'cogent-package)
 
 (use-package pdf-tools
+  :defer t
   :commands (pdf-view-mode pdf-tools-install)
   :mode ("\\.[pP][dD][fF]\\'" . pdf-view-mode)
   :magic ("%PDF" . pdf-view-mode)
