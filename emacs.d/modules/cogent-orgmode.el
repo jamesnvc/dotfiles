@@ -52,7 +52,10 @@
     "<return>" #'org-return)
   (general-nvmap :prefix "SPC o"
     "a" #'org-agenda
-    "c" #'org-capture))
+    "c" #'org-capture)
+  (general-define-key
+   :keymaps 'org-mode-map
+   "C-c C-x C-r" #'org-clock-remove-overlays))
 
 (use-package org-bullets
   :after org
