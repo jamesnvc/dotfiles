@@ -37,7 +37,8 @@
         mac-option-modifier 'meta))
 
 (when (string-equal (system-name) "roy")
-  (set-frame-font "PragmataPro 10" nil t))
+  (set-frame-font "PragmataPro 10" nil t)
+  (cogent/add-to-all-paths (expand-file-name "~/.nix-profile/bin")))
 
 (general-define-key :keymaps 'global
                     "<f2>"   #'cogent/eyebrowse-helm
@@ -183,3 +184,5 @@ Take both changes in diff."
 (require 'server)
 (when (not (server-running-p))
   (server-start))
+
+(direnv-mode)

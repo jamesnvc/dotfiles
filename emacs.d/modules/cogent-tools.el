@@ -37,6 +37,7 @@
   (setq gif-screencast-cropping-program "mogrify"))
 
 (use-package direnv
+  :defer t
   :config (direnv-mode))
 
 (use-package nix-mode
