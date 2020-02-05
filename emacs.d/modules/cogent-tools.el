@@ -42,4 +42,7 @@
 (use-package nix-mode
   :mode "\\.nix\\'")
 
+(use-package typit
+  :defer t)
+
 (provide 'cogent-tools)
