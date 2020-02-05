@@ -24,5 +24,7 @@ if is_func fenv
         fenv source /etc/profile.d/nix.sh
     else if test -f /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
         fenv source /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
+    else if test -f "$HOME/.nix-profile/etc/profile.d/nix.sh"
+        fenv source "$HOME/.nix-profile/etc/profile.d/nix.sh"
     end
 end
