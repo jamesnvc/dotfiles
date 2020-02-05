@@ -5,14 +5,17 @@ function nixify --description 'Shell function to quickly setup nix + direnv in a
   end
   if test ! -e default.nix
     echo >default.nix "\
-with import <nixpkgs> {};
-stdenv.mkDerivation {
-  name = \"env\";
+{ pkgs ? import <nixpkgs> {} }:
+
+with pkgs;
+
+mkShell {
+  name = "env";
   buildInputs = [
-    bashInteractive
+
   ];
 }
 "
-    $EDITOR default.nix
+    eval $EDITOR default.nix
   end
 end
