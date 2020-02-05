@@ -101,3 +101,8 @@ Host familytree
      Hostname familytree.occasionallycogent.com
      User james
      IdentityFile ~/.ssh-keys/familytree
+
+Host ec2-montreal
+  Hostname 52.60.238.154
+  User ubuntu
+  IdentityFile ~/.ssh-keys/scrip_ec2
