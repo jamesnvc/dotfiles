@@ -43,7 +43,7 @@
 (use-package nix-mode
   :mode "\\.nix\\'")
 
-(use-package typit
+(use-package speed-type
   :defer t)
 
 (provide 'cogent-tools)
