@@ -23,8 +23,9 @@
   :if (memq window-system '(mac ns x))
   :config
   (exec-path-from-shell-initialize)
-  (exec-path-from-shell-copy-envs
-   '("NIX_PATH" "NIX_PROFILES" "NIX_SSL_CERT_FILE"))
+  (unless (getenv "NIX_PATH")
+    (exec-path-from-shell-copy-envs
+     '("NIX_PATH" "NIX_PROFILES" "NIX_SSL_CERT_FILE")))
   (setq cogent/exec-path-initialized t)
   (cogent/path-inited))
 
