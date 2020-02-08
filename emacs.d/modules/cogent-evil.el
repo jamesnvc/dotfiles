@@ -187,6 +187,9 @@ evil to have."
            "g l" #'evil-lion-left
            "g L" #'evil-lion-right))
 
+(use-package origami
+  :config (global-origami-mode))
+
 (evil-mode 1)
 
 (provide 'cogent-evil)
