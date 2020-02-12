@@ -105,4 +105,5 @@ Host familytree
 Host ec2-montreal
   Hostname 52.60.238.154
   User ubuntu
+  IdentitiesOnly yes
   IdentityFile ~/.ssh-keys/scrip_ec2
