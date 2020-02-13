@@ -113,8 +113,6 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 ;; Org
 
 (with-eval-after-load "org"
-  (setq cogent/org-capture-file (concat org-directory "/refile.org"))
-  (setq cogent/org-diary-file (concat org-directory "/diary.org"))
   (setq org-todo-keywords
         '((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
           (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)" "PHONE" "MEETING")))
