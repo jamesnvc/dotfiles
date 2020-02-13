@@ -123,6 +123,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
                                (concat org-directory "/bloom.org")
                                (concat org-directory "/Raj_work.org")
                                (concat org-directory "/todo.org")
+                               (concat org-directory "/gifts.org")
                                (concat org-directory "/notebook")))
   (setq org-refile-targets '((nil . (:maxlevel . 9))))
   (setq org-refile-use-outline-path t)
