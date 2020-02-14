@@ -8,10 +8,11 @@ function nixify --description 'Shell function to quickly setup nix + direnv in a
 { pkgs ? import <nixpkgs> {} }:
 pkgs.stdenv.mkDerivation {
   name = \"env\";
-  buildInputs = [
+  buildInputs = with pkgs; [
     # packages
   ];
 }
+
 "
     eval $EDITOR default.nix
   end
