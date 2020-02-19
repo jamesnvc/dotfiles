@@ -131,6 +131,7 @@ Entered on %U
       "** TODO %?"))))
  '(org-confirm-babel-evaluate nil)
  '(org-fontify-done-headline t)
+ '(org-hide-emphasis-markers t)
  '(org-modules (quote (ol-info ol-eshell ol-notmuch)))
  '(org-return-follows-link t)
  '(org-src-tab-acts-natively t)
