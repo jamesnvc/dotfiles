@@ -20,7 +20,7 @@
    (setenv "PATH" (concat dir ":" (getenv "PATH")))
    (add-to-list 'cogent/extra-path-dirs dir)))
 
-(cogent/add-to-all-paths (expand-file-name "~/.swivm/versions/v8.1.19/bin"))
+(cogent/add-to-all-paths (expand-file-name "~/.swivm/versions/8.1.19/bin"))
 (cogent/add-to-all-paths (expand-file-name "~/.nvm/versions/node/v12.13.0/bin"))
 
 (when (string-equal (system-name) "zhora.local")
