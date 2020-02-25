@@ -57,14 +57,18 @@
   :init
   (defun cogent/calendar ()
     (interactive)
+    (unless (boundp 'cogent/gcal-calendar-urls)
+      (load-library (concat dotfiles-dir "secrets.el.gpg")))
     (cfw:open-calendar-buffer
      :contents-sources
-     (list
+     (cons
       (cfw:org-create-source "Purple")
-      (cfw:ical-create-source
-       "gcal"
-       "https://calendar.google.com/calendar/ical/htd5027pt45uiu6kijh345dks8%40group.calendar.google.com/private-e8593f05d2c7ae19a97a875d3dc9d015/basic.ics"
-       "Blue")))))
+      (loop for index from 1
+            for url in cogent/gcal-calendar-urls
+            collect (cfw:ical-create-source
+                     (format "Gcal %d" index)
+                     url
+                     "Green"))))))
 
 (use-package calfw-ical
   :after calfw
