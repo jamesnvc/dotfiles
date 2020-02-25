@@ -52,4 +52,26 @@
   (interactive)
   (notmuch-search "tag:inbox" t))
 
+(use-package calfw
+  :commands (cfw:open-calendar-buffer)
+  :init
+  (defun cogent/calendar ()
+    (interactive)
+    (cfw:open-calendar-buffer
+     :contents-sources
+     (list
+      (cfw:org-create-source "Purple")
+      (cfw:ical-create-source
+       "gcal"
+       "https://calendar.google.com/calendar/ical/htd5027pt45uiu6kijh345dks8%40group.calendar.google.com/private-e8593f05d2c7ae19a97a875d3dc9d015/basic.ics"
+       "Blue")))))
+
+(use-package calfw-ical
+  :after calfw
+  :commands cfw:ical-create-source)
+
+(use-package calfw-org
+  :after calfw
+  :commands cfw:org-create-source)
+
 (provide 'cogent-mail)
