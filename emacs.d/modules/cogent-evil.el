@@ -112,7 +112,8 @@ evil to have."
     :states '(normal visual)
     "w" #'save-buffer
     "<SPC>" #'evil-ex
-    "x" #'evil-delete-buffer))
+    "x" #'kill-current-buffer
+    "X" #'evil-delete-buffer))
 
 (use-package evil-surround
   :demand t
