@@ -52,4 +52,30 @@
   (interactive)
   (notmuch-search "tag:inbox" t))
 
+(use-package calfw
+  :commands (cfw:open-calendar-buffer)
+  :init
+  (defun cogent/calendar ()
+    (interactive)
+    (unless (boundp 'cogent/gcal-calendar-urls)
+      (load-library (concat dotfiles-dir "secrets.el.gpg")))
+    (cfw:open-calendar-buffer
+     :contents-sources
+     (cons
+      (cfw:org-create-source "Purple")
+      (loop for index from 1
+            for url in cogent/gcal-calendar-urls
+            collect (cfw:ical-create-source
+                     (format "Gcal %d" index)
+                     url
+                     "Green"))))))
+
+(use-package calfw-ical
+  :after calfw
+  :commands cfw:ical-create-source)
+
+(use-package calfw-org
+  :after calfw
+  :commands cfw:org-create-source)
+
 (provide 'cogent-mail)
