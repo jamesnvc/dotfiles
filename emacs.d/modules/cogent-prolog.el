@@ -54,6 +54,7 @@
     (save-mark-and-excursion
       (let ((name-start (point))
             (name-end (progn (search-forward "(") (backward-char) (point)))
+            ;; [TODO] use tree-sitter to count args?
             (nargs (1+ (count-matches "," (point) (progn (forward-sexp)
                                                          (point))))))
         (setq name (buffer-substring-no-properties name-start name-end))
