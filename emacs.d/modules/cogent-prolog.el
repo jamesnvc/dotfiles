@@ -47,8 +47,26 @@
         (next-line)
         (insert ":- use_module(" module ", [" predicates "]).\n")))))
 
+(defun cogent/prolog-add-docstring ()
+  (interactive)
+  (let (name args end-pos)
+    (save-mark-and-excursion
+      (let ((name-start (progn (beginning-of-line) (point)))
+            (name-end (progn (search-forward "(") (backward-char) (point)))
+            (nargs (1+ (count-matches "," (point) (progn (forward-sexp)
+                                                         (point))))))
+        (setq name (buffer-substring-no-properties name-start name-end))
+        (setq args nargs)))
+    (forward-line -1)
+    (insert "\n%! " name "(")
+    (setq end-pos (point))
+    (insert (->> (-repeat args "_") (s-join ", ")))
+    (insert ") is det.\n%\n%  TODO")
+    (goto-char end-pos)))
+
 (general-nvmap :keymaps '(prolog-mode-map)
-  "\\ u" #'cogent/prolog-add-use-module)
+  "\\ u" #'cogent/prolog-add-use-module
+  "\\ d" #'cogent/prolog-add-docstring)
 
 (use-package ob-prolog
   :after org)
