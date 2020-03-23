@@ -50,8 +50,9 @@
 (defun cogent/prolog-add-docstring ()
   (interactive)
   (let (name args end-pos)
+    (prolog-beginning-of-predicate)
     (save-mark-and-excursion
-      (let ((name-start (progn (beginning-of-line) (point)))
+      (let ((name-start (point))
             (name-end (progn (search-forward "(") (backward-char) (point)))
             (nargs (1+ (count-matches "," (point) (progn (forward-sexp)
                                                          (point))))))
