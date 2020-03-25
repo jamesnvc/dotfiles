@@ -9,6 +9,8 @@ if test ( uname ) = 'Linux'
 end
 # set -U fish_key_bindings fish_vi_key_bindings
 
+set -g XDG_DATA_DIRS $HOME/share:$XDG_DATA_DIRS
+
 alias g=git
 alias l=ls
 alias ec="emacsclient --create-frame --alternate-editor=emacs"

@@ -21,6 +21,8 @@
 
 (add-to-list 'auto-mode-alist '("\\.pl\\'" . prolog-mode))
 (add-to-list 'auto-mode-alist '("\\.plt\\'" . prolog-mode))
+;; Logtalk
+(add-to-list 'auto-mode-alist '("\\.lgt\\'" . prolog-mode))
 
 (defun cogent/prolog-add-use-module (module predicates)
   "Add a use_module statement to the top of the current prolog file"
