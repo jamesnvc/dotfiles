@@ -42,3 +42,5 @@ emacs.d/forge-database.sqlite
 /emacs.d/transient
 /emacs.d/games
 /emacs.d/.lsp-session-v1
+/emacs.d/workspace
+/emacs.d/speed-type
