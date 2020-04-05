@@ -52,7 +52,7 @@
 (defun cogent/prolog-add-docstring ()
   (interactive)
   (let (name args end-pos)
-    (prolog-beginning-of-predicate)
+    (goto-char (prolog-pred-start))
     (save-mark-and-excursion
       (let ((name-start (point))
             (name-end (progn (search-forward "(") (backward-char) (point)))
