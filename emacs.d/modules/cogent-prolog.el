@@ -61,7 +61,7 @@
                                                          (point))))))
         (setq name (buffer-substring-no-properties name-start name-end))
         (setq args nargs)))
-    (forward-line -1)
+    (forward-line -1) (end-of-line nil)
     (insert "\n%! " name "(")
     (setq end-pos (point))
     (insert (->> (-repeat args "_") (s-join ", ")))
