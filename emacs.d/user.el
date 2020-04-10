@@ -120,6 +120,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
   (setq org-agenda-files (list (concat org-directory "/notes.org")
                                (concat org-directory "/bloom.org")
                                (concat org-directory "/Raj_work.org")
+                               (concat org-directory "/nervy.org")
                                (concat org-directory "/todo.org")
                                (concat org-directory "/gifts.org")
                                (concat org-directory "/notebook")))
