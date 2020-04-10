@@ -20,9 +20,6 @@
    (setenv "PATH" (concat dir ":" (getenv "PATH")))
    (add-to-list 'cogent/extra-path-dirs dir)))
 
-(cogent/add-to-all-paths (expand-file-name "~/.swivm/versions/v8.1.26/bin"))
-(cogent/add-to-all-paths (expand-file-name "~/.nvm/versions/node/v12.13.0/bin"))
-
 (when (string-equal (system-name) "zhora.local")
   (set-frame-font "PragmataPro 14" nil t)
   (setq ns-antialias-text nil)
@@ -32,7 +29,6 @@
   (set-frame-font "PragmataPro 16" nil t)
   (global-prettify-symbols-mode -1)
   (mac-auto-operator-composition-mode 1)
-  (cogent/add-to-all-paths (expand-file-name "~/.rvm/gems/ruby-2.4.2/wrappers"))
   (setq mac-command-modifier 'super
         mac-option-modifier 'meta))
 
