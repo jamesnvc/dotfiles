@@ -66,6 +66,7 @@
      (124 "「" . "」")
      (107 "【" . "】"))))
  '(exec-path-from-shell-arguments (quote ("-l")))
+ '(exec-path-from-shell-shell-name "/usr/bin/fish")
  '(eyebrowse-mode-line-left-delimiter "❲")
  '(eyebrowse-mode-line-right-delimiter "❳")
  '(eyebrowse-mode-line-separator " ")
