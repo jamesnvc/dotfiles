@@ -27,7 +27,7 @@
     (define-key yas/keymap [tab] 'yas/next-field))
 
   (add-hook 'org-mode-hook #'cogent/fix-org-yasnippet-hook)
-  (add-hook 'org-mode-hook (lambda () (setq-local company-deabbrev-downcase nil)))
+  (add-hook 'org-mode-hook (lambda () (setq-local company-dabbrev-downcase nil)))
   (add-hook
    'org-mode-hook
    (lambda ()
