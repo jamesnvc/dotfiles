@@ -14,9 +14,6 @@
          (pdf-view-mode . pdf-tools-enable-minor-modes)))
 
 (use-package org-pdftools
-  :straight (org-pdftools
-             :type git
-             :host github
-             :repo "fuxialexander/org-pdftools"))
+  :hook (org-load . org-pdftools-setup-link))
 
 (provide 'cogent-reading)

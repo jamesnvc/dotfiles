@@ -2,7 +2,15 @@
 ;; My emacs configuration, based on ohai-emacs by Bodil Stokke
 ;; Basically the same, but doing it myself so I understand how things work
 
-(setq gc-cons-threshold 64000000)
+(add-hook 'emacs-startup-hook
+          (lambda ()
+            (message "Emacs ready in %s with %d gcs"
+                     (format "%.2f seconds" (float-time (time-subtract
+                                                         after-init-time
+                                                         before-init-time)))
+                     gcs-done)))
+
+(setq gc-cons-threshold 128000000)
 (add-hook 'after-init-hook (lambda ()
                              ;; restore after startup
                              (setq gc-cons-threshold 800000)))
@@ -28,6 +36,7 @@
 (require 'cogent-fonts)
 (require 'cogent-windows)
 (require 'cogent-evil)
+(require 'cogent-reading) ; needs to load before org
 (require 'cogent-orgmode)
 (require 'cogent-codestyle)
 (require 'cogent-eshell)
@@ -53,7 +62,6 @@
 (require 'cogent-fish)
 (require 'cogent-lsp)
 (require 'cogent-help)
-(require 'cogent-reading)
 (require 'cogent-snippets)
 (require 'cogent-tools)
 (require 'cogent-irc)
