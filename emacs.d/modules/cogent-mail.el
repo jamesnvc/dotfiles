@@ -51,6 +51,8 @@
 (use-package org-mime
   :after (notmuch org)
   :config
+  (setq org-mime-export-options
+        '(:section-numbers nil :with-author nil :with-toc nil :with-latex dvipng))
   (add-hook 'org-mime-html-hook
             (lambda ()
               (org-mime-change-element-style
