@@ -48,6 +48,22 @@
 (use-package helm-notmuch
   :defer t)
 
+(use-package org-mime
+  :after (notmuch org)
+  :config
+  (add-hook 'org-mime-html-hook
+            (lambda ()
+              (org-mime-change-element-style
+               "pre"
+               (format "color: %s; background-color: %s; padding: 0.5em;"
+                       (face-attribute 'default :foreground)
+                       (face-attribute 'default :background)))))
+  (add-hook 'org-mime-html-hook
+            (lambda ()
+              (org-mime-change-element-style
+               "blockquote"
+               "border-left: 2px solid gray; padding-left: 4px;"))))
+
 (defun cogent/notmuch-inbox ()
   (interactive)
   (notmuch-search "tag:inbox" t))
