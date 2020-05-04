@@ -12,7 +12,12 @@
   ;; Use it for everything except ELisp mode
   (find-file . (lambda ()
                  (when (not (equal 'emacs-lisp-mode major-mode))
-                   (flycheck-mode)))))
+                   (flycheck-mode))))
+
+  :config
+  (evil-define-minor-mode-key 'normal 'flycheck-mode
+   (kbd "[ q") #'flycheck-previous-error
+   (kbd "] q") #'flycheck-next-error))
 
 ;; Turn modeline red when Flycheck has errors.
 (use-package flycheck-color-mode-line
