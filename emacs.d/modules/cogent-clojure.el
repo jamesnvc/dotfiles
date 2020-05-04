@@ -35,6 +35,10 @@
   :commands enable-paredit-mode paredit-mode
   :diminish paredit-mode)
 
+(use-package flycheck-clj-kondo
+  :after clojure-mode
+  :hook (clojure-mode . (lambda () (require 'flycheck-clj-kondo))))
+
 ;; Like vim-fireplace
 (evil-define-operator cogent/evil-cider-eval (beg end)
  "Evaluate clojure expression given by <motion> via cider."
