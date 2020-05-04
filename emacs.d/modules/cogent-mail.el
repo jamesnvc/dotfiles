@@ -86,7 +86,17 @@
             collect (cfw:ical-create-source
                      (format "Gcal %d" index)
                      url
-                     "Green"))))))
+                     "Green")))))
+  :config
+  (evil-set-initial-state 'cfw:details-mode 'emacs)
+  (setq cfw:fchar-junction ?╋
+        cfw:fchar-vertical-line ?┃
+        cfw:fchar-horizontal-line ?━
+        cfw:fchar-left-junction ?┣
+        cfw:fchar-right-junction ?┫
+        cfw:fchar-top-junction ?┯
+        cfw:fchar-top-left-corner ?┏
+        cfw:fchar-top-right-corner ?┓))
 
 (use-package calfw-ical
   :after calfw
