@@ -36,6 +36,7 @@
   :diminish paredit-mode)
 
 (use-package flycheck-clj-kondo
+  :if (executable-find "clj-kondo")
   :after clojure-mode
   :hook (clojure-mode . (lambda () (require 'flycheck-clj-kondo))))
 
