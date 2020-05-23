@@ -113,10 +113,13 @@ bindsym $mod+9 workspace number 9
 bindsym $mod+0 workspace number 10
 
 # rename workspace
-bindsym $mod+r exec i3-input -F 'rename workspace to "%s"' -P 'New name: '
+# bindsym $mod+r exec i3-input -F 'rename workspace to "%s"' -P 'New name: '
+bindsym $mod+r exec i3-msg \"rename workspace to \\\"$(rofi -dmenu -p rename)\\\"\"
 
 # jump to workspace by name
-bindsym $mod+g exec i3-input -F 'workspace "%s"' -P 'workspace: '
+# bindsym $mod+g exec i3-input -F 'workspace "%s"' -P 'workspace: '
+bindsym $mod+g exec rofi -modi "window#run#ssh#Workspaces:i3_switch_workspaces.sh" -show Workspaces
+bindsym $mod+shift+g exec rofi -show window
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number 1
