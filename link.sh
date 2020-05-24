@@ -23,6 +23,10 @@ link psqlrc ~/.psqlrc
 link rofi ~/.config/rofi
 link rofi-pass ~/.config/rofi-pass
 link rofi_runner.sh ~/bin/rofi_runner.sh
+link i3_empty_workspace.sh ~/bin/i3_empty_workspace.sh
+link i3_select_workspace.sh ~/bin/i3_select_workspace.sh
+link i3_switch_workspace.sh ~/bin/i3_switch_workspace.sh
+link i3_move_workspace.sh ~/bin/i3_move_workspace.sh
 link ssh ~/.ssh
 link tmux ~/.tmux
 link tmux.conf ~/.tmux.conf
