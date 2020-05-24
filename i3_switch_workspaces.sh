@@ -1,18 +1,15 @@
 #!/bin/bash
 
-if [ -z $@ ]
+set -euo pipefail
+
+if [ -z "$*" ]
 then
-function gen_workspaces()
-{
+    echo EMPTY
     i3-msg -t get_workspaces | jq -r '.[].name' | sort -n
-}
-
-
-echo empty; gen_workspaces
 else
-    WORKSPACE=$@
+    WORKSPACE=$*
 
-    if [ x"empty" = x"${WORKSPACE}" ]
+    if [ x"EMPTY" = x"${WORKSPACE}" ]
     then
         i3_empty_workspace.sh >/dev/null
     elif [ -n "${WORKSPACE}" ]
