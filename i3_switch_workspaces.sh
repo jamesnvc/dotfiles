@@ -4,7 +4,7 @@ if [ -z $@ ]
 then
 function gen_workspaces()
 {
-    i3-msg -t get_workspaces | jq '.[].name' | tr -d '["]' | sort -n
+    i3-msg -t get_workspaces | jq -r '.[].name' | sort -n
 }
 
 
