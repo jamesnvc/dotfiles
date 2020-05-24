@@ -132,7 +132,8 @@ bindsym $mod+Shift+7 move container to workspace number 7
 bindsym $mod+Shift+8 move container to workspace number 8
 bindsym $mod+Shift+9 move container to workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 10
-bindsym $mod+Shift+m exec i3-input -F'move container to workspace "%s"' -P 'workspace: '
+# bindsym $mod+Shift+m exec i3-input -F'move container to workspace "%s"' -P 'workspace: '
+bindsym $mod+Shift+m exec rofi -modi "window#run#ssh#Workspaces:i3_move_workspace.sh" -show Workspaces
 
 # reload the configuration file
 bindsym $mod+Shift+j reload
