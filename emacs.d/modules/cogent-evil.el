@@ -8,6 +8,7 @@
   :config
 
   (evil-set-initial-state 'image-mode 'emacs)
+  (evil-set-initial-state 'eww-mode 'emacs)
 
   (defun cogent/evil-yank-to-eol (&optional argument)
     "Yank from point to end of line; like the behaviour I prefer `Y' in
