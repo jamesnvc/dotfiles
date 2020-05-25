@@ -22,7 +22,6 @@
   (interactive (list (if (region-active-p)
                          (buffer-substring-no-properties (region-beginning) (region-end))
                        (save-excursion (car (ispell-get-word nil))))))
-  (split-window-below)
   (eww-browse-url (format "https://en.wiktionary.org/wiki/%s" word)))
 
 (provide 'cogent-reading)
