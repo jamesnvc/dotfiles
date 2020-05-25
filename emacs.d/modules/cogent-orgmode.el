@@ -55,7 +55,8 @@
     "c" #'org-capture)
   (general-define-key
    :keymaps 'org-mode-map
-   "C-c C-x C-r" #'org-clock-remove-overlays))
+   "C-c C-x C-r" #'org-clock-remove-overlays
+   "C-c w" #'org-refile))
 
 (use-package org-bullets
   :after org
