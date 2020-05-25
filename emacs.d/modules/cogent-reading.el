@@ -16,4 +16,13 @@
 (use-package org-pdftools
   :hook (org-load . org-pdftools-setup-link))
 
+(autoload 'ispell-get-word "ispell")
+
+(defun cogent/lookup-word (word)
+  (interactive (list (if (region-active-p)
+                         (buffer-substring-no-properties (region-beginning) (region-end))
+                       (save-excursion (car (ispell-get-word nil))))))
+  (split-window-below)
+  (eww-browse-url (format "https://en.wiktionary.org/wiki/%s" word)))
+
 (provide 'cogent-reading)
