@@ -30,3 +30,4 @@ if is_func fenv
 end
 
 direnv hook fish | source
+pyenv init - | source
