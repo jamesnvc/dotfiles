@@ -32,4 +32,6 @@ dropbox start
 # Force numlock to be on
 numlockx on
 
+sh ~/.fehbg &
+
 # vim: ft=zsh
