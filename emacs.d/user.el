@@ -48,6 +48,9 @@
                     "<f8>"   #'org-store-link
                     "<f9>"   #'helm-bookmarks)
 
+(when (fboundp 'windmove-default-keybindings)
+  (windmove-default-keybindings))
+
 ;; Leader key stuff
 (defun cogent/quit-help-window ()
   (interactive)
