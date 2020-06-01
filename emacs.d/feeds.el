@@ -34,7 +34,6 @@
         ("https://blog.alltheflow.com/rss/" tech apple)
         ("http://www.mechanicalgirl.com/feeds/all/" tech)
         ("http://natashatherobot.com/feed/" tech apple)
-        ("http://www.foxtrot.com/feed/" comic)
         ("http://cdn.drivecomic.com/rss.xml" comic)
         "http://www.johndcook.com/blog/feed/"
         ("http://www.harkavagrant.com/rssfeed.php" comic)
@@ -133,4 +132,5 @@
         ("http://www.thestar.com/feeds.articles.news.world.rss" busy news news-world)
         ("https://blogs.msdn.microsoft.com/oldnewthing/feed" tech)
         ("http://prologhub.pl/updates.atom" tech prolog)
-        ("https://200ok.ch/atom.xml" tech)))
+        ("https://200ok.ch/atom.xml" tech)
+        ("https://livelaugh.blog/rss" mustread)))
