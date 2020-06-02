@@ -64,6 +64,7 @@
 (require 'cogent-help)
 (require 'cogent-snippets)
 (require 'cogent-tools)
+(require 'cogent-writing)
 (require 'cogent-irc)
 
 ;; Other things
