@@ -106,6 +106,7 @@
      (:name "all mail" :query "*" :key "a")
      (:name "new" :query "tag:inbox and tag:unread")
      (:name "flagged" :query "tag:flagged"))))
+ '(org-agenda-compact-blocks t)
  '(org-agenda-restore-windows-after-quit t)
  '(org-agenda-show-future-repeats nil)
  '(org-agenda-skip-scheduled-if-done t)
