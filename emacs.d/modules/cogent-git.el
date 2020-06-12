@@ -31,7 +31,9 @@
   :straight (forge
              :type git
              :host github
-             :repo "magit/forge"))
+             :repo "magit/forge")
+  :config
+  (evil-set-initial-state 'forge-topic-mode 'emacs))
 
 (use-package fringe-helper)
 (use-package git-gutter-fringe+
