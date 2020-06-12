@@ -206,4 +206,30 @@
     (set-face-attribute 'org-mode-line-clock nil
                         :background nil :inherit nil)))
 
+(defun cogent/flatui-mode-line ()
+  (setq cogent-line-active-bg "#34495e")
+  (setq cogent-line-inactive-bg "#dfe4ea")
+  (dolist (f '(
+               cogent-line-evil-normal cogent-line-evil-insert
+               cogent-line-evil-emacs cogent-line-evil-replace
+               cogent-line-evil-visual cogent-line-evil-motion
+               cogent-line-evil-operator cogent-line-unmodified
+               cogent-line-modified cogent-line-highlight-face))
+    (set-face-attribute f nil :foreground cogent-line-active-bg))
+  (set-face-attribute 'mode-line nil
+                      :background cogent-line-active-bg
+                      :foreground "#f8f8f2"
+                      :box `(:line-width 4 :color ,cogent-line-active-bg)
+                      :overline nil
+                      :underline nil)
+  (set-face-attribute 'mode-line-inactive nil
+                      :background cogent-line-inactive-bg
+                      :foreground "#f8f8f2"
+                      :box `(:line-width 4 :color ,cogent-line-inactive-bg)
+                      :overline nil
+                      :underline nil)
+  (with-eval-after-load 'org-faces
+    (set-face-attribute 'org-mode-line-clock nil
+                        :background nil :inherit nil)))
+
 (provide 'cogent-modeline)

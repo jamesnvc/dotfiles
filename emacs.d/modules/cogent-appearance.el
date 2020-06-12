@@ -45,6 +45,19 @@
   :straight solarized-theme
   :defer t)
 
+(use-package flatui-theme
+  :defer t
+  :init
+  (defun cogent/flatui-theme-hook ()
+    (set-face-attribute 'font-lock-comment-face nil :weight 'semi-bold)
+
+ ;; '(company-tooltip ((t (:background "#44475a" :foreground "#f8f8f2" :weight bold))))
+ ;; '(company-tooltip-common ((t (:foreground "#8be9fd" :background "#44475a"))))
+ ;; '(company-tooltip-common-selection ((t (:foreground "#bd93f9"))))
+ ;; '(company-tooltip-selection ((t (:background "#55586b" :foreground "#ccccc7"))))
+    (cogent/flatui-mode-line))
+  (cogent/add-theme-hook 'flatui #'cogent/flatui-mode-line))
+
 (with-eval-after-load 'term
   (set-face-foreground 'term-color-black "#3f3f3f")
   (set-face-foreground 'term-color-red "#cc9393")
@@ -164,6 +177,6 @@
   (set-face-foreground 'flycheck-color-mode-line-warning-face "#ffffff")
   (set-face-foreground 'flycheck-color-mode-line-info-face nil))
 
-(load-theme 'dracula t)
+(load-theme 'flatui t)
 
 (provide 'cogent-appearance)
