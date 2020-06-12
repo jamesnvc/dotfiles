@@ -36,6 +36,12 @@
     ;; Comments exist for a reason - make them stand out
     (set-face-attribute 'font-lock-comment-face nil :weight 'semi-bold)
     (set-face-attribute 'region nil :background "#8be9fd")
+
+    (set-face-attribute 'company-tooltip nil :background "#44475a" :foreground "#f8f8f2" :weight bold)
+    (set-face-attribute 'company-tooltip-common nil :foreground "#8be9fd" :background "#44475a")
+    (set-face-attribute 'company-tooltip-common-selection nil :foreground "#bd93f9")
+    (set-face-attribute 'company-tooltip-selection nil :background "#55586b" :foreground "#ccccc7")
+
     (with-eval-after-load 'org
       (set-face-background 'org-block-begin-line "#44475a"))
     (cogent/dracula-mode-line))
@@ -50,11 +56,9 @@
   :init
   (defun cogent/flatui-theme-hook ()
     (set-face-attribute 'font-lock-comment-face nil :weight 'semi-bold)
-
- ;; '(company-tooltip ((t (:background "#44475a" :foreground "#f8f8f2" :weight bold))))
- ;; '(company-tooltip-common ((t (:foreground "#8be9fd" :background "#44475a"))))
- ;; '(company-tooltip-common-selection ((t (:foreground "#bd93f9"))))
- ;; '(company-tooltip-selection ((t (:background "#55586b" :foreground "#ccccc7"))))
+    (set-face-attribute 'font-lock-keyword-face nil :foreground "#b96c00")
+    (set-face-attribute 'font-lock-constant-face nil :foreground "#c65e02")
+    (set-face-attribute 'font-lock-builtin-face nil :foreground "#068065")
     (cogent/flatui-mode-line))
   (cogent/add-theme-hook 'flatui #'cogent/flatui-mode-line))
 
