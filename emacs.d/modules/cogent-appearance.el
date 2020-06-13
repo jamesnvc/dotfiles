@@ -60,7 +60,10 @@
     (set-face-attribute 'font-lock-constant-face nil :foreground "#c65e02")
     (set-face-attribute 'font-lock-builtin-face nil :foreground "#068065")
     (set-face-attribute 'org-level-2 nil :foreground "#0064a9")
-    (set-face-attribute 'org-headline-done nil :foreground "#1ebc61")
+    (set-face-attribute 'org-headline-done nil :foreground "#0eac51")
+    (set-face-attribute 'org-link nil :underline t)
+    (set-face-attribute 'org-agenda-date-today nil :foreground "#afb4ba")
+    (set-face-attribute 'speed-type-correct nil :foreground "#009f00")
     (cogent/flatui-mode-line))
   (cogent/add-theme-hook 'flatui #'cogent/flatui-mode-line))
 
