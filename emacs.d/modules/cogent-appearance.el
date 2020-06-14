@@ -66,15 +66,19 @@
     (set-face-attribute 'font-lock-keyword-face nil :foreground "#b96c00")
     (set-face-attribute 'font-lock-constant-face nil :foreground "#c65e02")
     (set-face-attribute 'font-lock-builtin-face nil :foreground "#068065")
-    (set-face-attribute 'org-level-2 nil :foreground "#0064a9")
-    (set-face-attribute 'org-headline-done nil :foreground "#0eac51")
-    (set-face-attribute 'org-link nil :underline t)
-    (set-face-attribute 'org-agenda-date-today nil :foreground "#afb4ba")
-    (set-face-attribute 'speed-type-correct nil :foreground "#009f00")
-    (set-face-attribute 'helm-rg-file-match-face nil :foreground "#0aa")
-    (set-face-attribute 'compilation-line-number nil :foreground "#b17400")
+    (with-eval-after-load 'org
+      (set-face-attribute 'org-level-2 nil :foreground "#0064a9")
+      (set-face-attribute 'org-headline-done nil :foreground "#0eac51")
+      (set-face-attribute 'org-link nil :underline t)
+      (set-face-attribute 'org-agenda-date-today nil :foreground "#afb4ba"))
+    (with-eval-after-load 'speed-type-correct
+      (set-face-attribute 'speed-type-correct nil :foreground "#009f00"))
+    (with-eval-after-load 'helm-rg
+      (set-face-attribute 'helm-rg-file-match-face nil :foreground "#0aa"))
+    (with-eval-after-load 'compile
+      (set-face-attribute 'compilation-line-number nil :foreground "#b17400"))
     (cogent/flatui-mode-line))
-  (cogent/add-theme-hook 'flatui #'cogent/flatui-mode-line))
+  (cogent/add-theme-hook 'flatui #'cogent/flatui-theme-hook))
 
 (with-eval-after-load 'term
   (set-face-foreground 'term-color-black "#3f3f3f")
