@@ -42,6 +42,13 @@
     (set-face-attribute 'company-tooltip-common-selection nil :foreground "#bd93f9")
     (set-face-attribute 'company-tooltip-selection nil :background "#55586b" :foreground "#ccccc7")
 
+    ;; '(lsp-ui-peek-filename ((t (:foreground "#ffb86c"))))
+    ;; '(lsp-ui-peek-header ((t (:background "#44475a" :foreground "#f8f8f2"))))
+    ;; '(lsp-ui-peek-highlight ((t (:background "#44475a" :distant-foreground "white" :foreground "#f8f8f2"))))
+    ;; '(lsp-ui-peek-list ((t (:background "#282a36"))))
+    ;; '(lsp-ui-peek-peek ((t (:background "#181a26"))))
+    ;; '(lsp-ui-peek-selection ((t (:background "#44475a" :foreground "#bd93f9"))))
+
     (with-eval-after-load 'org
       (set-face-background 'org-block-begin-line "#44475a"))
     (cogent/dracula-mode-line))
