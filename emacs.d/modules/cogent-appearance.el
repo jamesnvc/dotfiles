@@ -77,6 +77,8 @@
       (set-face-attribute 'helm-rg-file-match-face nil :foreground "#0aa"))
     (with-eval-after-load 'compile
       (set-face-attribute 'compilation-line-number nil :foreground "#b17400"))
+    (with-eval-after-load 'git-gutter+
+      (set-face-attribute 'git-gutter+-added nil :foreground "#009900"))
     (cogent/flatui-mode-line))
   (cogent/add-theme-hook 'flatui #'cogent/flatui-theme-hook))
 
