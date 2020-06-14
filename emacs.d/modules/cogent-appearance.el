@@ -71,6 +71,8 @@
     (set-face-attribute 'org-link nil :underline t)
     (set-face-attribute 'org-agenda-date-today nil :foreground "#afb4ba")
     (set-face-attribute 'speed-type-correct nil :foreground "#009f00")
+    (set-face-attribute 'helm-rg-file-match-face nil :foreground "#0aa")
+    (set-face-attribute 'compilation-line-number nil :foreground "#b17400")
     (cogent/flatui-mode-line))
   (cogent/add-theme-hook 'flatui #'cogent/flatui-mode-line))
 
