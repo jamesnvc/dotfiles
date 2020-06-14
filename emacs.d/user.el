@@ -117,8 +117,11 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
         '((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
           (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)" "PHONE" "MEETING")))
   (setq org-use-fast-todo-selection t)
-  (setq org-agenda-files (list org-directory
-                               (concat org-directory "/notebook")))
+  (setq org-agenda-files (concat org-directory "/dir"))
+  (setq org-agenda-use-tag-inheritance nil)
+  (setq org-agenda-inhibit-startup t)
+  (setq org-agenda-dim-blocked-tasks nil)
+  (setq org-agenda-ignore-drawer-properties '(effort appt category))
   (setq org-refile-targets '((nil :maxlevel . 9)
                              (org-agenda-files :maxlevel . 9)))
   (setq org-refile-use-outline-path t)

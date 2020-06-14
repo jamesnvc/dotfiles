@@ -107,6 +107,16 @@
      (:name "new" :query "tag:inbox and tag:unread")
      (:name "flagged" :query "tag:flagged"))))
  '(org-agenda-compact-blocks t)
+ '(org-agenda-custom-commands
+   (quote
+    (("n" "Agenda and all TODOs"
+      ((agenda "" nil)
+       (alltodo "" nil))
+      nil)
+     ("N" "Notebook search" tags ""
+      ((org-agenda-files
+        (quote
+         ("~/org/notebook"))))))))
  '(org-agenda-restore-windows-after-quit t)
  '(org-agenda-show-future-repeats nil)
  '(org-agenda-skip-scheduled-if-done t)
