@@ -46,4 +46,11 @@
 (use-package speed-type
   :defer t)
 
+(use-package explain-pause-mode
+  :commands explain-pause-mode
+  :straight (explain-pause-mode
+             :type git
+             :host github
+             :repo "lastquestion/explain-pause-mode"))
+
 (provide 'cogent-tools)
