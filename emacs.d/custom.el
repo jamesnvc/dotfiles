@@ -6,7 +6,7 @@
  '(ansi-color-faces-vector
    [default bold shadow italic underline bold bold-italic bold])
  '(ansi-color-names-vector
-   (vector "#ffffff" "#f36c60" "#8bc34a" "#fff59d" "#4dd0e1" "#b39ddb" "#81d4fa" "#263238"))
+   ["light gray" "#f36c60" "medium sea green" "goldenrod" "deep sky blue" "dark magenta" "blue" "#263238"])
  '(auth-sources (quote ("~/.authinfo.gpg" "~/.netrc")))
  '(calendar-week-start-day 1)
  '(clojure-indent-style :align-arguments)
