@@ -139,7 +139,8 @@ more-helpful local prompt."
          (for-parent  (if dark-env `(:foreground "dark purple") `(:foreground "blue")))
          (for-dir     (if dark-env `(:foreground "purple" :weight bold)
                         `(:foreground "blue" :weight bold)))
-         (for-git                  `(:foreground "pink"))
+         (for-git                  (if dark-env `(:foreground "pink")
+                                     `(:foreground "dark magenta")))
          (for-ruby                 `(:foreground "red"))
          (for-python               `(:foreground "#5555FF")))
 
