@@ -45,6 +45,9 @@
                     "g g" #'notmuch-search-first-thread
                     "G" #'notmuch-search-last-thread)
 
+(general-define-key :keymaps '(notmuch-show-mode-map)
+                    "C-c c" #'org-capture)
+
 (use-package helm-notmuch
   :defer t)
 

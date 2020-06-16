@@ -131,14 +131,14 @@
 * %^{title}    %^g
 
 %?" :prepend t)
-     ("w" "Bloom work tasks" entry
-      (file "~/org/bloom.org")
-      "* %?
-Entered on %U
-   %a")
      ("t" "Errand" entry
       (file+headline "~/org/todo.org" "Errands")
-      "** TODO %?"))))
+      "** TODO %?")
+     ("w" "Work task" entry
+      (file "~/org/todo.org")
+      "** TODO %?
+
+   %a"))))
  '(org-confirm-babel-evaluate nil)
  '(org-fontify-done-headline t)
  '(org-hide-emphasis-markers t)
