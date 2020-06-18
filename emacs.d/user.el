@@ -36,8 +36,12 @@
   (set-frame-font "PragmataPro 10" nil t)
   (cogent/add-to-all-paths (expand-file-name "~/.nix-profile/bin")))
 
+(if (version< emacs-version "27.0")
+    (general-define-key :keymaps 'global
+                        "<f2>"   #'cogent/eyebrowse-helm)
+  (general-define-key :keymaps 'global
+                      "<f2>" #'tab-bar-select-tab-by-name))
 (general-define-key :keymaps 'global
-                    "<f2>"   #'cogent/eyebrowse-helm
                     "<f3>"   #'helm-switch-shell
                     "<f4>"   #'calc
                     "<f5> 5" #'cogent/notmuch-inbox
