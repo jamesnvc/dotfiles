@@ -63,4 +63,14 @@ the expression with the result."
   "K" #'cider-doc
   "M-r" (lambda () (interactive) (cider-load-file (buffer-file-name))))
 
+;; (defun cogent/cljfmtns ()
+;;   (call-process (cogent/resolve-exec "cljfmtns") nil nil nil
+;;                 buffer-file-name))
+
+;; (defun add-cljfmt-hook ()
+;;   (add-hook 'after-save-hook #'cogent/cljfmtns nil t))
+
+;; (when (cogent/is-exec "cljfmtns")
+;;   (add-hook 'clojure-mode-hook #'add-cljfmt-hook))
+
 (provide 'cogent-clojure)
