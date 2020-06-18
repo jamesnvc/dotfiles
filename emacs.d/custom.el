@@ -7,48 +7,41 @@
    [default bold shadow italic underline bold bold-italic bold])
  '(ansi-color-names-vector
    ["light gray" "#f36c60" "medium sea green" "dark goldenrod" "dark cyan" "dark magenta" "blue" "#263238"])
- '(auth-sources (quote ("~/.authinfo.gpg" "~/.netrc")))
+ '(auth-sources '("~/.authinfo.gpg" "~/.netrc"))
  '(calendar-week-start-day 1)
  '(clojure-indent-style :align-arguments)
- '(confirm-kill-emacs (quote yes-or-no-p))
+ '(confirm-kill-emacs 'yes-or-no-p)
  '(custom-safe-themes
-   (quote
-    ("98cc377af705c0f2133bb6d340bf0becd08944a588804ee655809da5d8140de6" default)))
+   '("98cc377af705c0f2133bb6d340bf0becd08944a588804ee655809da5d8140de6" default))
  '(dired-guess-shell-alist-user
-   (quote
-    (("\\.wav"
+   '(("\\.wav"
       (if
           (string-equal system-type "darwin")
-          "afplay" "aplay")))))
+          "afplay" "aplay"))))
  '(dired-listing-switches "-alh")
- '(display-line-numbers-type (quote relative))
+ '(display-line-numbers-type 'relative)
  '(display-raw-bytes-as-hex t)
- '(ediff-window-setup-function (quote ediff-setup-windows-plain))
- '(elfeed-goodies/powerline-default-separator (quote utf-8))
+ '(ediff-window-setup-function 'ediff-setup-windows-plain)
+ '(elfeed-goodies/powerline-default-separator 'utf-8)
  '(elfeed-search-face-alist
-   (quote
-    ((unread elfeed-search-unread-title-face)
+   '((unread elfeed-search-unread-title-face)
      (mustread elfeed-log-info-level-face)
      (comic elfeed-log-debug-level-face)
-     (busy shadow))))
+     (busy shadow)))
  '(erc-autojoin-channels-alist
-   (quote
-    (("localhost:6667" "#fb-family" "#lhl-teachers" "#fb-western-chums" "&bitlbee"))))
- '(erc-autojoin-timing (quote ident))
- '(erc-join-buffer (quote bury))
- '(erc-lurker-hide-list (quote ("JOIN" "PART" "QUIT" "MODE")))
+   '(("localhost:6667" "#fb-family" "#lhl-teachers" "#fb-western-chums" "&bitlbee")))
+ '(erc-autojoin-timing 'ident)
+ '(erc-join-buffer 'bury)
+ '(erc-lurker-hide-list '("JOIN" "PART" "QUIT" "MODE"))
  '(erc-modules
-   (quote
-    (hl-nicks autojoin button completion fill irccontrols list match menu move-to-prompt netsplit networks noncommands notifications readonly ring stamp spelling track image)))
- '(erc-track-exclude-types (quote ("JOIN" "NICK" "PART" "QUIT" "MODE" "333" "353")))
+   '(hl-nicks autojoin button completion fill irccontrols list match menu move-to-prompt netsplit networks noncommands notifications readonly ring stamp spelling track image))
+ '(erc-track-exclude-types '("JOIN" "NICK" "PART" "QUIT" "MODE" "333" "353"))
  '(eshell-visual-commands
-   (quote
-    ("htop" "vi" "screen" "top" "less" "more" "lynx" "ncftp" "pine" "tin" "trn" "elm" "psql")))
- '(eshell-visual-subcommands (quote (("git " "log" "lol" "diff" "show"))))
- '(evil-search-module (quote evil-search))
+   '("htop" "vi" "screen" "top" "less" "more" "lynx" "ncftp" "pine" "tin" "trn" "elm" "psql"))
+ '(eshell-visual-subcommands '(("git " "log" "lol" "diff" "show")))
+ '(evil-search-module 'evil-search)
  '(evil-surround-pairs-alist
-   (quote
-    ((40 "( " . " )")
+   '((40 "( " . " )")
      (91 "[ " . " ]")
      (123 "{ " . " }")
      (41 "(" . ")")
@@ -62,21 +55,20 @@
      (60 . evil-surround-read-tag)
      (102 . evil-surround-function)
      (124 "「" . "」")
-     (107 "【" . "】"))))
- '(exec-path-from-shell-arguments (quote ("-l")))
+     (107 "【" . "】")))
+ '(exec-path-from-shell-arguments '("-l"))
  '(exec-path-from-shell-shell-name "/usr/bin/fish")
  '(eyebrowse-mode-line-left-delimiter "❲")
  '(eyebrowse-mode-line-right-delimiter "❳")
  '(eyebrowse-mode-line-separator " ")
  '(eyebrowse-new-workspace t)
  '(flycheck-checkers
-   (quote
-    (ada-gnat asciidoctor asciidoc c/c++-clang c/c++-gcc c/c++-cppcheck cfengine chef-foodcritic coffee coffee-coffeelint coq css-csslint css-stylelint cuda-nvcc cwl d-dmd dockerfile-hadolint emacs-lisp emacs-lisp-checkdoc erlang-rebar3 erlang eruby-erubis fortran-gfortran go-gofmt go-golint go-vet go-build go-test go-errcheck go-unconvert go-megacheck go-staticcheck groovy haml handlebars haskell-stack-ghc haskell-ghc haskell-hlint html-tidy javascript-eslint javascript-jshint javascript-standard json-jsonlint json-python-json jsonnet less less-stylelint llvm-llc lua-luacheck lua markdown-markdownlint-cli markdown-mdl nix nix-linter opam perl perl-perlcritic php php-phpmd php-phpcs processing protobuf-protoc pug puppet-parser puppet-lint python-flake8 python-pylint python-pycompile python-mypy r-lintr racket rpm-rpmlint rst-sphinx rst ruby-rubocop ruby-reek ruby-rubylint ruby ruby-jruby rust-cargo rust rust-clippy scala scala-scalastyle scheme-chicken scss-lint scss-stylelint sass/scss-sass-lint sass scss sh-bash sh-posix-dash sh-posix-bash sh-zsh sh-shellcheck slim slim-lint sql-sqlint systemd-analyze tcl-nagelfar tex-chktex tex-lacheck texinfo textlint typescript-tslint verilog-verilator vhdl-ghdl xml-xmlstarlet xml-xmllint yaml-jsyaml yaml-ruby)))
- '(flycheck-color-mode-line-face-to-color (quote cogent-line-buffer-name-face))
+   '(ada-gnat asciidoctor asciidoc c/c++-clang c/c++-gcc c/c++-cppcheck cfengine chef-foodcritic coffee coffee-coffeelint coq css-csslint css-stylelint cuda-nvcc cwl d-dmd dockerfile-hadolint emacs-lisp emacs-lisp-checkdoc erlang-rebar3 erlang eruby-erubis fortran-gfortran go-gofmt go-golint go-vet go-build go-test go-errcheck go-unconvert go-megacheck go-staticcheck groovy haml handlebars haskell-stack-ghc haskell-ghc haskell-hlint html-tidy javascript-eslint javascript-jshint javascript-standard json-jsonlint json-python-json jsonnet less less-stylelint llvm-llc lua-luacheck lua markdown-markdownlint-cli markdown-mdl nix nix-linter opam perl perl-perlcritic php php-phpmd php-phpcs processing protobuf-protoc pug puppet-parser puppet-lint python-flake8 python-pylint python-pycompile python-mypy r-lintr racket rpm-rpmlint rst-sphinx rst ruby-rubocop ruby-reek ruby-rubylint ruby ruby-jruby rust-cargo rust rust-clippy scala scala-scalastyle scheme-chicken scss-lint scss-stylelint sass/scss-sass-lint sass scss sh-bash sh-posix-dash sh-posix-bash sh-zsh sh-shellcheck slim slim-lint sql-sqlint systemd-analyze tcl-nagelfar tex-chktex tex-lacheck texinfo textlint typescript-tslint verilog-verilator vhdl-ghdl xml-xmlstarlet xml-xmllint yaml-jsyaml yaml-ruby))
+ '(flycheck-color-mode-line-face-to-color 'cogent-line-buffer-name-face)
  '(flycheck-proselint-executable "~/.pyenv/shims/proselint")
- '(forge-bug-reference-hooks (quote (git-commit-setup-hook magit-mode-hook)))
+ '(forge-bug-reference-hooks '(git-commit-setup-hook magit-mode-hook))
  '(helm-imenu-fuzzy-match t)
- '(helm-rg-file-paths-in-matches-behavior (quote absolute))
+ '(helm-rg-file-paths-in-matches-behavior 'absolute)
  '(helm-semantic-fuzzy-match t)
  '(helm-use-undecorated-frame-option t)
  '(hl-sexp-background-color "#1c1f26")
@@ -86,7 +78,7 @@
  '(lsp-ui-doc-header nil)
  '(lsp-ui-doc-max-height 50)
  '(lsp-ui-doc-max-width 80)
- '(lsp-ui-doc-position (quote top))
+ '(lsp-ui-doc-position 'top)
  '(lsp-ui-doc-use-webkit nil)
  '(lsp-ui-peek-always-show nil)
  '(lsp-ui-peek-list-width 50)
@@ -96,36 +88,32 @@
  '(menu-bar-mode t)
  '(mode-require-final-newline nil)
  '(moody-mode-line-height 28)
- '(mouse-drag-and-drop-region (quote modifier))
+ '(mouse-drag-and-drop-region 'modifier)
  '(notmuch-saved-searches
-   (quote
-    ((:name "inbox" :query "tag:inbox" :key "i")
+   '((:name "inbox" :query "tag:inbox" :key "i")
      (:name "unread" :query "tag:unread" :key "u")
      (:name "sent" :query "tag:sent" :key "t")
      (:name "drafts" :query "tag:draft" :key "d")
      (:name "all mail" :query "*" :key "a")
      (:name "new" :query "tag:inbox and tag:unread")
-     (:name "flagged" :query "tag:flagged"))))
+     (:name "flagged" :query "tag:flagged")))
  '(org-agenda-compact-blocks t)
  '(org-agenda-custom-commands
-   (quote
-    (("n" "Agenda and all TODOs"
+   '(("n" "Agenda and all TODOs"
       ((agenda "" nil)
        (alltodo "" nil))
       nil)
      ("N" "Notebook search" tags ""
       ((org-agenda-files
-        (quote
-         ("~/org/notebook"))))))))
+        '("~/org/notebook"))))))
  '(org-agenda-restore-windows-after-quit t)
  '(org-agenda-show-future-repeats nil)
  '(org-agenda-skip-scheduled-if-done t)
- '(org-babel-clojure-backend (quote cider))
- '(org-babel-load-languages (quote ((shell . t) (emacs-lisp . t) (dot . t))))
- '(org-bullets-bullet-list (quote ("●" "◉" "◎" "○")))
+ '(org-babel-clojure-backend 'cider)
+ '(org-babel-load-languages '((shell . t) (emacs-lisp . t) (dot . t)))
+ '(org-bullets-bullet-list '("●" "◉" "◎" "○"))
  '(org-capture-templates
-   (quote
-    (("n" "Note" plain
+   '(("n" "Note" plain
       (file cogent/org-note-file-name)
       "#+DATE: %t
 * %^{title}    %^g
@@ -138,35 +126,32 @@
       (file "~/org/todo.org")
       "** TODO %?
 
-   %a"))))
+   %a")))
  '(org-confirm-babel-evaluate nil)
  '(org-fontify-done-headline t)
  '(org-hide-emphasis-markers t)
- '(org-modules (quote (ol-info ol-eshell ol-notmuch)))
+ '(org-modules '(ol-info ol-eshell ol-notmuch))
  '(org-return-follows-link t)
  '(org-src-tab-acts-natively t)
  '(pdf-annot-activate-created-annotations t)
- '(pdf-view-display-size (quote fit-page))
- '(pop-up-frame-alist (quote ((title . "emacs-popup-frame"))))
- '(powerline-default-separator (quote bar))
+ '(pdf-view-display-size 'fit-page)
+ '(pop-up-frame-alist '((title . "emacs-popup-frame")))
+ '(powerline-default-separator 'bar)
  '(projectile-enable-caching t)
  '(prolog-compile-string
-   (quote
-    ((eclipse "[%f].")
+   '((eclipse "[%f].")
      (mercury "mmake ")
      (sicstus
       (eval
        (if
            (prolog-atleast-version
-            (quote
-             (3 . 7)))
+            '(3 . 7))
            "prolog:zap_file(%m,%b,compile,%l)." "prolog:zap_file(%m,%b,compile).")))
      (swi "make.")
-     (t "compile(%f)."))))
+     (t "compile(%f).")))
  '(prolog-left-indent-regexp "\\(;\\|\\*?->\\)")
  '(prolog-program-name
-   (quote
-    (((getenv "EPROLOG")
+   '(((getenv "EPROLOG")
       (eval
        (getenv "EPROLOG")))
      (eclipse "eclipse")
@@ -175,9 +160,9 @@
      (swi "~/.swivm/versions/v8.1.31/bin/swipl")
      (gnu "gprolog")
      (t "~/.swivm/versions/v8.1.31/bin/swipl")
-     (logtalk "~/bin/swilgt"))))
- '(prolog-program-switches (quote ((sicstus ("-i")) (t nil))))
- '(prolog-system (quote swi))
+     (logtalk "~/bin/swilgt")))
+ '(prolog-program-switches '((sicstus ("-i")) (t nil)))
+ '(prolog-system 'swi)
  '(prolog-use-standard-consult-compile-method-flag t)
  '(scroll-bar-mode nil)
  '(tab-bar-mode t)
@@ -187,8 +172,7 @@
  '(undo-tree-auto-save-history t)
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
-   (quote
-    ((20 . "#f36c60")
+   '((20 . "#f36c60")
      (40 . "#ff9800")
      (60 . "#fff59d")
      (80 . "#8bc34a")
@@ -205,7 +189,7 @@
      (300 . "#f36c60")
      (320 . "#ff9800")
      (340 . "#fff59d")
-     (360 . "#8bc34a"))))
+     (360 . "#8bc34a")))
  '(vc-annotate-very-old-color nil)
  '(vc-follow-symlinks t))
 (custom-set-faces
