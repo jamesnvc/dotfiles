@@ -1,6 +1,6 @@
 ;; -*- lexical-binding: t -*-
 
-(set-frame-font "PragmataPro 7" nil t)
+(set-frame-font "PragmataPro 8" nil t)
 (require 'cogent-pragmata)
 
 (defvar cogent/extra-path-dirs nil
