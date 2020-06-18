@@ -206,12 +206,11 @@
     (not (or (memq (char-syntax (or (char-before start) ?\s)) syntaxes-beg)
              (memq (char-syntax (or (char-after end) ?\s)) syntaxes-end)))))
 
-(when (version< emacs-version "27.0")
-  (add-hook 'prog-mode-hook
-            #'cogent/add-pragmatapro-prettify-symbols-alist)
-  (add-hook 'prog-mode-hook
-            (lambda () (setq-local prettify-symbols-compose-predicate
-                              #'cogent/prettify-symbols-anywhere-compose-p)))
-  (global-prettify-symbols-mode +1))
+(add-hook 'prog-mode-hook
+          #'cogent/add-pragmatapro-prettify-symbols-alist)
+(add-hook 'prog-mode-hook
+          (lambda () (setq-local prettify-symbols-compose-predicate
+                            #'cogent/prettify-symbols-anywhere-compose-p)))
+(global-prettify-symbols-mode +1)
 
 (provide 'cogent-pragmata)
