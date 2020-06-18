@@ -100,13 +100,19 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (add-hook 'eshell-first-time-mode-hook
           (lambda ()
             (evil-mc-mode -1)
-            ;; Need to do this in the hook because eshell defines its keymap
-            ;; in kind of a bizarre way
-            (general-define-key :keymaps 'eshell-mode-map
-                                [remap eshell-pcomplete] #'helm-esh-pcomplete
-                                "M-r" #'helm-eshell-history)
+            (when (version< emacs-version "27.0")
+              ;; Need to do this in the hook because eshell defines its keymap
+              ;; in kind of a bizarre way
+              (general-define-key :keymaps 'eshell-mode-map
+                                  [remap eshell-pcomplete] #'helm-esh-pcomplete
+                                  "M-r" #'helm-eshell-history))
             (display-line-numbers-mode -1)))
 
+(when (version<= "27.0" emacs-version)
+  (add-hook 'eshell-mode-hook
+            (lambda () (add-to-list 'completion-at-point-functions #'helm-esh-pcomplete)))
+  (general-define-key :keymaps 'eshell-mode-map
+                      "M-r" #'helm-eshell-history))
 ;; Fancy symbols
 (push '("lambda" . 955) prettify-symbols-alist)
 (add-hook 'emacs-lisp-mode-hook #'prettify-symbols-mode)
