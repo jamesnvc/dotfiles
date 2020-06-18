@@ -82,6 +82,7 @@
     (set-face-attribute 'font-lock-builtin-face nil :foreground "#068065")
     (with-eval-after-load 'org
       (set-face-attribute 'org-level-2 nil :foreground "#0064a9")
+      (set-face-attribute 'org-level-4 nil :foreground "#b96c00")
       (set-face-attribute 'org-headline-done nil :foreground "#0eac51")
       (set-face-attribute 'org-link nil :underline t)
       (set-face-attribute 'org-agenda-date-today nil :foreground "#afb4ba"))
