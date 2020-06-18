@@ -85,7 +85,7 @@
       (set-face-attribute 'org-headline-done nil :foreground "#0eac51")
       (set-face-attribute 'org-link nil :underline t)
       (set-face-attribute 'org-agenda-date-today nil :foreground "#afb4ba"))
-    (with-eval-after-load 'speed-type-correct
+    (with-eval-after-load 'speed-type
       (set-face-attribute 'speed-type-correct nil :foreground "#009f00"))
     (with-eval-after-load 'helm-rg
       (set-face-attribute 'helm-rg-file-match-face nil :foreground "#0aa"))
