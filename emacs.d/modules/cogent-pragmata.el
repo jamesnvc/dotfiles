@@ -136,8 +136,7 @@
     ("=="        #XEA01)
     ("==="       #XEA02)
     ("==>"       #XEA03)
-    ;; [TODO] why does enabling this make the eval-ing thing mess up?
-    ;; ("=>"        #XEA04)
+    ("=>"        #XEA04)
     ("=~"        #XEA05)
     ("=>>"       #XEA06)
     ("=/="       #XEA07)
@@ -183,57 +182,59 @@
     ("~>>"       #XEA73)
     ("\">"       #XEA90)))
 
-(defconst pragmatapro-prettify-symbols-alist
-  (mapcar (lambda (s)
-            (if (>= emacs-major-version 25)
-             `(,(first s)
-              .
-              ,(vconcat
-                (apply 'vconcat (make-list
-                                 (- (length (car s)) 1)
-                                 (vector (decode-char 'ucs #X0020) '(Br . Bl))))
-                (vector (decode-char 'ucs (second s)))))
-             (cons (first s) (second s))))
-          cogent/pragmata-ligature-chars))
-
-(defun cogent/add-pragmatapro-prettify-symbols-alist ()
-  (dolist (alias pragmatapro-prettify-symbols-alist)
-    (push alias prettify-symbols-alist)))
-
-(defun cogent/prettify-symbols-anywhere-compose-p (start end _match)
-  "Like the default, but don't care if we're in a comment"
-  ;; TODO: Check that the chars should really be composed into a symbol.
-  (let* ((syntaxes-beg (if (memq (char-syntax (char-after start)) '(?w ?_))
-                           '(?w ?_) '(?. ?\\)))
-         (syntaxes-end (if (memq (char-syntax (char-before end)) '(?w ?_))
-                           '(?w ?_) '(?. ?\\))))
-    (not (or (memq (char-syntax (or (char-before start) ?\s)) syntaxes-beg)
-             (memq (char-syntax (or (char-after end) ?\s)) syntaxes-end)))))
-
-(require 'dash)
-
-(defun cogent/pragmata-ligature-chars-to-composition-alist ()
-  (->> (concatenate 'list
-                    '(("[TODO]") ("[FIXME]")
-                      ("[DEBUG]") ("[INFO]") ("[WARN]") ("[ERROR]"))
-                    cogent/pragmata-ligature-chars)
-       (mapcar #'car)
-       (-group-by (lambda (str) (string-to-char str)))
-       (mapcar
-        (lambda (lead-strs)
-          (cons (car lead-strs)
-                (regexp-opt (cdr lead-strs)))))))
-
 (if (version< emacs-version "27.0")
+    ;; Emacs <27 way of making fake ligatures with prettify-symbols-mode
     (progn
+      (defconst pragmatapro-prettify-symbols-alist
+        (mapcar (lambda (s)
+                  (if (>= emacs-major-version 25)
+                      `(,(first s)
+                        .
+                        ,(vconcat
+                          (apply 'vconcat (make-list
+                                           (- (length (car s)) 1)
+                                           (vector (decode-char 'ucs #X0020) '(Br . Bl))))
+                          (vector (decode-char 'ucs (second s)))))
+                    (cons (first s) (second s))))
+                cogent/pragmata-ligature-chars))
+
+      (defun cogent/add-pragmatapro-prettify-symbols-alist ()
+        (dolist (alias pragmatapro-prettify-symbols-alist)
+          (push alias prettify-symbols-alist)))
+
+      (defun cogent/prettify-symbols-anywhere-compose-p (start end _match)
+        "Like the default, but don't care if we're in a comment"
+        ;; [TODO] Check that the chars should really be composed into a symbol.
+        (let* ((syntaxes-beg (if (memq (char-syntax (char-after start)) '(?w ?_))
+                                 '(?w ?_) '(?. ?\\)))
+               (syntaxes-end (if (memq (char-syntax (char-before end)) '(?w ?_))
+                                 '(?w ?_) '(?. ?\\))))
+          (not (or (memq (char-syntax (or (char-before start) ?\s)) syntaxes-beg)
+                   (memq (char-syntax (or (char-after end) ?\s)) syntaxes-end)))))
+
       (add-hook 'prog-mode-hook
                 #'cogent/add-pragmatapro-prettify-symbols-alist)
       (add-hook 'prog-mode-hook
                 (lambda () (setq-local prettify-symbols-compose-predicate
                                   #'cogent/prettify-symbols-anywhere-compose-p)))
       (global-prettify-symbols-mode +1))
+  ;; Emacs >= 27 way of using auto-composition-mode to render real ligatures
   (progn
-    (setq composition-ligature-table (make-char-table nil))
+    (require 'dash)
+
+    (defun cogent/pragmata-ligature-chars-to-composition-alist ()
+      (->> (concatenate 'list
+                        '(("[TODO]") ("[FIXME]")
+                          ("[DEBUG]") ("[INFO]") ("[WARN]") ("[ERROR]"))
+                        cogent/pragmata-ligature-chars)
+           (mapcar #'car)
+           (-group-by (lambda (str) (string-to-char str)))
+           (mapcar
+            (lambda (lead-strs)
+              (cons (car lead-strs)
+                    (regexp-opt (cdr lead-strs)))))))
+
+    (defvar composition-ligature-table (make-char-table nil))
     (dolist (char-re (cogent/pragmata-ligature-chars-to-composition-alist))
       (set-char-table-range composition-ligature-table
                             (car char-re)
