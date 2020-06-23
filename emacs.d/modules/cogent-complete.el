@@ -36,7 +36,7 @@
   :config
   (company-emoji-init)
   (require 'cl-seq)
-  (setf company-emojis (cl-remove-if (lambda (elt) (string-equal ":-1:" elt))  company-emojis)))
+  (setf company-emojis (cl-remove-if (lambda (elt) (string-equal ":-1:" elt)) company-emojis)))
 
 ;; invoke to gather completion candidates from multiple sources if
 ;; active source isn't giving us anything
