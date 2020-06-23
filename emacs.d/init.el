@@ -17,12 +17,16 @@
 
 (setq inhibit-startup-message t)
 
-(setq dotfiles-dir (file-name-directory (or (buffer-file-name) (file-chase-links load-file-name))))
+(defvar dotfiles-dir
+  (file-name-directory (or buffer-file-name
+                           (file-chase-links load-file-name)))
+  "Directory the emacs dotfiles live -- presumably ~/.config/emacs for
+  >28, ~/.emacs.d for older.")
 
 (add-to-list 'load-path (concat dotfiles-dir "modules"))
 
 ;; Define where to keep autoload declarations and custom settings
-(setq autoload-file (concat dotfiles-dir "loaddefs.el"))
+(setq autoload-file (concat dotfiles-dir "loaddefs.el")) ; still need this?
 (setq custom-file (concat dotfiles-dir "custom.el"))
 
 (load custom-file 'noerror)
