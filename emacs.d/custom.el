@@ -166,7 +166,7 @@
  '(prolog-use-standard-consult-compile-method-flag t)
  '(scroll-bar-mode nil)
  '(tab-bar-mode t)
- '(tab-bar-show nil)
+ '(tab-bar-show 1)
  '(tab-bar-tab-hints t)
  '(tool-bar-mode nil)
  '(undo-tree-auto-save-history t)
