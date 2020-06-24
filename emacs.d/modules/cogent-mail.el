@@ -36,6 +36,53 @@
                            'notmuch-address-history)))
   (require 'notmuch-address))
 
+;; from https://gist.github.com/vedang/26a94c459c46e45bc3a9ec935457c80f
+(defun cogent/notmuch-search-find-from ()
+  "A helper function to find the email address for the given email."
+  (let ((notmuch-addr-sexp (first
+                            (notmuch-call-notmuch-sexp "address"
+                                                       "--format=sexp"
+                                                       "--format-version=1"
+                                                       "--output=sender"
+                                                       (notmuch-search-find-thread-id)))))
+    (plist-get notmuch-addr-sexp :address)))
+
+(defun cogent/notmuch-filter-by-from ()
+  "Filter the current search view to show all emails sent from the sender of the current thread."
+  (interactive)
+  (notmuch-search-filter (concat "from:" (cogent/notmuch-search-find-from))))
+
+(defun cogent/notmuch-search-by-from (&optional no-display)
+  "Show all emails sent from the sender of the current thread.
+NO-DISPLAY is sent forward to `notmuch-search'."
+  (interactive)
+  (notmuch-search (concat "from:" (cogent/notmuch-search-find-from))
+                  notmuch-search-oldest-first
+                  nil
+                  nil
+                  no-display))
+
+(defun cogent/notmuch-tag-by-from (tag-changes &optional beg end refresh)
+  "Apply TAG-CHANGES to all emails from the sender of the current thread.
+BEG and END provide the region, but are ignored. They are defined
+since `notmuch-search-interactive-tag-changes' returns them. If
+REFRESH is true, refresh the buffer from which we started the
+search."
+  (interactive (notmuch-search-interactive-tag-changes))
+  (let ((this-buf (current-buffer)))
+    (cogent/notmuch-search-by-from t)
+    ;; This is a dirty hack since I can't find a way to run a
+    ;; temporary hook on `notmuch-search' completion. So instead of
+    ;; waiting on the search to complete in the background and then
+    ;; making tag-changes on it, I will just sleep for a short amount
+    ;; of time. This is generally good enough and works, but is not
+    ;; guaranteed to work every time. I'm fine with this.
+    (sleep-for 0.5)
+    (notmuch-search-tag-all tag-changes)
+    (when refresh
+      (set-buffer this-buf)
+      (notmuch-refresh-this-buffer))))
+
 (add-hook 'message-mode-hook (lambda () (auto-fill-mode -1)))
 (add-hook 'message-mode-hook (lambda () (add-to-list 'company-backends 'company-emoji t)))
 
@@ -43,7 +90,9 @@
                     "j" #'notmuch-search-next-thread
                     "k" #'notmuch-search-previous-thread
                     "g g" #'notmuch-search-first-thread
-                    "G" #'notmuch-search-last-thread)
+                    "G" #'notmuch-search-last-thread
+                    "S" #'cogent/notmuch-search-by-from
+                    "T" #'cogent/notmuch-tag-by-from)
 
 (general-define-key :keymaps '(notmuch-show-mode-map)
                     "C-c c" #'org-capture)
