@@ -22,7 +22,6 @@
   (require 'cogent-eyebrowse))
 
 (when (featurep 'tab-bar)
-
   (general-define-key
    :keymaps 'global
    "C-x t q" #'tab-bar-close-tab
