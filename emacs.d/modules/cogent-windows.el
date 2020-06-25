@@ -15,67 +15,26 @@
   (setq switch-window-qwerty-shortcuts
         '("a" "o" "e" "u" "i" "d" "h" "t" "n" "s")))
 
-(when (version< emacs-version "27.0")
-  (use-package eyebrowse
-    :commands eyebrowse-mode
-    :init (eyebrowse-mode t)
-    :config
+(featurep 'tab-bar)
 
-    (defun cogent/eyebrowse-get-candidates ()
-      (->> (--map (cons (eyebrowse-format-slot it)
-                       (car it))
-                 (eyebrowse--get 'window-configs))
-          (cons (cons
-                 (concat
-                  (propertize
-                   " " 'display
-                   (propertize "[+]" 'font-lock-face
-                               '(:background "#ff69c6" :foreground "#282a36")))
-                  " " helm-input)
-                 helm-input))))
+(unless (featurep 'tab-bar)
+  ;; [TODO] make keybindings for eyebrowse to mimic tab-bar stuff
+  (require 'cogent-eyebrowse))
 
-    (defun cogent/eyebrowse-helm ()
-      "Manage eyebrowse window configs"
-      (interactive)
-      (add-hook 'helm-after-update-hook
-                #'helm-next-line)
-      (helm :sources
-            (helm-build-sync-source "eyebrowse"
-              :volatile t
-              :candidates #'cogent/eyebrowse-get-candidates
-              :action (list
-                       (cons "Switch to config"
-                             (lambda (candidate)
-                               (if (stringp candidate)
-                                   (progn
-                                     (eyebrowse-create-window-config)
-                                     (eyebrowse-rename-window-config
-                                      (eyebrowse--get 'current-slot)
-                                      candidate))
-                                 (eyebrowse-switch-to-window-config candidate))))
-                       (cons "Close config"
-                             (lambda (candidate)
-                               (unless (stringp candidate)
-                                 (let ((window-configs (eyebrowse--get 'window-configs))
-                                       (current (eyebrowse--get 'current-slot)))
-                                   (when (> (length window-configs) 1)
-                                     (when (= candidate current)
-                                       (if (equal (assq current window-configs)
-                                                  (car (last window-configs)))
-                                           (eyebrowse-prev-window-config nil)
-                                         (eyebrowse-next-window-config nil)))
-                                     (eyebrowse--delete-window-config candidate))))))
-                       (cons "Rename config"
-                             (lambda (candidate)
-                               (unless (stringp candidate)
-                                 (eyebrowse-rename-window-config
-                                  candidate
-                                  (read-string "New tag: "))))))
-              :cleanup (lambda ()
-                         (remove-hook 'helm-after-update-hook
-                                      #'helm-next-line)))
-            :buffer "*helm eyebrowse*"
-            :prompt "eyebrowse: "))))
+(when (featurep 'tab-bar)
+
+  (general-define-key
+   :keymaps 'global
+   "C-x t q" #'tab-bar-close-tab
+   "C-x t Q" #'tab-bar-close-tab-by-name
+   "C-x t t" #'tab-bar-switch-to-recent-tab
+   "C-x t c" #'tab-bar-new-tab
+   "C-x t C" #'other-tab-prefix
+   "C-x t 1" (lambda () (interactive) (tab-bar-select-tab 1))
+   "C-x t 2" (lambda () (interactive) (tab-bar-select-tab 2))
+   "C-x t 3" (lambda () (interactive) (tab-bar-select-tab 3))
+   "C-x t 4" (lambda () (interactive) (tab-bar-select-tab 4))
+   "C-x t 5" (lambda () (interactive) (tab-bar-select-tab 5))))
 
 (winner-mode 1)
 
