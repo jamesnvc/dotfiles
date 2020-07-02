@@ -57,8 +57,7 @@
             (string (-some--> (-zip-fill "" src1 src2)
                       (--map (lsp-ui-peek--adjust win-width it) it)
                       (-map-indexed 'lsp-ui-peek--make-line it)
-                      (-concat it (lsp-ui-peek--make-footer))))
-            )
+                      (-concat it (lsp-ui-peek--make-footer)))))
       (setq lsp-ui-peek--buffer (get-buffer-create " *lsp-peek--buffer*"))
       (posframe-show lsp-ui-peek--buffer
                      :string (mapconcat 'identity string "")
@@ -66,7 +65,8 @@
                      :poshandler #'posframe-poshandler-frame-center)))
 
   (defun lsp-ui-peek--peek-destroy ()
-    (when (bufferp lsp-ui-peek--buffer)
+    (when (and (boundp 'lsp-ui-peek--buffer)
+               (bufferp lsp-ui-peek--buffer))
       (posframe-delete lsp-ui-peek--buffer))
     (setq lsp-ui-peek--buffer nil
           lsp-ui-peek--last-xref nil)
