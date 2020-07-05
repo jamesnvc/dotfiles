@@ -128,6 +128,12 @@
 
    %a")))
  '(org-confirm-babel-evaluate nil)
+ '(org-file-apps
+   '((auto-mode . emacs)
+     (directory . emacs)
+     ("\\.mm\\'" . default)
+     ("\\.x?html?\\'" . default)
+     ("\\.pdf\\'" . emacs)))
  '(org-fontify-done-headline t)
  '(org-hide-emphasis-markers t)
  '(org-modules '(ol-info ol-eshell ol-notmuch))
