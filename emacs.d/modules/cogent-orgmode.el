@@ -11,18 +11,19 @@
 (progn
   ;; :demand t
   ;; :config
-  (el-patch-defun org-eldoc-load ()
-    "Set up org-eldoc documentation function."
-    (interactive)
-    (cond
-     ((boundp 'eldoc-documentation-strategy)
-      (setq-local eldoc-documentation-strategy
-                  #'org-eldoc-documentation-function))
-     ((boundp 'eldoc-documentation-functions)
-      (add-hook 'eldoc-documentation-functions
-                #'org-eldoc-documentation-function nil t))
-     (t (setq-local eldoc-documentation-function
-                    #'org-eldoc-documentation-function))))
+  (when (version<= "28" emacs-version)
+    (el-patch-defun org-eldoc-load ()
+      "Set up org-eldoc documentation function."
+      (interactive)
+      (cond
+       ((boundp 'eldoc-documentation-strategy)
+        (setq-local eldoc-documentation-strategy
+                    #'org-eldoc-documentation-function))
+       ((boundp 'eldoc-documentation-functions)
+        (add-hook 'eldoc-documentation-functions
+                  #'org-eldoc-documentation-function nil t))
+       (t (setq-local eldoc-documentation-function
+                      #'org-eldoc-documentation-function)))))
 
   (require 'ox-beamer)
   (setq org-replace-disputed-keys t)

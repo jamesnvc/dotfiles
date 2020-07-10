@@ -20,22 +20,23 @@
   :hook (cider-mode . eldoc-mode)
   :config
 
-  (el-patch-defun cider-eldoc (&optional cb)
-    "Backend function for eldoc to show argument list in the echo area."
-    (let ((callback (or cb #'identity)))
-      (when (and (cider-connected-p)
-                 ;; don't clobber an error message in the minibuffer
-                 (not (member last-command '(next-error previous-error)))
-                 ;; don't try to provide eldoc in EDN buffers
-                 (not (cider--eldoc-edn-file-p buffer-file-name)))
-        (let* ((sexp-eldoc-info (cider-eldoc-info-in-current-sexp))
-               (eldoc-info (lax-plist-get sexp-eldoc-info "eldoc-info"))
-               (pos (lax-plist-get sexp-eldoc-info "pos"))
-               (thing (lax-plist-get sexp-eldoc-info "thing")))
-          (when eldoc-info
-            (if (eq (cider-eldoc-thing-type eldoc-info) 'var)
-                (funcall callback (cider-eldoc-format-variable thing eldoc-info))
-              (funcall callback (cider-eldoc-format-function thing pos eldoc-info))))))))
+  (when (version<= "28" emacs-version)
+    (el-patch-defun cider-eldoc (&optional cb)
+      "Backend function for eldoc to show argument list in the echo area."
+      (let ((callback (or cb #'identity)))
+        (when (and (cider-connected-p)
+                   ;; don't clobber an error message in the minibuffer
+                   (not (member last-command '(next-error previous-error)))
+                   ;; don't try to provide eldoc in EDN buffers
+                   (not (cider--eldoc-edn-file-p buffer-file-name)))
+          (let* ((sexp-eldoc-info (cider-eldoc-info-in-current-sexp))
+                 (eldoc-info (lax-plist-get sexp-eldoc-info "eldoc-info"))
+                 (pos (lax-plist-get sexp-eldoc-info "pos"))
+                 (thing (lax-plist-get sexp-eldoc-info "thing")))
+            (when eldoc-info
+              (if (eq (cider-eldoc-thing-type eldoc-info) 'var)
+                  (funcall callback (cider-eldoc-format-variable thing eldoc-info))
+                (funcall callback (cider-eldoc-format-function thing pos eldoc-info)))))))))
 
   (evil-set-initial-state 'cider-docview-mode 'emacs)
   (evil-set-initial-state 'cider-stacktrace-mode 'emacs)
