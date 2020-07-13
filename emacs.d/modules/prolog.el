@@ -3067,10 +3067,9 @@ Return the final point or nil if no such a beginning was found."
   (interactive)
   (let ((op (point)))
     (goto-char (prolog-pred-end))
-    (if (= op (point))
-        (progn
-          (forward-line 1)
-          (prolog-end-of-predicate)))))
+    (when (or (= op (point)) (= op (- (point) 1)))
+      (forward-line 1)
+      (prolog-end-of-predicate))))
 
 (defun prolog-insert-predspec ()
   "Insert the predspec for the current predicate."
