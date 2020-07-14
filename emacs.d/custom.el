@@ -130,6 +130,7 @@
 
    %a")))
  '(org-confirm-babel-evaluate nil)
+ '(org-duration-format 'h:mm)
  '(org-file-apps
    '((auto-mode . emacs)
      (directory . emacs)
