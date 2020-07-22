@@ -138,7 +138,7 @@ search."
             collect (cfw:ical-create-source
                      (format "Gcal %d" index)
                      url
-                     "Green")))))
+                     "DarkGreen")))))
   :config
   (evil-set-initial-state 'cfw:details-mode 'emacs)
   (setq cfw:fchar-junction ?╋
