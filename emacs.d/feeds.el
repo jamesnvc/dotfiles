@@ -133,4 +133,5 @@
         ("https://blogs.msdn.microsoft.com/oldnewthing/feed" tech)
         ("http://prologhub.pl/updates.atom" tech prolog)
         ("https://200ok.ch/atom.xml" tech)
-        ("https://livelaugh.blog/rss" mustread)))
+        ("https://livelaugh.blog/rss" mustread)
+        ("https://terrafilha.home.blog/feed/" mustread)))
