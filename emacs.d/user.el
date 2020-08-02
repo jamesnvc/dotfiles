@@ -56,7 +56,9 @@
 ;; Leader key stuff
 (defun cogent/quit-help-window ()
   (interactive)
-  (when-let (help-win (get-buffer-window "*Help*"))
+  (when-let (help-win (or (get-buffer-window "*Help*")
+                          (get-buffer-window "*lsp-help*")
+                          (get-buffer-window "*Help Definition*")))
     (quit-window nil help-win)))
 
 (cogent/leader-def
