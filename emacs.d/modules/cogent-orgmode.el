@@ -72,11 +72,6 @@
    "C-c C-x C-r" #'org-clock-remove-overlays
    "C-c w" #'org-refile))
 
-(use-package org-bullets
-  :after org
-  :config
-  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
-
 (use-package org-cliplink
   :after org
   :config
