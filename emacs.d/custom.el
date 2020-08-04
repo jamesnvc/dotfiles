@@ -218,4 +218,5 @@
  '(helm-rg-inactive-arg-face ((t (:foreground "dark gray" :weight normal))))
  '(lsp-face-semhl-enum ((t (:inherit font-lock-variable-name-face :foreground "royal blue"))))
  '(lsp-face-semhl-member ((t (:inherit font-lock-variable-name-face :foreground "dark blue"))))
- '(lsp-face-semhl-operator ((t (:inherit font-lock-function-name-face :foreground "chocolate")))))
+ '(lsp-face-semhl-operator ((t (:inherit font-lock-function-name-face :foreground "chocolate"))))
+ '(org-headline-done ((t (:foreground "#0eac51" :strike-through "dim gray")))))
