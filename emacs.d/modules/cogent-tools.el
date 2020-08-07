@@ -53,4 +53,11 @@
              :host github
              :repo "lastquestion/explain-pause-mode"))
 
+(use-package org-drill
+  :straight (org-drill
+             :type git
+             :host gitlab
+             :repo "phillord/org-drill")
+  :commands (org-drill))
+
 (provide 'cogent-tools)
