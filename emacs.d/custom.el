@@ -154,7 +154,7 @@
  '(org-fontify-done-headline t)
  '(org-hide-emphasis-markers t)
  '(org-hide-leading-stars t)
- '(org-modules '(ol-info ol-eshell ol-notmuch))
+ '(org-modules '(ol-info ol-eshell org-notify ol-notmuch))
  '(org-return-follows-link t)
  '(org-src-tab-acts-natively t)
  '(pdf-annot-activate-created-annotations t)
