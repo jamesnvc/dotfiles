@@ -1,0 +1,17 @@
+# -*- mode: snippet -*-
+# name: Portuguese drill word
+# key: drillword
+# --
+
+* ${1:$$(yas-choose-value '("Noun" "Verb" "Phrase" "Other"))}                                                                :drill:
+  :PROPERTIES:
+  :DRILL_CARD_TYPE: twosided
+  :END:
+
+  Translate
+** Portuguese
+   ${2:Portuguese word}
+** English
+   ${3:English word}
+
+$0

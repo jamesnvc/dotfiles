@@ -129,7 +129,20 @@
       (file "~/org/todo.org")
       "** TODO %?
 
-   %a")))
+   %a")
+     ("p" "Portuguese vocab" entry
+      (file "~/org/portuguese.org")
+      "* Word                                                                :drill:
+  :PROPERTIES:
+  :DRILL_CARD_TYPE: twosided
+  :END:
+
+  Translate
+** Portugese
+  %^{Portugese}
+** English
+  %^{English}
+")))
  '(org-confirm-babel-evaluate nil)
  '(org-duration-format 'h:mm)
  '(org-file-apps
