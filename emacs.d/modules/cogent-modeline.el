@@ -8,16 +8,20 @@
 (defvar cogent-line-inactive-bg "#242533"
   "Modeline background colour for inactive window")
 
-(dolist (s '((cogent-line-evil-normal "DarkGoldenrod2" "Evil normal state face.")
-             (cogent-line-evil-insert "medium sea green" "Evil insert state face.")
-             (cogent-line-evil-emacs "SkyBlue2" "Evil emacs state face.")
-             (cogent-line-evil-replace "chocolate" "Evil replace state face.")
-             (cogent-line-evil-visual "gray" "Evil visual state face.")
-             (cogent-line-evil-motion "plum3" "Evil motion state face.")
-             (cogent-line-evil-operator "plum3" "Evil operator state face.")
-             (cogent-line-unmodified "DarkGoldenrod2" "Unmodified buffer face.")
-             (cogent-line-modified "SkyBlue2" "Modified buffer face.")
-             (cogent-line-highlight-face "DarkGoldenrod2" "Default highlight face.")))
+(defvar cogent-line-evil-state-colours
+  '((cogent-line-evil-normal "DarkGoldenrod2" "Evil normal state face.")
+    (cogent-line-evil-insert "medium sea green" "Evil insert state face.")
+    (cogent-line-evil-emacs "SkyBlue2" "Evil emacs state face.")
+    (cogent-line-evil-replace "chocolate" "Evil replace state face.")
+    (cogent-line-evil-visual "gray" "Evil visual state face.")
+    (cogent-line-evil-motion "plum3" "Evil motion state face.")
+    (cogent-line-evil-operator "plum3" "Evil operator state face.")
+    (cogent-line-unmodified "DarkGoldenrod2" "Unmodified buffer face.")
+    (cogent-line-modified "SkyBlue2" "Modified buffer face.")
+    (cogent-line-highlight-face "DarkGoldenrod2" "Default highlight face."))
+  "Names, initial colours, and docstring for Evil state modeline indicator")
+
+(dolist (s cogent-line-evil-state-colours)
   (eval `(defface ,(nth 0 s)
            (list (list t (list :background ,(nth 1 s)
                                :box (list :line-width 4 :color ,(nth 1 s))
@@ -209,15 +213,17 @@
 (defun cogent/flatui-mode-line ()
   (setq cogent-line-active-bg "#34495e")
   (setq cogent-line-inactive-bg "#dfe4ea")
-  (dolist (f '(
-               cogent-line-evil-normal cogent-line-evil-insert
-               cogent-line-evil-emacs cogent-line-evil-replace
-               cogent-line-evil-visual cogent-line-evil-motion
-               cogent-line-evil-operator cogent-line-unmodified
-               cogent-line-modified cogent-line-highlight-face))
-    (set-face-attribute f nil
+  (dolist (f cogent-line-evil-state-colours)
+    (set-face-attribute (nth 0 f) nil
+                        :foreground (nth 1 f)
+                        :box nil
+                        :background nil
+                        :overline cogent-line-active-bg)
+    (set-face-attribute (intern (s-concat (symbol-name (nth 0 f)) "-inactive")) nil
                         :foreground cogent-line-active-bg
-                        :overline nil))
+                        :box nil
+                        :background nil
+                        :overline cogent-line-inactive-bg))
   (set-face-attribute 'mode-line nil
                       :background nil ;cogent-line-active-bg
                       :foreground cogent-line-active-bg ;"#f8f8f2"
@@ -226,7 +232,7 @@
                       :underline nil)
   (set-face-attribute 'mode-line-inactive nil
                       :background nil ;cogent-line-inactive-bg
-                      :foreground "#f8f8f2"
+                      :foreground cogent-line-inactive-bg ;"#f8f8f2"
                       :box nil ;`(:line-width 4 :color ,cogent-line-inactive-bg)
                       :overline cogent-line-inactive-bg
                       :underline nil)

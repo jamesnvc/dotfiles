@@ -80,6 +80,7 @@
     (set-face-attribute 'font-lock-keyword-face nil :foreground "#b96c00")
     (set-face-attribute 'font-lock-constant-face nil :foreground "#c65e02")
     (set-face-attribute 'font-lock-builtin-face nil :foreground "#068065")
+    (set-face-attribute 'fringe nil :background nil)
     (with-eval-after-load 'org
       (set-face-attribute 'org-level-2 nil :foreground "#0064a9")
       (set-face-attribute 'org-level-4 nil :foreground "#b96c00")
