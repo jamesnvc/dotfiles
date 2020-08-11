@@ -215,19 +215,25 @@
                cogent-line-evil-visual cogent-line-evil-motion
                cogent-line-evil-operator cogent-line-unmodified
                cogent-line-modified cogent-line-highlight-face))
-    (set-face-attribute f nil :foreground cogent-line-active-bg))
+    (set-face-attribute f nil
+                        :foreground cogent-line-active-bg
+                        :overline nil))
   (set-face-attribute 'mode-line nil
-                      :background cogent-line-active-bg
-                      :foreground "#f8f8f2"
-                      :box `(:line-width 4 :color ,cogent-line-active-bg)
-                      :overline nil
+                      :background nil ;cogent-line-active-bg
+                      :foreground cogent-line-active-bg ;"#f8f8f2"
+                      :box nil ;`(:line-width 4 :color ,cogent-line-active-bg)
+                      :overline cogent-line-active-bg
                       :underline nil)
   (set-face-attribute 'mode-line-inactive nil
-                      :background cogent-line-inactive-bg
+                      :background nil ;cogent-line-inactive-bg
                       :foreground "#f8f8f2"
-                      :box `(:line-width 4 :color ,cogent-line-inactive-bg)
-                      :overline nil
+                      :box nil ;`(:line-width 4 :color ,cogent-line-inactive-bg)
+                      :overline cogent-line-inactive-bg
                       :underline nil)
+  (set-face-attribute 'header-line nil
+                      :background nil
+                      :foreground cogent-line-active-bg
+                      :underline cogent-line-active-bg)
   (with-eval-after-load 'org-faces
     (set-face-attribute 'org-mode-line-clock nil
                         :background nil :inherit nil)))
