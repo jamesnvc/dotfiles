@@ -62,6 +62,7 @@
 
 (use-package vterm
   :commands (vterm vterm-other-window)
-  :custom ((vterm-shell (executable-find "fish"))))
+  :custom ((vterm-shell (executable-find "fish")))
+  :hook (vterm-mode . (lambda () (display-line-numbers-mode -1))))
 
 (provide 'cogent-tools)
