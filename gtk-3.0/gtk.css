@@ -1,7 +1,7 @@
 /* Put this in ~/.config/gtk-3.0/gtk.css */
 /* Emacs Menubar */
 #pane #menubar {
-    background-color: #282a36;
+    background-color: #e8eaf6;
     font-family: PragmataPro;
     font-size: 16px;
 }
