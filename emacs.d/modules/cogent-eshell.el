@@ -171,6 +171,7 @@ more-helpful local prompt."
   :straight (helm-switch-shell
              :type git
              :host github
-             :repo "jamesnvc/helm-switch-shell"))
+             :repo "jamesnvc/helm-switch-shell")
+  :custom ((helm-switch-shell-new-shell-type 'vterm)))
 
 (provide 'cogent-eshell)
