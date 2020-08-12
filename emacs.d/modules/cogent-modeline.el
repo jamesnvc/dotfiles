@@ -212,7 +212,7 @@
 
 (defun cogent/flatui-mode-line ()
   (setq cogent-line-active-bg "#34495e")
-  (setq cogent-line-inactive-bg "#dfe4ea")
+  (setq cogent-line-inactive-bg "#bfc4ca")
   (dolist (f cogent-line-evil-state-colours)
     (set-face-attribute (nth 0 f) nil
                         :foreground (nth 1 f)
@@ -220,10 +220,10 @@
                         :background nil
                         :overline cogent-line-active-bg)
     (set-face-attribute (intern (s-concat (symbol-name (nth 0 f)) "-inactive")) nil
-                        :foreground cogent-line-active-bg
+                        :foreground cogent-line-inactive-bg
                         :box nil
                         :background nil
-                        :overline cogent-line-inactive-bg))
+                        :overline 'unspecified))
   (set-face-attribute 'mode-line nil
                       :background nil ;cogent-line-active-bg
                       :foreground cogent-line-active-bg ;"#f8f8f2"
