@@ -203,8 +203,6 @@
  ((member "Symbola" (font-family-list))
   (set-fontset-font t 'unicode "Symbola" nil 'prepend)))
 
-
-
 (load-theme 'flatui t)
 
 (provide 'cogent-appearance)
