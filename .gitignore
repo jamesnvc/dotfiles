@@ -44,3 +44,4 @@ emacs.d/forge-database.sqlite
 /emacs.d/.lsp-session-v1
 /emacs.d/workspace
 /emacs.d/speed-type
+/fish/fish_variables
