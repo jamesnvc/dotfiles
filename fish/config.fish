@@ -29,5 +29,7 @@ if is_func fenv
     end
 end
 
+source "$HOME/.config/fish/vterm.fish"
+
 direnv hook fish | source
 pyenv init - | source

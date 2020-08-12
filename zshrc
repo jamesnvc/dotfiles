@@ -51,6 +51,8 @@ if [ $(uname) = 'Darwin' ]; then
   fi
 fi
 
+source ~/.zsh.d/vterm_conf.sh
+
 # OPAM configuration
 #. /Users/james/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
