@@ -29,7 +29,9 @@ if is_func fenv
     end
 end
 
-source "$HOME/.config/fish/vterm.fish"
+if test "$INSIDE_EMACS" = 'vterm'
+    source "$HOME/.config/fish/vterm.fish"
+end
 
 direnv hook fish | source
 pyenv init - | source
