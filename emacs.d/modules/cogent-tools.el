@@ -60,4 +60,8 @@
              :repo "phillord/org-drill")
   :commands (org-drill))
 
+(use-package vterm
+  :commands (vterm vterm-other-window)
+  :custom ((vterm-shell (executable-find "fish"))))
+
 (provide 'cogent-tools)
