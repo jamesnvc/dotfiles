@@ -96,7 +96,10 @@
     (with-eval-after-load 'git-gutter+
       (set-face-attribute 'git-gutter+-added nil :foreground "#009900"))
     (cogent/flatui-mode-line))
-  (cogent/add-theme-hook 'flatui #'cogent/flatui-theme-hook))
+  (cogent/add-theme-hook 'flatui #'cogent/flatui-theme-hook)
+  ;; [TODO] why do I have to do this? shouldn't setting the face
+  ;; attributes persist for new frames?
+  (add-hook 'server-after-make-frame-hook #'cogent/flatui-theme-hook))
 
 (with-eval-after-load 'term
   (set-face-foreground 'term-color-black "#3f3f3f")
