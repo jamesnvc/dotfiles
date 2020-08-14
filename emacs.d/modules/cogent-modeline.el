@@ -224,6 +224,8 @@
                         :box nil
                         :background nil
                         :overline 'unspecified))
+  (set-face-attribute 'cogent-line-modified-face nil
+                      :foreground "SkyBlue3")
   (set-face-attribute 'mode-line nil
                       :background nil ;cogent-line-active-bg
                       :foreground cogent-line-active-bg ;"#f8f8f2"
