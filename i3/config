@@ -40,8 +40,6 @@ bindsym $mod+backslash exec rofi-pass
 # searching
 bindsym $mod+equal exec ~/bin/web-search.sh -p duckduckgo
 bindsym $mod+Shift+equal exec ~/bin/web-search.sh
-# mail
-bindsym $mod+F10 exec ~/bin/sync_mail.sh
 
 # Move spaces
 bindsym $mod+grave workspace next
