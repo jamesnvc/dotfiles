@@ -189,6 +189,9 @@
  '(prolog-system 'swi)
  '(prolog-use-standard-consult-compile-method-flag t)
  '(scroll-bar-mode nil)
+ '(straight-recipe-overrides
+   '((nil
+      (company-emoji :host github :repo "dunn/company-emoji" :branch "trunk"))))
  '(tab-bar-mode t)
  '(tab-bar-show 1)
  '(tab-bar-tab-hints t)
