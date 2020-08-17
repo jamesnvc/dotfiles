@@ -31,7 +31,7 @@ end
 function vterm_cmd --description 'Run an emacs command'
     set -l vterm_elisp ()
     for arg in $argv
-        set -a vterm_elisp (printf '"%s" ' (string replace -a -r '([\\\\"])' '\\$1' $arg))
+        set -a vterm_elisp (printf '"%s" ' (string replace -a -r '([\\\\"])' '\\\\\\\\$1' $arg))
     end
     vterm_printf '51;E'(string join '' $vterm_elisp)
 end
