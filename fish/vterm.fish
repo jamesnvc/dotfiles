@@ -27,3 +27,15 @@ function fish_prompt --description 'Write out the prompt; do not replace this. I
     printf "%b" (string join "\n" (vterm_old_fish_prompt))
     vterm_prompt_end
 end
+
+function vterm_cmd --description 'Run an emacs command'
+    set -l vterm_elisp ()
+    for arg in $argv
+        set -a vterm_elisp (printf '"%s" ' (string replace -a -r '([\\\\"])' '\\$1' $arg))
+    end
+    vterm_printf '51;E'(string join '' $vterm_elisp)
+end
+
+function e --description "Open file in emacs"
+    vterm_cmd "find-file" (realpath $argv)
+end
