@@ -68,4 +68,8 @@
   ;; start in emacs mode
   :hook (vterm-mode . (lambda () (display-line-numbers-mode -1))))
 
+(use-package dumb-jump
+  :commands (dumb-jump-xref-activate)
+  :init (add-hook 'xref-backend-functions #'dumb-jump-xref-activate))
+
 (provide 'cogent-tools)

@@ -39,7 +39,10 @@
  '(eshell-visual-commands
    '("htop" "vi" "screen" "top" "less" "more" "lynx" "ncftp" "pine" "tin" "trn" "elm" "psql"))
  '(eshell-visual-subcommands '(("git " "log" "lol" "diff" "show")))
- '(evil-buffer-regexps '(("^ \\*load\\*") ("^\\*org-goto\\*" . emacs)))
+ '(evil-buffer-regexps
+   '(("^ \\*load\\*")
+     ("^\\*org-goto\\*" . emacs)
+     ("^\\*xref\\*" . emacs)))
  '(evil-search-module 'evil-search)
  '(evil-surround-pairs-alist
    '((40 "( " . " )")
