@@ -166,6 +166,14 @@ more-helpful local prompt."
 
 (setq eshell-highlight-prompt nil)
 
+(use-package vterm
+  :commands (vterm vterm-other-window)
+  :custom ((vterm-shell (executable-find "fish"))
+           (vterm-buffer-name-string "vterm %s"))
+  ;; make f3 pass through
+  ;; start in emacs mode
+  :hook (vterm-mode . (lambda () (display-line-numbers-mode -1))))
+
 (use-package helm-switch-shell
   :commands helm-switch-shell
   :straight (helm-switch-shell

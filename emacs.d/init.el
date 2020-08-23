@@ -43,7 +43,7 @@
 (require 'cogent-reading) ; needs to load before org
 (require 'cogent-orgmode)
 (require 'cogent-codestyle)
-(require 'cogent-eshell)
+(require 'cogent-shell)
 (require 'cogent-helm)
 (require 'cogent-flycheck)
 (require 'cogent-elisp)

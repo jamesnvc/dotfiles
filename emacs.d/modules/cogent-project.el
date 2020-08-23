@@ -15,4 +15,8 @@
                           (unless (eq ibuffer-sorting-mode 'alphabetic)
                             (ibuffer-do-sort-by-alphabetic)))))
 
+(use-package dumb-jump
+  :commands (dumb-jump-xref-activate)
+  :init (add-hook 'xref-backend-functions #'dumb-jump-xref-activate))
+
 (provide 'cogent-project)

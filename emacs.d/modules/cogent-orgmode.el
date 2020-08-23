@@ -198,4 +198,11 @@ Then press C-c C-x C-u inside
       ;; when it's all done, fix up the table
       (org-table-align))))
 
+(use-package org-drill
+  :straight (org-drill
+             :type git
+             :host gitlab
+             :repo "phillord/org-drill")
+  :commands (org-drill))
+
 (provide 'cogent-orgmode)

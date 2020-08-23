@@ -53,23 +53,4 @@
              :host github
              :repo "lastquestion/explain-pause-mode"))
 
-(use-package org-drill
-  :straight (org-drill
-             :type git
-             :host gitlab
-             :repo "phillord/org-drill")
-  :commands (org-drill))
-
-(use-package vterm
-  :commands (vterm vterm-other-window)
-  :custom ((vterm-shell (executable-find "fish"))
-           (vterm-buffer-name-string "vterm %s"))
-  ;; make f3 pass through
-  ;; start in emacs mode
-  :hook (vterm-mode . (lambda () (display-line-numbers-mode -1))))
-
-(use-package dumb-jump
-  :commands (dumb-jump-xref-activate)
-  :init (add-hook 'xref-backend-functions #'dumb-jump-xref-activate))
-
 (provide 'cogent-tools)
