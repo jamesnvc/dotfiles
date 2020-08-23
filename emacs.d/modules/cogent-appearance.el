@@ -68,10 +68,6 @@
     (cogent/dracula-mode-line))
   (cogent/add-theme-hook 'dracula #'cogent/dracula-theme-hook))
 
-(use-package solarized
-  :straight solarized-theme
-  :defer t)
-
 (use-package flatui-theme
   :defer t
   :init
