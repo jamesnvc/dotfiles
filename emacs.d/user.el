@@ -190,6 +190,17 @@ Take both changes in diff."
                     ;; and paredit overrides this to be something I don't understand
                     "M-?" #'xref-find-references)
 
+(when (fboundp 'x-export-frames)
+  (defun screenshot-svg ()
+    "Save a screenshot of the current frame as an SVG."
+    (interactive)
+    (let* ((filename (make-temp-file "Emacs" nil ".svg"))
+           (data (x-export-frames nil 'svg)))
+      (with-temp-file filename
+        (insert data))
+      (kill-new filename)
+      (message "Saved to '%s'" filename))))
+
 (require 'server)
 (when (not (server-running-p))
   (server-start))
