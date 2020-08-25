@@ -183,4 +183,4 @@ more-helpful local prompt."
   :custom ((helm-switch-shell-new-shell-type 'vterm)
            (helm-switch-shell-show-shell-indicator nil)))
 
-(provide 'cogent-eshell)
+(provide 'cogent-shell)
