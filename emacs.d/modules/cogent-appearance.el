@@ -97,6 +97,9 @@
   ;; attributes persist for new frames?
   (add-hook 'server-after-make-frame-hook #'cogent/flatui-theme-hook))
 
+(use-package modus-operandi-theme
+  :defer t)
+
 (with-eval-after-load 'term
   (set-face-foreground 'term-color-black "#3f3f3f")
   (set-face-foreground 'term-color-red "#cc9393")
@@ -202,6 +205,6 @@
  ((member "Symbola" (font-family-list))
   (set-fontset-font t 'unicode "Symbola" nil 'prepend)))
 
-(load-theme 'flatui t)
+(load-theme 'modus-operandi t)
 
 (provide 'cogent-appearance)

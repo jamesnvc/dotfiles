@@ -2,10 +2,10 @@
 
 (require 'cogent-evil)
 
-(defvar cogent-line-active-bg "#353644"
+(defvar cogent-line-active-bg "#34495e"
   "Modeline background colour for active window")
 
-(defvar cogent-line-inactive-bg "#242533"
+(defvar cogent-line-inactive-bg "#bfc4ca"
   "Modeline background colour for inactive window")
 
 (defvar cogent-line-evil-state-colours
@@ -23,13 +23,14 @@
 
 (dolist (s cogent-line-evil-state-colours)
   (eval `(defface ,(nth 0 s)
-           (list (list t (list :background ,(nth 1 s)
-                               :box (list :line-width 4 :color ,(nth 1 s))
-                               :foreground ,cogent-line-active-bg)))
+           (list (list t (list :foreground ,(nth 1 s)
+                               :overline ,cogent-line-active-bg
+                               :background nil)))
            ,(nth 2 s)
            :group 'cogent))
   (eval `(defface ,(intern (s-concat (symbol-name (nth 0 s)) "-inactive"))
-           (list (list t (list :foreground ,(nth 1 s)
+           (list (list t (list :foreground ,cogent-line-inactive-bg
+                               :overline 'unspecified
                                :background nil)))
            ,(nth 2 s)
            :group 'cogent)))
@@ -194,6 +195,8 @@
                ))
 
 (defun cogent/dracula-mode-line ()
+  (setq cogent-line-active-bg "#353644")
+  (setq cogent-line-inactive-bg "#242533")
   (set-face-attribute 'mode-line nil
                       :background cogent-line-active-bg
                       :foreground "#f8f8f2"
@@ -226,24 +229,27 @@
                         :overline 'unspecified))
   (set-face-attribute 'cogent-line-modified-face nil
                       :foreground "SkyBlue3")
-  (set-face-attribute 'mode-line nil
-                      :background nil ;cogent-line-active-bg
-                      :foreground cogent-line-active-bg ;"#f8f8f2"
-                      :box nil ;`(:line-width 4 :color ,cogent-line-active-bg)
-                      :overline cogent-line-active-bg
-                      :underline nil)
-  (set-face-attribute 'mode-line-inactive nil
-                      :background nil ;cogent-line-inactive-bg
-                      :foreground cogent-line-inactive-bg ;"#f8f8f2"
-                      :box nil ;`(:line-width 4 :color ,cogent-line-inactive-bg)
-                      :overline cogent-line-inactive-bg
-                      :underline nil)
-  (set-face-attribute 'header-line nil
-                      :background nil
-                      :foreground cogent-line-active-bg
-                      :underline cogent-line-active-bg)
   (with-eval-after-load 'org-faces
     (set-face-attribute 'org-mode-line-clock nil
                         :background nil :inherit nil)))
+
+(set-face-attribute 'mode-line nil
+                    :background nil
+                    :foreground cogent-line-active-bg
+                    :box nil
+                    :overline cogent-line-active-bg
+                    :underline nil)
+
+(set-face-attribute 'mode-line-inactive nil
+                    :background nil
+                    :foreground cogent-line-inactive-bg
+                    :box nil
+                    :overline cogent-line-inactive-bg
+                    :underline nil)
+
+(set-face-attribute 'header-line nil
+                    :background nil
+                    :foreground cogent-line-active-bg
+                    :underline cogent-line-active-bg)
 
 (provide 'cogent-modeline)
