@@ -233,23 +233,24 @@
     (set-face-attribute 'org-mode-line-clock nil
                         :background nil :inherit nil)))
 
-(set-face-attribute 'mode-line nil
-                    :background nil
-                    :foreground cogent-line-active-bg
-                    :box nil
-                    :overline cogent-line-active-bg
-                    :underline nil)
+(defun cogent-modeline/set-modeline-faces ()
+ (set-face-attribute 'mode-line nil
+                     :background nil
+                     :foreground cogent-line-active-bg
+                     :box nil
+                     :overline cogent-line-active-bg
+                     :underline nil)
 
-(set-face-attribute 'mode-line-inactive nil
-                    :background nil
-                    :foreground cogent-line-inactive-bg
-                    :box nil
-                    :overline cogent-line-inactive-bg
-                    :underline nil)
+ (set-face-attribute 'mode-line-inactive nil
+                     :background nil
+                     :foreground cogent-line-inactive-bg
+                     :box nil
+                     :overline cogent-line-inactive-bg
+                     :underline nil)
 
-(set-face-attribute 'header-line nil
-                    :background nil
-                    :foreground cogent-line-active-bg
-                    :underline cogent-line-active-bg)
+ (set-face-attribute 'header-line nil
+                     :background nil
+                     :foreground cogent-line-active-bg
+                     :underline cogent-line-active-bg))
 
 (provide 'cogent-modeline)

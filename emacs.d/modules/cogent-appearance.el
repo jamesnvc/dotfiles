@@ -98,7 +98,11 @@
   (add-hook 'server-after-make-frame-hook #'cogent/flatui-theme-hook))
 
 (use-package modus-operandi-theme
-  :defer t)
+  :defer t
+  :init
+  (cogent/add-theme-hook 'modus-operandi #'cogent-modeline/set-modeline-faces)
+  ;; [TODO] why is this needed?
+  (add-hook 'server-after-make-frame-hook #'cogent-modeline/set-modeline-faces))
 
 (with-eval-after-load 'term
   (set-face-foreground 'term-color-black "#3f3f3f")

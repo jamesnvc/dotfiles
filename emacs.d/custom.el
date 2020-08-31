@@ -93,6 +93,11 @@
  '(magit-diff-refine-hunk t)
  '(menu-bar-mode t)
  '(mode-require-final-newline nil)
+ '(modus-operandi-theme-bold-constructs t)
+ '(modus-operandi-theme-completions 'opinionated)
+ '(modus-operandi-theme-org-blocks 'rainbow)
+ '(modus-operandi-theme-slanted-constructs t)
+ '(modus-operandi-theme-variable-pitch-headings t)
  '(moody-mode-line-height 28)
  '(mouse-drag-and-drop-region 'modifier)
  '(notmuch-saved-searches
@@ -239,4 +244,4 @@
  '(lsp-face-semhl-enum ((t (:inherit font-lock-variable-name-face :foreground "royal blue"))))
  '(lsp-face-semhl-member ((t (:inherit font-lock-variable-name-face :foreground "dark blue"))))
  '(lsp-face-semhl-operator ((t (:inherit font-lock-function-name-face :foreground "chocolate"))))
- '(org-headline-done ((t (:foreground "#0eac51" :strike-through "dim gray")))))
+ '(org-headline-done ((t (:strike-through t)))))
