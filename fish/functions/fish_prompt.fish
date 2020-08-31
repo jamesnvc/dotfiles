@@ -50,7 +50,7 @@ function fish_prompt
         set_color -o cyan
     end
     echo -n (prompt_hostname)
-    set_color -o white
+    set_color -o green
     #echo -n :(prompt_pwd)
     echo -n :(pwd|sed "s=$HOME=~=")
     set_color -o green
