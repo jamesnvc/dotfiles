@@ -6,7 +6,7 @@
   :commands markdown-mode
   :mode (("\\.markdown$" . markdown-mode)
          ("\\.md$" . markdown-mode))
-  :hook ((markdown-mode . flyspell-mode)
-         (markdown-mode . visual-line-mode)))
+  :hook ((markdown-mode-hook . flyspell-mode)
+         (markdown-mode-hook . visual-line-mode)))
 
 (provide 'cogent-markdown)

@@ -3,7 +3,7 @@
 
 (use-package clojure-mode
   :commands clojure-mode
-  :hook (clojure-mode . enable-paredit-mode))
+  :hook (clojure-mode-hook . enable-paredit-mode))
 
 (use-package cljr-helm
   :after general clojure-mode
@@ -13,11 +13,11 @@
 
 (use-package clj-refactor
   :after clojure-mode
-  :hook (clojure-mode . (lambda () (clj-refactor-mode 1))))
+  :hook (clojure-mode-hook . (lambda () (clj-refactor-mode 1))))
 
 (use-package cider
   :commands cider-jack-in
-  :hook (cider-mode . eldoc-mode)
+  :hook (cider-mode-hook . eldoc-mode)
   :config
 
   (when (version<= "28" emacs-version)
@@ -57,7 +57,7 @@
 (use-package flycheck-clj-kondo
   :if (executable-find "clj-kondo")
   :after clojure-mode
-  :hook (clojure-mode . (lambda () (require 'flycheck-clj-kondo))))
+  :hook (clojure-mode-hook . (lambda () (require 'flycheck-clj-kondo))))
 
 ;; Like vim-fireplace
 (evil-define-operator cogent/evil-cider-eval (beg end)

@@ -4,7 +4,7 @@
 
 (use-package elixir-mode
   :commands elixir-mode
-  :hook (elixir-mode . alchemist-mode))
+  :hook (elixir-mode-hook . alchemist-mode))
 
 ;; Intergration with mix
 (use-package alchemist

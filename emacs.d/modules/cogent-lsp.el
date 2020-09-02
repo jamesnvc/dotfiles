@@ -6,7 +6,7 @@
   ;; un-comment this to make the various other lsp-backends get loaded
   ;; :demand t
   :commands lsp
-  :hook (prolog-mode . lsp)
+  :hook (prolog-mode-hook . lsp)
   :config
 
   (lsp-register-client
@@ -40,7 +40,7 @@
 
 (use-package lsp-ui
   :commands lsp-ui-mode
-  :hook (lsp-mode . lsp-ui-mode)
+  :hook (lsp-mode-hook . lsp-ui-mode)
   :config
   (general-define-key :keymaps '(lsp-ui-mode-map)
                       [remap xref-find-definitions] #'lsp-ui-peek-find-definitions
@@ -89,6 +89,6 @@
   (if-let ((ccls-path (cogent/resolve-exec "ccls")))
       (setq ccls-executable ccls-path)
     (setq ccls-executable (expand-file-name "~/software/ccls/Release/ccls")))
-  :hook ((objc-mode c++-mode c-mode) . (lambda () (require 'ccls) (lsp))))
+  :hook ((objc-mode-hook c++-mode c-mode) . (lambda () (require 'ccls) (lsp))))
 
 (provide 'cogent-lsp)

@@ -205,6 +205,7 @@
  '(tab-bar-tab-hints t)
  '(tool-bar-mode nil)
  '(undo-tree-auto-save-history t)
+ '(use-package-hook-name-suffix nil)
  '(vc-annotate-background nil)
  '(vc-annotate-color-map
    '((20 . "#f36c60")

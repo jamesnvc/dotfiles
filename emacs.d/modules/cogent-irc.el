@@ -4,7 +4,7 @@
 
 (use-package erc-hl-nicks
   :commands erc-hl-nicks-enable
-  :hook (erc-mode . erc-hl-nicks-enable))
+  :hook (erc-mode-hook . erc-hl-nicks-enable))
 
 (use-package erc-image)
 

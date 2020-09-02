@@ -28,13 +28,13 @@
 (use-package js2-refactor
   :after js2-mode
   :commands (js2r-add-keybindings-with-prefix)
-  :hook (js2-mode . js2-refactor-mode)
+  :hook (js2-mode-hook . js2-refactor-mode)
   :init
   (js2r-add-keybindings-with-prefix "C-c C-m"))
 
 (use-package tern
   :commands tern-mode
-  :hook (js2-mode . (lambda () (tern-mode t)))
+  :hook (js2-mode-hook . (lambda () (tern-mode t)))
   :config
   (setq tern-command (list (or (cogent/resolve-exec "tern") "tern"))))
 

@@ -5,16 +5,16 @@
 (use-package rust-mode)
 
 (use-package flycheck-rust
-  :hook (flycheck-mode . flycheck-rust-setup))
+  :hook (flycheck-mode-hook . flycheck-rust-setup))
 
 (use-package racer
-  :hook ((rust-mode  . racer-mode)
-         (racer-mode . eldoc-mode)
-         (racer-mode . company-mode))
+  :hook ((rust-mode-hook  . racer-mode)
+         (racer-mode-hook . eldoc-mode)
+         (racer-mode-hook . company-mode))
   :diminish racer-mode)
 
 (use-package cargo
-  :hook (rust-mode . cargo-minor-mode)
+  :hook (rust-mode-hook . cargo-minor-mode)
   :config
   (setq compilation-ask-about-save nil)
   :diminish cargo-minor-mode)

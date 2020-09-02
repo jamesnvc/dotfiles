@@ -10,10 +10,10 @@
   :config
   (pdf-tools-install)
   (define-pdf-cache-function pagelabels)
-  :hook ((pdf-view-mode . (lambda () (display-line-numbers-mode -1)))
-         (pdf-view-mode . pdf-tools-enable-minor-modes)))
+  :hook ((pdf-view-mode-hook . (lambda () (display-line-numbers-mode -1)))
+         (pdf-view-mode-hook . pdf-tools-enable-minor-modes)))
 
 (use-package org-pdftools
-  :hook (org-load . org-pdftools-setup-link))
+  :hook (org-load-hook . org-pdftools-setup-link))
 
 (provide 'cogent-reading)

@@ -102,8 +102,8 @@ as my default face, so it will be readable"
 
 (use-package evil-org
   :after org
-  :hook ((org-mode . evil-org-mode)
-         (evil-org-mode . evil-org-set-key-theme)))
+  :hook ((org-mode-hook . evil-org-mode)
+         (evil-org-mode-hook . evil-org-set-key-theme)))
 
 ;; from http://sachachua.com/blog/2007/12/clocking-time-with-emacs-org/
 (defun org-dblock-write:rangereport (params)

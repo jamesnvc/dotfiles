@@ -14,10 +14,11 @@
   (setq-default web-mode-enable-current-element-highlight t))
 
 (use-package rainbow-mode
-  :hook ((css-mode . rainbow-mode)
-         (less-css-mode . rainbow-mode)
-         (html-mode . rainbow-mode)
-         (web-mode . rainbow-mode))
-  :diminish rainbow-mode)
+  :hook ((css-mode-hook . rainbow-mode)
+         (less-css-mode-hook . rainbow-mode)
+         (html-mode-hook . rainbow-mode)
+         (web-mode-hook . rainbow-mode))
+  :diminish rainbow-mode
+  :custom ((rainbow-html-colors t)))
 
 (provide 'cogent-html)
