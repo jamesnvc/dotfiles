@@ -53,4 +53,9 @@ results using eros overlay."
   "g!" #'cogent/evil-elisp-eval-replace
   "M-r" #'eval-buffer)
 
+(use-package flycheck-package
+  :after flycheck
+  :config
+  (flycheck-package-setup))
+
 (provide 'cogent-elisp)
