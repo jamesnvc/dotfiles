@@ -180,7 +180,7 @@ more-helpful local prompt."
              :type git
              :host github
              :repo "jamesnvc/helm-switch-shell")
-  :custom ((helm-switch-shell-new-shell-type 'vterm)
-           (helm-switch-shell-show-shell-indicator nil)))
+  :custom ((helm-switch-shell-new-shell-type 'eshell)
+           (helm-switch-shell-show-shell-indicator t)))
 
 (provide 'cogent-shell)
