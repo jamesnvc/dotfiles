@@ -5,12 +5,12 @@
 
 (use-package paredit
   :commands paredit-mode enable-paredit-mode
-  :hook (emacs-lisp-mode . enable-paredit-mode)
+  :hook (emacs-lisp-mode-hook . enable-paredit-mode)
   :diminish paredit-mode)
 
 (use-package highlight-parentheses
   :commands highlight-parentheses-mode
-  :hook (emacs-lisp-mode . highlight-parentheses-mode)
+  :hook (emacs-lisp-mode-hook . highlight-parentheses-mode)
   :diminish highlight-parentheses-mode)
 
 (defun cogent-elisp/remove-elc-on-save ()
@@ -29,7 +29,7 @@ now-invalid elc file"
 ;; Show the result of evaluating as an overlay in the elisp buffer
 (use-package eros
   :commands eros-mode
-  :hook (emacs-lisp-mode . eros-mode))
+  :hook (emacs-lisp-mode-hook . eros-mode))
 
 (evil-define-operator cogent/evil-elisp-eval (beg end)
   "Evaluate emacs-lisp expression given by <motion>, displaying
