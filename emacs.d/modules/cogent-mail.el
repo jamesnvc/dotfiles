@@ -158,4 +158,10 @@ search."
   :after calfw
   :commands cfw:org-create-source)
 
+(use-package gnus
+  :config
+  (setq gnus-select-method '(nnnil ""))
+  (setq gnus-secondary-select-methods
+        '((nntp "news.gmane.io"))))
+
 (provide 'cogent-mail)
