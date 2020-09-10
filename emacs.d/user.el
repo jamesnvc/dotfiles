@@ -99,7 +99,6 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
                     :states nil
                     [escape] #'minibuffer-keyboard-quit)
 
-
 ;; Eshell
 (add-hook 'eshell-first-time-mode-hook
           (lambda ()
