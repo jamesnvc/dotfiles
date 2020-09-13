@@ -22,7 +22,6 @@
  '(display-line-numbers-type 'relative)
  '(display-raw-bytes-as-hex t)
  '(ediff-window-setup-function 'ediff-setup-windows-plain)
- '(elfeed-goodies/powerline-default-separator 'utf-8)
  '(elfeed-search-face-alist
    '((unread elfeed-search-unread-title-face)
      (mustread elfeed-log-info-level-face)

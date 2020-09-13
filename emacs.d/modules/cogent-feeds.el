@@ -37,32 +37,13 @@
       (when link
         (eww-browse-url link))))
 
+  (evil-set-initial-state 'elfeed-search-mode 'emacs)
+  (evil-set-initial-state 'elfeed-show-mode 'emacs)
   :general
-  (general-nmap :keymaps 'elfeed-search-mode-map
-    "q" #'quit-window
-    "S" #'elfeed-search-set-filter
-    "s" #'elfeed-search-live-filter
-    "o" #'elfeed-search-browse-url
-    "O" #'elfeed-search-eww-open
-    "r" #'elfeed-search-untag-all-unread
-    "R" #'cogent/elfeed-mark-visible-read
-    "y" #'elfeed-search-yank
-    "=" #'elfeed-update
-    (kbd "RET") #'elfeed-search-show-entry)
-  (general-nmap :keymaps 'elfeed-show-mode-map
-    "q" #'elfeed-kill-buffer
-    "n" #'elfeed-show-next
-    "p" #'elfeed-show-prev
-    "o" #'elfeed-show-visit
-    "O" #'elfeed-show-eww-open))
-
-(use-package elfeed-goodies
-  :after elfeed
-  :demand t
-  :init
-  (elfeed-goodies/setup)
-  (add-hook 'elfeed-new-entry-hook
-            (elfeed-make-tagger :before "2 weeks ago"
-                                :remove 'unread)))
+  (:keymaps 'elfeed-search-mode-map
+            "R" #'cogent/elfeed-mark-visible-read
+            "=" #'elfeed-update)
+  (:keymaps 'elfeed-show-mode-map
+            "o" #'elfeed-show-visit))
 
 (provide 'cogent-feeds)
