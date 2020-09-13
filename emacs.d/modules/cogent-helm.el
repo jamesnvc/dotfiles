@@ -120,7 +120,8 @@
     :states '(normal visual)
     "m" #'helm-M-x
     "T" #'helm-find-files
-    "b" #'helm-buffers-list))
+    "b" #'helm-buffers-list
+    "l" #'helm-occur))
 
 (use-package helm-rg
   :config
@@ -197,12 +198,6 @@
     "B" #'helm-projectile-switch-to-buffer
     "t" #'helm-projectile-find-file
     "s" #'helm-projectile-rg))
-
-(use-package swiper-helm
-  :general
-  (cogent/leader-def
-    :states '(normal visual)
-    "l" #'swiper-helm))
 
 (use-package helm-flx
   :config
