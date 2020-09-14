@@ -16,7 +16,8 @@
                             (ibuffer-do-sort-by-alphabetic)))))
 
 (use-package dumb-jump
-  :commands (dumb-jump-xref-activate)
-  :hook (xref-backend-functions . #'dumb-jump-xref-activate))
+  :hook (xref-backend-functions . dumb-jump-xref-activate)
+  :custom ((dumb-jump-selector 'helm)))
+
 
 (provide 'cogent-project)
