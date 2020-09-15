@@ -10,6 +10,8 @@
   "Extra directories I want added to PATH")
 
 (defun cogent/eshell-add-paths ()
+  "Add extra dirs to eshell's path.
+Shouldn't be necessary now, after using fish shell and exec-path-from-shell."
   (when cogent/extra-path-dirs
     (setq eshell-path-env (concat (s-join ":" cogent/extra-path-dirs)
                                   ":"
@@ -58,6 +60,7 @@
 
 ;; Leader key stuff
 (defun cogent/quit-help-window ()
+  "Close any open help sort of window."
   (interactive)
   (when-let (help-win (or (get-buffer-window "*Help*")
                           (get-buffer-window "*lsp-help*")
