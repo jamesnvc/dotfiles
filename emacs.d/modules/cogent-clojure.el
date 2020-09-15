@@ -5,16 +5,6 @@
   :commands clojure-mode
   :hook (clojure-mode-hook . enable-paredit-mode))
 
-(use-package cljr-helm
-  :after general clojure-mode
-  :general
-  (:keymaps 'clojure-mode-map :states '(normal)
-            "<SPC>r" 'cljr-helm))
-
-(use-package clj-refactor
-  :after clojure-mode
-  :hook (clojure-mode-hook . (lambda () (clj-refactor-mode 1))))
-
 (use-package cider
   :commands cider-jack-in
   :hook (cider-mode-hook . eldoc-mode)
@@ -45,10 +35,6 @@
   (with-eval-after-load "company"
     (add-hook 'cider-repl-mode-hook #'cider-company-enable-fuzzy-completion)
     (add-hook 'cider-mode-hook #'cider-company-enable-fuzzy-completion)))
-
-(use-package helm-cider
-  :after helm cider
-  :config (helm-cider-mode 1))
 
 (use-package paredit
   :commands enable-paredit-mode paredit-mode
