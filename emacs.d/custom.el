@@ -199,7 +199,6 @@
  '(straight-recipe-overrides
    '((nil
       (company-emoji :host github :repo "dunn/company-emoji" :branch "trunk"))))
- '(tab-bar-mode t)
  '(tab-bar-show 1)
  '(tab-bar-tab-hints t)
  '(tool-bar-mode nil)
