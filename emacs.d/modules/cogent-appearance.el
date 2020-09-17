@@ -99,10 +99,12 @@
 
 (use-package modus-operandi-theme
   :defer t
-  :init
-  (cogent/add-theme-hook 'modus-operandi #'cogent-modeline/set-modeline-faces)
-  ;; [TODO] why is this needed?
-  (add-hook 'server-after-make-frame-hook #'cogent-modeline/set-modeline-faces))
+  :custom-face
+  (mode-line ((t (:background nil :foreground "#34495e" :box nil
+                  :overline "#34495e" :underline nil))))
+  (mode-line-inactive ((t (:background nil :foreground "#bfc4ca":box nil
+                           :overline "#bfc4ca":underline nil))))
+  (header-line ((t (:background nil :foreground "#34495e" :underline  "#34495e")))))
 
 (with-eval-after-load 'term
   (set-face-foreground 'term-color-black "#3f3f3f")
