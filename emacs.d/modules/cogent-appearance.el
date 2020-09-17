@@ -27,79 +27,12 @@
 
 (require 'cogent-modeline)
 
-(use-package dracula-theme
-  :defer t
-  :init
-  (defun cogent/dracula-theme-hook ()
-    (set-face-attribute 'line-number nil :foreground "#678")
-    (set-face-attribute 'line-number-current-line nil :foreground "#96989c")
-    ;; Comments exist for a reason - make them stand out
-    (set-face-attribute 'font-lock-comment-face nil :weight 'semi-bold)
-    (set-face-attribute 'region nil :background "#8be9fd")
-
-    (set-face-attribute 'company-tooltip nil :background "#44475a" :foreground "#f8f8f2" :weight bold)
-    (set-face-attribute 'company-tooltip-common nil :foreground "#8be9fd" :background "#44475a")
-    (set-face-attribute 'company-tooltip-common-selection nil :foreground "#bd93f9")
-    (set-face-attribute 'company-tooltip-selection nil :background "#55586b" :foreground "#ccccc7")
-
-    ;; '(lsp-ui-peek-filename ((t (:foreground "#ffb86c"))))
-    ;; '(lsp-ui-peek-header ((t (:background "#44475a" :foreground "#f8f8f2"))))
-    ;; '(lsp-ui-peek-highlight ((t (:background "#44475a" :distant-foreground "white" :foreground "#f8f8f2"))))
-    ;; '(lsp-ui-peek-list ((t (:background "#282a36"))))
-    ;; '(lsp-ui-peek-peek ((t (:background "#181a26"))))
-    ;; '(lsp-ui-peek-selection ((t (:background "#44475a" :foreground "#bd93f9"))))
-
-    (with-eval-after-load 'flycheck
-      (set-face-background 'flycheck-error "#660000")
-      (set-face-foreground 'flycheck-error nil)
-      (set-face-background 'flycheck-warning "#331800")
-      (set-face-foreground 'flycheck-warning nil))
-
-    (with-eval-after-load 'flycheck-color-mode-line
-      (set-face-background 'flycheck-color-mode-line-error-face "#440000")
-      (set-face-background 'flycheck-color-mode-line-warning-face "#553300")
-      (set-face-background 'flycheck-color-mode-line-info-face nil)
-      (set-face-foreground 'flycheck-color-mode-line-error-face "#ffffff")
-      (set-face-foreground 'flycheck-color-mode-line-warning-face "#ffffff")
-      (set-face-foreground 'flycheck-color-mode-line-info-face nil))
-
-    (with-eval-after-load 'org
-      (set-face-background 'org-block-begin-line "#44475a"))
-    (cogent/dracula-mode-line))
-  (cogent/add-theme-hook 'dracula #'cogent/dracula-theme-hook))
-
-(use-package flatui-theme
-  :defer t
-  :init
-  (defun cogent/flatui-theme-hook ()
-    (set-face-attribute 'font-lock-comment-face nil :weight 'semi-bold)
-    (set-face-attribute 'font-lock-keyword-face nil :foreground "#b96c00")
-    (set-face-attribute 'font-lock-constant-face nil :foreground "#c65e02")
-    (set-face-attribute 'font-lock-builtin-face nil :foreground "#068065")
-    (set-face-attribute 'fringe nil :background nil)
-    (with-eval-after-load 'org
-      (set-face-attribute 'org-level-2 nil :foreground "#0064a9")
-      (set-face-attribute 'org-level-4 nil :foreground "#b96c00")
-      (set-face-attribute 'org-headline-done nil :foreground "#0eac51")
-      (set-face-attribute 'org-link nil :underline t)
-      (set-face-attribute 'org-agenda-date-today nil :foreground "#afb4ba"))
-    (with-eval-after-load 'speed-type
-      (set-face-attribute 'speed-type-correct nil :foreground "#009f00"))
-    (with-eval-after-load 'helm-rg
-      (set-face-attribute 'helm-rg-file-match-face nil :foreground "#0aa"))
-    (with-eval-after-load 'compile
-      (set-face-attribute 'compilation-line-number nil :foreground "#b17400"))
-    (with-eval-after-load 'git-gutter+
-      (set-face-attribute 'git-gutter+-added nil :foreground "#009900"))
-    (cogent/flatui-mode-line)
-    ;; [TODO] why do I have to do this? shouldn't setting the face
-    ;; attributes persist for new frames?
-    (add-hook 'server-after-make-frame-hook #'cogent/flatui-theme-hook))
-  (cogent/add-theme-hook 'flatui #'cogent/flatui-theme-hook))
-
 (use-package modus-operandi-theme
   :defer t
   :custom-face
+  ;; have to put these in as strings directly because this is a macro, I guess
+  ;; cogent-line-active-bg "#34495e"
+  ;; cogent-line-inactive-bg "#bfc4ca"
   (mode-line ((t (:background nil :foreground "#34495e" :box nil
                   :overline "#34495e" :underline nil))))
   (mode-line-inactive ((t (:background nil :foreground "#bfc4ca":box nil
