@@ -114,8 +114,6 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
             (display-line-numbers-mode -1)))
 
 (when (version<= "27.0" emacs-version)
-  (add-hook 'eshell-mode-hook
-            (lambda () (add-to-list 'completion-at-point-functions #'helm-esh-pcomplete)))
   (general-define-key :keymaps 'eshell-mode-map
                       "M-r" #'helm-eshell-history))
 ;; Fancy symbols
