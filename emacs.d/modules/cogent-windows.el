@@ -22,6 +22,22 @@
   (require 'cogent-eyebrowse))
 
 (when (featurep 'tab-bar)
+  (when (and tab-bar-new-button
+             (not (get-text-property 0 'display tab-bar-new-button)))
+    (add-text-properties 0 (length tab-bar-new-button)
+                         `(display (image :type xpm
+                                          :file "tabs/new.xpm"
+                                          :margin (2 . 0)
+                                          :ascent center))
+                         tab-bar-new-button))
+  (when (and tab-bar-close-button
+             (not (get-text-property 0 'display tab-bar-close-button)))
+    (add-text-properties 0 (length tab-bar-close-button)
+                         `(display (image :type xpm
+                                          :file "tabs/close.xpm"
+                                          :margin (2 . 0)
+                                          :ascent center))
+                         tab-bar-close-button))
   (general-define-key
    :keymaps 'global
    "C-x t q" #'tab-bar-close-tab
