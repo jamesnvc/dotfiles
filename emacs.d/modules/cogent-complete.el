@@ -51,4 +51,9 @@
             "C-p" #'company-select-previous)
   :diminish company-mode)
 
+(use-package company-posframe
+  :after company
+  :config
+  (company-posframe-mode 1))
+
 (provide 'cogent-complete)
