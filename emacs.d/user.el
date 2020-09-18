@@ -139,7 +139,8 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
                              (org-agenda-files :maxlevel . 9)))
   (setq org-refile-use-outline-path t)
   (setq org-outline-path-complete-in-steps nil)
-  (setq org-refile-allow-creating-parent-nodes 'confirm))
+  (setq org-refile-allow-creating-parent-nodes 'confirm)
+  (add-hook 'org-agenda-mode-hook (lambda () (display-line-numbers-mode 0))))
 
 ;; Elfeed
 (load (concat dotfiles-dir "feeds.el"))
