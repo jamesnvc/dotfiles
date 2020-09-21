@@ -7,7 +7,6 @@
    (concat (read-string "Name: ") ".org")
    "~/org/notebook/"))
 
-(setq org-replace-disputed-keys t)
 (straight-use-package '(org-plus-contrib :includes (org)))
 (progn
   ;; :demand t
