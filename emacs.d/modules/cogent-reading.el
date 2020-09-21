@@ -14,7 +14,7 @@
          (pdf-view-mode-hook . pdf-tools-enable-minor-modes)))
 
 (use-package org-pdftools
-  :after (org pdf-tools)
+  :defer t
   :hook (org-load-hook . org-pdftools-setup-link))
 
 (provide 'cogent-reading)
