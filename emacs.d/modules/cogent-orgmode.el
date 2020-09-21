@@ -7,13 +7,13 @@
    (concat (read-string "Name: ") ".org")
    "~/org/notebook/"))
 
+(setq org-replace-disputed-keys t)
 (straight-use-package '(org-plus-contrib :includes (org)))
 (progn
   ;; :demand t
   ;; :config
 
   (require 'ox-beamer)
-  (setq org-replace-disputed-keys t)
   (setq org-default-notes-file (concat org-directory "/notes.org"))
 
   (setq org-catch-invisible-edits 'show-and-error)
