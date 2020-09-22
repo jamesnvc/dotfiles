@@ -57,7 +57,9 @@
   (general-define-key
    :keymaps 'org-mode-map
    "C-c C-x C-r" #'org-clock-remove-overlays
-   "C-c w" #'org-refile))
+   "C-c w" #'org-refile
+   "C-c <up>" #'org-shiftup
+   "C-c <down>" #'org-shiftdown))
 
 (use-package org-cliplink
   :after org
