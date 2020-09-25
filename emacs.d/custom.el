@@ -9,6 +9,7 @@
    ["light gray" "#f36c60" "medium sea green" "dark goldenrod" "dark cyan" "dark magenta" "blue" "#263238"])
  '(auth-sources '("~/.authinfo.gpg" "~/.netrc"))
  '(calendar-week-start-day 1)
+ '(cider-auto-select-error-buffer nil)
  '(clojure-indent-style :align-arguments)
  '(confirm-kill-emacs 'yes-or-no-p)
  '(custom-safe-themes
