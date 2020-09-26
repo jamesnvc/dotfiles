@@ -122,7 +122,6 @@
  '(org-agenda-skip-scheduled-if-done t)
  '(org-babel-clojure-backend 'cider)
  '(org-babel-load-languages '((shell . t) (emacs-lisp . t) (dot . t)))
- '(org-bullets-bullet-list '("●" "◉" "◎" "○"))
  '(org-capture-templates
    '(("n" "Note" plain
       (file cogent/org-note-file-name)
