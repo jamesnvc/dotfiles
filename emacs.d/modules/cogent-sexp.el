@@ -23,12 +23,16 @@
   (forward-char)
   (evil-insert 0))
 
+(defun cogent/at-end-of-sexp-p ()
+  (or (= ?\) (char-after (point)))
+      (= ?  (char-after (1+ (point))))
+      (= ?\n (char-after (1+ (point))))))
+
 (defun cogent/evil-forward-sexp (&optional argument)
   "Wrapper around paredit-forward to take into account the fact that
 we can't move past the last character in a line in normal mode"
   (interactive "P")
-  (if (= ?\) (char-after (point)))
-      (forward-char))
+  (if (cogent/at-end-of-sexp-p) (forward-char))
   (paredit-forward argument)
   (backward-char))
 
@@ -37,8 +41,7 @@ we can't move past the last character in a line in normal mode"
 we can't move past the last character in a line in normal mode.
 This version is for operator mode, where we want it to include the last paren"
   (interactive "P")
-  (if (= ?\) (char-after (point)))
-      (forward-char))
+  (if (cogent/at-end-of-sexp-p) (forward-char))
   (paredit-forward argument))
 
 (defun cogent/evil-forward-sexp-visual (&optional argument)
@@ -46,8 +49,7 @@ This version is for operator mode, where we want it to include the last paren"
 we can't move past the last character in a line in normal mode.
 This version is for visual mode"
   (interactive "P")
-  (if (= ?\) (char-after (point)))
-      (forward-char))
+  (if (cogent/at-end-of-sexp-p) (forward-char))
   (backward-char)
   (paredit-forward argument))
 
