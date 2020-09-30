@@ -10,13 +10,11 @@
 (use-package racer
   :hook ((rust-mode-hook  . racer-mode)
          (racer-mode-hook . eldoc-mode)
-         (racer-mode-hook . company-mode))
-  :diminish racer-mode)
+         (racer-mode-hook . company-mode)))
 
 (use-package cargo
   :hook (rust-mode-hook . cargo-minor-mode)
   :config
-  (setq compilation-ask-about-save nil)
-  :diminish cargo-minor-mode)
+  (setq compilation-ask-about-save nil))
 
 (provide 'cogent-rust)

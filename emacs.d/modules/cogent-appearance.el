@@ -74,31 +74,6 @@
   (setq nyan-bar-length 16
         nyan-wavy-trail nil))
 
-(use-package diminish)
-
-(with-eval-after-load 'eldoc (diminish 'eldoc-mode))
-(with-eval-after-load 'autopair (diminish 'autopair-mode))
-(with-eval-after-load 'abbrev (diminish 'abbrev-mode))
-(with-eval-after-load 'js2-highlight-vars (diminish 'js2-highlight-vars-mode))
-(with-eval-after-load 'mmm-mode (diminish 'mmm-mode))
-(with-eval-after-load 'skewer-html (diminish 'skewer-html-mode))
-(with-eval-after-load 'skewer-mode (diminish 'skewer-mode))
-(with-eval-after-load 'auto-indent-mode (diminish 'auto-indent-minor-mode))
-;; (eval-after-load "subword" '(diminish 'subword-mode))
-(with-eval-after-load 'cider (diminish 'cider-mode "🤖"))
-(with-eval-after-load 'smartparens (diminish 'smartparens-mode))
-(with-eval-after-load 'undo-tree (diminish 'undo-tree-mode ""))
-(with-eval-after-load 'flycheck (diminish 'flycheck-mode))
-(with-eval-after-load 'git-gutter+ (diminish 'git-gutter+-mode ""))
-(with-eval-after-load 'evil-mc (diminish 'evil-mc-mode))
-(with-eval-after-load 'geiser (diminish 'geiser-autodoc-mode))
-(with-eval-after-load 'company (diminish 'company-mode))
-(with-eval-after-load 'flyspell (diminish 'flyspell-mode ""))
-(with-eval-after-load 'alchemist (diminish 'alchemist-mode ""))
-(with-eval-after-load 'yasnippet (diminish 'yas-minor-mode))
-(diminish 'visual-line-mode "⮓")
-(diminish 'auto-revert-mode)
-
 (use-package cyphejor
   :config
   (setq cyphejor-rules

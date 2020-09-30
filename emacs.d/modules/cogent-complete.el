@@ -48,8 +48,7 @@
   (:keymaps 'company-active-map
             "C-\\" #'company-try-hard
             "C-n" #'company-select-next
-            "C-p" #'company-select-previous)
-  :diminish company-mode)
+            "C-p" #'company-select-previous))
 
 (use-package company-posframe
   :after company

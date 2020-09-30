@@ -14,8 +14,7 @@
 (use-package volatile-highlights
   :commands volatile-highlights-mode
   :config
-  (volatile-highlights-mode t)
-  :diminish volatile-highlights-mode)
+  (volatile-highlights-mode t))
 
 ;; Hack for setting a fixed wrap column in visual-line-mode.
 (defun set-visual-wrap-column (new-wrap-column &optional buffer)

@@ -18,7 +18,6 @@
          (less-css-mode-hook . rainbow-mode)
          (html-mode-hook . rainbow-mode)
          (web-mode-hook . rainbow-mode))
-  :diminish rainbow-mode
   :custom ((rainbow-html-colors t)))
 
 (provide 'cogent-html)

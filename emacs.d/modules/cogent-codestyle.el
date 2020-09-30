@@ -14,8 +14,7 @@
   :commands global-ethan-wspace-mode
   :config
   (global-ethan-wspace-mode 1)
-  :bind ("C-c c" . ethan-wspace-clean-all)
-  :diminish ethan-wspace-mode)
+  :bind ("C-c c" . ethan-wspace-clean-all))
 
 ;; Not sure how I feel about these?
 (setq mode-require-final-newline nil)

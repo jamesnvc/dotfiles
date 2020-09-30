@@ -5,8 +5,7 @@
 (use-package projectile
   :commands projectile-mode
   :defer 1
-  :bind ("C-c C-f" . projectile-find-file)
-  :diminish projectile-mode)
+  :bind ("C-c C-f" . projectile-find-file))
 
 (use-package ibuffer-projectile
   :bind ("C-x C-b" . ibuffer)

@@ -37,8 +37,7 @@
     (add-hook 'cider-mode-hook #'cider-company-enable-fuzzy-completion)))
 
 (use-package paredit
-  :commands enable-paredit-mode paredit-mode
-  :diminish paredit-mode)
+  :commands enable-paredit-mode paredit-mode)
 
 (use-package flycheck-clj-kondo
   :if (executable-find "clj-kondo")

@@ -5,13 +5,11 @@
 
 (use-package paredit
   :commands paredit-mode enable-paredit-mode
-  :hook (emacs-lisp-mode-hook . enable-paredit-mode)
-  :diminish paredit-mode)
+  :hook (emacs-lisp-mode-hook . enable-paredit-mode))
 
 (use-package highlight-parentheses
   :commands highlight-parentheses-mode
-  :hook (emacs-lisp-mode-hook . highlight-parentheses-mode)
-  :diminish highlight-parentheses-mode)
+  :hook (emacs-lisp-mode-hook . highlight-parentheses-mode))
 
 (defun cogent-elisp/remove-elc-on-save ()
   "If you're saving an elisp file, you probably want to remove the

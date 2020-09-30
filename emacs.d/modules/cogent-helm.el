@@ -33,7 +33,6 @@
                 helm-recentf-fuzzy-match t
                 helm-apropos-fuzzy-match t)
   (set-face-attribute 'helm-source-header nil :height 0.75)
-  (diminish 'helm-mode)
 
   ;; Enable opening helm results in splits
   (cl-macrolet

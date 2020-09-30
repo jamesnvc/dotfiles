@@ -44,7 +44,6 @@
     (remove-hook 'find-file-hook #'cogent/load-git-gutter-once)
     (global-git-gutter+-mode t))
   (add-hook 'find-file-hook #'cogent/load-git-gutter-once)
-  :diminish git-gutter-mode
   :general
   (:keymaps 'normal
    :jump t

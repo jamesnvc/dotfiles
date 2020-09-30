@@ -10,8 +10,7 @@
   (which-key-mode)
   (setq-default which-key-idle-deplay 2.0)
   (setq-default which-key-special-keys nil)
-  :bind ("<f1> C-k" . which-key-show-top-level)
-  :diminish which-key-mode)
+  :bind ("<f1> C-k" . which-key-show-top-level))
 
 (use-package discover-my-major
   :commands (discover-my-major discover-my-mode)
