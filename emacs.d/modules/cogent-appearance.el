@@ -39,16 +39,6 @@
                            :overline "#bfc4ca":underline nil))))
   (header-line ((t (:background nil :foreground "#34495e" :underline  "#34495e")))))
 
-(with-eval-after-load 'term
-  (set-face-foreground 'term-color-black "#3f3f3f")
-  (set-face-foreground 'term-color-red "#cc9393")
-  (set-face-foreground 'term-color-green "#7f9f7f")
-  (set-face-foreground 'term-color-yellow "#f0dfaf")
-  (set-face-foreground 'term-color-blue "#8cd0d3")
-  (set-face-foreground 'term-color-magenta "#dc8cc3")
-  (set-face-foreground 'term-color-cyan "#93e0e3")
-  (set-face-foreground 'term-color-white "#dcdccc"))
-
 (setq redisplay-dont-pause t)
 
 (when window-system
