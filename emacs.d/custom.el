@@ -151,6 +151,7 @@
   %^{English}
 ")))
  '(org-confirm-babel-evaluate nil)
+ '(org-default-notes-file "~/org/notes.org")
  '(org-duration-format 'h:mm)
  '(org-file-apps
    '((auto-mode . emacs)

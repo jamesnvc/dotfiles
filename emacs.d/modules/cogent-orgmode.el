@@ -12,9 +12,6 @@
   ;; :demand t
   ;; :config
 
-  (require 'ox-beamer)
-  (setq org-default-notes-file (concat org-directory "/notes.org"))
-
   (setq org-catch-invisible-edits 'show-and-error)
   (setq org-adapt-indentation 'headline-data)
 
