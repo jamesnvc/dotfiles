@@ -47,13 +47,6 @@
 
 (global-display-line-numbers-mode)
 
-(setq column-number-mode t)
-
-(setq linum-disabled-modes
-      '(term-mode slime-repl-mode magit-status-mode help-mode nrepl-mode
-        mu4e-main-mode mu4e-headers-mode mu4e-view-mode
-        mu4e-compose-mode))
-
 (show-paren-mode 1)
 
 (use-package nyan-mode
