@@ -39,8 +39,6 @@
                            :overline "#bfc4ca":underline nil))))
   (header-line ((t (:background nil :foreground "#34495e" :underline  "#34495e")))))
 
-(setq redisplay-dont-pause t)
-
 (when window-system
   (setq frame-title-format '(buffer-file-name "%f" ("%b")))
   (tooltip-mode -1)
