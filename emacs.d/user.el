@@ -125,10 +125,35 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 
 ;; Org
 
+;; trying to figure out occasional agenda issue
+;; it seems like when it fails it shows the wrong task in the agenda as TODO?
+;; and when it's working, it shows the task with TODO changed to DONE with the highlight next to it & does the right thing on refresh
+;; wrong says TODO Deadline Current
+;; arg for org-agenda-todo is still nil
+;; didn't see the "todo state was already todo though"
+;; wrong seems to just do "TODO state changed to DONE"
+;; or "TODO state changed to DONE; state was already TODO; Entry repeats: ..."
+;; correct seems to do "TODO state changed to DONE; TODO state changed to TODO; Entry repeats: ..."
+
+;; aah, a key clue! If I have the point in the todo.org buffer, on
+;; another todo entry, when I hit =t d= in the agenda buffer, the
+;; other entry that shows up is the one the point is on and then when
+;; I hit =g=, it shows the entry I tried to complete as DONE
+;; doesn't seem to happen with emacs -Q, so something in my setup must be causing this...
+
+;; printing out org-state or next in org-todo makes the point move to
+;; the original position in the buffer...but not when printing with
+;; %S, only %s?!
+
+;; commenting out (load-theme 'modus-operandi t) makes it work, but
+;; starting with emacs -Q and loading just org & modus doesn't show
+;; the behaviour...
+
+;; TODO state changed to DONE
+;; TODO state was already TODO
+;; Entry repeats: DEADLINE: <2020-09-25 Fri +1d -0d>
+
 (with-eval-after-load "org"
-  (setq org-todo-keywords
-        '((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
-          (sequence "WAITING(w@/!)" "HOLD(h@/!)" "|" "CANCELLED(c@/!)" "PHONE" "MEETING")))
   (setq org-use-fast-todo-selection t)
   (setq org-agenda-files (concat org-directory "/dir"))
   (setq org-agenda-use-tag-inheritance nil)
