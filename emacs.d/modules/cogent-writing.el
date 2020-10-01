@@ -14,7 +14,7 @@
         (switch-to-buffer-other-window buf))
     (url-retrieve
      (format "https://en.wiktionary.org/wiki/%s" word)
-     (lambda (status)
+     (lambda (_status)
        (let ((content (->
                        (libxml-parse-html-region (point-min) (point-max))
                        (dom-by-id "mw-content-text")))
