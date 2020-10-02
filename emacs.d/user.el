@@ -6,6 +6,8 @@
 (set-face-attribute 'variable-pitch nil :font "Helvetica-8")
 (require 'cogent-pragmata)
 
+(setq redisplay-dont-pause t)
+
 (defvar cogent/extra-path-dirs nil
   "Extra directories I want added to PATH")
 
