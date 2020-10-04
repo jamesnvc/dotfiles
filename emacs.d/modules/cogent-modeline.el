@@ -171,7 +171,7 @@
                ;; relative position in file
                '(:eval (list (nyan-create)))
 
-               (propertize "%p" 'face 'font-lock-constant-face)
+               '(:propertize "%p" 'face 'font-lock-constant-face)
                '(pdf-misc-size-indication-minor-mode
                  (:eval (let* ((page (pdf-view-current-page))
                                (pdf-page (nth (1- page) (pdf-cache-pagelabels))))
@@ -190,7 +190,7 @@
                                               ,(+ 3 (string-width mode-name)))))))
 
                ;; the current major mode
-               (propertize " %m " 'face 'font-lock-string-face)
+               '(:propertize " %m " 'face 'font-lock-string-face)
                ;;minor-mode-alist
                ))
 
