@@ -84,4 +84,7 @@
         ("https://blogs.msdn.microsoft.com/oldnewthing/feed" tech)
         ("https://200ok.ch/atom.xml" tech)
         ("https://livelaugh.blog/rss" mustread)
-        ("https://terrafilha.home.blog/feed/" mustread)))
+        ("https://terrafilha.home.blog/feed/" mustread)
+        ("https://www.youtube.com/feeds/videos.xml?channel_id=UCokqzNPBJ65raczldVuHAww" youtube) ; chapo
+        ("https://www.youtube.com/feeds/videos.xml?channel_id=UCPkaARl89RCckNE_D7tj-aA" youtube) ; gorgc
+        ))
