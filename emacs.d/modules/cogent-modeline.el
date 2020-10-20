@@ -187,7 +187,10 @@
                '(:eval (propertize
                         " " 'display
                         `((space :align-to (- (+ right right-fringe right-margin)
-                                              ,(+ 3 (string-width mode-name)))))))
+                                              ,(+ 3 (string-width
+                                                     (if (listp mode-name)
+                                                         (car mode-name)
+                                                       mode-name))))))))
 
                ;; the current major mode
                '(:propertize " %m " 'face 'font-lock-string-face)
