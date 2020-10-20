@@ -3,13 +3,8 @@
         ("https://medium.com/feed/@steve.yegge" tech lisp mustread)
         ("http://killsixbilliondemons.com/?feed=rss2" comic)
         "http://jvns.ca/atom.xml"
-        "http://jessysaurusrex.com/feed/"
         "http://redqueencoder.com/feed/"
         "http://ericasadun.com/feed/"
-        "http://www.virginiaroberts.com/feed/"
-        "http://www.rebeccamiller-webster.com/feed/"
-        "http://www.catehuston.com/blog/feed/"
-        ("http://beckyhansmeyer.com/feed/" tech aple)
         ("http://cdn.drivecomic.com/rss.xml" comic)
         "http://www.johndcook.com/blog/feed/"
         ("http://furbo.org/feed/" tech)
@@ -57,7 +52,6 @@
         "http://feeds2.feedburner.com/subtraction"
         ("http://feedproxy.google.com/Metafilter" busy)
         ("http://www.smbc-comics.com/rss.php" comic)
-        "http://billhiggins.us/blog/feed"
         ("http://broodhollow.chainsawsuit.com/feed" comic)
         "http://www.mistys-internet.website/blog/atom.xml"
         ("http://feeds2.feedburner.com/WastedTalentRss" comic)
