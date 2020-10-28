@@ -81,4 +81,5 @@
         ("https://terrafilha.home.blog/feed/" mustread)
         ("https://www.youtube.com/feeds/videos.xml?channel_id=UCokqzNPBJ65raczldVuHAww" youtube) ; chapo
         ("https://www.youtube.com/feeds/videos.xml?channel_id=UCPkaARl89RCckNE_D7tj-aA" youtube) ; gorgc
+        ("https://www.youtube.com/feeds/videos.xml?channel_id=UCGB0idFFHkLUAmKjqdcEJKg" youtube) ; chapo compilations
         ))
