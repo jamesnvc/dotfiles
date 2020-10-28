@@ -194,11 +194,12 @@ Take both changes in diff."
                     "M-?" #'xref-find-references)
 
 (when (fboundp 'x-export-frames)
-  (defun screenshot-svg ()
-    "Save a screenshot of the current frame as an SVG."
-    (interactive)
-    (let* ((filename (make-temp-file "Emacs" nil ".svg"))
-           (data (x-export-frames nil 'svg)))
+  (defun cogent/screenshot (type)
+    "Save a screenshot of the current frame."
+    (interactive (list (completing-read "Type: "
+                                        '("svg" "pdf" "postscript" "png"))))
+    (let* ((filename (make-temp-file "Emacs" nil (s-concat "." type)))
+           (data (x-export-frames nil (intern type))))
       (with-temp-file filename
         (insert data))
       (kill-new filename)
