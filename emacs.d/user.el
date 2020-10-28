@@ -119,7 +119,7 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
   (general-define-key :keymaps 'eshell-mode-map
                       "M-r" #'helm-eshell-history))
 ;; Fancy symbols
-(push '("lambda" . 955) prettify-symbols-alist)
+(cl-pushnew '("lambda" . 955) prettify-symbols-alist)
 (add-hook 'emacs-lisp-mode-hook #'prettify-symbols-mode)
 
 ;; Arduino
