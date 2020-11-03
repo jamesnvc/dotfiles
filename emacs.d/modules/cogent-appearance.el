@@ -45,6 +45,9 @@
   (blink-cursor-mode -1))
 
 (global-display-line-numbers-mode)
+(defun cogent/display-line-numbers-turn-off ()
+  (display-line-numbers-mode -1))
+(add-hook 'image-mode-hook #'cogent/display-line-numbers-turn-off)
 
 (show-paren-mode 1)
 
