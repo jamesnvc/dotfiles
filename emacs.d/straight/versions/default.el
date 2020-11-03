@@ -14,7 +14,6 @@
  ("company-try-hard" . "2b41136b5ed6e02032d99bcdb0599ecf00394fa5")
  ("cyphejor" . "763531d077d02a4a45c58332b8a8b8300c090678")
  ("dash.el" . "b92ab5a39b987e4fe69317b9d9fda452300baf20")
- ("diminish.el" . "6ec6ebc391371418efc6c98d70b013f34af5a2ee")
  ("dired-git-info" . "b47f2b0c3a6cb9b7a62a4ee2605a492e512d40a9")
  ("discover-my-major" . "c592e5e67454f0d1b68669ac0c270073164b16b3")
  ("disk-usage" . "cd4e1cb831523d46a41347d95dc478fb42e543d9")
@@ -81,7 +80,6 @@
  ("highlight-parentheses.el" . "e18f2c2b240d7586ff7ffdc2881079e2dd8944ca")
  ("ht.el" . "fff8c43f0e03d5b98deb9f988522b839ce2ca253")
  ("hydra" . "112e689f75b59398d8eca79ac6562dca12b8a959")
- ("ibuffer-projectile" . "ecbe482804a217b1471593f6c7a8b3d64f3cdc47")
  ("js2-mode" . "ffb70990c1a4d4616034cb810b4ce36953aecb47")
  ("js2-refactor.el" . "d4c40b5fc86d3edd7c6a7d83ac86483ee1cb7a28")
  ("json-mode" . "0e819e519ae17a2686e0881c4ca51fa873fa9b83")
@@ -151,5 +149,6 @@
  ("window-end-visible" . "525500fb2ebc08f3f9ea493972e5f2e1d79f89ef")
  ("with-editor" . "590ff0b6443a5d0c433527a0231a31e99af6287c")
  ("yaml-mode" . "68fecb5f0dec712a10c8655df6881392a4613617")
- ("yasnippet" . "5cbdbf0d2015540c59ed8ee0fcf4788effdf75b6"))
+ ("yasnippet" . "5cbdbf0d2015540c59ed8ee0fcf4788effdf75b6")
+ ("youtube-dl-emacs" . "af877b5bc4f01c04fccfa7d47a2c328926f20ef4"))
 :beta
