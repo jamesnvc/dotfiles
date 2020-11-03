@@ -35,11 +35,16 @@
      (visual-line-mode 1)))
   (advice-add 'org-meta-return :before #'org-end-of-line)
 
+  (setq org-plantuml-jar-path (expand-file-name "~/bin/plantuml.jar"))
+  (with-eval-after-load 'org-src
+    (add-to-list 'org-src-lang-modes '("plantuml" . plantuml)))
+
   (org-babel-do-load-languages
    'org-babel-load-languages
    '((sql . t)
      (ruby . t)
-     (js . t)))
+     (js . t)
+     (plantuml . t)))
 
   (with-eval-after-load 'ob-js
     (setq org-babel-js-function-wrapper
