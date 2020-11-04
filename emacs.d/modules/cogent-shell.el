@@ -183,4 +183,8 @@ more-helpful local prompt."
   :custom ((helm-switch-shell-new-shell-type 'eshell)
            (helm-switch-shell-show-shell-indicator t)))
 
+(use-package with-editor
+  :hook ((eshell-mode-hook . with-editor-export-editor)
+         (vterm-mode-hook . with-editor-export-editor)))
+
 (provide 'cogent-shell)
