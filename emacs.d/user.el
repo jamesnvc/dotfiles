@@ -205,6 +205,8 @@ Take both changes in diff."
       (kill-new filename)
       (message "Saved to '%s'" filename))))
 
+(add-hook 'before-save-hook #'time-stamp)
+
 (require 'server)
 (when (not (server-running-p))
   (server-start))
