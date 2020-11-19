@@ -45,3 +45,4 @@ emacs.d/forge-database.sqlite
 /emacs.d/workspace
 /emacs.d/speed-type
 /fish/fish_variables
+/emacs.d/eln-cache/
