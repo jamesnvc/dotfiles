@@ -195,4 +195,40 @@ Then press C-c C-x C-u inside
              :repo "phillord/org-drill")
   :commands (org-drill))
 
+(use-package org-tree-slide
+  :commands (org-tree-slide-mode)
+  :custom (org-tree-slide-slide-in-effect nil))
+
+(defun cogent/collapse-plantuml-blocks ()
+  (interactive)
+  (org-block-map
+   (lambda ()
+     (when (org-in-src-block-p)
+       (let ((line (buffer-substring-no-properties
+                    (point)
+                    (save-excursion (end-of-line) (point)))))
+         (when (string-prefix-p "#+begin_src plantuml" line)
+           (org-hide-block-toggle t)))))))
+
+(defun cogent/start-presentation ()
+  "Start a presentation with org-tree-slide"
+  (interactive)
+  (setq mode-line-format nil)
+  (display-line-numbers-mode -1)
+  (dolist (face '(default fixed-pitch variable-pitch))
+    (set-face-attribute face (selected-frame) :height 200))
+  (org-redisplay-inline-images)
+  (cogent/collapse-plantuml-blocks)
+  (org-tree-slide-mode 1))
+
+(defun cogent/stop-presentation ()
+  "Start a presentation with org-tree-slide"
+  (interactive)
+  (setq mode-line-format (default-value 'mode-line-format))
+  (display-line-numbers-mode 1)
+  (dolist (face '(default fixed-pitch variable-pitch))
+    (set-face-attribute face (selected-frame) :height 80))
+  (org-tree-slide-mode -1))
+
+
 (provide 'cogent-orgmode)
