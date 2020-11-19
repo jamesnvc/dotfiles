@@ -73,7 +73,7 @@ Host gitlab.com
    User jamesnvc
    IdentityFile ~/.ssh-keys/gitlab
 
-Host touchdowntunes
+Host touchdowntunes shodan
     Hostname 50.116.24.27
     User james
     IdentityFile ~/.ssh-keys/touchdowntunes
