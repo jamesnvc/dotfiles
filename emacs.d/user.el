@@ -207,6 +207,8 @@ Take both changes in diff."
 
 (add-hook 'before-save-hook #'time-stamp)
 
+(global-set-key (kbd "M-SPC") #'cycle-spacing)
+
 (require 'server)
 (when (not (server-running-p))
   (server-start))
