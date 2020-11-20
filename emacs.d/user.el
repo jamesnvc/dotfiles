@@ -61,17 +61,20 @@ Shouldn't be necessary now, after using fish shell and exec-path-from-shell."
   (windmove-default-keybindings))
 
 ;; Leader key stuff
-(defun cogent/quit-help-window ()
-  "Close any open help sort of window."
+(require 'rx)
+(defun cogent/quit-special-window ()
+  "Close any open *special* window."
   (interactive)
-  (when-let (help-win (or (get-buffer-window "*Help*")
-                          (get-buffer-window "*lsp-help*")
-                          (get-buffer-window "*Help Definition*")))
-    (quit-window nil help-win)))
+  (loop for win being the windows of (selected-frame)
+        when (string-match-p
+              (rx bos "*" (+ anychar) "*" eos)
+              (buffer-name (window-buffer win)))
+        collect win into special-wins
+        finally do (mapcar (lambda (w) (quit-window  nil w)) special-wins)))
 
 (cogent/leader-def
   :states '(normal visual)
-  "q" #'cogent/quit-help-window
+  "q" #'cogent/quit-special-window
   "+" (lambda () (interactive) (cogent-fonts/update-font-size 1))
   "-" (lambda () (interactive) (cogent-fonts/update-font-size -1)))
 
