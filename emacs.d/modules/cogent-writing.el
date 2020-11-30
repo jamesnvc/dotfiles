@@ -11,7 +11,7 @@
         (with-current-buffer buf (delete-region (point-min) (point-max)))
         ;; [TODO] allow chosing other dictionaries
         (call-process dict nil buf nil word)
-        (switch-to-buffer-other-window buf))
+        (display-buffer buf 'display-buffer-pop-up-window))
     (url-retrieve
      (format "https://en.wiktionary.org/wiki/%s" word)
      (lambda (_status)
@@ -24,6 +24,6 @@
            (insert (dom-texts (car (dom-by-tag content 'p))))
            (insert "\n\n")
            (insert (dom-texts (car (dom-by-tag content 'ol)))))
-         (switch-to-buffer-other-window buf))))))
+         (display-buffer buf 'display-buffer-popup-window))))))
 
 (provide 'cogent-writing)
