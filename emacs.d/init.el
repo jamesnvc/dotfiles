@@ -13,7 +13,7 @@
 (setq gc-cons-threshold 128000000)
 (add-hook 'after-init-hook (lambda ()
                              ;; restore after startup
-                             (setq gc-cons-threshold 800000)))
+                             (setq gc-cons-threshold (default-value 'gc-cons-threshold))))
 
 (setq inhibit-startup-message t)
 
