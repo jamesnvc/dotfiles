@@ -17,4 +17,11 @@
   :defer t
   :hook (org-load-hook . org-pdftools-setup-link))
 
+(use-package nov
+  :defer t
+  :commands nov-mode
+  :config
+  (evil-set-initial-state 'nov-mode 'emacs)
+  :mode ("\\.epub\\'" . nov-mode))
+
 (provide 'cogent-reading)
