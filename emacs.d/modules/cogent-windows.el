@@ -19,7 +19,8 @@
 
 (unless (featurep 'tab-bar)
   ;; [TODO] make keybindings for eyebrowse to mimic tab-bar stuff
-  (require 'cogent-eyebrowse))
+  (require 'cogent-eyebrowse)
+  (winner-mode 1))
 
 (when (featurep 'tab-bar)
   (when (and tab-bar-new-button
@@ -38,6 +39,7 @@
                                           :margin (2 . 0)
                                           :ascent center))
                          tab-bar-close-button))
+  (tab-bar-history-mode) ;; instead of winner-mode
   (general-define-key
    :keymaps 'global
    "C-x t q" #'tab-bar-close-tab
@@ -49,8 +51,8 @@
    "C-x t 2" (lambda () (interactive) (tab-bar-select-tab 2))
    "C-x t 3" (lambda () (interactive) (tab-bar-select-tab 3))
    "C-x t 4" (lambda () (interactive) (tab-bar-select-tab 4))
-   "C-x t 5" (lambda () (interactive) (tab-bar-select-tab 5))))
-
-(winner-mode 1)
+   "C-x t 5" (lambda () (interactive) (tab-bar-select-tab 5))
+   "C-c <left>" #'tab-bar-history-back
+   "C-c <right>" #'tab-bar-history-forward))
 
 (provide 'cogent-windows)
