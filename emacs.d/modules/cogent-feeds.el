@@ -120,6 +120,6 @@
      (mustread elfeed-mustread-face)
      (comic elfeed-comic-face)
      (youtube elfeed-youtube-face)
-     (busy shadow))) )
+     (busy shadow))))
 
 (provide 'cogent-feeds)
