@@ -66,11 +66,14 @@ Shouldn't be necessary now, after using fish shell and exec-path-from-shell."
   "Close any open *special* window."
   (interactive)
   (loop for win being the windows of (selected-frame)
-        when (string-match-p
-              (rx bos "*" (+ anychar) "*" eos)
-              (buffer-name (window-buffer win)))
+        for buff-name = (buffer-name (window-buffer win))
+        when (and
+              (not (string= buff-name "*scratch*"))
+              (string-match-p
+               (rx bos "*" (+ anychar) "*" (? "<" (+ digit) ">") eos)
+               buff-name))
         collect win into special-wins
-        finally do (mapcar (lambda (w) (quit-window  nil w)) special-wins)))
+        finally do (mapcar (lambda (w) (quit-window nil w)) special-wins)))
 
 (cogent/leader-def
   :states '(normal visual)
