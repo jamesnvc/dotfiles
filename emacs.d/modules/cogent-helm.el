@@ -125,31 +125,6 @@
 
 (use-package helm-rg
   :config
-  (el-patch-defconst
-    helm-rg-process-source
-    (helm-make-source "ripgrep" 'helm-source-async
-      ;; FIXME: we don't want the header to be hydrated by helm, it's huge and blue and
-      ;; unnecessary. Do it ourselves, then we don't have to delete the header in
-      ;; `helm-rg--freeze-header-for-bounce'.
-      :header-name #'helm-rg--header-name
-      :keymap 'helm-rg-map
-      :history 'helm-rg--input-history
-      :help-message "FIXME: useful help message!!!"
-      ;; TODO: basically all of these functions need to be tested.
-      :candidates-process #'helm-rg--make-process
-      :action (helm-make-actions "Visit" #'helm-rg--async-action)
-      :filter-one-by-one #'helm-rg--parse-process-output
-      :display-to-real #'helm-rg--display-to-real
-      ;; TODO: add a `defcustom' for this.
-      ;; :candidate-number-limit 200
-      ;; It doesn't seem there is any obvious way to get the original input if using
-      ;; :pattern-transformer.
-      :persistent-action #'helm-rg--async-persistent-action
-      :persistent-help "Visit result buffer and highlight matches"
-      :requires-pattern nil
-      :group 'helm-rg)
-    "Helm async source to search files in a directory using ripgrep.")
-
   (add-hook 'helm-mode-hook (lambda () (auto-composition-mode -1)))
 
   (defun cogent/switch-to-buffer-split-vert (name)
