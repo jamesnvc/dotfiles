@@ -7,7 +7,7 @@
    (concat (read-string "Name: ") ".org")
    "~/org/notebook/"))
 
-(straight-use-package '(org-plus-contrib :includes (org)))
+(straight-use-package '(org-plus-contrib))
 (progn
   ;; :demand t
   ;; :config
