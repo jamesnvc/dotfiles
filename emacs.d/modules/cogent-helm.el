@@ -4,7 +4,8 @@
 (require 'cogent-keys)
 
 (use-package helm
-  :custom (helm-ff-refresh-cache-delay 5)
+  :custom ((helm-ff-refresh-cache-delay 5)
+           (helm-ff-keep-cached-candidates nil))
   :config
   (require 'helm-config)
   (require 'helm)
