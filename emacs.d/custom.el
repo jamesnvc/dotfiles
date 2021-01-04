@@ -11,6 +11,7 @@
  '(calendar-week-start-day 1)
  '(cider-auto-select-error-buffer nil)
  '(clojure-indent-style :align-arguments)
+ '(completion-styles '(basic flex))
  '(confirm-kill-emacs 'yes-or-no-p)
  '(custom-safe-themes
    '("98cc377af705c0f2133bb6d340bf0becd08944a588804ee655809da5d8140de6" default))
