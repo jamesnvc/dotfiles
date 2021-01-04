@@ -198,18 +198,6 @@
     "t" #'helm-projectile-find-file
     "s" #'helm-projectile-rg))
 
-(use-package helm-flx
-  :config
-  (with-eval-after-load "helm"
-    (require 'helm-flx)
-    (helm-flx-mode 1)))
-
-(use-package helm-ext
-  :config
-  (helm-ext-ff-enable-skipping-dots t)
-  (helm-ext-ff-enable-auto-path-expansion t)
-  (helm-ext-minibuffer-enable-header-line-maybe t))
-
 (use-package helm-descbinds
   :commands helm-descbinds-mode
   :init (helm-descbinds-mode))
