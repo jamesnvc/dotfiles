@@ -29,9 +29,7 @@
                 helm-autoresize-max-height 35
                 helm-split-window-inside-p t
 
-                helm-M-x-fuzzy-match t
                 helm-buffers-fuzzy-matching t
-                helm-recentf-fuzzy-match t
                 helm-apropos-fuzzy-match t)
   (set-face-attribute 'helm-source-header nil :height 0.75)
 
