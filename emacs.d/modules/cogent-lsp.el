@@ -75,11 +75,6 @@
   (advice-add #'lsp-ui-peek--peek-new :override #'lsp-ui-peek--peek-display)
   (advice-add #'lsp-ui-peek--peek-hide :override #'lsp-ui-peek--peek-destroy))
 
-(use-package company-lsp
-  :after lsp-mode
-  :commands company-lsp
-  :init (push 'company-lsp company-backends))
-
 ;; C/C++/Objective-C
 ;; to install the client
 ;; https://github.com/MaskRay/ccls/wiki/Getting-started
