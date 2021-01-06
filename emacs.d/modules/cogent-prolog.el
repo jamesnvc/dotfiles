@@ -33,7 +33,7 @@
              (save-excursion
                (beginning-of-buffer)
                (re-search-forward
-                (s-concat "^:- use_module(" (regexp-quote module))
+                (concat "^:- use_module(" (regexp-quote module))
                 nil t)))
         (progn
           (goto-char search-point)
@@ -64,7 +64,7 @@
     (forward-line -1) (end-of-line nil)
     (insert "\n%! " name "(")
     (setq end-pos (point))
-    (insert (->> (-repeat args "_") (s-join ", ")))
+    (insert (string-join (make-list args "_") ", "))
     (insert ") is det.\n%\n%  TODO")
     (goto-char end-pos)))
 

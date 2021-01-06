@@ -28,7 +28,7 @@
                                :background nil)))
            ,(nth 2 s)
            :group 'cogent))
-  (eval `(defface ,(intern (s-concat (symbol-name (nth 0 s)) "-inactive"))
+  (eval `(defface ,(intern (concat (symbol-name (nth 0 s)) "-inactive"))
            (list (list t (list :foreground ,cogent-line-inactive-bg
                                :overline 'unspecified
                                :background nil)))

@@ -45,21 +45,21 @@
                             (balance-windows)))
        (generate-helm-splitter-funcs
         (op-type open-fn)
-        (let* ((prefix (s-concat "helm-" op-type "-switch-"))
-               (vert-split (intern (s-concat prefix "vert-window")))
-               (horiz-split (intern (s-concat prefix "horiz-window"))))
+        (let* ((prefix (concat "helm-" op-type "-switch-"))
+               (vert-split (intern (concat prefix "vert-window")))
+               (horiz-split (intern (concat prefix "horiz-window"))))
           `(progn
              (make-splitter-fn ,vert-split ,open-fn split-window-right)
 
              (make-splitter-fn ,horiz-split ,open-fn split-window-below)
 
-             (defun ,(intern (s-concat "helm-" op-type "-switch-vert-window-command"))
+             (defun ,(intern (concat "helm-" op-type "-switch-vert-window-command"))
                  ()
                (interactive)
                (with-helm-alive-p
                  (helm-exit-and-execute-action (quote ,vert-split))))
 
-             (defun ,(intern (s-concat "helm-" op-type "-switch-horiz-window-command"))
+             (defun ,(intern (concat "helm-" op-type "-switch-horiz-window-command"))
                  ()
                (interactive)
                (with-helm-alive-p

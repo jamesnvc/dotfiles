@@ -137,7 +137,7 @@ Then press C-c C-x C-u inside
           (insert "\n\nDAY: "
                   (funcall sec->ts start)
                   (if (not (string= step "day"))
-                      (s-concat " to " (funcall sec->ts block-end))
+                      (concat " to " (funcall sec->ts block-end))
                     "")
                   "\n")
           (org-dblock-write:clocktable

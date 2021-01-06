@@ -32,8 +32,6 @@ it doesn't contain the org-mode #+TAGS: entry specified."
   (magit-status (pop args) nil)
   (eshell/echo))   ;; The echo command suppresses output
 
-(require 'dash)
-
 ;; funky eshell prompt
 (defun curr-dir-git-branch-string (pwd)
   "Returns current git branch as a string, or the empty string if
@@ -43,9 +41,9 @@ PWD is not in a git repo (or the git command is not found)."
              (eshell-search-path "git")
              (locate-dominating-file pwd ".git"))
     (require 'magit)
-    (let* ((git-url (magit-get "remote.origin.url"))
-           (git-repo (or (-some-> git-url s-trim file-name-base)
-                         "???"))
+    (let* ((git-repo (if-let ((git-url (magit-get "remote.origin.url")))
+                       (thread-first git-url string-trim file-name-base)
+                       "???"))
            (git-branch (magit-get-current-branch))
            (git-icon  ""))
       (concat git-repo " " git-icon " " git-branch))))
@@ -103,7 +101,8 @@ PWD is not in a git repo (or the git command is not found)."
              (cleaned (string-trim results))
              (gem     (propertize "\xe92b" 'face `(:family "alltheicons"))))
         (when (and cleaned (not (equal cleaned "")))
-          (s-replace "ruby-" gem cleaned))))))
+          (replace-regexp-in-string
+           (regexp-quote "ruby-") gem cleaned))))))
 
 (defun python-prompt ()
   "Returns a string (may be empty) based on the current Python

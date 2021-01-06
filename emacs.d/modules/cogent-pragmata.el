@@ -220,20 +220,20 @@
       (global-prettify-symbols-mode +1))
   ;; Emacs >= 27 way of using auto-composition-mode to render real ligatures
   (progn
-    (require 'dash)
-    (require 'cl-extra)
+    (require 'subr-x)
+    (require 'seq)
 
     (defun cogent/pragmata-ligature-chars-to-composition-alist ()
-      (->> (cl-concatenate 'list
-                           '(("[TODO]") ("[FIXME]")
-                             ("[DEBUG]") ("[INFO]") ("[WARN]") ("[ERROR]"))
-                           cogent/pragmata-ligature-chars)
-           (mapcar #'car)
-           (-group-by (lambda (str) (string-to-char str)))
-           (mapcar
-            (lambda (lead-strs)
-              (cons (car lead-strs)
-                    (regexp-opt (cdr lead-strs)))))))
+      (thread-last (seq-concatenate 'list
+                                    '(("[TODO]") ("[FIXME]")
+                                      ("[DEBUG]") ("[INFO]") ("[WARN]") ("[ERROR]"))
+                                    cogent/pragmata-ligature-chars)
+        (mapcar #'car)
+        (seq-group-by (lambda (str) (string-to-char str)))
+        (mapcar
+         (lambda (lead-strs)
+           (cons (car lead-strs)
+                 (regexp-opt (cdr lead-strs)))))))
 
     (defvar composition-ligature-table (make-char-table nil))
     (dolist (char-re (cogent/pragmata-ligature-chars-to-composition-alist))

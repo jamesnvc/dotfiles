@@ -58,7 +58,7 @@ evil to have."
     (destructuring-bind (start . end) (bounds-of-thing-at-point 'symbol)
       (save-excursion
         (let ((text (buffer-substring-no-properties start end)))
-          (while (s-matches? "^[^[:alpha:]]" text)
+          (while (string-match-p "^[^[:alpha:]]" text)
             (incf start)
             (setf text (buffer-substring-no-properties start end)))
           (delete-region start end)

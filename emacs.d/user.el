@@ -15,7 +15,7 @@
   "Add extra dirs to eshell's path.
 Shouldn't be necessary now, after using fish shell and exec-path-from-shell."
   (when cogent/extra-path-dirs
-    (setq eshell-path-env (concat (s-join ":" cogent/extra-path-dirs)
+    (setq eshell-path-env (concat (string-join cogent/extra-path-dirs ":")
                                   ":"
                                   eshell-path-env))))
 (add-hook 'eshell-mode-hook #'cogent/eshell-add-paths)
@@ -204,7 +204,7 @@ Take both changes in diff."
     "Save a screenshot of the current frame."
     (interactive (list (completing-read "Type: "
                                         '("svg" "pdf" "postscript" "png"))))
-    (let* ((filename (make-temp-file "Emacs" nil (s-concat "." type)))
+    (let* ((filename (make-temp-file "Emacs" nil (concat "." type)))
            (data (x-export-frames nil (intern type))))
       (with-temp-file filename
         (insert data))
