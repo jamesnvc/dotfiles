@@ -15,9 +15,9 @@
     (url-retrieve
      (format "https://en.wiktionary.org/wiki/%s" word)
      (lambda (_status)
-       (let ((content (->
-                       (libxml-parse-html-region (point-min) (point-max))
-                       (dom-by-id "mw-content-text")))
+       (let ((content (thread-first
+                          (libxml-parse-html-region (point-min) (point-max))
+                        (dom-by-id "mw-content-text")))
              (buf (get-buffer-create "*Help Definition*")))
          (with-current-buffer buf
            (delete-region (point-min) (point-max))

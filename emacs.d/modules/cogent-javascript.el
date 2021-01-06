@@ -12,7 +12,7 @@
   :commands js2-mode
   :config
   ;; If npm is installed, add its local prefix to search path, to help find linters
-  (-when-let (npm-prefix (cogent/exec-if-exec "npm" "config get prefix"))
+  (when-let ((npm-prefix (cogent/exec-if-exec "npm" "config get prefix")))
     (setenv "PATH" (concat npm-prefix "/bin:" (getenv "PATH")))
     (add-to-list 'exec-path (concat npm-prefix "/bin")))
 

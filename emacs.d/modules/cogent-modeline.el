@@ -106,7 +106,7 @@
     (if (> (length indicator) 35)
         (let* ((confs (eyebrowse--get 'window-configs))
                (cur (assq (eyebrowse--get 'current-slot) confs))
-               (idx (-elem-index cur confs))
+               (idx (seq-position confs cur))
                (keymap (let ((map (make-sparse-keymap)))
                          (define-key map (kbd "<mode-line><mouse-1>")
                            (lambda (_e)

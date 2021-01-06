@@ -121,15 +121,15 @@ Then press C-c C-x C-u inside
                    ("day"  (lambda (d) (+ d (* 3600 24))))
                    ("week"  (lambda (d) (+ d (* 3600 24 7))))
                    ("month" (lambda (d)
-                              (->> d
-                                  (funcall sec->ts)
-                                  (format "incmonth(newmonth(%s))")
-                                  calc-eval
-                                  (parse-time-string)
-                                  cdddr
-                                  (cons 0) (cons 0) (cons 0)
-                                  (apply #'encode-time)
-                                  time-to-seconds)))
+                              (thread-last d
+                                (funcall sec->ts)
+                                (format "incmonth(newmonth(%s))")
+                                calc-eval
+                                (parse-time-string)
+                                cdddr
+                                (cons 0) (cons 0) (cons 0)
+                                (apply #'encode-time)
+                                time-to-seconds)))
                    (_ (error "Invalid step '%s'" step)))))
     (while (<= start end)
       (let ((block-end (funcall stepfn start)))
@@ -141,10 +141,10 @@ Then press C-c C-x C-u inside
                     "")
                   "\n")
           (org-dblock-write:clocktable
-           (-> params
-               (plist-put :tstart (funcall sec->ts start))
-               (plist-put :tend (funcall sec->ts block-end))
-               (plist-put :step nil)))
+           (thread-first params
+             (plist-put :tstart (funcall sec->ts start))
+             (plist-put :tend (funcall sec->ts block-end))
+             (plist-put :step nil)))
           (setq start block-end))))))
 
 (require 'rx)

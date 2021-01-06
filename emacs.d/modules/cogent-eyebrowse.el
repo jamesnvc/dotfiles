@@ -6,17 +6,16 @@
   :config
 
   (defun cogent/eyebrowse-get-candidates ()
-    (->> (--map (cons (eyebrowse-format-slot it)
-                      (car it))
-                (eyebrowse--get 'window-configs))
-         (cons (cons
-                (concat
-                 (propertize
-                  " " 'display
-                  (propertize "[+]" 'font-lock-face
-                              '(:background "#ff69c6" :foreground "#282a36")))
-                 " " helm-input)
-                helm-input))))
+    (thread-last (mapcar (lambda (it) (cons (eyebrowse-format-slot it) (car it)))
+                         (eyebrowse--get 'window-configs))
+      (cons (cons
+             (concat
+              (propertize
+               " " 'display
+               (propertize "[+]" 'font-lock-face
+                           '(:background "#ff69c6" :foreground "#282a36")))
+              " " helm-input)
+             helm-input))))
 
   (defun cogent/eyebrowse-helm ()
     "Manage eyebrowse window configs"
