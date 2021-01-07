@@ -2,6 +2,8 @@
 
 (require 'cogent-package)
 
+(use-package a)
+(use-package s)
 (require 'subr-x)
 
 (defun cogent/font-lock-replace-symbol (mode reg sym)
