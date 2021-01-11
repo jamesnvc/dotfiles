@@ -15,16 +15,6 @@
   (setq org-catch-invisible-edits 'show-and-error)
   (setq org-adapt-indentation 'headline-data)
 
-  (defun yas/org-very-safe-expand ()
-    (let ((yas/fallback-behavior 'return-nil)) (yas/expand)))
-
-  (defun cogent/fix-org-yasnippet-hook ()
-    (make-variable-buffer-local 'yas/trigger-key)
-    (setq yas/trigger-key [tab])
-    (add-to-list 'org-tab-first-hook #'yas/org-very-safe-expand)
-    (define-key yas/keymap [tab] 'yas/next-field))
-
-  (add-hook 'org-mode-hook #'cogent/fix-org-yasnippet-hook)
   (add-hook 'org-mode-hook (lambda () (setq-local company-dabbrev-downcase nil)))
   (add-hook
    'org-mode-hook
