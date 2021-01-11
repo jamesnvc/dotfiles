@@ -30,6 +30,9 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 bindsym $mod+Shift+Return exec alacritty -e tmux
 bindsym $mod+Return exec emacsclient --create-frame --alternate-editor=emacs --no-wait
 
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
+
 # kill focused window
 bindsym $mod+Shift+apostrophe kill
 
