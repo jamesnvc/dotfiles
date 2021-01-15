@@ -193,6 +193,7 @@
  '(prolog-system 'swi)
  '(prolog-use-standard-consult-compile-method-flag t)
  '(scroll-bar-mode nil)
+ '(send-mail-function 'smtpmail-send-it)
  '(straight-recipe-overrides
    '((nil
       (company-emoji :host github :repo "dunn/company-emoji" :branch "trunk"))))
