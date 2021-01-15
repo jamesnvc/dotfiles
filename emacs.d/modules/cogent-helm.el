@@ -4,12 +4,15 @@
 (require 'cogent-keys)
 
 (use-package helm
-  :custom ((helm-ff-refresh-cache-delay 5)
-           (helm-ff-keep-cached-candidates nil))
   :config
   (require 'helm-config)
-  (require 'helm)
   (helm-mode 1)
+  (helm-autoresize-mode 1)
+
+  ;; Addresses bug (helm says it's in Emacs, Emacs says in helm) that
+  ;; gives an error running `describe-keymap' in helm
+  (with-eval-after-load 'help-fns
+    (defvar keymap-name-history nil))
 
   (cl-defmethod helm-setup-user-source ((source helm-source-ffiles))
     (helm-source-add-action-to-source-if
@@ -23,97 +26,73 @@
             (locate-dominating-file helm-ff-default-directory ".git")))
      1))
 
-  (helm-autoresize-mode 1)
-  (setq-default helm-display-header-line nil
-                helm-autoresize-min-height 0
-                helm-autoresize-max-height 35
-                helm-split-window-inside-p t
+  (require 'cogent-helm-splits)
 
-                helm-buffers-fuzzy-matching t
-                helm-apropos-fuzzy-match t)
-  (set-face-attribute 'helm-source-header nil :height 0.75)
+  (add-to-list 'helm-type-buffer-actions
+               (cons
+                "Display buffer(s) in new vertical split(s) `C-v'"
+                #'helm-buffer-switch-vert-window)
+               t)
+  (add-to-list 'helm-type-buffer-actions
+               (cons
+                "Display buffer(s) in new horizontal split(s) `C-s'"
+                #'helm-buffer-switch-horiz-window)
+               t)
 
-  ;; Enable opening helm results in splits
-  (cl-macrolet
-      ((make-splitter-fn (name open-fn split-fn)
-                         `(defun ,name (_candidate)
-                            ;; Display buffers in new windows
-                            (dolist (cand (helm-marked-candidates))
-                              (select-window (,split-fn))
-                              (,open-fn cand))
-                            ;; Adjust size of windows
-                            (balance-windows)))
-       (generate-helm-splitter-funcs
-        (op-type open-fn)
-        (let* ((prefix (concat "helm-" op-type "-switch-"))
-               (vert-split (intern (concat prefix "vert-window")))
-               (horiz-split (intern (concat prefix "horiz-window"))))
-          `(progn
-             (make-splitter-fn ,vert-split ,open-fn split-window-right)
+  (add-to-list 'helm-type-bookmark-actions
+               (cons "Display bookmark(s) in new vertical split(s) `C-v'"
+                     #'helm-bookmark-switch-vert-window)
+               t)
+  (add-to-list 'helm-type-bookmark-actions
+               (cons
+                "Display bookmark(s) in new horizontal split(s) `C-s'"
+                #'helm-bookmark-switch-horiz-window)
+               t)
 
-             (make-splitter-fn ,horiz-split ,open-fn split-window-below)
-
-             (defun ,(intern (concat "helm-" op-type "-switch-vert-window-command"))
-                 ()
-               (interactive)
-               (with-helm-alive-p
-                 (helm-exit-and-execute-action (quote ,vert-split))))
-
-             (defun ,(intern (concat "helm-" op-type "-switch-horiz-window-command"))
-                 ()
-               (interactive)
-               (with-helm-alive-p
-                 (helm-exit-and-execute-action (quote ,horiz-split))))))))
-    (generate-helm-splitter-funcs "buffer" switch-to-buffer)
-    (generate-helm-splitter-funcs "file" find-file)
-
-    (add-to-list 'helm-type-buffer-actions
+  (dolist (list-var '(helm-type-file-actions helm-find-files-actions))
+    (add-to-list list-var
                  (cons
-                  "Display buffer(s) in new vertical split(s) `C-v'"
-                  #'helm-buffer-switch-vert-window)
+                  "Display file(s) in new vertical split(s) `C-v'"
+                  #'helm-file-switch-vert-window)
                  t)
-    (add-to-list 'helm-type-buffer-actions
+    (add-to-list list-var
                  (cons
-                  "Display buffer(s) in new horizontal split(s) `C-s'"
-                  #'helm-buffer-switch-horiz-window)
-                 t)
+                  "Display file(s) in new horizontal split(s) `C-s'"
+                  #'helm-file-switch-horiz-window)
+                 t)) ;; Enable opening helm results in splits
 
-    (dolist (list-var '(helm-type-file-actions helm-find-files-actions))
-      (add-to-list list-var
-                   (cons
-                    "Display file(s) in new vertical split(s) `C-v'"
-                    #'helm-file-switch-vert-window)
-                   t)
-      (add-to-list list-var
-                   (cons
-                    "Display file(s) in new horizontal split(s) `C-s'"
-                    #'helm-file-switch-horiz-window)
-                   t))
+  :custom
+  ((helm-ff-refresh-cache-delay 5)
+   (helm-ff-keep-cached-candidates nil)
 
-    (with-eval-after-load "helm-projectile"
-      (helm-add-action-to-source "Display file(s) in new vertical split(s) `C-v'"
-                                 #'helm-file-switch-vert-window
-                                 helm-source-projectile-files-list)
-      (helm-add-action-to-source "Display file(s) in new horizontal split(s) `C-s'"
-                                 #'helm-file-switch-horiz-window
-                                 helm-source-projectile-files-list)))
+   (helm-display-header-line nil)
+   (helm-autoresize-min-height 0)
+   (helm-autoresize-max-height 35)
+
+   (helm-buffers-fuzzy-matching t)
+   (helm-apropos-fuzzy-match t))
+
+  :custom-face
+  (helm-source-header ((t (:height 0.75))))
+
   :bind (("M-x" . helm-M-x)
+         ("<menu>" . helm-M-x)
          ("C-x C-f" . helm-find-files)
-         ("C-x C-g" . helm-do-grep)
          ("C-x b" . helm-buffers-list)
-         ("C-t" . helm-imenu)
          ("M-y" . helm-show-kill-ring)
-         ("<menu>" . helm-M-x))
+         (:map helm-buffer-map
+               ("C-v" . helm-buffer-switch-vert-window-command)
+               ("C-s" . helm-buffer-switch-horiz-window-command))
+         (:map helm-projectile-find-file-map
+               ("C-v" . helm-file-switch-vert-window-command)
+               ("C-s" . helm-file-switch-horiz-window-command))
+         (:map helm-find-files-map
+               ("C-v" . helm-file-switch-vert-window-command)
+               ("C-s" . helm-file-switch-horiz-window-command))
+         (:map helm-bookmark-map
+               ("C-v" . helm-bookmark-switch-vert-window-command)
+               ("C-s" . helm-bookmark-switch-horiz-window-command)))
   :general
-  (:keymaps 'helm-buffer-map
-   "C-v" #'helm-buffer-switch-vert-window-command
-   "C-s" #'helm-buffer-switch-horiz-window-command)
-  (:keymaps 'helm-projectile-find-file-map
-   "C-v" #'helm-file-switch-vert-window-command
-   "C-s" #'helm-file-switch-horiz-window-command)
-  (:keymaps 'helm-find-files-map
-   "C-v" #'helm-file-switch-vert-window-command
-   "C-s" #'helm-file-switch-horiz-window-command)
   (cogent/leader-def
     :states '(normal visual)
     "m" #'helm-M-x
@@ -155,15 +134,23 @@
     (with-helm-alive-p
       (helm-exit-and-execute-action #'cogent/helm-rg-switch-horiz)))
 
-  (general-def helm-rg-map
-    "C-c C-e" #'helm-rg--bounce
-    "C-s" #'cogent/helm-rg-switch-horiz-command
-    "C-v" #'cogent/helm-rg-switch-vert-command))
+  :bind
+  (:map helm-rg-map
+        ("C-c C-e" . helm-rg--bounce)
+        ("C-s" . cogent/helm-rg-switch-horiz-command)
+        ("C-v" . cogent/helm-rg-switch-vert-command)))
 
 (use-package helm-projectile
-  :after projectile
-  :commands helm-projectile-on helm-projectile-find-file
-  :config (projectile-mode)
+  :after (projectile helm)
+  :commands (helm-projectile-on helm-projectile-find-file)
+  :config
+  (projectile-mode)
+  (helm-add-action-to-source "Display file(s) in new vertical split(s) `C-v'"
+                             #'helm-file-switch-vert-window
+                             helm-source-projectile-files-list)
+  (helm-add-action-to-source "Display file(s) in new horizontal split(s) `C-s'"
+                             #'helm-file-switch-horiz-window
+                             helm-source-projectile-files-list)
   :general
   (cogent/leader-def
     :states '(normal visual)
