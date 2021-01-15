@@ -196,7 +196,7 @@
  '(send-mail-function 'smtpmail-send-it)
  '(straight-recipe-overrides
    '((nil
-      (company-emoji :host github :repo "dunn/company-emoji" :branch "trunk"))))
+      (company-emoji :host github :repo "dunn/company-emoji" :branch "trunk" :flavor melpa))))
  '(tab-bar-show 1)
  '(tab-bar-tab-hints t)
  '(tool-bar-mode nil)
