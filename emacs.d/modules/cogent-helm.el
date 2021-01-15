@@ -83,15 +83,9 @@
          (:map helm-buffer-map
                ("C-v" . helm-buffer-switch-vert-window-command)
                ("C-s" . helm-buffer-switch-horiz-window-command))
-         (:map helm-projectile-find-file-map
-               ("C-v" . helm-file-switch-vert-window-command)
-               ("C-s" . helm-file-switch-horiz-window-command))
          (:map helm-find-files-map
                ("C-v" . helm-file-switch-vert-window-command)
-               ("C-s" . helm-file-switch-horiz-window-command))
-         (:map helm-bookmark-map
-               ("C-v" . helm-bookmark-switch-vert-window-command)
-               ("C-s" . helm-bookmark-switch-horiz-window-command)))
+               ("C-s" . helm-file-switch-horiz-window-command)))
   :general
   (cogent/leader-def
     :states '(normal visual)
@@ -100,10 +94,15 @@
     "b" #'helm-buffers-list
     "l" #'helm-occur))
 
+;; is there a way to have this as a sub-package, so I can do use-package + :bind?
+(with-eval-after-load 'helm-bookmark
+  (general-define-key
+   :keymaps '(helm-bookmark-map)
+   "C-v" #'helm-bookmark-switch-vert-window-command
+   "C-s" #'helm-bookmark-switch-horiz-window-command))
+
 (use-package helm-rg
   :config
-  (add-hook 'helm-mode-hook (lambda () (auto-composition-mode -1)))
-
   (defun cogent/switch-to-buffer-split-vert (name)
     (select-window (split-window-right))
     (switch-to-buffer name))
@@ -151,6 +150,10 @@
   (helm-add-action-to-source "Display file(s) in new horizontal split(s) `C-s'"
                              #'helm-file-switch-horiz-window
                              helm-source-projectile-files-list)
+  :bind
+  (:map helm-projectile-find-file-map
+        ("C-v" . helm-file-switch-vert-window-command)
+        ("C-s" . helm-file-switch-horiz-window-command))
   :general
   (cogent/leader-def
     :states '(normal visual)
