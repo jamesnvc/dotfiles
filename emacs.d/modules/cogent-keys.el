@@ -5,10 +5,12 @@
 (use-package general
   :demand t
   :config
-  ;;(setq general-default-keymaps '(evil-normal-state-map evil-visual-state-map))
-  ;; (setq general-default-prefix "SPC")
   (general-evil-setup)
   (general-create-definer cogent/leader-def :prefix "SPC")
   (general-auto-unbind-keys))
+
+(use-package emacs
+  :bind
+  (("<f1> K" . #'describe-keymap)))
 
 (provide 'cogent-keys)
