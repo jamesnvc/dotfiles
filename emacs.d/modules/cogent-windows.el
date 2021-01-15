@@ -55,4 +55,9 @@
    "C-c <left>" #'tab-bar-history-back
    "C-c <right>" #'tab-bar-history-forward))
 
+(use-package windmove
+  :straight (:type built-in)
+  :config
+  (windmove-default-keybindings))
+
 (provide 'cogent-windows)

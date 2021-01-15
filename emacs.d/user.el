@@ -11,15 +11,6 @@
 (defvar cogent/extra-path-dirs nil
   "Extra directories I want added to PATH")
 
-(defun cogent/eshell-add-paths ()
-  "Add extra dirs to eshell's path.
-Shouldn't be necessary now, after using fish shell and exec-path-from-shell."
-  (when cogent/extra-path-dirs
-    (setq eshell-path-env (concat (string-join cogent/extra-path-dirs ":")
-                                  ":"
-                                  eshell-path-env))))
-(add-hook 'eshell-mode-hook #'cogent/eshell-add-paths)
-
 (defun cogent/add-to-all-paths (dir)
   "Add directory to exec-path, $PATH and eshell-path-env"
   (cogent/after-path-init
@@ -57,9 +48,6 @@ Shouldn't be necessary now, after using fish shell and exec-path-from-shell."
                     "<f8>"   #'org-store-link
                     "<f9>"   #'helm-bookmarks)
 
-(when (fboundp 'windmove-default-keybindings)
-  (windmove-default-keybindings))
-
 ;; Leader key stuff
 (require 'rx)
 (defun cogent/quit-special-window ()
@@ -81,13 +69,14 @@ Shouldn't be necessary now, after using fish shell and exec-path-from-shell."
   "+" (lambda () (interactive) (cogent-fonts/update-font-size 1))
   "-" (lambda () (interactive) (cogent-fonts/update-font-size -1)))
 
-(general-define-key
- :keymaps 'dired-mode-map
- ;; still like vim-vinegar
- "-" #'dired-jump
- ;; Make "jump backwards" act as I expect in dired
- "C-o" #'quit-window
- "C-c C-e" #'wdired-change-to-wdired-mode)
+(use-package dired
+  :straight (:type built-in)
+  :bind
+  (:map dired-mode-map
+        ("-" . dired-jump)
+        ("C-o" . quit-window)
+        ("C-c C-e" . wdired-change-to-wdired-mode)))
+
 
 ;;; esc quits
 (defun minibuffer-keyboard-quit ()
@@ -110,23 +99,30 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
                     [escape] #'minibuffer-keyboard-quit)
 
 ;; Eshell
-(add-hook 'eshell-first-time-mode-hook
-          (lambda ()
-            (evil-mc-mode -1)
-            (when (version< emacs-version "27.0")
-              ;; Need to do this in the hook because eshell defines its keymap
-              ;; in kind of a bizarre way
-              (general-define-key :keymaps 'eshell-mode-map
-                                  [remap eshell-pcomplete] #'helm-esh-pcomplete
-                                  "M-r" #'helm-eshell-history))
-            (display-line-numbers-mode -1)))
 
-(when (version<= "27.0" emacs-version)
-  (general-define-key :keymaps 'eshell-mode-map
-                      "M-r" #'helm-eshell-history))
+(use-package eshell
+  :straight (:type built-in)
+  :config
+  (defun cogent/eshell-first-time-setup ()
+    (evil-mc-mode -1)
+    (display-line-numbers-mode -1))
+
+  (defun cogent/eshell-add-paths ()
+    "Add extra dirs to eshell's path.
+Shouldn't be necessary now, after using fish shell and exec-path-from-shell."
+    (when cogent/extra-path-dirs
+      (setq eshell-path-env (concat (string-join cogent/extra-path-dirs ":")
+                                    ":"
+                                    eshell-path-env))))
+  :hook
+  ((eshell-first-time-mode-hook . cogent/eshell-first-time-setup)
+   (eshell-mode-hook . cogent/eshell-add-paths))
+  :bind
+  (:map eshell-mode-map
+        ("M-r" . helm-eshell-history)))
+
 ;; Fancy symbols
 (cl-pushnew '("lambda" . 955) prettify-symbols-alist)
-(add-hook 'emacs-lisp-mode-hook #'prettify-symbols-mode)
 
 ;; Arduino
 (add-to-list 'auto-mode-alist '("\\.ino\\'" . c++-mode))
@@ -153,7 +149,6 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 ;; Scheme indentation for my macros
 (defun cogent/scheme-hook ()
   (put 'if-let 'scheme-indent-function 1))
-(add-hook 'scheme-mode-hook #'cogent/scheme-hook)
 
 ;; Make Gnome unicode input method work for emacs as well
 ;; Doing this instead of C-x 8 RET so the Kaleidoscope unicode input
@@ -171,27 +166,27 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 ;; Make old Ubuntu shellcheck not complain with flycheck
 (setq flycheck-shellcheck-follow-sources nil)
 
-(add-hook 'objc-mode-hook (lambda () (setq c-basic-offset 4)))
 
 ;; ediff
-(defun cogent/ediff-copy-both-to-C ()
-  "Via
+(use-package ediff
+  :straight (:type built-in)
+  :config
+  (defun cogent/ediff-copy-both-to-C ()
+    "Via
 https://stackoverflow.com/questions/9656311/conflict-resolution-with-emacs-ediff-how-can-i-take-the-changes-of-both-version.
 Take both changes in diff."
-  (interactive)
-  (ediff-copy-diff
-   ediff-current-difference nil 'C nil
-   (mapconcat
-    (lambda (d) (ediff-get-region-contents ediff-current-difference d ediff-control-buffer))
-    '(A B)
-    "")))
-(defun cogent/ediff-mode-hook ()
-  (define-key ediff-mode-map "B" #'cogent/ediff-copy-both-to-C))
-(add-hook 'ediff-keymap-setup-hook #'cogent/ediff-mode-hook)
+    (interactive)
+    (ediff-copy-diff
+     ediff-current-difference nil 'C nil
+     (mapconcat
+      (lambda (d) (ediff-get-region-contents ediff-current-difference d ediff-control-buffer))
+      '(A B)
+      "")))
 
-(add-hook 'after-save-hook #'executable-make-buffer-file-executable-if-script-p)
-
-(add-hook 'java-mode-hook (lambda () (setq c-basic-offset 4)))
+  (defun cogent/ediff-mode-hook ()
+    (define-key ediff-mode-map "B" #'cogent/ediff-copy-both-to-C))
+  :hook
+  (ediff-keymap-setup-hook . cogent/ediff-mode-hook))
 
 (general-define-key :states '(normal)
                     ;; Evil overrides this to be something I never use
@@ -211,7 +206,14 @@ Take both changes in diff."
       (kill-new filename)
       (message "Saved to '%s'" filename))))
 
-(add-hook 'before-save-hook #'time-stamp)
+(use-package emacs
+  :hook
+  ((emacs-lisp-mode-hook . prettify-symbols-mode)
+   (objc-mode-hook . (lambda () (setq c-basic-offset 4)))
+   (java-mode-hook . (lambda () (setq c-basic-offset 4)))
+   (scheme-mode-hook . cogent/scheme-hook)
+   (after-save-hook . executable-make-buffer-file-executable-if-script-p)
+   (before-save-hook . time-stamp)))
 
 (global-set-key (kbd "M-SPC") #'cycle-spacing)
 
