@@ -12,8 +12,8 @@
   ;; :demand t
   ;; :config
 
-  (setq org-catch-invisible-edits 'show-and-error)
-  (setq org-adapt-indentation 'headline-data)
+  (customize-set-variable 'org-catch-invisible-edits 'show-and-error)
+  (customize-set-variable 'org-adapt-indentation 'headline-data)
 
   (add-hook 'org-mode-hook (lambda () (setq-local company-dabbrev-downcase nil)))
   (add-hook
@@ -183,11 +183,19 @@ Then press C-c C-x C-u inside
              :type git
              :host gitlab
              :repo "phillord/org-drill")
+  :defer t
   :commands (org-drill))
 
 (use-package org-tree-slide
+  :defer t
   :commands (org-tree-slide-mode)
   :custom (org-tree-slide-slide-in-effect nil))
+
+(use-package olivetti
+  :defer t
+  :commands (olivetti-mode)
+  :custom ((olivetti-body-width 0.7)
+           (olivetti-minimum-body-width 80)))
 
 (defun cogent/collapse-plantuml-blocks ()
   (interactive)
@@ -207,18 +215,29 @@ Then press C-c C-x C-u inside
   (display-line-numbers-mode -1)
   (dolist (face '(default fixed-pitch variable-pitch))
     (set-face-attribute face (selected-frame) :height 200))
+  (when (derived-mode-p 'text-mode)
+    (variable-pitch-mode +1))
+  (git-gutter+-mode -1)
+  (olivetti-mode +1)
   (org-redisplay-inline-images)
   (cogent/collapse-plantuml-blocks)
-  (org-tree-slide-mode 1))
+  (when (eq 'org-mode major-mode)
+    (org-tree-slide-mode 1)
+    (org-indent-mode 1)))
 
 (defun cogent/stop-presentation ()
   "Start a presentation with org-tree-slide"
   (interactive)
+  (variable-pitch-mode -1)
   (setq mode-line-format (default-value 'mode-line-format))
   (display-line-numbers-mode 1)
+  (olivetti-mode -1)
+  (git-gutter+-mode +1)
   (dolist (face '(default fixed-pitch variable-pitch))
     (set-face-attribute face (selected-frame) :height 80))
-  (org-tree-slide-mode -1))
+  (when (eq 'org-mode major-mode)
+    (org-tree-slide-mode -1)
+    (org-indent-mode -1)))
 
 
 (provide 'cogent-orgmode)
