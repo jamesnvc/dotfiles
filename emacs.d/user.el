@@ -101,7 +101,6 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 ;; Eshell
 
 (use-package eshell
-  :straight (:type built-in)
   :config
   (defun cogent/eshell-first-time-setup ()
     (evil-mc-mode -1)
@@ -119,6 +118,8 @@ Shouldn't be necessary now, after using fish shell and exec-path-from-shell."
    (eshell-mode-hook . cogent/eshell-add-paths))
   :bind
   (:map eshell-mode-map
+        ("M-r" . helm-eshell-history))
+  (:map eshell-hist-mode-map
         ("M-r" . helm-eshell-history)))
 
 ;; Fancy symbols
