@@ -70,7 +70,9 @@
    (helm-autoresize-max-height 35)
 
    (helm-buffers-fuzzy-matching t)
-   (helm-apropos-fuzzy-match t))
+   (helm-apropos-fuzzy-match t)
+
+   (helm-show-completion-display-function #'helm-show-completion-default-display-function))
 
   :custom-face
   (helm-source-header ((t (:height 0.75))))
