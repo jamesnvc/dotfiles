@@ -149,14 +149,6 @@ evil to have."
   :demand t
   :config (global-evil-matchit-mode 1))
 
-(use-package smooth-scrolling
-  :demand t
-  :config
-  (setq scroll-margin 2
-        ;; value > 100 = redisplay won't re-center cursor when going offscreen
-        scroll-conservatively 101
-        scroll-step 1))
-
 ;; for aligning stuff
 (use-package evil-lion
   :commands (evil-lion-left evil-lion-right)

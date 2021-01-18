@@ -211,7 +211,12 @@ Take both changes in diff."
   :config
   (minibuffer-depth-indicate-mode 1)
   :custom
-  ((enable-recursive-minibuffers t))
+  ((enable-recursive-minibuffers t)
+
+   (scroll-margin 2)
+   ;; value > 100 = redisplay won't re-center cursor when going offscreen
+   (scroll-conservatively 101)
+   (scroll-step 1))
   :hook
   ((emacs-lisp-mode-hook . prettify-symbols-mode)
    (objc-mode-hook . (lambda () (setq c-basic-offset 4)))
