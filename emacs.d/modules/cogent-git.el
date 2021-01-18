@@ -38,7 +38,7 @@
 (use-package diff-hl
   :init
   (global-diff-hl-mode)
-  (diff-hl-flydiff-mode)
+  (diff-hl-flydiff-mode -1)
   :hook
   ((magit-pre-refresh-hook . diff-hl-magit-pre-refresh)
    (magit-post-refresh-hook . diff-hl-magit-post-refresh))
