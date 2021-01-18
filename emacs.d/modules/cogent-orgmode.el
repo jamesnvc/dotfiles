@@ -194,7 +194,7 @@ Then press C-c C-x C-u inside
 (use-package olivetti
   :defer t
   :commands (olivetti-mode)
-  :custom ((olivetti-body-width 0.7)
+  :custom ((olivetti-body-width 0.5)
            (olivetti-minimum-body-width 80)))
 
 (defun cogent/collapse-plantuml-blocks ()
