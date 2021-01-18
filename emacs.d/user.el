@@ -208,6 +208,10 @@ Take both changes in diff."
       (message "Saved to '%s'" filename))))
 
 (use-package emacs
+  :config
+  (minibuffer-depth-indicate-mode 1)
+  :custom
+  ((enable-recursive-minibuffers t))
   :hook
   ((emacs-lisp-mode-hook . prettify-symbols-mode)
    (objc-mode-hook . (lambda () (setq c-basic-offset 4)))
