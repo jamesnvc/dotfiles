@@ -35,21 +35,16 @@
   :config
   (evil-set-initial-state 'forge-topic-mode 'emacs))
 
-(use-package fringe-helper)
-(use-package git-gutter-fringe+
-  :commands (global-git-gutter+-mode git-gutter+-mode)
-  :defer t
+(use-package diff-hl
   :init
-  (defun cogent/load-git-gutter-once ()
-    (remove-hook 'find-file-hook #'cogent/load-git-gutter-once)
-    (global-git-gutter+-mode t))
-  (add-hook 'find-file-hook #'cogent/load-git-gutter-once)
+  (global-diff-hl-mode)
+  (diff-hl-flydiff-mode)
+  :hook
+  ((magit-pre-refresh-hook . diff-hl-magit-pre-refresh)
+   (magit-post-refresh-hook . diff-hl-magit-post-refresh))
   :general
-  (:keymaps 'normal
-   :jump t
-   "]c" #'git-gutter+-next-hunk
-   "[c" #'git-gutter+-previous-hunk)
-  (:states '(normal visual) :prefix "SPC h"
-    "s" #'git-gutter+-stage-hunks))
+  (:keymaps 'normal :jump t
+            "[c" #'diff-hl-previous-hunk
+            "]c" #'diff-hl-next-hunk))
 
 (provide 'cogent-git)
