@@ -16,4 +16,9 @@
   :commands (discover-my-major discover-my-mode)
   :bind ("<f1> C-m" . discover-my-major))
 
+(use-package emacs
+  :hook
+  ((help-mode-hook . cogent/display-line-numbers-turn-off)
+   (Custom-mode-hook . cogent/display-line-numbers-turn-off)))
+
 (provide 'cogent-help)
