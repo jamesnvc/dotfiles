@@ -113,14 +113,11 @@ Shouldn't be necessary now, after using fish shell and exec-path-from-shell."
       (setq eshell-path-env (concat (string-join cogent/extra-path-dirs ":")
                                     ":"
                                     eshell-path-env))))
+  (with-eval-after-load 'em-hist
+    (define-key eshell-hist-mode-map (kbd "M-r") #'helm-eshell-history))
   :hook
   ((eshell-first-time-mode-hook . cogent/eshell-first-time-setup)
-   (eshell-mode-hook . cogent/eshell-add-paths))
-  :bind
-  (:map eshell-mode-map
-        ("M-r" . helm-eshell-history))
-  (:map eshell-hist-mode-map
-        ("M-r" . helm-eshell-history)))
+   (eshell-mode-hook . cogent/eshell-add-paths)))
 
 ;; Fancy symbols
 (cl-pushnew '("lambda" . 955) prettify-symbols-alist)
