@@ -47,4 +47,9 @@
             "[c" #'diff-hl-previous-hunk
             "]c" #'diff-hl-next-hunk))
 
+(use-package vc-annotate
+  :straight (:type built-in)
+  :custom
+  ((vc-annotate-display-mode 'scale)))
+
 (provide 'cogent-git)
