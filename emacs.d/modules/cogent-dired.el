@@ -1,10 +1,37 @@
 ;;; -*- lexical-binding: t -*-
 
-(require 'dired+)
 ;; Keep dired buffers updated when the file system changes
 (setq global-auto-revert-non-file-buffers t)
 (setq auto-revert-verbose nil)
-(setq dired-dwim-target t)
+
+(use-package dired
+  :straight (:type built-in)
+  :config
+  (put 'dired-find-alternate-file 'disabled nil)
+  :custom
+  ((dired-dwim-target t)
+   (dired-recursive-copies 'always)
+   (dired-recursive-deletes 'always)
+   (dired-listing-switches
+    "-AGFhlv --group-directories-first --time-style=long-iso"))
+  :hook
+  ((dired-mode-hook . dired-hide-details-mode)
+   (dired-mode-hook . hl-line-mode))
+  :bind
+  (:map dired-mode-map
+        ("C-x g" . magit))
+  :general
+  (:states 'normal :keymaps 'dired-mode-map
+           "C-l" #'evil-window-right
+           "C-h" #'evil-window-left
+           "C-j" #'evil-window-down
+           "C-k" #'evil-window-up))
+
+(use-package dired-aux
+  :straight (:type built-in)
+  :custom
+  ((dired-isearch-filenames 'dwim)
+   (dired-create-destination-dirs 'ask)))
 
 (use-package dired-git-info
   :bind (:map dired-mode-map (")" . dired-git-info-mode)))
@@ -40,14 +67,5 @@
                    name (file-name-nondirectory new-name)))))))
 
 (general-def "C-x C-r" #'rename-current-buffer-file)
-(general-def :keymaps 'dired-mode-map
-  "C-x g" #'magit)
-(general-def :states 'normal :keymaps 'dired-mode-map
-  "C-l" #'evil-window-right
-  "C-h" #'evil-window-left
-  "C-j" #'evil-window-down
-  "C-k" #'evil-window-up )
-
-(put 'dired-find-alternate-file 'disabled nil)
 
 (provide 'cogent-dired)
