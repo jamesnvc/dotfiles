@@ -60,4 +60,61 @@
   :config
   (windmove-default-keybindings))
 
+(use-package window
+  :straight (:type built-in)
+  :config
+  (defun cogent/select-sidebar ()
+    (interactive)
+    (when-let ((side-win (window-with-parameter 'window-side)))
+      (select-window side-win)))
+  :custom
+  ((display-buffer-alist
+        '(;; top side window
+          ("\\*\\(Flymake\\|Package-Lint\\|vc-git :\\).*"
+           (display-buffer-in-side-window)
+           (window-height . 0.16)
+           (side . top)
+           (slot . 0)
+           (window-parameters . ((no-other-window . t))))
+          ("\\*Messages.*"
+           (display-buffer-in-side-window)
+           (window-height . 0.16)
+           (side . top)
+           (slot . 1)
+           (window-parameters . ((no-other-window . t))))
+          ("\\*\\(Backtrace\\|Warnings\\|Compile-Log\\)\\*"
+           (display-buffer-in-side-window)
+           (window-height . 0.16)
+           (side . top)
+           (slot . 2)
+           (window-parameters . ((no-other-window . t))))
+          ;; bottom side window
+          ("\\*.*Completions.*"
+           (display-buffer-in-side-window)
+           (side . bottom)
+           (slot . 0)
+           (window-parameters . ((no-other-window . t)
+                                 (mode-line-format . none))))
+          ;; left side window
+          ("\\*Help.*"
+           (display-buffer-in-side-window)
+           (window-width . 0.25)
+           (side . left)
+           (slot . 0)
+           (window-parameters . ((no-other-window . t))))
+          ;; bottom buffer (NOT side window)
+          ("\\*\\vc-\\(incoming\\|outgoing\\).*"
+           (display-buffer-at-bottom))
+          ("\\*\\(Output\\|Register Preview\\).*"
+           (display-buffer-at-bottom)
+           (window-parameters . ((no-other-window . t))))))
+   (window-combination-resize t)
+   (even-window-sizes 'height-only)
+   (window-sides-vertical nil)
+   (switch-to-buffer-in-dedicated-window 'pop))
+  :hook ((help-mode-hook . visual-line-mode)
+         (custom-mode-hook . visual-line-mode))
+  :bind (("C-x q" . window-toggle-side-windows)
+         ("C-x O" . cogent/select-sidebar)))
+
 (provide 'cogent-windows)

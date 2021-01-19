@@ -49,23 +49,10 @@
                     "<f9>"   #'helm-bookmarks)
 
 ;; Leader key stuff
-(require 'rx)
-(defun cogent/quit-special-window ()
-  "Close any open *special* window."
-  (interactive)
-  (loop for win being the windows of (selected-frame)
-        for buff-name = (buffer-name (window-buffer win))
-        when (and
-              (not (string= buff-name "*scratch*"))
-              (string-match-p
-               (rx bos "*" (+ anychar) "*" (? "<" (+ digit) ">") eos)
-               buff-name))
-        collect win into special-wins
-        finally do (mapcar (lambda (w) (quit-window nil w)) special-wins)))
 
 (cogent/leader-def
   :states '(normal visual)
-  "q" #'cogent/quit-special-window
+  "q" #'window-toggle-side-windows
   "+" (lambda () (interactive) (cogent-fonts/update-font-size 1))
   "-" (lambda () (interactive) (cogent-fonts/update-font-size -1)))
 
