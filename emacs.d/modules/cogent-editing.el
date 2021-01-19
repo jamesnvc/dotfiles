@@ -32,6 +32,7 @@
   (setq bidi-inhibit-bpa t))
 
 (use-package so-long
+  :straight (:type built-in)
   :config
   (global-so-long-mode 1))
 
