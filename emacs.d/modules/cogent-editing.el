@@ -26,4 +26,13 @@
                            (ido-read-file-name "File: "))))
     (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))
 
+(use-package emacs
+  :config
+  (setq-default bidi-paragraph-direction 'left-to-right)
+  (setq bidi-inhibit-bpa t))
+
+(use-package so-long
+  :config
+  (global-so-long-mode 1))
+
 (provide 'cogent-editing)
