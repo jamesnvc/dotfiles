@@ -44,6 +44,23 @@
   ((wdired-allow-to-change-permisisons t)
    (wdired-create-parent-directories t)))
 
+(use-package dired-subtree
+  :after dired
+  :bind
+  (:map dired-mode-map
+        ("<tab>" . dired-subtree-toggle)
+        ("<C-tab>" . dired-subtree-cycle)
+        ("<S-iso-lefttab>" . dired-subtree-remove)))
+
+(use-package dired-x
+  :straight (:type built-in)
+  :custom
+  ((dired-clean-up-buffers-too t)
+   (dired-clean-confirm-killing-deleted-buffers t)
+   (dired-x-hands-off-my-keys t)
+   (dired-bind-man nil)
+   (dired-bind-info nil)))
+
 (defun delete-current-buffer-file ()
   "Remove the file connected to the current buffer and kills the buffer"
   (interactive)
