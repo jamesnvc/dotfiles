@@ -53,4 +53,8 @@
              :host github
              :repo "lastquestion/explain-pause-mode"))
 
+;; (use-package dungeon-mode
+;;   :straight (dungeon-mode
+;;              :repo "https://git.savannah.nongnu.org/git/dungeon.git"))
+
 (provide 'cogent-tools)
