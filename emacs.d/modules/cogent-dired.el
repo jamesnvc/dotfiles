@@ -36,6 +36,14 @@
 (use-package dired-git-info
   :bind (:map dired-mode-map (")" . dired-git-info-mode)))
 
+(use-package wdired
+  :straight (:type built-in)
+  :after dired
+  :commands wdired-change-to-wdired-mode
+  :custom
+  ((wdired-allow-to-change-permisisons t)
+   (wdired-create-parent-directories t)))
+
 (defun delete-current-buffer-file ()
   "Remove the file connected to the current buffer and kills the buffer"
   (interactive)
