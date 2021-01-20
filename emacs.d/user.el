@@ -1,4 +1,4 @@
-;; -*- lexical-binding: t -*-
+;;; -*- lexical-binding: t -*-
 
 (set-frame-font "PragmataPro Liga 8" nil t)
 (dolist (face '(default fixed-pitch))
