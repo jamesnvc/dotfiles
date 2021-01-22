@@ -36,11 +36,13 @@
   (evil-set-initial-state 'forge-topic-mode 'emacs))
 
 (use-package diff-hl
-  :init
-  (global-diff-hl-mode)
+  :config
   (diff-hl-flydiff-mode -1)
+  :custom
+  ((diff-hl-draw-borders nil))
   :hook
-  ((magit-pre-refresh-hook . diff-hl-magit-pre-refresh)
+  ((after-init-hook . global-diff-hl-mode)
+   (magit-pre-refresh-hook . diff-hl-magit-pre-refresh)
    (magit-post-refresh-hook . diff-hl-magit-post-refresh))
   :general
   (:keymaps 'normal :jump t
