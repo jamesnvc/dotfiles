@@ -20,8 +20,7 @@
 (defvar dotfiles-dir
   (file-name-directory (or buffer-file-name
                            (file-chase-links load-file-name)))
-  "Directory the emacs dotfiles live -- presumably ~/.config/emacs for
-  >28, ~/.emacs.d for older.")
+  "Directory in which the emacs dotfiles live -- presumably ~/.config/emacs for >28, ~/.emacs.d for older.")
 
 (add-to-list 'load-path (concat dotfiles-dir "modules"))
 
