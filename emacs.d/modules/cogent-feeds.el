@@ -87,7 +87,7 @@
     "Open current entry with VLC."
     (interactive)
     (start-process
-     "elfeed-vlc" "*vlc*" (cogent/resolve-exec "vlc")
+     "elfeed-vlc" "*vlc*" (executable-find "vlc")
      (elfeed-entry-link elfeed-show-entry)))
 
   (cl-defun elfeed-search-youtube-dl (&key slow)

@@ -36,7 +36,7 @@
   :commands tern-mode
   :hook (js2-mode-hook . (lambda () (tern-mode t)))
   :config
-  (setq tern-command (list (or (cogent/resolve-exec "tern") "tern"))))
+  (setq tern-command (list (or (executable-find "tern") "tern"))))
 
 (use-package company-tern
   :after tern company

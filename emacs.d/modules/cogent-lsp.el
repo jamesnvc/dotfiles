@@ -82,7 +82,7 @@
 (use-package ccls
   :after lsp-mode
   :config
-  (if-let ((ccls-path (cogent/resolve-exec "ccls")))
+  (if-let ((ccls-path (executable-find "ccls")))
       (setq ccls-executable ccls-path)
     (setq ccls-executable (expand-file-name "~/software/ccls/Release/ccls")))
   :hook ((objc-mode-hook c++-mode c-mode) . (lambda () (require 'ccls) (lsp))))

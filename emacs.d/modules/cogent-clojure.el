@@ -70,7 +70,7 @@ the expression with the result."
 ;; (defun cogent/cljfmtns ()
 ;;   (make-process
 ;;    :name "*cljfmtns*"
-;;    :command (list (cogent/resolve-exec "cljfmtns") buffer-file-name)))
+;;    :command (list (executable-find "cljfmtns") buffer-file-name)))
 
 ;; (defun add-cljfmt-hook ()
 ;;   (add-hook 'after-save-hook #'cogent/cljfmtns nil t))

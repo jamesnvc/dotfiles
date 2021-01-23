@@ -28,15 +28,7 @@ return code and its whitespace trimmed output."
 
 (defun cogent/is-exec (command)
   "Return true if `command' is an executable on the system search path."
-  (file-executable-p
-   (string-trim
-    (shell-command-to-string (concat "which " command)))))
-
-(defun cogent/resolve-exec (command)
-  "If `command' is an executable on the system search path, return its absolute path.
-Otherwise, return nil."
-  (let ((path (string-trim (shell-command-to-string (concat "which " command)))))
-    (when (file-executable-p path) path)))
+  (stringp (executable-find command)))
 
 (defun cogent/exec-if-exec (command args)
   "If `command' satisfies `cogent/is-exec', run it with `args' and
