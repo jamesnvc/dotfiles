@@ -83,6 +83,13 @@
     (interactive)
     (pop-to-buffer (youtube-dl (elfeed-entry-link elfeed-show-entry))))
 
+  (defun elfeed-show-vlc ()
+    "Open current entry with VLC."
+    (interactive)
+    (start-process
+     "elfeed-vlc" "*vlc*" (cogent/resolve-exec "vlc")
+     (elfeed-entry-link elfeed-show-entry)))
+
   (cl-defun elfeed-search-youtube-dl (&key slow)
     "Download the current entry with youtube-dl."
     (interactive)
@@ -113,7 +120,8 @@
             "h" (lambda () (interactive) (elfeed-search-set-filter (default-value 'elfeed-search-filter))))
   (:keymaps 'elfeed-show-mode-map
             "o" #'elfeed-show-visit
-            "d" #'elfeed-show-youtube-dl)
+            "d" #'elfeed-show-youtube-dl
+            "V" #'elfeed-show-vlc)
   :custom
   (elfeed-search-face-alist
    '((unread elfeed-search-unread-title-face)
