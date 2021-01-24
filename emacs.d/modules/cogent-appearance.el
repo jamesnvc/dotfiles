@@ -33,16 +33,13 @@
                    :repo "protesilaos/modus-themes"
                    :branch "main")
   :defer t
-  :init
-  (modus-themes-load-themes)
-  :config
-  (modus-themes-load-operandi)
   :custom
-  ((modus-operandi-theme-bold-constructs t)
-   (modus-operandi-theme-completions 'opinionated)
-   (modus-operandi-theme-org-blocks 'rainbow)
-   (modus-operandi-theme-slanted-constructs t)
-   (modus-operandi-theme-variable-pitch-headings t))
+  ((modus-themes-bold-constructs t)
+   (modus-themes-completions 'opinionated)
+   (modus-themes-org-blocks 'rainbow)
+   (modus-themes-headings '((t . section)))
+   (modus-themes-slanted-constructs t)
+   (modus-themes-variable-pitch-headings t))
   :custom-face
   (mode-line ((t (:background nil :foreground ,cogent-line-active-bg :box nil
                   :overline ,cogent-line-active-bg :underline nil))))
@@ -114,5 +111,7 @@
   (set-fontset-font t 'unicode "FSD Emoji" nil 'prepend))
  ((member "Symbola" (font-family-list))
   (set-fontset-font t 'unicode "Symbola" nil 'prepend)))
+
+(load-theme 'modus-operandi t)
 
 (provide 'cogent-appearance)
