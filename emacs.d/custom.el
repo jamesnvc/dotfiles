@@ -88,11 +88,6 @@
  '(magit-diff-refine-hunk t)
  '(menu-bar-mode t)
  '(mode-require-final-newline nil)
- '(modus-operandi-theme-bold-constructs t)
- '(modus-operandi-theme-completions 'opinionated)
- '(modus-operandi-theme-org-blocks 'rainbow)
- '(modus-operandi-theme-slanted-constructs t)
- '(modus-operandi-theme-variable-pitch-headings t)
  '(moody-mode-line-height 28)
  '(mouse-drag-and-drop-region 'modifier)
  '(notmuch-saved-searches

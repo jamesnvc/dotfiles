@@ -27,17 +27,30 @@
 
 (require 'cogent-modeline)
 
-(use-package modus-operandi-theme
+(use-package modus-themes
+  :straight (:type git
+                   :host gitlab
+                   :repo "protesilaos/modus-themes"
+                   :branch "main")
   :defer t
+  :init
+  (modus-themes-load-themes)
+  :config
+  (modus-themes-load-operandi)
+  :custom
+  ((modus-operandi-theme-bold-constructs t)
+   (modus-operandi-theme-completions 'opinionated)
+   (modus-operandi-theme-org-blocks 'rainbow)
+   (modus-operandi-theme-slanted-constructs t)
+   (modus-operandi-theme-variable-pitch-headings t))
   :custom-face
-  ;; have to put these in as strings directly because this is a macro, I guess
-  ;; cogent-line-active-bg "#34495e"
-  ;; cogent-line-inactive-bg "#bfc4ca"
-  (mode-line ((t (:background nil :foreground "#34495e" :box nil
-                  :overline "#34495e" :underline nil))))
-  (mode-line-inactive ((t (:background nil :foreground "#bfc4ca":box nil
-                           :overline "#bfc4ca":underline nil))))
-  (header-line ((t (:background nil :foreground "#34495e" :underline  "#34495e")))))
+  (mode-line ((t (:background nil :foreground ,cogent-line-active-bg :box nil
+                  :overline ,cogent-line-active-bg :underline nil))))
+  (mode-line-inactive ((t (:background nil :foreground ,cogent-line-inactive-bg
+                            :box nil
+                            :overline ,cogent-line-inactive-bg nil))))
+  (header-line ((t (:background nil :foreground ,cogent-line-active-bg
+                    :underline  ,cogent-line-active-bg)))))
 
 (when window-system
   (setq frame-title-format '(buffer-file-name "%f" ("%b")))
@@ -101,7 +114,5 @@
   (set-fontset-font t 'unicode "FSD Emoji" nil 'prepend))
  ((member "Symbola" (font-family-list))
   (set-fontset-font t 'unicode "Symbola" nil 'prepend)))
-
-(load-theme 'modus-operandi t)
 
 (provide 'cogent-appearance)
