@@ -96,12 +96,19 @@
     "b" #'helm-buffers-list
     "l" #'helm-occur))
 
-;; is there a way to have this as a sub-package, so I can do use-package + :bind?
-(with-eval-after-load 'helm-bookmark
-  (general-define-key
-   :keymaps '(helm-bookmark-map)
-   "C-v" #'helm-bookmark-switch-vert-window-command
-   "C-s" #'helm-bookmark-switch-horiz-window-command))
+(use-package helm-bookmarks
+  :straight (:type built-in)
+  :defer t
+  :commands (helm-bookmarks)
+  :after (helm)
+  :bind (:map helm-bookmark-map
+              ("C-v" . helm-bookmark-switch-vert-window-command)
+              ("C-s" . helm-bookmark-switch-horiz-window-command)))
+
+(use-package wgrep
+  :straight (:type git
+                   :host github
+                   :repo "mhayashi1120/Emacs-wgrep"))
 
 (use-package helm-rg
   :config
