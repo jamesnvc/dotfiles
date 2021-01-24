@@ -146,7 +146,10 @@
   (:map helm-rg-map
         ("C-c C-e" . helm-rg--bounce)
         ("C-s" . cogent/helm-rg-switch-horiz-command)
-        ("C-v" . cogent/helm-rg-switch-vert-command)))
+        ("C-v" . cogent/helm-rg-switch-vert-command))
+  :general
+  (cogent/leader-def :states '(normal visual)
+    "S" #'helm-rg))
 
 (use-package helm-projectile
   :after (projectile helm)
