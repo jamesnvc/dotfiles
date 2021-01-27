@@ -38,12 +38,8 @@
   autocrlf = input
   pager = less -r
 [merge]
-  tool = threesome
   ff = no
   defaultToUpstream = true
-[mergetool "threesome"]
-  cmd = vim -f $BASE $LOCAL $REMOTE $MERGED -c 'ThreesomeInit'
-  trustExitCode = true
 [filter "lfs"]
   smudge = git-lfs smudge -- %f
   process = git-lfs filter-process
