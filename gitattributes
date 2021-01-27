@@ -1,0 +1,5 @@
+*.lisp diff=lisp
+*.el   diff=lisp
+*.clj  diff=lisp
+*.cljs diff=lisp
+*.org  diff=org
