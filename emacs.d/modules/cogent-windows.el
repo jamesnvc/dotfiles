@@ -95,6 +95,12 @@
            (slot . 0)
            (window-parameters . ((no-other-window . t)
                                  (mode-line-format . none))))
+          ("\\*cider-error\\*"
+           (display-buffer-in-side-window)
+           (side . bottom)
+           (slot . 0)
+           (window-parameters . ((no-other-window . t)
+                                 (mode-line-format . none))))
           ;; left side window
           ("\\*Help.*"
            (display-buffer-in-side-window)
