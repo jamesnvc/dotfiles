@@ -9,11 +9,6 @@
   (helm-mode 1)
   (helm-autoresize-mode 1)
 
-  ;; Addresses bug (helm says it's in Emacs, Emacs says in helm) that
-  ;; gives an error running `describe-keymap' in helm
-  (with-eval-after-load 'help-fns
-    (defvar keymap-name-history nil))
-
   (cl-defmethod helm-setup-user-source ((source helm-source-ffiles))
     (helm-source-add-action-to-source-if
      "Magit status"
