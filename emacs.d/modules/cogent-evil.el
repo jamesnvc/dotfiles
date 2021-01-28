@@ -141,10 +141,6 @@ evil to have."
   (general-nvmap :prefix "SPC"
     "c SPC" #'evilnc-comment-or-uncomment-lines))
 
-(use-package evil-mc
-  :config
-  (global-evil-mc-mode 1))
-
 (use-package evil-matchit
   :demand t
   :config (global-evil-matchit-mode 1))

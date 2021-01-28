@@ -90,7 +90,6 @@ then it takes a second \\[keyboard-quit] to abort the minibuffer."
 (use-package eshell
   :config
   (defun cogent/eshell-first-time-setup ()
-    (evil-mc-mode -1)
     (display-line-numbers-mode -1))
 
   (defun cogent/eshell-add-paths ()
