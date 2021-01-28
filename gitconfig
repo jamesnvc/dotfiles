@@ -39,6 +39,7 @@
   pager = less -r
 [merge]
   ff = no
+  conflictsytle = diff3
   defaultToUpstream = true
 [filter "lfs"]
   smudge = git-lfs smudge -- %f
