@@ -133,12 +133,12 @@ search."
      :contents-sources
      (cons
       (cfw:org-create-source "Purple")
-      (loop for index from 1
-            for url in cogent/gcal-calendar-urls
-            collect (cfw:ical-create-source
-                     (format "Gcal %d" index)
-                     url
-                     "DarkGreen")))))
+      (cl-loop for index from 1
+               for url in cogent/gcal-calendar-urls
+               collect (cfw:ical-create-source
+                        (format "Gcal %d" index)
+                        url
+                        "DarkGreen")))))
   :config
   (evil-set-initial-state 'cfw:details-mode 'emacs)
   (setq cfw:fchar-junction ?╋
