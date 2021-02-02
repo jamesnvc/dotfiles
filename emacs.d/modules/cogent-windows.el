@@ -40,6 +40,14 @@
                                           :ascent center))
                          tab-bar-close-button))
   (tab-bar-history-mode) ;; instead of winner-mode
+
+  (defun cogent/tab-name-project ()
+    (if (projectile-project-p)
+        (projectile-project-name)
+      (tab-bar-tab-name-current)))
+  (customize-set-variable 'tab-bar-tab-name-function
+                          #'cogent/tab-name-project)
+
   (general-define-key
    :keymaps 'global
    "C-x t q" #'tab-bar-close-tab
