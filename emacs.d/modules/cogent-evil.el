@@ -9,6 +9,7 @@
 
   (evil-set-initial-state 'image-mode 'emacs)
   (evil-set-initial-state 'eww-mode 'emacs)
+  (evil-set-initial-state 'eww-history-mode 'emacs)
   (evil-set-initial-state 'diff-mode 'emacs)
 
   (defun cogent/evil-yank-to-eol (&optional argument)
