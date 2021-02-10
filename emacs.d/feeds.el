@@ -85,4 +85,6 @@
         ("https://www.youtube.com/feeds/videos.xml?channel_id=UCGB0idFFHkLUAmKjqdcEJKg" youtube) ; chapo compilations
         ("https://www.youtube.com/feeds/videos.xml?user=ZidenEdits" youtube)
         ("https://www.youtube.com/feeds/videos.xml?user=sensimillia92" youtube)
+        ("https://www.manueluberti.eu/feed.xml" emacs)
+        ("https://www.rousette.org.uk/archives/index.xml" emacs)
         ))
