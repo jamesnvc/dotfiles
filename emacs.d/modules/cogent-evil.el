@@ -3,6 +3,10 @@
 (require 'cogent-package)
 (require 'cogent-keys)
 
+(use-package undo-tree
+  :config
+  (global-undo-tree-mode 1))
+
 (use-package evil
   :demand t
   :config
@@ -79,7 +83,8 @@ evil to have."
     (def-abolish-fn cogent/snake-case #'s-snake-case)
     (def-abolish-fn cogent/camel-case #'s-lower-camel-case)
     (def-abolish-fn cogent/camel-case-upper #'s-upper-camel-case))
-
+  :custom
+  ((evil-undo-system 'undo-tree))
   :general
   (:keymaps '(normal notmuch-search-mode-map notmuch-hello-mode-map)
    :repeat t
