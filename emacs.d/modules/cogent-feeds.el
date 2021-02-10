@@ -18,7 +18,7 @@
 (use-package elfeed
   :commands elfeed
   :config
-  (setq-default elfeed-search-filter "@1-week-ago +unread -youtube")
+  (setq-default elfeed-search-filter "@1-week-ago +unread -youtube -news -busy +comic")
 
   (defface elfeed-comic-face
     '((t :foreground "purple"))
