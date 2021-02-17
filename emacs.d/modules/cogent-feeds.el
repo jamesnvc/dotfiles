@@ -81,7 +81,7 @@
   (defun elfeed-show-youtube-dl ()
     "Download current entry with youtube-dl."
     (interactive)
-    (pop-to-buffer (youtube-dl (elfeed-entry-link elfeed-show-entry))))
+    (youtube-dl (elfeed-entry-link elfeed-show-entry)))
 
   (defun elfeed-show-vlc ()
     "Open current entry with VLC."
