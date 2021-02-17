@@ -110,7 +110,7 @@
            (window-parameters . ((no-other-window . t)
                                  (mode-line-format . none))))
           ;; left side window
-          ("\\*Help.*"
+          ("\\*\\(Help\\|cider-doc\\).*"
            (display-buffer-in-side-window)
            (window-width . 0.25)
            (side . left)
