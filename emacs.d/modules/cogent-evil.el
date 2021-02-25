@@ -16,6 +16,7 @@
   (evil-set-initial-state 'eww-history-mode 'emacs)
   (evil-set-initial-state 'diff-mode 'emacs)
   (evil-set-initial-state 'dired-mode 'emacs)
+  (evil-set-initial-state 'man-mode 'emacs)
 
   (defun cogent/evil-yank-to-eol (&optional argument)
     "Yank from point to end of line; like the behaviour I prefer `Y' in
