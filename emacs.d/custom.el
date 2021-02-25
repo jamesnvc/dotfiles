@@ -126,7 +126,7 @@
       (file "~/org/todo.org")
       "** TODO %?
 
-   %a")
+%a")
      ("p" "Portuguese vocab" entry
       (file "~/org/portuguese.org")
       "* Word                                                                :drill:
