@@ -104,6 +104,15 @@
         (elfeed-search-update-entry entry)
         (unless (use-region-p) (forward-line)))))
 
+  (defun elfeed-search-vlc ()
+    "Open current entry with VLC."
+    (interactive)
+    (let ((entry (elfeed-search-selected t)))
+      (elfeed-untag entry 'unread)
+      (start-process
+       "elfeed-vlc" "*vlc*" (executable-find "vlc")
+       (elfeed-entry-link entry))))
+
   (defalias 'elfeed-search-youtube-dl-slow
     (elfeed-expose #'elfeed-search-youtube-dl :slow t))
 
@@ -116,6 +125,7 @@
             "d" #'elfeed-search-youtube-dl
             "D" #'elfeed-search-youtube-dl-slow
             "L" #'youtube-dl-list
+            "V" #'elfeed-search-vlc
             "l" (lambda () (interactive) (switch-to-buffer (elfeed-log-buffer)))
             "h" (lambda () (interactive) (elfeed-search-set-filter (default-value 'elfeed-search-filter))))
   (:keymaps 'elfeed-show-mode-map
