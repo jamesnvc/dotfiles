@@ -3,9 +3,11 @@
 (require 'cogent-package)
 (require 'cogent-keys)
 
-(use-package undo-tree
-  :config
-  (global-undo-tree-mode 1))
+(use-package vundo
+  :straight (vundo
+             :type git
+             :host github
+             :repo "casouri/vundo"))
 
 (use-package evil
   :demand t
@@ -17,6 +19,7 @@
   (evil-set-initial-state 'diff-mode 'emacs)
   (evil-set-initial-state 'dired-mode 'emacs)
   (evil-set-initial-state 'man-mode 'emacs)
+  (evil-set-initial-state 'vundo--mode 'emacs)
 
   (defun cogent/evil-yank-to-eol (&optional argument)
     "Yank from point to end of line; like the behaviour I prefer `Y' in
@@ -86,7 +89,7 @@ evil to have."
     (def-abolish-fn cogent/camel-case #'s-lower-camel-case)
     (def-abolish-fn cogent/camel-case-upper #'s-upper-camel-case))
   :custom
-  ((evil-undo-system 'undo-tree))
+  ((evil-undo-system 'undo-redo))
   :general
   (:keymaps '(normal notmuch-search-mode-map notmuch-hello-mode-map)
    :repeat t
