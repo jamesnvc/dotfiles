@@ -4,6 +4,10 @@
 
 (use-package pdf-tools
   :defer t
+  :straight (pdf-tools
+             :type git
+             :host github
+             :repo "vedang/pdf-tools")
   :commands (pdf-view-mode pdf-tools-install)
   :mode ("\\.[pP][dD][fF]\\'" . pdf-view-mode)
   :magic ("%PDF" . pdf-view-mode)
