@@ -39,3 +39,8 @@ end
 function e --description "Open file in emacs"
     vterm_cmd "find-file" (realpath $argv)
 end
+
+function clear
+    vterm_printf "51;Evterm-clear-scrollback"
+    tput clear
+end
