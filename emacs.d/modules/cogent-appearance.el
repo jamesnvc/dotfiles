@@ -112,6 +112,13 @@
  ((member "Symbola" (font-family-list))
   (set-fontset-font t 'unicode "Symbola" nil 'prepend)))
 
-(load-theme 'modus-operandi t)
+(use-package svg-tag-mode
+  :straight (svg-tag-mode
+             :type git
+             :host github
+             :repo "rougier/svg-tag-mode"))
+
+(modus-themes-load-themes)
+(modus-themes-load-operandi)
 
 (provide 'cogent-appearance)
