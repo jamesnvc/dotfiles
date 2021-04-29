@@ -17,6 +17,11 @@
 
 (use-package elfeed
   :commands elfeed
+  :straight (elfeed
+             :type git
+             :host github
+             :repo "jamesnvc/elfeed"
+             :branch "lazy-org-load-fix")
   :config
   (setq-default elfeed-search-filter "@1-week-ago +unread -youtube -news -busy +comic")
 
