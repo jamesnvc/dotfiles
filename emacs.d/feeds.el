@@ -86,4 +86,5 @@
         ("https://www.youtube.com/feeds/videos.xml?user=sensimillia92" youtube)
         ("https://www.manueluberti.eu/feed.xml" emacs)
         ("https://www.rousette.org.uk/archives/index.xml" emacs)
+        ("https://worldchess.com/news/rss/" chess)
         ))
