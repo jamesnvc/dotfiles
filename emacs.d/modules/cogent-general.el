@@ -34,11 +34,7 @@
 (prefer-coding-system 'utf-8)
 (require 'iso-transl)
 
-(setq backup-directory-alist
-      `(("." . ,(expand-file-name (concat dotfiles-dir "bak"))))
-
-      undo-tree-history-directory-alist
-      `(("." . ,(expand-file-name (concat dotfiles-dir "undo")))))
+(setq backup-directory-alist `(("." . ,(expand-file-name (concat dotfiles-dir "bak")))))
 
 (setq compilation-ask-about-save nil)
 
