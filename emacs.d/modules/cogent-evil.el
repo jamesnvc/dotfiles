@@ -32,6 +32,12 @@ evil to have."
                  (point))))
       (evil-yank beg end)))
 
+  (defun cogent/evil-remove-search-highlight ()
+    (interactive)
+    (if (equalp evil-search-module 'evil-search)
+        (evil-ex-nohighlight)
+      (evil-search-highlight-persist-remove-all)))
+
   ;; like vim-unimpaired
   (defun cogent/line-below (&optional argument)
     "New blank line below the current line; like vim-unimpaired."
@@ -126,7 +132,9 @@ evil to have."
     "w" #'save-buffer
     "<SPC>" #'evil-ex
     "x" #'kill-current-buffer
-    "X" #'evil-delete-buffer))
+    "X" #'evil-delete-buffer)
+  (general-nmap :prefix "SPC"
+    "/" #'cogent/evil-remove-search-highlight) )
 
 (use-package evil-surround
   :demand t
@@ -134,18 +142,7 @@ evil to have."
   :config (global-evil-surround-mode 1))
 
 (use-package evil-search-highlight-persist
-  :demand t
-  :config
-  (defun cogent/evil-remove-search-highlight ()
-    (interactive)
-    (if (equalp evil-search-module 'evil-search)
-        (evil-ex-nohighlight)
-      (evil-search-highlight-persist-remove-all)))
-
-  (global-evil-search-highlight-persist t)
-  :general
-  (general-nmap :prefix "SPC"
-    "/" #'cogent/evil-remove-search-highlight))
+  :demand t)
 
 (use-package evil-nerd-commenter
   :general
