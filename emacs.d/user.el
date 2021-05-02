@@ -1,9 +1,9 @@
 ;;; -*- lexical-binding: t -*-
 
-(set-frame-font "PragmataPro Liga 8" nil t)
+(set-frame-font "PragmataPro Liga 9" nil t)
 (dolist (face '(default fixed-pitch))
-  (set-face-attribute face nil :font "PragmataPro Liga-8"))
-(set-face-attribute 'variable-pitch nil :font "Helvetica-8")
+  (set-face-attribute face nil :font "PragmataPro Liga-9"))
+(set-face-attribute 'variable-pitch nil :font "Helvetica-9")
 (require 'cogent-pragmata)
 
 (setq redisplay-dont-pause t)
