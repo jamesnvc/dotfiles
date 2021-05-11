@@ -1,0 +1,13 @@
+# -*- mode: sh -*-
+# symlink to ~/.config/direnv/direnvrc
+
+# === Activate a pyenv virtualenv ===
+layout_pyenv() {
+    local pvenv="$1"
+    if has pyenv; then
+        eval "$(pyenv init -)"
+        pyenv activate "${pvenv}"
+    else
+        log_error "pyenv not found"
+    fi
+}
