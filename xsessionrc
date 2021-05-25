@@ -7,6 +7,8 @@ if [ -s ~/.Xmodmap ]; then
   xmodmap ~/.Xmodmap
 fi
 
+xrandr --dpi 159
+
 # if xinput --list | grep "Slimblade Trackball" &> /dev/null ; then
 #   # Make pressing both bottom buttons same as the middle-click button
 #   xinput set-prop "Kensington Kensington Slimblade Trackball" "Evdev Middle Button Emulation" 1
