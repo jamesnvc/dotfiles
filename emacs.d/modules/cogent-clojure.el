@@ -3,7 +3,9 @@
 
 (use-package clojure-mode
   :commands clojure-mode
-  :hook (clojure-mode-hook . enable-paredit-mode))
+  :hook (clojure-mode-hook . enable-paredit-mode)
+  :config
+  (put-clojure-indent 'match 1))
 
 (use-package cider
   :commands cider-jack-in
