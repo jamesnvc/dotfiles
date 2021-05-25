@@ -1,4 +1,4 @@
-set theme dark
+set theme default
 set editorcmd "emacsclient -c"
 set searchengine duckduckgo
 unbind <F1>
