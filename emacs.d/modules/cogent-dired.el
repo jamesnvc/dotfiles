@@ -16,8 +16,7 @@
     "-AGFhlv --group-directories-first --time-style=long-iso"))
   :hook
   ((dired-mode-hook . dired-hide-details-mode)
-   (dired-mode-hook . hl-line-mode)
-   (dired-mode-hook . gnus-dired-mode))
+   (dired-mode-hook . hl-line-mode))
   :bind
   (:map dired-mode-map
         ("C-x g" . magit))
