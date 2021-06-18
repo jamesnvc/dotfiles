@@ -97,7 +97,7 @@
 (add-hook 'focus-in-hook #'cogent-line-set-selected-window)
 (add-hook 'focus-out-hook #'cogent-line-unset-selected-window)
 (advice-add 'handle-switch-frame :after #'cogent-line-set-selected-window)
-(advice-add 'select-window :after #'cogent-line-set-selected-window)
+(add-hook 'window-selection-change-functions #'cogent-line-set-selected-window)
 (defun cogent-line-selected-window-active-p ()
   (eq cogent-line-selected-window (selected-window)))
 
