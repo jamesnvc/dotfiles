@@ -816,7 +816,7 @@ This is really kludgy, and unneeded (i.e. obsolete) in Emacs>=24."
 (defconst prolog-string-regexp
   "\\(\"\\([^\n\"]\\|\\\\\"\\)*\"\\)"
   "Regexp matching a string.")
-(defconst prolog-head-delimiter "\\(:->?\\|\\+:\\|-:\\|\\+\\?\\|-\\?\\|-->>?\\)"
+(defconst prolog-head-delimiter "\\(:->?\\|\\+:\\|-:\\|\\+\\?\\|-\\?\\|-->>?\\|=>\\)"
   "A regexp for matching on the end delimiter of a head (e.g. \":-\").")
 
 (defvar prolog-compilation-buffer "*prolog-compilation*"
@@ -844,6 +844,7 @@ This is really kludgy, and unneeded (i.e. obsolete) in Emacs>=24."
            (modes . '(prolog-mode))
            (group . (1 2)))))
      '(("dcg" . "-->") ("edcg" . "-->>") ("rule" . ":-") ("simplification" . "<=>")
+       ("rule" . "=>") ; SSU rule
        ("pce_send_rule" . ":->")
        ("propagation" . "==>")))))
 
@@ -896,6 +897,7 @@ This is really kludgy, and unneeded (i.e. obsolete) in Emacs>=24."
   '(("." -10000 -10000)
     ("?-" nil -1200)
     (":-" -1200 -1200)
+    ("=>" -1200 -1200)
     (":->" -1200 -1200)
     ("-->" -1200 -1200)
     ("-->>" -1200 -1200)
