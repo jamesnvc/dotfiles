@@ -1019,7 +1019,8 @@ This is really kludgy, and unneeded (i.e. obsolete) in Emacs>=24."
              (min prolog-indent-width (current-column))))
        prolog-indent-width))
     (`(:after . "-->") prolog-indent-width)
-    (`(:after . "-->>") prolog-indent-width)))
+    (`(:after . "-->>") prolog-indent-width)
+    (`(:after . "=>") prolog-indent-width)))
 
 
 ;;-------------------------------------------------------------------
