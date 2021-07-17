@@ -99,8 +99,23 @@ Shouldn't be necessary now, after using fish shell and exec-path-from-shell."
       (setq eshell-path-env (concat (string-join cogent/extra-path-dirs ":")
                                     ":"
                                     eshell-path-env))))
+
+  (defun cogent/eshell-search-history ()
+    (interactive)
+    (let ((hist (completing-read
+                 "History: "
+                 ;; From helm-eshell
+                 (cl-loop for c from 0 to (ring-length eshell-history-ring)
+                          for elm = (eshell-get-history c)
+                          unless (and (member elm lst)
+                                      eshell-hist-ignoredups)
+                          collect elm into lst
+                          finally return lst))))
+      (eshell-kill-input)
+      (insert hist)))
+
   (with-eval-after-load 'em-hist
-    (define-key eshell-hist-mode-map (kbd "M-r") #'helm-eshell-history))
+    (define-key eshell-hist-mode-map (kbd "M-r") #'cogent/eshell-search-history))
   :hook
   ((eshell-first-time-mode-hook . cogent/eshell-first-time-setup)
    (eshell-mode-hook . cogent/eshell-add-paths)))
