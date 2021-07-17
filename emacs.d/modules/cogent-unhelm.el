@@ -119,6 +119,7 @@
   (funcall open-fn target))
 
 (defun cogent--embark-act (fn &rest args)
+  "Helper function to handle embark act events that can run from completion"
   (when (and (eq (selected-window) (active-minibuffer-window))
              (not (minibufferp)))
     (apply #'embark--quit-and-run fn args))
@@ -186,6 +187,15 @@
   :custom
   ((prot-minibuffer-remove-shadowed-file-names t)))
 
+(defun cogent/completion-select-candidate ()
+  (interactive)
+  (when (and (derived-mode-p 'completion-list-mode)
+             (active-minibuffer-window))
+    (let ((choice (prot-minibuffer--completion-at-point)))
+      (select-window (active-minibuffer-window))
+      (delete-minibuffer-contents)
+      (insert choice))))
+
 (use-package minibuffer
   :straight (:type built-in)
   :config
@@ -231,13 +241,6 @@
   (file-name-shadow-mode 1)
   (minibuffer-depth-indicate-mode 1)
   (minibuffer-electric-default-mode 1)
-
-  (defun cogent/completion-select-candidate ()
-    (interactive)
-    (when (and (derived-mode-p 'completion-list-mode)
-               (active-minibuffer-window))
-      (choose-completion)
-      (select-window (active-minibuffer-window))))
 
   (add-hook 'completion-list-mode-hook #'prot-common-truncate-lines-silently) ; from `prot-common.el'
 
