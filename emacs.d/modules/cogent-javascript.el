@@ -75,14 +75,14 @@
   (concat "prettier-eslint --eslint-config-path "
           ;; Hand over the path of the current projec
           (concat
-           (projectile-project-root)
+           (project-root (project-current))
            ".eslintrc.json")
           " --parser babel --stdin"))
 
 (defun autoformat ()
   "Automatically format current buffer."
   (interactive)
-  (let ((eslint-path (concat (projectile-project-root)
+  (let ((eslint-path (concat (project-root (project-current))
                              ".eslintrc.json")))
     (autoformat-with
      (cond ((derived-mode-p 'web-mode) 'autoformat-html-command)

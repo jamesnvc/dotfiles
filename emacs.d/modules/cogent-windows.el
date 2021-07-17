@@ -42,8 +42,9 @@
   (tab-bar-history-mode) ;; instead of winner-mode
 
   (defun cogent/tab-name-project ()
-    (if (projectile-project-p)
-        (projectile-project-name)
+    (if-let ((proj (project-current)))
+        (file-name-nondirectory
+         (directory-file-name (project-root proj)))
       (tab-bar-tab-name-current)))
   (customize-set-variable 'tab-bar-tab-name-function
                           #'cogent/tab-name-project)
