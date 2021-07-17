@@ -184,7 +184,12 @@ insert mode at the end of the new sexp"
   (evil-define-key 'normal paredit-mode-map "\\]" #'cogent/wrap-brackets-end)
   (evil-define-key 'normal paredit-mode-map "(" #'paredit-backward-up)
   (evil-define-key 'normal paredit-mode-map ")" #'paredit-forward-up)
-  (evil-define-key 'normal paredit-mode-map "=" #'cogent/paredit-indent))
+  (evil-define-key 'normal paredit-mode-map "=" #'cogent/paredit-indent)
+
+  (general-define-key :states 'insert
+    ")" #'paredit-close-round
+    "]" #'paredit-close-square
+    "}" #'paredit-close-curly))
 
 (add-hook 'paredit-mode-hook #'cogent/paredit-vim-bindings)
 
