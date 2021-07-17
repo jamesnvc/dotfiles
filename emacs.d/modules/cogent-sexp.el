@@ -3,7 +3,11 @@
 (require 'cogent-package)
 (require 'cogent-evil)
 
-(use-package paredit)
+(use-package paredit
+  :init
+  ;; I'm going to manually set all the paredit keys
+  ;; prevent paredit-define-keys from defining all its bindings
+  (advice-add 'paredit-define-keys :override (lambda (&rest) nil)))
 
 ;; Copying vim-sexp bindings
 (defun cogent/insert-at-end-of-sexp (&optional argument)
@@ -153,12 +157,17 @@ insert mode at the end of the new sexp"
 
 (defun cogent/paredit-vim-bindings ()
   "Evil bindings for paredit to imitate vim-sexp"
-  (evil-define-key 'normal paredit-mode-map "W" #'cogent/evil-forward-sexp)
-  (evil-define-key 'normal paredit-mode-map "B" #'cogent/evil-backward-sexp)
+  (evil-define-key 'insert paredit-mode-map "(" #'paredit-open-round)
+  (evil-define-key 'insert paredit-mode-map ")" #'paredit-close-round)
+  (evil-define-key 'insert paredit-mode-map "[" #'paredit-open-square)
+  (evil-define-key 'insert paredit-mode-map "]" #'paredit-close-square)
+  (evil-define-key 'insert paredit-mode-map ";" #'paredit-semicolon)
   (evil-define-key 'visual paredit-mode-map "W" #'cogent/evil-forward-sexp-visual)
   (evil-define-key 'visual paredit-mode-map "B" #'cogent/evil-backward-sexp-visual)
   (evil-define-key 'operator paredit-mode-map "W" #'cogent/evil-forward-sexp-op)
   (evil-define-key 'operator paredit-mode-map "B" #'cogent/evil-backward-sexp-op)
+  (evil-define-key 'normal paredit-mode-map "W" #'cogent/evil-forward-sexp)
+  (evil-define-key 'normal paredit-mode-map "B" #'cogent/evil-backward-sexp)
   (evil-define-key 'normal paredit-mode-map "\\@" #'paredit-splice-sexp)
   (evil-define-key 'normal paredit-mode-map "\\o" #'paredit-raise-sexp)
   (evil-define-key 'normal paredit-mode-map ">)" #'paredit-forward-slurp-sexp)
