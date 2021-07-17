@@ -153,14 +153,14 @@ more-helpful local prompt."
   ;; start in emacs mode
   :hook (vterm-mode-hook . (lambda () (display-line-numbers-mode -1))))
 
-(use-package helm-switch-shell
-  :commands helm-switch-shell
-  :straight (helm-switch-shell
-             :type git
-             :host github
-             :repo "jamesnvc/helm-switch-shell")
-  :custom ((helm-switch-shell-new-shell-type 'eshell)
-           (helm-switch-shell-show-shell-indicator t)))
+;; (use-package helm-switch-shell
+;;   :commands helm-switch-shell
+;;   :straight (helm-switch-shell
+;;              :type git
+;;              :host github
+;;              :repo "jamesnvc/helm-switch-shell")
+;;   :custom ((helm-switch-shell-new-shell-type 'eshell)
+;;            (helm-switch-shell-show-shell-indicator t)))
 
 (use-package with-editor
   :hook ((eshell-mode-hook . with-editor-export-editor)

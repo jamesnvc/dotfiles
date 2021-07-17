@@ -20,6 +20,7 @@
   (evil-set-initial-state 'dired-mode 'emacs)
   (evil-set-initial-state 'man-mode 'emacs)
   (evil-set-initial-state 'vundo--mode 'emacs)
+  (evil-set-initial-state 'completion-mode 'emacs)
 
   (defun cogent/evil-yank-to-eol (&optional argument)
     "Yank from point to end of line; like the behaviour I prefer `Y' in
@@ -141,8 +142,8 @@ evil to have."
   :init
   :config (global-evil-surround-mode 1))
 
-(use-package evil-search-highlight-persist
-  :demand t)
+;; (use-package evil-search-highlight-persist
+;;   :demand t)
 
 (use-package evil-nerd-commenter
   :general

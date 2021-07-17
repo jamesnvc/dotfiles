@@ -46,7 +46,7 @@
                     "<f6>"   #'elfeed
                     "<f7>"   #'cogent/lookup-word
                     "<f8>"   #'org-store-link
-                    "<f9>"   #'helm-bookmarks)
+                    "<f9>"   #'bookmark-jump)
 
 ;; Leader key stuff
 

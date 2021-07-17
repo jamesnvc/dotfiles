@@ -6,7 +6,7 @@
 (use-package helm
   :config
   (require 'helm-config)
-  (helm-mode 1)
+  ;; (helm-mode 1)
   (helm-autoresize-mode 1)
 
   (cl-defmethod helm-setup-user-source ((source helm-source-ffiles))
@@ -56,6 +56,10 @@
                   #'helm-file-switch-horiz-window)
                  t)) ;; Enable opening helm results in splits
 
+  (with-eval-after-load 'helm-bookmark
+    (general-define-key :keymaps 'helm-bookmark-map
+                        "C-v" #'helm-bookmark-switch-vert-window-command
+                        "C-s" #'helm-bookmark-switch-horiz-window-command))
   :custom
   ((helm-ff-refresh-cache-delay 5)
    (helm-ff-keep-cached-candidates nil)
@@ -93,9 +97,6 @@
 
 (use-package helm-bookmarks
   :straight (:type built-in)
-  :defer t
-  :commands (helm-bookmarks)
-  :after (helm)
   :bind (:map helm-bookmark-map
               ("C-v" . helm-bookmark-switch-vert-window-command)
               ("C-s" . helm-bookmark-switch-horiz-window-command)))
