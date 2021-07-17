@@ -23,6 +23,7 @@
  '(display-line-numbers-type 'relative)
  '(display-raw-bytes-as-hex t)
  '(ediff-window-setup-function 'ediff-setup-windows-plain)
+ '(elfeed-sort-order 'ascending)
  '(erc-autojoin-channels-alist
    '(("localhost:6667" "#fb-family" "#lhl-teachers" "#fb-western-chums" "&bitlbee")))
  '(erc-autojoin-timing 'ident)
