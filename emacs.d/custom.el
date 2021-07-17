@@ -76,6 +76,7 @@
  '(lsp-enable-semantic-highlighting t)
  '(lsp-enable-text-document-color nil)
  '(lsp-semantic-tokens-apply-modifiers t)
+ '(lsp-semantic-tokens-enable t)
  '(lsp-ui-doc-border "royal blue")
  '(lsp-ui-doc-header nil)
  '(lsp-ui-doc-max-height 50)
@@ -99,6 +100,7 @@
      (:name "all mail" :query "*" :key "a")
      (:name "new" :query "tag:inbox and tag:unread")
      (:name "flagged" :query "tag:flagged")))
+ '(notmuch-show-logo nil)
  '(org-agenda-compact-blocks t)
  '(org-agenda-custom-commands
    '(("n" "Agenda and all TODOs"
@@ -180,9 +182,9 @@
      (eclipse "eclipse")
      (mercury nil)
      (sicstus "sicstus")
-     (swi "~/.swivm/versions/v8.3.21/bin/swipl")
+     (swi "~/.swivm/versions/v8.3.26/bin/swipl")
      (gnu "gprolog")
-     (t "~/.swivm/versions/v8.3.21/bin/swipl")
+     (t "~/.swivm/versions/v8.3.26/bin/swipl")
      (logtalk "~/bin/swilgt")))
  '(prolog-program-switches '((sicstus ("-i")) (t nil)))
  '(prolog-system 'swi)
