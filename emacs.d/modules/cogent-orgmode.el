@@ -7,7 +7,8 @@
    (concat (read-string "Name: ") ".org")
    "~/org/notebook/"))
 
-(straight-use-package '(org-plus-contrib))
+(straight-use-package '(org))
+(straight-use-package '(org-contrib))
 (progn
   ;; :demand t
   ;; :config
@@ -39,6 +40,9 @@
   (with-eval-after-load 'ob-js
     (setq org-babel-js-function-wrapper
           "process.stdout.write(require('util').inspect(function(){\n%s\n}()));" ))
+
+  ;; because we want embark to take that key
+  (define-key org-mode-map (kbd "C-,") nil)
 
   ;; :general
   (general-nmap :keymaps 'org-mode-map
