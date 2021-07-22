@@ -9,7 +9,7 @@
              :repo "minad/marginalia"
              :branch "main")
   :init
-  (marginalia-mode +1)
+  (marginalia-mode 1)
   :custom
   (marginalia-annotators '(marginalia-annotators-heavy
                            marginalia-annotators-light
