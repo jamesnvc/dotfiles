@@ -38,7 +38,7 @@
                     "<f2>" (if (version< emacs-version "27.0")
                                #'cogent/eyebrowse-helm
                              #'tab-bar-select-tab-by-name)
-                    "<f3>"   #'helm-switch-shell
+                    "<f3>"   #'cogent/switch-shell
                     "<f4>"   #'calc
                     "<f5> 5" #'cogent/notmuch-inbox
                     "<f5> 4" #'helm-notmuch

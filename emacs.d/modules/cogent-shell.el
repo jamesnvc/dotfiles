@@ -166,4 +166,6 @@ more-helpful local prompt."
   :hook ((eshell-mode-hook . with-editor-export-editor)
          (vterm-mode-hook . with-editor-export-editor)))
 
+(require 'cogent-shell-switch)
+
 (provide 'cogent-shell)
