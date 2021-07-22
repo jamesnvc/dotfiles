@@ -249,7 +249,6 @@
     (define-key map (kbd "M-g") #'prot-minibuffer-choose-completion-number)
     (define-key map (kbd "M-v") #'prot-minibuffer-focus-minibuffer)
     (define-key map (kbd "C-g") #'prot-minibuffer-keyboard-quit-dwim)
-    (define-key map (kbd "ESC") #'prot-minibuffer-keyboard-quit-dwim)
     (define-key map (kbd "C-n") #'prot-minibuffer-next-completion-or-mini)
     (define-key map (kbd "<down>") #'prot-minibuffer-next-completion-or-mini)
     (define-key map (kbd "C-p") #'prot-minibuffer-previous-completion-or-mini)
@@ -258,6 +257,7 @@
     (define-key map (kbd "<M-return>") #'prot-minibuffer-choose-completion-dwim)
     (define-key map (kbd "TAB") #'cogent/completion-select-candidate)
     (define-key map (kbd "M-<") #'prot-minibuffer-beginning-of-buffer)
+    (define-key map (kbd "<escape>") #'prot-minibuffer-keyboard-quit-dwim)
     ;; Those are generic actions for the "*Completions*" buffer, though
     ;; I normally use `embark'.
     (define-key map (kbd "w") #'prot-minibuffer-completions-kill-symbol-at-point)
