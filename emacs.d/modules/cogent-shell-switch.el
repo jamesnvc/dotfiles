@@ -121,14 +121,16 @@
       (let ((default-directory cand))
         (eshell t)))))
 
-(embark-define-keymap embark-shell-actions
-  "Keymap for actions for shell buffers"
-  ("RET" switch-to-buffer)
-  ("e" cogent-shell--switch-to-eshell)
-  ("v" cogent-shell--switch-to-vterm)
-  ("C-s" cogent-shell--switch-horiz-split)
-  ("C-v" cogent-shell--switch-vert-split))
+(with-eval-after-load 'embark
 
-(add-to-list 'embark-keymap-alist '(shell . embark-shell-actions))
+  (embark-define-keymap embark-shell-actions
+    "Keymap for actions for shell buffers"
+    ("RET" switch-to-buffer)
+    ("e" cogent-shell--switch-to-eshell)
+    ("v" cogent-shell--switch-to-vterm)
+    ("C-s" cogent-shell--switch-horiz-split)
+    ("C-v" cogent-shell--switch-vert-split))
+
+  (add-to-list 'embark-keymap-alist '(shell . embark-shell-actions)))
 
 (provide 'cogent-shell-switch)
