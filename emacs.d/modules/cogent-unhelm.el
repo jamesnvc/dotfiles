@@ -62,10 +62,9 @@
   :general
   (cogent/leader-def
     :states '(normal visual)
-    "b" #'consult-buffer
+    "b" #'switch-to-buffer
     "l" #'consult-line
-    "s" #'consult-ripgrep
-    ))
+    "s" #'consult-ripgrep))
 
 (use-package prot-consult
   :straight (:type built-in)
