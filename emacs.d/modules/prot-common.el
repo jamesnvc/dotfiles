@@ -52,7 +52,7 @@
     (error "%s is not an integer" n)))
 
 ;;;###autoload
-(defun prot-common-number-interger-positive-p (n)
+(defun prot-common-number-integer-positive-p (n)
   "Test if N is a positive integer."
   (if (prot-common-number-integer-p n)
       (> n 0)
@@ -92,6 +92,16 @@
   "Toggle line truncation without printing messages."
   (let ((inhibit-message t))
     (toggle-truncate-lines t)))
+
+;;;###autoload
+(defun prot-common-window-bounds ()
+  "Determine start and end points in the window."
+  (list (save-excursion ; FIXME 2021-07-23: more efficient way to get those points?
+          (move-to-window-line 0)
+          (point))
+        (save-excursion
+          (move-to-window-line -1)
+          (point))))
 
 ;; Thanks to Omar Antolín Camarena for providing this snippet!
 ;;;###autoload

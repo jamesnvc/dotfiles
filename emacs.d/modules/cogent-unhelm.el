@@ -184,7 +184,8 @@
 (use-package prot-minibuffer
   :straight (:type built-in)
   :custom
-  ((prot-minibuffer-remove-shadowed-file-names t)))
+  ((prot-minibuffer-remove-shadowed-file-names t)
+   (prot-minibuffer-mini-cursors t)))
 
 (defun cogent/completion-select-candidate ()
   (interactive)
@@ -217,15 +218,14 @@
   (setq completions-detailed t)
 
   ;; Grouping of completions for Emacs 28
-  ;;  FIXME 2021-05-21: the group headings break prot-minibuffer cycling
-  (setq completions-group nil)
-  ;; (setq completions-group-sort 'alphabetical)
-  ;; (setq completions-group-format
-  ;;       (concat
-  ;;        (propertize "    " 'face 'completions-group-separator)
-  ;;        (propertize " %s " 'face 'completions-group-title)
-  ;;        (propertize " " 'face 'completions-group-separator
-  ;;                    'display '(space :align-to right))))
+  (setq completions-group t)
+  (setq completions-group-sort nil)
+  (setq completions-group-format
+        (concat
+         (propertize "    " 'face 'completions-group-separator)
+         (propertize " %s " 'face 'completions-group-title)
+         (propertize " " 'face 'completions-group-separator
+                     'display '(space :align-to right))))
 
   (setq read-buffer-completion-ignore-case t)
   (setq read-file-name-completion-ignore-case t)
@@ -255,7 +255,7 @@
     (define-key map (kbd "<up>") #'prot-minibuffer-previous-completion-or-mini)
     (define-key map (kbd "<return>") #'prot-minibuffer-choose-completion-exit)
     (define-key map (kbd "<M-return>") #'prot-minibuffer-choose-completion-dwim)
-    (define-key map (kbd "TAB") #'cogent/completion-select-candidate)
+    (define-key map (kbd "<tab>") #'cogent/completion-select-candidate)
     (define-key map (kbd "M-<") #'prot-minibuffer-beginning-of-buffer)
     (define-key map (kbd "<escape>") #'prot-minibuffer-keyboard-quit-dwim)
     ;; Those are generic actions for the "*Completions*" buffer, though

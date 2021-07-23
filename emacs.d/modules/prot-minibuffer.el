@@ -414,7 +414,7 @@ Meant to be added to `after-change-functions'."
    ((member this-command prot-minibuffer-completion-passlist)
     (setq-local prot-minibuffer-minimum-input 0)
     (setq-local prot-minibuffer-live-update-delay 0)
-    (minibuffer-completion-help)
+    (save-excursion (minibuffer-completion-help))
     (prot-minibuffer--fit-completions-window)
     (add-hook 'after-change-functions #'prot-minibuffer--live-completions nil t))
    ((unless (member this-command prot-minibuffer-completion-blocklist)
@@ -428,7 +428,7 @@ Meant to be added to `after-change-functions'."
   (interactive)
   (if (get-buffer-window "*Completions*" 0)
       (minibuffer-hide-completions)
-    (minibuffer-completion-help)
+    (save-excursion (minibuffer-completion-help))
     (prot-minibuffer--fit-completions-window)))
 
 ;;;###autoload
@@ -500,6 +500,13 @@ minibuffer."
   (interactive "p")
   (let ((num (prot-common-number-negative arg)))
     (if (or (bobp)
+            (and (save-excursion ; NOTE 2021-07-23: This `and' is for Emacs28 group titles
+                   (next-completion -1)
+                   (eq (line-number-at-pos) 1))
+                 (null
+                  (save-excursion
+                    (next-completion -1)
+                    (get-text-property (point) 'completion--string))))
             (eq (point) (1+ (point-min)))) ; see hack in `prot-minibuffer--clean-completions'
         (prot-minibuffer-focus-minibuffer)
       (next-completion (or num 1)))))
