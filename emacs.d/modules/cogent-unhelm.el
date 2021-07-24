@@ -62,7 +62,7 @@
   :general
   (cogent/leader-def
     :states '(normal visual)
-    "b" #'switch-to-buffer
+    "b" #'consult-buffer
     "l" #'consult-line
     "s" #'consult-ripgrep))
 
@@ -196,6 +196,28 @@
       (delete-minibuffer-contents)
       (insert choice))))
 
+(defun cogent/completion-next-group (&optional arg)
+  "Move to the next completion group"
+  (interactive "p")
+  (while (and (not (eobp))
+              (not (eq (point-max)
+                       (save-excursion (forward-line 1) (point))))
+              (get-text-property (point) 'completion--string))
+    (next-line 1))
+  (next-completion 1))
+
+(defun cogent/completion-prev-group (&optional arg)
+  "Move to the previous completion group"
+  (interactive "p")
+  (while (and (not (bobp))
+              (not (eq 1
+                       (save-excursion
+                         (forward-line -1)
+                         (line-number-at-pos))))
+              (get-text-property (point) 'completion--string))
+    (next-line -1))
+  (next-completion -1))
+
 (use-package minibuffer
   :straight (:type built-in)
   :config
@@ -254,6 +276,8 @@
     (define-key map (kbd "C-p") #'prot-minibuffer-previous-completion-or-mini)
     (define-key map (kbd "<up>") #'prot-minibuffer-previous-completion-or-mini)
     (define-key map (kbd "<return>") #'prot-minibuffer-choose-completion-exit)
+    (define-key map (kbd "<right>") #'cogent/completion-next-group)
+    (define-key map (kbd "<left>") #'cogent/completion-prev-group)
     (define-key map (kbd "<M-return>") #'prot-minibuffer-choose-completion-dwim)
     (define-key map (kbd "<tab>") #'cogent/completion-select-candidate)
     (define-key map (kbd "M-<") #'prot-minibuffer-beginning-of-buffer)
