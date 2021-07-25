@@ -209,14 +209,19 @@
 (defun cogent/completion-prev-group (&optional arg)
   "Move to the previous completion group"
   (interactive "p")
-  (while (and (not (bobp))
-              (not (eq 1
-                       (save-excursion
-                         (forward-line -1)
-                         (line-number-at-pos))))
-              (get-text-property (point) 'completion--string))
-    (next-line -1))
-  (next-completion -1))
+  (dolist (dir '(-1 1))
+    (while (and (not (bobp))
+                (not (eq 1
+                         (save-excursion
+                           (forward-line -1)
+                           (line-number-at-pos))))
+                (get-text-property (point) 'completion--string))
+      (next-line -1))
+    (unless (eq 1
+                (save-excursion
+                  (forward-line -1)
+                  (line-number-at-pos)))
+      (next-completion dir))))
 
 (use-package minibuffer
   :straight (:type built-in)
