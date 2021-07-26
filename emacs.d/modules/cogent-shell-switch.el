@@ -73,10 +73,6 @@
       (let ((default-directory choice))
         (eshell t)))))
 
-(with-eval-after-load 'marginalia
-  (add-to-list 'marginalia-annotator-registry
-               '(shell cogent-shell--annotator none)))
-
 (defun cogent-shell--annotator (cand)
   "Annotate shell buffer CAND with shell type and path"
   (when-let (buffer (get-buffer cand))
@@ -87,6 +83,10 @@
        (buffer-local-value 'default-directory buffer))
       :face 'marginalia-documentation
       :truncate marginalia-truncate-width))))
+
+(with-eval-after-load 'marginalia
+  (add-to-list 'marginalia-annotator-registry
+               '(shell cogent-shell--annotator none)))
 
 (defun cogent-shell--switch-to-eshell (cand)
   (interactive "s")
