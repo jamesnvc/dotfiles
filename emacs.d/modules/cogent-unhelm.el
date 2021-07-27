@@ -198,30 +198,30 @@
 
 (defun cogent/completion-next-group (&optional arg)
   "Move to the next completion group"
-  (interactive "p")
-  (while (and (not (eobp))
-              (not (eq (point-max)
-                       (save-excursion (forward-line 1) (point))))
-              (get-text-property (point) 'completion--string))
-    (next-line 1))
-  (next-completion 1))
+  (interactive)
+  (when-let (group (save-excursion
+                     (text-property-search-forward 'face
+                                                   'completions-group-separator
+                                                   t nil)))
+    (let ((pos (prop-match-end group)))
+      (unless (eq pos (point-max))
+        (goto-char pos)
+        (next-completion 1)))))
 
 (defun cogent/completion-prev-group (&optional arg)
   "Move to the previous completion group"
-  (interactive "p")
-  (dolist (dir '(-1 1))
-    (while (and (not (bobp))
-                (not (eq 1
-                         (save-excursion
-                           (forward-line -1)
-                           (line-number-at-pos))))
-                (get-text-property (point) 'completion--string))
-      (next-line -1))
-    (unless (eq 1
-                (save-excursion
-                  (forward-line -1)
-                  (line-number-at-pos)))
-      (next-completion dir))))
+  (interactive)
+  (when-let (group (save-excursion
+                     (text-property-search-backward 'face
+                                                    'completions-group-separator
+                                                    t nil)))
+    (let ((pos (prop-match-beginning group)))
+      (unless (eq pos (point-min))
+        (goto-char pos)
+        (text-property-search-backward 'face
+                                       'completions-group-separator
+                                       t nil)
+        (next-completion 1)))))
 
 (use-package minibuffer
   :straight (:type built-in)
