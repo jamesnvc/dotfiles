@@ -22,6 +22,7 @@
   (evil-set-initial-state 'vundo--mode 'emacs)
   (evil-set-initial-state 'completion-mode 'emacs)
   (evil-set-initial-state 'process-menu-mode 'emacs)
+  (evil-set-initial-state 'grep-mode 'normal)
 
   (defun cogent/evil-yank-to-eol (&optional argument)
     "Yank from point to end of line; like the behaviour I prefer `Y' in

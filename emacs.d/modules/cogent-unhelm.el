@@ -15,6 +15,8 @@
                            marginalia-annotators-light
                            nil)))
 
+(use-package wgrep)
+
 (use-package consult
   :straight (consult
              :type git
