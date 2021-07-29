@@ -200,30 +200,32 @@
 
 (defun cogent/completion-next-group (&optional arg)
   "Move to the next completion group"
-  (interactive)
-  (when-let (group (save-excursion
-                     (text-property-search-forward 'face
-                                                   'completions-group-separator
-                                                   t nil)))
-    (let ((pos (prop-match-end group)))
-      (unless (eq pos (point-max))
-        (goto-char pos)
-        (next-completion 1)))))
+  (interactive "p")
+  (dotimes (_ (or arg 1))
+    (when-let (group (save-excursion
+                       (text-property-search-forward 'face
+                                                     'completions-group-separator
+                                                     t nil)))
+      (let ((pos (prop-match-end group)))
+        (unless (eq pos (point-max))
+          (goto-char pos)
+          (next-completion 1))))))
 
 (defun cogent/completion-prev-group (&optional arg)
   "Move to the previous completion group"
-  (interactive)
-  (when-let (group (save-excursion
-                     (text-property-search-backward 'face
-                                                    'completions-group-separator
-                                                    t nil)))
-    (let ((pos (prop-match-beginning group)))
-      (unless (eq pos (point-min))
-        (goto-char pos)
-        (text-property-search-backward 'face
-                                       'completions-group-separator
-                                       t nil)
-        (next-completion 1)))))
+  (interactive "p")
+  (dotimes (_ (or arg 1))
+    (when-let (group (save-excursion
+                       (text-property-search-backward 'face
+                                                      'completions-group-separator
+                                                      t nil)))
+      (let ((pos (prop-match-beginning group)))
+        (unless (eq pos (point-min))
+          (goto-char pos)
+          (text-property-search-backward 'face
+                                         'completions-group-separator
+                                         t nil)
+          (next-completion 1))))))
 
 (use-package minibuffer
   :straight (:type built-in)
