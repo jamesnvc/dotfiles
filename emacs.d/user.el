@@ -41,7 +41,7 @@
                     "<f3>"   #'cogent/switch-shell
                     "<f4>"   #'calc
                     "<f5> 5" #'cogent/notmuch-inbox
-                    "<f5> 4" #'helm-notmuch
+                    "<f5> 4" #'consult-notmuch
                     "<f5> 3" #'notmuch
                     "<f6>"   #'elfeed
                     "<f7>"   #'cogent/lookup-word

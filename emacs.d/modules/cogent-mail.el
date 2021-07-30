@@ -97,8 +97,9 @@ search."
 (general-define-key :keymaps '(notmuch-show-mode-map)
                     "C-c c" #'org-capture)
 
-(use-package helm-notmuch
-  :defer t)
+(use-package consult-notmuch
+  :defer t
+  :commands (consult-notmuch consult-notmuch-tree))
 
 (use-package org-mime
   :after (notmuch org)
