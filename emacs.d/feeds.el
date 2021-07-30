@@ -24,7 +24,7 @@
         ("http://www.daisyowl.com/rss" comic)
         ("http://overcompensating.com/rss/" comic)
         "http://feeds.feedburner.com/VirtuousCode"
-        "http://sachachua.com/wp/feed/"
+        ("http://sachachua.com/blog/feed" emacs)
         ("http://nedroid.com/feed/" comic)
         ("http://pbfcomics.com/feed/feed.xml" comic)
         ("http://feeds.feedburner.com/Hyperbole-and-a-half" comic)
