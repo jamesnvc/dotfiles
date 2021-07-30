@@ -4,10 +4,11 @@ set -euo pipefail
 
 notmuch tag -inbox -- tag:inbox and not folder:Inbox
 notmuch tag +inbox -- folder:Inbox and tag:new
-notmuch tag -new -- tag:new
 
 # mailing lists
 notmuch tag -inbox +list +emacs -- from:emacs-devel@gnu.org or to:emacs-devel@gnu.org
 # include mailing lists sent to me into the "inbox"
-notmuch tag +inbox -- '(to:"*james.cash@occasionallycogent.com*" tag:list)'
-notmuch tag +inbox -- '(to:"*james.nvc@gmail.com*" tag:list)'
+notmuch tag +inbox -- '(to:"*james.cash@occasionallycogent.com*" and tag:list and tag:new)'
+notmuch tag +inbox -- '(to:"*james.nvc@gmail.com*" and tag:list and tag:new)'
+
+notmuch tag -new -- tag:new
