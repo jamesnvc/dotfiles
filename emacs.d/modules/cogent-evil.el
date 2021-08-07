@@ -22,6 +22,7 @@
   (evil-set-initial-state 'vundo--mode 'emacs)
   (evil-set-initial-state 'completion-mode 'emacs)
   (evil-set-initial-state 'process-menu-mode 'emacs)
+  (evil-set-initial-state 'timer-list-mode 'emacs)
   (evil-set-initial-state 'grep-mode 'normal)
 
   (evil-select-search-module 'evil-search-module 'isearch)
