@@ -137,7 +137,7 @@ evil to have."
     "x" #'kill-current-buffer
     "X" #'evil-delete-buffer)
   (general-nmap :prefix "SPC"
-    "/" #'cogent/evil-remove-search-highlight) )
+    "/" #'cogent/evil-remove-search-highlight))
 
 (use-package evil-surround
   :demand t
