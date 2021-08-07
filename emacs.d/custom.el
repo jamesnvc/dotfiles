@@ -99,7 +99,8 @@
      (:name "drafts" :query "tag:draft" :key "d")
      (:name "all mail" :query "*" :key "a")
      (:name "new" :query "tag:inbox and tag:unread")
-     (:name "flagged" :query "tag:flagged")))
+     (:name "flagged" :query "tag:flagged")
+     (:name "emacs-devel" :query "tag:emacs and tag:list and tag:unread" :key "e")))
  '(notmuch-show-logo nil)
  '(org-agenda-compact-blocks t)
  '(org-agenda-custom-commands
