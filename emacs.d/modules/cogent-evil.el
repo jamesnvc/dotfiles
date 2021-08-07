@@ -24,6 +24,11 @@
   (evil-set-initial-state 'process-menu-mode 'emacs)
   (evil-set-initial-state 'grep-mode 'normal)
 
+  (evil-select-search-module 'evil-search-module 'isearch)
+
+  ;; if emacs is stuck with 50% CPU usage & `list-timers' shows evil-ex-hl-whatever
+  ;; (advice-add 'evil-ex-hl-idle-update :override (lambda () nil))
+
   (defun cogent/evil-yank-to-eol (&optional argument)
     "Yank from point to end of line; like the behaviour I prefer `Y' in
 evil to have."
@@ -37,9 +42,11 @@ evil to have."
 
   (defun cogent/evil-remove-search-highlight ()
     (interactive)
-    (if (equalp evil-search-module 'evil-search)
-        (evil-ex-nohighlight)
-      (evil-search-highlight-persist-remove-all)))
+    (cond
+     ((equalp evil-search-module 'evil-search)
+      (evil-ex-nohighlight))
+      ((fboundp 'evil-search-highlight-persist-remove-all)
+       (evil-search-highlight-persist-remove-all))))
 
   ;; like vim-unimpaired
   (defun cogent/line-below (&optional argument)
