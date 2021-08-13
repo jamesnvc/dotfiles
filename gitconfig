@@ -1,6 +1,7 @@
 [user]
   email = james.nvc@gmail.com
   name = James N. V. Cash
+  signingkey = 8DC9A386
 [push]
   default = current
 [alias]
