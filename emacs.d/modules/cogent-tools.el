@@ -57,4 +57,6 @@
 ;;   :straight (dungeon-mode
 ;;              :repo "https://git.savannah.nongnu.org/git/dungeon.git"))
 
+(use-package chess)
+
 (provide 'cogent-tools)
