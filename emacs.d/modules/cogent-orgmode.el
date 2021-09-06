@@ -37,6 +37,11 @@
      (js . t)
      (plantuml . t)))
 
+  (add-to-list 'org-latex-packages-alist
+               '("AUTO" "babel" t ("pdflatex")))
+  (add-to-list 'org-latex-packages-alist
+               '("AUTO" "polyglossia" t ("xelatex" "lualatex")))
+
   (with-eval-after-load 'ob-js
     (setq org-babel-js-function-wrapper
           "process.stdout.write(require('util').inspect(function(){\n%s\n}()));" ))
