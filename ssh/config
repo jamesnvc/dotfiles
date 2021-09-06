@@ -107,3 +107,9 @@ Host ec2-montreal
   User ubuntu
   IdentitiesOnly yes
   IdentityFile ~/.ssh-keys/scrip_ec2
+
+Host vox4
+  Hostname 172.105.28.249
+  User james
+  IdentitiesOnly yes
+  IdentityFile ~/.ssh-keys/adrenaline
