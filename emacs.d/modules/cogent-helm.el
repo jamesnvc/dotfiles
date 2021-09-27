@@ -71,7 +71,12 @@
    (helm-buffers-fuzzy-matching t)
    (helm-apropos-fuzzy-match t)
 
-   (helm-show-completion-display-function #'helm-show-completion-default-display-function))
+   (helm-show-completion-display-function #'helm-show-completion-default-display-function)
+
+   (helm-imenu-fuzzy-match t)
+   (helm-rg-file-paths-in-matches-behavior 'absolute)
+   (helm-semantic-fuzzy-match t)
+   (helm-use-undecorated-frame-option t))
 
   :custom-face
   (helm-source-header ((t (:height 0.75))))
@@ -173,5 +178,13 @@
 (use-package helm-descbinds
   :commands helm-descbinds-mode
   :init (helm-descbinds-mode))
+
+(use-package helm-flycheck
+  :after (helm flycheck)
+  ;; TODO: evil bindings
+  :bind (("C-c ! !" . helm-flycheck)))
+
+(use-package helm-system-packages
+  :commands helm-system-packages)
 
 (provide 'cogent-helm)

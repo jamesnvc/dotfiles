@@ -27,9 +27,4 @@
   :config
   (setq flycheck-highlighting-mode 'symbols))
 
-(use-package helm-flycheck
-  :after helm
-  ;; TODO: evil bindings
-  :bind (("C-c ! !" . helm-flycheck)))
-
 (provide 'cogent-flycheck)

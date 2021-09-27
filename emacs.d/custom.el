@@ -67,10 +67,6 @@
  '(flycheck-color-mode-line-face-to-color 'cogent-line-buffer-name-face)
  '(flycheck-proselint-executable "~/.pyenv/shims/proselint")
  '(forge-bug-reference-hooks '(git-commit-setup-hook magit-mode-hook))
- '(helm-imenu-fuzzy-match t)
- '(helm-rg-file-paths-in-matches-behavior 'absolute)
- '(helm-semantic-fuzzy-match t)
- '(helm-use-undecorated-frame-option t)
  '(hl-sexp-background-color "#1c1f26")
  '(load-prefer-newer t)
  '(lsp-enable-semantic-highlighting t)
@@ -206,15 +202,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(eyebrowse-mode-line-delimiters ((t (:foreground "#bd93f9"))))
- '(eyebrowse-mode-line-inactive ((t (:foreground "#6272a4"))))
- '(eyebrowse-mode-line-separator ((t (:foreground "#8292c4"))))
- '(helm-candidate-number ((t (:background "#44475a" :foreground "#f8f8f2"))))
- '(helm-prefarg ((t (:foreground "#50fa7b"))))
- '(helm-rg-base-rg-cmd-face ((t (:foreground "dark gray" :weight normal))))
- '(helm-rg-colon-separator-ripgrep-output-face ((t (:foreground "gray"))))
- '(helm-rg-extra-arg-face ((t (:foreground "goldenrod" :weight normal))))
- '(helm-rg-inactive-arg-face ((t (:foreground "dark gray" :weight normal))))
  '(lsp-face-semhl-enum ((t (:inherit font-lock-variable-name-face :foreground "royal blue"))))
  '(lsp-face-semhl-member ((t (:inherit font-lock-variable-name-face :foreground "dark blue"))))
  '(lsp-face-semhl-operator ((t (:inherit font-lock-function-name-face :foreground "chocolate"))))
