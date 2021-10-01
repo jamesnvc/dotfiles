@@ -90,4 +90,4 @@
         ("https://worldchess.com/news/rss/" chess)
         ("https://www.youtube.com/feeds/videos.xml?channel_id=UCtVp2nha6WEOTSboitqwO5Q" mustread)
         ("https://www.youtube.com/feeds/videos.xml?user=supergreatfriend" youtube)
-        ))
+        ("https://acoup.blog/feed/")))
