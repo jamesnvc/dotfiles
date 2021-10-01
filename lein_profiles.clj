@@ -1,6 +1,6 @@
 {:user {:plugins [;;[lein-try "0.3.2"]
                   ;;[lein-pprint "1.1.1"]
-                  ;; [lein-ancient "0.6.10" :exclusions [commons-logging]]
+                  ;; [lein-ancient "1.0.0-RC3"]
                   ;;[lein-checkouts "1.1.0"]
                   ;; [cider/cider-nrepl "0.15.1-SNAPSHOT"]
                   ;;[lein-exec "0.3.5"]
