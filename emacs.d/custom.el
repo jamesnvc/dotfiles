@@ -136,6 +136,7 @@
 ** English
   %^{English}
 ")))
+ '(org-clock-display-default-range 'untilnow)
  '(org-confirm-babel-evaluate nil)
  '(org-default-notes-file "~/org/notes.org")
  '(org-duration-format 'h:mm)
