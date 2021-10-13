@@ -20,6 +20,9 @@
 
 (when (string-equal (system-name) "zhora.local")
   (set-frame-font "PragmataPro 14" nil t)
+  (dolist (face '(default fixed-pitch))
+    (set-face-attribute face nil :font "PragmataPro Liga-14"))
+  (set-face-attribute 'variable-pitch nil :font "Helvetica-14")
   (setq ns-antialias-text nil)
   (cogent/add-to-all-paths (expand-file-name "~/bin")))
 
@@ -33,6 +36,10 @@
 (when (string-equal (system-name) "roy")
   (set-frame-font "PragmataPro 10" nil t)
   (cogent/add-to-all-paths (expand-file-name "~/.nix-profile/bin")))
+
+(when (eq system-type 'darwin)
+  (require 'ls-lisp)
+  (setq ls-lisp-use-insert-directory-program nil))
 
 (general-define-key :keymaps 'global
                     "<f2>" (if (version< emacs-version "27.0")
