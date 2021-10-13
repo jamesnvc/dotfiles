@@ -246,5 +246,12 @@ Then press C-c C-x C-u inside
     (org-tree-slide-mode -1)
     (org-indent-mode -1)))
 
+(use-package org-ql)
+
+(use-package org-clock-export
+  :straight (org-clock-export
+             :type git
+             :host github
+             :repo "legalnonsense/org-clock-export"))
 
 (provide 'cogent-orgmode)
