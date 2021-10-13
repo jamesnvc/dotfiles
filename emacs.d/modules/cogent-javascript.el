@@ -12,11 +12,6 @@
   :config
   (setq tern-command (list (or (executable-find "tern") "tern"))))
 
-(use-package company-tern
-  :after tern company
-  :config
-  (add-to-list 'company-backends #'company-tern))
-
 (with-eval-after-load 'flycheck
   (setq flycheck-jshintrc (concat dotfiles-dir "jshintrc")))
 

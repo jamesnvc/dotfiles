@@ -9,8 +9,7 @@
 
 (use-package racer
   :hook ((rust-mode-hook  . racer-mode)
-         (racer-mode-hook . eldoc-mode)
-         (racer-mode-hook . company-mode)))
+         (racer-mode-hook . eldoc-mode)))
 
 (use-package cargo
   :hook (rust-mode-hook . cargo-minor-mode)

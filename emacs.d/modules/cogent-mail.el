@@ -84,7 +84,6 @@ search."
       (notmuch-refresh-this-buffer))))
 
 (add-hook 'message-mode-hook (lambda () (auto-fill-mode -1)))
-(add-hook 'message-mode-hook (lambda () (add-to-list 'company-backends 'company-emoji t)))
 
 (general-define-key :keymaps '(notmuch-search-mode-map)
                     "j" #'notmuch-search-next-thread

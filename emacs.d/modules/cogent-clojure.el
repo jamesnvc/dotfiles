@@ -33,10 +33,7 @@
   (evil-set-initial-state 'cider-docview-mode 'emacs)
   (evil-set-initial-state 'cider-stacktrace-mode 'emacs)
   (setq cider-prompt-for-symbol nil)
-  (setq cider-font-lock-dynamically '(macro core function var))
-  (with-eval-after-load "company"
-    (add-hook 'cider-repl-mode-hook #'cider-company-enable-fuzzy-completion)
-    (add-hook 'cider-mode-hook #'cider-company-enable-fuzzy-completion)))
+  (setq cider-font-lock-dynamically '(macro core function var)))
 
 (use-package paredit
   :commands enable-paredit-mode paredit-mode)

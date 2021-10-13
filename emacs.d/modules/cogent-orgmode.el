@@ -16,7 +16,6 @@
   (customize-set-variable 'org-catch-invisible-edits 'show-and-error)
   (customize-set-variable 'org-adapt-indentation 'headline-data)
 
-  (add-hook 'org-mode-hook (lambda () (setq-local company-dabbrev-downcase nil)))
   (add-hook
    'org-mode-hook
    (lambda ()
