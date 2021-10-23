@@ -44,7 +44,7 @@
   (setq consult-preview-key 'any)
 
   ;; Enables previews inside the standard *Completions* buffer (what
-  ;; `prot-minibuffer.el' uses).
+  ;; `mct.el' uses).
   (add-hook 'completion-list-mode-hook #'consult-preview-at-point-mode)
 
   (let ((map global-map))
@@ -197,20 +197,27 @@
 (use-package prot-common
   :straight (:type built-in))
 
-(use-package prot-minibuffer
-  :straight (:type built-in)
-  :custom
-  ((prot-minibuffer-remove-shadowed-file-names t)
-   (prot-minibuffer-mini-cursors t)))
+(use-package mct
+  :straight (mct
+             :type git
+             :host gitlab
+             :repo "protesilaos/mct")
+  :config
+  (mct-mode 1)
+  (setq mct-remove-shadowed-file-names t)
+  (setq mct-hide-completion-mode-line t)
+  (setq mct-show-completion-line-numbers nil)
+  (setq mct-apply-completion-stripes nil)
+  (setq mct-minimum-input 3)
+  (setq mct-live-update-delay 0.6)
+  (setq mct-completion-passlist '(imenu Info-goto-node Info-index Info-menu vc-retrieve-tag))
 
-(defun cogent/completion-select-candidate ()
-  (interactive)
-  (when (and (derived-mode-p 'completion-list-mode)
-             (active-minibuffer-window))
-    (let ((choice (prot-minibuffer--completion-at-point)))
-      (select-window (active-minibuffer-window))
-      (delete-minibuffer-contents)
-      (insert choice))))
+  (define-key global-map (kbd "s-v") #'mct-focus-mini-or-completions)
+  (define-key mct-completion-list-mode-map (kbd "<right>") #'cogent/completion-next-group)
+  (define-key mct-completion-list-mode-map (kbd "<left>") #'cogent/completion-prev-group)
+  (define-key mct-completion-list-mode-map (kbd "<escape>") #'mct-keyboard-quit-dwim)
+  (define-key mct-completion-list-mode-map (kbd "M-g M-g") #'mct-choose-completion-number)
+  (define-key mct-minibuffer-local-completion-map (kbd "M-g M-g") #'mct-choose-completion-number))
 
 (defun cogent/completion-next-group (&optional count)
   "Move to the next completion group"
@@ -288,42 +295,7 @@
   (minibuffer-depth-indicate-mode 1)
   (minibuffer-electric-default-mode 1)
 
-  (add-hook 'completion-list-mode-hook #'prot-common-truncate-lines-silently) ; from `prot-common.el'
-
-  (define-key global-map (kbd "s-v") #'prot-minibuffer-focus-mini-or-completions)
-  (let ((map completion-list-mode-map))
-    (define-key map (kbd "h") #'prot-simple-describe-symbol) ; from `prot-simple.el'
-    (define-key map (kbd "M-g") #'prot-minibuffer-choose-completion-number)
-    (define-key map (kbd "M-v") #'prot-minibuffer-focus-minibuffer)
-    (define-key map (kbd "C-g") #'prot-minibuffer-keyboard-quit-dwim)
-    (define-key map (kbd "C-n") #'prot-minibuffer-next-completion-or-mini)
-    (define-key map (kbd "<down>") #'prot-minibuffer-next-completion-or-mini)
-    (define-key map (kbd "C-p") #'prot-minibuffer-previous-completion-or-mini)
-    (define-key map (kbd "<up>") #'prot-minibuffer-previous-completion-or-mini)
-    (define-key map (kbd "<return>") #'prot-minibuffer-choose-completion-exit)
-    (define-key map (kbd "<right>") #'cogent/completion-next-group)
-    (define-key map (kbd "<left>") #'cogent/completion-prev-group)
-    (define-key map (kbd "<M-return>") #'prot-minibuffer-choose-completion-dwim)
-    (define-key map (kbd "<tab>") #'cogent/completion-select-candidate)
-    (define-key map (kbd "M-<") #'prot-minibuffer-beginning-of-buffer)
-    (define-key map (kbd "<escape>") #'prot-minibuffer-keyboard-quit-dwim)
-    ;; Those are generic actions for the "*Completions*" buffer, though
-    ;; I normally use `embark'.
-    (define-key map (kbd "w") #'prot-minibuffer-completions-kill-symbol-at-point)
-    (define-key map (kbd "i") #'prot-minibuffer-completions-insert-symbol-at-point)
-    (define-key map (kbd "j") #'prot-minibuffer-completions-insert-symbol-at-point-exit))
-  (let ((map minibuffer-local-completion-map))
-    (define-key map (kbd "M-g") #'prot-minibuffer-choose-completion-number)
-    (define-key map (kbd "C-n") #'prot-minibuffer-switch-to-completions-top)
-    (define-key map (kbd "<down>") #'prot-minibuffer-switch-to-completions-top)
-    (define-key map (kbd "C-p") #'prot-minibuffer-switch-to-completions-bottom)
-    (define-key map (kbd "<up>") #'prot-minibuffer-switch-to-completions-bottom)
-    (define-key map (kbd "C-l") #'prot-minibuffer-toggle-completions)) ; "list" mnemonic
-  (let ((map minibuffer-local-filename-completion-map))
-    (define-key map (kbd "<M-backspace>") #'prot-minibuffer-backward-updir))
-  (add-hook 'minibuffer-setup-hook #'prot-minibuffer-mini-cursor)
-  (add-hook 'completion-list-mode-hook #'prot-minibuffer-completions-cursor)
-  (add-hook 'completion-list-mode-hook #'prot-minibuffer-hl-line)
-  (add-hook 'completion-list-mode-hook #'prot-minibuffer-display-line-numbers))
+  ;; from `prot-common.el'
+  (add-hook 'completion-list-mode-hook #'prot-common-truncate-lines-silently))
 
 (provide 'cogent-unhelm)
