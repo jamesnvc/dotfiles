@@ -144,6 +144,17 @@
   (interactive "FFile: ")
   (cogent--embark-act #'cogent--split-right #'find-file file))
 
+(defun cogent/switch-to-bookmark-horiz-split (bookmark)
+  "Switch to file in a horizontal split"
+  (interactive (list (bookmark-completing-read "Jump to bookmark"
+                                               bookmark-current-bookmark)))
+  (cogent--embark-act #'cogent--split-below #'bookmark-jump bookmark))
+(defun cogent/switch-to-bookmark-vert-split (bookmark)
+  "Switch to file in a vertical split"
+  (interactive (list (bookmark-completing-read "Jump to bookmark"
+                                               bookmark-current-bookmark)))
+  (cogent--embark-act #'cogent--split-right #'bookmark-jump bookmark))
+
 (use-package embark
   :bind
   ("C-," . #'embark-act)
@@ -169,7 +180,10 @@
             "C-v" #'cogent/switch-to-buffer-vert-split)
   (:keymaps '(embark-file-map)
             "C-s" #'cogent/switch-to-file-horiz-split
-            "C-v" #'cogent/switch-to-file-vert-split))
+            "C-v" #'cogent/switch-to-file-vert-split)
+  (:keymaps '(embark-bookmark-map)
+            "C-s" #'cogent/switch-to-bookmark-horiz-split
+            "C-v" #'cogent/switch-to-bookmark-vert-split))
 
 (use-package embark-consult
   :after (embark consult))
