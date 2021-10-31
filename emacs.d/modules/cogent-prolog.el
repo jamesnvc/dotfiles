@@ -42,11 +42,11 @@
       (progn
         (unless (search-backward-regexp "^:- use_module" nil t)
           (search-backward-regexp "^:- module")
-          (next-line))
+          (forward-line))
         (search-forward "(")
         (backward-char)
         (forward-sexp)
-        (next-line)
+        (forward-line)
         (insert ":- use_module(" module ", [" predicates "]).\n")))))
 
 (defun cogent/prolog-add-docstring ()
