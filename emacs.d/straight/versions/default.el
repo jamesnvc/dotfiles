@@ -89,7 +89,7 @@
  ("map" . "7ef991a4e234195f125dc2b2ad4cad5a1d11a7d5")
  ("marginalia" . "b5893884abeb6a355233edf54e0f63d04bc32ce2")
  ("markdown-mode" . "359347b2bb15f8d7ef819692ac79759ccfe2c85d")
- ("mct" . "91586c4e5f31ad6d50599b1bb66a7ec5a9128dae")
+ ("mct" . "0e2d0aefdbbf44387a7a3e6cbdb91fc99bd5b1b1")
  ("melpa" . "3d43a3d472afc72f849b509e8dab0b9eec02572b")
  ("mmm-mode" . "8ab24bbd7367d3abad028aa382e75dc4ad5534d6")
  ("modus-themes" . "e2f02a54db96277cf7fc14f2a27301dd98fa4d9c")

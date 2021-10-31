@@ -213,42 +213,9 @@
   (setq mct-completion-passlist '(imenu Info-goto-node Info-index Info-menu vc-retrieve-tag))
 
   (define-key global-map (kbd "s-v") #'mct-focus-mini-or-completions)
-  (define-key mct-completion-list-mode-map (kbd "<right>") #'cogent/completion-next-group)
-  (define-key mct-completion-list-mode-map (kbd "<left>") #'cogent/completion-prev-group)
   (define-key mct-completion-list-mode-map (kbd "<escape>") #'mct-keyboard-quit-dwim)
   (define-key mct-completion-list-mode-map (kbd "M-g M-g") #'mct-choose-completion-number)
   (define-key mct-minibuffer-local-completion-map (kbd "M-g M-g") #'mct-choose-completion-number))
-
-(defun cogent/completion-next-group (&optional count)
-  "Move to the next completion group"
-  (interactive "p")
-  (dotimes (_ (or count 1))
-    (when-let (group (save-excursion
-                       (text-property-search-forward 'face
-                                                     'completions-group-separator
-                                                     t nil)))
-      (let ((pos (prop-match-end group)))
-        (unless (eq pos (point-max))
-          (goto-char pos)
-          (next-completion 1))))))
-
-(defun cogent/completion-prev-group (&optional count)
-  "Move to the previous completion group"
-  (interactive "p")
-  (dotimes (_ (or count 1))
-    ;; skip back, so if we're at the top of a group, we go to the previous one...
-    (next-line -1)
-    (if-let (group (save-excursion
-                     (text-property-search-backward 'face
-                                                    'completions-group-separator
-                                                    t nil)))
-        (let ((pos (prop-match-beginning group)))
-          (unless (eq pos (point-min))
-            (goto-char pos)
-            (next-completion 1)))
-      ;; ...and if there was a match, go back down, so the point doesn't
-      ;; end in the group separator
-      (next-line 1))))
 
 (use-package minibuffer
   :straight (:type built-in)
