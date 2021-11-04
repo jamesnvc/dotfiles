@@ -12,10 +12,6 @@
   (setq-default which-key-special-keys nil)
   :bind ("<f1> C-k" . which-key-show-top-level))
 
-(use-package discover-my-major
-  :commands (discover-my-major discover-my-mode)
-  :bind ("<f1> C-m" . discover-my-major))
-
 (use-package emacs
   :hook
   ((help-mode-hook . cogent/display-line-numbers-turn-off)
