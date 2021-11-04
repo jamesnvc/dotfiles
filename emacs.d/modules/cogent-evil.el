@@ -28,7 +28,7 @@
   (evil-select-search-module 'evil-search-module 'isearch)
 
   ;; if emacs is stuck with 50% CPU usage & `list-timers' shows evil-ex-hl-whatever
-  ;; (advice-add 'evil-ex-hl-idle-update :override (lambda () nil))
+  (advice-add 'evil-ex-hl-idle-update :override (lambda () nil))
 
   (defun cogent/evil-yank-to-eol (&optional argument)
     "Yank from point to end of line; like the behaviour I prefer `Y' in
