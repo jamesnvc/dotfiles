@@ -7,7 +7,7 @@
   :init
   ;; I'm going to manually set all the paredit keys
   ;; prevent paredit-define-keys from defining all its bindings
-  (advice-add 'paredit-define-keys :override (lambda (&rest) nil)))
+  (advice-add 'paredit-define-keys :override (lambda () nil)))
 
 ;; Copying vim-sexp bindings
 (defun cogent/insert-at-end-of-sexp (&optional argument)
