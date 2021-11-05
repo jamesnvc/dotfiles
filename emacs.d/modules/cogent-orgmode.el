@@ -90,6 +90,13 @@ as my default face, so it will be readable"
 
 (use-package evil-org
   :after org
+  :init
+  ;; work around removal of evil-redirect-digit-argument from evil
+  (fset 'evil-redirect-digit-argument 'ignore)
+  (add-to-list 'evil-digit-bound-motions 'evil-org-beginning-of-line)
+  (evil-define-key 'motion 'evil-org-mode
+    (kbd "0") 'evil-org-beginning-of-line)
+
   :hook ((org-mode-hook . evil-org-mode)
          (evil-org-mode-hook . evil-org-set-key-theme)))
 
