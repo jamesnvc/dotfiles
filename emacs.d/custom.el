@@ -39,7 +39,6 @@
    '(("^ \\*load\\*")
      ("^\\*org-goto\\*" . emacs)
      ("^\\*xref\\*" . emacs)))
- '(evil-search-module 'evil-search)
  '(evil-surround-pairs-alist
    '((40 "( " . " )")
      (91 "[ " . " ]")
