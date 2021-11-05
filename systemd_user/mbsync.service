@@ -6,4 +6,4 @@ JobRunningTimeoutSec=600
 Type=oneshot
 ExecStartPre=-/home/james/dotfiles/notmuch_archive.sh
 ExecStart=/usr/bin/mbsync -Va
-ExecStartPost=/usr/bin/notmuch new
+ExecStartPost=/usr/local/bin/notmuch new
