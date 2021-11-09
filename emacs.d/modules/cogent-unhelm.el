@@ -192,7 +192,7 @@
   "M-x" #'execute-extended-command
   "<menu>" #'execute-extended-command
   "C-x C-f" #'find-file
-  "M-y" #'consult-yank)
+  "M-y" #'consult-yank-from-kill-ring)
 
 (use-package prot-common
   :straight (:type built-in))
