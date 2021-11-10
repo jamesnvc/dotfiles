@@ -43,6 +43,9 @@
   (setq consult-find-command "find . -iname *ARG* OPTS")
   (setq consult-preview-key 'any)
 
+  (with-eval-after-load 'project
+    (define-key project-prefix-map (kbd "i") #'consult-imenu-multi))
+
   ;; Enables previews inside the standard *Completions* buffer (what
   ;; `mct.el' uses).
   (add-hook 'completion-list-mode-hook #'consult-preview-at-point-mode)
