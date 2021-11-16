@@ -64,7 +64,7 @@
  '(forge-bug-reference-hooks '(git-commit-setup-hook magit-mode-hook))
  '(hl-sexp-background-color "#1c1f26")
  '(load-prefer-newer t)
- '(lsp-enable-semantic-highlighting t)
+ '(lsp-semantic-tokens-enable t)
  '(lsp-enable-text-document-color nil)
  '(lsp-semantic-tokens-apply-modifiers t)
  '(lsp-semantic-tokens-enable t)
