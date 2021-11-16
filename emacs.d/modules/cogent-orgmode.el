@@ -16,6 +16,11 @@
   (customize-set-variable 'org-catch-invisible-edits 'show-and-error)
   (customize-set-variable 'org-adapt-indentation 'headline-data)
 
+  ;; fix for babel gnuplot -- it has (:session) in it, which causes an
+  ;; error because if the cdr is a list, it tries to funcall it
+  ;; (setq org-babel-default-header-args:gnuplot
+  ;;       '((:results . "file") (:exports . "results")))
+
   (add-hook
    'org-mode-hook
    (lambda ()
@@ -34,7 +39,8 @@
    '((sql . t)
      (ruby . t)
      (js . t)
-     (plantuml . t)))
+     (plantuml . t)
+     (gnuplot . t)))
 
   (add-to-list 'org-latex-packages-alist
                '("AUTO" "babel" t ("pdflatex")))
