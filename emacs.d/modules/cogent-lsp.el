@@ -9,10 +9,15 @@
   :hook (prolog-mode-hook . lsp)
   :config
 
+  (add-to-list 'lsp-semantic-token-faces
+               (cons "modifier"
+                     'lsp-face-semhl-property))
+
   (lsp-register-client
    (make-lsp-client
     :new-connection
     (lsp-stdio-connection (list "swipl"
+                                "-O"
                                 ;; "-g" "use_module(library(lsp_server))."
                                 "-s" (expand-file-name "~/Projects/prolog-lsp/prolog/lsp_server.pl")
                                 "-g" "lsp_server:main"
