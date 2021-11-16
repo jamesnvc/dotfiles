@@ -9,7 +9,8 @@
              :host github
              :repo "emacs-straight/mmm-mode")
   :config
-  (setq mmm-global-mode 'maybe)
+  ;; mmm mode in Prolog breaks semantic highlighting, it seems?
+  (setq mmm-global-mode nil) ;'maybe
   (mmm-add-classes
    '((prolog-javascript
       ;; would prefer js2-mode, but it explicitly doesn't do syntax
