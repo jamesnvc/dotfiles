@@ -258,6 +258,7 @@ Then press C-c C-x C-u inside
   :straight (org-clock-export
              :type git
              :host github
-             :repo "legalnonsense/org-clock-export"))
+             :repo "jamesnvc/org-clock-export"
+             :branch "escape-fields"))
 
 (provide 'cogent-orgmode)
