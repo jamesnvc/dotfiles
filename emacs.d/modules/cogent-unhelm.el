@@ -160,6 +160,9 @@
                                                bookmark-current-bookmark)))
   (cogent--embark-act #'cogent--split-right #'bookmark-jump bookmark))
 
+(defun cogent/absolute-path-to-kill-ring (file)
+  (kill-new (expand-file-name file)))
+
 (use-package embark
   :bind
   ("C-," . #'embark-act)
@@ -184,6 +187,7 @@
             "C-s" #'cogent/switch-to-buffer-horiz-split
             "C-v" #'cogent/switch-to-buffer-vert-split)
   (:keymaps '(embark-file-map)
+            "P" #'cogent/absolute-path-to-kill-ring
             "C-s" #'cogent/switch-to-file-horiz-split
             "C-v" #'cogent/switch-to-file-vert-split)
   (:keymaps '(embark-bookmark-map)
