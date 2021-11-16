@@ -63,6 +63,8 @@
     (define-key map (kbd "M-s M-m") #'consult-mark)
     (define-key map (kbd "C-x r r") #'consult-register)) ; Use the register's prefix
   (define-key consult-narrow-map (kbd "?") #'consult-narrow-help)
+  (with-eval-after-load 'org
+    (define-key org-mode-map (kbd "M-s M-i") #'consult-org-heading))
 
   :general
   (cogent/leader-def
