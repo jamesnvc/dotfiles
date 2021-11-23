@@ -21,6 +21,9 @@
   :defer 2
   :commands exec-path-from-shell-initialize
   :if (memq window-system '(mac ns x))
+  :custom
+  ((exec-path-from-shell-shell-name (executable-find "fish"))
+   (exec-path-from-shell-arguments '("-l")))
   :config
   (exec-path-from-shell-initialize)
   (unless (getenv "NIX_PATH")
