@@ -75,7 +75,12 @@
 
 ;; add :async to BEGIN_SRC blocks & they run asynchronously!
 (use-package ob-async
-  :after org)
+  :after org
+  :straight (ob-async
+             :type git
+             :host github
+             :repo "jamesnvc/ob-async"
+             :branch "async-variables-fix"))
 
 (use-package htmlize)
 
