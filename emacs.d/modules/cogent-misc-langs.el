@@ -31,4 +31,6 @@
   :config
   (setq j-console-cmd "ijconsole"))
 
+(use-package ess)
+
 (provide 'cogent-misc-langs)

@@ -20,6 +20,8 @@
   ;; error because if the cdr is a list, it tries to funcall it
   ;; (setq org-babel-default-header-args:gnuplot
   ;;       '((:results . "file") (:exports . "results")))
+  (setq org-babel-default-header-args:R
+        '((:results . "output graphics file")))
 
   (add-hook
    'org-mode-hook
@@ -40,7 +42,9 @@
      (ruby . t)
      (js . t)
      (plantuml . t)
-     (gnuplot . t)))
+     (gnuplot . t)
+     (R . t)
+     (emacs-lisp . t)))
 
   (add-to-list 'org-latex-packages-alist
                '("AUTO" "babel" t ("pdflatex")))
