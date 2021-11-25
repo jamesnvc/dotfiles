@@ -70,6 +70,7 @@
 (require 'cogent-tools)
 (require 'cogent-writing)
 (require 'cogent-irc)
+(require 'cogent-web)
 
 ;; Other things
 (load (concat dotfiles-dir "user.el") 'noerror)
