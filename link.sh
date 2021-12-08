@@ -39,6 +39,7 @@ link zshenv ~/.zshenv
 link zshrc ~/.zshrc
 link mbsyncrc ~/.mbsyncrc
 link notmuch-config ~/.notmuch-config
+link swi-prolog/init.pl ~/.config/swi-prolog/init.pl
 # To set up systemd user units,
 # systemctl --user daemon-reload
 # systemctl --user start mbsync.timer
