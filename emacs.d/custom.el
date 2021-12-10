@@ -91,18 +91,6 @@
      (:name "flagged" :query "tag:flagged")
      (:name "emacs-devel" :query "tag:emacs and tag:list and tag:unread" :key "e")))
  '(notmuch-show-logo nil)
- '(org-agenda-compact-blocks t)
- '(org-agenda-custom-commands
-   '(("n" "Agenda and all TODOs"
-      ((agenda "" nil)
-       (alltodo "" nil))
-      nil)
-     ("N" "Notebook search" tags ""
-      ((org-agenda-files
-        '("~/org/notebook"))))))
- '(org-agenda-restore-windows-after-quit t)
- '(org-agenda-show-future-repeats nil)
- '(org-agenda-skip-scheduled-if-done t)
  '(org-babel-clojure-backend 'cider)
  '(org-babel-load-languages '((shell . t) (emacs-lisp . t) (dot . t)))
  '(org-capture-templates

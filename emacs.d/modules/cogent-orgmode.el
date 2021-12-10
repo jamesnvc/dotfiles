@@ -15,6 +15,100 @@
 
   (customize-set-variable 'org-catch-invisible-edits 'show-and-error)
   (customize-set-variable 'org-adapt-indentation 'headline-data)
+  (customize-set-variable 'org-agenda-compact-blocks nil)
+  (customize-set-variable 'org-agenda-restore-windows-after-quit t)
+  (customize-set-variable 'org-agenda-show-future-repeats nil)
+  (customize-set-variable 'org-agenda-skip-scheduled-if-done t)
+  (customize-set-variable
+   'org-agenda-custom-commands
+   `(("n" "Agenda and all TODOs"
+      ((agenda "" nil)
+       (alltodo "" nil))
+      nil)
+     ("N" "Notebook search" tags ""
+      ((org-agenda-files '("~/org/notebook"))))
+     ("A" "Daily agenda and top priority tasks"
+      ((tags-todo "*"
+                  ((org-agenda-skip-function '(org-agenda-skip-if nil '(timestamp)))
+                   (org-agenda-skip-function
+                    `(org-agenda-skip-entry-if
+                      'notregexp ,(format "\\[#%s\\]" (char-to-string org-priority-highest))))
+                   (org-agenda-block-separator nil)
+                   (org-agenda-overriding-header "Important tasks without a date\n")))
+       (agenda "" ((org-agenda-span 1)
+                   (org-deadline-warning-days 0)
+                   (org-agenda-block-separator nil)
+                   (org-scheduled-past-days 0)
+                   ;; We don't need the `org-agenda-date-today'
+                   ;; highlight because that only has a practical
+                   ;; utility in multi-day views.
+                   (org-agenda-day-face-function (lambda (date) 'org-agenda-date))
+                   (org-agenda-format-date "%A %-e %B %Y")
+                   (org-agenda-overriding-header "\nToday's agenda\n")))
+       (agenda "" ((org-agenda-start-on-weekday nil)
+                   (org-agenda-start-day "+1d")
+                   (org-agenda-span 3)
+                   (org-deadline-warning-days 0)
+                   (org-agenda-block-separator nil)
+                   (org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
+                   (org-agenda-overriding-header "\nNext three days\n")))
+       (agenda "" ((org-agenda-time-grid nil)
+                   (org-agenda-start-on-weekday nil)
+                   ;; We don't want to replicate the previous section's
+                   ;; three days, so we start counting from the day after.
+                   (org-agenda-start-day "+3d")
+                   (org-agenda-span 14)
+                   (org-agenda-show-all-dates nil)
+                   (org-agenda-time-grid nil)
+                   (org-deadline-warning-days 0)
+                   (org-agenda-block-separator nil)
+                   (org-agenda-entry-types '(:deadline))
+                   (org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
+                   (org-agenda-overriding-header "\nUpcoming deadlines (+14d)\n")))))
+     ("P" "Plain text daily agenda and top priorities"
+      ((tags-todo "*"
+                  ((org-agenda-skip-function '(org-agenda-skip-if nil '(timestamp)))
+                   (org-agenda-skip-function
+                    `(org-agenda-skip-entry-if
+                      'notregexp ,(format "\\[#%s\\]" (char-to-string org-priority-highest))))
+                   (org-agenda-block-separator nil)
+                   (org-agenda-overriding-header "Important tasks without a date\n")))
+       (agenda "" ((org-agenda-span 1)
+                   (org-deadline-warning-days 0)
+                   (org-agenda-block-separator nil)
+                   (org-scheduled-past-days 0)
+                   ;; We don't need the `org-agenda-date-today'
+                   ;; highlight because that only has a practical
+                   ;; utility in multi-day views.
+                   (org-agenda-day-face-function (lambda (date) 'org-agenda-date))
+                   (org-agenda-format-date "%A %-e %B %Y")
+                   (org-agenda-overriding-header "\nToday's agenda\n")))
+       (agenda "" ((org-agenda-start-on-weekday nil)
+                   (org-agenda-start-day "+1d")
+                   (org-agenda-span 3)
+                   (org-deadline-warning-days 0)
+                   (org-agenda-block-separator nil)
+                   (org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
+                   (org-agenda-overriding-header "\nNext three days\n")))
+       (agenda "" ((org-agenda-time-grid nil)
+                   (org-agenda-start-on-weekday nil)
+                   ;; We don't want to replicate the previous section's
+                   ;; three days, so we start counting from the day after.
+                   (org-agenda-start-day "+3d")
+                   (org-agenda-span 14)
+                   (org-agenda-show-all-dates nil)
+                   (org-agenda-time-grid nil)
+                   (org-deadline-warning-days 0)
+                   (org-agenda-block-separator nil)
+                   (org-agenda-entry-types '(:deadline))
+                   (org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
+                   (org-agenda-overriding-header "\nUpcoming deadlines (+14d)\n"))))
+      ((org-agenda-with-colors nil)
+       (org-agenda-prefix-format "%t %s")
+       (org-agenda-current-time-string ,(car (last org-agenda-time-grid)))
+       (org-agenda-fontify-priorities nil)
+       (org-agenda-remove-tags t))
+      ("agenda.txt"))) )
 
   ;; fix for babel gnuplot -- it has (:session) in it, which causes an
   ;; error because if the cdr is a list, it tries to funcall it
