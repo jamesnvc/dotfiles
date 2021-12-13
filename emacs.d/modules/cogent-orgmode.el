@@ -15,7 +15,7 @@
 
   (customize-set-variable 'org-catch-invisible-edits 'show-and-error)
   (customize-set-variable 'org-adapt-indentation 'headline-data)
-  (customize-set-variable 'org-agenda-compact-blocks nil)
+  (customize-set-variable 'org-agenda-compact-blocks t)
   (customize-set-variable 'org-agenda-restore-windows-after-quit t)
   (customize-set-variable 'org-agenda-show-future-repeats nil)
   (customize-set-variable 'org-agenda-skip-scheduled-if-done t)
@@ -64,7 +64,8 @@
                    (org-agenda-block-separator nil)
                    (org-agenda-entry-types '(:deadline))
                    (org-agenda-skip-function '(org-agenda-skip-entry-if 'todo 'done))
-                   (org-agenda-overriding-header "\nUpcoming deadlines (+14d)\n")))))))
+                   (org-agenda-overriding-header "\nUpcoming deadlines (+14d)\n"))))
+      ((org-agenda-compact-blocks nil)))))
 
   ;; fix for babel gnuplot -- it has (:session) in it, which causes an
   ;; error because if the cdr is a list, it tries to funcall it
