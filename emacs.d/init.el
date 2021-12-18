@@ -63,6 +63,7 @@
 (require 'cogent-mail)
 (require 'cogent-feeds)
 (require 'cogent-misc-langs)
+(require 'cogent-flutter)
 (require 'cogent-fish)
 (require 'cogent-lsp)
 (require 'cogent-help)
