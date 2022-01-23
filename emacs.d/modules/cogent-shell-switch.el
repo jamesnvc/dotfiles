@@ -49,11 +49,21 @@
          (candidates (cl-loop for cand-buf in shells
                               for cand = (car cand-buf)
                               for buf = (cdr cand-buf)
-                              collect (cons (alist-get 'buffer-name cand)
+                              collect (cons (concat (alist-get 'buffer-name cand)
+                                                    " " ; paragraph separator, not space!
+                                                    (alist-get 'path cand))
                                             buf)
                               into cands
                               finally return cands)))
     (append candidates (list (cons here nil)))))
+
+(defun cogent-shell--cand-buffer (cand)
+  (get-buffer (substring cand 0 (seq-position cand #x2029))))
+
+(defun cogent-shell--group-fun (completion transform)
+  (if (null transform)
+     "Shells"
+    (substring completion 0 (seq-position completion #x2029))))
 
 (defun cogent/switch-shell ()
   (interactive)
@@ -64,6 +74,7 @@
                     (if (eq action 'metadata)
                         '(metadata
                           (category . shell)
+                          (group-function . cogent-shell--group-fun)
                           ;; we're already sorting
                           (display-sort-function . identity)
                           (cycle-sort-function . identity))
@@ -75,7 +86,7 @@
 
 (defun cogent-shell--annotator (cand)
   "Annotate shell buffer CAND with shell type and path"
-  (when-let (buffer (get-buffer cand))
+  (when-let (buffer (cogent-shell--cand-buffer cand))
     (marginalia--fields
      ((cogent-shell--buffer-shell-indicator buffer)
       :face 'marginalia-mode)
@@ -90,7 +101,7 @@
 
 (defun cogent-shell--switch-to-eshell (cand)
   (interactive "s")
-  (let ((path (if-let (buf (get-buffer cand))
+  (let ((path (if-let (buf (cogent-shell--cand-buffer cand))
                   (buffer-local-value 'default-directory buf)
                 cand)))
     (let ((default-directory path))
@@ -98,7 +109,7 @@
 
 (defun cogent-shell--switch-to-vterm (cand)
   (interactive "s")
-  (let* ((path (if-let (buf (get-buffer cand))
+  (let* ((path (if-let (buf (cogent-shell--cand-buffer cand))
                    (buffer-local-value 'default-directory buf)
                  cand))
          (default-directory path))
@@ -106,7 +117,7 @@
 
 (defun cogent-shell--switch-horiz-split (cand)
   (interactive "s")
-  (if-let (buffer (get-buffer cand))
+  (if-let (buffer (cogent-shell--cand-buffer cand))
       (cogent--split-below #'switch-to-buffer buffer)
     (progn
       (select-window (split-window-below))
@@ -114,7 +125,7 @@
         (eshell t)))))
 (defun cogent-shell--switch-vert-split (cand)
   (interactive "s")
-  (if-let (buffer (get-buffer cand))
+  (if-let (buffer (cogent-shell--cand-buffer cand))
       (cogent--split-right #'switch-to-buffer buffer)
     (progn
       (select-window (split-window-right))
