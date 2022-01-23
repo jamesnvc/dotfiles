@@ -1,5 +1,6 @@
 ;;; -*- lexical-binding: t -*-
 (require 'cogent-package)
+(require 'cogent-sexp)
 
 (use-package clojure-mode
   :commands clojure-mode
@@ -34,9 +35,6 @@
   (evil-set-initial-state 'cider-stacktrace-mode 'emacs)
   (setq cider-prompt-for-symbol nil)
   (setq cider-font-lock-dynamically '(macro core function var)))
-
-(use-package paredit
-  :commands enable-paredit-mode paredit-mode)
 
 (use-package flycheck-clj-kondo
   :if (executable-find "clj-kondo")

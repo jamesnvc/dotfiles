@@ -4,7 +4,8 @@
 (require 'cogent-evil)
 
 (use-package paredit
-  :init
+  :commands paredit-mode enable-paredit-mode
+  :hook (emacs-lisp-mode-hook . enable-paredit-mode) :init
   ;; I'm going to manually set all the paredit keys
   ;; prevent paredit-define-keys from defining all its bindings
   (advice-add 'paredit-define-keys :override (lambda () nil)))

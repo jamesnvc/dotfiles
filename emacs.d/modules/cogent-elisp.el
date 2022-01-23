@@ -2,10 +2,7 @@
 
 (require 'cogent-package)
 (require 'cogent-keys)
-
-(use-package paredit
-  :commands paredit-mode enable-paredit-mode
-  :hook (emacs-lisp-mode-hook . enable-paredit-mode))
+(require 'cogent-sexp)
 
 (use-package highlight-parentheses
   :commands highlight-parentheses-mode
