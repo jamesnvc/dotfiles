@@ -232,7 +232,7 @@
   :straight (:type built-in)
   :config
   (setq completion-styles
-        '(substring initials flex partial-completion orderless))
+        '(substring initials flex partial-completion orderless basic))
   (setq completion-category-overrides
         '((file (styles . (partial-completion orderless)))))
   (setq completion-cycle-threshold 2)
