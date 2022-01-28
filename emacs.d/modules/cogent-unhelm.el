@@ -212,7 +212,8 @@
              :host gitlab
              :repo "protesilaos/mct")
   :config
-  (mct-mode 1)
+  (mct-minibuffer-mode 1)
+  (mct-region-mode 1)
   (setq mct-remove-shadowed-file-names t)
   (setq mct-hide-completion-mode-line t)
   (setq mct-show-completion-line-numbers nil)
@@ -224,7 +225,8 @@
   (define-key global-map (kbd "s-v") #'mct-focus-mini-or-completions)
   (define-key mct-completion-list-mode-map (kbd "<escape>") #'mct-keyboard-quit-dwim)
   (define-key mct-completion-list-mode-map (kbd "M-g M-g") #'mct-choose-completion-number)
-  (define-key mct-minibuffer-local-completion-map (kbd "M-g M-g") #'mct-choose-completion-number))
+  (define-key mct-minibuffer-local-completion-map (kbd "M-g M-g") #'mct-choose-completion-number)
+  (general-define-key :states '(insert) "C-\\" #'completion-at-point))
 
 (use-package minibuffer
   :straight (:type built-in)

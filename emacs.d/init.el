@@ -48,7 +48,7 @@
 (require 'cogent-flycheck)
 (require 'cogent-elisp)
 (require 'cogent-sexp)
-(require 'cogent-complete)
+;; (require 'cogent-complete)
 (require 'cogent-editing)
 (require 'cogent-project)
 (require 'cogent-dired)
