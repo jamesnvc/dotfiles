@@ -11,7 +11,7 @@
 # configured here named ".notmuch".
 #
 [database]
-path=/home/james/.mail/gmail
+path=/home/james/.mail/fastmail
 
 # User configuration
 #
@@ -30,8 +30,8 @@ path=/home/james/.mail/gmail
 #
 [user]
 name=James N. V. Cash
-primary_email=james.nvc@gmail.com
-other_email=james@bloomventures.io;james.cash@occasionallycogent.com;
+primary_email=james.cash@occasionallycogent.com
+other_email=james@bloomventures.io;james.nvc@gmail.com;
 
 # Configuration for "notmuch new"
 #

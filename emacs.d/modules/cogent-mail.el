@@ -7,11 +7,11 @@
   :config
   ;; setup the mail address and use name
   (setq mail-user-agent 'message-user-agent
-        user-mail-address "james.nvc@gmail.com"
+        user-mail-address "james.cash@occasionallycogent.com"
         user-full-name "James N. V. Cash"
 
         ;; smtp config
-        smtpmail-smtp-server "smtp.gmail.com"
+        smtpmail-smtp-server "smtp.fastmail.com"
         smtpmail-smtp-service 465
         smtpmail-stream-type 'ssl
         message-send-mail-function 'message-smtpmail-send-it
@@ -23,11 +23,11 @@
         message-default-mail-headers "Cc: \nBcc: \n"
 
         ;; postponed message is put in the following draft directory
-        message-auto-save-directory "~/.mail/gmail/[Gmail]/Drafts"
+        message-auto-save-directory "~/.mail/fastmail/Drafts"
         message-kill-buffer-on-exit t
 
         ;; change the directory to store the sent mail
-        message-directory "~/.mail/gmail/[Gmail]/Sent Mail")
+        message-directory "~/.mail/fastmail/Sent")
 
   (with-eval-after-load 'notmuch
     (setq notmuch-address-selection-function

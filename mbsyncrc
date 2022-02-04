@@ -1,23 +1,25 @@
-IMAPAccount gmail
-Host imap.gmail.com
-User james.nvc@gmail.com
-PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.passwd/gmail.gpg"
+IMapAccount fastmail
+Host imap.fastmail.com
+Port 993
+User james.cash@occasionallycogent.com
+PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.passwd/fastmail.gpg"
 SSLType IMAPS
-CertificateFile /etc/ssl/certs/ca-certificates.crt
+SSLVersions TLSv1.2
 
-IMAPStore gmail-remote
-Account gmail
+IMAPStore fastmail-remote
+Account fastmail
 
-MaildirStore gmail-local
-Subfolders Verbatim
-Path ~/.mail/gmail/
-Inbox ~/.mail/gmail/Inbox
+MaildirStore fastmail-local
+Path ~/.mail/fastmail/
+Inbox ~/.mail/fastmail/Inbox
+SubFolders Verbatim
 
-Channel gmail
-Master :gmail-remote:
-Slave :gmail-local:
-Patterns INBOX ![Gmail]* "[Gmail]/Sent Mail" "[Gmail]/Starred" "[Gmail]/All Mail" "[Gmail]/Drafts"
-Create Both
+Channel fastmail
+Master :fastmail-remote:
+Slave :fastmail-local:
+Patterns *
 Expunge Both
-SyncState *
+CopyArrivalDate yes
 Sync All
+Create Both
+SyncState *
