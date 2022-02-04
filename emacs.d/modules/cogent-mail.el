@@ -29,6 +29,25 @@
         ;; change the directory to store the sent mail
         message-directory "~/.mail/fastmail/Sent")
 
+  (defvar cogent/mail-sync-process nil)
+  (defun cogent/perform-mail-sync ()
+    (message "Syncing mail...")
+    (unless (process-live-p cogent/mail-sync-process)
+      (setq cogent/mail-sync-process
+            (start-process
+             "mailsync"
+             "*mail sync*"
+             (expand-file-name "~/dotfiles/run_mail_standalone.sh")))))
+  (defvar cogent/mail-sync-timer nil)
+  (defun cogent/sync-mail ()
+    (message "Scheduling mail sync")
+    (when cogent/mail-sync-timer
+      (cancel-timer cogent/mail-sync-timer))
+    (setq cogent/mail-sync-timer
+          (run-with-timer 5 nil #'cogent/perform-mail-sync)))
+
+  (add-hook 'notmuch-after-tag-hook #'cogent/sync-mail)
+
   (with-eval-after-load 'notmuch
     (setq notmuch-address-selection-function
           (lambda (prompt collection initial-input)
