@@ -23,15 +23,15 @@
         message-default-mail-headers "Cc: \nBcc: \n"
 
         ;; postponed message is put in the following draft directory
-        message-auto-save-directory "~/.mail/fastmail/Drafts"
+        message-auto-save-directory "~/.mail/fastmail/Drafts/tmp"
         message-kill-buffer-on-exit t
 
-        ;; change the directory to store the sent mail
-        message-directory "~/.mail/fastmail/Sent")
+        message-directory "~/.mail/fastmail/")
+
+  (customize-set-variable 'notmuch-fcc-dirs "Sent")
 
   (defvar cogent/mail-sync-process nil)
   (defun cogent/perform-mail-sync ()
-    (message "Syncing mail...")
     (unless (process-live-p cogent/mail-sync-process)
       (setq cogent/mail-sync-process
             (start-process
@@ -40,7 +40,6 @@
              (expand-file-name "~/dotfiles/run_mail_standalone.sh")))))
   (defvar cogent/mail-sync-timer nil)
   (defun cogent/sync-mail ()
-    (message "Scheduling mail sync")
     (when cogent/mail-sync-timer
       (cancel-timer cogent/mail-sync-timer))
     (setq cogent/mail-sync-timer
