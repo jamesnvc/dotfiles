@@ -8,12 +8,6 @@
   "[ q" #'previous-error)
 
 (use-package flycheck
-  :hook
-  ;; Use it for everything except ELisp mode
-  (find-file-hook . (lambda ()
-                      (when (not (equal 'emacs-lisp-mode major-mode))
-                        (flycheck-mode))))
-
   :config
   (evil-define-minor-mode-key 'normal 'flycheck-mode
    (kbd "[ q") #'flycheck-previous-error
