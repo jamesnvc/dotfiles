@@ -2,6 +2,7 @@
 
 (require 'cogent-package)
 
+(setq lsp-use-plists t)
 (use-package lsp-mode
   ;; un-comment this to make the various other lsp-backends get loaded
   ;; :demand t
@@ -9,9 +10,13 @@
   :hook (prolog-mode-hook . lsp)
   :config
 
-  (add-to-list 'lsp-semantic-token-faces
-               (cons "modifier"
-                     'lsp-face-semhl-property))
+  (setq read-process-output-max (* 1024 1024))
+  (customize-set-variable lsp-idle-delay 1.0)
+  (customize-set-variable lsp-semantic-tokens-enable t)
+
+  ;; (add-to-list 'lsp-semantic-token-faces
+  ;;              (cons "modifier"
+  ;;                    'lsp-face-semhl-property))
 
   (lsp-register-client
    (make-lsp-client
@@ -89,9 +94,9 @@
   :config
   (if-let ((ccls-path (executable-find "ccls")))
       (setq ccls-executable ccls-path)
-    (setq ccls-executable (expand-file-name "~/software/ccls/Release/ccls")))
-  :hook ((objc-mode-hook c++-mode c-mode) . (lambda () (require 'ccls) (lsp))))
+    (setq ccls-executable (expand-file-name "~/software/ccls/Release/ccls"))))
 
-(use-package dap-mode)
+(use-package dap-mode
+  :commands dap-mode)
 
 (provide 'cogent-lsp)
