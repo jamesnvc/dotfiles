@@ -9,6 +9,9 @@
 (use-package project
   :straight (:type built-in)
   :config
+  (customize-set-variable
+   'vc-directory-exclusion-list
+   (cons ".ccls-cache" vc-directory-exclusion-list))
   (cogent/leader-def
     :states '(normal visual)
     "P" #'project-switch-project
