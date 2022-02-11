@@ -223,8 +223,8 @@
   (setq mct-completion-passlist '(imenu Info-goto-node Info-index Info-menu vc-retrieve-tag))
 
   (define-key global-map (kbd "s-v") #'mct-focus-mini-or-completions)
-  (define-key mct-completion-list-mode-map (kbd "<escape>") #'mct-keyboard-quit-dwim)
-  (define-key mct-completion-list-mode-map (kbd "M-g M-g") #'mct-choose-completion-number)
+  (define-key mct-minibuffer-completion-list-map (kbd "<escape>") #'mct-keyboard-quit-dwim)
+  (define-key mct-minibuffer-completion-list-map (kbd "M-g M-g") #'mct-choose-completion-number)
   (define-key mct-minibuffer-local-completion-map (kbd "M-g M-g") #'mct-choose-completion-number)
   (general-define-key :states '(insert) "C-\\" #'completion-at-point))
 
