@@ -18,7 +18,6 @@
   (setq cogent/exec-path-after-inited nil))
 
 (use-package exec-path-from-shell
-  :defer 2
   :commands exec-path-from-shell-initialize
   :if (memq window-system '(mac ns x))
   :custom
@@ -29,6 +28,7 @@
   (unless (getenv "NIX_PATH")
     (exec-path-from-shell-copy-envs
      '("NIX_PATH" "NIX_PROFILES" "NIX_SSL_CERT_FILE")))
+  (exec-path-from-shell-copy-envs '("LSP_USE_PLISTS"))
   (setq cogent/exec-path-initialized t)
   (cogent/path-inited))
 
