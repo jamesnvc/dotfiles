@@ -549,10 +549,10 @@ the first column (i.e., DCG heads) inserts ` -->' and newline."
     (swi ,(if (not (executable-find "swipl")) "pl" "swipl"))
     (gnu "gprolog")
     (t ,(let ((names '("prolog" "gprolog" "swipl" "pl")))
- 	  (while (and names
- 		      (not (executable-find (car names))))
- 	    (setq names (cdr names)))
- 	  (or (car names) "prolog"))))
+    (while (and names
+          (not (executable-find (car names))))
+      (setq names (cdr names)))
+    (or (car names) "prolog"))))
   "Alist of program names for invoking an inferior Prolog with `run-prolog'."
   :group 'prolog-inferior
   :type '(alist :key-type (choice symbol sexp)
@@ -1357,8 +1357,7 @@ With prefix argument ARG, restart the Prolog process if running before."
              prolog-use-sicstus-sd)
         (prolog-enable-sicstus-sd))
     (prolog-mode-variables)
-    (prolog-ensure-process)
-    ))
+    (prolog-ensure-process)))
 
 (defun prolog-inferior-guess-flavor (&optional ignored)
   (setq-local prolog-system
@@ -1396,11 +1395,11 @@ the variable `prolog-prompt-regexp'."
       ;; know about INSIDE_EMACS (which replaced EMACS) and should not need
       ;; this hack.
       (let ((process-environment
-	     (if (getenv "INFERIOR")
-		 process-environment
-	       (cons "INFERIOR=yes" process-environment))))
-	(apply 'make-comint-in-buffer "prolog" (current-buffer)
-	       (prolog-program-name) nil (prolog-program-switches)))
+             (if (getenv "INFERIOR")
+                 process-environment
+               (cons "INFERIOR=yes" process-environment))))
+        (apply 'make-comint-in-buffer "prolog" (current-buffer)
+               (prolog-program-name) nil (prolog-program-switches)))
 
       (unless prolog-system
         ;; Setup auto-detection.
@@ -3102,15 +3101,13 @@ Return the final point or nil if no such a beginning was found."
     (if (> arity 0)
         (progn
           (insert "(")
- 	  (when prolog-electric-dot-full-predicate-template
- 	    (setq oldp (point))
- 	    (while (< n arity)
- 	      (insert ",")
- 	      (setq n (1+ n)))
- 	    (insert ")")
- 	    (goto-char oldp))
-          ))
-  ))
+    (when prolog-electric-dot-full-predicate-template
+      (setq oldp (point))
+      (while (< n arity)
+        (insert ",")
+        (setq n (1+ n)))
+      (insert ")")
+      (goto-char oldp))))))
 
 (defun prolog-insert-next-clause ()
   "Insert newline and the name of the current clause."
@@ -3233,9 +3230,9 @@ of the current predicate."
       (delete-region (1- (point)) (point)) ;Delete the dot that called us.
       (prolog-insert-predicate-template)
       (when prolog-electric-dot-full-predicate-template
- 	(save-excursion
- 	  (end-of-line)
- 	  (insert ".\n"))))
+  (save-excursion
+    (end-of-line)
+    (insert ".\n"))))
      ;; Default
      (t
       (insert "\n"))
@@ -3333,7 +3330,7 @@ PREFIX is the prefix of the search regexp."
 ;;  (let ((next -1))
 ;;    (while (setq next (string-match "\\[\\(.*?\\)\\]" regexp (1+ next)))
 ;;      (setq regexp (replace-match (prolog-dash-letters (match-string 1 regexp))
-;;				  t t regexp 1))))
+;;          t t regexp 1))))
 ;;  regexp)
 
 ;;-------------------------------------------------------------------
