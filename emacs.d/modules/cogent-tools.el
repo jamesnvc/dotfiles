@@ -33,6 +33,13 @@
     (setq gif-screencast-args '("-x")))
   (setq gif-screencast-cropping-program "mogrify"))
 
+(use-package tb-keycast
+  :commands tb-keycast-mode
+  :straight (tb-keycast
+             :type git
+             :host github
+             :repo "ir33k/tb-keycast"))
+
 (use-package direnv
   :defer t
   :config (direnv-mode))
@@ -55,5 +62,13 @@
 ;;              :repo "https://git.savannah.nongnu.org/git/dungeon.git"))
 
 (use-package chess)
+
+(use-package sketch-mode
+  :defer t
+  :commands sketch
+  :straight (sketch-mode
+             :type git
+             :host github
+             :repo "dalanicolai/sketch-mode"))
 
 (provide 'cogent-tools)
