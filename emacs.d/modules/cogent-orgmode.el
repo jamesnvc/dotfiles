@@ -14,7 +14,7 @@
   ;; :config
 
   (customize-set-variable 'org-catch-invisible-edits 'show-and-error)
-  (customize-set-variable 'org-adapt-indentation 'headline-data)
+  (customize-set-variable 'org-adapt-indentation nil)
   (customize-set-variable 'org-agenda-compact-blocks t)
   (customize-set-variable 'org-agenda-restore-windows-after-quit t)
   (customize-set-variable 'org-agenda-show-future-repeats nil)
