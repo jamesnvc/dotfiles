@@ -24,14 +24,6 @@
  '(display-raw-bytes-as-hex t)
  '(ediff-window-setup-function 'ediff-setup-windows-plain)
  '(elfeed-sort-order 'ascending)
- '(erc-autojoin-channels-alist
-   '(("localhost:6667" "#fb-family" "#lhl-teachers" "#fb-western-chums" "&bitlbee")))
- '(erc-autojoin-timing 'ident)
- '(erc-join-buffer 'bury)
- '(erc-lurker-hide-list '("JOIN" "PART" "QUIT" "MODE"))
- '(erc-modules
-   '(hl-nicks autojoin button completion fill irccontrols list match menu move-to-prompt netsplit networks noncommands notifications readonly ring stamp spelling track image))
- '(erc-track-exclude-types '("JOIN" "NICK" "PART" "QUIT" "MODE" "333" "353"))
  '(eshell-visual-commands
    '("htop" "vi" "screen" "top" "less" "more" "lynx" "ncftp" "pine" "tin" "trn" "elm" "psql"))
  '(eshell-visual-subcommands '(("git " "log" "lol" "diff" "show")))
