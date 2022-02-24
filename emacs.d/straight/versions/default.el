@@ -15,7 +15,7 @@
  ("consult" . "e10775aab1cd4ee4af1e610128508b81288dadca")
  ("consult-notmuch" . "015642e88a48b1e3b4791a5badd8dbdfe6a6037e")
  ("cyphejor" . "576d237a46be79449a22e3a7912a3464d7b0c233")
- ("dap-mode" . "a18f29e3d1a3a945ec5dfc7dea98927ecb022c34")
+ ("dap-mode" . "fc52714b1bd18bb20f9be3af87a8f1778c0c04a3")
  ("dart-mode" . "3bac14200f9f8f8fcebc383087572da5c3823c34")
  ("dash.el" . "da167c51e9fd167a48d06c7c0ee8e3ac7abd9718")
  ("diff-hl" . "47f8724ced083c4f5aca9e0751bfd2489198d1be")
