@@ -2,8 +2,11 @@
   email = james.nvc@gmail.com
   name = James N. V. Cash
   signingkey = 8DC9A386
+[init]
+  defaultBranch = main
 [push]
   default = current
+  followTags = true
 [alias]
   lol = log --graph --decorate --pretty=oneline --abbrev-commit
   lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
