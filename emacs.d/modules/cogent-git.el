@@ -3,10 +3,8 @@
 (require 'cogent-package)
 
 (use-package transient
-  :straight (transient
-             :type git
-             :host github
-             :repo "magit/transient"))
+  ;; transient now part of Emacs!
+  :straight (:type built-in))
 
 (use-package magit
   :commands magit-status
