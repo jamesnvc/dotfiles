@@ -11,8 +11,7 @@
   :config
 
   (setq read-process-output-max (* 1024 1024))
-  (customize-set-variable lsp-idle-delay 1.0)
-  (customize-set-variable lsp-semantic-tokens-enable t)
+  (customize-set-variable 'lsp-idle-delay 1.0)
 
   ;; (add-to-list 'lsp-semantic-token-faces
   ;;              (cons "modifier"
