@@ -96,6 +96,14 @@
     (setq ccls-executable (expand-file-name "~/software/ccls/Release/ccls"))))
 
 (use-package dap-mode
-  :commands dap-mode)
+  :commands dap-mode
+  :config
+  (require 'dap-swi-prolog)
+  (dap-register-debug-template
+   "SWI-Prolog Start Terminal"
+   (list :type "swi-prolog"
+         :goal "$run_in_terminal"
+         :request "launch"
+         :name "SWI-Prolog::Terminal")))
 
 (provide 'cogent-lsp)
