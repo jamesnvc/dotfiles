@@ -81,7 +81,8 @@
                       (complete-with-action action shells input predicate))))))
     (if-let ((sel (cdr (assoc choice shells))))
         (switch-to-buffer sel)
-      (let ((default-directory choice))
+      (dlet ((default-directory choice)
+             (display-comint-buffer-action (list #'display-buffer-same-window)))
         (eshell t)))))
 
 (defun cogent-shell--annotator (cand)
@@ -104,7 +105,8 @@
   (let ((path (if-let (buf (cogent-shell--cand-buffer cand))
                   (buffer-local-value 'default-directory buf)
                 cand)))
-    (let ((default-directory path))
+    (dlet ((default-directory choice)
+           (display-comint-buffer-action (list #'display-buffer-same-window)))
       (eshell t))))
 
 (defun cogent-shell--switch-to-vterm (cand)
@@ -121,7 +123,8 @@
       (cogent--split-below #'switch-to-buffer buffer)
     (progn
       (select-window (split-window-below))
-      (let ((default-directory cand))
+      (dlet ((default-directory cand)
+             (display-comint-buffer-action (list #'display-buffer-same-window)))
         (eshell t)))))
 (defun cogent-shell--switch-vert-split (cand)
   (interactive "s")
@@ -129,7 +132,8 @@
       (cogent--split-right #'switch-to-buffer buffer)
     (progn
       (select-window (split-window-right))
-      (let ((default-directory cand))
+      (let ((default-directory cand)
+             (display-comint-buffer-action (list #'display-buffer-same-window)))
         (eshell t)))))
 
 (with-eval-after-load 'embark
