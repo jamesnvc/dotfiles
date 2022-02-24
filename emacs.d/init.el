@@ -10,10 +10,10 @@
                                                          before-init-time)))
                      gcs-done)))
 
+(let ((orig-default (default-value 'gc-cons-threshold)))
+  (add-hook 'after-init-hook (lambda () (setq gc-cons-threshold orig-default))))
 (setq gc-cons-threshold 128000000)
-(add-hook 'after-init-hook (lambda ()
-                             ;; restore after startup
-                             (setq gc-cons-threshold (default-value 'gc-cons-threshold))))
+
 
 (setq inhibit-startup-message t)
 
