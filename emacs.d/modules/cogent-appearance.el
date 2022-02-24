@@ -35,6 +35,7 @@
   :defer t
   :custom
   ((modus-themes-bold-constructs t)
+   (modus-themes-italic-constructs t)
    (modus-themes-slanted-constructs t)
    (modus-themes-completions '((matches . (background intense))
                                (selection . (accented intense))
