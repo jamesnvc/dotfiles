@@ -36,9 +36,11 @@
   :custom
   ((modus-themes-bold-constructs t)
    (modus-themes-slanted-constructs t)
-   (modus-themes-completions 'opinionated)
+   (modus-themes-completions '((matches . (background intense))
+                               (selection . (accented intense))
+                               (popup . (accented intense))))
    (modus-themes-org-blocks 'rainbow)
-   (modus-themes-headings '((t . section)))
+   (modus-themes-headings '((t . (overline background variable-pitch))))
    (modus-themes-variable-pitch-headings t))
   :custom-face
   (mode-line ((t (:background nil :foreground ,cogent-line-active-bg :box nil

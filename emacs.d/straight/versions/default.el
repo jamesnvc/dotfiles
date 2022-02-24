@@ -92,7 +92,7 @@
  ("mct" . "49cf8368c2828a8ec25c787b90498ee2c49defb9")
  ("melpa" . "4424e068324a241450fb4e8b6cccb697fdb2f187")
  ("mmm-mode" . "8ab24bbd7367d3abad028aa382e75dc4ad5534d6")
- ("modus-themes" . "856922313b1f28cb1a9fc88fc5314ec69161b0a4")
+ ("modus-themes" . "7773a4ec72d346d6cf4123b574c74507a3dab97f")
  ("nix-mode" . "1ac42cd103ba11c37e8566e240a2272966e6f813")
  ("nov.el" . "b3c7cc28e95fe25ce7b443e5f49e2e45360944a3")
  ("nyan-mode" . "06e67ab2c490756d3eeed4a68aba7c33e508a5d5")
