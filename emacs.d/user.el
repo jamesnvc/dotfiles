@@ -18,7 +18,8 @@
    (setenv "PATH" (concat dir ":" (getenv "PATH")))
    (add-to-list 'cogent/extra-path-dirs dir)))
 
-(when (string-equal (system-name) "zhora.local")
+(when (or (string-equal (system-name) "zhora.local")
+          (string-equal (system-name) "nextcanada-mac-winnipeg.local"))
   (set-frame-font "PragmataPro 14" nil t)
   (dolist (face '(default fixed-pitch))
     (set-face-attribute face nil :font "PragmataPro Liga-14"))
