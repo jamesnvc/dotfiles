@@ -3,6 +3,7 @@
 (require 'cogent-keys)
 
 (use-package notmuch
+  :if (executable-find "notmuch")
   :straight (:type built-in)
   :config
   ;; setup the mail address and use name
