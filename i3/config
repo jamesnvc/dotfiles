@@ -23,7 +23,7 @@ set $update && pkill -RTMIN+1 i3blocks
 
 # save layout
 bindsym $mod+Shift+s exec ~/bin/save_spaces.sh && notify-send "Layout Saved!"
-bindsym $mod+Shift+r exec ~/bin/restore_spaces.sh && notify-send "Layout Restored!"
+bindsym $mod+Shift+r exec "i3-nagbar -t warning -m 'Restore previous spaces?' -b 'Restore' '~/bin/restore_spaces.sh && notify-send ''Layout Restored!'''"
 
 # audio buttons
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% $update
