@@ -25,7 +25,15 @@
     (set-face-attribute face nil :font "PragmataPro Liga-14"))
   (set-face-attribute 'variable-pitch nil :font "Helvetica-14")
   (setq ns-antialias-text nil)
-  (cogent/add-to-all-paths (expand-file-name "~/bin")))
+  (cogent/add-to-all-paths (expand-file-name "~/bin"))
+
+  (defun cogent-mac/apply-theme (appearance)
+    "Load theme, taking current system APPEARANCE into consideration."
+    (pcase appearance
+      ('light (modus-themes-load-operandi))
+      ('dark (modus-themes-load-vivendi))))
+
+  (add-hook 'ns-system-appearance-change-functions #'cogent-mac/apply-theme))
 
 (when (string-equal (system-name) "fuchikoma")
   (set-frame-font "PragmataPro 16" nil t)
