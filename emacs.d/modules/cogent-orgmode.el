@@ -82,6 +82,7 @@
                    (lambda (c) (if (char-equal c ?<) t default-pred))))
      (visual-line-mode 1)))
   (advice-add 'org-meta-return :before #'org-end-of-line)
+  (add-hook 'org-mode-hook (lambda () (setq-local line-spacing 0.1)))
 
   (setq org-plantuml-jar-path (expand-file-name "~/bin/plantuml.jar"))
   (with-eval-after-load 'org-src
@@ -121,6 +122,18 @@
    "C-c w" #'org-refile
    "C-c <up>" #'org-shiftup
    "C-c <down>" #'org-shiftdown))
+
+(use-package org-modern
+  :straight (org-modern
+             :type git
+             :host github
+             :repo "minad/org-modern"
+             :branch "main")
+  :after org
+  :commands org-modern-mode
+  :config
+  (setopt org-modern-hide-stars nil)
+  (add-hook 'org-mode-hook #'org-modern-mode))
 
 (use-package org-cliplink
   :after org
