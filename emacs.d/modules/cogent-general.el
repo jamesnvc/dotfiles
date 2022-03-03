@@ -55,4 +55,9 @@
 (put 'narrow-to-region 'disabled nil)
 (put 'narrow-to-page 'disabled nil)
 
+(use-package gcmh
+  :commands gcmh-mode
+  :config
+  (add-hook 'after-init-hook #'gcmh-mode))
+
 (provide 'cogent-general)
