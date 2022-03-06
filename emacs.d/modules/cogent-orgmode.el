@@ -133,6 +133,7 @@
   :commands org-modern-mode
   :config
   (setopt org-modern-hide-stars nil)
+  :init
   (add-hook 'org-mode-hook #'org-modern-mode))
 
 (use-package org-cliplink
