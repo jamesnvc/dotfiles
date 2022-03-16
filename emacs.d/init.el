@@ -77,3 +77,4 @@
 (load (concat dotfiles-dir "user.el") 'noerror)
 (put 'list-timers 'disabled nil)
 (put 'list-threads 'disabled nil)
+(put 'set-goal-column 'disabled nil)
