@@ -58,6 +58,7 @@
 (use-package gcmh
   :commands gcmh-mode
   :config
-  (add-hook 'after-init-hook #'gcmh-mode))
+  (add-hook 'after-init-hook #'gcmh-mode)
+  (setopt gcmh-idle-delay 5))
 
 (provide 'cogent-general)
