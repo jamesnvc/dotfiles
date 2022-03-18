@@ -1,1 +1,5 @@
 clip=clipboard
+
+PATH="$HOME/.local/bin:$PATH"
+
+USERNAME_field="login"

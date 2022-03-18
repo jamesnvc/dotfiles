@@ -1,3 +1,3 @@
 #!/bin/bash
 
-exec rofi -combi-modi drun,window -show combi -modi combi,run
+exec ~/.local/bin/rofi -combi-modi drun,window -show combi -modi combi,run
