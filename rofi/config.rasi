@@ -1,5 +1,5 @@
 configuration {
-font: "mono 12";
+font: "PragmataPro Mono 12";
 terminal: "alacritty";
 kb-mode-next: "Control+Tab";
 kb-mode-previous: "Control+ISO_Left_Tab";
@@ -13,17 +13,6 @@ kb-select-7: "Control+7";
 kb-select-8: "Control+8";
 kb-select-9: "Control+9";
 kb-select-10: "Control+0";
-kb-custom-5: "Alt+u";
-kb-custom-6: "Alt+p";
-kb-custom-7: "Alt+o";
-kb-custom-8: "Alt+l";
-kb-custom-9: "Alt+t";
-kb-custom-10: "Shift+Left";
-kb-custom-11: "Shift+Right";
-kb-custom-14: "Alt+a";
-kb-custom-15: "Alt+c";
-kb-custom-16: "Alt+h";
-kb-custom-17: "Alt+x";
-kb-custom-18: "Alt+n";
-kb-custom-19: "Alt+q";
+show-icons: true;
 }
+@theme "paper-float"
