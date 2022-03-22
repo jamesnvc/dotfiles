@@ -4,7 +4,8 @@
 
 (use-package clojure-mode
   :commands clojure-mode
-  :hook (clojure-mode-hook . enable-paredit-mode)
+  :hook ((clojure-mode-hook . enable-paredit-mode)
+         (clojure-mode-hook . flycheck-mode))
   :config
   (put-clojure-indent 'match 1))
 
