@@ -99,12 +99,6 @@
            (slot . 2)
            (window-parameters . ((no-other-window . t))))
           ;; bottom side window
-          ("\\*.*Completions.*"
-           (display-buffer-in-side-window)
-           (side . bottom)
-           (slot . 0)
-           (window-parameters . ((no-other-window . t)
-                                 (mode-line-format . none))))
           ("\\*cider-error\\*"
            (display-buffer-in-side-window)
            (side . bottom)
