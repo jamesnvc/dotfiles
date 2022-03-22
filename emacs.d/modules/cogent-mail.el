@@ -102,6 +102,12 @@ search."
         (set-buffer this-buf)
         (notmuch-refresh-this-buffer))))
 
+  (defun cogent/notmuch-archive-vox-reports ()
+    (interactive)
+    (notmuch-tag
+     "tag:inbox AND tag:unread AND from:\"vox_reports@bloomventures.io\""
+     '("-inbox" "-unread")))
+
   (add-hook 'message-mode-hook (lambda () (auto-fill-mode -1)))
 
   (general-define-key :keymaps '(notmuch-search-mode-map)
@@ -110,7 +116,8 @@ search."
                       "g g" #'notmuch-search-first-thread
                       "G" #'notmuch-search-last-thread
                       "S" #'cogent/notmuch-search-by-from
-                      "T" #'cogent/notmuch-tag-by-from)
+                      "T" #'cogent/notmuch-tag-by-from
+                      "V" #'cogent/notmuch-archive-vox-reports)
 
   (general-define-key :keymaps '(notmuch-show-mode-map)
                       "C-c c" #'org-capture))
