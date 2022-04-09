@@ -12,7 +12,8 @@
   (evil-define-minor-mode-key 'normal 'flycheck-mode
    (kbd "[ q") #'flycheck-previous-error
    (kbd "] q") #'flycheck-next-error
-   (kbd "[ Q") #'flycheck-first-error))
+   (kbd "[ Q") #'flycheck-first-error)
+  (add-hook 'sh-mode-hook #'flycheck-mode))
 
 ;; Turn modeline red when Flycheck has errors.
 (use-package flycheck-color-mode-line

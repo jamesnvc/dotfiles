@@ -23,8 +23,9 @@
   :custom
   ((exec-path-from-shell-shell-name (executable-find "fish"))
    (exec-path-from-shell-arguments '("-l")))
-  :config
+  :init
   (exec-path-from-shell-initialize)
+  :config
   (unless (getenv "NIX_PATH")
     (exec-path-from-shell-copy-envs
      '("NIX_PATH" "NIX_PROFILES" "NIX_SSL_CERT_FILE")))

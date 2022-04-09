@@ -70,7 +70,8 @@
   :states '(normal visual)
   "q" #'window-toggle-side-windows
   "+" (lambda () (interactive) (cogent-fonts/update-font-size 1))
-  "-" (lambda () (interactive) (cogent-fonts/update-font-size -1)))
+  "-" (lambda () (interactive) (cogent-fonts/update-font-size -1))
+  "\\" #'sort-lines)
 
 (use-package dired
   :straight (:type built-in)

@@ -33,4 +33,15 @@
   :config
   (global-so-long-mode 1))
 
+(use-package smartscan
+  :commands (smartscan-mode)
+  :init (smartscan-mode 1))
+
+(use-package tree-sitter
+  :commands (global-tree-sitter-mode tree-sitter-mode tree-sitter-hl-mode)
+  :init
+  (global-tree-sitter-mode)
+  :hook ((tree-sitter-after-on-hook . tree-sitter-hl-mode)))
+(use-package tree-sitter-langs)
+
 (provide 'cogent-editing)
