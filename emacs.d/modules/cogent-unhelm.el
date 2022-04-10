@@ -98,12 +98,10 @@
   :config
   (setq prot-orderless-default-styles
         '(orderless-prefixes
-          orderless-strict-leading-initialism
           orderless-regexp))
   (setq prot-orderless-alternative-styles
         '(orderless-literal
           orderless-prefixes
-          orderless-strict-leading-initialism
           orderless-regexp)))
 
 (use-package orderless
