@@ -204,28 +204,6 @@
 (use-package prot-common
   :straight (:type built-in))
 
-(use-package mct
-  :straight (mct
-             :type git
-             :host gitlab
-             :repo "protesilaos/mct")
-  :config
-  (mct-minibuffer-mode 1)
-  (mct-region-mode 1)
-  (setq mct-remove-shadowed-file-names t)
-  (setq mct-hide-completion-mode-line t)
-  (setq mct-show-completion-line-numbers nil)
-  (setq mct-apply-completion-stripes nil)
-  (setq mct-minimum-input 3)
-  (setq mct-live-update-delay 0.6)
-  (setq mct-completion-passlist '(imenu Info-goto-node Info-index Info-menu vc-retrieve-tag))
-
-  (define-key global-map (kbd "s-v") #'mct-focus-mini-or-completions)
-  (define-key mct-minibuffer-completion-list-map (kbd "<escape>") #'mct-keyboard-quit-dwim)
-  (define-key mct-minibuffer-completion-list-map (kbd "M-g M-g") #'mct-choose-completion-number)
-  (define-key mct-minibuffer-local-completion-map (kbd "M-g M-g") #'mct-choose-completion-number)
-  (general-define-key :states '(insert) "C-\\" #'completion-at-point))
-
 (use-package minibuffer
   :straight (:type built-in)
   :config
@@ -272,6 +250,16 @@
   (minibuffer-electric-default-mode 1)
 
   ;; from `prot-common.el'
-  (add-hook 'completion-list-mode-hook #'prot-common-truncate-lines-silently))
+  (add-hook 'completion-list-mode-hook #'prot-common-truncate-lines-silently)
+  ;; from `mct.el'
+  (defun mct-focus-minibuffer ()
+    "Focus the active minibuffer."
+    (interactive nil mct-minibuffer-mode)
+    (when-let ((mini (active-minibuffer-window)))
+      (select-window mini)))
+  (define-key global-map (kbd "s-v") #'mct-focus-minibuffer)
+  (general-define-key :states '(insert) "C-\\" #'completion-at-point)
+  (define-key minibuffer-local-completion-map [remap next-line] #'minibuffer-next-completion)
+  (define-key minibuffer-local-completion-map [remap previous-line] #'minibuffer-previous-completion))
 
 (provide 'cogent-unhelm)
