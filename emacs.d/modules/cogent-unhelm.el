@@ -48,7 +48,7 @@
 
   ;; Enables previews inside the standard *Completions* buffer (what
   ;; `mct.el' uses).
-  (add-hook 'completion-list-mode-hook #'consult-preview-at-point-mode)
+  ;; (add-hook 'completion-list-mode-hook #'consult-preview-at-point-mode)
 
   (let ((map global-map))
     (define-key map (kbd "C-x M-:") #'consult-complex-command)
@@ -158,6 +158,21 @@
                                                bookmark-current-bookmark)))
   (cogent--embark-act #'cogent--split-right #'bookmark-jump bookmark))
 
+(defun cogent/switch-to-consult-grep-horiz-split (location)
+  ;; don't need the extra wrapper thing that
+  ;; `embark-consult-goto-grep' uses, because with the new setup, our
+  ;; selected window is the minibuffer
+  (split-window nil nil 'above)
+  (consult--jump (consult--grep-position location))
+  (pulse-momentary-highlight-one-line (point)))
+(defun cogent/switch-to-consult-grep-vert-split (location)
+  ;; don't need the extra wrapper thing that
+  ;; `embark-consult-goto-grep' uses, because with the new setup, our
+  ;; selected window is the minibuffer
+  (split-window nil nil 'left)
+  (consult--jump (consult--grep-position location))
+  (pulse-momentary-highlight-one-line (point)))
+
 (defun cogent/absolute-path-to-kill-ring (file)
   (kill-new (expand-file-name file)))
 
@@ -180,6 +195,8 @@
           (kill-ring . zebra)
           (t . list)))
   (setq embark-quit-after-action t)
+  (define-key embark-consult-search-map (kbd "C-s") #'cogent/switch-to-consult-grep-horiz-split)
+  (define-key embark-consult-search-map (kbd "C-v") #'cogent/switch-to-consult-grep-vert-split)
   :general
   (:keymaps '(embark-buffer-map)
             "C-s" #'cogent/switch-to-buffer-horiz-split
