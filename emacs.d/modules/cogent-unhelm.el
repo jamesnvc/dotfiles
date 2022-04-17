@@ -25,8 +25,7 @@
              :branch "main")
   :config
   (setq consult-line-numbers-widen t)
-  ;; ;; FIXME 2021-04-10: This does not work with `prot-minibuffer.el'.
-  ;; (setq completion-in-region-function #'consult-completion-in-region)
+  (setq completion-in-region-function #'consult-completion-in-region)
   (setq consult-async-min-input 3)
   (setq consult-async-input-debounce 0.5)
   (setq consult-async-input-throttle 0.8)
@@ -235,6 +234,7 @@
   (setq completion-show-help nil)
   (setq completion-auto-help t)
   (setq completion-ignore-case t)
+  (setq completions-max-height 20)
   (setq-default case-fold-search t)   ; For general regexp
 
   ;; The following two are updated in Emacs 28.  They concern the
@@ -265,18 +265,16 @@
   (file-name-shadow-mode 1)
   (minibuffer-depth-indicate-mode 1)
   (minibuffer-electric-default-mode 1)
+  (setq minibuffer-completion-auto-choose nil)
 
   ;; from `prot-common.el'
   (add-hook 'completion-list-mode-hook #'prot-common-truncate-lines-silently)
-  ;; from `mct.el'
-  (defun mct-focus-minibuffer ()
-    "Focus the active minibuffer."
-    (interactive nil mct-minibuffer-mode)
-    (when-let ((mini (active-minibuffer-window)))
-      (select-window mini)))
-  (define-key global-map (kbd "s-v") #'mct-focus-minibuffer)
-  (general-define-key :states '(insert) "C-\\" #'completion-at-point)
+
   (define-key minibuffer-local-completion-map [remap next-line] #'minibuffer-next-completion)
-  (define-key minibuffer-local-completion-map [remap previous-line] #'minibuffer-previous-completion))
+  (define-key minibuffer-local-completion-map [remap previous-line] #'minibuffer-previous-completion)
+  (define-key minibuffer-local-completion-map (kbd "TAB") (lambda () (interactive) (minibuffer-choose-completion t)))
+  ;; refresh completion candidates
+  (define-key minibuffer-local-completion-map (kbd "C-l") #'minibuffer-completion-help)
+  )
 
 (provide 'cogent-unhelm)
