@@ -8,6 +8,7 @@
   :straight (:type built-in)
   :config
   (put 'dired-find-alternate-file 'disabled nil)
+  (setopt dired-mouse-drag-files t)
   :custom
   ((dired-dwim-target t)
    (dired-recursive-copies 'always)
