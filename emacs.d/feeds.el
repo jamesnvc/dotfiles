@@ -93,4 +93,5 @@
         ("https://acoup.blog/feed/")
         ("https://www.youtube.com/feeds/videos.xml?user=SteveYegge" youtube)
         ("https://www.youtube.com/feeds/videos.xml?channel_id=UC67cteTsbTyvTaNlPrB84BQ" youtube) ; trillionaire mindset
+        ("https://drewdevault.com/blog/index.xml" tech)
         ))
