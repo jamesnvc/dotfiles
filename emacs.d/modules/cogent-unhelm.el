@@ -257,6 +257,7 @@
 
   (setq enable-recursive-minibuffers t)
   (setq read-answer-short t) ; also check `use-short-answers' for Emacs28
+  (setopt use-short-answers t)
   (setq resize-mini-windows t)
   (setq minibuffer-eldef-shorten-default t)
 
