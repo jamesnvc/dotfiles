@@ -20,6 +20,7 @@
 
 (when (or (string-equal (system-name) "zhora.local")
           (string-equal (system-name) "nextcanada-mac-winnipeg.local"))
+  (setq-default auto-composition-mode nil)
   (set-frame-font "PragmataPro 14" nil t)
   (dolist (face '(default fixed-pitch))
     (set-face-attribute face nil :font "PragmataPro Liga-14"))
