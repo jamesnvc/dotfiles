@@ -18,14 +18,14 @@
   (evil-set-initial-state 'eww-history-mode 'emacs)
   (evil-set-initial-state 'diff-mode 'emacs)
   (evil-set-initial-state 'dired-mode 'emacs)
-  (evil-set-initial-state 'man-mode 'emacs)
+  (evil-set-initial-state 'Man-mode 'emacs)
   (evil-set-initial-state 'woman-mode 'emacs)
   (evil-set-initial-state 'vundo--mode 'emacs)
   (evil-set-initial-state 'completion-mode 'emacs)
   (evil-set-initial-state 'process-menu-mode 'emacs)
   (evil-set-initial-state 'timer-list-mode 'emacs)
   (evil-set-initial-state 'info-mode 'emacs)
-  (evil-set-initial-state 'grep-mode 'normal)
+  (evil-set-initial-state 'grep-mode 'emacs)
 
   (evil-select-search-module 'evil-search-module 'isearch)
 
