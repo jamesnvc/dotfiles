@@ -35,10 +35,10 @@
 
 (use-package smartscan
   :commands (smartscan-mode)
-  :init (smartscan-mode 1))
+  :hook ((prog-mode-hook . smartscan-mode)))
 
 (use-package tree-sitter
-  :commands (global-tree-sitter-mode tree-sitter-mode tree-sitter-hl-mode)
+  ;; :commands (global-tree-sitter-mode tree-sitter-mode tree-sitter-hl-mode)
   :init
   (global-tree-sitter-mode)
   :hook ((tree-sitter-after-on-hook . tree-sitter-hl-mode)))
