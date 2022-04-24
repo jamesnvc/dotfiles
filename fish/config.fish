@@ -33,5 +33,9 @@ if test "$INSIDE_EMACS" = 'vterm'
     source "$HOME/.config/fish/vterm.fish"
 end
 
-direnv hook fish | source
-pyenv init - | source
+if command -q direnv
+    direnv hook fish | source
+end
+if command -q pyenv
+    pyenv init - | source
+end
