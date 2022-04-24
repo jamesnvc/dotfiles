@@ -78,3 +78,6 @@
 (put 'list-timers 'disabled nil)
 (put 'list-threads 'disabled nil)
 (put 'set-goal-column 'disabled nil)
+
+(when (file-exists-p (concat dotfiles-dir "local-init.el"))
+  (load (concat dotfiles-dir "local-init.el") 'noerror))
