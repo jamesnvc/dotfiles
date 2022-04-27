@@ -312,8 +312,8 @@
   (define-key minibuffer-local-completion-map [remap next-line] #'minibuffer-next-completion)
   (define-key minibuffer-local-completion-map [remap previous-line] #'minibuffer-previous-completion)
   (define-key minibuffer-local-completion-map (kbd "TAB") (lambda () (interactive) (minibuffer-choose-completion t)))
-  (define-key minibuffer-local-completion-map (kbd "M-n") #'cogent/minibuffer-next-completion-group)
-  (define-key minibuffer-local-completion-map (kbd "M-p") #'cogent/minibuffer-previous-completion-group)
+  (define-key minibuffer-local-completion-map (kbd "M-<right>") #'cogent/minibuffer-next-completion-group)
+  (define-key minibuffer-local-completion-map (kbd "M-<left>") #'cogent/minibuffer-previous-completion-group)
   ;; refresh completion candidates
   (define-key minibuffer-local-completion-map (kbd "C-l") #'minibuffer-completion-help))
 
