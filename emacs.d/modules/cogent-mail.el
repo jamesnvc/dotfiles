@@ -46,25 +46,25 @@
     (setq cogent/mail-sync-timer
           (run-with-timer 5 nil #'cogent/perform-mail-sync)))
 
+  (require 'subr-x)
+  (require 'cl-seq)
+
   (defun cogent/move-mail-as-needed ()
     (when (cl-member "+inbox" tag-changes :test #'string-equal)
-      (message "Moving to inbox %S %S" tag-changes query)
       (let ((to-move-files (notmuch-call-notmuch-sexp
                             "search" "--output=files"
                             "--format=sexp" "--format-version=1"
-                            "--"
-                            query)))
+                            "--" query)))
         (dolist (file to-move-files)
-          (let ((base-name (replace-regexp-in-string
-                            (rx (seq ",U=" (1+ digit)))
-                            ""
-                            (file-name-nondirectory file))))
-            (copy-file
-             file
-             (expand-file-name
-              (file-name-concat
-               message-directory
-               "/Inbox/cur/" base-name))))))))
+          (let ((new-loc (thread-last
+                           file (file-name-nondirectory)
+                           (replace-regexp-in-string (rx (seq ",U=" (1+ digit)))
+                                                     "")
+                           (file-name-concat message-directory "/Inbox/cur/")
+                           (expand-file-name))))
+            (condition-case _
+                (copy-file file new-loc)
+              ('file-already-exists nil)))))))
 
   (add-hook 'notmuch-after-tag-hook #'cogent/move-mail-as-needed)
   (add-hook 'notmuch-after-tag-hook #'cogent/sync-mail)
