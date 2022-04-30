@@ -63,11 +63,11 @@
                            (file-name-concat message-directory "/Inbox/cur/")
                            (expand-file-name))))
             (condition-case _
-                (copy-file file new-loc)
+                (rename-file file new-loc)
               ('file-already-exists nil)))))))
 
-  (add-hook 'notmuch-after-tag-hook #'cogent/move-mail-as-needed)
-  (add-hook 'notmuch-after-tag-hook #'cogent/sync-mail)
+  (add-hook 'notmuch-after-tag-hook #'cogent/move-mail-as-needed -90)
+  (add-hook 'notmuch-after-tag-hook #'cogent/sync-mail 99)
 
   (with-eval-after-load 'notmuch
     (setq notmuch-address-selection-function
