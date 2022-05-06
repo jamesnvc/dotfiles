@@ -61,7 +61,7 @@
   :init
   (add-hook 'after-init-hook #'gcmh-mode)
   :config
-  (setopt gcmh-idle-delay 5)
+  (setopt gcmh-idle-delay 'auto)
   (setopt gcmh-verbose t))
 
 (provide 'cogent-general)
