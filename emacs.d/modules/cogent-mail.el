@@ -20,9 +20,6 @@
         ;; report problems with the smtp server
         smtpmail-debug-info t
 
-        ;; add Cc and Bcc headers to the message buffer
-        message-default-mail-headers "Cc: \nBcc: \n"
-
         ;; postponed message is put in the following draft directory
         message-auto-save-directory "~/.mail/fastmail/Drafts/tmp"
         message-kill-buffer-on-exit t
