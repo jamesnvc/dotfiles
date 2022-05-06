@@ -317,4 +317,72 @@
   ;; refresh completion candidates
   (define-key minibuffer-local-completion-map (kbd "C-l") #'minibuffer-completion-help))
 
+
+(defmacro comment (&rest body)
+  `(progn))
+
+;; XXX: temporary hack to overwrite the function in crm.el until I re-build with my patch applied
+(comment
+ (defun completing-read-multiple
+     (prompt table &optional predicate require-match initial-input
+             hist def inherit-input-method)
+   "Read multiple strings in the minibuffer, with completion.
+The arguments are the same as those of `completing-read'.
+\\<crm-local-completion-map>
+Input multiple strings by separating each one with a string that
+matches the regexp `crm-separator'.  For example, if the separator
+regexp is \",\", entering \"alice,bob,eve\" specifies the strings
+\"alice\", \"bob\", and \"eve\".
+
+We refer to contiguous strings of non-separator-characters as
+\"elements\".  In this example there are three elements.
+
+Completion is available on a per-element basis.  For example, if the
+contents of the minibuffer are \"alice,bob,eve\" and point is between
+\"l\" and \"i\", pressing \\[minibuffer-complete] operates on the element \"alice\".
+
+This function returns a list of the strings that were read,
+with empty strings removed."
+   (let* ((map (if require-match
+                   crm-local-must-match-map
+                 crm-local-completion-map))
+          input)
+     (minibuffer-with-setup-hook
+         (lambda ()
+           (add-hook 'choose-completion-string-functions
+                     'crm--choose-completion-string nil 'local)
+           (setq-local minibuffer-completion-table #'crm--collection-fn)
+           (setq-local minibuffer-completion-predicate predicate)
+           (setq-local completion-list-insert-choice-function
+                       (lambda (start end choice)
+                         (if (and (stringp start) (stringp end))
+                             (let* ((beg (save-excursion
+                                           (goto-char (minibuffer-prompt-end))
+                                           (or (search-forward start nil t)
+                                               (search-forward-regexp crm-separator nil t)
+                                               (minibuffer-prompt-end))))
+                                    (end (save-excursion
+                                           (goto-char (point-max))
+                                           (or (search-backward end nil t)
+                                               (progn
+                                                 (goto-char beg)
+                                                 (search-forward-regexp crm-separator nil t))
+                                               (point-max)))))
+                               (completion--replace beg end choice))
+                           (completion--replace start end choice))))
+           ;; see completing_read in src/minibuf.c
+           (setq-local minibuffer-completion-confirm
+                       (unless (eq require-match t) require-match))
+           (setq-local crm-completion-table table))
+       (setq input (read-from-minibuffer
+                    prompt initial-input map
+                    nil hist def inherit-input-method)))
+     ;; If the user enters empty input, `read-from-minibuffer'
+     ;; returns the empty string, not DEF.
+     (when (and def (string-equal input ""))
+       (setq input (if (consp def) (car def) def)))
+     ;; Remove empty strings in the list of read strings.
+     (split-string input crm-separator t)))
+ )
+
 (provide 'cogent-unhelm)
