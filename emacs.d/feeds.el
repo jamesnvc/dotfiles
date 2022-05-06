@@ -94,4 +94,5 @@
         ("https://www.youtube.com/feeds/videos.xml?user=SteveYegge" youtube)
         ("https://www.youtube.com/feeds/videos.xml?channel_id=UC67cteTsbTyvTaNlPrB84BQ" youtube) ; trillionaire mindset
         ("https://drewdevault.com/blog/index.xml" tech)
-        ("https://danluu.com/atom.xml" tech mustread)))
+        ("https://danluu.com/atom.xml" tech mustread)
+        ("https://fasterthanli.me/index.xml" tech)))
