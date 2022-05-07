@@ -61,7 +61,8 @@
   :init
   (add-hook 'after-init-hook #'gcmh-mode)
   :config
-  (setopt gcmh-idle-delay 'auto)
+  ;; auto ends up with *very* long pauses after a lot of typing
+  (setopt gcmh-idle-delay '2)
   (setopt gcmh-verbose t))
 
 (provide 'cogent-general)
