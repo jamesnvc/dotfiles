@@ -101,6 +101,7 @@
                '(shell cogent-shell--annotator none)))
 
 (defun cogent-shell--switch-to-eshell (cand)
+  "Create a new eshell at the selected path"
   (interactive "s")
   (let ((path (if-let (buf (cogent-shell--cand-buffer cand))
                   (buffer-local-value 'default-directory buf)
@@ -110,6 +111,7 @@
       (eshell t))))
 
 (defun cogent-shell--switch-to-vterm (cand)
+  "Create a new vterm at the selected path"
   (interactive "s")
   (let* ((path (if-let (buf (cogent-shell--cand-buffer cand))
                    (buffer-local-value 'default-directory buf)
@@ -118,6 +120,7 @@
     (vterm t)))
 
 (defun cogent-shell--switch-horiz-split (cand)
+  "Switch to shell in a new window below the current one."
   (interactive "s")
   (if-let (buffer (cogent-shell--cand-buffer cand))
       (cogent--split-below #'switch-to-buffer buffer)
@@ -127,6 +130,7 @@
              (display-comint-buffer-action (list #'display-buffer-same-window)))
         (eshell t)))))
 (defun cogent-shell--switch-vert-split (cand)
+  "Switch to shell in a new window to the right of the current one."
   (interactive "s")
   (if-let (buffer (cogent-shell--cand-buffer cand))
       (cogent--split-right #'switch-to-buffer buffer)
