@@ -136,13 +136,20 @@
              (display-comint-buffer-action (list #'display-buffer-same-window)))
         (eshell t)))))
 
+(defun cogent-shell--kill-buffer (cand)
+  "Kill the indicated shell buffer"
+  (interactive "s")
+  (if-let (buffer (cogent-shell--cand-buffer cand))
+      (kill-buffer buffer)
+    (error "No such buffer '%s'" cand)))
+
 (with-eval-after-load 'embark
 
   (embark-define-keymap embark-shell-actions
     "Keymap for actions for shell buffers"
-    ("RET" switch-to-buffer)
     ("e" cogent-shell--switch-to-eshell)
     ("v" cogent-shell--switch-to-vterm)
+    ("k" cogent-shell--kill-buffer)
     ("C-s" cogent-shell--switch-horiz-split)
     ("C-v" cogent-shell--switch-vert-split))
 
