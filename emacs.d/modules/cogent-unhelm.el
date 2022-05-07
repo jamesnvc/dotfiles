@@ -306,14 +306,29 @@
           ;; end in the group separator
           (next-line 1)))))
 
+  (defun cogent/minibuffer-completion-beginning ()
+    (interactive)
+    (with-minibuffer-completions-window
+      (goto-char (point-min))
+      (next-completion 1)))
+
+  (defun cogent/minibuffer-completion-end ()
+    (interactive)
+    (with-minibuffer-completions-window
+      (goto-char (point-max))
+      (previous-completion 1)))
+
   (general-define-key :states '(insert)
                       "C-\\" #'completion-at-point)
+
 
   (define-key minibuffer-local-completion-map [remap next-line] #'minibuffer-next-completion)
   (define-key minibuffer-local-completion-map [remap previous-line] #'minibuffer-previous-completion)
   (define-key minibuffer-local-completion-map (kbd "TAB") (lambda () (interactive) (minibuffer-choose-completion t)))
   (define-key minibuffer-local-completion-map (kbd "M-<right>") #'cogent/minibuffer-next-completion-group)
   (define-key minibuffer-local-completion-map (kbd "M-<left>") #'cogent/minibuffer-previous-completion-group)
+  (define-key minibuffer-local-completion-map (kbd "M-<") #'cogent/minibuffer-completion-beginning)
+  (define-key minibuffer-local-completion-map (kbd "M->") #'cogent/minibuffer-completion-end)
   ;; refresh completion candidates
   (define-key minibuffer-local-completion-map (kbd "C-l") #'minibuffer-completion-help))
 
