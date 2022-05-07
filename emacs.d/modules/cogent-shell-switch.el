@@ -50,7 +50,7 @@
                               for cand = (car cand-buf)
                               for buf = (cdr cand-buf)
                               collect (cons (concat (alist-get 'buffer-name cand)
-                                                    " " ; paragraph separator, not space!
+                                                    (string #x2029) ; paragraph separator
                                                     (alist-get 'path cand))
                                             buf)
                               into cands
