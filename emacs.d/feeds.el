@@ -82,17 +82,13 @@
         ("https://protesilaos.com/codelog.xml" emacs)
         ("https://www.youtube.com/feeds/videos.xml?channel_id=UCokqzNPBJ65raczldVuHAww" youtube) ; chapo
         ("https://www.youtube.com/feeds/videos.xml?channel_id=UCGB0idFFHkLUAmKjqdcEJKg" youtube) ; chapo compilations
-        ("https://www.youtube.com/feeds/videos.xml?channel_id=UCSZS1EiwrdzVq_9oWc7uHWw" youtube)
-        ("https://www.youtube.com/feeds/videos.xml?user=ZidenEdits" youtube)
-        ("https://www.youtube.com/feeds/videos.xml?user=sensimillia92" youtube)
         ("https://www.manueluberti.eu/feed.xml" emacs)
         ("https://www.rousette.org.uk/archives/index.xml" emacs)
-        ("https://worldchess.com/news/rss/" chess)
-        ("https://www.youtube.com/feeds/videos.xml?channel_id=UCtVp2nha6WEOTSboitqwO5Q" mustread)
         ("https://www.youtube.com/feeds/videos.xml?user=supergreatfriend" youtube)
         ("https://acoup.blog/feed/")
         ("https://www.youtube.com/feeds/videos.xml?user=SteveYegge" youtube)
         ("https://www.youtube.com/feeds/videos.xml?channel_id=UC67cteTsbTyvTaNlPrB84BQ" youtube) ; trillionaire mindset
         ("https://drewdevault.com/blog/index.xml" tech)
         ("https://danluu.com/atom.xml" tech mustread)
-        ("https://fasterthanli.me/index.xml" tech)))
+        ("https://fasterthanli.me/index.xml" tech)
+        ("https://www.youtube.com/feeds/videos.xml?user=mvincent4130" youtube)))
