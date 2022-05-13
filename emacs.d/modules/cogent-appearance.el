@@ -112,6 +112,8 @@
 (cond
  ((member "Noto Color Emoji" (font-family-list))
   (set-fontset-font t 'unicode "Noto Color Emoji" nil 'prepend))
+ ((member "Apple Color Emoji" (font-family-list))
+  (set-fontset-font t 'unicode "Apple Color Emoji" nil 'prepend))
  ((member "FSD Emoji" (font-family-list))
   (set-fontset-font t 'unicode "FSD Emoji" nil 'prepend))
  ((member "Symbola" (font-family-list))
