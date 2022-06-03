@@ -49,6 +49,32 @@
                unless (gethash url living-feeds)
                collect url)))
 
+  (defun cogent/feed-subs-table ()
+    (interactive)
+    (require 'vtable)
+    (pop-to-buffer "*cogent feeds*")
+    (let ((feed-nentries (make-hash-table :test 'equal))
+          (feed-last-update (make-hash-table :test 'equal)))
+      (with-elfeed-db-visit (entry feed)
+        (let ((url (elfeed-feed-url feed)))
+          (when (not (gethash url feed-nentries))
+            (setf (gethash url feed-nentries) 0))
+          (cl-incf (gethash url feed-nentries))
+          (let ((date (elfeed-entry-date entry)))
+            (when (or (null (gethash url feed-last-update))
+                      (> date (gethash url feed-last-update)))
+              (setf (gethash url feed-last-update) date)))))
+      (make-vtable
+       :columns '("Feed" "Entries" "Last Update")
+       :objects (elfeed-feed-list)
+       :getter (lambda (object column vtable)
+                 (pcase (vtable-column vtable column)
+                   ("Feed" object)
+                   ("Entries" (gethash object feed-nentries))
+                   ("Last Update"
+                    (format-time-string "%Y-%m-%d"
+                                        (gethash object feed-last-update))))))))
+
   (defun cogent/elfeed-mark-visible-read ()
     "From http://xenodium.com/#faster-elfeed-browsing-with-paging"
     (interactive)
