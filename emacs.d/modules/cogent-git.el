@@ -2,9 +2,15 @@
 
 (require 'cogent-package)
 
+(use-package compat)
+
 (use-package transient
   ;; transient now part of Emacs!
-  :straight (:type built-in))
+  ;; ...but use git version, to keep in sync with magit
+  :straight (transient
+             :type git
+             :host github
+             :repo "magit/transient"))
 
 (use-package magit
   :commands magit-status
