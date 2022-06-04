@@ -4,5 +4,13 @@
 <dict>
   <key>^&#x007f;</key>
   <string>deleteWordBackward:</string>
+  <key>~t</key>
+  <string>transposeWords:</string>
+  <key>~v</key>
+  <string>pageUp:</string>
+  <key>~&lt;</key>
+  <string>moveToBeginningOfDocument:</string>
+  <key>~&gt;</key>
+  <string>moveToEndOfDocument:</string>
 </dict>
 </plist>
