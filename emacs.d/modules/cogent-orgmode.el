@@ -19,6 +19,7 @@
   (customize-set-variable 'org-agenda-restore-windows-after-quit t)
   (customize-set-variable 'org-agenda-show-future-repeats nil)
   (customize-set-variable 'org-agenda-skip-scheduled-if-done t)
+  (setopt org-edit-src-content-indentation 0)
   (customize-set-variable
    'org-agenda-custom-commands
    `(("n" "Agenda and all TODOs"
