@@ -1,9 +1,10 @@
 ;;; -*- lexical-binding: t -*-
 
-(set-frame-font "PragmataPro Liga 8" nil t)
-(dolist (face '(default fixed-pitch))
-  (set-face-attribute face nil :font "PragmataPro Liga-8"))
-(set-face-attribute 'variable-pitch nil :font "Helvetica-8")
+(cond
+ ((member "PragmataPro Liga" (font-family-list))
+  (set-frame-font "PragmataPro Liga" nil t))
+ ((member "PragmataPro" (font-family-list))
+  (set-frame-font "PragmataPro" nil t)))
 (require 'cogent-pragmata)
 
 (setq redisplay-dont-pause t)
@@ -17,6 +18,12 @@
    (add-to-list 'exec-path dir)
    (setenv "PATH" (concat dir ":" (getenv "PATH")))
    (add-to-list 'cogent/extra-path-dirs dir)))
+
+(when (string-equal (system-name) "gonk")
+    (set-frame-font "PragmataPro Liga 8" nil t)
+  (dolist (face '(default fixed-pitch))
+    (set-face-attribute face nil :font "PragmataPro Liga-8"))
+  (set-face-attribute 'variable-pitch nil :font "Helvetica-8"))
 
 (when (or (string-equal (system-name) "zhora.local")
           (string-equal (system-name) "nextcanada-mac-winnipeg.local"))
