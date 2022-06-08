@@ -40,6 +40,8 @@
 
 (setq backup-directory-alist `(("." . ,(expand-file-name (concat dotfiles-dir "bak")))))
 
+(setopt create-lockfiles nil)
+
 (setopt next-error-message-highlight t)
 
 (setq compilation-ask-about-save nil)
