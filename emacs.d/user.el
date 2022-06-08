@@ -51,6 +51,9 @@
   (require 'ls-lisp)
   (setq ls-lisp-use-insert-directory-program nil))
 
+(when (eq window-system 'mac)
+  (setq mac-option-modifier '(:ordinary meta :function meta :mouse meta)))
+
 (general-define-key :keymaps 'global
                     "<f2>" (if (version< emacs-version "27.0")
                                #'cogent/eyebrowse-helm
