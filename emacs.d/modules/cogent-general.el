@@ -67,4 +67,7 @@
   (setopt gcmh-idle-delay 2)
   (setopt gcmh-verbose nil))
 
+(defmacro comment (&rest body)
+  `(progn))
+
 (provide 'cogent-general)

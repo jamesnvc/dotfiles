@@ -339,8 +339,4 @@
   ;; refresh completion candidates
   (define-key minibuffer-local-completion-map (kbd "C-l") #'minibuffer-completion-help))
 
-
-(defmacro comment (&rest body)
-  `(progn))
-
 (provide 'cogent-unhelm)
