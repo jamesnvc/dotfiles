@@ -209,7 +209,14 @@
             "C-v" #'cogent/switch-to-bookmark-vert-split))
 
 (use-package embark-consult
-  :after (embark consult))
+  :after (embark consult)
+  :config
+  ;; after exporting ripgrep results to buffer, call
+  ;; `next-error-select-buffer' to make that be the "error" buffer, then
+  ;; you can use M-g M-n or C-x ` to go between "errors"
+  (advice-add 'embark-consult-export-grep :after
+              (lambda (&rest args) (next-error-select-buffer (current-buffer))))
+  (define-key embark-consult-export-grep-map (kbd "Q") (lambda () (interactive) (quit-window t))))
 
 (general-def
   "M-x" #'execute-extended-command

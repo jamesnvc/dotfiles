@@ -41,9 +41,6 @@
 (setq backup-directory-alist `(("." . ,(expand-file-name (concat dotfiles-dir "bak")))))
 
 (setopt next-error-message-highlight t)
-;; after exporting ripgrep results to buffer, call
-;; `next-error-select-buffer' to make that be the "error" buffer, then
-;; you can use M-g M-n or C-x ` to go between "errors"
 
 (setq compilation-ask-about-save nil)
 
