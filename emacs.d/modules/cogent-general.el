@@ -69,6 +69,11 @@
   (setopt gcmh-idle-delay 2)
   (setopt gcmh-verbose nil))
 
+(use-package calc
+  :straight (:type built-in)
+  :config
+  (setopt calc-make-windows-dedicated t))
+
 (defmacro comment (&rest body)
   `(progn))
 
