@@ -25,6 +25,19 @@
     (set-face-attribute face nil :font "PragmataPro Liga-8"))
   (set-face-attribute 'variable-pitch nil :font "Helvetica-8"))
 
+(when (string-equal (system-name) "bishop.local")
+  (setq insert-directory-program "gls")
+  (setopt ring-bell-function (lambda () nil))
+  (defun cogent/shell-quote-argument (argument &optional posix)
+    (if (equal argument "")
+        "''"
+      ;; Quote everything except POSIX filename characters.
+      ;; This should be safe enough even for really weird shells.
+      (string-replace
+       "\n" "'\n'"
+       (replace-regexp-in-string "[^-0-9a-zA-Z_./\n@]" "\\\\\\&" argument))))
+  (advice-add 'shell-quote-argument :override #'cogent/shell-quote-argument))
+
 (when (or (string-equal (system-name) "zhora.local")
           (string-equal (system-name) "nextcanada-mac-winnipeg.local"))
   (setq-default auto-composition-mode nil)
