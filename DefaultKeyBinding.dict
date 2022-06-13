@@ -12,7 +12,5 @@
   <string>moveToBeginningOfDocument:</string>
   <key>~&gt;</key>
   <string>moveToEndOfDocument:</string>
-  <key>&#x1B;</key>
-  <string>complete:</string>
 </dict>
 </plist>
