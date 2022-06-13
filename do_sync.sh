@@ -6,4 +6,4 @@ set -euo pipefail
 mbsync -Va
 notmuch new
 
-pkill -RTMIN+1 i3blocks
+#pkill -RTMIN+1 i3blocks

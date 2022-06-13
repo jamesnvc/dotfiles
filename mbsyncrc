@@ -2,7 +2,7 @@ IMapAccount fastmail
 Host imap.fastmail.com
 Port 993
 User james.cash@occasionallycogent.com
-PassCmd "gpg2 -q --for-your-eyes-only --no-tty -d ~/.passwd/fastmail.gpg"
+PassCmd "gpg -q --for-your-eyes-only --no-tty -d ~/.passwd/fastmail.gpg"
 SSLType IMAPS
 SSLVersions TLSv1.2
 
