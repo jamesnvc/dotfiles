@@ -9,6 +9,7 @@
 (use-package skeleton
   :straight (:type built-in)
 
+  :config
   (define-skeleton cs-uuid
     "Insert a randomly-generated uuid"
     nil
