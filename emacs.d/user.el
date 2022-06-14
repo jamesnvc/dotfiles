@@ -49,13 +49,10 @@
   (setq ns-antialias-text nil)
   (cogent/add-to-all-paths (expand-file-name "~/bin"))
 
-  (defun cogent-mac/apply-theme (appearance)
-    "Load theme, taking current system APPEARANCE into consideration."
-    (pcase appearance
-      ('light (modus-themes-load-operandi))
-      ('dark (modus-themes-load-vivendi))))
 
-  (add-hook 'ns-system-appearance-change-functions #'cogent-mac/apply-theme))
+
+  (require 'ls-lisp)
+  (setq ls-lisp-use-insert-directory-program nil))
 
 (when (string-equal (system-name) "fuchikoma")
   (set-frame-font "PragmataPro 16" nil t)
@@ -68,9 +65,13 @@
   (set-frame-font "PragmataPro 10" nil t)
   (cogent/add-to-all-paths (expand-file-name "~/.nix-profile/bin")))
 
-(when (eq system-type 'darwin)
-  (require 'ls-lisp)
-  (setq ls-lisp-use-insert-directory-program nil))
+(when (eq window-system 'ns)
+  (defun cogent-mac/apply-theme (appearance)
+    "Load theme, taking current system APPEARANCE into consideration."
+    (pcase appearance
+      ('light (modus-themes-load-operandi))
+      ('dark (modus-themes-load-vivendi))))
+  (add-hook 'ns-system-appearance-change-functions #'cogent-mac/apply-theme))
 
 (when (eq window-system 'mac)
   (setq mac-option-modifier '(:ordinary meta :function meta :mouse meta)))
