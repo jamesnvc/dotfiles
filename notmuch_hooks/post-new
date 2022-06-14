@@ -6,7 +6,7 @@ notmuch tag -inbox -- tag:inbox and not folder:Inbox
 notmuch tag +inbox -- folder:Inbox and tag:new
 
 # mailing lists
-notmuch tag -inbox +list +emacs -- '(from:emacs-devel@gnu.org or to:emacs-devel@gnu.org) and tag:new'
+notmuch tag -inbox +list +emacs -- '(from:emacs-devel@gnu.org or to:emacs-devel@gnu.org or to:emacs-diffs@gnu.org) and tag:new'
 # include mailing lists sent to me into the "inbox"
 notmuch tag +inbox -- '(to:"*james.cash@occasionallycogent.com*" and tag:list and tag:new)'
 notmuch tag +inbox -- '(to:"*james.nvc@gmail.com*" and tag:list and tag:new)'
