@@ -15,3 +15,7 @@ if [ "${unread}" -gt 0 ]; then
     printf "📥 %s " "${unread}"
 fi
 printf "📦 %s\n" "${inbox}"
+
+echo "---"
+
+echo "Force Fetch | shell=/Users/james/dotfiles/run_mail_standalone.sh"
