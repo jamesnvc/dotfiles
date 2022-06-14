@@ -11,4 +11,7 @@ NOTMUCH=/opt/homebrew/bin/notmuch
 unread=$("${NOTMUCH}" count -- 'tag:inbox and tag:unread')
 inbox=$("${NOTMUCH}" count -- 'tag:inbox')
 
-printf "👀 %s ✉ %s\n" "${unread}" "${inbox}"
+if [ "${unread}" -gt 0 ]; then
+    printf "📥 %s " "${unread}"
+fi
+printf "📦 %s\n" "${inbox}"
