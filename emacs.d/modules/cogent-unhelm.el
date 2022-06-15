@@ -194,8 +194,7 @@
           (kill-ring . zebra)
           (t . list)))
   (setq embark-quit-after-action t)
-  (define-key embark-consult-search-map (kbd "C-s") #'cogent/switch-to-consult-grep-horiz-split)
-  (define-key embark-consult-search-map (kbd "C-v") #'cogent/switch-to-consult-grep-vert-split)
+
   :general
   (:keymaps '(embark-buffer-map)
             "C-s" #'cogent/switch-to-buffer-horiz-split
@@ -211,6 +210,8 @@
 (use-package embark-consult
   :after (embark consult)
   :config
+  (define-key embark-consult-search-map (kbd "C-s") #'cogent/switch-to-consult-grep-horiz-split)
+  (define-key embark-consult-search-map (kbd "C-v") #'cogent/switch-to-consult-grep-vert-split)
   ;; after exporting ripgrep results to buffer, call
   ;; `next-error-select-buffer' to make that be the "error" buffer, then
   ;; you can use M-g M-n or C-x ` to go between "errors"
