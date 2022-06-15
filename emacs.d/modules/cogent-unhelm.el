@@ -212,6 +212,17 @@
   :config
   (define-key embark-consult-search-map (kbd "C-s") #'cogent/switch-to-consult-grep-horiz-split)
   (define-key embark-consult-search-map (kbd "C-v") #'cogent/switch-to-consult-grep-vert-split)
+  (embark-define-keymap embark-consult-grep-map
+    "Keymap for embark actions in `consult-grep', `consult-ripgrep', etc."
+    ("C-s" cogent/switch-to-consult-grep-horiz-split)
+    ("C-v" cogent/switch-to-consult-grep-vert-split))
+  (defun with-embark-consult-grep-map (fn &rest args)
+    "Let-bind `embark-keymap-alist' to include my split functions"
+    (let ((embark-keymap-alist (thread-last embark-keymap-alist
+                                 (cons '(consult-grep . embark-consult-grep-map))
+                                 (cons '(consult-ripgrep . embark-consult-grep-map)))))
+      (apply fn args)))
+  (advice-add 'consult-ripgrep :around #'with-embark-consult-grep-map)
   ;; after exporting ripgrep results to buffer, call
   ;; `next-error-select-buffer' to make that be the "error" buffer, then
   ;; you can use M-g M-n or C-x ` to go between "errors"
