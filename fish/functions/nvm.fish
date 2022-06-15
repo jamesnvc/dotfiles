@@ -1,3 +1,3 @@
 function nvm
-    bash -c "source ~/.nvm/nvm.sh && nvm $argv"
+    bash -c "source /opt/homebrew/opt/nvm/nvm.sh && nvm $argv"
 end
