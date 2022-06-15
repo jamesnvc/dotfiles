@@ -12,9 +12,9 @@ unread=$("${NOTMUCH}" count -- 'tag:inbox and tag:unread')
 inbox=$("${NOTMUCH}" count -- 'tag:inbox')
 
 if [ "${unread}" -gt 0 ]; then
-    printf "📥 %s " "${unread}"
+    printf "📥%s" "${unread}"
 fi
-printf "📦 %s\n" "${inbox}"
+printf "📦%s\n" "${inbox}"
 
 echo "---"
 
