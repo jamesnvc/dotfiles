@@ -49,8 +49,6 @@
   (setq ns-antialias-text nil)
   (cogent/add-to-all-paths (expand-file-name "~/bin"))
 
-
-
   (require 'ls-lisp)
   (setq ls-lisp-use-insert-directory-program nil))
 
