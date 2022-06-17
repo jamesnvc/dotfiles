@@ -20,10 +20,9 @@
 (use-package exec-path-from-shell
   :commands exec-path-from-shell-initialize
   :if (memq window-system '(mac ns x))
-  :custom
-  ((exec-path-from-shell-shell-name (executable-find "fish"))
-   (exec-path-from-shell-arguments '("-l")))
   :init
+  (setopt exec-path-from-shell-shell-name (executable-find "fish"))
+  (setopt exec-path-from-shell-arguments '("-l"))
   (exec-path-from-shell-initialize)
   :config
   (unless (getenv "NIX_PATH")
