@@ -2,6 +2,10 @@
 
 (autoload 'ispell-get-word "ispell")
 
+(with-eval-after-load 'ispell
+  (setf (alist-get nil ispell-dictionary-alist)
+        '("[[:alpha:]]" "[^[:alpha:]]" "[0-9']" t ("-d" "en_CA") nil utf-8)))
+
 (defun cogent/lookup-word (word)
   (interactive (list (if (region-active-p)
                          (buffer-substring-no-properties (region-beginning) (region-end))
