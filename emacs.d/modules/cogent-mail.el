@@ -2,6 +2,9 @@
 
 (require 'cogent-keys)
 
+(when (eq 'ns (window-system))
+  (add-to-list 'load-path "/opt/homebrew/Cellar/notmuch/0.36/share/emacs/site-lisp/notmuch"))
+
 (use-package notmuch
   :if (executable-find "notmuch")
   :straight (:type built-in)
