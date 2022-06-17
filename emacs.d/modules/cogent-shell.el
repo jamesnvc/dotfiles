@@ -149,6 +149,12 @@ more-helpful local prompt."
   :commands (vterm vterm-other-window)
   :custom ((vterm-shell (executable-find "fish"))
            (vterm-buffer-name-string "vterm %s"))
+  :config
+  (custom-set-faces
+   `(vterm-color-cyan ((t (:background "#2ea6ee" :foreground "#2ea6ee"))))
+   `(vterm-color-white ((t (:background "#ffffff" :foreground "#ffffff"))))
+   `(vterm-color-black ((t (:background "#000000" :foreground "#000000"))))
+   `(vterm-color-green ((t (:background "#338e33" :foreground "#338e33")))))
   ;; make f3 pass through
   ;; start in emacs mode
   :hook (vterm-mode-hook . (lambda () (display-line-numbers-mode -1))))
