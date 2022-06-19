@@ -107,6 +107,13 @@ evil to have."
     (def-abolish-fn cogent/snake-case #'s-snake-case)
     (def-abolish-fn cogent/camel-case #'s-lower-camel-case)
     (def-abolish-fn cogent/camel-case-upper #'s-upper-camel-case))
+
+  (defun cogent/evil-line-move-wrapper (f count &rest args)
+    (if (or (= count 1) (= count -1))
+        (apply f count args)
+      (let ((line-move-visual nil))
+        (apply f count args))))
+  (advice-add 'evil-line-move :around #'cogent/evil-line-move-wrapper)
   :custom
   ((evil-undo-system 'undo-redo))
   :general
