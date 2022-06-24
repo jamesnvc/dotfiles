@@ -14,27 +14,27 @@
                     "basic.to_if_held_down_threshold_milliseconds": 500,
                     "mouse_motion_to_scroll.speed": 100
                 },
-                "rules": [
+              "rules": [
+                {
+                "manipulators": [
+                  {
+                  "description": "Application key to M-x/Fn",
+                  "from": {
+                    "key_code": "application",
+                    "modifiers": {"optional": ["any"]}
+                  },
+                  "to": [{"key_code": "fn", "lazy": true}],
+                  "to_if_alone": [
                     {
-                        "manipulators": [
-                            {
-                                "description": "Application key to M-x",
-                                "from": {
-                                    "key_code": "application"
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "x",
-                                        "modifiers": [
-                                            "left_option"
-                                        ]
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    }
+                    "key_code": "x",
+                    "modifiers": [
+                      "left_option"]}
+                  ],
+                  "type": "basic"
+                }
                 ]
+              }
+              ]
             },
             "devices": [
                 {
