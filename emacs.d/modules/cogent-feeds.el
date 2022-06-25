@@ -13,7 +13,7 @@
              :type git
              :host github
              :repo "skeeto/youtube-dl-emacs")
-  :custom ((youtube-dl-directory "~/Videos/youtube")
+  :custom ((youtube-dl-directory "~/Movies/youtube")
            (youtube-dl-program "yt-dlp")))
 
 (use-package elfeed
