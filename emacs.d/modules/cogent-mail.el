@@ -2,8 +2,16 @@
 
 (require 'cogent-keys)
 
-(when (eq 'ns (window-system))
-  (add-to-list 'load-path "/opt/homebrew/Cellar/notmuch/0.36/share/emacs/site-lisp/notmuch"))
+(when (and (executable-find "brew")
+           (executable-find "notmuch"))
+  (let* ((brew-prefix
+          (shell-command-to-string
+           "brew config | awk '$1 == \"HOMEBREW_PREFIX:\" { printf \"%s\", $2 }'"))
+         (nm-version
+          (shell-command-to-string "notmuch --version | awk '{printf \"%s\", $2}'")))
+    (thread-last
+      (f-join brew-prefix "Cellar/notmuch/" nm-version "share/emacs/site-lisp/notmuch")
+      (add-to-list 'load-path))))
 
 (use-package notmuch
   :if (executable-find "notmuch")
