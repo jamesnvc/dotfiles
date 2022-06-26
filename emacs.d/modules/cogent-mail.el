@@ -211,4 +211,8 @@ search."
   (setq gnus-secondary-select-methods
         '((nntp "news.gmane.io"))))
 
+(use-package message
+  :straight (:type built-in)
+  (add-hook 'message-mode-hook (lambda () (abbrev-mode -1))))
+
 (provide 'cogent-mail)
