@@ -7,6 +7,7 @@
 set -euo pipefail
 
 NOTMUCH=/opt/homebrew/bin/notmuch
+JQ=/opt/homebrew/bin/jq
 
 unread=$("${NOTMUCH}" count -- 'tag:inbox and tag:unread')
 inbox=$("${NOTMUCH}" count -- 'tag:inbox')
@@ -19,3 +20,6 @@ printf "📦%s\n" "${inbox}"
 echo "---"
 
 echo "Force Fetch | shell=/Users/james/dotfiles/run_mail_standalone.sh"
+$NOTMUCH search --format=json --output=summary -- tag:inbox and tag:unread | \
+    $JQ -r -c '.[] | .authors + " - " + .subject' | \
+    tr '|' ','
