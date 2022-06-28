@@ -56,6 +56,8 @@
   (require 'cl-seq)
 
   (defun cogent/move-mail-as-needed ()
+    "Hook function to move mail into the inbox folder when tagged `+inbox'.
+Meant to be run via `notmuch-after-tag-hook', which sets `tag-changes' and `query'."
     (when (cl-member "+inbox" tag-changes :test #'string-equal)
       (let ((to-move-files (notmuch-call-notmuch-sexp
                             "search" "--output=files"
