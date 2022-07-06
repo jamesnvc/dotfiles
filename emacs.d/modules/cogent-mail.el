@@ -4,6 +4,7 @@
 
 (when (and (executable-find "brew")
            (executable-find "notmuch"))
+  (require 'f)
   (let ((brew-prefix
           (shell-command-to-string
            "brew config | awk '$1 == \"HOMEBREW_PREFIX:\" { printf \"%s\", $2 }'")))
@@ -221,6 +222,7 @@ search."
 
 (use-package message
   :straight (:type built-in)
+  :config
   (add-hook 'message-mode-hook (lambda () (abbrev-mode -1))))
 
 (provide 'cogent-mail)
