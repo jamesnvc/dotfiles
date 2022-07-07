@@ -127,4 +127,12 @@
   :bind (("C-x q" . window-toggle-side-windows)
          ("C-x O" . cogent/select-sidebar)))
 
+(use-package burly
+  :straight (burly
+             :type git
+             :host github
+             :repo "alphapapa/burly.el"
+             :branch "master")
+  :commands (burly-bookmark-frames burly-bookmark-windows burly-open-bookmark))
+
 (provide 'cogent-windows)
