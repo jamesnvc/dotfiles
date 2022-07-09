@@ -117,7 +117,10 @@
            (display-buffer-at-bottom))
           ("\\*\\(Output\\|Register Preview\\).*"
            (display-buffer-at-bottom)
-           (window-parameters . ((no-other-window . t))))))
+           (window-parameters . ((no-other-window . t))))
+
+          ("\\*Async Shell Command\\*.*"
+           (display-buffer-no-window))))
    (window-combination-resize t)
    (even-window-sizes 'height-only)
    (window-sides-vertical nil)
