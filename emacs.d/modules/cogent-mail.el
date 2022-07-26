@@ -4,12 +4,11 @@
 
 (when (and (executable-find "brew")
            (executable-find "notmuch"))
-  (require 'f)
   (let ((brew-prefix
           (shell-command-to-string
            "brew config | awk '$1 == \"HOMEBREW_PREFIX:\" { printf \"%s\", $2 }'")))
     (thread-last
-      (f-join brew-prefix "share/emacs/site-lisp/notmuch")
+      (concat brew-prefix "/share/emacs/site-lisp/notmuch")
       (add-to-list 'load-path))))
 
 (use-package notmuch
