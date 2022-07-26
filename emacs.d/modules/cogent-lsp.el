@@ -92,8 +92,14 @@
   :after lsp-mode
   :config
   (if-let ((ccls-path (executable-find "ccls")))
-      (setq ccls-executable ccls-path)
-    (setq ccls-executable (expand-file-name "~/software/ccls/Release/ccls"))))
+      (setopt ccls-executable ccls-path)
+    (setopt ccls-executable (expand-file-name "~/software/ccls/Release/ccls"))))
+
+(use-package lsp-sourcekit
+  :when (eq system-type 'darwin)
+  :after lsp-mode
+  :config
+  (setopt lsp-sourcekit-executable (cogent/exec "xcrun --find sourcekit-lsp")))
 
 (use-package dap-mode
   :commands dap-mode
