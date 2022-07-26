@@ -4,6 +4,12 @@
 
 (use-package a)
 (use-package s)
+(use-package f
+  :straight (f
+             :type git
+             :host github
+             :repo "rejeep/f.el"
+             :files ("f.el" "f-shortdoc.el")))
 (require 'subr-x)
 
 (defun cogent/font-lock-replace-symbol (mode reg sym)
