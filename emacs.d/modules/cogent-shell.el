@@ -172,6 +172,23 @@ more-helpful local prompt."
   :hook ((eshell-mode-hook . with-editor-export-editor)
          (vterm-mode-hook . with-editor-export-editor)))
 
+(use-package dwim-shell-command
+  :straight (dwim-shell-command
+             :type git
+             :host github
+             :branch "main"
+             :repo "xenodium/dwim-shell-command")
+
+  :config
+  (defun cogent/dwim-convert-wav-to-caf ()
+    "Convert marked wav files to cafs"
+    (interactive)
+    (dwim-shell-command-on-marked-files
+     "Convert to caf"
+     "afconvert -f caff -d LEI16@44100 -c 1 <<f>> <<fne>>.caf"
+     :utils "afconvert"))
+  )
+
 (require 'cogent-shell-switch)
 
 (provide 'cogent-shell)
