@@ -85,7 +85,8 @@
                     "<f5> 3" #'notmuch
                     "<f6>"   #'elfeed
                     "<f7>"   #'cogent/lookup-word
-                    "<f8>"   #'org-store-link
+                    "<f8>"   #'org-agenda-clock-goto
+                    "S-<f8>" #'org-store-link
                     "<f9>"   #'bookmark-jump)
 
 ;; Leader key stuff

@@ -187,7 +187,8 @@ more-helpful local prompt."
      "Convert to caf"
      "afconvert -f caff -d LEI16@44100 -c 1 <<f>> <<fne>>.caf"
      :utils "afconvert"))
-  )
+  (define-key global-map (kbd "M-!") #'dwim-shell-command)
+  (define-key dired-mode-map (kbd "&") #'dwim-shell-command))
 
 (require 'cogent-shell-switch)
 
