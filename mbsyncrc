@@ -5,6 +5,7 @@ User james.cash@occasionallycogent.com
 PassCmd "gpg -q --for-your-eyes-only --no-tty -d ~/.passwd/fastmail.gpg"
 SSLType IMAPS
 SSLVersions TLSv1.2
+AuthMechs LOGIN
 
 IMAPStore fastmail-remote
 Account fastmail
