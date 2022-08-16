@@ -13,7 +13,7 @@
   (define-skeleton cs-uuid
     "Insert a randomly-generated uuid"
     nil
-    (cogent/exec "uuidgen"))
+    (cogent/exec "uuidgen | tr '[A-Z]' '[a-z]'"))
   (define-abbrev global-abbrev-table "uuid" "" 'cs-uuid)
 
   (define-skeleton cs-now
