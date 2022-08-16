@@ -94,7 +94,7 @@
      ((cogent-shell--pwd-replace-home
        (buffer-local-value 'default-directory buffer))
       :face 'marginalia-documentation
-      :truncate marginalia-truncate-width))))
+      :truncate marginalia-field-width))))
 
 (with-eval-after-load 'marginalia
   (add-to-list 'marginalia-annotator-registry
