@@ -77,51 +77,56 @@
     (interactive)
     (when-let ((side-win (window-with-parameter 'window-side)))
       (select-window side-win)))
-  :custom
-  ((display-buffer-alist
-        '(;; top side window
-          ("\\*\\(Flymake\\|Package-Lint\\|vc-git :\\).*"
-           (display-buffer-in-side-window)
-           (window-height . 0.16)
-           (side . top)
-           (slot . 0)
-           (window-parameters . ((no-other-window . t))))
-          ("\\*Messages.*"
-           (display-buffer-in-side-window)
-           (window-height . 0.16)
-           (side . top)
-           (slot . 1)
-           (window-parameters . ((no-other-window . t))))
-          ("\\*\\(Backtrace\\|Warnings\\|Compile-Log\\)\\*"
-           (display-buffer-in-side-window)
-           (window-height . 0.16)
-           (side . top)
-           (slot . 2)
-           (window-parameters . ((no-other-window . t))))
-          ;; bottom side window
-          ("\\*cider-error\\*"
-           (display-buffer-in-side-window)
-           (side . bottom)
-           (slot . 0)
-           (window-parameters . ((no-other-window . t)
-                                 (mode-line-format . none))))
-          ;; left side window
-          ("\\*\\(Help\\|cider-doc\\).*"
-           (display-buffer-in-side-window)
-           (window-width . 0.25)
-           (side . left)
-           (slot . 0)
-           (window-parameters . ((no-other-window . t))))
-          ;; bottom buffer (NOT side window)
-          ("\\*\\vc-\\(incoming\\|outgoing\\).*"
-           (display-buffer-at-bottom))
-          ("\\*\\(Output\\|Register Preview\\).*"
-           (display-buffer-at-bottom)
-           (window-parameters . ((no-other-window . t))))
+  (setopt switch-to-buffer-obey-display-actions t)
+  (setopt display-buffer-alist
+          `(;; top side window
+            ("\\*\\(Flymake\\|Package-Lint\\|vc-git :\\).*"
+             (display-buffer-in-side-window)
+             (window-height . 0.16)
+             (side . top)
+             (slot . 0)
+             (window-parameters . ((no-other-window . t))))
+            ("\\*Messages.*"
+             (display-buffer-in-side-window)
+             (window-height . 0.16)
+             (side . top)
+             (slot . 1)
+             (window-parameters . ((no-other-window . t))))
+            ("\\*\\(Backtrace\\|Warnings\\|Compile-Log\\)\\*"
+             (display-buffer-in-side-window)
+             (window-height . 0.16)
+             (side . top)
+             (slot . 2)
+             (window-parameters . ((no-other-window . t))))
+            ;; bottom side window
+            ("\\*cider-error\\*"
+             (display-buffer-in-side-window)
+             (side . bottom)
+             (slot . 0)
+             (window-parameters . ((no-other-window . t)
+                                   (mode-line-format . none))))
+            ;; left side window
+            (,(lambda (buffer _action)
+                (and (with-current-buffer buffer
+                       (derived-mode-p 'help-mode))
+                    (string-match-p "\\*\\(Help\\|cider-doc\\).*"
+                                    (buffer-name buffer))))
+             (display-buffer-in-side-window)
+             (window-width . 0.25)
+             (side . left)
+             (slot . 0)
+             (window-parameters . ((no-other-window . t))))
+            ;; bottom buffer (NOT side window)
+            ("\\*\\vc-\\(incoming\\|outgoing\\).*"
+             (display-buffer-at-bottom))
+            ("\\*\\(Output\\|Register Preview\\).*"
+             (display-buffer-at-bottom)
+             (window-parameters . ((no-other-window . t))))
 
-          ("\\*Async Shell Command\\*.*"
-           (display-buffer-no-window))))
-   (window-combination-resize t)
+            ("\\*Async Shell Command\\*.*"
+             (display-buffer-no-window))))
+  :custom
+  ((window-combination-resize t)
    (even-window-sizes 'height-only)
    (window-sides-vertical nil)
    (switch-to-buffer-in-dedicated-window 'pop))
