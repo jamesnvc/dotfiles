@@ -86,6 +86,7 @@
                     "<f6>"   #'elfeed
                     "<f7>"   #'cogent/lookup-word
                     "<f8>"   #'org-clock-goto
+                    "C-<f8>" #'org-clock-out
                     "S-<f8>" #'org-store-link
                     "<f9>"   #'bookmark-jump)
 
