@@ -7,7 +7,7 @@
   ;; un-comment this to make the various other lsp-backends get loaded
   ;; :demand t
   :commands lsp
-  :hook (prolog-mode-hook . lsp)
+  ;; :hook (prolog-mode-hook . lsp)
   :config
 
   (setq read-process-output-max (* 1024 1024))
