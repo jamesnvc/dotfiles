@@ -151,7 +151,8 @@ search."
   (general-define-key :keymaps '(notmuch-show-mode-map)
                       "C-c c" #'org-capture))
 
-(use-package ol-notmuch)
+(use-package ol-notmuch
+  :if (executable-find "notmuch"))
 
 (use-package consult-notmuch
   :defer t
