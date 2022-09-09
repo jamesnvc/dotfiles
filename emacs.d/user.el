@@ -43,6 +43,7 @@
           (string-equal (system-name) "nextcanada-mac-winnipeg.local"))
   (setq-default auto-composition-mode nil)
   (set-frame-font "PragmataPro 14" nil t)
+  (setopt ring-bell-function (lambda () nil))
   (dolist (face '(default fixed-pitch))
     (set-face-attribute face nil :font "PragmataPro Liga-14"))
   (set-face-attribute 'variable-pitch nil :font "Helvetica-14")
