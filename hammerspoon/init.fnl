@@ -54,3 +54,40 @@ tell application \"System Events\"
 end tell"))
 
 (hs.hotkey.bind hyper "C" close-notifications)
+
+;; audio switching
+
+;; From https://github.com/kbd/setup/blob/master/HOME/.hammerspoon/init.fnl
+(fn fuzzy [choices func]
+  (doto (hs.chooser.new func)
+    (: :searchSubText true)
+    (: :fgColor {:hex "#111"})
+    (: :subTextColor {:hex "#555"})
+    (: :width 15)
+    (: :show)
+    (: :choices choices)))
+
+(fn select-audio [audio]
+  (when audio
+    (let [device (hs.audiodevice.findDeviceByUID audio.uid)]
+      (hs.alert.show (.. "Setting " audio.subText " device: " (device:name)))
+      (if (device:isOutputDevice)
+        (device:setDefaultOutputDevice)
+        (device:setDefaultInputDevice)))))
+
+(fn show-audio-fuzzy []
+  (let [devices (hs.audiodevice.allDevices)
+        input-uid (: (hs.audiodevice.defaultInputDevice) :uid)
+        output-uid (: (hs.audiodevice.defaultOutputDevice) :uid)
+        choices #(icollect [_ device (ipairs devices)]
+          (let [uid (device:uid)
+                (active subText) (if (device:isOutputDevice)
+                                  (values (= uid output-uid) "output")
+                                  (values (= uid input-uid) "input"))
+                text (device:name)
+                subText (.. subText (if active " (active)" ""))
+                valid (not active)]
+            {: text : uid : subText : valid}))]
+    (fuzzy choices select-audio)))
+
+(hs.hotkey.bind hyper "A" show-audio-fuzzy)
