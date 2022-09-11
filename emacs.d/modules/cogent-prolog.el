@@ -20,8 +20,9 @@
       :back "|}")))
   (mmm-add-mode-ext-class 'prolog-mode nil 'prolog-javascript))
 
-(add-to-list 'auto-mode-alist '("\\.pl\\'" . prolog-mode))
-(add-to-list 'auto-mode-alist '("\\.plt\\'" . prolog-mode))
+;; Using sweep instead
+;; (add-to-list 'auto-mode-alist '("\\.pl\\'" . prolog-mode))
+;; (add-to-list 'auto-mode-alist '("\\.plt\\'" . prolog-mode))
 ;; Logtalk
 (add-to-list 'auto-mode-alist '("\\.lgt\\'" . prolog-mode))
 
@@ -77,6 +78,8 @@
   :after org)
 
 (use-package sweep
+  :defer t
+  :commands (sweep-mode)
   :straight (sweep
              :type git
              :host nil
@@ -84,8 +87,9 @@
              :branch "main"
              :pre-build ("make")
              :files ("*.el" "sweep.pl" "sweep-module.dylib"))
+  :mode (("\\.pl\\'" . sweep-mode)
+         ("\\.plt\\'" . sweep-mode))
   :config
-  (setopt sweep-swipl-path (expand-file-name "~/.local/bin/swipl"))
-  (add-hook 'prolog-mode-hook #'sweep-mode))
+  (setopt sweep-swipl-path (expand-file-name "~/.local/bin/swipl")))
 
 (provide 'cogent-prolog)
