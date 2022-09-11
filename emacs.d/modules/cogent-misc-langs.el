@@ -8,7 +8,15 @@
   :defer t)
 
 (use-package lua-mode
-  :defer t)
+  :defer t
+  :mode ("\\.lua\\'" . lua-mode)
+  :commands lua-mode)
+
+(use-package fennel-mode
+  :defer t
+  :mode ("\\.fnl\\'" . fennel-mode)
+  :hook (fennel-mode-hook . paredit-mode)
+  :commands fennel-mode)
 
 ;;(use-package racket-mode)
 
