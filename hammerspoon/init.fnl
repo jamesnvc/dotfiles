@@ -33,8 +33,8 @@
         f (scr:frame)]
     (w:setFrame (unit-rect:fromUnitRect f))))
 
-(hs.hotkey.bind ["cmd" "ctrl"] "Left" (fn [] (move-window-to (hs.geometry.rect 0 0 0.5 1))))
-(hs.hotkey.bind ["cmd" "ctrl"] "Right" (fn [] (move-window-to (hs.geometry.rect 0.5 0 0.5 1))))
+(hs.hotkey.bind ["cmd" "shift"] "Left" (fn [] (move-window-to (hs.geometry.rect 0 0 0.5 1))))
+(hs.hotkey.bind ["cmd" "shift"] "Right" (fn [] (move-window-to (hs.geometry.rect 0.5 0 0.5 1))))
 (hs.hotkey.bind ["cmd" "shift"] "Space" (fn [] (move-window-to (hs.geometry.rect 0 0 1 1))))
 
 ;; closing notifications
