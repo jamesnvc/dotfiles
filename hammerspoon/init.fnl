@@ -1,3 +1,16 @@
+;; Inspired by https://github.com/kbd/setup/blob/master/HOME/.hammerspoon/init.fnl
+
+;; helpers
+
+(fn fuzzy [choices func]
+  (doto (hs.chooser.new func)
+    (: :searchSubText true)
+    (: :fgColor {:hex "#111"})
+    (: :subTextColor {:hex "#555"})
+    (: :width 15)
+    (: :show)
+    (: :choices choices)))
+
 ;; Previous window
 (fn get-previous-window []
   "Return the window object for most-recently used window."
@@ -57,16 +70,6 @@ end tell"))
 
 ;; audio switching
 
-;; From https://github.com/kbd/setup/blob/master/HOME/.hammerspoon/init.fnl
-(fn fuzzy [choices func]
-  (doto (hs.chooser.new func)
-    (: :searchSubText true)
-    (: :fgColor {:hex "#111"})
-    (: :subTextColor {:hex "#555"})
-    (: :width 15)
-    (: :show)
-    (: :choices choices)))
-
 (fn select-audio [audio]
   (when audio
     (let [device (hs.audiodevice.findDeviceByUID audio.uid)]
@@ -91,3 +94,21 @@ end tell"))
     (fuzzy choices select-audio)))
 
 (hs.hotkey.bind hyper "A" show-audio-fuzzy)
+
+;; fuzzy-find windows
+
+(fn show-window-fuzzy []
+  (let [imgs-cache {}
+        focused (: (hs.window.focusedWindow) :id)
+        choices #(icollect [_ window (ipairs (hs.window.orderedWindows))]
+                   (let [win-app (window:application)]
+                     (when (= (. imgs-cache win-app) nil)
+                       (tset imgs-cache win-app (hs.image.imageFromAppBundle (win-app:bundleID))))
+                     {:text (window:title)
+                      :subText (.. (win-app:title) (if (= (window:id) focused) " (active)" ""))
+                      :valid (not= focused (window:id))
+                      :image (. imgs-cache win-app)
+                      : window}))]
+    (fuzzy choices (fn [win] (when win (win.window:focus))))))
+
+(hs.hotkey.bind hyper "Space" show-window-fuzzy)
