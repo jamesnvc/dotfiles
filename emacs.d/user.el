@@ -75,6 +75,14 @@
 (when (eq window-system 'mac)
   (setq mac-option-modifier '(:ordinary meta :function meta :mouse meta)))
 
+(when (eq system-type 'darwin)
+  ;; Make "delete" move to trash, instead of just rm-ing (note that rm will now work like this in eshell too)
+  (setopt trash-directory "~/.Trash")
+  (defun system-move-file-to-trash (file)
+    "Use `trash' to move FILE to the system trash."
+    (cl-assert (executable-find "trash") nil "'trash' must be installed. Run \"brew install trash\".")
+    (call-process "trash" nil 0 nil "-F" file)))
+
 (general-define-key :keymaps 'global
                     "<f2>" (if (version< emacs-version "27.0")
                                #'cogent/eyebrowse-helm
