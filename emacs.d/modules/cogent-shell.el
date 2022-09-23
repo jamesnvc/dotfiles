@@ -212,6 +212,33 @@ more-helpful local prompt."
      :utils '("sips" "iconutil")
      :extensions "png"))
 
+  (defun cogent/dwim-shell-command-convert-image-to-watch-icns ()
+    "Convert png to icns icon."
+    (interactive)
+    (dwim-shell-command-on-marked-files
+     "Convert png to icns icon"
+     "
+    # Note: png must be 1024x1024
+    mkdir <<fne>>.iconset
+    sips -z 48 48 '<<f>>' --out '<<fne>>.iconset/icon_24x24@2x.png'
+    sips -z 55 55 '<<f>>' --out '<<fne>>.iconset/icon_27x27@2x.png'
+    sips -z 66 66 '<<f>>' --out '<<fne>>.iconset/icon_33x33@2x.png'
+    sips -z 58 58 '<<f>>' --out '<<fne>>.iconset/icon_29x29@2x.png'
+    sips -z 87 87 '<<f>>' --out '<<fne>>.iconset/icon_43x43@2x.png'
+    sips -z 80 80 '<<f>>' --out '<<fne>>.iconset/icon_40x40@2x.png'
+    sips -z 88 88 '<<f>>' --out '<<fne>>.iconset/icon_44x44@2x.png'
+    sips -z 92 92 '<<f>>' --out '<<fne>>.iconset/icon_46x46@2x.png'
+    sips -z 100 100 '<<f>>' --out '<<fne>>.iconset/icon_50x50@2x.png'
+    sips -z 102 102 '<<f>>' --out '<<fne>>.iconset/icon_51x51@2x.png'
+    sips -z 172 172 '<<f>>' --out '<<fne>>.iconset/icon_86x86@2x.png'
+    sips -z 196 196 '<<f>>' --out '<<fne>>.iconset/icon_98x98@2x.png'
+    sips -z 216 216 '<<f>>' --out '<<fne>>.iconset/icon_108x108@2x.png'
+    sips -z 234 234 '<<f>>' --out '<<fne>>.iconset/icon_117x117@2x.png'
+    sips -z 1024 1024 '<<f>>' --out '<<fne>>.iconset/icon_1024x1024.png'
+    iconutil -c icns '<<fne>>.iconset'"
+     :utils '("sips" "iconutil")
+     :extensions "png"))
+
   (require 'cl-lib)
 
   (defun cogent/dwim-yt-dl ()
@@ -226,6 +253,15 @@ more-helpful local prompt."
      :error-autofocus t
      :monitor-directory "~/Movies/youtube"
      :silent-success t))
+
+  (defun cogent/dwim-mov-to-gif ()
+    "Convert a video file to a gif via ffmpeg"
+    (interactive)
+    (dwim-shell-command-on-marked-files
+     "ffmpeg"
+     "ffmpeg -i '<<f>>' -vf \"fps=10,scale=640:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse\" -loop 0 '<<fne>>.gif'"
+     :utils '("ffmpeg")))
+
   (define-key global-map (kbd "M-!") #'dwim-shell-command)
   (define-key dired-mode-map (kbd "&") #'dwim-shell-command)
   (define-key dired-mode-map (kbd "M-&") #'dired-do-async-shell-command))
