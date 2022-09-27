@@ -81,7 +81,8 @@
   (defun system-move-file-to-trash (file)
     "Use `trash' to move FILE to the system trash."
     (cl-assert (executable-find "trash") nil "'trash' must be installed. Run \"brew install trash\".")
-    (call-process "trash" nil 0 nil "-F" file)))
+    (call-process "trash" nil 0 nil "-F" file))
+  (global-set-key (kbd "s-w") #'delete-window))
 
 (general-define-key :keymaps 'global
                     "<f2>" (if (version< emacs-version "27.0")
