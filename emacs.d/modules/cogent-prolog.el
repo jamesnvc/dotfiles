@@ -77,19 +77,18 @@
 (use-package ob-prolog
   :after org)
 
-(use-package sweep
+(use-package sweeprolog
   :defer t
-  :commands (sweep-mode)
-  :straight (sweep
+  :commands (sweeprolog-mode)
+  :straight (sweeprolog
              :type git
              :host nil
              :repo "https://git.sr.ht/~eshel/sweep"
              :branch "main"
-             :pre-build ("make")
-             :files ("*.el" "sweep.pl" "sweep-module.dylib"))
-  :mode (("\\.pl\\'" . sweep-mode)
-         ("\\.plt\\'" . sweep-mode))
+             :files ("*.el"))
+  :mode (("\\.pl\\'" . sweeprolog-mode)
+         ("\\.plt\\'" . sweeprolog-mode))
   :config
-  (setopt sweep-swipl-path (expand-file-name "~/.local/bin/swipl")))
+  (setopt sweeprolog-swipl-path (expand-file-name "~/.local/bin/swipl")))
 
 (provide 'cogent-prolog)
