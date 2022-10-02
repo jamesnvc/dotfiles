@@ -76,6 +76,8 @@
   (setq mac-option-modifier '(:ordinary meta :function meta :mouse meta)))
 
 (when (eq system-type 'darwin)
+  ;; hide annoying native-comp linker warning
+  (setopt native-comp-driver-options '("-Wl,-w"))
   ;; Make "delete" move to trash, instead of just rm-ing (note that rm will now work like this in eshell too)
   (setopt trash-directory "~/.Trash")
   (defun system-move-file-to-trash (file)
