@@ -285,3 +285,4 @@ Take both changes in diff."
   (server-start))
 
 (direnv-mode)
+(auto-insert-mode)
