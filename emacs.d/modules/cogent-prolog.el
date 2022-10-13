@@ -85,7 +85,7 @@
              :host nil
              :repo "https://git.sr.ht/~eshel/sweep"
              :branch "main"
-             :files ("*.el"))
+             :files ("*.el" "sweep.pl"))
   :mode (("\\.pl\\'" . sweeprolog-mode)
          ("\\.plt\\'" . sweeprolog-mode))
   :config
