@@ -29,6 +29,7 @@
   (setq insert-directory-program "gls")
   (setopt ring-bell-function (lambda () nil))
   (setenv "DICPATH" (expand-file-name "~/Library/Spelling"))
+  ;; override default shell-quote-argument, except for "@", which breaks on macos
   (defun cogent/shell-quote-argument (argument &optional posix)
     (if (equal argument "")
         "''"
