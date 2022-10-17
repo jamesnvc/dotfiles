@@ -17,8 +17,7 @@
   (var found-current false)
   (var prev nil)
   (each [_ win (pairs (hs.window.orderedWindows)) &until prev]
-    (if (= (win:subrole) "AXUnknown")
-        nil
+    (if (= (win:subrole) "AXUnknown") nil
         (not found-current) (set found-current true)
         (set prev win)))
   prev)
