@@ -1,6 +1,8 @@
 ;;; -*- lexical-binding: t -*-
 
-(use-package dart-mode)
+(use-package dart-mode
+  :config
+  (add-hook 'dart-mode-hook #'lsp))
 
 (use-package flutter
   :after dart
