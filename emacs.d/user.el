@@ -287,3 +287,4 @@ Take both changes in diff."
 
 (direnv-mode)
 (auto-insert-mode)
+(pixel-scroll-precision-mode)
