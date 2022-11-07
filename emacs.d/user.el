@@ -65,13 +65,14 @@
   (set-frame-font "PragmataPro 10" nil t)
   (cogent/add-to-all-paths (expand-file-name "~/.nix-profile/bin")))
 
-(when (eq window-system 'ns)
-  (defun cogent-mac/apply-theme (appearance)
-    "Load theme, taking current system APPEARANCE into consideration."
-    (pcase appearance
-      ('light (modus-themes-load-operandi))
-      ('dark (modus-themes-load-vivendi))))
-  (add-hook 'ns-system-appearance-change-functions #'cogent-mac/apply-theme))
+(comment
+ (when (eq window-system 'ns)
+   (defun cogent-mac/apply-theme (appearance)
+     "Load theme, taking current system APPEARANCE into consideration."
+     (pcase appearance
+       ('light (modus-themes-load-operandi))
+       ('dark (modus-themes-load-vivendi))))
+   (add-hook 'ns-system-appearance-change-functions #'cogent-mac/apply-theme)))
 
 (when (eq window-system 'mac)
   (setq mac-option-modifier '(:ordinary meta :function meta :mouse meta)))
