@@ -52,6 +52,18 @@
   (header-line ((t (:background nil :foreground ,cogent-line-active-bg
                     :underline  ,cogent-line-active-bg)))))
 
+(use-package ef-themes
+  :straight (ef-themes
+             :type git
+             :host nil
+             :repo "https://git.sr.ht/~protesilaos/ef-themes"
+             :branch "main")
+  :config
+  (setopt ef-themes-mixed-fonts t
+          ef-themes-variable-pitch-ui t)
+  (setopt ef-themes-headings '((1 . (semibold))
+                               (t . (variable-pitch)))))
+
 (when window-system
   (setq frame-title-format '(buffer-file-name "%f" ("%b")))
   (mouse-wheel-mode t)
@@ -125,7 +137,8 @@
              :host github
              :repo "rougier/svg-tag-mode"))
 
-(modus-themes-load-themes)
-(modus-themes-load-operandi)
+;; (modus-themes-load-themes)
+;; (modus-themes-load-operandi)
+(load-theme 'ef-cyprus)
 
 (provide 'cogent-appearance)
