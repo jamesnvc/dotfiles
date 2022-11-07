@@ -13,7 +13,7 @@
  '(clojure-indent-style :align-arguments)
  '(confirm-kill-emacs 'yes-or-no-p)
  '(custom-safe-themes
-   '("98cc377af705c0f2133bb6d340bf0becd08944a588804ee655809da5d8140de6" default))
+   '("ce409d3a932171747b7b8b7edafdc70b4614beb31a7204aa25517d7c0ab80c48" "7435c097e5d051fa34ad58bf94ac1b2d5d1e14e62fd20dfedf2bb4403b09a446" "8566e9107b01de614891b9b397c6f5b66ce2d328fd8f04770260c58c62c0c2b8" "98cc377af705c0f2133bb6d340bf0becd08944a588804ee655809da5d8140de6" default))
  '(dired-guess-shell-alist-user
    '(("\\.wav"
       (if
