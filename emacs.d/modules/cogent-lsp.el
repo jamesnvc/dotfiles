@@ -12,7 +12,7 @@
 
   (setq read-process-output-max (* 1024 1024))
   (setopt lsp-idle-delay 1.0)
-  (setopt lsp-completion-provider :none)
+  (setopt lsp-completion-provider :none) ; don't want company, using built-in completion now
   (setopt lsp-enable-snippet nil)
 
   ;; (add-to-list 'lsp-semantic-token-faces
