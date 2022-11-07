@@ -92,6 +92,7 @@
 ;; https://github.com/MaskRay/ccls/wiki/Getting-started
 (use-package ccls
   :after lsp-mode
+  :when (not (eq system-type 'darwin)) ; use sourcekit instead
   :config
   (if-let ((ccls-path (executable-find "ccls")))
       (setopt ccls-executable ccls-path)
