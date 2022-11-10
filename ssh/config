@@ -100,6 +100,7 @@ Host cosmiccms
     Hostname cms.cosmicwalk.app
     User james
     IdentityFile ~/.ssh-keys/cosmiccms
+    ForwardAgent yes
 
 Host familytree
      Hostname familytree.occasionallycogent.com
@@ -117,9 +118,11 @@ Host vox4
   User james
   IdentitiesOnly yes
   IdentityFile ~/.ssh-keys/adrenaline
+  ForwardAgent yes
 
 Host faye
   Hostname 5.161.129.217
   User james
   IdentitiesOnly yes
   IdentityFile ~/.ssh-keys/faye
+  ForwardAgent yes
