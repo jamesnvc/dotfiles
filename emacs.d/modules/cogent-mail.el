@@ -77,6 +77,16 @@ Meant to be run via `notmuch-after-tag-hook', which sets `tag-changes' and `quer
   (add-hook 'notmuch-after-tag-hook #'cogent/move-mail-as-needed -90)
   (add-hook 'notmuch-after-tag-hook #'cogent/sync-mail 99)
 
+  (defun cogent/warn-not-replying-all (f &optional prompt-for-sender)
+    (interactive "P")
+    ;; if email is sent to more than just me, warn that I'm not replying all
+    (if (and (or (string-match-p "," (notmuch-show-get-to))
+                 (stringp (notmuch-show-get-cc)))
+             (y-or-n-p "Message to multiple recipients; reply all instead?"))
+        (notmuch-show-reply prompt-for-sender)
+        (funcall f prompt-for-sender)))
+  (advice-add 'notmuch-show-reply-sender :around #'cogent/warn-not-replying-all)
+
   (with-eval-after-load 'notmuch
     (setq notmuch-address-selection-function
           (lambda (prompt collection initial-input)
