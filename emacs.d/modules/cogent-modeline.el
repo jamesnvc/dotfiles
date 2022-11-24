@@ -25,12 +25,14 @@
   (eval `(defface ,(nth 0 s)
            (list (list t (list :foreground ,(nth 1 s)
                                :overline ,cogent-line-active-bg
+                               :family "PragmataPro"
                                :background nil)))
            ,(nth 2 s)
            :group 'cogent))
   (eval `(defface ,(intern (concat (symbol-name (nth 0 s)) "-inactive"))
            (list (list t (list :foreground ,cogent-line-inactive-bg
                                :overline 'unspecified
+                               :family "PragmataPro"
                                :background nil)))
            ,(nth 2 s)
            :group 'cogent)))
@@ -63,21 +65,21 @@
     cogent-line-default-face))
 
 (defface cogent-line-modified-face
-  `((t (:foreground "#8be9fd" :background nil)))
+  `((t (:foreground "#8be9fd" :background nil :family "PragmataPro")))
   "Modeline modified-file face"
   :group 'cogent)
 
 (defface cogent-line-modified-face-inactive
-  `((t (:foreground "#6272a4" :background nil)))
+  `((t (:foreground "#6272a4" :background nil :family "PragmataPro")))
   "Modeline modified-file face for inactive windows"
   :group 'cogent)
 
 (defface cogent-line-read-only-face
-  `((t (:foreground "#ff5555")))
+  `((t (:foreground "#ff5555" :family "PragmataPro")))
   "Modeline readonly file face.")
 
 (defface cogent-line-read-only-face-inactive
-  `((t (:foreground "#aa4949")))
+  `((t (:foreground "#aa4949" :family "PragmataPro")))
   "Modeline readonly file face for inactive windows.")
 
 (defface cogent-line-buffer-name-face
