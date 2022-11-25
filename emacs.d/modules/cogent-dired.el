@@ -9,6 +9,7 @@
   :config
   (put 'dired-find-alternate-file 'disabled nil)
   (setopt dired-mouse-drag-files t)
+  (define-key dired-mode-map (kbd "C-+") #'dired-create-empty-file)
   :custom
   ((dired-dwim-target t)
    (dired-recursive-copies 'always)
