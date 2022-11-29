@@ -37,4 +37,11 @@
   :commands (smartscan-mode)
   :hook ((prog-mode-hook . smartscan-mode)))
 
+(use-package treesit
+  :straight (:type built-in)
+  :config
+  (setopt treesit-extra-load-path
+          (list
+           (expand-file-name "~/src/emacs/admin/notes/tree-sitter/build-module/dist"))))
+
 (provide 'cogent-editing)
