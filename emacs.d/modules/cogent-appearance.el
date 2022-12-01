@@ -44,12 +44,12 @@
    (modus-themes-headings '((t . (overline background variable-pitch))))
    (modus-themes-variable-pitch-headings t))
   :custom-face
-  (mode-line ((t (:background nil :foreground ,cogent-line-active-bg :box nil
+  (mode-line ((t (:background unspecified :foreground ,cogent-line-active-bg :box nil
                   :overline ,cogent-line-active-bg :underline nil))))
-  (mode-line-inactive ((t (:background nil :foreground ,cogent-line-inactive-bg
+  (mode-line-inactive ((t (:background unspecified :foreground ,cogent-line-inactive-bg
                             :box nil
                             :overline ,cogent-line-inactive-bg nil))))
-  (header-line ((t (:background nil :foreground ,cogent-line-active-bg
+  (header-line ((t (:background unspecified :foreground ,cogent-line-active-bg
                     :underline  ,cogent-line-active-bg)))))
 
 (use-package ef-themes
