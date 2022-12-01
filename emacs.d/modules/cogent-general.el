@@ -18,13 +18,15 @@
   (setq cogent/exec-path-after-inited nil))
 
 (use-package exec-path-from-shell
-  :commands exec-path-from-shell-initialize
-  :if (memq window-system '(mac ns x))
+  :demand t
   :init
   ;; Problem: on macos, fish is in /opt/homebrew/bin, so it doesn't get found...
-  (setopt exec-path-from-shell-shell-name (if (string-equal "bishop.local" (system-name))
-                                              "/opt/homebrew/bin/fish"
-                                            (executable-find "fish")))
+  (setopt exec-path-from-shell-shell-name (cond
+                                           ((string= (system-name) "bishop.local")
+                                            "/opt/homebrew/bin/fish")
+                                            ((string= (system-name) "nextcanada-mac-winnipeg.local")
+                                             "/usr/local/bin/fish")
+                                            (t (executable-find "fish"))))
   (setopt exec-path-from-shell-arguments '("-l"))
   (exec-path-from-shell-initialize)
   :config
