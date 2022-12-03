@@ -92,4 +92,5 @@
         ("https://danluu.com/atom.xml" tech mustread)
         ("https://fasterthanli.me/index.xml" tech)
         ("https://www.youtube.com/feeds/videos.xml?user=mvincent4130" youtube)
-        ("https://ciechanow.ski/atom.xml")))
+        ("https://ciechanow.ski/atom.xml")
+        ("https://rachelbythebay.com/w/atom.xml" tech)))
