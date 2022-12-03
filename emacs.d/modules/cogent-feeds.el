@@ -12,7 +12,8 @@
   :straight (youtube-dl
              :type git
              :host github
-             :repo "skeeto/youtube-dl-emacs")
+             :repo "jamesnvc/youtube-dl-emacs"
+             :branch "fix-obsolete-generalized-var")
   :custom ((youtube-dl-directory "~/Movies/youtube")
            (youtube-dl-program "yt-dlp")))
 
