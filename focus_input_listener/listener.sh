@@ -30,7 +30,7 @@ listen() {
             unicode_input)
                 input_codepoint "${command[1]}";;
             *) echo "Unknown event ${command[0]}";;
-       esac
+        esac
     done < "${SERIAL_DEVICE}"
 }
 
