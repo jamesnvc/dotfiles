@@ -35,6 +35,7 @@
     ":- module(" str | (file-name-base (buffer-file-name)) ", []).\n"
     _)
   (define-abbrev prolog-mode-abbrev-table "mod" "" 'cs-prolog-module)
+  (define-abbrev sweeprolog-mode-abbrev-table "mod" "" 'cs-prolog-module)
 
   (define-skeleton cs-prolog-module-comment
     "Insert a prolog module documentation comment"
@@ -44,6 +45,8 @@
     "@author James Cash\n"
     "*/")
   (define-abbrev prolog-mode-abbrev-table "moddoc" ""
+    'cs-prolog-module-comment)
+  (define-abbrev sweeprolog-mode-abbrev-table "moddoc" ""
     'cs-prolog-module-comment)
 
   (define-skeleton cs-prolog-plunit
@@ -66,6 +69,8 @@
     ":- end_tests(" base-mod ").\n")
   (define-abbrev prolog-mode-abbrev-table "plunit" ""
     'cs-prolog-plunit)
+  (define-abbrev sweeprolog-mode-abbrev-table "plunit" ""
+    'cs-prolog-plunit)
 
   (define-skeleton cs-prolog-use-module
     "Insert use-module stanza"
@@ -81,6 +86,8 @@
     (when v2 "]")
     ").")
   (define-abbrev prolog-mode-abbrev-table "use" ""
+    'cs-prolog-use-module)
+  (define-abbrev sweeprolog-mode-abbrev-table "use" ""
     'cs-prolog-use-module))
 
 (provide 'cogent-snippets)
