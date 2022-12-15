@@ -8,6 +8,7 @@
 
 (use-package skeleton
   :straight (:type built-in)
+  :demand t
 
   :config
   (define-skeleton cs-uuid
