@@ -94,7 +94,7 @@
                                #'cogent/eyebrowse-helm
                              #'tab-bar-select-tab-by-name)
                     "<f3>"   #'cogent/switch-shell
-                    "<f4>"   #'calc
+                    "<f4>"   #'calc ; use C-x * * instead
                     "<f5> 5" #'cogent/notmuch-inbox
                     "<f5> 4" #'consult-notmuch
                     "<f5> 3" #'notmuch
