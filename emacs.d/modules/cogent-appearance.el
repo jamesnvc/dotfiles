@@ -139,6 +139,6 @@
 
 ;; (modus-themes-load-themes)
 ;; (modus-themes-load-operandi)
-(load-theme 'ef-cyprus)
+(load-theme 'ef-spring)
 
 (provide 'cogent-appearance)
