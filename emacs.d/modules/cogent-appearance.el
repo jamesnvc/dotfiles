@@ -62,7 +62,9 @@
   (setopt ef-themes-mixed-fonts t
           ef-themes-variable-pitch-ui t)
   (setopt ef-themes-headings '((1 . (semibold))
-                               (t . (variable-pitch)))))
+                               (t . (variable-pitch))))
+  (set-face-attribute 'mode-line nil :family "PragmataPro")
+  (set-face-attribute 'mode-line-inactive nil :family "PragmataPro"))
 
 (when window-system
   (setq frame-title-format '(buffer-file-name "%f" ("%b")))
