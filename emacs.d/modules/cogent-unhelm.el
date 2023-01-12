@@ -228,7 +228,7 @@
   ;; you can use M-g M-n or C-x ` to go between "errors"
   (advice-add 'embark-consult-export-grep :after
               (lambda (&rest args) (next-error-select-buffer (current-buffer))))
-  (define-key embark-consult-export-grep-map (kbd "Q") (lambda () (interactive) (quit-window t))))
+  (define-key grep-mode-map (kbd "Q") (lambda () (interactive) (quit-window t))))
 
 (general-def
   "M-x" #'execute-extended-command
