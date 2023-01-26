@@ -42,6 +42,11 @@
   :config
   (setopt treesit-extra-load-path
           (list
-           (expand-file-name "~/src/emacs/admin/notes/tree-sitter/build-module/dist"))))
+           (expand-file-name "~/src/emacs/admin/notes/tree-sitter/build-module/dist")))
+  (setopt treesit-font-lock-level 4)
+  ;; [TODO] default to using *-ts-mode when available?
+  (add-to-list 'major-mode-remap-alist
+               '(c-mode . c-ts-mode))
+  )
 
 (provide 'cogent-editing)
