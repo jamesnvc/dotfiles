@@ -64,7 +64,20 @@
    "C-x t 6" (lambda () (interactive) (tab-bar-select-tab 6))
    "C-x t 7" (lambda () (interactive) (tab-bar-select-tab 7))
    "C-c <left>" #'tab-bar-history-back
-   "C-c <right>" #'tab-bar-history-forward))
+   "C-c <right>" #'tab-bar-history-forward)
+
+  (when (eq system-type 'darwin)
+    (general-define-key
+     :keymaps 'global
+     "s-w" #'delete-window
+     "s-t" #'tab-bar-new-tab
+     "s-1" (lambda () (interactive) (tab-bar-select-tab 1))
+     "s-2" (lambda () (interactive) (tab-bar-select-tab 2))
+     "s-3" (lambda () (interactive) (tab-bar-select-tab 3))
+     "s-4" (lambda () (interactive) (tab-bar-select-tab 4))
+     "s-5" (lambda () (interactive) (tab-bar-select-tab 5))
+     "s-6" (lambda () (interactive) (tab-bar-select-tab 6))
+     "s-7" (lambda () (interactive) (tab-bar-select-tab 7)))))
 
 (use-package windmove
   :straight (:type built-in)
