@@ -150,7 +150,7 @@
 (with-eval-after-load 'embark
 
   (defvar-keymap embark-shell-actions
-    :doc"Keymap for actions for shell buffers"
+    :doc "Keymap for actions for shell buffers"
     "e" #'cogent-shell--switch-to-eshell
     "v" #'cogent-shell--switch-to-vterm
     "k" #'cogent-shell--kill-buffer
