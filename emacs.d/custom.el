@@ -13,7 +13,7 @@
  '(clojure-indent-style :align-arguments)
  '(confirm-kill-emacs 'yes-or-no-p)
  '(custom-safe-themes
-   '("64eff8a4f640f94bb22b05ad3e33888dfa9cab0823b05a3a70b7c133660df748" "4ef7fae9161de7ada26d79ac4fb28c83e9c418286a7ed465748efa46d4dc4482" "ef78e62377e6ad7b155ea7c6590f3f45e56b26d4cfddff57c81e11974b52c708" "046e442b73846ae114d575a51be9edb081a1ef29c05ae5e237d5769ecfd70c2e" "ce409d3a932171747b7b8b7edafdc70b4614beb31a7204aa25517d7c0ab80c48" "7435c097e5d051fa34ad58bf94ac1b2d5d1e14e62fd20dfedf2bb4403b09a446" "8566e9107b01de614891b9b397c6f5b66ce2d328fd8f04770260c58c62c0c2b8" "98cc377af705c0f2133bb6d340bf0becd08944a588804ee655809da5d8140de6" default))
+   '("e405944a54b99c11463edddeb9ff4f8dd981cd2ae14a4b58458536c451323381" "64eff8a4f640f94bb22b05ad3e33888dfa9cab0823b05a3a70b7c133660df748" "4ef7fae9161de7ada26d79ac4fb28c83e9c418286a7ed465748efa46d4dc4482" "ef78e62377e6ad7b155ea7c6590f3f45e56b26d4cfddff57c81e11974b52c708" "046e442b73846ae114d575a51be9edb081a1ef29c05ae5e237d5769ecfd70c2e" "ce409d3a932171747b7b8b7edafdc70b4614beb31a7204aa25517d7c0ab80c48" "7435c097e5d051fa34ad58bf94ac1b2d5d1e14e62fd20dfedf2bb4403b09a446" "8566e9107b01de614891b9b397c6f5b66ce2d328fd8f04770260c58c62c0c2b8" "98cc377af705c0f2133bb6d340bf0becd08944a588804ee655809da5d8140de6" default))
  '(dired-guess-shell-alist-user
    '(("\\.wav"
       (if
@@ -50,7 +50,7 @@
  '(flycheck-proselint-executable "~/.pyenv/shims/proselint")
  '(forge-bug-reference-hooks '(git-commit-setup-hook magit-mode-hook))
  '(hl-sexp-background-color "#1c1f26")
- '(load-prefer-newer t)
+ '(load-prefer-newer t t)
  '(lsp-enable-text-document-color nil)
  '(lsp-semantic-tokens-apply-modifiers t)
  '(lsp-semantic-tokens-enable t)
