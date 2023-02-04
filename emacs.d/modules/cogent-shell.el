@@ -219,7 +219,7 @@ more-helpful local prompt."
      "Convert png to icns icon"
      "
     # Note: png must be 1024x1024
-    mkdir <<fne>>.iconset
+    mkdir '<<fne>>.iconset'
     sips -z 48 48 '<<f>>' --out '<<fne>>.iconset/icon_24x24@2x.png'
     sips -z 55 55 '<<f>>' --out '<<fne>>.iconset/icon_27x27@2x.png'
     sips -z 66 66 '<<f>>' --out '<<fne>>.iconset/icon_33x33@2x.png'
