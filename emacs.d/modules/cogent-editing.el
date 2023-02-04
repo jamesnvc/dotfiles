@@ -39,14 +39,43 @@
 
 (use-package treesit
   :straight (:type built-in)
+  :preface
+  (defun cogent/setup-install-ts-grammars ()
+    "Install Tree-sitter grammars if needed."
+    (interactive)
+    (dolist (grammar '((css "https://github.com/tree-sitter/tree-sitter-css")
+                       (c "https://github.com/tree-sitter/tree-sitter-c")
+                       (javascript . ("https://github.com/tree-sitter/tree-sitter-javascript" "master" "src"))
+                       (python "https://github.com/tree-sitter/tree-sitter-python")
+                       (yaml "https://github.com/ikatyang/tree-sitter-yaml")))
+      (add-to-list 'treesit-language-source-alist grammar)
+      (unless (treesit-language-available-p (car grammar))
+        (treesit-install-language-grammar (car grammar)))))
   :config
-  (setopt treesit-extra-load-path
-          (list
-           (expand-file-name "~/src/emacs/admin/notes/tree-sitter/build-module/dist")))
+  ;; (cogent/setup-install-ts-grammars)
+  (comment
+   (setopt treesit-extra-load-path
+           (list
+            (expand-file-name "~/src/emacs/admin/notes/tree-sitter/build-module/dist"))))
   (setopt treesit-font-lock-level 4)
   ;; [TODO] default to using *-ts-mode when available?
-  (add-to-list 'major-mode-remap-alist
-               '(c-mode . c-ts-mode))
-  )
+  (dolist (mapping '((c-mode . c-ts-mode)
+                     (python-mode . python-ts-mode)
+                     (css-mode . css-ts-mode)
+                     (js-mode . js-ts-mode)
+                     (yaml-mode . yaml-ts-mode)))
+    (add-to-list 'major-mode-remap-alist mapping)))
+
+(use-package combobulate
+  :straight (combobulate
+             :type git
+             :host github
+             :repo "mickeynp/combobulate"
+             :branch "master")
+  :config
+  (add-hook 'python-ts-mode-hook #'combobulate-mode)
+  (add-hook 'css-ts-mode-hook #'combobulate-mode)
+  (add-hook 'c-ts-mode-hook #'combobulate-mode)
+  (add-hook 'yaml-ts-mode-hook #'combobulate-mode))
 
 (provide 'cogent-editing)
