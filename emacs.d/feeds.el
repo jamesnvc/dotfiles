@@ -93,4 +93,6 @@
         ("https://fasterthanli.me/index.xml" tech)
         ("https://www.youtube.com/feeds/videos.xml?user=mvincent4130" youtube)
         ("https://ciechanow.ski/atom.xml")
-        ("https://rachelbythebay.com/w/atom.xml" tech)))
+        ("https://rachelbythebay.com/w/atom.xml" tech)
+        "https://mull.dog/feed/"
+        ("https://elephant.town/comic/rss" comic)))
