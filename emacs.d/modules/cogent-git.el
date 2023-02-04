@@ -2,10 +2,42 @@
 
 (require 'cogent-package)
 
-(use-package compat)
+(straight-override-recipe
+ '(compat
+   :type git
+   :host github
+   :repo "emacs-compat/compat"))
+(use-package compat
+  :straight (compat
+            :type git
+            :host github
+            :repo "emacs-compat/compat"))
 
+(straight-override-recipe
+ '(transient
+   :type git
+   :host github
+   :repo "magit/transient"
+   :branch "main"))
+(use-package transient
+  :straight (transient
+             :type git
+             :host github
+             :repo "magit/transient"
+             :branch "main"))
+(straight-override-recipe
+ '(magit
+   :type git
+   :host github
+   :repo "magit/magit"
+   :branch "main"))
 (use-package magit
   :commands magit-status
+  :straight (magit
+             :type git
+             :host github
+             :repo "magit/magit"
+             :branch "main")
   :init
   (evil-set-initial-state 'git-commit-mode evil-default-state)
   :general
