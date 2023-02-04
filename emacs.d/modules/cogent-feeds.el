@@ -6,14 +6,15 @@
 
 (use-package youtube-dl
   :defer t
-  :commands (youtube-dl youtube-dl-list)
-  :config
-  (evil-set-initial-state 'youtube-dl-list-mode 'emacs)
   :straight (youtube-dl
              :type git
              :host github
              :repo "jamesnvc/youtube-dl-emacs"
              :branch "fix-obsolete-generalized-var")
+  :commands (youtube-dl youtube-dl-list)
+  :config
+  (evil-set-initial-state 'youtube-dl-list-mode 'emacs)
+
   :custom ((youtube-dl-directory "~/Movies/youtube")
            (youtube-dl-program "yt-dlp")))
 
