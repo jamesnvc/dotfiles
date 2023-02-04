@@ -149,13 +149,13 @@
 
 (with-eval-after-load 'embark
 
-  (embark-define-keymap embark-shell-actions
-    "Keymap for actions for shell buffers"
-    ("e" cogent-shell--switch-to-eshell)
-    ("v" cogent-shell--switch-to-vterm)
-    ("k" cogent-shell--kill-buffer)
-    ("C-s" cogent-shell--switch-horiz-split)
-    ("C-v" cogent-shell--switch-vert-split))
+  (defvar-keymap embark-shell-actions
+    :doc"Keymap for actions for shell buffers"
+    "e" #'cogent-shell--switch-to-eshell
+    "v" #'cogent-shell--switch-to-vterm
+    "k" #'cogent-shell--kill-buffer
+    "C-s" #'cogent-shell--switch-horiz-split
+    "C-v" #'cogent-shell--switch-vert-split)
 
   (add-to-list 'embark-keymap-alist '(shell . embark-shell-actions)))
 

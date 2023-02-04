@@ -212,10 +212,10 @@
   :config
   (define-key embark-consult-search-map (kbd "C-s") #'cogent/switch-to-consult-grep-horiz-split)
   (define-key embark-consult-search-map (kbd "C-v") #'cogent/switch-to-consult-grep-vert-split)
-  (embark-define-keymap embark-consult-grep-map
-    "Keymap for embark actions in `consult-grep', `consult-ripgrep', etc."
-    ("C-s" cogent/switch-to-consult-grep-horiz-split)
-    ("C-v" cogent/switch-to-consult-grep-vert-split))
+  (defvar-keymap embark-consult-grep-map
+    :doc "Keymap for embark actions in `consult-grep', `consult-ripgrep', etc."
+    "C-s" #'cogent/switch-to-consult-grep-horiz-split
+    "C-v" #'cogent/switch-to-consult-grep-vert-split)
   (defun with-embark-consult-grep-map (fn &rest args)
     "Let-bind `embark-keymap-alist' to include my split functions"
     (let ((embark-keymap-alist (thread-last embark-keymap-alist
