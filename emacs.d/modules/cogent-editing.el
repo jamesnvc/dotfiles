@@ -58,7 +58,6 @@
            (list
             (expand-file-name "~/src/emacs/admin/notes/tree-sitter/build-module/dist"))))
   (setopt treesit-font-lock-level 4)
-  ;; [TODO] default to using *-ts-mode when available?
   (dolist (mapping '((c-mode . c-ts-mode)
                      (python-mode . python-ts-mode)
                      (css-mode . css-ts-mode)
