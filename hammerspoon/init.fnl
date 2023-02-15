@@ -117,8 +117,12 @@ end tell"))
 (fn switch-to [bundle-id]
   (let [app (. (hs.application.applicationsForBundleID bundle-id) 1)]
     (when app
-      ;; windows in current space
-      (let [windows (app:allWindows)]
+      (let [windows (app:allWindows)] ; NB. all windows *in current space*
+        ;; focus window in the current space if there is one,
+        ;; otherwise activate app. Just doing "activate" will activate
+        ;; the last-active window if there are multiple, potentially
+        ;; pulling you back to another space, which is not typically
+        ;; what I want
         (if (= 0 (length windows))
             (app:activate)
             (: (. windows 1) :focus))))))
