@@ -116,7 +116,12 @@ end tell"))
 
 (fn switch-to [bundle-id]
   (let [app (. (hs.application.applicationsForBundleID bundle-id) 1)]
-    (when app (app:activate))))
+    (when app
+      ;; windows in current space
+      (let [windows (app:allWindows)]
+        (if (= 0 (length windows))
+            (app:activate)
+            (: (. windows 1) :focus))))))
 
 (hs.hotkey.bind hyper "e" (fn [] (switch-to "org.gnu.Emacs")))
 (hs.hotkey.bind hyper "f" (fn [] (switch-to "org.mozilla.firefox")))
