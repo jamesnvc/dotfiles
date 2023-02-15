@@ -111,3 +111,13 @@ end tell"))
     (fuzzy choices (fn [win] (when win (win.window:focus))))))
 
 (hs.hotkey.bind hyper "Space" show-window-fuzzy)
+
+;; fast switching
+
+(fn switch-to [bundle-id]
+  (let [app (. (hs.application.applicationsForBundleID bundle-id) 1)]
+    (when app (app:activate))))
+
+(hs.hotkey.bind hyper "e" (fn [] (switch-to "org.gnu.Emacs")))
+(hs.hotkey.bind hyper "f" (fn [] (switch-to "org.mozilla.firefox")))
+(hs.hotkey.bind hyper "t" (fn [] (switch-to "com.tapbots.IvoryMac")))
