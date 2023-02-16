@@ -1,8 +1,8 @@
 ;;; -*- lexical-binding: t -*-
 
 (cond
- ((member "PragmataPro Liga" (font-family-list))
-  (set-frame-font "PragmataPro Liga" nil t))
+ ((member "PragmataPro Mono Liga" (font-family-list))
+  (set-frame-font "PragmataPro Mono Liga" nil t))
  ((member "PragmataPro" (font-family-list))
   (set-frame-font "PragmataPro" nil t)))
 (require 'cogent-pragmata)
@@ -20,9 +20,9 @@
    (add-to-list 'cogent/extra-path-dirs dir)))
 
 (when (string-equal (system-name) "gonk")
-    (set-frame-font "PragmataPro Liga 8" nil t)
+    (set-frame-font "PragmataPro Mono Liga 8" nil t)
   (dolist (face '(default fixed-pitch))
-    (set-face-attribute face nil :font "PragmataPro Liga-8"))
+    (set-face-attribute face nil :font "PragmataPro Mono Liga-8"))
   (set-face-attribute 'variable-pitch nil :font "Helvetica-8"))
 
 (when (string-equal (system-name) "bishop.local")
@@ -43,10 +43,10 @@
 (when (or (string-equal (system-name) "zhora.local")
           (string-equal (system-name) "nextcanada-mac-winnipeg.local"))
   (setq-default auto-composition-mode nil)
-  (set-frame-font "PragmataPro 14" nil t)
+  (set-frame-font "PragmataPro Mono Liga 14" nil t)
   (setopt ring-bell-function (lambda () nil))
   (dolist (face '(default fixed-pitch))
-    (set-face-attribute face nil :font "PragmataPro Liga-14"))
+    (set-face-attribute face nil :font "PragmataPro Mono Liga-14"))
   (set-face-attribute 'variable-pitch nil :font "Helvetica-14")
   (setq ns-antialias-text nil)
   (cogent/add-to-all-paths (expand-file-name "~/bin"))
@@ -55,14 +55,14 @@
   (setq ls-lisp-use-insert-directory-program nil))
 
 (when (string-equal (system-name) "fuchikoma")
-  (set-frame-font "PragmataPro 16" nil t)
+  (set-frame-font "PragmataPro Mono Liga 16" nil t)
   (global-prettify-symbols-mode -1)
   (mac-auto-operator-composition-mode 1)
   (setq mac-command-modifier 'super
         mac-option-modifier 'meta))
 
 (when (string-equal (system-name) "roy")
-  (set-frame-font "PragmataPro 10" nil t)
+  (set-frame-font "PragmataPro Mono Liga 10" nil t)
   (cogent/add-to-all-paths (expand-file-name "~/.nix-profile/bin")))
 
 (comment
