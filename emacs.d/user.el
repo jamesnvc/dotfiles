@@ -42,7 +42,14 @@
 
 (when (or (string-equal (system-name) "zhora.local")
           (string-equal (system-name) "nextcanada-mac-winnipeg.local"))
-  (setq-default auto-composition-mode nil)
+
+  ;; Set font for private use area
+  (dolist (fontset '("fontset-default" "fontset-standard"))
+    ;; Why does this need to be PragmataPro, not PragmataPro Mono Liga?
+    (set-fontset-font fontset '(#xE000 . #xF8FF) "PragmataPro"))
+
+  (setq-default auto-composition-mode t)
+  (frame-parameter nil 'font)
   (set-frame-font "PragmataPro Mono Liga 14" nil t)
   (setopt ring-bell-function (lambda () nil))
   (dolist (face '(default fixed-pitch))
