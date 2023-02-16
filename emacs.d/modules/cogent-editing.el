@@ -47,7 +47,8 @@
                        (c "https://github.com/tree-sitter/tree-sitter-c")
                        (javascript . ("https://github.com/tree-sitter/tree-sitter-javascript" "master" "src"))
                        (python "https://github.com/tree-sitter/tree-sitter-python")
-                       (yaml "https://github.com/ikatyang/tree-sitter-yaml")))
+                       (yaml "https://github.com/ikatyang/tree-sitter-yaml")
+                       (bash "https://github.com/tree-sitter/tree-sitter-bash")))
       (add-to-list 'treesit-language-source-alist grammar)
       (unless (treesit-language-available-p (car grammar))
         (treesit-install-language-grammar (car grammar)))))
@@ -62,19 +63,25 @@
                      (python-mode . python-ts-mode)
                      (css-mode . css-ts-mode)
                      (js-mode . js-ts-mode)
-                     (yaml-mode . yaml-ts-mode)))
-    (add-to-list 'major-mode-remap-alist mapping)))
+                     (yaml-mode . yaml-ts-mode)
+                     (sh-mode . bash-ts-mode)))
+    (add-to-list 'major-mode-remap-alist mapping))
+  (comment
+   (add-to-list
+    'combobulate-setup-functions-alist
+    (cons 'javascript (alist-get 'jsx combobulate-setup-functions-alist)))))
 
 (use-package combobulate
   :straight (combobulate
              :type git
              :host github
              :repo "mickeynp/combobulate"
-             :branch "master")
+             :branch "development")
   :config
   (add-hook 'python-ts-mode-hook #'combobulate-mode)
   (add-hook 'css-ts-mode-hook #'combobulate-mode)
   (add-hook 'c-ts-mode-hook #'combobulate-mode)
-  (add-hook 'yaml-ts-mode-hook #'combobulate-mode))
+  (add-hook 'yaml-ts-mode-hook #'combobulate-mode)
+  (add-hook 'js-ts-mode-hook #'combobulate-mode))
 
 (provide 'cogent-editing)
