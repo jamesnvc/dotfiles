@@ -11,6 +11,9 @@
   :demand t
 
   :config
+
+  (setopt save-abbrevs nil) ; don't save abbrevs to file, this defines them
+
   (define-skeleton cs-uuid
     "Insert a randomly-generated uuid"
     nil
