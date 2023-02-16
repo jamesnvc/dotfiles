@@ -3,9 +3,15 @@
 (require 'cogent-package)
 (require 'cogent-keys)
 
+(defun cogent/remove-error-highlight-overlay ()
+  (interactive)
+  (when next-error--message-highlight-overlay
+    (delete-overlay next-error--message-highlight-overlay)))
+
 (general-nmap
   "] q" #'next-error
-  "[ q" #'previous-error)
+  "[ q" #'previous-error
+  "SPC [" #'cogent/remove-error-highlight-overlay)
 
 (use-package flycheck
   :config
