@@ -46,3 +46,8 @@ emacs.d/forge-database.sqlite
 /emacs.d/speed-type
 /fish/fish_variables
 /emacs.d/eln-cache/
+/emacs.d/tree-sitter/
+/emacs.d/.dap-breakpoints
+/emacs.d/forge-database-v7-20220808-1956.sql
+/emacs.d/multisession/
+/emacs.d/projects
