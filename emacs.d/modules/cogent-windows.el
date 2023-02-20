@@ -49,6 +49,15 @@
   (customize-set-variable 'tab-bar-tab-name-function
                           #'cogent/tab-name-project)
 
+  (dotimes (i 9)
+    (keymap-global-set
+     (format "C-x t %d" (1+ i))
+     (lambda () (interactive) (tab-bar-select-tab (1+ i))))
+    (when (eq system-type 'darwin)
+      (keymap-global-set
+       (format "s-%d" (1+ i))
+       (lambda () (interactive) (tab-bar-select-tab (1+ i))))))
+
   (general-define-key
    :keymaps 'global
    "C-x t q" #'tab-bar-close-tab
@@ -56,13 +65,6 @@
    "C-x t t" #'tab-bar-switch-to-recent-tab
    "C-x t c" #'tab-bar-new-tab
    "C-x t C" #'other-tab-prefix
-   "C-x t 1" (lambda () (interactive) (tab-bar-select-tab 1))
-   "C-x t 2" (lambda () (interactive) (tab-bar-select-tab 2))
-   "C-x t 3" (lambda () (interactive) (tab-bar-select-tab 3))
-   "C-x t 4" (lambda () (interactive) (tab-bar-select-tab 4))
-   "C-x t 5" (lambda () (interactive) (tab-bar-select-tab 5))
-   "C-x t 6" (lambda () (interactive) (tab-bar-select-tab 6))
-   "C-x t 7" (lambda () (interactive) (tab-bar-select-tab 7))
    "C-c <left>" #'tab-bar-history-back
    "C-c <right>" #'tab-bar-history-forward)
 
@@ -70,14 +72,7 @@
     (general-define-key
      :keymaps 'global
      "s-w" #'delete-window
-     "s-t" #'tab-bar-new-tab
-     "s-1" (lambda () (interactive) (tab-bar-select-tab 1))
-     "s-2" (lambda () (interactive) (tab-bar-select-tab 2))
-     "s-3" (lambda () (interactive) (tab-bar-select-tab 3))
-     "s-4" (lambda () (interactive) (tab-bar-select-tab 4))
-     "s-5" (lambda () (interactive) (tab-bar-select-tab 5))
-     "s-6" (lambda () (interactive) (tab-bar-select-tab 6))
-     "s-7" (lambda () (interactive) (tab-bar-select-tab 7)))))
+     "s-t" #'tab-bar-new-tab)))
 
 (use-package windmove
   :straight (:type built-in)
