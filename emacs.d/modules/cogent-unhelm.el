@@ -215,7 +215,8 @@
   (defvar-keymap embark-consult-grep-map
     :doc "Keymap for embark actions in `consult-grep', `consult-ripgrep', etc."
     "C-s" #'cogent/switch-to-consult-grep-horiz-split
-    "C-v" #'cogent/switch-to-consult-grep-vert-split)
+    "C-v" #'cogent/switch-to-consult-grep-vert-split
+    "E" #'embark-export)
   (defun with-embark-consult-grep-map (fn &rest args)
     "Let-bind `embark-keymap-alist' to include my split functions"
     (let ((embark-keymap-alist (thread-last embark-keymap-alist
