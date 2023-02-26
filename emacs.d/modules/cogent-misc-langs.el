@@ -41,4 +41,6 @@
 
 (use-package ess)
 
+(use-package go-mode)
+
 (provide 'cogent-misc-langs)
