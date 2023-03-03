@@ -2,7 +2,8 @@
 
 (use-package dart-mode
   :config
-  (add-hook 'dart-mode-hook #'lsp))
+  ;; (add-hook 'dart-mode-hook #'lsp)
+  )
 
 (use-package flutter
   :after dart
