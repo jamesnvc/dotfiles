@@ -295,3 +295,6 @@ Take both changes in diff."
 (direnv-mode)
 (auto-insert-mode)
 (pixel-scroll-precision-mode)
+
+(add-to-list 'desktop-path "~/.local/emacs/")
+(desktop-save-mode 1)
