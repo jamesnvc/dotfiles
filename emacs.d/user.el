@@ -40,13 +40,13 @@
        (replace-regexp-in-string "[^-0-9a-zA-Z_./\n@]" "\\\\\\&" argument))))
   (advice-add 'shell-quote-argument :override #'cogent/shell-quote-argument))
 
+(dolist (fontset '("fontset-default" "fontset-standard"))
+  ;; Set font for private use area
+  ;; Why does this need to be PragmataPro, not PragmataPro Mono Liga?
+  (set-fontset-font fontset '(#xE000 . #xF8FF) "PragmataPro"))
+
 (when (or (string-equal (system-name) "zhora.local")
           (string-equal (system-name) "nextcanada-mac-winnipeg.local"))
-
-  ;; Set font for private use area
-  (dolist (fontset '("fontset-default" "fontset-standard"))
-    ;; Why does this need to be PragmataPro, not PragmataPro Mono Liga?
-    (set-fontset-font fontset '(#xE000 . #xF8FF) "PragmataPro"))
 
   (setq-default auto-composition-mode t)
   (frame-parameter nil 'font)
