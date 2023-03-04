@@ -9,9 +9,9 @@
   (string-join spec "-"))
 
 (defun cogent-fonts/update-font-spec-size (spec increment)
-  (cogent-fonts/list-to-spec
-   (a-update 7 (lambda (i) (number-to-string (+ (string-to-number i) increment)))
-             (cogent-fonts/spec-to-list spec))))
+  (let ((spec-list (cogent-fonts/spec-to-list spec)))
+    (setf (nth 7 spec-list)
+          (number-to-string (+ (string-to-number (nth 7 spec-list)) increment)))))
 
 (defun cogent-fonts/update-font-size (increment)
   (set-frame-font
