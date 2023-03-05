@@ -294,5 +294,9 @@ Take both changes in diff."
 (auto-insert-mode)
 (pixel-scroll-precision-mode)
 
-(add-to-list 'desktop-path "~/.local/emacs/")
+(use-package desktop
+  :straight (:type built-in)
+  :config
+  (add-to-list 'desktop-path "~/.local/emacs/"))
+
 (desktop-save-mode 1)
