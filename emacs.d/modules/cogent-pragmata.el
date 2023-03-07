@@ -226,7 +226,12 @@
     (defun cogent/pragmata-ligature-chars-to-composition-alist ()
       (thread-last (seq-concatenate 'list
                                     '(("[TODO]") ("[FIXME]") ("[DEBUG]")
-                                      ("[INFO]") ("[WARN]") ("[ERROR]"))
+                                      ("[INFO]") ("[WARN]") ("[ERROR]")
+                                      ("[NOTE]") ("[BUG]") ("[ERR]")
+                                      ("[FAIL]") ("[FATAL]") ("[HACK]")
+                                      ("[KO]") ("[MARK]") ("[OK]")
+                                      ("[PASS]") ("[TRACE]") ("[VERBOSE]")
+                                      ("[WARNING]") ("[[") ("]]"))
                                     cogent/pragmata-ligature-chars)
         (mapcar #'car)
         (seq-group-by (lambda (str) (string-to-char str)))
