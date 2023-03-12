@@ -143,7 +143,6 @@ end tell
 
 (hs.hotkey.bind hyper "e" (fn [] (switch-to "org.gnu.Emacs")))
 (hs.hotkey.bind hyper "f" (fn [] (switch-to "org.mozilla.firefox")))
-(hs.hotkey.bind hyper "t" (fn [] (switch-to "com.tapbots.IvoryMac")))
+(hs.hotkey.bind hyper "i" (fn [] (switch-to "com.tapbots.IvoryMac")))
 (hs.hotkey.bind hyper "m" (fn [] (switch-to "com.apple.MobileSMS")))
-(hs.hotkey.bind hyper "s" (fn [] (switch-to "com.electron.asana")))
 (hs.hotkey.bind hyper "x" (fn [] (switch-to "com.apple.dt.Xcode")))
