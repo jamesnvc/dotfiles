@@ -88,7 +88,8 @@
     (when v1 ")")
     '(setq v2 (y-or-n-p "Import? "))
     (when v2 ", [")
-    (when v2 '("Predicate: " str ", ")) -2
+    (when v2 '("Predicate: " str ", "))
+    (when v2 -2) ; delete last ', '
     (when v2 "]")
     ").")
   (define-abbrev prolog-mode-abbrev-table "use" ""
