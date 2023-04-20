@@ -5,11 +5,10 @@
 (use-package a)
 (use-package s)
 (use-package f
-  :straight (f
-             :type git
-             :host github
-             :repo "rejeep/f.el"
-             :files ("f.el" "f-shortdoc.el")))
+  :elpaca (f
+           :host github
+           :repo "rejeep/f.el"
+           :files ("f.el" "f-shortdoc.el")))
 (require 'subr-x)
 
 (defun cogent/font-lock-replace-symbol (mode reg sym)
@@ -65,9 +64,8 @@ as opposed to empty strings."
 (use-package transient
   ;; transient now part of Emacs!
   ;; ...but use git version, to keep in sync with magit
-  :straight (transient
-             :type git
-             :host github
-             :repo "magit/transient"))
+  :elpaca (transient
+           :host github
+           :repo "magit/transient"))
 
 (provide 'cogent-base)

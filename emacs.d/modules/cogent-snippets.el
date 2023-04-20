@@ -7,7 +7,7 @@
    (yas-global-mode -1)))
 
 (use-package skeleton
-  :straight (:type built-in)
+  :elpaca nil
   :demand t
 
   :config

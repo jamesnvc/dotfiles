@@ -118,7 +118,7 @@
   "\\" #'sort-lines)
 
 (use-package dired
-  :straight (:type built-in)
+  :elpaca nil
   :bind
   (:map dired-mode-map
         ("-" . dired-jump)
@@ -229,7 +229,7 @@ Shouldn't be necessary now, after using fish shell and exec-path-from-shell."
 
 ;; ediff
 (use-package ediff
-  :straight (:type built-in)
+  :elpaca nil
   :config
   (defun cogent/ediff-copy-both-to-C ()
     "Via
@@ -295,7 +295,7 @@ Take both changes in diff."
 (pixel-scroll-precision-mode)
 
 (use-package desktop
-  :straight (:type built-in)
+  :elpaca nil
   :config
   (add-to-list 'desktop-path "~/.local/emacs/"))
 

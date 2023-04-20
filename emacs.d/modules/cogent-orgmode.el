@@ -125,11 +125,10 @@
    "C-c <down>" #'org-shiftdown))
 
 (use-package org-modern
-  :straight (org-modern
-             :type git
-             :host github
-             :repo "minad/org-modern"
-             :branch "main")
+  :elpaca (org-modern
+           :host github
+           :repo "minad/org-modern"
+           :branch "main")
   :after org
   :commands org-modern-mode
   :config
@@ -146,11 +145,10 @@
 ;; add :async to BEGIN_SRC blocks & they run asynchronously!
 (use-package ob-async
   :after org
-  :straight (ob-async
-             :type git
-             :host github
-             :repo "jamesnvc/ob-async"
-             :branch "async-variables-fix"))
+  :elpaca (ob-async
+           :host github
+           :repo "jamesnvc/ob-async"
+           :branch "async-variables-fix"))
 
 (use-package htmlize)
 
@@ -275,10 +273,9 @@ Then press C-c C-x C-u inside
       (org-table-align))))
 
 (use-package org-drill
-  :straight (org-drill
-             :type git
-             :host gitlab
-             :repo "phillord/org-drill")
+  :elpaca (org-drill
+           :host gitlab
+           :repo "phillord/org-drill")
   :defer t
   :commands (org-drill))
 
@@ -336,10 +333,9 @@ Then press C-c C-x C-u inside
 (use-package org-ql)
 
 (use-package org-clock-export
-  :straight (org-clock-export
-             :type git
-             :host github
-             :repo "jamesnvc/org-clock-export"
-             :branch "escape-fields"))
+  :elpaca (org-clock-export
+           :host github
+           :repo "jamesnvc/org-clock-export"
+           :branch "escape-fields"))
 
 (provide 'cogent-orgmode)

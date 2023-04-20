@@ -101,15 +101,16 @@
     "l" #'helm-occur))
 
 (use-package helm-bookmarks
-  :straight (:type built-in)
+  :after (helm)
+  :elpaca nil
   :bind (:map helm-bookmark-map
               ("C-v" . helm-bookmark-switch-vert-window-command)
               ("C-s" . helm-bookmark-switch-horiz-window-command)))
 
 (use-package wgrep
-  :straight (:type git
-                   :host github
-                   :repo "mhayashi1120/Emacs-wgrep"))
+  :elpaca (wgrep
+           :host github
+           :repo "mhayashi1120/Emacs-wgrep"))
 
 (use-package helm-rg
   :config

@@ -11,7 +11,7 @@
                      gcs-done)))
 
 (let ((orig-default (default-value 'gc-cons-threshold)))
-  (add-hook 'after-init-hook (lambda () (setq gc-cons-threshold orig-default))))
+  (add-hook 'elpaca-after-init-hook (lambda () (setq gc-cons-threshold orig-default))))
 (setq gc-cons-threshold 128000000)
 
 
@@ -24,14 +24,12 @@
 
 (add-to-list 'load-path (concat dotfiles-dir "modules"))
 
-;; Define where to keep autoload declarations and custom settings
-(setq autoload-file (concat dotfiles-dir "loaddefs.el")) ; still need this?
 (setq custom-file (concat dotfiles-dir "custom.el"))
+(add-hook 'elpaca-after-init-hook (lambda () (load custom-file 'noerror)))
 
-(load custom-file 'noerror)
+(require 'cogent-package)
 
 ;; Load packages
-(require 'cogent-package)
 (require 'cogent-general)
 (require 'cogent-base)
 (require 'cogent-keys)

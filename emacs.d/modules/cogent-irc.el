@@ -9,7 +9,7 @@
 (use-package erc-image)
 
 (use-package erc
-  :straight (:type built-in)
+  :elpaca nil
   :custom
   ((erc-autojoin-timing 'ident)
    (erc-join-buffer 'bury)

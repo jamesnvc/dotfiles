@@ -13,7 +13,7 @@
 
 (use-package notmuch
   :if (executable-find "notmuch")
-  :straight (:type built-in)
+  :elpaca nil
   :config
   ;; setup the mail address and use name
   (setq mail-user-agent 'message-user-agent
@@ -233,7 +233,7 @@ search."
         '((nntp "news.gmane.io"))))
 
 (use-package message
-  :straight (:type built-in)
+  :elpaca nil
   :config
   (add-hook 'message-mode-hook (lambda () (abbrev-mode -1))))
 

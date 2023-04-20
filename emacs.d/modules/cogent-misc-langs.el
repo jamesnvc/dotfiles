@@ -31,11 +31,10 @@
   ("scala" . scala-mode))
 
 (use-package j-mode
+  :elpaca (j-mode
+           :host github
+           :repo "zellio/j-mode")
   :defer t
-  :straight (j-mode
-             :type git
-             :host github
-             :repo "zellio/j-mode")
   :config
   (setq j-console-cmd "ijconsole"))
 

@@ -29,7 +29,7 @@
   (setq bidi-inhibit-bpa t))
 
 (use-package so-long
-  :straight (:type built-in)
+  :elpaca nil
   :config
   (global-so-long-mode 1))
 
@@ -38,7 +38,7 @@
   :hook ((prog-mode-hook . smartscan-mode)))
 
 (use-package treesit
-  :straight (:type built-in)
+  :elpaca nil
   :preface
   (defun cogent/setup-install-ts-grammars ()
     "Install Tree-sitter grammars if needed."
@@ -72,11 +72,10 @@
     (cons 'javascript (alist-get 'jsx combobulate-setup-functions-alist)))))
 
 (use-package combobulate
-  :straight (combobulate
-             :type git
-             :host github
-             :repo "mickeynp/combobulate"
-             :branch "development")
+  :elpaca (combobulate
+           :host github
+           :repo "mickeynp/combobulate"
+           :branch "development")
   :config
   (add-hook 'python-ts-mode-hook #'combobulate-mode)
   (add-hook 'css-ts-mode-hook #'combobulate-mode)

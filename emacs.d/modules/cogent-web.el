@@ -1,7 +1,7 @@
 ;;; -*- lexical-binding: t -*-
 
 (use-package eww
-  :straight (:type built-in)
+  :elpaca nil
   :custom
   (eww-auto-rename-buffer 'title))
 
