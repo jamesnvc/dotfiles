@@ -84,4 +84,13 @@
   (add-hook 'yaml-ts-mode-hook #'combobulate-mode)
   (add-hook 'js-ts-mode-hook #'combobulate-mode))
 
+(use-package jinx
+  :straight (jinx
+             :type git
+             :host github
+             :repo "minad/jinx"
+             :branch "main"
+             :files (:defaults "jinx-mod.c" "emacs-module.h"))
+  :bind ([remap ispell-word] . jinx-correct))
+
 (provide 'cogent-editing)
