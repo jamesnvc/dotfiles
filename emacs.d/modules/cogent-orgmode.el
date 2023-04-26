@@ -141,7 +141,9 @@
   :after org
   :config
   (with-eval-after-load "org"
-    (define-key org-mode-map (kbd "C-c M-l") #'org-cliplink)))
+    (define-key org-mode-map (kbd "C-c M-l") #'org-cliplink))
+
+  (setopt org-modern-table nil))
 
 ;; add :async to BEGIN_SRC blocks & they run asynchronously!
 (use-package ob-async
