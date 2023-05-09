@@ -63,18 +63,3 @@
   xfuncname = "^(\\(.*)$"
 [diff "org"]
   xfuncname = "^(\\*+ +.*)$"
-[filesystem "Oracle Corporation|1.8.0_101|/dev/mapper/ubuntu--vg-root"]
-	timestampResolution = 1001 milliseconds
-	minRacyThreshold = 0 nanoseconds
-[filesystem "Private Build|11.0.5|/dev/mapper/ubuntu--vg-root"]
-	timestampResolution = 8000 nanoseconds
-	minRacyThreshold = 4476 microseconds
-[filesystem "Ubuntu|11.0.6|/dev/mapper/ubuntu--vg-root"]
-	timestampResolution = 9000 nanoseconds
-	minRacyThreshold = 6023 microseconds
-[filesystem "Ubuntu|11.0.7|/dev/mapper/ubuntu--vg-root"]
-	timestampResolution = 9000 nanoseconds
-	minRacyThreshold = 7885 microseconds
-[filesystem "Ubuntu|11.0.8|/dev/mapper/ubuntu--vg-root"]
-	timestampResolution = 10000 nanoseconds
-	minRacyThreshold = 7302 microseconds
