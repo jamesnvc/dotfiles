@@ -103,6 +103,7 @@
                     "<f5> 3" #'notmuch
                     "<f6>"   #'elfeed
                     "<f7>"   #'cogent/lookup-word
+                    "S-<f7>" #'cogent/synonyms
                     "<f8>"   #'org-clock-goto
                     "C-<f8>" #'org-clock-out
                     "S-<f8>" #'org-store-link

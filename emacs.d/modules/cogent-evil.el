@@ -26,6 +26,7 @@
   (evil-set-initial-state 'timer-list-mode 'emacs)
   (evil-set-initial-state 'info-mode 'emacs)
   (evil-set-initial-state 'grep-mode 'emacs)
+  (evil-set-initial-state 'view-mode 'emacs)
 
   (evil-select-search-module 'evil-search-module 'isearch)
 
