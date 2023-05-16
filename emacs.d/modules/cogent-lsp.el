@@ -41,8 +41,9 @@
 
   ;; Rust
   ;; to install the client:
-  ;; rustup component add rls-preview rust-analysis rust-src
+  ;; rustup component add rust-analyzer rust-src
   ;; (setq lsp-rust-rls-command '("rustup" "run" "nightly" "rls"))
+  (setopt lsp-rust-analyzer-server-command (list (cogent/exec "rustup which --toolchain stable rust-analyzer")))
 
   ;; Ruby
   ;; gem install solargraph
