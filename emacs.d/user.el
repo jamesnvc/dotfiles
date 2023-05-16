@@ -7,6 +7,9 @@
   (set-frame-font "PragmataPro" nil t)))
 (require 'cogent-pragmata)
 
+;; [TODO] set things up so only these fancy comment ligatures are applied
+(setq-default auto-composition-mode nil) ; disabling ligatures for now
+
 (setq redisplay-dont-pause t)
 
 (defvar cogent/extra-path-dirs nil
@@ -47,7 +50,6 @@
 
 (when (or (string-equal (system-name) "zhora.local")
           (string-equal (system-name) "nextcanada-mac-winnipeg.local"))
-  (setq-default auto-composition-mode t)
   (set-frame-font "PragmataPro Mono Liga 14" nil t)
   (setopt ring-bell-function (lambda () nil))
   (dolist (face '(default fixed-pitch))

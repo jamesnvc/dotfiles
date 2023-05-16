@@ -231,8 +231,13 @@
                                       ("[FAIL]") ("[FATAL]") ("[HACK]")
                                       ("[KO]") ("[MARK]") ("[OK]")
                                       ("[PASS]") ("[TRACE]") ("[VERBOSE]")
-                                      ("[WARNING]") ("[[") ("]]"))
-                                    cogent/pragmata-ligature-chars)
+                                      ("[WARNING]")
+                                      ;; ("[[")
+                                      ;; ("]]")
+                                      )
+                                    ;; cogent/pragmata-ligature-chars
+                                    nil
+                                    )
         (mapcar #'car)
         (seq-group-by (lambda (str) (string-to-char str)))
         (mapcar
