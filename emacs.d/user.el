@@ -28,7 +28,8 @@
     (set-face-attribute face nil :font "PragmataPro Mono Liga-8"))
   (set-face-attribute 'variable-pitch nil :font "Helvetica-8"))
 
-(when (string-equal (system-name) "bishop.local")
+(when (and (boundp 'system-configuration)
+           (string-prefix-p "aarch64-apple-darwin" system-configuration))
   (setq insert-directory-program "gls")
   (setopt ring-bell-function (lambda () nil))
   (setenv "DICPATH" (expand-file-name "~/Library/Spelling"))
