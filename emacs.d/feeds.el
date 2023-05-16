@@ -5,14 +5,14 @@
         "http://jvns.ca/atom.xml"
         "http://redqueencoder.com/feed/"
         "http://ericasadun.com/feed/"
-        ("http://cdn.drivecomic.com/rss.xml" comic)
+        ;; ("http://cdn.drivecomic.com/rss.xml" comic)
         "http://www.johndcook.com/blog/feed/"
         ("http://furbo.org/feed/" tech)
         ("http://feeds.arstechnica.com/arstechnica/index/" tech busy)
         ("http://joshreads.com/?feed=rss2" comic)
         ("http://aphyr.com/posts.atom" tech mustread)
         ("http://techdistortion.com/articles/feed" tech)
-        "http://www.randsinrepose.com/index.xml"
+        "https://randsinrepose.com/feed/"
         ("http://feeds.feedburner.com/schneier/fulltext" infosec)
         ("http://feeds.feedburner.com/marcoorg" tech apple)
         ("http://daringfireball.net/index.xml" tech apple)
@@ -50,16 +50,15 @@
         "http://www.stumptuous.com/feed"
         "http://gregnuckols.wordpress.com/feed/"
         "http://feeds2.feedburner.com/subtraction"
-        ("http://feedproxy.google.com/Metafilter" busy)
+        ("http://feeds.feedburner.com/Metafilter" busy)
         ("http://www.smbc-comics.com/rss.php" comic)
-        ("http://broodhollow.chainsawsuit.com/feed" comic)
         "http://www.mistys-internet.website/blog/atom.xml"
-        ("http://feeds2.feedburner.com/WastedTalentRss" comic)
+        ;; ("http://feeds2.feedburner.com/WastedTalentRss" comic)
         "http://cannaw.blogspot.com/feeds/posts/default"
         "http://blog.plover.com/index.rss"
         "http://technomancy.us/feed/atom.xml"
         "http://blog.sanctum.geek.nz/feed/"
-        ("http://achewood.com/rss.php" comic)
+        ;; ("http://achewood.com/rss.php" comic)
         "http://www.bluishcoder.co.nz/atom.xml"
         "http://joelonsoftware.com/rss.xml"
         "http://feeds.feedburner.com/allthingsgym"
@@ -77,7 +76,7 @@
         ("http://www.thestar.com/feeds.articles.news.world.rss" busy news news-world)
         ("https://blogs.msdn.microsoft.com/oldnewthing/feed" tech)
         ("https://200ok.ch/atom.xml" tech)
-        ("https://livelaugh.blog/rss" mustread)
+        ("https://livelaugh.blog/rss.xml" mustread)
         ("https://terrafilha.home.blog/feed/" mustread)
         ("https://protesilaos.com/codelog.xml" emacs)
         ("https://www.youtube.com/feeds/videos.xml?channel_id=UCokqzNPBJ65raczldVuHAww" youtube) ; chapo
@@ -94,5 +93,4 @@
         ("https://www.youtube.com/feeds/videos.xml?user=mvincent4130" youtube)
         ("https://ciechanow.ski/atom.xml")
         ("https://rachelbythebay.com/w/atom.xml" tech)
-        "https://mull.dog/feed/"
         ("https://elephant.town/comic/rss" comic)))
