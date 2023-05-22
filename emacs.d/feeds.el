@@ -93,4 +93,5 @@
         ("https://www.youtube.com/feeds/videos.xml?user=mvincent4130" youtube)
         ("https://ciechanow.ski/atom.xml")
         ("https://rachelbythebay.com/w/atom.xml" tech)
-        ("https://elephant.town/comic/rss" comic)))
+        ("https://elephant.town/comic/rss" comic)
+        ("https://swanboy.com/feed/" comic)))
