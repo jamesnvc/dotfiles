@@ -127,3 +127,8 @@ Host faye
   IdentitiesOnly yes
   IdentityFile ~/.ssh-keys/faye
   ForwardAgent yes
+
+Host NEWHETZNERCHANGEME
+  Hostname 99.99.99.99
+  User root
+  IdentityFile ~/.ssh-keys/hetzner-default
