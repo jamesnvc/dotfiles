@@ -129,7 +129,8 @@ Host faye
   ForwardAgent yes
 
 Host jet
-  Hostname 5.161.217.117
+  Hostname 2a01:4ff:f0:ea9f::1
+  #Hostname 5.161.217.117
   User james
   IdentityFile ~/.ssh-keys/jet
 
