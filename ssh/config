@@ -6,6 +6,7 @@ Host *
   ControlPersist 4h
   ControlMaster auto
   ControlPath ~/.ssh/master-%r@%h:%p
+  IdentitiesOnly yes
   AddKeysToAgent yes
 
 Host github.com
