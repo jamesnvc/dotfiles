@@ -58,4 +58,10 @@
   ;; [TODO]
   )
 
+(use-package dictionary
+  :straight (:type built-in)
+  :config
+  (setopt dictionary-search-strategy "prefix"
+          dictionary-server "dict.org"))
+
 (provide 'cogent-writing)
