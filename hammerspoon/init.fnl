@@ -115,7 +115,8 @@ end tell
         focused (: (hs.window.focusedWindow) :id)
         choices #(icollect [_ window (ipairs (hs.window.orderedWindows))]
                    (let [win-app (window:application)]
-                     (when (= (. imgs-cache win-app) nil)
+                     (when (and (= (. imgs-cache win-app) nil)
+                                (win-app:bundleID))
                        (tset imgs-cache win-app (hs.image.imageFromAppBundle (win-app:bundleID))))
                      {:text (window:title)
                       :subText (.. (win-app:title) (if (= (window:id) focused) " (active)" ""))
