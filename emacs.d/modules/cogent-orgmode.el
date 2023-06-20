@@ -160,6 +160,15 @@
              :repo "jamesnvc/ob-async"
              :branch "async-variables-fix"))
 
+(use-package ob-swiftui
+  :after org
+  :straight (ob-swiftui
+             :type git
+             :host github
+             :repo "xenodium/ob-swiftui"
+             :branch "main"))
+
+
 (use-package htmlize)
 
 (use-package gnuplot
