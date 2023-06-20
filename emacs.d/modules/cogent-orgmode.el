@@ -89,6 +89,10 @@
   (with-eval-after-load 'org-src
     (add-to-list 'org-src-lang-modes '("plantuml" . plantuml)))
 
+  (add-hook 'org-babel-after-execute-hook (lambda ()
+                                            (when org-inline-image-overlays
+                                              (org-redisplay-inline-images))))
+
   (org-babel-do-load-languages
    'org-babel-load-languages
    '((sql . t)
