@@ -81,4 +81,13 @@
 (defmacro comment (&rest body)
   `(progn))
 
+(use-package emacs-gc-stats
+  :straight (emacs-gc-stats
+             :type git
+             :host nil
+             :repo "https://git.sr.ht/~yantar92/emacs-gc-stats"
+             :branch "main")
+  :config
+  (emacs-gc-stats-mode +1))
+
 (provide 'cogent-general)
