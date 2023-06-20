@@ -97,6 +97,8 @@
      (plantuml . t)
      (gnuplot . t)
      (R . t)
+     (python . t)
+     (clojure . t)
      (emacs-lisp . t)))
 
   (add-to-list 'org-latex-packages-alist
