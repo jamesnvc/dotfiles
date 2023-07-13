@@ -80,7 +80,8 @@ Meant to be run via `notmuch-after-tag-hook', which sets `tag-changes' and `quer
   (defun cogent/warn-not-replying-all (f &optional prompt-for-sender)
     (interactive "P")
     ;; if email is sent to more than just me, warn that I'm not replying all
-    (if (and (or (string-match-p "," (notmuch-show-get-to))
+    (if (and (or (and (stringp (notmuch-show-get-to))
+                      (string-match-p "," (notmuch-show-get-to)))
                  (stringp (notmuch-show-get-cc)))
              (y-or-n-p "Message to multiple recipients; reply all instead?"))
         (notmuch-show-reply prompt-for-sender)
