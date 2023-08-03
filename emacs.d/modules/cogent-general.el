@@ -50,6 +50,8 @@
 
 (setopt mouse-drag-mode-line-buffer t)
 
+(setopt set-message-functions '(set-multi-message set-minibuffer-message))
+
 (setq compilation-ask-about-save nil)
 
 (delete-selection-mode t)
