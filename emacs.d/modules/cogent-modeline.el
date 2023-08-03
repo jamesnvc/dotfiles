@@ -154,8 +154,7 @@
                '(:eval (list
                         ;; the buffer name; the file name as a tool tip
                         " "
-                        (propertize "%b" 'face 'cogent-line-buffer-name-face
-                                    'help-echo (buffer-file-name))
+                        mode-line-buffer-identification
                         (when (buffer-modified-p)
                           (propertize
                            " "

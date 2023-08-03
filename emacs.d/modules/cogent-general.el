@@ -48,6 +48,8 @@
 
 (setopt next-error-message-highlight t)
 
+(setopt mouse-drag-mode-line-buffer t)
+
 (setq compilation-ask-about-save nil)
 
 (delete-selection-mode t)
