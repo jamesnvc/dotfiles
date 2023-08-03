@@ -1,4 +1,13 @@
+\set PROMPT1 '%~%x%# '
 \set COMP_KEYWORD_CASE upper
 \x auto
+\set ON_ERROR_STOP on
+\set ON_ERROR_ROLLBACK interactive
+
 \pset null ∅
 \pset linestyle unicode
+\pset unicode_border_linestyle single
+\pset unicode_column_linestyle single
+\pset unicode_header_linestyle double
+
+set intervalstyle to 'postgres_verbose';
