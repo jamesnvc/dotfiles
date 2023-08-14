@@ -4,6 +4,8 @@
 
 (electric-pair-mode 1)
 
+(setopt show-paren-context-when-offscreen t) ; other options 'overlay, 'child-frame
+
 ;; A key for intelligently shrinking whitespace.
 ;; See https://github.com/jcpetkovich/shrink-whitespace.el for details.
 (use-package shrink-whitespace
