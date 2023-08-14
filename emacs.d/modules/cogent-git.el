@@ -24,7 +24,9 @@
              :type git
              :host github
              :repo "magit/transient"
-             :branch "main"))
+             :branch "main")
+  :config
+  (setopt transient-default-level 7))
 (straight-override-recipe
  '(magit
    :type git
