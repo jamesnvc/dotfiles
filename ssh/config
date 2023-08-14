@@ -78,6 +78,8 @@ Host shodan
     Hostname 50.116.24.27
     User james
     IdentityFile ~/.ssh-keys/touchdowntunes
+    ForwardAgent yes
+
 Host touchdowntunes
     Hostname 50.116.24.27
     User james
