@@ -1,5 +1,5 @@
 [user]
-  email = james.nvc@gmail.com
+  email = james.cash@occasionallycogent.com
   name = James N. V. Cash
   signingkey = 8DC9A386
 [init]
@@ -63,3 +63,5 @@
   xfuncname = "^(\\(.*)$"
 [diff "org"]
   xfuncname = "^(\\*+ +.*)$"
+[github]
+	user = jamesnvc

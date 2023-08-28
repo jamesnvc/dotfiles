@@ -79,11 +79,11 @@ Host shodan
     User james
     IdentityFile ~/.ssh-keys/touchdowntunes
     ForwardAgent yes
-
 Host touchdowntunes
     Hostname 50.116.24.27
     User james
     IdentityFile ~/.ssh-keys/touchdowntunes
+    ForwardAgent yes
 
 Host linode-lish
     Hostname lish-dallas.linode.com
