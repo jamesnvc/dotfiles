@@ -262,6 +262,12 @@ more-helpful local prompt."
      "ffmpeg -i '<<f>>' -vf \"fps=10,scale=640:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse\" -loop 0 '<<fne>>.gif'"
      :utils '("ffmpeg")))
 
+  (defun cogent/dwim-m4a-to-mp3 ()
+    (interactive)
+    (dwim-shell-command-on-marked-files
+     "ffmpeg"
+     "ffmpeg -i '<<f>>' -c:v copy -c:a libmp3lame -q:a 4 '<<fne>>.mp3'"))
+
   (define-key global-map (kbd "M-!") #'dwim-shell-command)
   (define-key dired-mode-map (kbd "&") #'dwim-shell-command)
   (define-key dired-mode-map (kbd "M-&") #'dired-do-async-shell-command))
