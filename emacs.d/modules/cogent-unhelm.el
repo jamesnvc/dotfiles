@@ -342,6 +342,18 @@
                       "C-\\" #'completion-at-point)
 
 
+  (defun cogent/crm-indicator (args)
+    (cons (format "[CRM: '%s']  %s"
+                  (propertize
+                   (replace-regexp-in-string
+                    "\\`\\[.*?]\\*\\|\\[.*?]\\*\\'" ""
+                    crm-separator)
+                   'face 'error)
+                  (car args))
+          (cdr args)))
+
+  (advice-add #'completing-read-multiple :filter-args #'cogent/crm-indicator)
+
   (define-key minibuffer-local-completion-map [remap next-line] #'minibuffer-next-completion)
   (define-key minibuffer-local-completion-map [remap previous-line] #'minibuffer-previous-completion)
   (define-key minibuffer-local-completion-map (kbd "TAB") (lambda () (interactive) (minibuffer-choose-completion t)))
