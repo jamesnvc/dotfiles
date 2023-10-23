@@ -22,10 +22,10 @@
   :init
   ;; Problem: on macos, fish is in /opt/homebrew/bin, so it doesn't get found...
   (setopt exec-path-from-shell-shell-name (cond
-                                           ((string= (system-name) "bishop.local")
+                                           ((cogent/is-exec "/opt/homebrew/bin/fish")
                                             "/opt/homebrew/bin/fish")
-                                            ((string= (system-name) "nextcanada-mac-winnipeg.local")
-                                             "/usr/local/bin/fish")
+                                           ((cogent/is-exec "/usr/local/bin/fish")
+                                            "/usr/local/bin/fish")
                                             (t (executable-find "fish"))))
   (setopt exec-path-from-shell-arguments '("-l"))
   (exec-path-from-shell-initialize)
