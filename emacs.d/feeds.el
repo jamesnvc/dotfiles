@@ -79,18 +79,13 @@
         ("https://livelaugh.blog/rss.xml" mustread)
         ("https://terrafilha.home.blog/feed/" mustread)
         ("https://protesilaos.com/codelog.xml" emacs)
-        ("https://www.youtube.com/feeds/videos.xml?channel_id=UCokqzNPBJ65raczldVuHAww" youtube) ; chapo
-        ("https://www.youtube.com/feeds/videos.xml?channel_id=UCGB0idFFHkLUAmKjqdcEJKg" youtube) ; chapo compilations
         ("https://www.manueluberti.eu/feed.xml" emacs)
         ("https://www.rousette.org.uk/archives/index.xml" emacs)
-        ("https://www.youtube.com/feeds/videos.xml?user=supergreatfriend" youtube)
         ("https://acoup.blog/feed/")
         ("https://www.youtube.com/feeds/videos.xml?user=SteveYegge" youtube)
-        ("https://www.youtube.com/feeds/videos.xml?channel_id=UC67cteTsbTyvTaNlPrB84BQ" youtube) ; trillionaire mindset
         ("https://drewdevault.com/blog/index.xml" tech)
         ("https://danluu.com/atom.xml" tech mustread)
         ("https://fasterthanli.me/index.xml" tech)
-        ("https://www.youtube.com/feeds/videos.xml?user=mvincent4130" youtube)
         ("https://ciechanow.ski/atom.xml")
         ("https://rachelbythebay.com/w/atom.xml" tech)
         ("https://elephant.town/comic/rss" comic)
