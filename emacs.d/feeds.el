@@ -89,4 +89,5 @@
         ("https://ciechanow.ski/atom.xml")
         ("https://rachelbythebay.com/w/atom.xml" tech)
         ("https://elephant.town/comic/rss" comic)
-        ("https://swanboy.com/feed/" comic)))
+        ("https://swanboy.com/feed/" comic)
+        "http://penaddict.com/blog?format=rss"))
