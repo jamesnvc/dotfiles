@@ -44,6 +44,7 @@
   ;; rustup component add rust-analyzer rust-src
   ;; (setq lsp-rust-rls-command '("rustup" "run" "nightly" "rls"))
   (setopt lsp-rust-analyzer-server-command (list (cogent/exec "rustup which --toolchain stable rust-analyzer")))
+  (setopt lsp-rust-analyzer-cargo-watch-command "clippy")
 
   ;; Ruby
   ;; gem install solargraph
