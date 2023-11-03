@@ -37,7 +37,6 @@
         ("http://www.dumbingofage.com/feed/" comic)
         ("http://feeds2.feedburner.com/rsspect/fJur" comic)
         ("https://krebsonsecurity.com/feed/atom/" infosec)
-        ("http://automansdaughter.com/rss.php" comic)
         ("http://feedpress.me/sixcolors" apple)
         ("http://www.last-halloween.com/posts.rss" comic)
         "http://feeds.feedburner.com/mefi/PopularPosts"
