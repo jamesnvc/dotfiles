@@ -70,7 +70,7 @@
 (require 'cogent-snippets)
 (require 'cogent-tools)
 (require 'cogent-writing)
-(require 'cogent-irc)
+;; (require 'cogent-irc)
 (require 'cogent-web)
 
 ;; Other things
