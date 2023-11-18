@@ -32,8 +32,8 @@
 
 ;; Load packages
 (require 'cogent-package)
-(require 'cogent-general)
 (require 'cogent-base)
+(require 'cogent-general)
 (require 'cogent-keys)
 (require 'cogent-appearance)
 (require 'cogent-fonts)
