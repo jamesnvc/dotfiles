@@ -119,7 +119,9 @@
                 (and (with-current-buffer buffer
                        (derived-mode-p 'help-mode))
                     (string-match-p "\\*\\(Help\\|cider-doc\\).*"
-                                    (buffer-name buffer))))
+                                    (if (stringp buffer)
+                                        buffer
+                                      (buffer-name buffer)))))
              (display-buffer-in-side-window)
              (window-width . 0.25)
              (side . left)
