@@ -37,7 +37,7 @@
              :host github
              :repo "zellio/j-mode")
   :config
-  (setq j-console-cmd "ijconsole"))
+  (setq j-console-cmd "jconsole"))
 
 (use-package ess)
 
