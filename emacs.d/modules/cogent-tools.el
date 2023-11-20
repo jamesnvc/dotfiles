@@ -71,22 +71,4 @@
              :host github
              :repo "dalanicolai/sketch-mode"))
 
-(use-package osm
-  :straight (osm
-             :type git
-             :host github
-             :repo "minad/osm")
-  :bind (("C-c m h" . osm-home)
-         ("C-c m s" . osm-search)
-         ("C-c m v" . osm-server)
-         ("C-c m t" . osm-goto)
-         ("C-c m x" . osm-gpx-show)
-         ("C-c m j" . osm-bookmark-jump))
-  :init
-  ;; Load Org link support
-  (with-eval-after-load 'org
-    (require 'osm-ol))
-  :config
-  (evil-set-initial-state 'osm-mode 'emacs))
-
 (provide 'cogent-tools)
