@@ -303,6 +303,6 @@ Take both changes in diff."
   :config
   (unless (file-directory-p "~/.local/emacs/")
     (make-directory (expand-file-name "~/.local/emacs/") t))
-  (add-to-list 'desktop-path "~/.local/emacs/"))
+  (setopt desktop-path '("~/.local/emacs/")))
 
 (desktop-save-mode 1)
