@@ -56,15 +56,6 @@
              :host github
              :repo "magit/ghub"))
 
-(use-package forge
-  :after magit
-  :straight (forge
-             :type git
-             :host github
-             :repo "magit/forge")
-  :config
-  (evil-set-initial-state 'forge-topic-mode 'emacs))
-
 (use-package diff-hl
   :config
   (diff-hl-flydiff-mode -1)
