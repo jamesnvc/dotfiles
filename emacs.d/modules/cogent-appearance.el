@@ -84,34 +84,34 @@
   (setq nyan-bar-length 16
         nyan-wavy-trail nil))
 
-(use-package cyphejor
-  :custom (cyphejor-rules
-           '(("mode" "")
-             ("haskell" "")
-             ("emacs" "")
-             ("sh" "")
-             ("ruby" "")
-             ("magit" "")
-             ("clojure" "")
-             ("markdown" "")
-             ("js2" "")
-             ("sql" "")
-             ("dired" "")
-             ("eshell" "")
-             ("html" "")
-             ("rust" "")
-             ("swift" "")
-             ("erlang" "")
-             ("elixir" "")
-             ("alchemist" "")
-             ("erc" "")
-             ("notmuch" "")
-             ("prolog" "")
-             ("python" "")
-             ("web" "")
-             ("conf" "")))
-  :config
-  (cyphejor-mode 1))
+;; (use-package cyphejor
+;;   :custom (cyphejor-rules
+;;            '(("mode" "")
+;;              ("haskell" "")
+;;              ("emacs" "")
+;;              ("sh" "")
+;;              ("ruby" "")
+;;              ("magit" "")
+;;              ("clojure" "")
+;;              ("markdown" "")
+;;              ("js2" "")
+;;              ("sql" "")
+;;              ("dired" "")
+;;              ("eshell" "")
+;;              ("html" "")
+;;              ("rust" "")
+;;              ("swift" "")
+;;              ("erlang" "")
+;;              ("elixir" "")
+;;              ("alchemist" "")
+;;              ("erc" "")
+;;              ("notmuch" "")
+;;              ("prolog" "")
+;;              ("python" "")
+;;              ("web" "")
+;;              ("conf" "")))
+;;   :config
+;;   (cyphejor-mode 1))
 
 ;; Handle ANSI colours in compile buffer output.
 ;; From https://gist.github.com/jwiegley/8ae7145ba5ce64250a05
