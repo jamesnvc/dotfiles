@@ -28,7 +28,9 @@
 (use-package emacs
   :config
   (setq-default bidi-paragraph-direction 'left-to-right)
-  (setq bidi-inhibit-bpa t))
+  (setq bidi-inhibit-bpa t)
+  (when (fboundp 'completion-preview-mode)
+    (add-hook 'prog-mode-hook #'completion-preview-mode)))
 
 (use-package so-long
   :straight (:type built-in)
