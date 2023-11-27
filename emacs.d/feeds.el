@@ -89,6 +89,7 @@
         ("https://rachelbythebay.com/w/atom.xml" tech)
         ("https://elephant.town/comic/rss" comic)
         ("https://swanboy.com/feed/" comic)
-        "http://penaddict.com/blog?format=rss"
-        "https://www.gatheringofcuriosities.com/blog?format=rss"
+        ("http://penaddict.com/blog?format=rss" stationery)
+        ("https://www.gatheringofcuriosities.com/blog?format=rss" stationery)
+        ("https://stationery.pizza/feed.rss" stationery)
         ))
