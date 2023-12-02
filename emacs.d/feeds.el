@@ -92,4 +92,5 @@
         ("http://penaddict.com/blog?format=rss" stationery)
         ("https://www.gatheringofcuriosities.com/blog?format=rss" stationery)
         ("https://stationery.pizza/feed.rss" stationery)
+        ("https://www.gentlemanstationer.com/blog?format=rss" stationery)
         ))
