@@ -15,7 +15,6 @@
         "https://randsinrepose.com/feed/"
         ("http://feeds.feedburner.com/schneier/fulltext" infosec)
         ("http://feeds.feedburner.com/marcoorg" tech apple)
-        ("http://daringfireball.net/index.xml" tech apple)
         ("http://hypercritical.co/feeds/main" tech)
         ("http://www.tbray.org/ongoing/ongoing.atom" tech)
         ("http://feeds.feedburner.com/codinghorror" tech)
