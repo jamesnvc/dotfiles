@@ -42,9 +42,7 @@
         ("http://stilldrinking.org/rss/feed.xml" mustread)
         "http://www.objc.io/feed.xml"
         ("http://www.pvk.ca/atom.xml" lisp)
-        ("http://amultiverse.com/feed/" comic)
         "http://david-smith.org/atom.xml"
-        ("http://feeds.feedburner.com/VioletBlueOpenSourceSex" nsfw)
         "http://www.stumptuous.com/feed"
         "http://gregnuckols.wordpress.com/feed/"
         "http://feeds2.feedburner.com/subtraction"
