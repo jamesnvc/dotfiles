@@ -62,12 +62,21 @@ as opposed to empty strings."
   (or (cogent/exec-if-exec "git" "config --get user.email")
       (getenv "EMAIL")))
 
+;; transient now part of Emacs!
+;; ...but use git version, to keep in sync with magit
+(straight-override-recipe
+ '(transient
+   :type git
+   :host github
+   :repo "magit/transient"
+   :branch "main"))
 (use-package transient
-  ;; transient now part of Emacs!
-  ;; ...but use git version, to keep in sync with magit
   :straight (transient
              :type git
              :host github
-             :repo "magit/transient"))
+             :repo "magit/transient"
+             :branch "main")
+  :config
+  (setopt transient-default-level 7))
 
 (provide 'cogent-base)

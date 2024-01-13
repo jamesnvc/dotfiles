@@ -14,20 +14,6 @@
             :repo "emacs-compat/compat"))
 
 (straight-override-recipe
- '(transient
-   :type git
-   :host github
-   :repo "magit/transient"
-   :branch "main"))
-(use-package transient
-  :straight (transient
-             :type git
-             :host github
-             :repo "magit/transient"
-             :branch "main")
-  :config
-  (setopt transient-default-level 7))
-(straight-override-recipe
  '(magit
    :type git
    :host github
