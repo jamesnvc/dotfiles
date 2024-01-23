@@ -25,7 +25,8 @@ insert the result."
                 (comment-region start (point) 1))))))))
   (general-nmap 'sly-mode-map
     "go" 'cogent/evil-sly-eval
-    "g!" 'cogent/evil-sly-eval-in-place))
+    "g!" 'cogent/evil-sly-eval-in-place
+    "M-." 'sly-edit-definition))
 
 
 (provide 'cogent-cl)
