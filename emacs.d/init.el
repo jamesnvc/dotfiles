@@ -60,6 +60,7 @@
 (require 'cogent-rust)
 (require 'cogent-markdown)
 (require 'cogent-prolog)
+(require 'cogent-cl)
 (require 'cogent-mail)
 (require 'cogent-feeds)
 (require 'cogent-misc-langs)
