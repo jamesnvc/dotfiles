@@ -13,6 +13,13 @@
   :demand t
   :config
 
+  (defun cogent/current-mode-initial-emacs ()
+    (interactive)
+    (add-to-list 'evil-emacs-state-modes major-mode)
+    (customize-save-variable 'evil-emacs-state-modes evil-emacs-state-modes)
+    (evil-emacs-state))
+  (general-nmap "C-S-z" 'cogent/current-mode-initial-emacs)
+
   (evil-select-search-module 'evil-search-module 'isearch)
 
   ;; if emacs is stuck with 50% CPU usage & `list-timers' shows evil-ex-hl-whatever
