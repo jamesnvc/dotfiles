@@ -13,21 +13,6 @@
   :demand t
   :config
 
-  (evil-set-initial-state 'image-mode 'emacs)
-  (evil-set-initial-state 'eww-mode 'emacs)
-  (evil-set-initial-state 'eww-history-mode 'emacs)
-  (evil-set-initial-state 'diff-mode 'emacs)
-  (evil-set-initial-state 'dired-mode 'emacs)
-  (evil-set-initial-state 'Man-mode 'emacs)
-  (evil-set-initial-state 'woman-mode 'emacs)
-  (evil-set-initial-state 'vundo--mode 'emacs)
-  (evil-set-initial-state 'completion-mode 'emacs)
-  (evil-set-initial-state 'process-menu-mode 'emacs)
-  (evil-set-initial-state 'timer-list-mode 'emacs)
-  (evil-set-initial-state 'info-mode 'emacs)
-  (evil-set-initial-state 'grep-mode 'emacs)
-  (evil-set-initial-state 'view-mode 'emacs)
-
   (evil-select-search-module 'evil-search-module 'isearch)
 
   ;; if emacs is stuck with 50% CPU usage & `list-timers' shows evil-ex-hl-whatever
