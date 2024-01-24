@@ -89,6 +89,6 @@
   :mode (("\\.pl\\'" . sweeprolog-mode)
          ("\\.plt\\'" . sweeprolog-mode))
   :config
-  (setopt sweeprolog-swipl-path (expand-file-name "~/.local/bin/swipl")))
+  (setopt sweeprolog-swipl-path (expand-file-name "~/bin/swipl")))
 
 (provide 'cogent-prolog)
