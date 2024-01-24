@@ -5,6 +5,8 @@
   (add-hook 'lisp-mode-hook #'enable-paredit-mode)
 
   (setopt inferior-lisp-program (executable-find "sbcl"))
+  (setopt sly-symbol-completion-mode nil)
+
   (evil-define-operator cogent/evil-sly-eval (beg end)
     "Evaluate Common Lisp expression given by <motion> via sly."
     (sly-eval-region beg end))
