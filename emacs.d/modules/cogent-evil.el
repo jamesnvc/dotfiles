@@ -15,7 +15,7 @@
 
   (defun cogent/current-mode-initial-emacs ()
     (interactive)
-    (add-to-list 'evil-emacs-state-modes major-mode)
+    (cl-pushnew major-mode evil-emacs-state-modes)
     (customize-save-variable 'evil-emacs-state-modes evil-emacs-state-modes)
     (evil-emacs-state))
   (general-nmap "C-S-z" 'cogent/current-mode-initial-emacs)
