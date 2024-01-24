@@ -2,6 +2,8 @@
 
 (use-package sly
   :config
+  (add-hook 'lisp-mode-hook #'enable-paredit-mode)
+
   (setopt inferior-lisp-program (executable-find "sbcl"))
   (evil-define-operator cogent/evil-sly-eval (beg end)
     "Evaluate Common Lisp expression given by <motion> via sly."
