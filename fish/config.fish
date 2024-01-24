@@ -11,6 +11,8 @@ end
 
 set -g XDG_DATA_DIRS $HOME/share:$XDG_DATA_DIRS
 
+set -gx MANPATH $MANPATH $HOME/dotfiles/lisp/man
+
 alias g=git
 alias l=ls
 alias ec="emacsclient --create-frame --alternate-editor=emacs"
