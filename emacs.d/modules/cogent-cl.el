@@ -27,6 +27,7 @@ insert the result."
                                " => ") value)
               (unless string-or-comment-p
                 (comment-region start (point) 1))))))))
+
   (general-nmap 'sly-mode-map
     "go" 'cogent/evil-sly-eval
     "g!" 'cogent/evil-sly-eval-in-place
