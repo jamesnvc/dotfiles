@@ -68,23 +68,20 @@
 |#
 
 ;;;; Run ---------------------------------------------------------
-(defun run% (ts1 ts2)
+
+(defun run (ts1 &optional (ts2 (local-time:today)))
   (let ((days (date-delta-days ts1 ts2))
         (weeks (date-delta-weeks ts1 ts2))
         (months (date-delta-months ts1 ts2))
         (years (date-delta-years ts1 ts2)))
     (format t "~&~a Day~:p~%~a Week~:p~%~a Month~:p~%~a Year~:p~%" days weeks months years)))
 
-(defun run (ts1 &optional (ts2 (local-time:now) ts2-given-p))
-  (let ((ts1 (handler-case (local-time:parse-timestring ts1)
-               (local-time:invalid-timestring ()
-                 (error 'malformed-date :date-string ts1))))
-        (ts2 (if ts2-given-p
-                 (handler-case (local-time:parse-timestring ts2)
-                   (local-time:invalid-timestring ()
-                     (error 'malformed-date :date-string ts2)))
-                 ts2)))
-    (run% ts1 ts2)))
+(defun try-parse-date (date-string)
+  (handler-case (local-time:parse-timestring date-string :offset local-time:*default-timezone*)
+    (local-time:invalid-timestring ()
+      (error 'malformed-date :date-string date-string))))
+
+(local-time:parse-timestring "2023-10-16" :offset local-time:*default-timezone*)
 
 ;;;; User Interface ----------------------------------------------
 (defmacro exit-on-ctrl-c (&body body)
@@ -124,5 +121,5 @@
             ((gethash 'help options) (adopt:print-help-and-exit *ui*))
             ((null arguments) (error 'missing-start-date))
             ((> (length arguments) 2) (error 'too-many-arguments))
-            (t (apply #'run arguments)))
+            (t (apply #'run (mapcar #'try-parse-date arguments))))
         (user-error (e) (adopt:print-error-and-exit e))))))
