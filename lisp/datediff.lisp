@@ -16,6 +16,9 @@
 (define-condition missing-start-date (user-error) ()
   (:report "An initial date is required, but none was supplied."))
 
+(define-condition too-many-arguments (user-error) ()
+  (:report "Too many arguments, see usage"))
+
 (define-condition malformed-date (user-error)
   ((date-string :initarg :date-string))
   (:report (lambda (c s)
@@ -120,5 +123,6 @@
           (cond
             ((gethash 'help options) (adopt:print-help-and-exit *ui*))
             ((null arguments) (error 'missing-start-date))
+            ((> (length arguments) 2) (error 'too-many-arguments))
             (t (apply #'run arguments)))
         (user-error (e) (adopt:print-error-and-exit e))))))
