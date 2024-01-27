@@ -81,8 +81,6 @@
     (local-time:invalid-timestring ()
       (error 'malformed-date :date-string date-string))))
 
-(local-time:parse-timestring "2023-10-16" :offset local-time:*default-timezone*)
-
 ;;;; User Interface ----------------------------------------------
 (defmacro exit-on-ctrl-c (&body body)
   `(handler-case (with-user-abort:with-user-abort (progn ,@body))
