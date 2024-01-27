@@ -77,7 +77,7 @@
     (format t "~&~a Day~:p~%~a Week~:p~%~a Month~:p~%~a Year~:p~%" days weeks months years)))
 
 (defun try-parse-date (date-string)
-  (handler-case (local-time:parse-timestring date-string :offset local-time:*default-timezone*)
+  (handler-case (local-time:parse-timestring date-string)
     (local-time:invalid-timestring ()
       (error 'malformed-date :date-string date-string))))
 
