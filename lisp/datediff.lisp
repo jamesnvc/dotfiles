@@ -69,7 +69,10 @@
 
 ;;;; Run ---------------------------------------------------------
 
-(defun run (ts1 &optional (ts2 (local-time:today)))
+(defun local-now ()
+  (local-time:adjust-timestamp (local-time:today) (set :hour 0)))
+
+(defun run (ts1 &optional (ts2 (local-now)))
   (let ((days (date-delta-days ts1 ts2))
         (weeks (date-delta-weeks ts1 ts2))
         (months (date-delta-months ts1 ts2))
@@ -77,7 +80,10 @@
     (format t "~&~a Day~:p~%~a Week~:p~%~a Month~:p~%~a Year~:p~%" days weeks months years)))
 
 (defun try-parse-date (date-string)
-  (handler-case (local-time:parse-timestring date-string)
+  (handler-case
+      (let* ((ts1 (local-time:parse-timestring date-string))
+             (off (local-time:timestamp-subtimezone ts1 local-time:*default-timezone*)))
+        (local-time:parse-timestring date-string :offset off))
     (local-time:invalid-timestring ()
       (error 'malformed-date :date-string date-string))))
 
