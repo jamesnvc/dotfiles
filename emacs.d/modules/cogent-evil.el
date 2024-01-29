@@ -20,6 +20,8 @@
     (evil-emacs-state))
   (general-nmap "C-S-z" 'cogent/current-mode-initial-emacs)
 
+  (setopt evil-buffer-regexps '(("^\\*.*\\*$" . emacs)))
+
   (evil-select-search-module 'evil-search-module 'isearch)
 
   ;; if emacs is stuck with 50% CPU usage & `list-timers' shows evil-ex-hl-whatever
