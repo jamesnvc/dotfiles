@@ -103,49 +103,77 @@
     ""
     "Basic lisp program"
     nil
-    "(eval-when (:compile-toplevel :load-toplevel :execute)
-  (ql:quickload '(:with-user-abort …) :silent t))
-
-(defpackage :foo
-  (:use :cl)
-  (:export :toplevel *ui*))
-
-(in-package :foo)
-
-;;;; Configuration -----------------------------------------------
-(defparameter *whatever* 123)
-
-;;;; Errors ------------------------------------------------------
-(define-condition user-error (error) ())
-
-(define-condition missing-foo (user-error) ()
-  (:report \"A foo is required, but none was supplied.\"))
-
-;;;; Functionality -----------------------------------------------
-(defun foo (string)
-  …)
-
-;;;; Run ---------------------------------------------------------
-(defun run (arguments)
-  (map nil #'foo arguments))
-
-;;;; User Interface ----------------------------------------------
-(defmacro exit-on-ctrl-c (&body body)
-  `(handler-case (with-user-abort:with-user-abort (progn ,@body))
-     (with-user-abort:user-abort () (sb-ext:exit :code 130))))
-
-(defparameter *ui*
-  (adopt:make-interface
-    :name \"foo\"
-    …))
-
-(defun toplevel ()
-  (sb-ext:disable-debugger)
-  (exit-on-ctrl-c
-    (multiple-value-bind (arguments options) (adopt:parse-options-or-exit *ui*)
-      … ; Handle options.
-      (handler-case (run arguments)
-        (user-error (e) (adopt:print-error-and-exit e))))))")
+    "(eval-when (:compile-toplevel :load-toplevel :execute)\n"
+    "  (ql:quickload '(:with-user-abort :adopt) :silent t))\n"
+    "\n"
+    "(defpackage :" str | (file-name-base (buffer-file-name)) "\n"
+    "  (:use :cl)\n"
+    "  (:export :toplevel *ui*))\n"
+    "\n"
+    "(in-package :" str | (file-name-base (buffer-file-name)) ")\n"
+    "\n"
+    ";;;; Configuration -----------------------------------------------\n"
+    ";; (defparameter *whatever* 123)\n"
+    "\n"
+    ";;;; Errors ------------------------------------------------------\n"
+    "(define-condition user-error (error) ())\n"
+    "\n"
+    "(define-condition missing-foo (user-error) ()\n"
+    "  (:report \"A foo is required, but none was supplied.\"))\n"
+    "\n"
+    "(define-condition too-many-arguments (user-error) ()\n"
+    "  (:report \"Too many arguments, see usage\"))\n"
+    "\n"
+    ";;;; Functionality -----------------------------------------------\n"
+    "\n"
+    "(defun do-stuff ()\n"
+    "   )\n"
+    "\n"
+    ";;;; Run ---------------------------------------------------------\n"
+    "\n"
+    "(defun run (arguments)\n"
+    "  (map 'nil #'do-stuff arguments)\n"
+    "\n"
+    ";;;; User Interface ----------------------------------------------\n"
+    "(defmacro exit-on-ctrl-c (&body body)\n"
+    "  `(handler-case (with-user-abort:with-user-abort (progn ,@body))\n"
+    "     (with-user-abort:user-abort () (sb-ext:exit :code 130))))\n"
+    "\n"
+    "(defparameter *option-help*\n"
+    "  (adopt:make-option 'help\n"
+    "    :help \"Display help and exit.\"\n"
+    "    :long \"help\"\n"
+    "    :short #\h\n"
+    "    :reduce (constantly t)))\n"
+    "\n"
+    "(adopt:defparameters (*option-debug* *option-no-debug*)\n"
+    "  (adopt:make-boolean-options 'debug\n"
+    "    :long \"debug\"\n"
+    "    :short #\d\n"
+    "    :help \"Enable the Lisp debugger.\"\n"
+    "    :help-no \"Disable the Lisp debugger (the default).\"))\n"
+    "\n"
+    "(defparameter *ui*\n"
+    "  (adopt:make-interface\n"
+    "    :name \"foo\"\n"
+    "    :summary \"do something neat\"\n"
+    "    :usage \"[OPTIONS] ARGS\"\n"
+    "    :help \"Do something interesting\"\n"
+    "    :contents (list *option-help* *option-debug*)))\n"
+    "\n"
+    "(defun toplevel ()\n"
+    "  (sb-ext:disable-debugger)\n"
+    "  (exit-on-ctrl-c\n"
+    "    (multiple-value-bind (arguments options) (adopt:parse-options-or-exit *ui*)\n"
+    "      (when (gethash 'debug options)\n"
+    "        (sb-ext:enable-debugger))\n"
+    "      (handler-case\n"
+    "          (cond\n"
+    "            ((gethash 'help options) (adopt:print-help-and-exit *ui*))\n"
+    "            ((null arguments) (error 'missing-foo))\n"
+    "            ((> (length arguments) 2) (error 'too-many-arguments))\n"
+    "            (t (run arguments)))\n"
+    "        (user-error (e) (adopt:print-error-and-exit e))))))\n")
   (define-abbrev lisp-mode-abbrev-table "cliskel" ""
     'cs-lisp-cli-program))
 
