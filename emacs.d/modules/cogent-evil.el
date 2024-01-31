@@ -20,7 +20,9 @@
     (evil-emacs-state))
   (general-nmap "C-S-z" 'cogent/current-mode-initial-emacs)
 
-  (setopt evil-buffer-regexps '(("^\\*.*\\*$" . emacs)))
+  (setopt evil-buffer-regexps '(("^\\*Org Src .*\\*$" . normal)
+                                ("^\\*Edit Formulas\\*$" . normal)
+                                ("^\\*.*\\*$" . emacs)))
 
   (evil-select-search-module 'evil-search-module 'isearch)
 
