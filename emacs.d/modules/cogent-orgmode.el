@@ -350,6 +350,30 @@ Then press C-c C-x C-u inside
     (org-tree-slide-mode -1)
     (org-indent-mode -1)))
 
+(defun cogent/org-element-logbook-duration ()
+  "Get the logged duration for the element at point"
+  (interactive)
+  (save-excursion
+    (unless (org-at-heading-p)
+      (outline-previous-heading))
+    (when (re-search-forward ":LOGBOOK:" (save-excursion
+                                           (outline-next-heading)
+                                           (point))
+                             t)
+      (let* ((drawer (org-element-property-drawer-parser nil))
+             (beg (org-element-property :contents-begin drawer))
+             (end (org-element-property :contents-end drawer))
+             (duration-minutes 0))
+        (save-excursion
+          (goto-char beg)
+          (while (< (point) end)
+            (let ((clock (org-element-at-point)))
+              (incf duration-minutes
+                    (org-duration-string-to-minutes
+                     (org-element-property :duration clock))))
+            (forward-line 1)))
+        (org-duration-from-minutes duration-minutes)))))
+
 (use-package org-ql)
 
 (use-package org-clock-export
