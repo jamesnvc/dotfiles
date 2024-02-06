@@ -91,4 +91,4 @@
         ("https://stationery.pizza/feed.rss" stationery)
         ("https://www.gentlemanstationer.com/blog?format=rss" stationery)
         ("https://www.wellappointeddesk.com/feed/" stationery)
-        ))
+        ("https://www.afleetingripple.com/blog-feed.xml" stationery)))
