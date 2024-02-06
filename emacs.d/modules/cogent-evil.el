@@ -22,6 +22,7 @@
 
   (setopt evil-buffer-regexps '(("^\\*Org Src .*\\*$" . normal)
                                 ("^\\*Edit Formulas\\*$" . normal)
+                                ("^\\*sly-mrepl for .*\\*$" . insert)
                                 ("^\\*.*\\*$" . emacs)))
 
   (evil-select-search-module 'evil-search-module 'isearch)
