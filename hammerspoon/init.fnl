@@ -147,3 +147,4 @@ end tell
 (hs.hotkey.bind hyper "i" (fn [] (switch-to "com.tapbots.Ivory")))
 (hs.hotkey.bind hyper "m" (fn [] (switch-to "com.apple.MobileSMS")))
 (hs.hotkey.bind hyper "x" (fn [] (switch-to "com.apple.dt.Xcode")))
+(hs.hotkey.bind hyper "t" (fn [] (switch-to "com.todoist.mac.Todoist")))
