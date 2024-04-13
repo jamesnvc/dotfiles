@@ -97,4 +97,14 @@
              :files (:defaults "jinx-mod.c" "emacs-module.h"))
   :bind ([remap ispell-word] . jinx-correct))
 
+
+(use-package cc-isearch-menu
+  :straight (cc-isearch-menu
+             :type git
+             :host github
+             :repo "kickingvegas/cc-isearch-menu"
+             :branch "main")
+  :config
+  (keymap-set isearch-mode-map "<f2>" #'cc-isearch-menu-transient))
+
 (provide 'cogent-editing)
