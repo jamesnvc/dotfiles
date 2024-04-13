@@ -383,4 +383,7 @@ Then press C-c C-x C-u inside
              :repo "jamesnvc/org-clock-export"
              :branch "escape-fields"))
 
+(use-package ox-epub
+  :after org)
+
 (provide 'cogent-orgmode)
