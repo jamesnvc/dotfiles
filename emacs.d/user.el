@@ -270,6 +270,39 @@ Take both changes in diff."
       (kill-new filename)
       (message "Saved to '%s'" filename))))
 
+(defun cogent/blackletter-string (text)
+  "Convert text to blackletter"
+  (let ((frak-A (string-to-char "𝕬"))
+        (ascii-A (string-to-char "A"))
+        (ascii-Z (string-to-char "Z"))
+        (ascii-a (string-to-char "a"))
+        (ascii-z (string-to-char "z")))
+    (thread-last
+      (loop for ch across text
+            collect (if (<= ascii-A ch ascii-z)
+                        (+ frak-A (- ch ascii-A)
+                           (if (< ascii-Z ch)
+                               (- ascii-Z ascii-a -1)
+                             0))
+                      ch))
+      (concatenate 'string))))
+
+(defun cogent/blackletter (text beg end)
+  "If region is active "
+  (interactive
+   (if (region-active-p)
+       (list nil (region-beginning) (region-end))
+     (list (read-string "String: " nil 'blackletter-history)
+           nil nil)))
+  (let ((blacklettered (cogent/blackletter-string
+                        (if text
+                            text
+                          (buffer-substring-no-properties beg end)))))
+    (with-temp-buffer
+      (insert blacklettered)
+      (clipboard-kill-ring-save (point-min) (point-max)))
+    (message "Copied \"%s\"" blacklettered)))
+
 (use-package emacs
   :config
   (minibuffer-depth-indicate-mode 1)
