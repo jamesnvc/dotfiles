@@ -114,6 +114,10 @@
     (setq org-babel-js-function-wrapper
           "process.stdout.write(require('util').inspect(function(){\n%s\n}()));" ))
 
+  ;; Stop ctags from hijacking link behaviour and breaking internal links
+  (with-eval-after-load 'org-ctags
+    (setq org-open-link-functions nil))
+
   ;; because we want embark to take that key
   (define-key org-mode-map (kbd "C-,") nil)
 
