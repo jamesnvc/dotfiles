@@ -95,7 +95,20 @@
              :repo "minad/jinx"
              :branch "main"
              :files (:defaults "jinx-mod.c" "emacs-module.h"))
-  :bind ([remap ispell-word] . jinx-correct))
+  :bind ([remap ispell-word] . jinx-correct)
+  :config
+  (evil-define-motion cogent/evil-prev-jinx-error (count)
+    "Go to the COUNT'th spelling error preceding point."
+    :jump t
+    (jinx-previous (or count 1)))
+
+  (evil-define-motion cogent/evil-next-jinx-error (count)
+    "Go to the COUNT'th spelling error succeeding point."
+    :jump t
+    (jinx-next (or count 1)))
+
+  (keymap-set evil-motion-state-map "[ j" 'cogent/evil-prev-jinx-error)
+  (keymap-set evil-motion-state-map "] j" 'cogent/evil-next-jinx-error))
 
 
 (use-package cc-isearch-menu
