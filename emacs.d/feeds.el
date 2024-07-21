@@ -30,7 +30,7 @@
         ("http://www.girlgeniusonline.com/ggmain.rss" comic)
         ("http://www.marecomic.com/feed/" comic)
         ("http://nshipster.com/feed.xml" apple)
-        "http://www.jwz.org/blog/feed/"
+        ;; "http://www.jwz.org/blog/feed/"
         "http://www.shadycharacters.co.uk/feed/"
         "http://www.leancrew.com/all-this/feed/"
         ("http://www.dumbingofage.com/feed/" comic)
