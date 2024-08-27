@@ -14,7 +14,8 @@
  '(clojure-indent-style :align-arguments)
  '(confirm-kill-emacs 'yes-or-no-p)
  '(custom-safe-themes
-   '("82f0f47ac811eeb45fbcfc5fee48989e4d0bca11f74653b838c29fab9a20aee7"
+   '("b9c804f672050817981dcc58a04e236d685417c3318554088d5552c819243281"
+     "82f0f47ac811eeb45fbcfc5fee48989e4d0bca11f74653b838c29fab9a20aee7"
      "e405944a54b99c11463edddeb9ff4f8dd981cd2ae14a4b58458536c451323381"
      "64eff8a4f640f94bb22b05ad3e33888dfa9cab0823b05a3a70b7c133660df748"
      "4ef7fae9161de7ada26d79ac4fb28c83e9c418286a7ed465748efa46d4dc4482"

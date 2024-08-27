@@ -163,7 +163,11 @@ search."
                       "C-c c" #'org-capture))
 
 (use-package ol-notmuch
-  :if (executable-find "notmuch"))
+  :if (executable-find "notmuch")
+  :straight (ol-notmuch
+             :type git
+             :host github
+             :repo "tarsius/ol-notmuch"))
 
 (use-package consult-notmuch
   :defer t

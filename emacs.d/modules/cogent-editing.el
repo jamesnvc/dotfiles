@@ -111,13 +111,13 @@
   (keymap-set evil-motion-state-map "] j" 'cogent/evil-next-jinx-error))
 
 
-(use-package cc-isearch-menu
-  :straight (cc-isearch-menu
-             :type git
-             :host github
-             :repo "kickingvegas/cc-isearch-menu"
-             :branch "main")
-  :config
-  (keymap-set isearch-mode-map "<f2>" #'cc-isearch-menu-transient))
+;; (use-package cc-isearch-menu
+;;   :straight (cc-isearch-menu
+;;              :type git
+;;              :host github
+;;              :repo "kickingvegas/cc-isearch-menu"
+;;              :branch "main")
+;;   :config
+;;   (keymap-set isearch-mode-map "<f2>" #'cc-isearch-menu-transient))
 
 (provide 'cogent-editing)
