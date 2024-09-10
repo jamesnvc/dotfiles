@@ -16,4 +16,20 @@
                                              "--" "stdio"))
                                  eglot-server-programs)))
 
+(use-package flymake
+  :straight (:type built-in)
+  :config
+  (evil-define-motion cogent/evil-prev-flymake-error (count)
+    "Go to the COUNT'th flymake error preceding point."
+    :jump t
+    (flymake-goto-prev-error (or count 1) nil t))
+
+  (evil-define-motion cogent/evil-next-flymake-error (count)
+    "Go to the COUNT'th flymake error succeeding point."
+    :jump t
+    (flymake-goto-next-error (or count 1) nil t))
+
+  (keymap-set evil-motion-state-map "[ Q" 'cogent/evil-prev-flymake-error)
+  (keymap-set evil-motion-state-map "] Q" 'cogent/evil-next-flymake-error))
+
 (provide 'cogent-lsp)
