@@ -11,7 +11,7 @@ end
 
 set -g XDG_DATA_DIRS $HOME/share:$XDG_DATA_DIRS
 
-set -gx MANPATH $MANPATH $HOME/dotfiles/lisp/man
+set -gx MANPATH /usr/share/man:$HOME/dotfiles/lisp/man
 
 alias g=git
 alias l=ls
