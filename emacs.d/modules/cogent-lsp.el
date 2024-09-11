@@ -14,7 +14,8 @@
                                              "-g" "lsp_server:main"
                                              "-t" "halt"
                                              "--" "stdio"))
-                                 eglot-server-programs)))
+                                 eglot-server-programs))
+  (keymap-set eglot-mode-map "C-c C-a" #'eglot-code-actions))
 
 (use-package flymake
   :straight (:type built-in)
