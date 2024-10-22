@@ -173,6 +173,31 @@
     "            (t (run arguments)))\n"
     "        (user-error (e) (adopt:print-error-and-exit e))))))\n")
   (define-abbrev lisp-mode-abbrev-table "cliskel" ""
-    'cs-lisp-cli-program))
+    'cs-lisp-cli-program)
+
+  (define-skeleton cs-flutter-stateful-widget
+    "Create a stateful widget group of classes."
+    "Class: "
+    "class " str " extends StatefulWidget {\n"
+    "  const " str "({super.key});\n"
+    "\n"
+    "  @override\n"
+    "  State<" str "> createState() => _" str "State();\n"
+    "}\n"
+    "\n"
+    "class _" str "State extends State<" str "> {\n"
+    "\n"
+    "  @override\n"
+    "  void initState() {\n"
+    "    super.initState();\n"
+    "  }\n"
+    "\n"
+    "  @override\n"
+    "  Widget build(BuildContext context) {\n"
+    "    return Container();\n"
+    "  }\n"
+    "}\n")
+  (define-abbrev dart-mode-abbrev-table "widget" "" 'cs-flutter-stateful-widget)
+  )
 
 (provide 'cogent-snippets)
