@@ -1,10 +1,8 @@
 ;;; -*- lexical-binding: t; read-symbol-shorthands: (("cs-" . "cogent-skeleton-")) -*-
 
-(comment
- (use-package yasnippet
-   :demand t
-   :config
-   (yas-global-mode -1)))
+;; eglot uses this
+(use-package yasnippet
+  :demand t)
 
 (use-package skeleton
   :straight (:type built-in)
