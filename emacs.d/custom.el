@@ -36,8 +36,6 @@
    '("htop" "vi" "screen" "top" "less" "more" "lynx" "ncftp" "pine" "tin"
      "trn" "elm" "psql"))
  '(eshell-visual-subcommands '(("git " "log" "lol" "diff" "show")))
- '(evil-buffer-regexps
-   '(("^ \\*load\\*") ("^\\*org-goto\\*" . emacs) ("^\\*xref\\*" . emacs)))
  '(evil-emacs-state-modes
    '(sly-xref-mode sly-db-mode elfeed-show-mode sly-stickers--replay-mode
                    image-mode eww-mode eww-history-mode diff-mode

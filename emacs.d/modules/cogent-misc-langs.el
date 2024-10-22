@@ -43,4 +43,9 @@
 
 (use-package go-mode)
 
+(use-package kotlin-ts-mode
+  :straight (:host gitlab
+                   :repo "bricka/emacs-kotlin-ts-mode")
+  :mode "\\.kt\\'")
+
 (provide 'cogent-misc-langs)
