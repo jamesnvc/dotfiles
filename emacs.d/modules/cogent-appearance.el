@@ -139,8 +139,7 @@
              :host github
              :repo "rougier/svg-tag-mode"))
 
-;; (modus-themes-load-themes)
-;; (modus-themes-load-operandi)
+;; (load-theme 'modus-operandi)
 (load-theme 'ef-spring)
 
 (provide 'cogent-appearance)
