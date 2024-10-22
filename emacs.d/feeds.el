@@ -92,4 +92,5 @@
         ("https://www.gentlemanstationer.com/blog?format=rss" stationery)
         ("https://www.wellappointeddesk.com/feed/" stationery)
         ("https://www.afleetingripple.com/blog-feed.xml" stationery)
-        ("https://www.mnmlscholar.com/blog?format=rss" stationery)))
+        ("https://www.mnmlscholar.com/blog?format=rss" stationery)
+        ("https://wonderpens.ca/blogs/uncategorized.atom" stationery)))
