@@ -15,7 +15,9 @@
                                              "-t" "halt"
                                              "--" "stdio"))
                                  eglot-server-programs))
-  (keymap-set eglot-mode-map "C-c C-a" #'eglot-code-actions))
+  (keymap-set eglot-mode-map "C-c C-a" #'eglot-code-actions)
+  (keymap-set eglot-mode-map "C-c C-r" #'eglot-rename)
+  (keymap-set eglot-mode-map "C-c C-f" #'eglot-format-buffer))
 
 (use-package flymake
   :straight (:type built-in)
