@@ -38,23 +38,22 @@
      "trn" "elm" "psql"))
  '(eshell-visual-subcommands '(("git " "log" "lol" "diff" "show")))
  '(evil-emacs-state-modes
-   '(sly-xref-mode sly-db-mode elfeed-show-mode sly-stickers--replay-mode
-                   image-mode eww-mode eww-history-mode diff-mode
-                   dired-mode Man-mode woman-mode vundo--mode
-                   completion-mode process-menu-mode timer-list-mode
-                   info-mode grep-mode view-mode sly-trace-dialog-mode
+   '(sly-xref-mode sly-db-mode sly-stickers--replay-mode image-mode
+                   eww-mode eww-history-mode diff-mode dired-mode
+                   Man-mode woman-mode vundo--mode completion-mode
+                   process-menu-mode timer-list-mode info-mode
+                   grep-mode view-mode sly-trace-dialog-mode
                    sly-apropos-mode sly-apropos-mode
-                   sly-trace-dialog-mode cider-stacktrace-mode
-                   cider-docview-mode embark-collect-mode view-mode
-                   grep-mode info-mode timer-list-mode
-                   process-menu-mode completion-mode vundo--mode
-                   woman-mode Man-mode dired-mode diff-mode
-                   eww-history-mode eww-mode image-mode 5x5-mode
-                   archive-mode bbdb-mode biblio-selection-mode
-                   blackbox-mode bookmark-bmenu-mode
-                   bookmark-edit-annotation-mode browse-kill-ring-mode
-                   bs-mode bubbles-mode bzr-annotate-mode calc-mode
-                   cfw:calendar-mode completion-list-mode Custom-mode
+                   sly-trace-dialog-mode view-mode grep-mode info-mode
+                   timer-list-mode process-menu-mode completion-mode
+                   vundo--mode woman-mode Man-mode dired-mode
+                   diff-mode eww-history-mode eww-mode image-mode
+                   5x5-mode archive-mode bbdb-mode
+                   biblio-selection-mode blackbox-mode
+                   bookmark-bmenu-mode bookmark-edit-annotation-mode
+                   browse-kill-ring-mode bs-mode bubbles-mode
+                   bzr-annotate-mode calc-mode cfw:calendar-mode
+                   completion-list-mode Custom-mode
                    custom-theme-choose-mode debugger-mode
                    delicious-search-mode desktop-menu-blist-mode
                    desktop-menu-mode doc-view-mode dun-mode
