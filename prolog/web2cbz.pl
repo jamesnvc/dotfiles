@@ -4,6 +4,7 @@
 :- use_module(library(http/http_client)).
 :- use_module(library(sgml), [load_html/3]).
 :- use_module(library(xpath)).
+:- use_module(library(archive), [archive_create/3]).
 
 find_image_url(DOM, ImageLink) :-
     once(xpath(DOM, //div(@id=comic)/a/img(@src), ImageLink)).
@@ -31,6 +32,19 @@ process_page(Counter, URL) :-
          sleep(1),
          process_page(Counter1, NextLink))
     ; true ).
+
+directory_cbz(Name, Directory) :-
+    format(string(FileName), "~w.cbz", [Name]),
+    directory_files(Directory, Files0),
+    findall(File,
+            ( member(File, Files0),
+              file_name_extension(_, jpg, File) ),
+            Files1),
+    sort(Files1, Files),
+    length(Files, NumFiles),
+    debug(web2cbz, "Creating CBZ with ~w files...", [NumFiles]),
+    archive_create(FileName, Files, [format(zip), directory(Directory)]),
+    debug(web2cbz, "Created archive ~w", [FileName]).
 
 % web2cbz:process_page(0, 'https://swanboy.com/comic/swan-boy-joins-the-gym/').
 % web2cbz:process_page(28, 'https://swanboy.com/comic/208/').
