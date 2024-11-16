@@ -46,7 +46,7 @@
         "http://gregnuckols.wordpress.com/feed/"
         "http://feeds2.feedburner.com/subtraction"
         ("http://feeds.feedburner.com/Metafilter" busy)
-        ("http://www.smbc-comics.com/rss.php" comic)
+        ;; ("http://www.smbc-comics.com/rss.php" comic)
         "http://www.mistys-internet.website/blog/atom.xml"
         ;; ("http://feeds2.feedburner.com/WastedTalentRss" comic)
         "http://cannaw.blogspot.com/feeds/posts/default"
