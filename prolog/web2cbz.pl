@@ -32,12 +32,12 @@ test_xpath_query(URL) :-
       debug(web2cbz, "  Got next link ~w", [NextLink])
     ; debug(web2cbz, "  Couldn't find next link", [])).
 
-process_page(Counter, URL) :-
+process_page(OutDir, Counter, URL) :-
     load_html(URL, DOM, []),
     debug(web2cbz, "Got DOM for ~w", [URL]),
     find_image_url(DOM, ImageLink),
     debug(web2cbz, "  Got image link ~w", [ImageLink]),
-    format(string(ImageFileName), "images/~|~`0t~d~3+.jpg", [Counter]),
+    format(string(ImageFileName), "~w/~|~`0t~d~3+.jpg", [OutDir, Counter]),
     setup_call_cleanup(open(ImageFileName, write, OutStream, [type(binary)]),
                        http_get(ImageLink, _, [to(stream(OutStream))]),
                        close(OutStream)
@@ -46,7 +46,7 @@ process_page(Counter, URL) :-
     ( find_next_url(DOM, NextLink)
     -> ( Counter1 is Counter + 1,
          sleep(1),
-         process_page(Counter1, NextLink))
+         process_page(OutDir, Counter1, NextLink))
     ; true ).
 
 directory_cbz(Name, Directory) :-
@@ -90,6 +90,10 @@ main(Args) :-
           longflags([image]),
           help("XPath to locate the image url")
         ],
+
+        [ opt(outdir), type(string), default("images"),
+          longflags([dir]), shortflags([i]),
+          help("Directory to store images in") ],
 
         [ opt(quiet), type(boolean), shortflags([q]),
           longflags([quiet]), default(false),
@@ -135,9 +139,12 @@ main(Args) :-
 
     memberchk(starturl(URL), Opts),
     memberchk(counterstart(Counter), Opts),
+    memberchk(outdir(OutDir), Opts),
     ( memberchk(xpathtest(true), Opts) ->
       test_xpath_query(URL)
-    ; process_page(Counter, URL)
+    ; process_page(OutDir, Counter, URL)
     ).
 
-% swipl -s web2cbz.pl -- --start-url 'https://swanboy.com/comic/laundry/' --next "[//a(@class='comic-nav-base comic-nav-next', @href), //article/div(@class='post-content')/div(@class=entry)/p/img(@'data-orig-file')]" --xpathtest --image '//div(@id=comic)/a/img(@src)'
+% swipl -s web2cbz.pl -- --start-url 'https://swanboy.com/comic/laundry/' --next "[//a(contains(@class, 'comic-nav-next'), @href), //article/div(@class='post-content')/div(@class=entry)/p/img(@'data-orig-file')]" --xpathtest --image '//div(@id=comic)/a/img(@src)'
+
+% swipl -o web2cbz -O -c web2cbz.pl  --stand-alone=true
