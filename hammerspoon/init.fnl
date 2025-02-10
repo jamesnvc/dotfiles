@@ -53,7 +53,8 @@
 
 (fn close-notifications []
   (if (< (. (hs.host.operatingSystemVersion) :major) 13)
-   (hs.osascript.applescript "
+      ;; When this changes with os releases, use "Accessibility Inspector.app" to figure out the new heirarchy
+      (hs.osascript.applescript "
 tell application \"System Events\"
   set notificationWindows to windows of process \"Notification Center\"
   set theGroups to UI elements of first item of UI elements of first item of UI elements of first item of notificationWindows
@@ -65,19 +66,32 @@ tell application \"System Events\"
     end if
   end repeat
 end tell")
-   (hs.osascript.applescript "
+      (< (. (hs.host.operatingSystemVersion) :major) 15)
+      (hs.osascript.applescript "
 tell application \"System Events\"
-	set _notificationWindow to window \"Notification Center\" of process \"Notification Center\"
-	set _groups to groups of UI element 1 of scroll area 1 of group 1 of _notificationWindow
-	repeat with _group in _groups
-		repeat with _action in actions of _group
-			if description of _action is in {\"Close\", \"Clear All\"} then
-				perform _action
-			end if
-		end repeat
-	end repeat
+  set _notificationWindow to window \"Notification Center\" of process \"Notification Center\"
+  set _groups to groups of UI element 1 of scroll area 1 of group 1 of _notificationWindow
+  repeat with _group in _groups
+    repeat with _action in actions of _group
+      if description of _action is in {\"Close\", \"Clear All\"} then
+        perform _action
+      end if
+    end repeat
+  end repeat
 end tell
-")))
+")
+      (hs.osascript.applescript "
+tell application \"System Events\"
+  set _notificationWindow to window \"Notification Center\" of process \"Notification Center\"
+  set _groups to groups of scroll area 1 of group 1 of group 1 of _notificationWindow
+  repeat with _group in _groups
+    repeat with _action in actions of _group
+      if description of _action is in {\"Close\", \"Clear All\"} then
+        perform _action
+      end if
+    end repeat
+  end repeat
+end tell")))
 
 (hs.hotkey.bind hyper "C" close-notifications)
 
