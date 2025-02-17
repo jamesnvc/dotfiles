@@ -108,7 +108,7 @@
              (slot . 2)
              (window-parameters . ((no-other-window . t))))
             ;; bottom side window
-            ("\\*cider-error\\*"
+            ("\\*\\(cider-error\\|eldoc.*\\|xref\\)\\*"
              (display-buffer-in-side-window)
              (side . bottom)
              (slot . 0)
