@@ -307,6 +307,7 @@ Then press C-c C-x C-u inside
                             (re-search-forward (rx bol "DAY: ") nil t))))
           (while (re-search-forward (rx bol "|") next-start t)
             (insert "| "))))
+      (delete-matching-lines "0:00" (point-min) (point-max))
       ;; when it's all done, fix up the table
       (org-table-align))))
 
