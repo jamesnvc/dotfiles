@@ -224,7 +224,7 @@ Then press C-c C-x C-u inside
          (start (funcall ts->sec ts))
          (end (funcall ts->sec te))
          (step (or (plist-get params :step) "day"))
-         (stepfn (pcase step
+         (step-forward (pcase step
                    ("day"  (lambda (d) (+ d (* 3600 24))))
                    ("week"  (lambda (d) (+ d (* 3600 24 7))))
                    ("month" (lambda (d)
@@ -237,22 +237,37 @@ Then press C-c C-x C-u inside
                                 (cons 0) (cons 0) (cons 0)
                                 (apply #'encode-time)
                                 time-to-seconds)))
-                   (_ (error "Invalid step '%s'" step)))))
-    (while (<= start end)
-      (let ((block-end (funcall stepfn start)))
+                   (_ (error "Invalid step '%s'" step))))
+         (step-backward (pcase step
+                      ("day"  (lambda (d) (- d (* 3600 24))))
+                      ("week"  (lambda (d) (- d (* 3600 24 7))))
+                      ("month" (lambda (d)
+                                 (thread-last d
+                                              (funcall sec->ts)
+                                              (format "decmonth(newmonth(%s))")
+                                              calc-eval
+                                              (parse-time-string)
+                                              cdddr
+                                              (cons 0) (cons 0) (cons 0)
+                                              (apply #'encode-time)
+                                              time-to-seconds)))
+                      (_ (error "Invalid step '%s'" step))))
+         (block-start (funcall step-backward end)))
+    (while (<= start block-start)
+      (let ((block-end (funcall step-forward block-start)))
         (save-excursion
           (insert "\n\nDAY: "
-                  (funcall sec->ts start)
+                  (funcall sec->ts block-start)
                   (if (not (string= step "day"))
                       (concat " to " (funcall sec->ts block-end))
                     "")
                   "\n")
           (org-dblock-write:clocktable
            (thread-first params
-             (plist-put :tstart (funcall sec->ts start))
+             (plist-put :tstart (funcall sec->ts block-start))
              (plist-put :tend (funcall sec->ts block-end))
              (plist-put :step nil)))
-          (setq start block-end))))))
+          (setq block-start (funcall step-backward block-start)))))))
 
 (require 'rx)
 (defun org-dblock-write:merged-rangereport (params)
