@@ -90,6 +90,13 @@ tell application \"System Events\"
         perform _action
       end if
     end repeat
+    repeat with _subgroup in groups of _group
+      repeat with _action in actions of _subgroup
+        if description of _action is in {\"Close\", \"Clear All\"} then
+          perform _action
+        end if
+      end repeat
+    end repeat
   end repeat
 end tell")))
 
