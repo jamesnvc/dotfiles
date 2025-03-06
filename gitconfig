@@ -28,6 +28,17 @@
   dd = ! git status --short | awk '$1 == \"D\" { print $2}' | xargs git rm --cached
   blast = for-each-ref --sort=-committerdate refs/heads/ --format=%(committerdate:relative)%09%(refname:short)
   conflicted = diff --name-only --diff-filter=U
+[column]
+  ui = auto
+[branch]
+  sort = -committerdate
+[tag]
+  sort = version:refname
+[diff]
+  algorithm = histogram
+  colorMoved = plain
+  mnemonicPrefix = true
+  renames = true
 [color]
   branch = auto
   diff = auto
