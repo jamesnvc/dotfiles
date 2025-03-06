@@ -136,6 +136,11 @@ Host jet
   User james
   IdentityFile ~/.ssh-keys/jet
 
+Host csaf
+  Hostname 167.114.195.192
+  User lvucc783
+  IdentityFile ~/.ssh-keys/csaf
+
 Host csaf-new
   Hostname 192.53.123.134
   User james
