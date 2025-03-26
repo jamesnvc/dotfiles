@@ -388,9 +388,9 @@ Then press C-c C-x C-u inside
           (goto-char beg)
           (while (< (point) end)
             (let ((clock (org-element-at-point)))
-              (incf duration-minutes
-                    (org-duration-string-to-minutes
-                     (org-element-property :duration clock))))
+              (when-let ((duration (org-element-property :duration clock)))
+                (incf duration-minutes
+                      (org-duration-string-to-minutes duration))))
             (forward-line 1)))
         (org-duration-from-minutes duration-minutes)))))
 
