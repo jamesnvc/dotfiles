@@ -150,6 +150,10 @@ search."
 
   (add-hook 'message-mode-hook (lambda () (auto-fill-mode -1)))
 
+  (defun cogent/notmuch-archive (&optional beg end)
+    (interactive (notmuch-interactive-region))
+    (notmuch-search-tag '("-inbox") beg end))
+
   (general-define-key :keymaps '(notmuch-search-mode-map)
                       "j" #'notmuch-search-next-thread
                       "k" #'notmuch-search-previous-thread
@@ -157,7 +161,8 @@ search."
                       "G" #'notmuch-search-last-thread
                       "S" #'cogent/notmuch-search-by-from
                       "T" #'cogent/notmuch-tag-by-from
-                      "V" #'cogent/notmuch-archive-vox-reports)
+                      "V" #'cogent/notmuch-archive-vox-reports
+                      "A" #'cogent/notmuch-archive)
 
   (general-define-key :keymaps '(notmuch-show-mode-map)
                       "C-c c" #'org-capture))
