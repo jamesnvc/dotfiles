@@ -25,7 +25,8 @@
              :branch "main")
   :config
   (setq consult-line-numbers-widen t)
-  (setq completion-in-region-function #'consult-completion-in-region)
+  ;; (setq completion-in-region-function #'consult-completion-in-region)
+  ;; (setq completion-in-region-function #'completion--in-region) ; default
   (setq consult-async-min-input 3)
   (setq consult-async-input-debounce 0.5)
   (setq consult-async-input-throttle 0.8)
@@ -354,6 +355,10 @@
 
   (advice-add #'completing-read-multiple :filter-args #'cogent/crm-indicator)
 
+  (keymap-set completion-in-region-mode-map "<down>" #'minibuffer-next-completion)
+  (keymap-set completion-in-region-mode-map "<up>" #'minibuffer-previous-completion)
+  (keymap-set completion-in-region-mode-map "TAB" #'minibuffer-choose-completion)
+
   (define-key minibuffer-local-completion-map [remap next-line] #'minibuffer-next-completion)
   (define-key minibuffer-local-completion-map [remap previous-line] #'minibuffer-previous-completion)
   (define-key minibuffer-local-completion-map (kbd "TAB") (lambda () (interactive) (minibuffer-choose-completion t)))
@@ -361,6 +366,8 @@
   (define-key minibuffer-local-completion-map (kbd "M-<left>") #'cogent/minibuffer-previous-completion-group)
   (define-key minibuffer-local-completion-map (kbd "M-<") #'cogent/minibuffer-completion-beginning)
   (define-key minibuffer-local-completion-map (kbd "M->") #'cogent/minibuffer-completion-end)
+  (keymap-set minibuffer-local-completion-map "<down>" #'minibuffer-next-completion)
+  (keymap-set minibuffer-local-completion-map "<up>" #'minibuffer-previous-completion)
   ;; refresh completion candidates
   (define-key minibuffer-local-completion-map (kbd "C-l") #'minibuffer-completion-help))
 
