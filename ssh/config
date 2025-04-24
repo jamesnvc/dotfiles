@@ -146,6 +146,11 @@ Host csaf-new
   User james
   IdentityFile ~/.ssh-keys/csaf-new
 
+Host voxfullhost
+   Hostname 107.161.34.25
+   User james
+   IdentityFile ~/.ssh-keys/vox-fullhost
+
 Host NEWHETZNERCHANGEME
   Hostname 99.99.99.99
   User root
