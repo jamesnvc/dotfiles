@@ -8,12 +8,14 @@
   (setopt eglot-server-programs (cons
                                  (cons 'prolog-mode
                                        (list "swipl"
-                                             "-O"
+                                             ;; "-O"
                                              ;; "-g" "use_module(library(lsp_server))."
                                              "-s" (expand-file-name "~/Projects/prolog-lsp/prolog/lsp_server.pl")
                                              "-g" "lsp_server:main"
                                              "-t" "halt"
-                                             "--" "stdio"))
+                                             "--" ;"stdio"
+                                             "port" :autoport
+                                             ))
                                  eglot-server-programs))
   (keymap-set eglot-mode-map "C-c C-a" #'eglot-code-actions)
   (keymap-set eglot-mode-map "C-c C-r" #'eglot-rename)
