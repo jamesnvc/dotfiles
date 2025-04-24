@@ -93,4 +93,6 @@
         ("https://www.afleetingripple.com/blog-feed.xml" stationery)
         ("https://www.mnmlscholar.com/blog?format=rss" stationery)
         ("https://wonderpens.ca/blogs/uncategorized.atom" stationery)
-        ("https://www.404media.co/rss/" busy)))
+        ("https://www.404media.co/rss/" busy)
+        "https://www.everydaycommentary.com/www.everydaycommentary.com?format=rss"
+        ("http://www.thecramped.com/feed/" stationery)))
