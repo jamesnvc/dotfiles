@@ -151,6 +151,11 @@ Host voxfullhost
    User james
    IdentityFile ~/.ssh-keys/vox-fullhost
 
+Host socialserver
+   Hostname 172.105.22.233
+   User james
+   IdentityFile ~/.ssh-keys/socialserver
+
 Host NEWHETZNERCHANGEME
   Hostname 99.99.99.99
   User root
