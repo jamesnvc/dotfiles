@@ -68,6 +68,20 @@
                    (org-agenda-overriding-header "\nUpcoming deadlines (+14d)\n"))))
       ((org-agenda-compact-blocks nil)))))
 
+  ;; make scheduled tasks more clear
+  ;; via https://whhone.com/posts/org-agenda-repeated-tasks/
+  (setopt org-agenda-scheduled-leaders '("Sched" "S.%2dx"))
+  (setopt org-agenda-deadline-leaders '("Deadl" "In%2dd" "D.%2dx"))
+
+  (defun cogent/org-agenda-repeater ()
+    "Repeater to show in org-agenda-prefix for agenda."
+    (if (org-before-first-heading-p)
+        "-------"
+      (format "%5s: " (or (org-get-repeat) ""))))
+
+  (setcdr (assoc 'agenda org-agenda-prefix-format)
+          " %i %-12:c%?-12t%s%(cogent/org-agenda-repeater)")
+
   ;; fix for babel gnuplot -- it has (:session) in it, which causes an
   ;; error because if the cdr is a list, it tries to funcall it
   ;; (setq org-babel-default-header-args:gnuplot
