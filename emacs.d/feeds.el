@@ -84,4 +84,5 @@
         ("https://wonderpens.ca/blogs/uncategorized.atom" stationery)
         ("https://www.404media.co/rss/" busy)
         "https://www.everydaycommentary.com/www.everydaycommentary.com?format=rss"
-        ("http://www.thecramped.com/feed/" stationery)))
+        ("http://www.thecramped.com/feed/" stationery)
+        ("https://maya.land/feed.xml" mustread)))
