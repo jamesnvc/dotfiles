@@ -85,6 +85,16 @@
 (when (eq window-system 'mac)
   (setq mac-option-modifier '(:ordinary meta :function meta :mouse meta)))
 
+(when (eq window-system 'ns)
+  (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t)))
+
+(comment
+ (dolist (f (frames-on-display-list))
+   (modify-frame-parameters
+    f
+    (cons '(ns-transparent-titlebar . t) (frame-parameters f))))
+ )
+
 (when (eq system-type 'darwin)
   ;; hide annoying native-comp linker warning
   (setopt native-comp-driver-options '("-Wl,-w"))
@@ -320,6 +330,12 @@ Take both changes in diff."
    (scheme-mode-hook . cogent/scheme-hook)
    (after-save-hook . executable-make-buffer-file-executable-if-script-p)
    (before-save-hook . time-stamp)))
+
+;; make tramp stuff faster
+(setopt tramp-use-scp-direct-remote-copying t)
+(setopt remote-file-name-inhibit-locks t)
+(setopt remote-file-name-inhibit-auto-save-visited t)
+(setopt tramp-copy-size-limit (* 1024 1024)) ; 1MB
 
 (global-set-key (kbd "M-SPC") #'cycle-spacing)
 
