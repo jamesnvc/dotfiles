@@ -358,6 +358,7 @@
   (keymap-set completion-in-region-mode-map "<down>" #'minibuffer-next-completion)
   (keymap-set completion-in-region-mode-map "<up>" #'minibuffer-previous-completion)
   (keymap-set completion-in-region-mode-map "TAB" #'minibuffer-choose-completion)
+  (keymap-set completion-in-region-mode-map "<return>" #'minibuffer-choose-completion)
 
   (define-key minibuffer-local-completion-map [remap next-line] #'minibuffer-next-completion)
   (define-key minibuffer-local-completion-map [remap previous-line] #'minibuffer-previous-completion)
