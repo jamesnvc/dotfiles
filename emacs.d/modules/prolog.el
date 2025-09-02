@@ -1344,12 +1344,12 @@ With prefix argument ARG, restart the Prolog process if running before."
   (interactive "P")
   ;; FIXME: It should be possible to interactively specify the command to use
   ;; to run prolog.
-  (if (and arg (get-process "prolog"))
+  (if (and arg (get-process (prolog--current-prolog-process-name)))
       (progn
-        (process-send-string "prolog" "halt.\n")
-        (while (get-process "prolog") (sit-for 0.1))))
+        (process-send-string (prolog--current-prolog-process-name) "halt.\n")
+        (while (get-process (prolog--current-prolog-process-name)) (sit-for 0.1))))
   (let ((buff (buffer-name)))
-    (if (not (string= buff "*prolog*"))
+    (if (not (string= buff (prolog--current-prolog-buffer-name)))
         (prolog-goto-prolog-process-buffer))
     ;; Load SICStus debugger if suitable
     (if (and (eq prolog-system 'sicstus)
@@ -1383,9 +1383,9 @@ If the optional argument WAIT is non-nil, wait for Prolog prompt specified by
 the variable `prolog-prompt-regexp'."
   (if (null (prolog-program-name))
       (error "This Prolog system has defined no interpreter."))
-  (if (comint-check-proc "*prolog*")
+  (if (comint-check-proc (prolog--current-prolog-buffer-name))
       ()
-    (with-current-buffer (get-buffer-create "*prolog*")
+    (with-current-buffer (get-buffer-create (prolog--current-prolog-buffer-name))
       (prolog-inferior-mode)
 
       ;; The "INFERIOR=yes" hack is for SWI-Prolog 7.2.3 and earlier,
@@ -1398,7 +1398,8 @@ the variable `prolog-prompt-regexp'."
              (if (getenv "INFERIOR")
                  process-environment
                (cons "INFERIOR=yes" process-environment))))
-        (apply 'make-comint-in-buffer "prolog" (current-buffer)
+        (apply 'make-comint-in-buffer (prolog--current-prolog-process-name)
+               (current-buffer)
                (prolog-program-name) nil (prolog-program-switches)))
 
       (unless prolog-system
@@ -1433,10 +1434,10 @@ the variable `prolog-prompt-regexp'."
               (sit-for 0.1)))))))
 
 (defun prolog-inferior-buffer (&optional dont-run)
-  (or (get-buffer "*prolog*")
+  (or (get-buffer (prolog--current-prolog-buffer-name))
       (unless dont-run
         (prolog-ensure-process)
-        (get-buffer "*prolog*"))))
+        (get-buffer (prolog--current-prolog-buffer-name)))))
 
 (defun prolog-process-insert-string (process string)
   "Insert STRING into inferior Prolog buffer running PROCESS."
@@ -1477,9 +1478,10 @@ If COMPILEP is non-nil then use compilation, otherwise consulting."
        (compilation-forget-errors)
        (compilation-fake-loc start tmpfile))
      (process-send-string
-      "prolog" (prolog-build-prolog-command
-                compilep tmpfile (prolog-bsts buffer-file-name)
-                first-line))
+      (prolog--current-prolog-process-name)
+      (prolog-build-prolog-command
+       compilep tmpfile (prolog-bsts buffer-file-name)
+       first-line))
      (prolog-goto-prolog-process-buffer)))
 
 (defun prolog-old-process-predicate (compilep)
@@ -1500,11 +1502,12 @@ If COMPILEP is non-nil then use compilation, otherwise consulting."
   (prolog-ensure-process)
   (with-current-buffer (prolog-inferior-buffer)
     (compilation-forget-errors))
-    (process-send-string
-     "prolog" (prolog-build-prolog-command
-             compilep buffer-file-name
-             (prolog-bsts buffer-file-name)))
-    (display-buffer "*prolog*"))
+  (process-send-string
+   (prolog--current-prolog-process-name)
+   (prolog-build-prolog-command
+    compilep buffer-file-name
+    (prolog-bsts buffer-file-name)))
+    (display-buffer (prolog--current-prolog-buffer-name)))
 
 
 ;;------------------------------------------------------------
@@ -1678,7 +1681,7 @@ This function must be called from the source code buffer."
          (real-file buffer-file-name)
          (command-string (prolog-build-prolog-command compilep file
                                                       real-file first-line))
-         (process (get-process "prolog")))
+         (process (get-process (prolog--current-prolog-process-name))))
     (with-current-buffer buffer
       (delete-region (point-min) (point-max))
       ;; FIXME: Wasn't this supposed to use prolog-inferior-mode?
@@ -1710,12 +1713,12 @@ This function must be called from the source code buffer."
       (goto-char (point-max))
       (add-function :override (process-filter process)
                     #'prolog-consult-compile-filter)
-      (process-send-string "prolog" command-string)
+      (process-send-string (prolog--current-prolog-process-name) command-string)
       ;; (prolog-build-prolog-command compilep file real-file first-line))
       (while (and prolog-process-flag
                   (accept-process-output process 10)) ; 10 secs is ok?
         (sit-for 0.1)
-        (unless (get-process "prolog")
+        (unless (get-process (prolog--current-prolog-process-name))
           (setq prolog-process-flag nil)))
       (insert (if compilep
                   "\nCompilation finished.\n"
@@ -2450,8 +2453,8 @@ In effect it sets the `fill-prefix' when inside comments and then calls
 
 (defun prolog-help-online (predicate)
   (prolog-ensure-process)
-  (process-send-string "prolog" (concat "help(" predicate ").\n"))
-  (display-buffer "*prolog*"))
+  (process-send-string (prolog--current-prolog-process-name) (concat "help(" predicate ").\n"))
+  (display-buffer (prolog--current-prolog-buffer-name)))
 
 (defun prolog-help-apropos (string)
   "Find Prolog apropos on given STRING.
@@ -2460,8 +2463,8 @@ This function is only available when `prolog-system' is set to `swi'."
   (cond
    ((eq prolog-system 'swi)
     (prolog-ensure-process)
-    (process-send-string "prolog" (concat "apropos(" string ").\n"))
-    (display-buffer "*prolog*"))
+    (process-send-string (prolog--current-prolog-process-name) (concat "apropos(" string ").\n"))
+    (display-buffer (prolog--current-prolog-buffer-name)))
    (t
     (error "Sorry, no Prolog apropos available for this Prolog system."))))
 
@@ -2629,9 +2632,21 @@ and end of list building."
     (setq prolog-temporary-file-name
           (make-temp-file "prolcomp" nil ".pl"))))
 
+(defun prolog--current-prolog-process-name ()
+  (if-let ((current-project (project-current)))
+      (concat "prolog " (project-name current-project))
+    "prolog"))
+
+(defun prolog--current-prolog-buffer-name ()
+  (if-let ((current-project (project-current)))
+      (concat "*prolog "
+       (project-name current-project)
+       "*")
+    "*prolog*"))
+
 (defun prolog-goto-prolog-process-buffer ()
   "Switch to the prolog process buffer and go to its end."
-  (switch-to-buffer-other-window "*prolog*")
+  (switch-to-buffer-other-window (prolog--current-prolog-buffer-name))
   (goto-char (point-max)))
 
 (declare-function pltrace-on "ext:pltrace" ())
@@ -2645,7 +2660,7 @@ and end of list building."
   (if (not prolog-use-sicstus-sd)
       (progn
         ;; If there is a *prolog* buffer, then call pltrace-on
-        (if (get-buffer "*prolog*")
+        (if (get-buffer (prolog--current-prolog-buffer-name))
             (pltrace-on))
         (setq prolog-use-sicstus-sd t)
         )))
@@ -2660,7 +2675,7 @@ and end of list building."
   ;; Remove the hook
   (remove-hook 'prolog-inferior-mode-hook 'pltrace-on)
   ;; If there is a *prolog* buffer, then call pltrace-off
-  (if (get-buffer "*prolog*")
+  (if (get-buffer (prolog--current-prolog-buffer-name))
       (pltrace-off)))
 
 (defun prolog-toggle-sicstus-sd ()
@@ -2677,16 +2692,16 @@ When called with prefix argument ARG, disable debugging instead."
   (interactive "P")
   (if arg
       (prolog-debug-off)
-    (prolog-process-insert-string (get-process "prolog")
+    (prolog-process-insert-string (get-process (prolog--current-prolog-process-name))
                                   prolog-debug-on-string)
-    (process-send-string "prolog" prolog-debug-on-string)))
+    (process-send-string (prolog--current-prolog-process-name) prolog-debug-on-string)))
 
 (defun prolog-debug-off ()
   "Disable debugging."
   (interactive)
-  (prolog-process-insert-string (get-process "prolog")
+  (prolog-process-insert-string (get-process (prolog--current-prolog-process-name))
                                 prolog-debug-off-string)
-  (process-send-string "prolog" prolog-debug-off-string))
+  (process-send-string (prolog--current-prolog-process-name) prolog-debug-off-string))
 
 (defun prolog-trace-on (&optional arg)
   "Enable tracing.
@@ -2694,16 +2709,16 @@ When called with prefix argument ARG, disable tracing instead."
   (interactive "P")
   (if arg
       (prolog-trace-off)
-    (prolog-process-insert-string (get-process "prolog")
+    (prolog-process-insert-string (get-process (prolog--current-prolog-process-name))
                                   prolog-trace-on-string)
-    (process-send-string "prolog" prolog-trace-on-string)))
+    (process-send-string (prolog--current-prolog-process-name) prolog-trace-on-string)))
 
 (defun prolog-trace-off ()
   "Disable tracing."
   (interactive)
-  (prolog-process-insert-string (get-process "prolog")
+  (prolog-process-insert-string (get-process (prolog--current-prolog-process-name))
                                 prolog-trace-off-string)
-  (process-send-string "prolog" prolog-trace-off-string))
+  (process-send-string (prolog--current-prolog-process-name) prolog-trace-off-string))
 
 (defun prolog-zip-on (&optional arg)
   "Enable zipping (for SICStus 3.7 and later).
@@ -2714,16 +2729,16 @@ When called with prefix argument ARG, disable zipping instead."
       (error "Only works for SICStus 3.7 and later"))
   (if arg
       (prolog-zip-off)
-    (prolog-process-insert-string (get-process "prolog")
+    (prolog-process-insert-string (get-process (prolog--current-prolog-process-name))
                                   prolog-zip-on-string)
-    (process-send-string "prolog" prolog-zip-on-string)))
+    (process-send-string (prolog--current-prolog-process-name) prolog-zip-on-string)))
 
 (defun prolog-zip-off ()
   "Disable zipping (for SICStus 3.7 and later)."
   (interactive)
-  (prolog-process-insert-string (get-process "prolog")
+  (prolog-process-insert-string (get-process (prolog--current-prolog-process-name))
                                 prolog-zip-off-string)
-  (process-send-string "prolog" prolog-zip-off-string))
+  (process-send-string (prolog--current-prolog-process-name) prolog-zip-off-string))
 
 ;; (defun prolog-create-predicate-index ()
 ;;   "Create an index for all predicates in the buffer."
