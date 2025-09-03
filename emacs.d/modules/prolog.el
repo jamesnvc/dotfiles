@@ -2633,11 +2633,13 @@ and end of list building."
           (make-temp-file "prolcomp" nil ".pl"))))
 
 (defun prolog--current-prolog-process-name ()
+  "Name of the process for the prolog top-level, incorporating the project name if in one."
   (if-let ((current-project (project-current)))
       (concat "prolog " (project-name current-project))
     "prolog"))
 
 (defun prolog--current-prolog-buffer-name ()
+  "Name of the buffer for the prolog top-level, incorporating the project name if in one."
   (if-let ((current-project (project-current)))
       (concat "*prolog "
        (project-name current-project)
