@@ -39,6 +39,8 @@
 
 ;; moving windows - helpers
 
+(set hs.window.animationDuration 0)
+
 (fn move-window-to [unit-rect]
   (let [w (hs.window.focusedWindow)
         scr (w:screen)
