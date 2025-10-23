@@ -37,6 +37,8 @@
 
   (customize-set-variable 'notmuch-fcc-dirs "Sent")
 
+  (add-to-list 'evil-normal-state-modes 'notmuch-message-mode)
+
   (defvar cogent/mail-sync-process nil)
   (defun cogent/perform-mail-sync ()
     (unless (process-live-p cogent/mail-sync-process)
