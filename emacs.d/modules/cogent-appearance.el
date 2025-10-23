@@ -66,6 +66,14 @@
   (set-face-attribute 'mode-line nil :family "PragmataPro")
   (set-face-attribute 'mode-line-inactive nil :family "PragmataPro"))
 
+(use-package doric-themes
+  :straight (:type git
+                   :host github
+                   :repo "protesilaos/doric-themes"
+                   :branch "main")
+  :ensure t
+  :demand t)
+
 (when window-system
   (setq frame-title-format '(buffer-file-name "%f" ("%b")))
   (mouse-wheel-mode t)
@@ -139,7 +147,8 @@
              :host github
              :repo "rougier/svg-tag-mode"))
 
-;; (load-theme 'modus-operandi)
-(load-theme 'ef-spring)
+(load-theme 'modus-operandi)
+;; (load-theme 'ef-spring)
+;; (doric-themes-select 'doric-light)
 
 (provide 'cogent-appearance)
