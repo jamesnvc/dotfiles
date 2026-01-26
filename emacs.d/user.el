@@ -103,7 +103,15 @@
   (defun system-move-file-to-trash (file)
     "Use `trash' to move FILE to the system trash."
     (cl-assert (executable-find "trash") nil "'trash' must be installed. Run \"brew install trash\".")
-    (call-process "trash" nil 0 nil "-F" file)))
+    (call-process "trash" nil 0 nil "-F" file))
+
+  ;; fix man pages not working, thanks to some sed change?
+  ;; Error message:
+  ;;  sed: 1: "/^[\o001-\o032][\o001-\ ...": RE error: invalid character range
+  ;; after invoking M-x man RET whatever(1) RET
+  ;; instead GNU said via homebrew
+  (when (executable-find "gsed")
+    (setopt Man-sed-command "gsed")))
 
 (general-define-key :keymaps 'global
                     "<f2>" (if (version< emacs-version "27.0")
