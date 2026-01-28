@@ -418,6 +418,13 @@ Then press C-c C-x C-u inside
              :branch "escape-fields"))
 
 (use-package ox-epub
-  :after org)
+  :after org
+  :config
+  (advice-add 'org-epub-export-to-epub
+              :around
+              (lambda (f &rest args)
+                (global-ethan-wspace-mode -1)
+                (apply f args)
+                (global-ethan-wspace-mode +1))))
 
 (provide 'cogent-orgmode)
