@@ -21,12 +21,22 @@
   :defer t
   :hook (org-load-hook . org-pdftools-setup-link))
 
-(use-package nov
+(comment
+ (use-package nov
   :defer t
   :commands nov-mode
   :config
   (evil-set-initial-state 'nov-mode 'emacs)
-  :mode ("\\.epub\\'" . nov-mode))
+  :mode ("\\.epub\\'" . nov-mode)))
+
+(use-package reader
+  :straight '(reader :type git
+                     :host codeberg
+                     :repo "divyaranjan/emacs-reader"
+                     :files ("*.el" "render-core.dylib")
+                     :pre-build ("make" "all"))
+  :config
+  (add-to-list 'auto-mode-alist '("\\.epub\\'" . reader-mode)))
 
 (defvar infu-bionic-reading-face nil "a face for `infu-bionic-reading-region'.")
 
