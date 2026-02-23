@@ -147,8 +147,8 @@
              :host github
              :repo "rougier/svg-tag-mode"))
 
-(load-theme 'modus-operandi)
-;; (load-theme 'ef-spring)
+;; (load-theme 'modus-operandi)
+(load-theme 'ef-summer)
 ;; (doric-themes-select 'doric-light)
 
 (provide 'cogent-appearance)
