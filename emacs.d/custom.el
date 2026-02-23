@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -14,7 +15,8 @@
  '(clojure-indent-style :align-arguments)
  '(confirm-kill-emacs 'yes-or-no-p)
  '(custom-safe-themes
-   '("c8b84cff70a0e7a26e1a67a58a5066ff3b28bb2fd0ded47e71cc94da52ddd03a"
+   '("383075f8b454d029eeb0ecea239a1a95e62c815683c49816ae77b37a137289ae"
+     "c8b84cff70a0e7a26e1a67a58a5066ff3b28bb2fd0ded47e71cc94da52ddd03a"
      "9a977ddae55e0e91c09952e96d614ae0be69727ea78ca145beea1aae01ac78d2"
      "b9c804f672050817981dcc58a04e236d685417c3318554088d5552c819243281"
      "82f0f47ac811eeb45fbcfc5fee48989e4d0bca11f74653b838c29fab9a20aee7"
@@ -40,73 +42,73 @@
  '(eshell-visual-subcommands '(("git " "log" "lol" "diff" "show")))
  '(evil-emacs-state-modes
    '(sly-xref-mode sly-db-mode sly-stickers--replay-mode image-mode
-		   eww-mode eww-history-mode diff-mode dired-mode
-		   Man-mode woman-mode vundo--mode completion-mode
-		   process-menu-mode timer-list-mode info-mode
-		   grep-mode view-mode sly-trace-dialog-mode
-		   sly-apropos-mode sly-apropos-mode
-		   sly-trace-dialog-mode view-mode grep-mode info-mode
-		   timer-list-mode process-menu-mode completion-mode
-		   vundo--mode woman-mode Man-mode dired-mode
-		   diff-mode eww-history-mode eww-mode image-mode
-		   5x5-mode archive-mode bbdb-mode
-		   biblio-selection-mode blackbox-mode
-		   bookmark-bmenu-mode bookmark-edit-annotation-mode
-		   browse-kill-ring-mode bs-mode bubbles-mode
-		   bzr-annotate-mode calc-mode cfw:calendar-mode
-		   completion-list-mode Custom-mode
-		   custom-theme-choose-mode debugger-mode
-		   delicious-search-mode desktop-menu-blist-mode
-		   desktop-menu-mode doc-view-mode dun-mode
-		   dvc-bookmarks-mode dvc-diff-mode
-		   dvc-info-buffer-mode dvc-log-buffer-mode
-		   dvc-revlist-mode dvc-revlog-mode dvc-status-mode
-		   dvc-tips-mode ediff-mode ediff-meta-mode efs-mode
-		   Electric-buffer-menu-mode emms-browser-mode
-		   emms-mark-mode emms-metaplaylist-mode
-		   emms-playlist-mode ess-help-mode etags-select-mode
-		   fj-mode gc-issues-mode gdb-breakpoints-mode
-		   gdb-disassembly-mode gdb-frames-mode
-		   gdb-locals-mode gdb-memory-mode gdb-registers-mode
-		   gdb-threads-mode gist-list-mode git-rebase-mode
-		   gnus-article-mode gnus-browse-mode gnus-group-mode
-		   gnus-server-mode gnus-summary-mode gomoku-mode
-		   google-maps-static-mode ibuffer-mode
-		   jde-javadoc-checker-report-mode magit-cherry-mode
-		   magit-diff-mode magit-log-mode
-		   magit-log-select-mode magit-popup-mode
-		   magit-popup-sequence-mode magit-process-mode
-		   magit-reflog-mode magit-refs-mode
-		   magit-revision-mode magit-stash-mode
-		   magit-stashes-mode magit-status-mode mh-folder-mode
-		   monky-mode mpuz-mode mu4e-main-mode
-		   mu4e-headers-mode mu4e-view-mode notmuch-hello-mode
-		   notmuch-search-mode notmuch-show-mode
-		   notmuch-tree-mode occur-mode org-agenda-mode
-		   package-menu-mode pdf-outline-buffer-mode
-		   pdf-view-mode proced-mode rcirc-mode rebase-mode
-		   recentf-dialog-mode reftex-select-bib-mode
-		   reftex-select-label-mode reftex-toc-mode sldb-mode
-		   slime-inspector-mode slime-thread-control-mode
-		   slime-xref-mode snake-mode solitaire-mode
-		   sr-buttons-mode sr-mode sr-tree-mode
-		   sr-virtual-mode tar-mode tetris-mode
-		   tla-annotate-mode tla-archive-list-mode
-		   tla-bconfig-mode tla-bookmarks-mode
-		   tla-branch-list-mode tla-browse-mode
-		   tla-category-list-mode tla-changelog-mode
-		   tla-follow-symlinks-mode tla-inventory-file-mode
-		   tla-inventory-mode tla-lint-mode tla-logs-mode
-		   tla-revision-list-mode tla-revlog-mode
-		   tla-tree-lint-mode tla-version-list-mode
-		   twittering-mode urlview-mode vc-annotate-mode
-		   vc-dir-mode vc-git-log-view-mode
-		   vc-hg-log-view-mode vc-svn-log-view-mode vm-mode
-		   vm-summary-mode w3m-mode wab-compilation-mode
-		   xgit-annotate-mode xgit-changelog-mode
-		   xgit-diff-mode xgit-revlog-mode xhg-annotate-mode
-		   xhg-log-mode xhg-mode xhg-mq-mode xhg-mq-sub-mode
-		   xhg-status-extra-mode))
+                   eww-mode eww-history-mode diff-mode dired-mode
+                   Man-mode woman-mode vundo--mode completion-mode
+                   process-menu-mode timer-list-mode info-mode
+                   grep-mode view-mode sly-trace-dialog-mode
+                   sly-apropos-mode sly-apropos-mode
+                   sly-trace-dialog-mode view-mode grep-mode info-mode
+                   timer-list-mode process-menu-mode completion-mode
+                   vundo--mode woman-mode Man-mode dired-mode
+                   diff-mode eww-history-mode eww-mode image-mode
+                   5x5-mode archive-mode bbdb-mode
+                   biblio-selection-mode blackbox-mode
+                   bookmark-bmenu-mode bookmark-edit-annotation-mode
+                   browse-kill-ring-mode bs-mode bubbles-mode
+                   bzr-annotate-mode calc-mode cfw:calendar-mode
+                   completion-list-mode Custom-mode
+                   custom-theme-choose-mode debugger-mode
+                   delicious-search-mode desktop-menu-blist-mode
+                   desktop-menu-mode doc-view-mode dun-mode
+                   dvc-bookmarks-mode dvc-diff-mode
+                   dvc-info-buffer-mode dvc-log-buffer-mode
+                   dvc-revlist-mode dvc-revlog-mode dvc-status-mode
+                   dvc-tips-mode ediff-mode ediff-meta-mode efs-mode
+                   Electric-buffer-menu-mode emms-browser-mode
+                   emms-mark-mode emms-metaplaylist-mode
+                   emms-playlist-mode ess-help-mode etags-select-mode
+                   fj-mode gc-issues-mode gdb-breakpoints-mode
+                   gdb-disassembly-mode gdb-frames-mode
+                   gdb-locals-mode gdb-memory-mode gdb-registers-mode
+                   gdb-threads-mode gist-list-mode git-rebase-mode
+                   gnus-article-mode gnus-browse-mode gnus-group-mode
+                   gnus-server-mode gnus-summary-mode gomoku-mode
+                   google-maps-static-mode ibuffer-mode
+                   jde-javadoc-checker-report-mode magit-cherry-mode
+                   magit-diff-mode magit-log-mode
+                   magit-log-select-mode magit-popup-mode
+                   magit-popup-sequence-mode magit-process-mode
+                   magit-reflog-mode magit-refs-mode
+                   magit-revision-mode magit-stash-mode
+                   magit-stashes-mode magit-status-mode mh-folder-mode
+                   monky-mode mpuz-mode mu4e-main-mode
+                   mu4e-headers-mode mu4e-view-mode notmuch-hello-mode
+                   notmuch-search-mode notmuch-show-mode
+                   notmuch-tree-mode occur-mode org-agenda-mode
+                   package-menu-mode pdf-outline-buffer-mode
+                   pdf-view-mode proced-mode rcirc-mode rebase-mode
+                   recentf-dialog-mode reftex-select-bib-mode
+                   reftex-select-label-mode reftex-toc-mode sldb-mode
+                   slime-inspector-mode slime-thread-control-mode
+                   slime-xref-mode snake-mode solitaire-mode
+                   sr-buttons-mode sr-mode sr-tree-mode
+                   sr-virtual-mode tar-mode tetris-mode
+                   tla-annotate-mode tla-archive-list-mode
+                   tla-bconfig-mode tla-bookmarks-mode
+                   tla-branch-list-mode tla-browse-mode
+                   tla-category-list-mode tla-changelog-mode
+                   tla-follow-symlinks-mode tla-inventory-file-mode
+                   tla-inventory-mode tla-lint-mode tla-logs-mode
+                   tla-revision-list-mode tla-revlog-mode
+                   tla-tree-lint-mode tla-version-list-mode
+                   twittering-mode urlview-mode vc-annotate-mode
+                   vc-dir-mode vc-git-log-view-mode
+                   vc-hg-log-view-mode vc-svn-log-view-mode vm-mode
+                   vm-summary-mode w3m-mode wab-compilation-mode
+                   xgit-annotate-mode xgit-changelog-mode
+                   xgit-diff-mode xgit-revlog-mode xhg-annotate-mode
+                   xhg-log-mode xhg-mode xhg-mq-mode xhg-mq-sub-mode
+                   xhg-status-extra-mode))
  '(evil-surround-pairs-alist
    '((40 "( " . " )") (91 "[ " . " ]") (123 "{ " . " }") (41 "(" . ")")
      (93 "[" . "]") (125 "{" . "}") (35 "#{" . "}") (98 "(" . ")")
@@ -144,7 +146,7 @@
      (:name "new" :query "tag:inbox and tag:unread")
      (:name "flagged" :query "tag:flagged")
      (:name "emacs-devel" :query
-	    "tag:emacs and tag:list and tag:unread" :key "e")))
+            "tag:emacs and tag:list and tag:unread" :key "e")))
  '(notmuch-show-logo nil)
  '(org-babel-clojure-backend 'cider)
  '(org-babel-load-languages '((shell . t) (emacs-lisp . t) (dot . t)))
@@ -180,8 +182,8 @@
      (sicstus
       (eval
        (if (prolog-atleast-version '(3 . 7))
-	   "prolog:zap_file(%m,%b,compile,%l)."
-	 "prolog:zap_file(%m,%b,compile).")))
+           "prolog:zap_file(%m,%b,compile,%l)."
+         "prolog:zap_file(%m,%b,compile).")))
      (swi "make.") (t "compile(%f).")))
  '(prolog-left-indent-regexp "\\(;\\|\\*?->\\)")
  '(prolog-program-name
