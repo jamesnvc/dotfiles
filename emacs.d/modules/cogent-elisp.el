@@ -29,10 +29,11 @@ now-invalid elc file"
 (evil-define-operator cogent/evil-elisp-eval (beg end)
   "Evaluate emacs-lisp expression given by <motion>, displaying
 results using eros overlay."
-  (eros--eval-overlay
-   (eval-expression (read (buffer-substring-no-properties beg end))
-                    nil
-                    nil)
+  (eros-eval-overlay
+   (format "%S"
+           (eval-expression (read (buffer-substring-no-properties beg end))
+                            nil
+                            nil))
    end))
 
 (evil-define-operator cogent/evil-elisp-eval-replace (beg end)
