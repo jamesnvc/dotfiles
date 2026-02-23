@@ -1,3 +1,5 @@
+;;; -*- lexical-binding: t -*-
+
 (setq elfeed-feeds
       '(("http://www.peppercarrot.com/feed/en/rss" comic)
         ("http://killsixbilliondemons.com/?feed=rss2" comic)
