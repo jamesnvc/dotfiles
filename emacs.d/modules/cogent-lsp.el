@@ -27,6 +27,10 @@
                                  "-Xswiftc" "-target"
                                  "-Xswiftc" "arm64-apple-ios18.1-simulator"
                                  "-Xcc" "-DSWIFT_PACKAGE=0"))))
+  (add-to-list 'eglot-server-programs
+               '((python-ts-mode python-mode) . ("uvx" "pyrefly" "lsp")))
+  (add-to-list 'eglot-server-programs
+               '((ruby-mode ruby-ts-mode) . ("~/.rbenv/shims/ruby-lsp")))
   (keymap-set eglot-mode-map "C-c C-a" #'eglot-code-actions)
   (keymap-set eglot-mode-map "C-c C-r" #'eglot-rename)
   (keymap-set eglot-mode-map "C-c C-f" #'eglot-format))
