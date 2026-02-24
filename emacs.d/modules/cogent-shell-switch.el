@@ -97,7 +97,7 @@
       :truncate marginalia-field-width))))
 
 (with-eval-after-load 'marginalia
-  (add-to-list 'marginalia-annotator-registry
+  (add-to-list 'marginalia-annotators
                '(shell cogent-shell--annotator none)))
 
 (defun cogent-shell--switch-to-eshell (cand)
