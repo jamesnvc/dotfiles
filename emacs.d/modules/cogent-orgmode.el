@@ -79,8 +79,9 @@
         "-------"
       (format "%5s: " (or (org-get-repeat) ""))))
 
-  (setcdr (assoc 'agenda org-agenda-prefix-format)
-          " %i %-12:c%?-12t%s%(cogent/org-agenda-repeater)")
+  (with-eval-after-load 'org-agenda
+    (setcdr (assoc 'agenda org-agenda-prefix-format)
+            " %i %-12:c%?-12t%s%(cogent/org-agenda-repeater)"))
 
   ;; fix for babel gnuplot -- it has (:session) in it, which causes an
   ;; error because if the cdr is a list, it tries to funcall it
