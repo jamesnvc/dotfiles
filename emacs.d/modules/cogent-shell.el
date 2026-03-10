@@ -138,12 +138,74 @@ more-helpful local prompt."
                (propertize python 'face for-python)))
      (propertize "\n"     'face for-bars))))
 
-(setq-default eshell-prompt-function #'eshell/eshell-local-prompt-function
-              eshell-prompt-regexp "^⟣─ [^\n]*$")
+(use-package eshell
+  :straight (:type built-in)
+  :config
 
-;; Turn off the default prompt, otherwise, it won’t use ours:
+  (setq-default eshell-prompt-function #'eshell/eshell-local-prompt-function
+                eshell-prompt-regexp "^⟣─ [^\n]*$")
 
-(setq eshell-highlight-prompt nil)
+  ;; Turn off the default prompt, otherwise, it won’t use ours:
+  (setq eshell-highlight-prompt nil)
+
+  (setopt eshell-history-size 10000)
+  (setopt eshell-hist-ignoredups t)
+
+  ;; From emacs-solo; make all eshalls share & merge history
+  (defun emacs-solo/eshell--collect-all-history ()
+    "Return a list of all eshell history entries from all buffers and disk."
+    (let ((history-from-buffers
+           (cl-loop for buf in (buffer-list)
+                    when (with-current-buffer buf (derived-mode-p 'eshell-mode))
+                    append (with-current-buffer buf
+                             (when (boundp 'eshell-history-ring)
+                               (ring-elements eshell-history-ring)))))
+          (history-from-file
+           (when (file-exists-p eshell-history-file-name)
+             (with-temp-buffer
+               (insert-file-contents eshell-history-file-name)
+               (split-string (buffer-string) "\n" t)))))
+      (seq-uniq (append history-from-buffers history-from-file))))
+
+  (defun emacs-solo/eshell--save-merged-history ()
+    "Save all eshell buffer histories merged into `eshell-history-file-name'."
+    (let ((all-history (emacs-solo/eshell--collect-all-history)))
+      (with-temp-file eshell-history-file-name
+        (insert (mapconcat #'identity all-history "\n")))))
+
+  (add-hook 'kill-emacs-hook #'emacs-solo/eshell--save-merged-history)
+
+  (add-hook 'eshell-mode-hook (lambda () (eshell-read-history)))
+
+  (defun emacs-solo/eshell-pick-history ()
+    "Show a unified and unique Eshell history from all open sessions + history file.
+Pre-fills the minibuffer with current Eshell input (from prompt to point)."
+    (interactive)
+    (unless (derived-mode-p 'eshell-mode)
+      (user-error "This command must be called from an Eshell buffer"))
+    (let* ((bol (save-excursion (eshell-bol) (point)))
+           (eol (point))
+           (current-input (buffer-substring-no-properties bol eol))
+           (history-file (expand-file-name eshell-history-file-name eshell-directory-name))
+           (history-from-file (when (file-exists-p history-file)
+                                (with-temp-buffer
+                                  (insert-file-contents-literally history-file)
+                                  (split-string (buffer-string) "\n" t))))
+           (history-from-rings (cl-loop for buf in (buffer-list)
+                                        when (with-current-buffer buf (derived-mode-p 'eshell-mode))
+                                        append (with-current-buffer buf
+                                                 (when (bound-and-true-p eshell-history-ring)
+                                                   (ring-elements eshell-history-ring)))))
+           (all-history (reverse (seq-uniq (seq-filter (lambda (s) (and s (not (string-empty-p s))))
+                                                       (append history-from-rings history-from-file)))))
+           (selection (completing-read "Eshell History: " all-history nil t current-input)))
+      (when selection
+        (delete-region bol eol)
+        (insert selection))))
+
+  (add-hook 'eshell-mode-hook (lambda ()
+                                (local-set-key (kbd "C-c l") #'emacs-solo/eshell-pick-history)))
+  )
 
 (use-package vterm
   :commands (vterm vterm-other-window)
