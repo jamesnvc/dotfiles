@@ -9,11 +9,7 @@
              :repo "minad/marginalia"
              :branch "main")
   :init
-  (marginalia-mode 1)
-  :custom
-  (marginalia-annotators '(marginalia-annotators-heavy
-                           marginalia-annotators-light
-                           nil)))
+  (marginalia-mode 1))
 
 (use-package wgrep)
 
@@ -108,10 +104,7 @@
   :config
   (setq orderless-component-separator " +")
   (setq orderless-matching-styles prot-orderless-default-styles)
-  (setq orderless-style-dispatchers
-        '(prot-orderless-literal-dispatcher
-          prot-orderless-initialism-dispatcher
-          prot-orderless-flex-dispatcher))
+  (setopt orderless-style-dispatchers '(orderless-affix-dispatch))
   :bind (:map minibuffer-local-completion-map
               ("SPC" . nil)))
 
@@ -244,12 +237,14 @@
 (use-package minibuffer
   :straight (:type built-in)
   :config
-  (setq completion-styles
-        '(substring initials flex partial-completion orderless basic))
+  ;; (setq completion-styles '(substring initials flex partial-completion orderless basic))
+  (setopt completion-styles '(orderless basic))
+  (setq completion-styles '(substring initials flex partial-completion orderless basic))
   (setq completion-category-overrides
         '((file (styles . (partial-completion orderless)))))
   (setq completion-cycle-threshold 2)
   (setq completion-flex-nospace nil)
+  (setopt completion-pcm-leading-wildcard t)
   (setq completion-pcm-complete-word-inserts-delimiters nil)
   (setq completion-pcm-word-delimiters "-_./:| ")
   (setq completion-show-help nil)
