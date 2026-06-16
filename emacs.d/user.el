@@ -7,6 +7,14 @@
   (set-frame-font "PragmataPro" nil t)))
 (require 'cogent-pragmata)
 
+;; Downloadable from
+;; https://rubjo.github.io/victor-mono/
+;; or brew install --cask font-victor-mono
+(when (member "Victor Mono" (font-family-list))
+  (set-face-font 'font-lock-comment-face "Victor Mono 12")
+  ;; make it bold too, since Victor Mono is very light
+  (set-face-bold 'font-lock-comment-face t))
+
 ;; [TODO] set things up so only these fancy comment ligatures are applied
 (setq-default auto-composition-mode nil) ; disabling ligatures for now
 
