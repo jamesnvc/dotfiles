@@ -30,6 +30,9 @@
    (setenv "PATH" (concat dir ":" (getenv "PATH")))
    (add-to-list 'cogent/extra-path-dirs dir)))
 
+(when (string-equal (system-name) "bishop.local")
+  (set-face-attribute 'default nil :height 130))
+
 (when (string-equal (system-name) "gonk")
   (set-frame-font "PragmataPro Mono Liga 8" nil t)
   (dolist (face '(default fixed-pitch))
