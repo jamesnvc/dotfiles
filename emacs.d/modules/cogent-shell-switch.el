@@ -16,7 +16,7 @@
 (defun cogent-shell--candidate-name (buf)
   "Display the directory of BUF, with HOME replaced with tilde."
   (let ((buffer-mode (buffer-local-value 'major-mode buf)))
-    (when (cl-member buffer-mode '("eshell-mode" "shell-mode" "vterm-mode")
+    (when (cl-member buffer-mode '("eshell-mode" "shell-mode" "vterm-mode" "ghostel-mode")
                      :test #'string=)
       (list
        (cons 'buffer-name (buffer-name buf))
@@ -119,6 +119,15 @@
          (default-directory path))
     (vterm t)))
 
+(defun cogent-shell--switch-to-ghostel (cand)
+  "Create a new ghostel at the selected path"
+  (interactive "s")
+  (let* ((path (if-let (buf (cogent-shell--cand-buffer cand))
+                   (buffer-local-value 'default-directory buf)
+                 cand))
+         (default-directory path))
+    (ghostel t)))
+
 (defun cogent-shell--switch-horiz-split (cand)
   "Switch to shell in a new window below the current one."
   (interactive "s")
@@ -153,6 +162,7 @@
     :doc "Keymap for actions for shell buffers"
     "e" #'cogent-shell--switch-to-eshell
     "v" #'cogent-shell--switch-to-vterm
+    "g" #'cogent-shell--switch-to-ghostel
     "k" #'cogent-shell--kill-buffer
     "C-s" #'cogent-shell--switch-horiz-split
     "C-v" #'cogent-shell--switch-vert-split)

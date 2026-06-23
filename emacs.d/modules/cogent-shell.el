@@ -148,6 +148,7 @@ more-helpful local prompt."
   ;; Turn off the default prompt, otherwise, it won’t use ours:
   (setq eshell-highlight-prompt nil)
 
+  (setopt eshell-destroy-buffer-when-process-dies t)
   (setopt eshell-history-size 10000)
   (setopt eshell-hist-ignoredups t)
 
@@ -220,6 +221,19 @@ Pre-fills the minibuffer with current Eshell input (from prompt to point)."
   ;; make f3 pass through
   ;; start in emacs mode
   :hook (vterm-mode-hook . (lambda () (display-line-numbers-mode -1))))
+
+(use-package ghostel
+  :straight (ghostel
+            :type git
+            :host github
+            :repo "dakra/ghostel"
+            :branch "main")
+  :commands (ghostel)
+  :config
+  (setopt ghostel-shell (executable-find "fish"))
+  (add-hook 'ghostel-mode-hook (lambda () (display-line-numbers-mode -1)))
+  (require 'ghostel-eshell)
+  (add-hook 'eshell-load-hook #'ghostel-eshell-visual-command-mode))
 
 ;; (use-package helm-switch-shell
 ;;   :commands helm-switch-shell

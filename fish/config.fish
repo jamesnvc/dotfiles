@@ -35,6 +35,14 @@ if test "$INSIDE_EMACS" = 'vterm'
     source "$HOME/.config/fish/vterm.fish"
 end
 
+if string match -qr '^ghostel(,|$)' -- "$INSIDE_EMACS"
+    echo "C-c C-j for semi-char-mode"
+    echo "C-c M-d for charmode (M-RET to exit)"
+    echo "C-c C-l for line mode"
+    echo "C-c C-e for emacs mode"
+    source "$HOME/.config/fish/ghostel.fish"
+end
+
 if command -q direnv
     direnv hook fish | source
 end
