@@ -428,4 +428,8 @@ Then press C-c C-x C-u inside
                 (apply f args)
                 (global-ethan-wspace-mode +1))))
 
+(use-package ox-reveal
+  :config
+  (setopt org-reveal-plugins '()))
+
 (provide 'cogent-orgmode)
