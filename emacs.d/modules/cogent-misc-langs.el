@@ -48,4 +48,8 @@
                    :repo "bricka/emacs-kotlin-ts-mode")
   :mode "\\.kt\\'")
 
+;; (use-package python-mode)
+
+(use-package zig-mode)
+
 (provide 'cogent-misc-langs)
