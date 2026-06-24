@@ -11,7 +11,7 @@
 ;; https://rubjo.github.io/victor-mono/
 ;; or brew install --cask font-victor-mono
 (when (member "Victor Mono" (font-family-list))
-  (set-face-font 'font-lock-comment-face "Victor Mono 12")
+  (set-face-font 'font-lock-comment-face "Victor Mono")
   ;; make it bold too, since Victor Mono is very light
   (set-face-bold 'font-lock-comment-face t))
 
