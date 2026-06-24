@@ -31,6 +31,7 @@
                '((python-ts-mode python-mode) . ("uvx" "pyrefly" "lsp")))
   (add-to-list 'eglot-server-programs
                '((ruby-mode ruby-ts-mode) . ("~/.rbenv/shims/ruby-lsp")))
+  (add-to-list 'eglot-server-programs '(zig-mode . ("zls")))
   (setopt eglot-documentation-renderer 'markdown-ts-view-mode)
   (keymap-set eglot-mode-map "C-c C-a" #'eglot-code-actions)
   (keymap-set eglot-mode-map "C-c C-r" #'eglot-rename)
