@@ -15,6 +15,10 @@
   ;; make it bold too, since Victor Mono is very light
   (set-face-bold 'font-lock-comment-face t))
 
+(when (member "SF Pro Display" (font-family-list))
+  ;; Allow using SF symbols
+  (set-fontset-font t nil "SF Pro Display" nil 'append))
+
 ;; [TODO] set things up so only these fancy comment ligatures are applied
 (setq-default auto-composition-mode nil) ; disabling ligatures for now
 
