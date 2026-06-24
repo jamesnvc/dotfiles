@@ -53,6 +53,8 @@
 
 (setq compilation-ask-about-save nil)
 
+(setopt save-interprogram-paste-before-kill t)
+
 (delete-selection-mode t)
 (transient-mark-mode t)
 
