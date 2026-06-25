@@ -12,6 +12,7 @@
 ;; or brew install --cask font-victor-mono
 (when (member "Victor Mono" (font-family-list))
   (set-face-font 'font-lock-comment-face "Victor Mono")
+  (set-face-italic 'font-lock-comment-face t)
   ;; make it bold too, since Victor Mono is very light
   (set-face-bold 'font-lock-comment-face t))
 
