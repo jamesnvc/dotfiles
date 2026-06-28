@@ -35,15 +35,8 @@
    (setenv "PATH" (concat dir ":" (getenv "PATH")))
    (add-to-list 'cogent/extra-path-dirs dir)))
 
-(when (string-equal (system-name) "bishop.local")
-  (let ((frame-inhibit-implied-resize t))
-    (set-face-attribute 'default nil :height 130)))
-
-(when (string-equal (system-name) "gonk")
-  (set-frame-font "PragmataPro Mono Liga 8" nil t)
-  (dolist (face '(default fixed-pitch))
-    (set-face-attribute face nil :font "PragmataPro Mono Liga-8"))
-  (set-face-attribute 'variable-pitch nil :font "Helvetica-8"))
+(let ((frame-inhibit-implied-resize t))
+  (set-face-attribute 'default nil :height 130))
 
 (when (and (boundp 'system-configuration)
            (string-prefix-p "aarch64-apple-darwin" system-configuration))
@@ -65,42 +58,6 @@
   ;; Set font for private use area
   ;; Why does this need to be PragmataPro, not PragmataPro Mono Liga?
   (set-fontset-font fontset '(#xE000 . #xF8FF) "PragmataPro"))
-
-(when (or (string-equal (system-name) "zhora.local")
-          (string-equal (system-name) "nextcanada-mac-winnipeg.local"))
-  (set-frame-font "PragmataPro Mono Liga 14" nil t)
-  (setopt ring-bell-function (lambda () nil))
-  (dolist (face '(default fixed-pitch))
-    (set-face-attribute face nil :font "PragmataPro Mono Liga-14"))
-  (set-face-attribute 'variable-pitch nil :font "Helvetica-14")
-  (setq ns-antialias-text nil)
-  (cogent/add-to-all-paths (expand-file-name "~/bin"))
-
-  (require 'ls-lisp)
-  (setq ls-lisp-use-insert-directory-program nil))
-
-(when (string-equal (system-name) "fuchikoma")
-  (set-frame-font "PragmataPro Mono Liga 16" nil t)
-  (global-prettify-symbols-mode -1)
-  (mac-auto-operator-composition-mode 1)
-  (setq mac-command-modifier 'super
-        mac-option-modifier 'meta))
-
-(when (string-equal (system-name) "roy")
-  (set-frame-font "PragmataPro Mono Liga 10" nil t)
-  (cogent/add-to-all-paths (expand-file-name "~/.nix-profile/bin")))
-
-(comment
- (when (eq window-system 'ns)
-   (defun cogent-mac/apply-theme (appearance)
-     "Load theme, taking current system APPEARANCE into consideration."
-     (pcase appearance
-       ('light (modus-themes-load-operandi))
-       ('dark (modus-themes-load-vivendi))))
-   (add-hook 'ns-system-appearance-change-functions #'cogent-mac/apply-theme)))
-
-(when (eq window-system 'mac)
-  (setq mac-option-modifier '(:ordinary meta :function meta :mouse meta)))
 
 (when (eq window-system 'ns)
   (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t)))
@@ -379,4 +336,4 @@ Take both changes in diff."
     (make-directory (expand-file-name "~/.local/emacs/") t))
   (setopt desktop-path '("~/.local/emacs/")))
 
-(desktop-save-mode 1)
+;(desktop-save-mode 1)
