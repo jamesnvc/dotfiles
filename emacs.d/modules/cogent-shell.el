@@ -227,7 +227,8 @@ Pre-fills the minibuffer with current Eshell input (from prompt to point)."
             :type git
             :host github
             :repo "dakra/ghostel"
-            :branch "main")
+            :branch "main"
+            :files ("etc" :defaults))
   :commands (ghostel)
   :config
   (setopt ghostel-shell (executable-find "fish"))
