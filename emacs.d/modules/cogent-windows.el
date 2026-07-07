@@ -143,8 +143,7 @@
    (switch-to-buffer-in-dedicated-window 'pop))
   :hook ((help-mode-hook . visual-line-mode)
          (custom-mode-hook . visual-line-mode))
-  :bind (("C-x q" . window-toggle-side-windows)
-         ("C-x O" . cogent/select-sidebar)))
+  :bind (("C-x O" . cogent/select-sidebar)))
 
 (use-package burly
   :straight (burly
