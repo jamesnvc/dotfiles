@@ -11,13 +11,14 @@
   (define-key dart-mode-map (kbd "C-M-x") #'flutter-run-or-hot-reload)
   (define-key dart-mode-map (kbd "C-c C-z") (lambda () (interactive) (display-buffer "*Flutter*"))))
 
-(use-package lsp-dart
-  :after (dart lsp)
-  :config
-  (setq lsp-dart-sdk-dir
-        (concat
-         (cogent/exec "flutter sdk-path")
-         "/bin/cache/dart-sdk"))
-  (setq lsp-dart-flutter-sdk-dir (cogent/exec "flutter sdk-path")))
+(comment
+ (use-package lsp-dart
+   :after (dart lsp)
+   :config
+   (setq lsp-dart-sdk-dir
+         (concat
+          (cogent/exec "flutter sdk-path")
+          "/bin/cache/dart-sdk"))
+   (setq lsp-dart-flutter-sdk-dir (cogent/exec "flutter sdk-path"))))
 
 (provide 'cogent-flutter)
