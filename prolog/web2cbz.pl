@@ -6,6 +6,7 @@
 :- use_module(library(xpath)).
 :- use_module(library(archive), [archive_create/3]).
 :- use_module(library(optparse)).
+:- use_module(library(filesex)).
 
 /*
 find_image_url(DOM, ImageLink) :-
@@ -91,8 +92,8 @@ main(Args) :-
           help("XPath to locate the image url")
         ],
 
-        [ opt(outdir), type(string), default("images"),
-          longflags([dir]), shortflags([i]),
+        [ opt(outdir), type(atom), default(images),
+          longflags([dir]),
           help("Directory to store images in") ],
 
         [ opt(quiet), type(boolean), shortflags([q]),
@@ -123,7 +124,7 @@ main(Args) :-
     nonvar(LinkXpathAtom),
     parse_xpath_selector(LinkXpathAtom, LinkXPaths),
     forall(member(XPath, LinkXPaths),
-           assertz((find_image_url(DOM, NextLink) :-
+           assertz((find_next_url(DOM, NextLink) :-
                         xpath_chk(DOM, XPath, NextLink)))
           ),
 
@@ -131,7 +132,7 @@ main(Args) :-
     nonvar(ImageXpathAtom),
     parse_xpath_selector(ImageXpathAtom, ImageXPaths),
     forall(member(XPath, ImageXPaths),
-           assertz((find_next_url(DOM, ImageLink) :-
+           assertz((find_image_url(DOM, ImageLink) :-
                         xpath_chk(DOM, XPath, ImageLink)
                    ))),
 
@@ -140,6 +141,8 @@ main(Args) :-
     memberchk(starturl(URL), Opts),
     memberchk(counterstart(Counter), Opts),
     memberchk(outdir(OutDir), Opts),
+    make_directory_path(OutDir),
+    % TODO: warn/ask for confirmation if OutDir does exist
     ( memberchk(xpathtest(true), Opts) ->
       test_xpath_query(URL)
     ; process_page(OutDir, Counter, URL)
