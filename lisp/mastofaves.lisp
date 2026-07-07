@@ -1,9 +1,12 @@
 (eval-when (:compile-toplevel :load-toplevel :execute)
-  (ql:quickload '(:with-user-abort :adopt :drakma :ciao) :silent t))
+  (ql:quickload '(:with-user-abort :adopt :drakma :ciao :com.inuoe.jzon
+                  :cl-ppcre :iterate :esrap)
+                :silent t))
 
 (defpackage :mastofaves
-  (:use :cl)
-  (:export :toplevel *ui*))
+  (:use :cl :iterate)
+  (:export :toplevel *ui*)
+  (:local-nicknames (:jzon :com.inuoe.jzon)))
 
 (in-package :mastofaves)
 
@@ -49,13 +52,32 @@
                              :redirect-uri ciao:*oob-uri*))))
 
 (defun fix-token-date (oauth-token)
-  "Ciao has a bug where it tries to call < on the current time and the expiration time, but when it's +inf, SBCL throws an error"
+  "Ciao has a bug where it tries to call < on the current time and the expiration time, but when it's +inf, SBCL throws an error (bug has been fixed, update lib)."
   (setf (slot-value oauth-token 'ciao::expiration) (+ (get-universal-time) 1000))
   oauth-token)
 
+(defun parse-link-header (link-header)
+  (esrap:parse '(and
+                 #\< (+ (not (or #\> " "))) ">;"
+                 " "
+                 "rel=\""
+                 (+ (not #\"))
+                 #\")
+               link-header
+               :junk-allowed t))
+
+#|
+(parse-link-header "<https://fosstodon.org/api/v1/favourites?max_id=8097344>; rel=\"next\", <https://fosstodon.org/api/v1/favourites?min_id=8123525>; rel=\"prev\"")
+|#
+
 (defun fetch-favourites (oauth-token)
-  (dex:get (format nil "~d/api/v1/favourites" *masto-server-hostname*)
-           :headers (ciao:headers oauth-token)))
+  (multiple-value-bind (body _status headers _uri _stream)
+      (dex:get (format nil "~d/api/v1/favourites" *masto-server-hostname*)
+               :headers (ciao:headers oauth-token))
+    (declare (ignore _status) (ignore _uri) (ignore _stream))
+    (values
+     (jzon:parse body)
+     (gethash "link" headers))))
 
 ;;;; Run ---------------------------------------------------------
 
