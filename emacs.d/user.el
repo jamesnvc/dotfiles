@@ -336,4 +336,4 @@ Take both changes in diff."
     (make-directory (expand-file-name "~/.local/emacs/") t))
   (setopt desktop-path '("~/.local/emacs/")))
 
-;(desktop-save-mode 1)
+(desktop-save-mode 1)
