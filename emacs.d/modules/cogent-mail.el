@@ -5,6 +5,7 @@
 (when (and (executable-find "brew")
            (executable-find "notmuch"))
   (let ((brew-prefix
+         ;; XXX: sometimes `brew config' includes some extra crap about updates...
           (shell-command-to-string
            "brew config | awk '$1 == \"HOMEBREW_PREFIX:\" { printf \"%s\", $2 }'")))
     (thread-last

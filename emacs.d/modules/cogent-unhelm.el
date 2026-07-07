@@ -234,6 +234,7 @@
 (use-package prot-common
   :straight (:type built-in))
 
+;; XXX: how much of this do I still need?
 (use-package minibuffer
   :straight (:type built-in)
   :config
