@@ -251,6 +251,7 @@
   (setq completion-auto-help t)
   (setq completion-ignore-case t)
   (setq completions-max-height 20)
+  (setopt completion-eager-display 'auto)
   (setopt completion-eager-update t)
   (setq-default case-fold-search t)   ; For general regexp
 
