@@ -229,12 +229,14 @@ Pre-fills the minibuffer with current Eshell input (from prompt to point)."
             :repo "dakra/ghostel"
             :branch "main"
             :files ("etc" :defaults))
-  :commands (ghostel)
+  :commands (ghostel ghostel-project)
   :config
   (setopt ghostel-shell (executable-find "fish"))
   (add-hook 'ghostel-mode-hook (lambda () (display-line-numbers-mode -1)))
   (require 'ghostel-eshell)
-  (add-hook 'eshell-load-hook #'ghostel-eshell-visual-command-mode))
+  (add-hook 'eshell-load-hook #'ghostel-eshell-visual-command-mode)
+  (keymap-set project-prefix-map "G" #'ghostel-project)
+  (add-to-list 'project-switch-commands '(ghostel-project "Ghostel") t))
 
 ;; (use-package helm-switch-shell
 ;;   :commands helm-switch-shell
