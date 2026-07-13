@@ -36,6 +36,8 @@
 
         message-directory "~/.mail/fastmail/")
 
+  (setopt notmuch-search-oldest-first nil)
+
   (customize-set-variable 'notmuch-fcc-dirs "Sent")
 
   (add-to-list 'evil-normal-state-modes 'notmuch-message-mode)
@@ -201,7 +203,7 @@ search."
 
 (defun cogent/notmuch-inbox ()
   (interactive)
-  (notmuch-search "tag:inbox" t))
+  (notmuch-search "tag:inbox"))
 
 (use-package calfw
   :commands (cfw:open-calendar-buffer)
