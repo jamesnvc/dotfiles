@@ -156,6 +156,10 @@ Host socialserver
    User james
    IdentityFile ~/.ssh-keys/socialserver
 
+Host codeberg.org
+   User git
+   IdentityFile ~/.ssh-keys/codeberg
+
 Host NEWHETZNERCHANGEME
   Hostname 99.99.99.99
   User root
