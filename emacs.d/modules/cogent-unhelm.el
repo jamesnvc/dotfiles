@@ -254,6 +254,7 @@
   (setq completions-max-height 20)
   (setopt completion-eager-display 'auto)
   (setopt completion-eager-update t)
+  (setopt completions-sort 'historical)
   (setq-default case-fold-search t)   ; For general regexp
 
   ;; The following two are updated in Emacs 28.  They concern the
