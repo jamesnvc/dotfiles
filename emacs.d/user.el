@@ -337,3 +337,5 @@ Take both changes in diff."
   (setopt desktop-path '("~/.local/emacs/")))
 
 (desktop-save-mode 1)
+
+(savehist-mode)
