@@ -140,7 +140,7 @@
                         " "))
 
                ;; relative position in file
-               '(:eval (list (nyan-create)))
+               ;; '(:eval (list (nyan-create)))
 
                '(:propertize "%p" 'face 'font-lock-constant-face)
                '(pdf-misc-size-indication-minor-mode
