@@ -103,37 +103,6 @@
 (defun cogent-line-selected-window-active-p ()
   (eq cogent-line-selected-window (selected-window)))
 
-(defun cogent/custom-eyebrowse-mode-line-indicator (f &rest args)
-  (let ((indicator (apply f args)))
-    (if (> (length indicator) 35)
-        (let* ((confs (eyebrowse--get 'window-configs))
-               (cur (assq (eyebrowse--get 'current-slot) confs))
-               (idx (seq-position confs cur))
-               (keymap (let ((map (make-sparse-keymap)))
-                         (define-key map (kbd "<mode-line><mouse-1>")
-                           (lambda (_e)
-                             (interactive "e")
-                             (eyebrowse-switch-to-window-config
-                              (+ 1 (mod (+ idx 1) (length confs))))))
-                         map))
-               (text (concat
-                      (propertize (number-to-string (1+ idx))
-                                  'face 'eyebrowse-mode-line-active)
-                      (propertize "/"
-                                  'face 'eyebrowse-mode-line-separator)
-                      (propertize (number-to-string (length confs))
-                                  'face 'eyebrowse-mode-line-inactive))))
-          (concat
-           (propertize eyebrowse-mode-line-left-delimiter
-                       'face 'eyebrowse-mode-line-delimiters)
-           (propertize text
-                       'local-map keymap
-                       'help-echo "Next workspace")
-           (propertize eyebrowse-mode-line-right-delimiter
-                       'face 'eyebrowse-mode-line-delimiters)))
-      indicator)))
-(advice-add 'eyebrowse-mode-line-indicator
-            :around #'cogent/custom-eyebrowse-mode-line-indicator)
 (setopt mode-line-right-align-edge 'window)
 
 (setq-default mode-line-format
