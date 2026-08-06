@@ -134,6 +134,7 @@
       indicator)))
 (advice-add 'eyebrowse-mode-line-indicator
             :around #'cogent/custom-eyebrowse-mode-line-indicator)
+(setopt mode-line-right-align-edge 'window)
 
 (setq-default mode-line-format
               (list
@@ -185,17 +186,21 @@
                            (number-to-string (pdf-cache-number-of-pages))))))
 
                ;; spaces to align right
-               '(:eval (propertize
-                        " " 'display
-                        `((space :align-to (- (+ right right-fringe right-margin)
-                                              ,(+ 3 (string-width
-                                                     (if (listp mode-name)
-                                                         (car mode-name)
-                                                       mode-name))))))))
+               ;; '(:eval (cogent/mode-line-padding))
+               'mode-line-format-right-align
 
                ;; the current major mode
                '(:propertize " %m " 'face 'font-lock-string-face)
-               ;;minor-mode-alist
+               "🌈"
+               ;; minor-mode-alist
                ))
+
+(comment
+ (loop for f being the frames
+       for w being the windows of f
+       do
+       (with-current-buffer (window-buffer w)
+         (setq mode-line-format (default-value 'mode-line-format))))
+ )
 
 (provide 'cogent-modeline)
