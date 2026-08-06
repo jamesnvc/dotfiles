@@ -112,8 +112,8 @@
                                    'face (cogent/evil-state-face)))
 
                " "
-               mode-line-misc-info ; for eyebrowse
-               '(t erc-modified-channels-object)
+               ;; mode-line-misc-info
+               ;; '(t erc-modified-channels-object)
 
                '(:eval (when-let (vc vc-mode)
                          (list " "
@@ -140,19 +140,10 @@
                         " "))
 
                ;; relative position in file
-               ;; '(:eval (list (nyan-create)))
+               '(:eval (list (nyan-create)))
 
                '(:propertize "%p" 'face 'font-lock-constant-face)
-               '(pdf-misc-size-indication-minor-mode
-                 (:eval (let* ((page (pdf-view-current-page))
-                               (pdf-page (nth (1- page) (pdf-cache-pagelabels))))
-                          (list
-                           " "
-                           (when (not (string= (number-to-string page) pdf-page))
-                             (list "(" pdf-page ") "))
-                           (number-to-string (pdf-view-current-page))
-                           "/"
-                           (number-to-string (pdf-cache-number-of-pages))))))
+
 
                ;; spaces to align right
                ;; '(:eval (cogent/mode-line-padding))
@@ -164,12 +155,33 @@
                ;; minor-mode-alist
                ))
 
+(setq-default header-line-format
+              (list
+
+               mode-line-misc-info
+
+               ;; '(t erc-modified-channels-object)
+
+               '(pdf-misc-size-indication-minor-mode
+                 (:eval (let* ((page (pdf-view-current-page))
+                               (pdf-page (nth (1- page) (pdf-cache-pagelabels))))
+                          (list
+                           " "
+                           (when (not (string= (number-to-string page) pdf-page))
+                             (list "(" pdf-page ") "))
+                           (number-to-string (pdf-view-current-page))
+                           "/"
+                           (number-to-string (pdf-cache-number-of-pages))))))
+               ))
+
 (comment
  (loop for f being the frames
        for w being the windows of f
        do
        (with-current-buffer (window-buffer w)
-         (setq mode-line-format (default-value 'mode-line-format))))
+         (setq mode-line-format (default-value 'mode-line-format))
+         (setq header-line-format (default-value 'header-line-format))
+         ))
  )
 
 (provide 'cogent-modeline)
