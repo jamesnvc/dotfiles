@@ -87,6 +87,7 @@
     (when-let ((side-win (window-with-parameter 'window-side)))
       (select-window side-win)))
   (setopt switch-to-buffer-obey-display-actions nil)
+  (keymap-set window-prefix-map "=" #'balance-windows-area)
   (setopt display-buffer-alist
           `(;; top side window
             ("\\*\\(Flymake\\|Package-Lint\\|vc-git :\\).*"
