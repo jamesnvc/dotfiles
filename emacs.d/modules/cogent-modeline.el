@@ -155,24 +155,70 @@
                ;; minor-mode-alist
                ))
 
+(defface cogent-header-project-name
+  '((t :foreground "MediumOrchid"))
+  "Face for the project name in header line"
+  :group 'cogent)
+
+(defface cogent-header-file-path
+  '((t :foreground "HotPink"))
+  "Face for the file path in header line"
+  :group 'cogent)
+
+(defun cogent/project-relative-path ()
+  (if-let ((proj (project-current)))
+      (concat
+       (propertize
+        (file-name-nondirectory
+         (directory-file-name (project-root proj)))
+        'face 'cogent-header-project-name)
+       ": "
+       (propertize
+        (file-relative-name
+         (buffer-file-name)
+         (project-root (project-current)))
+        'face 'cogent-header-file-path))
+    (propertize
+     (buffer-file-name)
+     'face 'cogent-header-file-path)))
+
+(defun cogent/header--line-format-right-align ()
+  "Like `mode--line-format-right-align' but for header-line-format."
+  (let* ((rest (cdr (memq 'cogent/header-line-format-right-align
+                          header-line-format)))
+         (rest-str (format-mode-line `("" ,@rest)))
+         (rest-width (progn
+                       (add-face-text-property
+                        0 (length rest-str)
+                        'header-line t rest-str)
+                      (string-pixel-width rest-str))))
+    (propertize
+     " " 'display
+     `(space :align-to (- right-margin (,rest-width))))))
+
+(insert (cogent/header--line-format-right-align))
+
+(defvar cogent/header-line-format-right-align
+  '(:eval (cogent/header--line-format-right-align))
+  "Like `mode-line-format-right-align' but for header-line-format.")
+;;;###autoload
+(put 'cogent/header-line-format-right-align 'risky-local-variable t)
+
 (setq-default header-line-format
               (list
+               '(:eval (cogent/project-relative-path))
 
-               mode-line-misc-info
+               'cogent/header-line-format-right-align
+               ;; '(:propertize " " 'display `(space :width 5))
 
                ;; '(t erc-modified-channels-object)
-
-               '(pdf-misc-size-indication-minor-mode
-                 (:eval (let* ((page (pdf-view-current-page))
-                               (pdf-page (nth (1- page) (pdf-cache-pagelabels))))
-                          (list
-                           " "
-                           (when (not (string= (number-to-string page) pdf-page))
-                             (list "(" pdf-page ") "))
-                           (number-to-string (pdf-view-current-page))
-                           "/"
-                           (number-to-string (pdf-cache-number-of-pages))))))
+               'mode-line-misc-info
                ))
+
+(defun cogent/hide-completions-header-line ()
+  (with-current-buffer standard-output
+    (setq header-line-format nil)))
+(add-hook 'completion-setup-hook #'cogent/hide-completions-header-line)
 
 (comment
  (loop for f being the frames
@@ -182,6 +228,8 @@
          (setq mode-line-format (default-value 'mode-line-format))
          (setq header-line-format (default-value 'header-line-format))
          ))
+
+ (format-mode-line (default-value 'header-line-format))
  )
 
 (provide 'cogent-modeline)
