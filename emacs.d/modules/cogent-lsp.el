@@ -19,19 +19,26 @@
     ;; to make sourcekit work properly with xcode project
     ;; install xcode-build-server (brew install xcode-build-server)
     ;; and in the project root run 'xcode-build-server config -project *.xcodeproj'
-    (add-to-list 'eglot-server-programs
-                 '(swift-mode . ("/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp"
-                                 "-Xswiftc" "-sdk"
-                                 "-Xswiftc"
-                                 "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk"
-                                 "-Xswiftc" "-target"
-                                 "-Xswiftc" "arm64-apple-ios18.1-simulator"
-                                 "-Xcc" "-DSWIFT_PACKAGE=0"))))
-  (add-to-list 'eglot-server-programs
-               '((python-ts-mode python-mode) . ("uvx" "pyrefly" "lsp")))
-  (add-to-list 'eglot-server-programs
-               '((ruby-mode ruby-ts-mode) . ("~/.rbenv/shims/ruby-lsp")))
-  (add-to-list 'eglot-server-programs '(zig-mode . ("zls")))
+    (setf (alist-get 'swift-mode eglot-server-programs)
+          '("/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/sourcekit-lsp"
+            "-Xswiftc" "-sdk"
+            "-Xswiftc"
+            "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk"
+            "-Xswiftc" "-target"
+            "-Xswiftc" "arm64-apple-ios18.1-simulator"
+            "-Xcc" "-DSWIFT_PACKAGE=0")))
+  (setq eglot-server-programs
+        (assoc-delete-all '(ruby-mode ruby-ts-mode)
+                          eglot-server-programs
+                          #'equal))
+  (setf (alist-get '(python-mode python-ts-mode) eglot-server-programs nil nil #'equal)
+        '("uvx" "pyrefly" "lsp"))
+  (setf (alist-get '(ruby-mode ruby-ts-mode) eglot-server-programs nil nil #'equal)
+        '("~/.rbenv/shims/ruby-lsp"))
+  (setf (alist-get 'zig-mode eglot-server-programs)
+        '("zls"))
+  (setf (alist-get '(kotlin-mode kotlin-ts-mode) eglot-server-programs nil nil #'equal)
+        '("kotlin-lsp" "--stdio"))
   (setopt eglot-documentation-renderer 'markdown-ts-view-mode)
   (keymap-set eglot-mode-map "C-c C-a" #'eglot-code-actions)
   (keymap-set eglot-mode-map "C-c C-r" #'eglot-rename)
