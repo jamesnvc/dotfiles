@@ -196,8 +196,6 @@
      " " 'display
      `(space :align-to (- right-margin (,rest-width))))))
 
-(insert (cogent/header--line-format-right-align))
-
 (defvar cogent/header-line-format-right-align
   '(:eval (cogent/header--line-format-right-align))
   "Like `mode-line-format-right-align' but for header-line-format.")
@@ -212,8 +210,18 @@
                ;; '(:propertize " " 'display `(space :width 5))
 
                ;; '(t erc-modified-channels-object)
-               'mode-line-misc-info
+               ;; 'mode-line-misc-info
+               "🦈"
                ))
+
+(setopt tab-bar-format
+        '(;;tab-bar-format-history
+          tab-bar-format-tabs-groups
+          tab-bar-separator
+          ;;tab-bar-format-add-tab
+          tab-bar-format-align-right
+          tab-bar-format-global
+          ))
 
 (defun cogent/hide-completions-header-line ()
   (with-current-buffer standard-output
