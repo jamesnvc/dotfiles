@@ -74,15 +74,21 @@
              :files (:defaults "jinx-mod.c" "emacs-module.h"))
   :bind ([remap ispell-word] . jinx-correct)
   :config
+  (defun cogent/jinx--goto-beginning-of-misspelling ()
+    (when-let* ((ov (car (jinx--get-overlays (1- (point)) (point)))))
+      (goto-char (overlay-start ov))))
+
   (evil-define-motion cogent/evil-prev-jinx-error (count)
     "Go to the COUNT'th spelling error preceding point."
     :jump t
-    (jinx-previous (or count 1)))
+    (jinx-previous (or count 1))
+    (cogent/jinx--goto-beginning-of-misspelling))
 
   (evil-define-motion cogent/evil-next-jinx-error (count)
     "Go to the COUNT'th spelling error succeeding point."
     :jump t
-    (jinx-next (or count 1)))
+    (jinx-next (or count 1))
+    (cogent/jinx--goto-beginning-of-misspelling))
 
   (keymap-set evil-motion-state-map "[ j" 'cogent/evil-prev-jinx-error)
   (keymap-set evil-motion-state-map "] j" 'cogent/evil-next-jinx-error))
