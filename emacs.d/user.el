@@ -7,14 +7,22 @@
   (set-frame-font "PragmataPro" nil t)))
 (require 'cogent-pragmata)
 
-;; Downloadable from
-;; https://rubjo.github.io/victor-mono/
-;; or brew install --cask font-victor-mono
-(when (member "Victor Mono" (font-family-list))
-  (set-face-font 'font-lock-comment-face "Victor Mono")
+(cond
+ ((member "ArtifexHand" (font-family-list))
+  (set-face-font 'font-lock-comment-face "ArtifexHand")
   (set-face-italic 'font-lock-comment-face t)
-  ;; make it bold too, since Victor Mono is very light
-  (set-face-bold 'font-lock-comment-face t))
+  (let ((frame-inhibit-implied-resize t))
+    (set-face-attribute 'font-lock-comment-face nil :height 145)))
+ ((member "Victor Mono" (font-family-list))
+  ;; Downloadable from
+  ;; https://rubjo.github.io/victor-mono/
+  ;; or brew install --cask font-victor-mono
+  (progn
+    (set-face-font 'font-lock-comment-face "Victor Mono")
+    (set-face-italic 'font-lock-comment-face t)
+    ;; make it bold too, since Victor Mono is very light
+    (set-face-bold 'font-lock-comment-face t))))
+
 
 (when (member "SF Pro Display" (font-family-list))
   ;; Allow using SF symbols
