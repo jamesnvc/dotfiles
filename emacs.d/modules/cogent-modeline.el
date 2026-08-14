@@ -224,9 +224,8 @@
           ))
 
 (defun cogent/hide-completions-header-line ()
-  (with-current-buffer standard-output
-    (setq header-line-format nil)))
-(add-hook 'completion-setup-hook #'cogent/hide-completions-header-line)
+  (setq header-line-format nil))
+(add-hook 'completion-list-mode-hook #'cogent/hide-completions-header-line)
 
 (comment
  (loop for f being the frames
