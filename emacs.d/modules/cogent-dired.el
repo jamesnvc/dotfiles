@@ -95,4 +95,12 @@
 
 (general-def "C-x C-r" #'rename-current-buffer-file)
 
+(use-package speedbar
+  :ensure nil
+  :straight (:type built-in)
+  :commands (speedbar)
+  :config
+  (setopt speedbar-prefer-window t)
+  (setopt speedbar-use-images nil))
+
 (provide 'cogent-dired)
