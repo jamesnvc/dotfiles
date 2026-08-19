@@ -71,4 +71,19 @@
              :host github
              :repo "dalanicolai/sketch-mode"))
 
+(use-package image-mode
+  :defer t
+  :straight (:type built-in)
+  :config
+  (defun cogent/image-mode-image-dimension ()
+    (interactive nil image-mode)
+    (image-transform-reset-to-original)
+    (pcase-let ((`(,w . ,h)
+                 (prog1
+                     (image-size (image-get-display-property) :pixels)
+                   (image-transform-reset-to-initial))))
+      (message "width: %s height: %s" w h)))
+  (keymap-set image-mode-map "I" #'cogent/image-mode-image-dimension)
+  )
+
 (provide 'cogent-tools)
