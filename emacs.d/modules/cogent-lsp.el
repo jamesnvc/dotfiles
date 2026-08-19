@@ -25,7 +25,7 @@
             "-Xswiftc"
             "/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk"
             "-Xswiftc" "-target"
-            "-Xswiftc" "arm64-apple-ios18.1-simulator"
+            "-Xswiftc" "arm64-apple-ios26.0-simulator"
             "-Xcc" "-DSWIFT_PACKAGE=0")))
   (setq eglot-server-programs
         (assoc-delete-all '(ruby-mode ruby-ts-mode)
