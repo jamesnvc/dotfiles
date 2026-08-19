@@ -179,7 +179,7 @@
          (project-root (project-current)))
         'face 'cogent-header-file-path))
     (propertize
-     (buffer-file-name)
+     (or (buffer-file-name) (concat "👻" (buffer-name)))
      'face 'cogent-header-file-path)))
 
 (defun cogent/header--line-format-right-align ()
