@@ -7,7 +7,7 @@
   (let ((brew-prefix
          ;; XXX: sometimes `brew config' includes some extra crap about updates...
           (shell-command-to-string
-           "brew config | awk '$1 == \"HOMEBREW_PREFIX:\" { printf \"%s\", $2 }'")))
+           "brew config 2> /dev/null | awk '$1 == \"HOMEBREW_PREFIX:\" { printf \"%s\", $2 }'")))
     (thread-last
       (concat brew-prefix "/share/emacs/site-lisp/notmuch")
       (add-to-list 'load-path))))
