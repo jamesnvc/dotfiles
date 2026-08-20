@@ -5,14 +5,14 @@
         ("http://killsixbilliondemons.com/?feed=rss2" comic)
         "http://jvns.ca/atom.xml"
         "http://redqueencoder.com/feed/"
-        "http://ericasadun.com/feed/"
+        ("http://ericasadun.com/feed/" :no-update t)
         ;; ("http://cdn.drivecomic.com/rss.xml" comic)
         "http://www.johndcook.com/blog/feed/"
         ("http://furbo.org/feed/" tech)
         ("http://feeds.arstechnica.com/arstechnica/index/" tech busy)
         ("http://joshreads.com/?feed=rss2" comic)
         ("http://aphyr.com/posts.atom" tech mustread)
-        ("http://techdistortion.com/articles/feed" tech)
+        ("http://techdistortion.com/articles/feed" :no-update t tech)
         "https://randsinrepose.com/feed/"
         ("http://feeds.feedburner.com/schneier/fulltext" infosec)
         ("http://feeds.feedburner.com/marcoorg" tech apple)
@@ -20,7 +20,7 @@
         ("http://feeds.feedburner.com/codinghorror" tech)
         ("http://xkcd.com/atom.xml" comic)
         ("http://feeds.feedburner.com/wondermark" comic)
-        ("http://www.daisyowl.com/rss" comic)
+        ("http://www.daisyowl.com/rss" :no-update t comic)
         ("http://overcompensating.com/rss/" comic)
         "http://feeds.feedburner.com/VirtuousCode"
         ("http://sachachua.com/blog/feed" emacs)
@@ -49,25 +49,25 @@
         "http://www.mistys-internet.website/blog/atom.xml"
         "http://cannaw.blogspot.com/feeds/posts/default"
         "http://blog.plover.com/index.rss"
-        "http://technomancy.us/feed/atom.xml"
+        "https://technomancy.us/atom.xml"
         "http://blog.sanctum.geek.nz/feed/"
-        "http://www.bluishcoder.co.nz/atom.xml"
+        ("http://www.bluishcoder.co.nz/atom.xml" :no-update t)
         "http://joelonsoftware.com/rss.xml"
         "http://feeds.feedburner.com/allthingsgym"
         ("http://nullprogram.com/feed/" lisp emacs tech mustread)
         ("https://emacsair.me/feed.xml" emacs)
         ("http://occasionallycogent.com/feed.xml" mustread)
-        ("https://blog.cannawen.com/rss" mustread)
+        ("https://blog.cannawen.com/rss" :no-update t mustread)
         ("http://existentialcomics.com/rss.xml" comic)
         ("http://badmachinery.com/index.xml" comic)
-        ("http://lawsandsausagescomic.com/comic/rss" comic)
+        ("http://lawsandsausagescomic.com/comic/rss" :no-update t comic)
         ("https://blogs.msdn.microsoft.com/oldnewthing/feed" tech)
         ("https://200ok.ch/atom.xml" tech)
         ("https://livelaugh.blog/rss.xml" mustread)
         ("https://terrafilha.home.blog/feed/" mustread)
         ("https://protesilaos.com/codelog.xml" emacs)
-        ("https://www.manueluberti.eu/feed.xml" emacs)
-        ("https://www.rousette.org.uk/archives/index.xml" emacs)
+        ("https://www.manueluberti.eu/feed.xml" :no-update t emacs)
+        ("https://www.rousette.org.uk/feed.xml" emacs)
         ("https://acoup.blog/feed/")
         ("https://drewdevault.com/blog/index.xml" tech)
         ("https://danluu.com/atom.xml" tech mustread)
@@ -81,8 +81,8 @@
         ("https://stationery.pizza/feed.rss" stationery)
         ("https://www.gentlemanstationer.com/blog?format=rss" stationery)
         ("https://www.wellappointeddesk.com/feed/" stationery)
-        ("https://www.afleetingripple.com/blog-feed.xml" stationery)
-        ("https://www.mnmlscholar.com/blog?format=rss" stationery)
+        ("https://www.afleetingripple.com/?format=rss" stationery)
+        ("https://www.mnmlscholar.com/blog?format=rss" :no-update t stationery)
         ("https://wonderpens.ca/blogs/uncategorized.atom" stationery)
         ("https://www.404media.co/rss/" busy)
         "https://www.everydaycommentary.com/www.everydaycommentary.com?format=rss"
