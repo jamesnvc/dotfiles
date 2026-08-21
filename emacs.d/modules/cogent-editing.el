@@ -45,7 +45,8 @@
   :straight (:type built-in)
   :config
   (setopt treesit-auto-install-grammar 'ask)
-  (setopt treesit-enabled-modes t))
+  (setopt treesit-enabled-modes t)
+  (add-to-list 'treesit-language-source-alist '(kotlin . ("https://github.com/fwcd/tree-sitter-kotlin"))))
 
 (comment
  (treesit-install-language-grammar 'python)
