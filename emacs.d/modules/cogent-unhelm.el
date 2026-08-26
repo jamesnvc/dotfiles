@@ -11,8 +11,6 @@
   :init
   (marginalia-mode 1))
 
-(use-package wgrep)
-
 (use-package consult
   :straight (consult
              :type git
