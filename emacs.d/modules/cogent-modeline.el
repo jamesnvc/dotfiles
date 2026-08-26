@@ -202,6 +202,9 @@
 ;;;###autoload
 (put 'cogent/header-line-format-right-align 'risky-local-variable t)
 
+(with-eval-after-load 'which-func
+  (setopt which-func-display 'header))
+
 (setq-default header-line-format
               (list
                '(:eval (cogent/project-relative-path))
@@ -211,8 +214,10 @@
 
                ;; '(t erc-modified-channels-object)
                ;; 'mode-line-misc-info
-               "🦈"
-               ))
+               '(which-function-mode
+                 (which-func-mode
+                  ("" which-func-format "")))
+               "🦈"))
 
 (setopt tab-bar-format
         '(;;tab-bar-format-history
