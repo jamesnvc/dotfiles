@@ -7,11 +7,6 @@
 (use-package haskell-mode
   :defer t)
 
-(use-package lua-mode
-  :defer t
-  :mode ("\\.lua\\'" . lua-mode)
-  :commands lua-mode)
-
 (use-package fennel-mode
   :defer t
   :mode ("\\.fnl\\'" . fennel-mode)
