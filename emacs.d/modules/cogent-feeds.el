@@ -89,8 +89,8 @@
     (set-mark (window-start))
     (goto-char (window-end-visible))
     (activate-mark)
-    (elfeed-search-untag-all-unread)
-    (elfeed-search-update--force)
+    (elfeed-search-untag-unread)
+    (revert-buffer)
     (deactivate-mark)
     (goto-char (window-start)))
 
