@@ -248,6 +248,11 @@ Pre-fills the minibuffer with current Eshell input (from prompt to point)."
 ;;            (helm-switch-shell-show-shell-indicator t)))
 
 (use-package with-editor
+  :straight (with-editor
+              :type git
+              :host github
+              :branch "main"
+              :repo "magit/with-editor")
   :hook ((eshell-mode-hook . with-editor-export-editor)
          (vterm-mode-hook . with-editor-export-editor)))
 
