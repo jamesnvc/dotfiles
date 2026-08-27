@@ -202,9 +202,6 @@
 ;;;###autoload
 (put 'cogent/header-line-format-right-align 'risky-local-variable t)
 
-(with-eval-after-load 'which-func
-  (setopt which-func-display 'header))
-
 (setq-default header-line-format
               (list
                '(:eval (cogent/project-relative-path))
