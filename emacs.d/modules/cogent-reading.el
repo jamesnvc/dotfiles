@@ -2,7 +2,8 @@
 
 (require 'cogent-package)
 
-(use-package pdf-tools
+(comment
+ (use-package pdf-tools
   :defer t
   :straight (pdf-tools
              :type git
@@ -15,7 +16,7 @@
   (pdf-tools-install)
   (define-pdf-cache-function pagelabels)
   :hook ((pdf-view-mode-hook . (lambda () (display-line-numbers-mode -1)))
-         (pdf-view-mode-hook . pdf-tools-enable-minor-modes)))
+         (pdf-view-mode-hook . pdf-tools-enable-minor-modes))))
 
 (use-package org-pdftools
   :defer t
@@ -36,7 +37,15 @@
                      :files ("*.el" "render-core.dylib")
                      :pre-build ("make" "all"))
   :config
-  (add-to-list 'auto-mode-alist '("\\.epub\\'" . reader-mode)))
+  (add-to-list 'auto-mode-alist '("\\.[pP][dD][fF]\\'" . reader-mode))
+  (add-to-list 'auto-mode-alist '("\\.epub\\'" . reader-mode))
+  (add-to-list 'magic-mode-alist '("%PDF" . reader-mode))
+  (add-hook 'reader-mode-hook (lambda () (display-line-numbers-mode -1))))
+
+(comment
+ (setq magic-mode-alist
+       '((go--is-go-asm . go-asm-mode) ("^%YAML\\s-+[0-9]+\\.[0-9]+\\(\\s-+#\\|\\s-*$\\)" . yaml-mode) ("%PDF" . reader-mode)))
+ )
 
 (defvar infu-bionic-reading-face nil "a face for `infu-bionic-reading-region'.")
 
