@@ -32,6 +32,19 @@
   (when (fboundp 'completion-preview-mode)
     (add-hook 'prog-mode-hook #'completion-preview-mode)))
 
+(use-package completion-preview
+  :ensure nil
+  :demand t
+  :straight (:type built-in)
+  :config
+  (keymap-set completion-preview-active-mode-map "M-i" #'completion-preview-insert-word)
+  (keymap-set completion-preview-active-mode-map "M-n" #'completion-preview-next-candidate)
+  (keymap-set completion-preview-active-mode-map "M-p" #'completion-preview-prev-candidate)
+  (keymap-set completion-preview-active-mode-map "<up>" #'completion-preview-next-candidate)
+  (keymap-set completion-preview-active-mode-map "<down>" #'completion-preview-prev-candidate)
+  (keymap-set completion-preview-active-mode-map "M-<return>" #'completion-preview-insert)
+  (keymap-set completion-preview-active-mode-map "<tab>" #'completion-preview-complete))
+
 (use-package so-long
   :straight (:type built-in)
   :config
