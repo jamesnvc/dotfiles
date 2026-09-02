@@ -385,7 +385,7 @@ Then press C-c C-x C-u inside
     (org-tree-slide-mode -1)
     (org-indent-mode -1)))
 
-(defun cogent/org-element-logbook-duration ()
+(defun cogent/org-element-logbook-duration (start-time end-time)
   "Get the logged duration for the element at point"
   (interactive)
   (save-excursion
@@ -402,10 +402,13 @@ Then press C-c C-x C-u inside
         (save-excursion
           (goto-char beg)
           (while (< (point) end)
-            (let ((clock (org-element-at-point)))
-              (when-let ((duration (org-element-property :duration clock)))
-                (incf duration-minutes
-                      (org-duration-string-to-minutes duration))))
+            (let* ((clock (org-element-at-point))
+                   (elt-ts (org-timestamp-to-time (org-element-property :value clock))))
+              (when (and (time-less-p start-time elt-ts)
+                         (time-less-p elt-ts end-time))
+                (when-let ((duration (org-element-property :duration clock)))
+                  (incf duration-minutes
+                        (org-duration-string-to-minutes duration)))))
             (forward-line 1)))
         (org-duration-from-minutes duration-minutes)))))
 
