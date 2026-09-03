@@ -30,7 +30,8 @@
   (setq-default bidi-paragraph-direction 'left-to-right)
   (setq bidi-inhibit-bpa t)
   (when (fboundp 'completion-preview-mode)
-    (add-hook 'prog-mode-hook #'completion-preview-mode)))
+    (add-hook 'prog-mode-hook #'completion-preview-mode))
+  (setopt editorconfig-mode t))
 
 (use-package completion-preview
   :ensure nil
