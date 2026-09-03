@@ -104,6 +104,7 @@
   (eq cogent-line-selected-window (selected-window)))
 
 (setopt mode-line-right-align-edge 'window)
+(setopt mode-line-compact 'long)
 
 (setq-default mode-line-format
               (list

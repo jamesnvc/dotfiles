@@ -2,6 +2,12 @@
 
 (require 'cogent-package)
 
+(use-package emacs
+  :config
+  (setopt frame-resize-pixelwise t)
+  (setopt window-resize-pixelwise t)
+  (setopt frame-inhibit-implied-resize t))
+
 ;; theme switching stuff from https://www.greghendershott.com/2017/02/emacs-themes.html
 (defun cogent/disable-all-themes ()
   (interactive)
