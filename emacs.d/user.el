@@ -9,19 +9,16 @@
 
 (cond
  ((member "ArtifexHand" (font-family-list))
-  (set-face-font 'font-lock-comment-face "ArtifexHand")
-  (set-face-italic 'font-lock-comment-face t)
-  (let ((frame-inhibit-implied-resize t))
-    (set-face-attribute 'font-lock-comment-face nil :height 145)))
+  (set-face-attribute 'variable-pitch nil :font "ArtifexHand")
+  (set-face-attribute 'variable-pitch nil :slant 'italic))
  ((member "Victor Mono" (font-family-list))
   ;; Downloadable from
   ;; https://rubjo.github.io/victor-mono/
   ;; or brew install --cask font-victor-mono
-  (progn
-    (set-face-font 'font-lock-comment-face "Victor Mono")
-    (set-face-italic 'font-lock-comment-face t)
-    ;; make it bold too, since Victor Mono is very light
-    (set-face-bold 'font-lock-comment-face t))))
+  (set-face-attribute 'variable-pitch nil :font "Victor Mono")
+  (set-face-attribute 'variable-pitch nil :slant 'italic)
+  ;; make it bold too, since Victor Mono is very light
+  (set-face-attribute 'variable-pitch nil :weight 'bold)))
 
 
 (when (member "SF Pro Display" (font-family-list))
