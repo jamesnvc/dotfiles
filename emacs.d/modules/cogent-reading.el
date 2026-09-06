@@ -42,11 +42,6 @@
   (add-to-list 'magic-mode-alist '("%PDF" . reader-mode))
   (add-hook 'reader-mode-hook (lambda () (display-line-numbers-mode -1))))
 
-(comment
- (setq magic-mode-alist
-       '((go--is-go-asm . go-asm-mode) ("^%YAML\\s-+[0-9]+\\.[0-9]+\\(\\s-+#\\|\\s-*$\\)" . yaml-mode) ("%PDF" . reader-mode)))
- )
-
 (defvar infu-bionic-reading-face nil "a face for `infu-bionic-reading-region'.")
 
 (setq infu-bionic-reading-face 'bold)
