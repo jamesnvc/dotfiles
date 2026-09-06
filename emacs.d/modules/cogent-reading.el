@@ -40,6 +40,7 @@
   (add-to-list 'auto-mode-alist '("\\.[pP][dD][fF]\\'" . reader-mode))
   (add-to-list 'auto-mode-alist '("\\.epub\\'" . reader-mode))
   (add-to-list 'magic-mode-alist '("%PDF" . reader-mode))
+  (evil-set-initial-state 'reader-mode 'emacs)
   (add-hook 'reader-mode-hook (lambda () (display-line-numbers-mode -1))))
 
 (defvar infu-bionic-reading-face nil "a face for `infu-bionic-reading-region'.")
