@@ -147,6 +147,12 @@
  ((member "Symbola" (font-family-list))
   (set-fontset-font t 'unicode "Symbola" nil 'prepend)))
 
+(use-package emacs
+  :config
+  ;; prevent emoji from making line-height jump
+  (setf (alist-get "Apple Color Emoji" face-font-rescale-alist)
+        0.65))
+
 (use-package svg-tag-mode
   :straight (svg-tag-mode
              :type git
