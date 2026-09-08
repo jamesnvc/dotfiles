@@ -9,17 +9,22 @@
   "Modeline background colour for inactive window")
 
 (defvar cogent-line-evil-state-colours
-  '((cogent-line-evil-normal "DarkGoldenrod2" "Evil normal state face.")
+  '((cogent-line-evil-normal "chocolate2" "Evil normal state face.")
     (cogent-line-evil-insert "medium sea green" "Evil insert state face.")
-    (cogent-line-evil-emacs "SkyBlue2" "Evil emacs state face.")
+    (cogent-line-evil-emacs "DeepSkyBlue3" "Evil emacs state face.")
     (cogent-line-evil-replace "chocolate" "Evil replace state face.")
-    (cogent-line-evil-visual "gray" "Evil visual state face.")
-    (cogent-line-evil-motion "plum3" "Evil motion state face.")
-    (cogent-line-evil-operator "plum3" "Evil operator state face.")
+    (cogent-line-evil-visual "PeachPuff2" "Evil visual state face.")
+    (cogent-line-evil-motion "DarkOrchid2" "Evil motion state face.")
+    (cogent-line-evil-operator "DarkOrchid2" "Evil operator state face.")
     (cogent-line-unmodified "DarkGoldenrod2" "Unmodified buffer face.")
     (cogent-line-modified "SkyBlue2" "Modified buffer face.")
     (cogent-line-highlight-face "DarkGoldenrod2" "Default highlight face."))
   "Names, initial colours, and docstring for Evil state modeline indicator")
+
+(comment
+ (dolist (s cogent-line-evil-state-colours)
+   (set-face-attribute (nth 0 s) nil :foreground (nth 1 s)))
+ )
 
 (dolist (s cogent-line-evil-state-colours)
   (eval `(defface ,(nth 0 s)
