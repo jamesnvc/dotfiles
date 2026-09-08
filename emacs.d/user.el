@@ -344,3 +344,5 @@ Take both changes in diff."
 (desktop-save-mode 1)
 
 (savehist-mode)
+
+(which-function-mode)
