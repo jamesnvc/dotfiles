@@ -100,7 +100,7 @@ main(Args) :-
           longflags([quiet]), default(false),
           help("Turn off debug messages") ],
 
-        [ opt(counterstart), type(number), default(0),
+        [ opt(counterstart), type(integer), default(0),
           shortflags([s]), longflags([counterstart]),
           help("Number to start image numbers at") ],
 
