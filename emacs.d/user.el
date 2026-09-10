@@ -1,21 +1,21 @@
 ;;; -*- lexical-binding: t -*-
 
 (cond
- ((member "PragmataPro Mono Liga" (font-family-list))
-  (set-frame-font "PragmataPro Mono Liga" nil t))
+ ((member "PragmataPro Mono" (font-family-list))
+  (set-face-attribute 'default nil :family "PragmataPro Mono" :height 130))
  ((member "PragmataPro" (font-family-list))
-  (set-frame-font "PragmataPro" nil t)))
-(require 'cogent-pragmata)
+  (set-face-attribute 'default nil :family "PragmataPro" :height 130)))
+;; (require 'cogent-pragmata)
 
 (cond
  ((member "ArtifexHand" (font-family-list))
-  (set-face-attribute 'variable-pitch nil :font "ArtifexHand")
+  (set-face-attribute 'variable-pitch nil :family "ArtifexHand")
   (set-face-attribute 'variable-pitch nil :slant 'italic))
  ((member "Victor Mono" (font-family-list))
   ;; Downloadable from
   ;; https://rubjo.github.io/victor-mono/
   ;; or brew install --cask font-victor-mono
-  (set-face-attribute 'variable-pitch nil :font "Victor Mono")
+  (set-face-attribute 'variable-pitch nil :family "Victor Mono")
   (set-face-attribute 'variable-pitch nil :slant 'italic)
   ;; make it bold too, since Victor Mono is very light
   (set-face-attribute 'variable-pitch nil :weight 'bold)))
@@ -38,9 +38,6 @@
    (add-to-list 'exec-path dir)
    (setenv "PATH" (concat dir ":" (getenv "PATH")))
    (add-to-list 'cogent/extra-path-dirs dir)))
-
-(let ((frame-inhibit-implied-resize t))
-  (set-face-attribute 'default nil :height 130))
 
 (when (and (boundp 'system-configuration)
            (string-prefix-p "aarch64-apple-darwin" system-configuration))
