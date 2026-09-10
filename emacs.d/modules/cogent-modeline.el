@@ -234,7 +234,7 @@
                '(which-function-mode
                  (which-func-mode
                   ("" which-func-format "")))
-               "🦈"))
+               "🧜‍♀️"))
 
 (setopt tab-bar-format
         '(;;tab-bar-format-history
