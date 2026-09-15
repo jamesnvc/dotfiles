@@ -82,6 +82,7 @@ tell application \"System Events\"
   end repeat
 end tell
 ")
+      (< (. (hs.host.operatingSystemVersion) :major) 27)
       (hs.osascript.applescript "
 tell application \"System Events\"
   set _notificationWindow to window \"Notification Center\" of process \"Notification Center\"
@@ -100,6 +101,19 @@ tell application \"System Events\"
       end repeat
     end repeat
   end repeat
+end tell")
+
+      (hs.osascript.applescript "
+tell application \"System Events\"
+	set notificationWindows to windows of process \"Notification Centre\"
+	set theGroups to UI elements of first item of UI elements of first item of UI elements of first item of notificationWindows
+	set theGroup to first item of theGroups
+	repeat with theAction in actions of first item of UI elements of theGroup
+		if (description of theAction) = \"Close\" or (description of theAction) = \"Clear All\" then
+			perform theAction
+			return
+		end if
+	end repeat
 end tell")))
 
 (hs.hotkey.bind hyper "C" close-notifications)
