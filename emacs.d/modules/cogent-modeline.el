@@ -67,7 +67,7 @@
                             cogent/evil-state-faces
                           cogent/evil-state-faces-inactive)))))
       (cdr face)
-    cogent-line-default-face))
+    cogent-line-highlight-face))
 
 (defface cogent-line-modified-face
   `((t (:foreground "#8be9fd" :background unspecified :family "PragmataPro")))
