@@ -195,7 +195,7 @@
  '(prolog-use-standard-consult-compile-method-flag t)
  '(scroll-bar-mode nil)
  '(send-mail-function 'smtpmail-send-it)
- '(tab-bar-show 1)
+ '(tab-bar-show 0)
  '(tab-bar-tab-hints t)
  '(tool-bar-mode nil)
  '(undo-tree-auto-save-history t)
