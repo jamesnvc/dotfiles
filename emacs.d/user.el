@@ -10,7 +10,7 @@
 (cond
  ((member "ArtifexHand" (font-family-list))
   (set-face-attribute 'variable-pitch nil :family "ArtifexHand")
-  (set-face-attribute 'variable-pitch nil :slant 'italic))
+  (set-face-attribute 'variable-pitch nil :slant 'normal))
  ((member "Victor Mono" (font-family-list))
   ;; Downloadable from
   ;; https://rubjo.github.io/victor-mono/
