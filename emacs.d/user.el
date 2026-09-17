@@ -342,3 +342,5 @@ Take both changes in diff."
 (savehist-mode)
 
 (which-function-mode)
+
+(tab-bar-mode)

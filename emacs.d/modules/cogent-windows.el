@@ -15,8 +15,6 @@
   (setq switch-window-qwerty-shortcuts
         '("a" "o" "e" "u" "i" "d" "h" "t" "n" "s")))
 
-(featurep 'tab-bar)
-
 (unless (featurep 'tab-bar)
   ;; [TODO] make keybindings for eyebrowse to mimic tab-bar stuff
   (require 'cogent-eyebrowse)
@@ -153,5 +151,10 @@
              :repo "alphapapa/burly.el"
              :branch "master")
   :commands (burly-bookmark-frames burly-bookmark-windows burly-open-bookmark))
+
+(use-package emacs
+  :config
+  (add-hook 'after-make-frame-functions
+            (lambda (frame) (tab-bar--update-tab-bar-lines (list frame)))))
 
 (provide 'cogent-windows)
