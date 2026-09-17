@@ -102,13 +102,11 @@ tell application \"System Events\"
     end repeat
   end repeat
 end tell")
-
       (hs.osascript.applescript "
 tell application \"System Events\"
 	set notificationWindows to windows of process \"Notification Centre\"
-	set theGroups to UI elements of first item of UI elements of first item of UI elements of first item of notificationWindows
-	set theGroup to first item of theGroups
-	repeat with theAction in actions of first item of UI elements of theGroup
+	set theGroups to UI elements of first item of UI elements of first item of UI elements of first item of UI elements of first item of UI elements of the first item of notificationWindows
+	repeat with theAction in actions of first item of theGroups
 		if (description of theAction) = \"Close\" or (description of theAction) = \"Clear All\" then
 			perform theAction
 			return
