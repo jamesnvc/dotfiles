@@ -435,4 +435,9 @@ Then press C-c C-x C-u inside
   :config
   (setopt org-reveal-plugins '()))
 
+(with-eval-after-load 'which-func
+  (add-hook 'org-mode-hook
+            (lambda ()
+              (setq-local which-func-cleanup-function #'substring-no-properties))))
+
 (provide 'cogent-orgmode)
