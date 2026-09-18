@@ -151,7 +151,7 @@
   :config
   ;; prevent emoji from making line-height jump
   (setf (alist-get "Apple Color Emoji" face-font-rescale-alist)
-        0.65))
+        0.69))
 
 (use-package svg-tag-mode
   :straight (svg-tag-mode
