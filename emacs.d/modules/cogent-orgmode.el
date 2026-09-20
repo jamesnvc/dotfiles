@@ -13,6 +13,11 @@
   ;; :demand t
   ;; :config
 
+  (setopt org-indirect-buffer-display 'current-window)
+  (advice-add 'org-tree-to-indirect-buffer
+              :filter-args (lambda (args)
+                             (if (null (car args)) (list t) args)))
+
   (customize-set-variable 'org-catch-invisible-edits 'show-and-error)
   (customize-set-variable 'org-adapt-indentation nil)
   (customize-set-variable 'org-agenda-compact-blocks t)
