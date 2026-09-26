@@ -8,6 +8,7 @@
                      :repo "divyaranjan/emacs-reader"
                      :files ("*.el" "render-core.dylib")
                      :pre-build ("make" "all"))
+  :defer t
   :config
   (add-to-list 'auto-mode-alist '("\\.[pP][dD][fF]\\'" . reader-mode))
   (add-to-list 'auto-mode-alist '("\\.epub\\'" . reader-mode))
