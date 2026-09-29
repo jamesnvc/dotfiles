@@ -5,15 +5,21 @@
 (use-package eglot
   :straight (:type built-in)
   :config
-  (add-to-list 'eglot-server-programs (cons 'prolog-mode
-                                            (list "swipl"
-                                                  ;; "-O"
-                                                  ;; "-g" "use_module(library(lsp_server))."
-                                                  "-s" (expand-file-name "~/Projects/prolog-lsp/prolog/lsp_server.pl")
-                                                  "-g" "lsp_server:main"
-                                                  "-t" "halt"
-                                                  "--" ;"stdio"
-                                                  "port" :autoport)))
+
+  (setopt eglot-sync-connect nil)
+
+  (setopt eglot-events-buffer-config '(:size 0 :format short))
+
+  (setf (alist-get 'prolog-mode eglot-server-programs nil nil #'equal)
+        (list "swipl"
+              ;; "-O"
+              ;; "-g" "use_module(library(lsp_server))."
+              "-s" (expand-file-name "~/Projects/prolog-lsp/prolog/lsp_server.pl")
+              "-g" "lsp_server:main"
+              "-t" "halt"
+              "--" ;"stdio"
+              "port" :autoport))
+
   (when (eq system-type 'darwin)
     ;; (setq eglot-server-programs (cdr eglot-server-programs))
     ;; to make sourcekit work properly with xcode project
