@@ -15,10 +15,15 @@
 
 (use-package flycheck
   :config
+  (defun cogent/flycheck-last-error ()
+    (interactive)
+    (goto-char (point-max))
+    (flycheck-previous-error))
   (evil-define-minor-mode-key 'normal 'flycheck-mode
    (kbd "[ q") #'flycheck-previous-error
    (kbd "] q") #'flycheck-next-error
-   (kbd "[ Q") #'flycheck-first-error)
+   (kbd "[ Q") #'flycheck-first-error
+   (kbd "] Q") #'cogent/flycheck-last-error)
   (add-hook 'sh-mode-hook #'flycheck-mode))
 
 ;; Turn modeline red when Flycheck has errors.
@@ -27,5 +32,7 @@
   :hook (flycheck-mode-hook . flycheck-color-mode-line-mode)
   :config
   (setq flycheck-highlighting-mode 'symbols))
+
+(use-package flycheck-cfn)
 
 (provide 'cogent-flycheck)
